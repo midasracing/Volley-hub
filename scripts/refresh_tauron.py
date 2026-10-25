@@ -207,7 +207,14 @@ def parse_matches(soup):
                         continue
                     if a >= 0 and b >= 0:
                         set_scores.append(f"{a}:{b}")
-                status = "finished" if max(home_sets, away_sets) >= 3 else "scheduled"
+                if max(home_sets, away_sets) >= 3:
+                    status = "finished"
+                elif home_sets > 0 or away_sets > 0 or set_scores:
+                    # A partial set tally / points means the match has started.
+                    # Do not leave an in-progress fixture labelled as scheduled.
+                    status = "live"
+                else:
+                    status = "scheduled"
             else:
                 home_sets = away_sets = 0
                 set_scores = []
