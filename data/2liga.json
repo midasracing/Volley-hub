@@ -2,7 +2,7 @@
   "competition": "II Liga Mężczyzn",
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://volleytime.pl/rozgrywki/2-liga/",
-  "updated_at": "2026-10-25T21:06:31.716731+00:00",
+  "updated_at": "2026-10-25T21:07:06.833142+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -6083,6 +6083,18 @@
         }
       ],
       "table": [
+        {
+          "rank": 1,
+          "team": "Volley Team Żychlin",
+          "played": 4,
+          "wins": 4,
+          "losses": 0,
+          "sets_for": 12,
+          "sets_against": 1,
+          "points_for": 328,
+          "points_against": 268,
+          "points": 12
+        },
         {
           "rank": 2,
           "team": "ProNutiva SKK Belsk Duży",
