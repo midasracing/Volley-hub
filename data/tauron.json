@@ -1,5 +1,63 @@
 {
-  "updated_at": "2026-10-25T16:14:02.752095+00:00",
+  "teams": [
+    {
+      "name": "Aluron CMC Warta Zawiercie",
+      "logo": "https://www.tauronliga.pl/dl/724980/inline/scalecrop=70x70/3c35ec/aluron_cmc.png"
+    },
+    {
+      "name": "Asseco Resovia Rzeszów",
+      "logo": "https://www.tauronliga.pl/dl/724981/inline/scalecrop=70x70/46ca61/asseco_resovia.png"
+    },
+    {
+      "name": "BOGDANKA LUK Lublin",
+      "logo": "https://www.tauronliga.pl/dl/724983/inline/scalecrop=70x70/a82c8f/bogdanka_luk.png"
+    },
+    {
+      "name": "Barkom Każany Lwów",
+      "logo": "https://www.tauronliga.pl/dl/727772/inline/scalecrop=70x70/dc1252/jastrzebie_barkom.png"
+    },
+    {
+      "name": "ChKS Chełm",
+      "logo": "https://www.tauronliga.pl/dl/724984/inline/scalecrop=70x70/889589/chks_chelm.png"
+    },
+    {
+      "name": "Cuprum Stilon Gorzów",
+      "logo": "https://www.tauronliga.pl/dl/728510/inline/scalecrop=70x70/b6ba57/stilon_gorzow.png"
+    },
+    {
+      "name": "GKS Katowice",
+      "logo": "https://www.tauronliga.pl/dl/724988/inline/scalecrop=70x70/f11554/gks_katowice.png"
+    },
+    {
+      "name": "Indykpol AZS Olsztyn",
+      "logo": "https://www.tauronliga.pl/dl/724986/inline/scalecrop=70x70/132edd/energa_indykpol_azsolsztyn.png"
+    },
+    {
+      "name": "PGE GiEK Skra Bełchatów",
+      "logo": "https://www.tauronliga.pl/dl/724989/inline/scalecrop=70x70/71245d/pge_giek_skra.png"
+    },
+    {
+      "name": "PGE Projekt Warszawa",
+      "logo": "https://www.tauronliga.pl/dl/728192/inline/scalecrop=70x70/44de98/pge_projekt_warszawa-1.png"
+    },
+    {
+      "name": "Steam Hemarpol Norwid Częstochowa",
+      "logo": "https://www.tauronliga.pl/dl/724991/inline/scalecrop=70x70/3564e7/steam_hemarpol.png"
+    },
+    {
+      "name": "Trefl Gdańsk",
+      "logo": "https://www.tauronliga.pl/dl/724987/inline/scalecrop=70x70/3e9fbb/energa_trefl_gdansk.png"
+    },
+    {
+      "name": "ZAKSA Kędzierzyn-Koźle",
+      "logo": "https://www.tauronliga.pl/dl/724993/inline/scalecrop=70x70/810191/zaksa.png"
+    },
+    {
+      "name": "Ślepsk Malow Suwałki",
+      "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
+    }
+  ],
+  "updated_at": "2026-10-25T16:14:28.052534+00:00",
   "matches": [
     {
       "date": "0 BOGDANKA",
