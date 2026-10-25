@@ -57,7 +57,7 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-25T17:20:17.347389+00:00",
+  "updated_at": "2026-10-25T17:22:53.748817+00:00",
   "matches": [
     {
       "date": "18.10.2026",
@@ -71,7 +71,8 @@
         "23:25",
         "22:25",
         "21:25"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "18.10.2026",
@@ -87,7 +88,8 @@
         "25:22",
         "25:18",
         "10:15"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "19.10.2026",
@@ -103,7 +105,8 @@
         "21:25",
         "25:21",
         "7:15"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "20.10.2026",
@@ -117,7 +120,8 @@
         "25:18",
         "25:23",
         "25:18"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "21.10.2026",
@@ -131,7 +135,8 @@
         "25:22",
         "25:22",
         "25:21"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "21.10.2026",
@@ -146,7 +151,8 @@
         "25:22",
         "22:25",
         "32:30"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "23.10.2026",
@@ -162,7 +168,8 @@
         "23:25",
         "25:22",
         "11:15"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "23.10.2026",
@@ -176,7 +183,8 @@
         "17:25",
         "22:25",
         "21:25"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "24.10.2026",
@@ -192,7 +200,8 @@
         "15:25",
         "23:25",
         "15:12"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "25.10.2026",
@@ -206,7 +215,8 @@
         "32:34",
         "20:25",
         "18:25"
-      ]
+      ],
+      "current_points": null
     },
     {
       "date": "25.10.2026",
@@ -216,7 +226,8 @@
       "away": "Asseco Resovia Rzeszów",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "27.10.2026",
@@ -226,7 +237,8 @@
       "away": "GKS Katowice",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "28.10.2026",
@@ -236,7 +248,8 @@
       "away": "Aluron CMC Warta Zawiercie",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "29.10.2026",
@@ -246,7 +259,8 @@
       "away": "ZAKSA Kędzierzyn-Koźle",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "29.10.2026",
@@ -256,7 +270,8 @@
       "away": "Trefl Gdańsk",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "30.10.2026",
@@ -266,7 +281,8 @@
       "away": "Steam Hemarpol Norwid Częstochowa",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "31.10.2026",
@@ -276,7 +292,8 @@
       "away": "PGE Projekt Warszawa",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "31.10.2026",
@@ -286,7 +303,8 @@
       "away": "Aluron CMC Warta Zawiercie",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "31.10.2026",
@@ -296,7 +314,8 @@
       "away": "GKS Katowice",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "01.11.2026",
@@ -306,7 +325,8 @@
       "away": "ChKS Chełm",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "03.11.2026",
@@ -316,7 +336,8 @@
       "away": "Cuprum Stilon Gorzów",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "04.11.2026",
@@ -326,7 +347,8 @@
       "away": "Indykpol AZS Olsztyn",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "04.11.2026",
@@ -336,7 +358,8 @@
       "away": "PGE GiEK Skra Bełchatów",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "05.11.2026",
@@ -346,7 +369,8 @@
       "away": "Ślepsk Malow Suwałki",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     },
     {
       "date": "07.11.2026",
@@ -356,7 +380,8 @@
       "away": "ZAKSA Kędzierzyn-Koźle",
       "home_sets": 0,
       "away_sets": 0,
-      "set_scores": []
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
