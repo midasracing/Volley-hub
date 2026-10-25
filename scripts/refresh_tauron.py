@@ -229,7 +229,9 @@ def main():
         # Do not retain a stale table from another competition/source.
         standings = []
 
+    team_logos = extract_team_logos(games, table_soup if "table_soup" in locals() else games)
     payload = {
+        "teams": team_logos,
         "updated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "matches": matches,
         "table": standings,
