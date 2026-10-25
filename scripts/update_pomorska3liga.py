@@ -206,50 +206,43 @@ def parse_match_detail(soup):
                 kickoff = f"{int(time_match.group(1)):02d}:{time_match.group(2)}"
                 break
 
-    # VolleyStation shows set-by-set points on the individual match page.
-    # Collect plausible volleyball set scores, excluding clock times and set-count scores.
+    # Match pages render each team's points in paired .team-points-row
+    # containers. Each .set-points element is one set's points, not a "25:18"
+    # string, so pair the home and away rows by set index.
     set_scores = []
-    score_pattern = re.compile(r"(?<!\d)(\d{1,2})\s*[:\-–]\s*(\d{1,2})(?!\d)")
-    score_nodes = soup.select("table td, table th, [class*='set'], [class*='score'], [data-testid*='score']")
-    # Prefer the most specific matching nodes so parent containers don't duplicate
-    # the same set, while still preserving repeated scores from different sets.
-    candidates = []
-    for node in score_nodes:
-        node_text = re.sub(r"\s+", " ", node.get_text(" ", strip=True))
-        if not score_pattern.search(node_text):
-            continue
-        if any(score_pattern.search(re.sub(r"\s+", " ", child.get_text(" ", strip=True)))
-               for child in node.find_all(True)):
-            continue
-        candidates.append(node_text)
+    team_rows = soup.select(".team-points-row")
+    home_row = next((row for row in team_rows if "home" in row.get("class", [])), None)
+    away_row = next((row for row in team_rows if "away" in row.get("class", [])), None)
 
-    def is_volleyball_set_score(a, b, token=""):
-        # Never interpret a clock token (e.g. 18:00) as a set score.
-        if re.fullmatch(r"(?:[01]?\\d|2[0-3]):[0-5]\\d", token.strip()):
-            return False
-        if a > 40 or b > 40 or a == b:
-            return False
-        winner, loser = max(a, b), min(a, b)
-        # Regular sets are won at 25+; a deciding set is won at 15+.
-        # Require a two-point margin and reject impossible artifacts such as 18:0.
-        return (winner >= 25 and winner - loser >= 2) or (
-            winner == 15 and loser <= 13
-        ) or (15 < winner <= 20 and winner - loser == 2)
+    if home_row and away_row:
+        home_points = [
+            node.get_text(" ", strip=True)
+            for node in home_row.select(".set-points")
+        ]
+        away_points = [
+            node.get_text(" ", strip=True)
+            for node in away_row.select(".set-points")
+        ]
+        for home_value, away_value in zip(home_points, away_points):
+            if home_value.isdigit() and away_value.isdigit():
+                a, b = int(home_value), int(away_value)
+                if 0 <= a <= 40 and 0 <= b <= 40 and a != b:
+                    set_scores.append(f"{a}:{b}")
 
-    for node_text in candidates:
-        for match in score_pattern.finditer(node_text):
-            a, b = int(match.group(1)), int(match.group(2))
-            if not is_volleyball_set_score(a, b, match.group(0)):
-                continue
-            set_scores.append(f"{a}:{b}")
-
-    # Fallback to full page text if scores aren't in identifiable score/table elements.
+    # Fallback for alternate VolleyStation markup: look for individual
+    # .set-points values and pair adjacent team rows, rather than expecting
+    # the points to appear as colon-separated text.
     if not set_scores:
-        for match in score_pattern.finditer(text):
-            a, b = int(match.group(1)), int(match.group(2))
-            if not is_volleyball_set_score(a, b, match.group(0)):
-                continue
-            set_scores.append(f"{a}:{b}")
+        point_nodes = soup.select(".set-points")
+        values = [node.get_text(" ", strip=True) for node in point_nodes]
+        if len(values) >= 2 and len(values) % 2 == 0:
+            midpoint = len(values) // 2
+            home_points, away_points = values[:midpoint], values[midpoint:]
+            for home_value, away_value in zip(home_points, away_points):
+                if home_value.isdigit() and away_value.isdigit():
+                    a, b = int(home_value), int(away_value)
+                    if 0 <= a <= 40 and 0 <= b <= 40 and a != b:
+                        set_scores.append(f"{a}:{b}")
 
     return {"time": kickoff, "set_scores": set_scores}
 
