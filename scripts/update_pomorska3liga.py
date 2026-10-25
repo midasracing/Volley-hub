@@ -175,28 +175,58 @@ def parse_matches(soup, source_url):
     return matches
 
 
-def parse_match_detail_time(soup):
-    """Extract the scheduled start time from a match detail page."""
-    text = re.sub(r"\\s+", " ", soup.get_text(" ", strip=True))
-    # Prefer explicit kickoff labels to avoid mistaking set scores or other times for kickoff.
+def parse_match_detail(soup):
+    """Read kickoff time and individual set scores from an official match page."""
+    text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))
+    kickoff = None
     patterns = [
-        r"(?:godzina rozpoczęcia|godzina meczu|początek meczu|rozpoczęcie|start meczu|match start|kick.?off|data i godzina|termin meczu)[^0-9]{0,80}(\\d{1,2}:\\d{2})",
-        r"(?:data|termin)[^0-9]{0,50}\\d{1,2}[. /-]\\d{1,2}[. /-]\\d{4}[^0-9]{0,80}(\\d{1,2}:\\d{2})",
+        r"(?:godzina rozpoczęcia|godzina meczu|początek meczu|rozpoczęcie|start meczu|match start|kick.?off|data i godzina|termin meczu)[^0-9]{0,80}(\d{1,2}:\d{2})",
+        r"(?:data|termin)[^0-9]{0,50}\d{1,2}[. /-]\d{1,2}[. /-]\d{4}[^0-9]{0,80}(\d{1,2}:\d{2})",
     ]
     for pattern in patterns:
         match = re.search(pattern, text, re.I)
         if match:
             hour, minute = match.group(1).split(":")
-            return f"{int(hour):02d}:{minute}"
-    # Last resort: use the first time only if it appears near the match date.
-    date_match = re.search(r"\\d{1,2}\\s+[a-ząćęłńóśźż]+\\s+\\d{4}", text, re.I)
-    if date_match:
-        nearby = text[date_match.end():date_match.end() + 180]
-        time_match = re.search(r"\\b(\\d{1,2}:\\d{2})\\b", nearby)
-        if time_match:
-            hour, minute = time_match.group(1).split(":")
-            return f"{int(hour):02d}:{minute}"
-    return None
+            kickoff = f"{int(hour):02d}:{minute}"
+            break
+    if not kickoff:
+        date_match = re.search(r"\d{1,2}\s+[a-ząćęłńóśźż]+\s+\d{4}", text, re.I)
+        if date_match:
+            nearby = text[date_match.end():date_match.end() + 180]
+            time_match = re.search(r"\b(\d{1,2}:\d{2})\b", nearby)
+            if time_match:
+                hour, minute = time_match.group(1).split(":")
+                kickoff = f"{int(hour):02d}:{minute}"
+
+    # VolleyStation shows set-by-set points on the individual match page.
+    # Collect plausible volleyball set scores, excluding clock times and set-count scores.
+    set_scores = []
+    seen = set()
+    score_pattern = re.compile(r"(?<!\d)(\d{1,2})\s*[:\-–]\s*(\d{1,2})(?!\d)")
+    for node in soup.select("table td, table th, [class*='set'], [class*='score'], [data-testid*='score']"):
+        node_text = re.sub(r"\s+", " ", node.get_text(" ", strip=True))
+        for match in score_pattern.finditer(node_text):
+            a, b = int(match.group(1)), int(match.group(2))
+            # Volleyball sets are generally 25+ points; deciding sets are played to 15.
+            if a > 40 or b > 40 or (max(a, b) < 15):
+                continue
+            score = f"{a}:{b}"
+            if score not in seen:
+                seen.add(score)
+                set_scores.append(score)
+
+    # Fallback to full page text if scores aren't in identifiable score/table elements.
+    if not set_scores:
+        for match in score_pattern.finditer(text):
+            a, b = int(match.group(1)), int(match.group(2))
+            if a > 40 or b > 40 or max(a, b) < 15:
+                continue
+            score = f"{a}:{b}"
+            if score not in seen:
+                seen.add(score)
+                set_scores.append(score)
+
+    return {"time": kickoff, "set_scores": set_scores}
 
 def parse_table(soup):
     rows = []
@@ -307,25 +337,30 @@ def main():
         by_id[result["id"]] = merged
     matches = list(by_id.values())
 
-    # Finished matches may still expose their original kickoff time on the
-    # official individual match page even when /results/ omits it.
+    # Finished matches expose kickoff time and point-by-point set scores on the
+    # official individual match page, so inspect each completed match directly.
     detail_candidates = [
         match for match in matches
-        if not match.get("time") and match.get("status") == "finished"
-        and match.get("match_url")
+        if match.get("status") == "finished" and match.get("match_url")
+        and (not match.get("time") or not match.get("set_scores"))
     ]
     detail_times_found = 0
+    detail_scores_found = 0
     for match in detail_candidates:
         try:
             detail_soup = fetch(match["match_url"])
-            detail_time = parse_match_detail_time(detail_soup)
-            if detail_time:
-                match["time"] = detail_time
+            detail_data = parse_match_detail(detail_soup)
+            if not match.get("time") and detail_data["time"]:
+                match["time"] = detail_data["time"]
                 detail_times_found += 1
+            if detail_data["set_scores"]:
+                match["set_scores"] = detail_data["set_scores"]
+                detail_scores_found += 1
         except Exception as exc:
-            print(f"Warning: could not read kickoff time from match detail {match['match_url']}: {exc}", file=sys.stderr)
+            print(f"Warning: could not read details from match page {match['match_url']}: {exc}", file=sys.stderr)
     print(
-        f"Match detail time lookup: checked={len(detail_candidates)}, recovered={detail_times_found}",
+        f"Match detail lookup: checked={len(detail_candidates)}, "
+        f"kickoff times recovered={detail_times_found}, set-score lists recovered={detail_scores_found}",
         flush=True,
     )
 
