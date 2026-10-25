@@ -15,6 +15,7 @@ PZPS_URL = "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/"
 PZPS_RESULTS_URL = "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
 VOLLEYSTATION_TEAMS_URL = "https://2ligamezczyzn.volleystation.com/pl/teams/"
 OUT = Path("data/2liga.json")
+HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; VolleyHub/1.0)"}
 def fetch(url):
     """Fetch a VolleyStation page with the existing Puppeteer + Stealth test setup."""
     import subprocess
