@@ -327,23 +327,39 @@ def parse_team_logos(soup, page_url):
             print(f"Warning: couldn't inspect team profile for logo {name!r}: {exc}", file=sys.stderr)
             continue
 
+        # The official badge can be embedded in JSON/script markup instead of an <img>.
+        # Search the raw profile HTML first for VolleyStation's canonical badge URL.
+        html_text = str(team_soup).replace(r"\/", "/").replace(r"\u002F", "/")
+        badge_match = re.search(
+            r"(?:https?:)?//assets\.volleystation\.com/website/teams/\d+/badge\.png(?:[?#][^\s\"'<>]*)?",
+            html_text,
+            re.I,
+        )
+        if badge_match:
+            logos[name] = urljoin(href, badge_match.group(0))
+            print(f"Team logo mapped: {name} -> {logos[name]}", flush=True)
+            continue
+
         image_candidates = []
         for selector in (
             'meta[property="og:image"]', 'meta[name="twitter:image"]',
             'img[alt*="logo" i]', 'img[class*="logo" i]',
             'img[src]', 'img[data-src]', 'img[data-lazy-src]',
+            'img[data-original]', 'img[data-image]', 'img[srcset]',
             '[style*="background-image"]',
         ):
             image_candidates.extend(team_soup.select(selector))
         for node in image_candidates:
-            src = extract_url(node)
             if node.name == "meta":
                 src = urljoin(href, (node.get("content") or "").strip())
+            else:
+                src = extract_url(node)
             if not src or not re.search(r"\.(?:svg|png|jpe?g|webp)(?:[?#].*)?$", src, re.I):
                 continue
             if any(token in src.lower() for token in ("flag", "avatar", "default", "placeholder")):
                 continue
             logos[name] = src
+            print(f"Team logo mapped: {name} -> {src}", flush=True)
             break
 
     return logos
