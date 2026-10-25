@@ -191,10 +191,15 @@ def parse_matches(soup):
                 set_scores = []
                 status = "scheduled"
             date, time = parse_date(text)
-            # The closest two-team container may omit the date; keep climbing to the full fixture card.
+            # The date label is often a sibling of the team/score container, not inside it.
+            # Walk backwards through nearby document text to find the nearest official date label.
             if not date:
-                continue
-            key = (date, time or "", home, away, home_sets, away_sets, tuple(set_scores))
+                for previous_text in node.find_all_previous(string=True):
+                    candidate_date, candidate_time = parse_date(norm(str(previous_text)))
+                    if candidate_date:
+                        date, time = candidate_date, candidate_time
+                        break
+            key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
                 "date": date or "Termin do potwierdzenia",
                 "time": time,
