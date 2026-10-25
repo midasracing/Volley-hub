@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.parse import urlparse, urljoin
+from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
 
 BASE = "https://www.tauronliga.pl"
@@ -241,6 +242,24 @@ def parse_matches(soup):
                     if candidate_date:
                         date, time = candidate_date, candidate_time
                         break
+
+            # The official fixtures page can show "Trwa" for every card and keep
+            # the score row at zero, so its label alone is not a reliable signal.
+            # If a scheduled match's known kickoff has passed within a plausible
+            # match window, expose it as live even while the source has no points.
+            # This avoids leaving a match permanently "scheduled" after kickoff.
+            if status == "scheduled" and date and time:
+                try:
+                    kickoff = datetime.datetime.strptime(
+                        f"{date} {time}", "%d.%m.%Y %H:%M"
+                    ).replace(tzinfo=ZoneInfo("Europe/Warsaw"))
+                    now_local = datetime.datetime.now(ZoneInfo("Europe/Warsaw"))
+                    elapsed = (now_local - kickoff).total_seconds()
+                    if 0 <= elapsed <= 3 * 60 * 60:
+                        status = "live"
+                except ValueError:
+                    pass
+
             key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
                 "date": date or "Termin do potwierdzenia",
