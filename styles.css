@@ -156,3 +156,13 @@ header .round{background:var(--pill)}
 .official-feed iframe{display:block;width:100%;height:72vh;min-height:620px;border:0;background:#fff}
 .official-feed .footnote{padding:0 14px 14px}
 @media(max-width:520px){.official-feed-head{display:block}.official-link{margin-top:12px}.official-feed iframe{height:70vh;min-height:560px}}
+
+/* TAURON Liga Mężczyzn: mecze, tabela i oficjalne logotypy klubów */
+.official-tabs{margin:12px 0;position:relative;z-index:1}
+.official-tabs button{flex:1;min-width:0}
+.official-team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px}
+.official-team-card{display:flex;align-items:center;gap:10px;min-height:88px;padding:12px;border:1px solid var(--navline);border-radius:16px;background:var(--card);color:inherit;text-decoration:none;font-size:.88rem;font-weight:650;line-height:1.25}
+.official-team-card img{width:52px;height:52px;object-fit:contain;flex:0 0 52px}
+.official-team-card span{overflow-wrap:anywhere}
+.official-feed iframe{display:block;width:100%;height:72vh;min-height:620px;border:0;background:#fff}
+@media(max-width:390px){.official-team-grid{grid-template-columns:1fr}.official-team-card{min-height:76px}}
