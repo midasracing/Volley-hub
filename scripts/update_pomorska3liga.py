@@ -249,14 +249,23 @@ def main():
     # played results (/results/). Both pages must be read to build a full calendar.
     schedule = parse_matches(fetch(SCHEDULE_URL), SCHEDULE_URL)
     results = parse_matches(fetch(RESULTS_URL), RESULTS_URL)
-    # Start with fixtures, then let official results replace them for the same match.
-    # This prevents a stale schedule entry from overwriting a completed result.
+    # Start with fixtures, then let official results replace scores/status for the same match.
+    # Result pages often omit kickoff time, so never discard a time already found in schedule.
     by_id = {match["id"]: match for match in schedule}
-    by_id.update({match["id"]: match for match in results})
+    for result in results:
+        fixture = by_id.get(result["id"], {})
+        merged = {**fixture, **result}
+        if not result.get("time") and fixture.get("time"):
+            merged["time"] = fixture["time"]
+        by_id[result["id"]] = merged
     matches = list(by_id.values())
+    with_time = sum(bool(match.get("time")) for match in matches)
+    missing_time = sum(not match.get("time") for match in matches)
+    missing_time_finished = sum(not match.get("time") and match.get("status") == "finished" for match in matches)
     print(
         f"Parsed official pages: schedule={len(schedule)}, results={len(results)}, "
-        f"unique matches={len(matches)}",
+        f"unique matches={len(matches)}, with kickoff time={with_time}, "
+        f"without time={missing_time} (finished without time={missing_time_finished})",
         flush=True,
     )
     if not matches:
