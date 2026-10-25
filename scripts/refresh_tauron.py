@@ -467,6 +467,49 @@ def run_league(key, cfg):
     matches = parse_matches(games, aliases)
     if not matches:
         raise RuntimeError("No matches parsed; refusing to overwrite the feed.")
+
+    # Some match cards lag behind the dedicated match page. For today's fixtures
+    # whose kickoff has passed, try the official per-match URL as a second source.
+    # Merge only when it yields a more informative score/status for the same match.
+    now = datetime.datetime.now(TZ)
+    for match in list(matches):
+        if not match.get("id") or not match.get("date") or not match.get("time"):
+            continue
+        try:
+            kickoff = datetime.datetime.strptime(
+                f"{match['date']} {match['time']}", "%d.%m.%Y %H:%M"
+            ).replace(tzinfo=TZ)
+        except ValueError:
+            continue
+        if kickoff.date() != now.date() or now < kickoff or match.get("status") == "finished":
+            continue
+        detail_url = f"{base}/games/action/show/id/{match['id']}/nocookies/1.html"
+        try:
+            detail_soup = BeautifulSoup(get(detail_url, base), "html.parser")
+            detail_matches = parse_matches(detail_soup, aliases)
+        except Exception as exc:
+            print(f"INFO [{key}]: detail page unavailable for match {match['id']}: {exc}")
+            continue
+        pair = {match.get("home"), match.get("away")}
+        candidates = [
+            candidate for candidate in detail_matches
+            if {candidate.get("home"), candidate.get("away")} == pair
+            and candidate.get("date") == match.get("date")
+        ]
+        if not candidates:
+            continue
+        def score_quality(candidate):
+            return (
+                1 if candidate.get("status") == "finished" else 0,
+                1 if candidate.get("current_points") else 0,
+                len(candidate.get("set_scores", [])),
+                int(candidate.get("home_sets", 0)) + int(candidate.get("away_sets", 0)),
+            )
+        better = max(candidates, key=score_quality)
+        if score_quality(better) > score_quality(match):
+            match.update(better)
+            match["id"] = match.get("id") or better.get("id")
+
     if len(matches) < 4:
         print(f"WARNING [{key}]: only {len(matches)} matches parsed (end of season or a layout change?).")
 
