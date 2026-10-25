@@ -200,3 +200,10 @@ header .round{background:var(--pill)}
 
 /* Liga oznaczona bezpośrednio przy każdym meczu; przełącznik terminarza */
 .league-calendar-tabs{margin:12px 0}.league-tag{display:inline-flex;align-items:center;padding:3px 7px;border-radius:7px;background:var(--fill);font-size:.72rem;font-weight:700;white-space:nowrap}.match-meta{flex-wrap:wrap}
+
+
+/* Logotypy II ligi: spójne rozmiary i awaryjny znak drużyny */
+.team-mark{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:12px;background:var(--fill);border:1px solid var(--line);color:var(--sub);font-size:.78rem;font-weight:800;letter-spacing:-.04em}
+.match-team .team-mark{width:30px;height:30px;flex-basis:30px;border-radius:9px;font-size:.68rem}
+.table-team .team-mark{width:28px;height:28px;flex-basis:28px;border-radius:8px;font-size:.65rem}
+.second-team-card img{width:52px;height:52px;flex:0 0 52px;object-fit:contain}
