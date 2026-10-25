@@ -3,8 +3,6 @@
 import json
 import re
 import sys
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -20,31 +18,29 @@ MONTHS = {
     "maja": 5, "czerwca": 6, "lipca": 7, "sierpnia": 8,
     "września": 9, "października": 10, "listopada": 11, "grudnia": 12,
 }
-HEADERS = {
-    # Match the known-working HTTP client pattern used by the Tauron scraper.
-    # Some sites reject requests that impersonate a full desktop browser.
-    "User-Agent": "VolleyHub/1.0 (+https://github.com/midasracing/Volley-hub)",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "pl-PL,pl;q=0.9,en;q=0.8",
-}
-
 def fetch(url):
-    """Fetch a VolleyStation page using the same standard-library client as Tauron."""
-    request = Request(url, headers=HEADERS)
-    try:
-        with urlopen(request, timeout=30) as response:
-            raw = response.read()
-    except HTTPError as exc:
-        # Include a short response excerpt in Actions logs to distinguish a block page.
-        body = exc.read(1200).decode("utf-8", errors="replace")
-        excerpt = re.sub(r"\s+", " ", BeautifulSoup(body, "html.parser").get_text(" ", strip=True))[:350]
-        raise RuntimeError(
-            f"VolleyStation returned HTTP {exc.code} for {url}. "
-            f"Response excerpt: {excerpt or '[empty response body]'}"
-        ) from exc
-    except URLError as exc:
-        raise RuntimeError(f"Could not fetch {url}: {exc.reason}") from exc
-    return BeautifulSoup(raw, "html.parser")
+    """Load public VolleyStation pages in Chromium, allowing normal JS challenges."""
+    from playwright.sync_api import sync_playwright
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        try:
+            page = browser.new_page(locale="pl-PL")
+            response = page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            try:
+                page.wait_for_load_state("networkidle", timeout=20000)
+            except Exception:
+                pass
+            page.wait_for_timeout(5000)
+            title = page.title()
+            body = page.locator("body").inner_text(timeout=10000)
+            if response and response.status == 403:
+                raise RuntimeError(f"VolleyStation HTTP 403 for {url}; title={title!r}; body={body[:250]!r}")
+            if "Just a moment..." in title or "Verify you are human" in body:
+                raise RuntimeError(f"Cloudflare challenge did not clear for {url}; runner may not be allowed.")
+            return BeautifulSoup(page.content(), "html.parser")
+        finally:
+            browser.close()
 
 def parse_date(text):
     match = re.search(r"(\d{1,2})\s+([a-ząćęłńóśźż]+)\s+(\d{4})", text.lower())
