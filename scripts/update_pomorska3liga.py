@@ -19,28 +19,70 @@ MONTHS = {
     "września": 9, "października": 10, "listopada": 11, "grudnia": 12,
 }
 def fetch(url):
-    """Load public VolleyStation pages in Chromium, allowing normal JS challenges."""
-    from playwright.sync_api import sync_playwright
+    """Fetch a VolleyStation page with the existing Puppeteer + Stealth test setup."""
+    import subprocess
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        try:
-            page = browser.new_page(locale="pl-PL")
-            response = page.goto(url, wait_until="domcontentloaded", timeout=60000)
-            try:
-                page.wait_for_load_state("networkidle", timeout=20000)
-            except Exception:
-                pass
-            page.wait_for_timeout(5000)
-            title = page.title()
-            body = page.locator("body").inner_text(timeout=10000)
-            if response and response.status == 403:
-                raise RuntimeError(f"VolleyStation HTTP 403 for {url}; title={title!r}; body={body[:250]!r}")
-            if "Just a moment..." in title or "Verify you are human" in body:
-                raise RuntimeError(f"Cloudflare challenge did not clear for {url}; runner may not be allowed.")
-            return BeautifulSoup(page.content(), "html.parser")
-        finally:
-            browser.close()
+    node_script = r"""
+    const puppeteer = require('puppeteer-extra');
+    const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+    puppeteer.use(StealthPlugin());
+
+    (async () => {
+      let browser;
+      try {
+        browser = await puppeteer.launch({
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+        const page = await browser.newPage();
+        await page.setExtraHTTPHeaders({
+          'Accept-Language': 'pl-PL,pl;q=0.9,en;q=0.8'
+        });
+        const response = await page.goto(process.argv[1], {
+          waitUntil: 'domcontentloaded',
+          timeout: 60000
+        });
+        try {
+          await page.waitForNetworkIdle({ timeout: 20000 });
+        } catch (_) {}
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        const result = {
+          status: response ? response.status() : null,
+          title: await page.title(),
+          body: (await page.locator('body').innerText()).slice(0, 500),
+          html: await page.content()
+        };
+        process.stdout.write(JSON.stringify(result));
+      } catch (error) {
+        process.stderr.write(error.name + ': ' + error.message);
+        process.exitCode = 1;
+      } finally {
+        if (browser) await browser.close();
+      }
+    })();
+    """
+    try:
+        result = subprocess.run(
+            ["node", "-e", node_script, url],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=90,
+        )
+        page_data = json.loads(result.stdout)
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
+        details = getattr(exc, "stderr", None) or str(exc)
+        raise RuntimeError(f"Puppeteer Stealth fetch failed for {url}: {details}") from exc
+
+    status = page_data["status"]
+    title = page_data["title"]
+    body = page_data["body"]
+    print(f"VolleyStation fetch: HTTP {status}; title={title!r}", flush=True)
+    if status == 403:
+        raise RuntimeError(f"VolleyStation HTTP 403 for {url}; title={title!r}; body={body[:250]!r}")
+    if "Just a moment..." in title or "Verify you are human" in body:
+        raise RuntimeError(f"Cloudflare challenge did not clear for {url}; title={title!r}; body={body[:250]!r}")
+    return BeautifulSoup(page_data["html"], "html.parser")
 
 def parse_date(text):
     match = re.search(r"(\d{1,2})\s+([a-ząćęłńóśźż]+)\s+(\d{4})", text.lower())
