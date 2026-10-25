@@ -197,3 +197,6 @@ header .round{background:var(--pill)}
 .coming-soon{display:flex;gap:12px;align-items:center;padding:20px;border-radius:16px;background:var(--card)}
 .coming-soon b,.coming-soon small{display:block}
 .coming-soon small{margin-top:5px;color:var(--sub);line-height:1.4}
+
+/* Liga oznaczona bezpośrednio przy każdym meczu; przełącznik terminarza */
+.league-calendar-tabs{margin:12px 0}.league-tag{display:inline-flex;align-items:center;padding:3px 7px;border-radius:7px;background:var(--fill);font-size:.72rem;font-weight:700;white-space:nowrap}.match-meta{flex-wrap:wrap}
