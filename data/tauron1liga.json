@@ -1,0 +1,607 @@
+{
+  "league": "first",
+  "teams": [
+    {
+      "name": "AVIA Sędziszów Małopolski",
+      "logo": "https://www.tauron1liga.pl/dl/724994/inline/scalecrop=70x70/abb1d6/avia_solar.png"
+    },
+    {
+      "name": "BBTS Bielsko-Biała",
+      "logo": "https://www.tauron1liga.pl/dl/733108/inline/scalecrop=70x70/d0059a/bbts_bielsko_biala-1.png"
+    },
+    {
+      "name": "BKS Bydgoszcz",
+      "logo": "https://www.tauron1liga.pl/dl/724996/inline/scalecrop=70x70/44f58c/bks_bydgoszcz.png"
+    },
+    {
+      "name": "CUK Anioły Toruń",
+      "logo": "https://www.tauron1liga.pl/dl/724997/inline/scalecrop=70x70/a94d53/cuk_anioly.png"
+    },
+    {
+      "name": "FORT Poznań",
+      "logo": "https://www.tauron1liga.pl/dl/725744/inline/scalecrop=70x70/da371c/logo_fort_poznan.png"
+    },
+    {
+      "name": "ICT PIERROT Czarni Radom",
+      "logo": "https://www.tauron1liga.pl/dl/724998/inline/scalecrop=70x70/df6ba6/ict_czarni_radom.png"
+    },
+    {
+      "name": "KKS MICKIEWICZ Kluczbork",
+      "logo": "https://www.tauron1liga.pl/dl/724999/inline/scalecrop=70x70/05f098/kks_mickiewicz.png"
+    },
+    {
+      "name": "KPS Płock",
+      "logo": "https://www.tauron1liga.pl/dl/725000/inline/scalecrop=70x70/427f57/kps_plock.png"
+    },
+    {
+      "name": "KPS Siedlce",
+      "logo": "https://www.tauron1liga.pl/dl/725001/inline/scalecrop=70x70/183dcc/kps_siedlce.png"
+    },
+    {
+      "name": "KS Sparta Grodzisk Mazowiecki",
+      "logo": "https://www.tauron1liga.pl/dl/725002/inline/scalecrop=70x70/dfa8df/ks_sparta.png"
+    },
+    {
+      "name": "Lechia Tomaszów Mazowiecki",
+      "logo": "https://www.tauron1liga.pl/dl/725003/inline/scalecrop=70x70/a7480c/lechia_tomaszow_mazowiecki.png"
+    },
+    {
+      "name": "MCKiS Jaworzno",
+      "logo": "https://www.tauron1liga.pl/dl/725004/inline/scalecrop=70x70/47d87f/mckis_jaworzno.png"
+    },
+    {
+      "name": "Nowak-Mosty MKS Będzin",
+      "logo": "https://www.tauron1liga.pl/dl/725005/inline/scalecrop=70x70/2267d7/mks_bedzin.png"
+    },
+    {
+      "name": "PZL LEONARDO Avia Świdnik",
+      "logo": "https://www.tauron1liga.pl/dl/725006/inline/scalecrop=70x70/5a10f5/pzl_avia_swidnik.png"
+    },
+    {
+      "name": "Stal Nysa",
+      "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
+    }
+  ],
+  "updated_at": "2026-10-25T18:18:19.254274+00:00",
+  "matches": [
+    {
+      "id": "1105168",
+      "date": "18.10.2026",
+      "time": "18:00",
+      "status": "finished",
+      "home": "KPS Płock",
+      "away": "Nowak-Mosty MKS Będzin",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": [
+        "23:25",
+        "18:25",
+        "18:25"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105162",
+      "date": "19.10.2026",
+      "time": "18:30",
+      "status": "finished",
+      "home": "MCKiS Jaworzno",
+      "away": "FORT Poznań",
+      "home_sets": 3,
+      "away_sets": 2,
+      "set_scores": [
+        "30:28",
+        "21:25",
+        "25:19",
+        "27:29",
+        "15:8"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105164",
+      "date": "19.10.2026",
+      "time": "19:00",
+      "status": "finished",
+      "home": "KS Sparta Grodzisk Mazowiecki",
+      "away": "ICT PIERROT Czarni Radom",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": [
+        "27:29",
+        "15:25",
+        "15:25"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105177",
+      "date": "22.10.2026",
+      "time": "20:30",
+      "status": "finished",
+      "home": "FORT Poznań",
+      "away": "BKS Bydgoszcz",
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "20:25",
+        "25:18",
+        "25:18",
+        "25:22"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105173",
+      "date": "23.10.2026",
+      "time": "18:00",
+      "status": "finished",
+      "home": "KPS Siedlce",
+      "away": "CUK Anioły Toruń",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": [
+        "21:25",
+        "23:25",
+        "20:25"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105171",
+      "date": "24.10.2026",
+      "time": "18:00",
+      "status": "finished",
+      "home": "Nowak-Mosty MKS Będzin",
+      "away": "KKS MICKIEWICZ Kluczbork",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": [
+        "23:25",
+        "18:25",
+        "18:25"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105174",
+      "date": "24.10.2026",
+      "time": "18:00",
+      "status": "finished",
+      "home": "AVIA Sędziszów Małopolski",
+      "away": "BBTS Bielsko-Biała",
+      "home_sets": 3,
+      "away_sets": 2,
+      "set_scores": [
+        "25:16",
+        "25:22",
+        "29:31",
+        "24:26",
+        "15:13"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105170",
+      "date": "25.10.2026",
+      "time": "17:00",
+      "status": "finished",
+      "home": "Stal Nysa",
+      "away": "MCKiS Jaworzno",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": [
+        "25:23",
+        "25:19",
+        "25:22"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105176",
+      "date": "25.10.2026",
+      "time": "17:00",
+      "status": "finished",
+      "home": "Lechia Tomaszów Mazowiecki",
+      "away": "KS Sparta Grodzisk Mazowiecki",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": [
+        "25:20",
+        "25:16",
+        "25:14"
+      ],
+      "current_points": null
+    },
+    {
+      "id": "1105172",
+      "date": "25.10.2026",
+      "time": "18:00",
+      "status": "live",
+      "home": "PZL LEONARDO Avia Świdnik",
+      "away": "KPS Płock",
+      "home_sets": 1,
+      "away_sets": 0,
+      "set_scores": [
+        "25:20"
+      ],
+      "current_points": "1:1"
+    },
+    {
+      "id": "1105122",
+      "date": "28.10.2026",
+      "time": "19:00",
+      "status": "scheduled",
+      "home": "CUK Anioły Toruń",
+      "away": "MCKiS Jaworzno",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105185",
+      "date": "30.10.2026",
+      "time": "17:00",
+      "status": "scheduled",
+      "home": "Stal Nysa",
+      "away": "Nowak-Mosty MKS Będzin",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105181",
+      "date": "30.10.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "BBTS Bielsko-Biała",
+      "away": "ICT PIERROT Czarni Radom",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105182",
+      "date": "31.10.2026",
+      "time": "15:00",
+      "status": "scheduled",
+      "home": "CUK Anioły Toruń",
+      "away": "AVIA Sędziszów Małopolski",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105183",
+      "date": "31.10.2026",
+      "time": "17:00",
+      "status": "scheduled",
+      "home": "KPS Płock",
+      "away": "KPS Siedlce",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105179",
+      "date": "31.10.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "KS Sparta Grodzisk Mazowiecki",
+      "away": "FORT Poznań",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105184",
+      "date": "31.10.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "KKS MICKIEWICZ Kluczbork",
+      "away": "PZL LEONARDO Avia Świdnik",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105178",
+      "date": "02.11.2026",
+      "time": "18:30",
+      "status": "scheduled",
+      "home": "MCKiS Jaworzno",
+      "away": "BKS Bydgoszcz",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105129",
+      "date": "04.11.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "AVIA Sędziszów Małopolski",
+      "away": "ICT PIERROT Czarni Radom",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105136",
+      "date": "04.11.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "BBTS Bielsko-Biała",
+      "away": "KKS MICKIEWICZ Kluczbork",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105186",
+      "date": "06.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "Nowak-Mosty MKS Będzin",
+      "away": "MCKiS Jaworzno",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105193",
+      "date": "06.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "BKS Bydgoszcz",
+      "away": "KS Sparta Grodzisk Mazowiecki",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105187",
+      "date": "07.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "PZL LEONARDO Avia Świdnik",
+      "away": "Stal Nysa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105191",
+      "date": "07.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "Lechia Tomaszów Mazowiecki",
+      "away": "BBTS Bielsko-Biała",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105188",
+      "date": "08.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "KPS Siedlce",
+      "away": "KKS MICKIEWICZ Kluczbork",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    }
+  ],
+  "table": [
+    {
+      "rank": 1,
+      "team": "Nowak-Mosty MKS Będzin",
+      "points": 17,
+      "played": 7,
+      "wins": 6,
+      "losses": 1,
+      "sets_for": 18,
+      "sets_against": 7,
+      "points_for": 583,
+      "points_against": 504
+    },
+    {
+      "rank": 2,
+      "team": "PZL LEONARDO Avia Świdnik",
+      "points": 13,
+      "played": 6,
+      "wins": 5,
+      "losses": 1,
+      "sets_for": 16,
+      "sets_against": 9,
+      "points_for": 573,
+      "points_against": 531
+    },
+    {
+      "rank": 2,
+      "team": "FORT Poznań",
+      "points": 15,
+      "played": 7,
+      "wins": 5,
+      "losses": 2,
+      "sets_for": 19,
+      "sets_against": 12,
+      "points_for": 686,
+      "points_against": 657
+    },
+    {
+      "rank": 3,
+      "team": "ICT PIERROT Czarni Radom",
+      "points": 12,
+      "played": 5,
+      "wins": 4,
+      "losses": 1,
+      "sets_for": 14,
+      "sets_against": 7,
+      "points_for": 468,
+      "points_against": 426
+    },
+    {
+      "rank": 4,
+      "team": "KKS MICKIEWICZ Kluczbork",
+      "points": 13,
+      "played": 6,
+      "wins": 4,
+      "losses": 2,
+      "sets_for": 15,
+      "sets_against": 7,
+      "points_for": 529,
+      "points_against": 478
+    },
+    {
+      "rank": 5,
+      "team": "CUK Anioły Toruń",
+      "points": 12,
+      "played": 5,
+      "wins": 4,
+      "losses": 1,
+      "sets_for": 14,
+      "sets_against": 6,
+      "points_for": 448,
+      "points_against": 431
+    },
+    {
+      "rank": 7,
+      "team": "Stal Nysa",
+      "points": 9,
+      "played": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_for": 10,
+      "sets_against": 3,
+      "points_for": 329,
+      "points_against": 288
+    },
+    {
+      "rank": 7,
+      "team": "Lechia Tomaszów Mazowiecki",
+      "points": 10,
+      "played": 8,
+      "wins": 3,
+      "losses": 5,
+      "sets_for": 15,
+      "sets_against": 18,
+      "points_for": 744,
+      "points_against": 726
+    },
+    {
+      "rank": 8,
+      "team": "MCKiS Jaworzno",
+      "points": 8,
+      "played": 6,
+      "wins": 3,
+      "losses": 3,
+      "sets_for": 12,
+      "sets_against": 14,
+      "points_for": 564,
+      "points_against": 579
+    },
+    {
+      "rank": 9,
+      "team": "AVIA Sędziszów Małopolski",
+      "points": 8,
+      "played": 6,
+      "wins": 3,
+      "losses": 3,
+      "sets_for": 10,
+      "sets_against": 12,
+      "points_for": 488,
+      "points_against": 517
+    },
+    {
+      "rank": 11,
+      "team": "BKS Bydgoszcz",
+      "points": 6,
+      "played": 6,
+      "wins": 2,
+      "losses": 4,
+      "sets_for": 10,
+      "sets_against": 14,
+      "points_for": 506,
+      "points_against": 529
+    },
+    {
+      "rank": 12,
+      "team": "BBTS Bielsko-Biała",
+      "points": 4,
+      "played": 4,
+      "wins": 1,
+      "losses": 3,
+      "sets_for": 5,
+      "sets_against": 9,
+      "points_for": 303,
+      "points_against": 336
+    },
+    {
+      "rank": 13,
+      "team": "SMS PZPS Spała",
+      "points": 4,
+      "played": 6,
+      "wins": 1,
+      "losses": 5,
+      "sets_for": 7,
+      "sets_against": 16,
+      "points_for": 486,
+      "points_against": 531
+    },
+    {
+      "rank": 14,
+      "team": "KPS Siedlce",
+      "points": 3,
+      "played": 5,
+      "wins": 1,
+      "losses": 4,
+      "sets_for": 4,
+      "sets_against": 12,
+      "points_for": 360,
+      "points_against": 396
+    },
+    {
+      "rank": 15,
+      "team": "KS Sparta Grodzisk Mazowiecki",
+      "points": 3,
+      "played": 6,
+      "wins": 1,
+      "losses": 5,
+      "sets_for": 5,
+      "sets_against": 15,
+      "points_for": 414,
+      "points_against": 498
+    },
+    {
+      "rank": 16,
+      "team": "KPS Płock",
+      "points": 1,
+      "played": 5,
+      "wins": 0,
+      "losses": 5,
+      "sets_for": 2,
+      "sets_against": 15,
+      "points_for": 351,
+      "points_against": 405
+    }
+  ],
+  "source": "https://www.tauron1liga.pl",
+  "competition": "TAURON 1. Liga (mężczyźni)"
+}
