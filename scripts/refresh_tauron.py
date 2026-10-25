@@ -97,7 +97,7 @@ def parse_date(text):
         "lis": 11, "listopada": 11, "gru": 12, "grudnia": 12,
     }
     # Numeric full date, e.g. 16.10.2026, 17:30.
-    match = re.search(r"(?<!\\d)(\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})(?:\\s*,?\\s*(\\d{1,2}:\\d{2}))?(?!\\d)", text)
+    match = re.search(r"(?<!\d)(\d{1,2})\.(\d{1,2})\.(\d{4})(?:\s*,?\s*(\d{1,2}:\d{2}))?(?!\d)", text)
     if match:
         day, month, year, clock = match.groups()
         try:
@@ -106,11 +106,11 @@ def parse_date(text):
         except ValueError:
             return None, None
 
-    # Official TAURON fixture cards usually show e.g. "sobota, 17 paź, 18:00".
+    # Official TAURON fixture labels: "sobota, 17 paź, 18:00".
     match = re.search(
         r"(?i)(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela)?"
-        r"\\s*,?\\s*(\\d{1,2})\\s+([a-ząćęłńóśźż]+)"
-        r"(?:\\.?\\s*,?\\s*(\\d{1,2}:\\d{2}))?",
+        r"\s*,?\s*(\d{1,2})\s+([a-ząćęłńóśźż]+)"
+        r"\.?\s*,?\s*(\d{1,2}:\d{2})?",
         text
     )
     if not match:
@@ -120,8 +120,7 @@ def parse_date(text):
     month = months.get(month_name)
     if not month:
         return None, None
-    # The current competition season is 2026/27: autumn fixtures are 2026,
-    # winter/spring fixtures are 2027.
+    # The current competition season is 2026/27.
     year = 2026 if month >= 7 else 2027
     try:
         parsed = datetime.date(year, month, int(day))
