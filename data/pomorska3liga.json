@@ -4,7 +4,7 @@
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
   "results_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
   "standings_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
-  "updated_at": "2026-10-25T20:43:01.074807+00:00",
+  "updated_at": "2026-10-25T20:49:40.983125+00:00",
   "teams": [
     {
       "name": "Energa Trefl Gdańsk III",
@@ -54,7 +54,11 @@
       "away": "GKS Stoczniowiec Gdańsk",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:17",
+        "25:15",
+        "25:21"
+      ],
       "current_points": null,
       "round": 1,
       "match_number": 5,
@@ -70,7 +74,11 @@
       "away": "KATS ALPAT CYMMAT GDYNIA",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:8",
+        "25:17",
+        "25:20"
+      ],
       "current_points": null,
       "round": 1,
       "match_number": 2,
@@ -86,7 +94,13 @@
       "away": "KS AZS AWFiS Gdańsk",
       "home_sets": 2,
       "away_sets": 3,
-      "set_scores": [],
+      "set_scores": [
+        "25:21",
+        "19:25",
+        "24:26",
+        "27:25",
+        "12:15"
+      ],
       "current_points": null,
       "round": 1,
       "match_number": 3,
@@ -102,7 +116,13 @@
       "away": "UKS Skarszewy",
       "home_sets": 3,
       "away_sets": 2,
-      "set_scores": [],
+      "set_scores": [
+        "25:23",
+        "25:21",
+        "20:25",
+        "23:25",
+        "15:12"
+      ],
       "current_points": null,
       "round": 1,
       "match_number": 4,
@@ -118,7 +138,11 @@
       "away": "UKS Olimpijczyk Pruszcz Gdański",
       "home_sets": 0,
       "away_sets": 3,
-      "set_scores": [],
+      "set_scores": [
+        "23:25",
+        "20:25",
+        "23:25"
+      ],
       "current_points": null,
       "round": 2,
       "match_number": 7,
@@ -134,7 +158,11 @@
       "away": "KS AZS AWFiS Gdańsk",
       "home_sets": 0,
       "away_sets": 3,
-      "set_scores": [],
+      "set_scores": [
+        "21:25",
+        "23:25",
+        "13:25"
+      ],
       "current_points": null,
       "round": 2,
       "match_number": 8,
@@ -150,7 +178,12 @@
       "away": "LZS GNIEWKO Gniewkowo",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [],
+      "set_scores": [
+        "25:21",
+        "25:19",
+        "18:25",
+        "25:22"
+      ],
       "current_points": null,
       "round": 2,
       "match_number": 10,
@@ -160,7 +193,7 @@
       "id": "11.10.2026-2-9",
       "competition": "Pomorska III Liga Męska",
       "date": "11.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "KATS ALPAT CYMMAT GDYNIA",
       "away": "LZS Gminy Dragacz",
@@ -182,7 +215,11 @@
       "away": "KS AZS AWFiS Gdańsk",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:21",
+        "25:14",
+        "25:17"
+      ],
       "current_points": null,
       "round": 3,
       "match_number": 14,
@@ -192,7 +229,7 @@
       "id": "17.10.2026-3-15",
       "competition": "Pomorska III Liga Męska",
       "date": "17.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "GKS Stoczniowiec Gdańsk",
       "away": "UKS Skarszewy",
@@ -208,7 +245,7 @@
       "id": "18.10.2026-3-13",
       "competition": "Pomorska III Liga Męska",
       "date": "18.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "Energa Trefl Gdańsk III",
       "away": "KATS ALPAT CYMMAT GDYNIA",
@@ -230,7 +267,12 @@
       "away": "Energa Trefl Gdańsk III",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [],
+      "set_scores": [
+        "25:23",
+        "25:20",
+        "24:26",
+        "25:17"
+      ],
       "current_points": null,
       "round": 4,
       "match_number": 19,
@@ -246,7 +288,11 @@
       "away": "KS AZS AWFiS Gdańsk",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:21",
+        "25:19",
+        "25:18"
+      ],
       "current_points": null,
       "round": 4,
       "match_number": 17,
@@ -262,7 +308,11 @@
       "away": "LZS Gminy Dragacz",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:16",
+        "25:17",
+        "25:17"
+      ],
       "current_points": null,
       "round": 4,
       "match_number": 20,
@@ -278,7 +328,12 @@
       "away": "UKS Olimpijczyk Pruszcz Gdański",
       "home_sets": 1,
       "away_sets": 3,
-      "set_scores": [],
+      "set_scores": [
+        "18:25",
+        "25:21",
+        "21:25",
+        "22:25"
+      ],
       "current_points": null,
       "round": 4,
       "match_number": 18,
