@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 from urllib.request import Request, urlopen
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
 BASE = "https://www.tauronliga.pl"
@@ -70,6 +70,21 @@ def team_names_in_node(node):
         if alias.casefold() in text.casefold() and canonical not in names:
             names.append(canonical)
     return names
+
+def extract_team_logos(*soups):
+    """Collect official team logo URLs from team images on official league pages."""
+    logos = {}
+    for soup in soups:
+        for img in soup.find_all("img"):
+            label = norm(img.get("alt", "")) + " " + norm(img.get("title", ""))
+            team = team_in(label)
+            if not team:
+                continue
+            src = norm(img.get("src", "") or img.get("data-src", "") or img.get("data-lazy-src", ""))
+            if not src or src.startswith("data:"):
+                continue
+            logos.setdefault(team, urljoin(BASE, src))
+    return [{"name": name, "logo": logo} for name, logo in sorted(logos.items())]
 
 def parse_date(text):
     # Official fixtures use numeric dates like '16.10.2026, 17:30'.
