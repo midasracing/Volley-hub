@@ -196,32 +196,42 @@ def parse_matches(soup):
             placeholder = bool(re.search(r"···|…|[-–—]", middle))
             if not score and not placeholder:
                 continue
+
+            # The official page keeps a fixed 5-set points row (10 numbers).
+            # During the first set the set tally may still be shown as "··· ···",
+            # so parse the points row even when there is no numeric set tally.
             if score:
                 home_sets, away_sets = int(score.group(1)), int(score.group(2))
                 tail = middle[score.end():]
-                nums = [int(x) for x in re.findall(r"(?<!\d)\d{1,2}(?!\d)", tail)]
-                set_scores = []
-                for i in range(0, min(len(nums), 10) - 1, 2):
-                    a, b = nums[i], nums[i + 1]
-                    if a == 0 and b == 0:
-                        continue
-                    if a >= 0 and b >= 0:
-                        set_scores.append(f"{a}:{b}")
-                current_points = None
-                if max(home_sets, away_sets) >= 3:
-                    status = "finished"
-                else:
-                    # In a live match the last pair after completed set scores can
-                    # be the current set points (e.g. sets 1:0, points 18:16).
-                    completed_sets = home_sets + away_sets
-                    if len(set_scores) > completed_sets:
-                        current_points = set_scores.pop()
-                    status = "live" if current_points or home_sets > 0 or away_sets > 0 or set_scores else "scheduled"
             else:
                 home_sets = away_sets = 0
-                set_scores = []
-                current_points = None
-                status = "scheduled"
+                tail = middle
+
+            nums = [int(x) for x in re.findall(r"(?<!\d)\d{1,2}(?!\d)", tail)]
+            point_pairs = [
+                (nums[i], nums[i + 1])
+                for i in range(0, min(len(nums), 10) - 1, 2)
+            ]
+            nonzero_pairs = [(a, b) for a, b in point_pairs if a != 0 or b != 0]
+            set_scores = [f"{a}:{b}" for a, b in nonzero_pairs]
+            current_points = None
+
+            if max(home_sets, away_sets) >= 3:
+                status = "finished"
+            else:
+                completed_sets = home_sets + away_sets
+                # A live set appears as an extra non-zero points pair after the
+                # completed sets. Remove that pair from set_scores: it is not a
+                # finished set yet. This also handles the first set when the
+                # official site displays the set tally as placeholders.
+                if len(nonzero_pairs) > completed_sets:
+                    a, b = nonzero_pairs[-1]
+                    current_points = f"{a}:{b}"
+                    if set_scores:
+                        set_scores.pop()
+                # If the set tally itself is numeric and non-zero, the match has
+                # started even if the current points have not appeared yet.
+                status = "live" if current_points is not None or home_sets > 0 or away_sets > 0 else "scheduled"
             date, time = parse_date(text)
             # The date label is often a sibling of the team/score container, not inside it.
             # Walk backwards through nearby document text to find the nearest official date label.
