@@ -70,7 +70,7 @@ jobs:
           const puppeteer = require('puppeteer-extra');
           const StealthPlugin = require('puppeteer-extra-plugin-stealth');
           puppeteer.use(StealthPlugin());
-          const url = 'https://example.com';
+          const url = 'https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/';
           (async () => {
             let browser;
             try {
@@ -79,7 +79,7 @@ jobs:
               await page.setExtraHTTPHeaders({ 'Accept-Language': 'pl-PL,pl;q=0.9,en;q=0.8' });
               const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 40000 });
               await new Promise(resolve => setTimeout(resolve, 3000));
-              console.log('=== Puppeteer Extra + Stealth plugin (controlled test on example.com) ===');
+              console.log('=== Puppeteer Extra + Stealth plugin (authorized VolleyStation security test) ===');
               console.log('HTTP:', response ? response.status() : 'no response');
               console.log('Title:', await page.title());
               console.log('Body:', (await page.locator('body').innerText()).slice(0, 220));
