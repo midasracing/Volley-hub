@@ -174,6 +174,28 @@ def parse_matches(soup, source_url):
 
 def parse_table(soup):
     rows = []
+    tables = soup.select("table")
+    if tables:
+        print(
+            "Standings table diagnostic:",
+            json.dumps(
+                {
+                    "headers": [
+                        re.sub(r"\\s+", " ", cell.get_text(" ", strip=True))
+                        for cell in tables[0].select("tr:first-child th, tr:first-child td")
+                    ],
+                    "sample_rows": [
+                        [
+                            re.sub(r"\\s+", " ", cell.get_text(" ", strip=True))
+                            for cell in tr.find_all(["td", "th"], recursive=False)
+                        ]
+                        for tr in tables[0].select("tr")[1:4]
+                    ],
+                },
+                ensure_ascii=False,
+            ),
+            flush=True,
+        )
     for row in soup.select("table tr"):
         cells = [re.sub(r"\s+", " ", cell.get_text(" ", strip=True)) for cell in row.find_all(["td", "th"], recursive=False)]
         if len(cells) < 9 or not cells[0].isdigit():
