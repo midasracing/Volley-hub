@@ -1,5 +1,8 @@
 name: Refresh official TAURON Liga data
 on:
+  push:
+    paths:
+      - ".github/workflows/refresh-tauron.yml"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
