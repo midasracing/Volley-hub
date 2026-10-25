@@ -142,10 +142,33 @@ def parse_matches(soup):
             text = norm(node.get_text(" ", strip=True))
             if len(text) > 1800:
                 continue
-            names = team_names_in_node(node)
-            if len(names) != 2:
+            # Only parse the actual fixture section. Some official cards append a
+            # reversed head-to-head block labelled "Wyniki pierwszego meczu".
+            # Do not let that historical block become a second fixture.
+            primary_text = re.split(r"(?i)wyniki pierwszego meczu", text, maxsplit=1)[0].strip()
+            if not primary_text:
                 continue
+            names = team_names_in_node(node)
+            # Parent containers may contain both the current fixture and the
+            # historical head-to-head. Resolve the two teams only from the part
+            # before that heading instead of discarding the whole card.
+            if len(names) != 2:
+                positions = []
+                for alias, canonical in ALIASES:
+                    pos = primary_text.casefold().find(alias.casefold())
+                    if pos >= 0:
+                        positions.append((pos, canonical, len(alias)))
+                positions.sort()
+                unique = []
+                for pos, canonical, length in positions:
+                    if not any(existing[1] == canonical for existing in unique):
+                        unique.append((pos, canonical, length))
+                if len(unique) >= 2:
+                    names = [unique[0][1], unique[1][1]]
+                else:
+                    continue
             # Team names occur in match order; the match score is between them.
+            text = primary_text
             p1 = text.casefold().find(names[0].casefold())
             p2 = text.casefold().find(names[1].casefold(), p1 + len(names[0])) if p1 >= 0 else -1
             if p1 < 0 or p2 < 0:
@@ -210,10 +233,9 @@ def parse_matches(soup):
                 "set_scores": set_scores,
             }
             break
-    # A single official match card contains both the current result and a
-    # reversed "Wyniki pierwszego meczu" / head-to-head snippet. The old parser
-    # treated those snippets as separate fixtures. Collapse them by date + kickoff
-    # + unordered team pair, retaining the candidate with the richest real result.
+    # A fixture is identified by its actual date, kickoff and unordered team pair.
+    # Historical head-to-head snippets are excluded above, before fixture parsing,
+    # so they cannot introduce last-season matches or overwrite current home/away order.
     grouped = {}
     for match in found.values():
         pair = tuple(sorted((match["home"], match["away"])))
