@@ -361,17 +361,16 @@ def parse_matches(soup, aliases):
                         date, time = candidate_date, candidate_time
                         break
 
-            # The official fixture card can say "Trwa" while its point row is still
-            # placeholders/zeros. Treat that label as live only during a bounded
-            # window after kickoff; future fixtures also sometimes carry this label.
-            # Real set scores take precedence, and a 3-set win above remains finished.
-            if status == "scheduled" and date and time and re.search(r"(?i)\btrwa!?\b", text):
+            # On match day, once the scheduled kickoff time has passed, treat the
+            # fixture as live until one side has won three sets. The official list
+            # may still expose placeholder points during a live match.
+            if status != "finished" and date and time:
                 try:
                     kickoff = datetime.datetime.strptime(
                         f"{date} {time}", "%d.%m.%Y %H:%M"
                     ).replace(tzinfo=TZ)
                     now = datetime.datetime.now(TZ)
-                    if kickoff <= now <= kickoff + datetime.timedelta(hours=3):
+                    if kickoff.date() == now.date() and now >= kickoff:
                         status = "live"
                 except ValueError:
                     pass
