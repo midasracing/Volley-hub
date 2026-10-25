@@ -5,7 +5,7 @@ on:
       - ".github/workflows/refresh-tauron.yml"
       - "scripts/refresh_tauron.py"
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
