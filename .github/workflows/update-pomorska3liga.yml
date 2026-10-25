@@ -39,7 +39,7 @@ jobs:
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
       - name: Install Puppeteer Extra and Stealth plugin
-        run: npm install --no-save puppeteer puppeteer-extra puppeter-extra-plugin-stealth
+        run: npm install --no-save puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
       - name: Diagnose VolleyStation access
         run: |
           python - <<'PY'
