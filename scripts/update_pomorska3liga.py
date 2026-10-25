@@ -233,8 +233,8 @@ def parse_match_detail(soup):
         # Regular sets are won at 25+; a deciding set is won at 15+.
         # Require a two-point margin and reject impossible artifacts such as 18:0.
         return (winner >= 25 and winner - loser >= 2) or (
-            15 <= winner <= 20 and loser <= 18 and winner - loser >= 2
-        )
+            winner == 15 and loser <= 13
+        ) or (15 < winner <= 20 and winner - loser == 2)
 
     for node_text in candidates:
         for match in score_pattern.finditer(node_text):
@@ -420,8 +420,8 @@ def main():
             return False
         winner, loser = max(a, b), min(a, b)
         return (winner >= 25 and winner - loser >= 2) or (
-            15 <= winner <= 20 and loser <= 18 and winner - loser >= 2
-        )
+            winner == 15 and loser <= 13
+        ) or (15 < winner <= 20 and winner - loser == 2)
 
     for match in matches:
         match["set_scores"] = [
