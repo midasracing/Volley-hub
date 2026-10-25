@@ -57,7 +57,7 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-25T17:25:37.929454+00:00",
+  "updated_at": "2026-10-25T17:27:56.354265+00:00",
   "matches": [
     {
       "date": "18.10.2026",
@@ -221,12 +221,14 @@
     {
       "date": "25.10.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "ChKS Chełm",
       "away": "Asseco Resovia Rzeszów",
       "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "away_sets": 1,
+      "set_scores": [
+        "19:25"
+      ],
       "current_points": null
     },
     {
