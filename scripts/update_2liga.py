@@ -96,7 +96,7 @@ def parse_volleytime_group(group_number):
                 continue
             # Common layout: rank, team, played, wins, losses, sets, small points, points.
             rank_match = re.search(r"\d+", cells[0])
-            if re.search(r"team|drużyn|pkt", " ".join(cells[:2]), re.I):
+            if any(c.strip().lower() in {"team", "drużyna", "drużyny", "pkt", "punkty", "#", "miejsce"} for c in cells[:2]):
                 continue
             if rank_match and len(cells) >= 8:
                 rank = int(rank_match.group())
