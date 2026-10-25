@@ -1,8 +1,9 @@
-name: Refresh official TAURON Liga data
+name: Refresh official PlusLiga data
 on:
   push:
     paths:
       - ".github/workflows/refresh-tauron.yml"
+      - "scripts/refresh_tauron.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
