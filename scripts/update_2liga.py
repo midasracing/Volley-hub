@@ -14,45 +14,80 @@ PZPS_RESULTS_URL = "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
 OUT = Path("data/2liga.json")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; VolleyHub/1.0)"}
 PZPS_CLUBS_URL = "https://sedziowie.pzps.pl/system/index.php?mode=8"
+VOLLEYSTATION_TEAM_PAGES = [
+    "https://2ligamezczyzn.volleystation.com/pl/phase-3541-2-liga-mezczyzn-grupa-1/teams/",
+    "https://2ligamezczyzn.volleystation.com/pl/phase-3542-2-liga-mezczyzn-grupa-2/teams/",
+    "https://2ligamezczyzn.volleystation.com/pl/phase-3543-2-liga-mezczyzn-grupa-3/teams/",
+    "https://2ligamezczyzn.volleystation.com/pl/phase-3544-2-liga-mezczyzn-grupa-4/teams/",
+]
 
 
 def parse_pzps_logos(team_names):
-    """Discover club logo image URLs from the official PZPS clubs directory."""
-    try:
-        response = requests.get(PZPS_CLUBS_URL, timeout=30, headers=HEADERS)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
-    except requests.RequestException as exc:
-        print(f"Could not fetch PZPS club logos: {exc}")
-        return {}
-
+    """Find team badge images on VolleyStation and, secondarily, the PZPS club directory."""
     wanted = {norm(name): name for name in team_names}
     logos = {}
-    for anchor in soup.find_all("a", href=True):
-        label = clean(anchor.get_text(" ", strip=True))
-        key = norm(label)
-        if key not in wanted:
+
+    # VolleyStation's official II Liga team pages include uploaded club badges.
+    for page_url in VOLLEYSTATION_TEAM_PAGES:
+        try:
+            response = requests.get(page_url, timeout=30, headers=HEADERS)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "html.parser")
+        except requests.RequestException as exc:
+            print(f"Could not fetch VolleyStation team logos from {page_url}: {exc}")
             continue
-        candidates = list(anchor.find_all("img"))
-        parent = anchor.parent
-        if parent:
-            candidates.extend(parent.find_all("img"))
-            if parent.parent:
-                candidates.extend(parent.parent.find_all("img"))
-        for img in candidates:
+        for img in soup.find_all("img"):
             src = img.get("src") or img.get("data-src") or img.get("data-original")
             if not src:
                 continue
-            src = requests.compat.urljoin(PZPS_CLUBS_URL, src.strip())
-            filename = norm(src.rsplit("/", 1)[-1])
-            alt = norm(img.get("alt", ""))
-            if alt == key or any(token in filename for token in ("logo", "club", "klub")):
-                logos[wanted[key]] = src
-                break
-    print(f"Found {len(logos)}/{len(team_names)} team logo images in the official PZPS directory")
+            src = requests.compat.urljoin(page_url, src.strip())
+            # Team tiles generally put the badge and name in the same card.
+            node = img
+            for _ in range(5):
+                if not node or not getattr(node, "parent", None):
+                    break
+                node = node.parent
+                label_text = norm(clean(node.get_text(" ", strip=True)))
+                candidates = [(key, name) for key, name in wanted.items()
+                              if len(key) >= 7 and key in label_text]
+                if candidates:
+                    key, name = max(candidates, key=lambda item: len(item[0]))
+                    if name not in logos and not any(token in norm(src.rsplit("/", 1)[-1])
+                                                     for token in ("flag", "avatar", "default")):
+                        logos[name] = src
+                    break
+
+    # Try PZPS directory markup for teams not found on VolleyStation.
+    missing = {key: name for key, name in wanted.items() if name not in logos}
+    if missing:
+        try:
+            response = requests.get(PZPS_CLUBS_URL, timeout=30, headers=HEADERS)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "html.parser")
+            for anchor in soup.find_all("a", href=True):
+                key = norm(clean(anchor.get_text(" ", strip=True)))
+                if key not in missing:
+                    continue
+                candidates = list(anchor.find_all("img"))
+                if anchor.parent:
+                    candidates.extend(anchor.parent.find_all("img"))
+                    if anchor.parent.parent:
+                        candidates.extend(anchor.parent.parent.find_all("img"))
+                for img in candidates:
+                    src = img.get("src") or img.get("data-src") or img.get("data-original")
+                    if not src:
+                        continue
+                    src = requests.compat.urljoin(PZPS_CLUBS_URL, src.strip())
+                    filename = norm(src.rsplit("/", 1)[-1])
+                    alt = norm(img.get("alt", ""))
+                    if alt == key or any(token in filename for token in ("logo", "club", "klub")):
+                        logos[missing[key]] = src
+                        break
+        except requests.RequestException as exc:
+            print(f"Could not fetch PZPS club logos: {exc}")
+
+    print(f"Found {len(logos)}/{len(team_names)} team logo images online")
     return logos
-
-
 
 def clean(value):
     return " ".join(value.replace("\xa0", " ").split())
