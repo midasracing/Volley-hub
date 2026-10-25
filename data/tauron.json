@@ -1,4 +1,5 @@
 {
+  "league": "men",
   "teams": [
     {
       "name": "Aluron CMC Warta Zawiercie",
@@ -57,9 +58,10 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-25T17:27:56.354265+00:00",
+  "updated_at": "2026-10-25T18:04:46.950922+00:00",
   "matches": [
     {
+      "id": "1104809",
       "date": "18.10.2026",
       "time": "15:00",
       "status": "finished",
@@ -75,6 +77,7 @@
       "current_points": null
     },
     {
+      "id": "1104814",
       "date": "18.10.2026",
       "time": "18:00",
       "status": "finished",
@@ -92,6 +95,7 @@
       "current_points": null
     },
     {
+      "id": "1104813",
       "date": "19.10.2026",
       "time": "17:30",
       "status": "finished",
@@ -109,6 +113,7 @@
       "current_points": null
     },
     {
+      "id": "1104818",
       "date": "20.10.2026",
       "time": "17:30",
       "status": "finished",
@@ -124,6 +129,7 @@
       "current_points": null
     },
     {
+      "id": "1104820",
       "date": "21.10.2026",
       "time": "17:30",
       "status": "finished",
@@ -139,6 +145,7 @@
       "current_points": null
     },
     {
+      "id": "1104821",
       "date": "21.10.2026",
       "time": "20:30",
       "status": "finished",
@@ -155,6 +162,7 @@
       "current_points": null
     },
     {
+      "id": "1104815",
       "date": "23.10.2026",
       "time": "17:30",
       "status": "finished",
@@ -172,6 +180,7 @@
       "current_points": null
     },
     {
+      "id": "1104816",
       "date": "23.10.2026",
       "time": "20:30",
       "status": "finished",
@@ -187,6 +196,7 @@
       "current_points": null
     },
     {
+      "id": "1104819",
       "date": "24.10.2026",
       "time": "18:00",
       "status": "finished",
@@ -204,6 +214,7 @@
       "current_points": null
     },
     {
+      "id": null,
       "date": "25.10.2026",
       "time": "15:00",
       "status": "finished",
@@ -219,6 +230,7 @@
       "current_points": null
     },
     {
+      "id": "1104817",
       "date": "25.10.2026",
       "time": "18:00",
       "status": "live",
@@ -229,9 +241,10 @@
       "set_scores": [
         "19:25"
       ],
-      "current_points": null
+      "current_points": "4:7"
     },
     {
+      "id": "1104836",
       "date": "27.10.2026",
       "time": "17:30",
       "status": "scheduled",
@@ -243,6 +256,7 @@
       "current_points": null
     },
     {
+      "id": "1104883",
       "date": "28.10.2026",
       "time": "20:30",
       "status": "scheduled",
@@ -254,6 +268,7 @@
       "current_points": null
     },
     {
+      "id": "1104824",
       "date": "29.10.2026",
       "time": "17:30",
       "status": "scheduled",
@@ -265,6 +280,7 @@
       "current_points": null
     },
     {
+      "id": "1104825",
       "date": "29.10.2026",
       "time": "20:30",
       "status": "scheduled",
@@ -276,6 +292,7 @@
       "current_points": null
     },
     {
+      "id": "1104827",
       "date": "30.10.2026",
       "time": "20:30",
       "status": "scheduled",
@@ -287,6 +304,7 @@
       "current_points": null
     },
     {
+      "id": "1104826",
       "date": "31.10.2026",
       "time": "15:00",
       "status": "scheduled",
@@ -298,6 +316,7 @@
       "current_points": null
     },
     {
+      "id": "1104823",
       "date": "31.10.2026",
       "time": "18:00",
       "status": "scheduled",
@@ -309,6 +328,7 @@
       "current_points": null
     },
     {
+      "id": "1104822",
       "date": "31.10.2026",
       "time": "20:30",
       "status": "scheduled",
@@ -320,6 +340,7 @@
       "current_points": null
     },
     {
+      "id": "1104828",
       "date": "01.11.2026",
       "time": "15:00",
       "status": "scheduled",
@@ -331,6 +352,7 @@
       "current_points": null
     },
     {
+      "id": "1104832",
       "date": "03.11.2026",
       "time": "17:30",
       "status": "scheduled",
@@ -342,6 +364,7 @@
       "current_points": null
     },
     {
+      "id": "1104834",
       "date": "04.11.2026",
       "time": "17:30",
       "status": "scheduled",
@@ -353,6 +376,7 @@
       "current_points": null
     },
     {
+      "id": "1104835",
       "date": "04.11.2026",
       "time": "20:30",
       "status": "scheduled",
@@ -364,6 +388,7 @@
       "current_points": null
     },
     {
+      "id": "1104831",
       "date": "05.11.2026",
       "time": "20:30",
       "status": "scheduled",
@@ -375,6 +400,7 @@
       "current_points": null
     },
     {
+      "id": "1104839",
       "date": "07.11.2026",
       "time": null,
       "status": "scheduled",
@@ -390,26 +416,14 @@
     {
       "rank": 1,
       "team": "BOGDANKA LUK Lublin",
-      "points": 3,
-      "played": 1,
-      "wins": 1,
+      "points": 6,
+      "played": 2,
+      "wins": 2,
       "losses": 0,
-      "sets_for": 3,
+      "sets_for": 6,
       "sets_against": 0,
-      "points_for": 75,
-      "points_against": 66
-    },
-    {
-      "rank": 2,
-      "team": "GKS Katowice",
-      "points": 3,
-      "played": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_for": 3,
-      "sets_against": 0,
-      "points_for": 76,
-      "points_against": 69
+      "points_for": 150,
+      "points_against": 131
     },
     {
       "rank": 2,
@@ -425,51 +439,39 @@
     },
     {
       "rank": 3,
-      "team": "PGE Projekt Warszawa",
-      "points": 3,
-      "played": 1,
-      "wins": 1,
+      "team": "GKS Katowice",
+      "points": 5,
+      "played": 2,
+      "wins": 2,
       "losses": 0,
-      "sets_for": 3,
-      "sets_against": 1,
-      "points_for": 102,
-      "points_against": 85
+      "sets_for": 6,
+      "sets_against": 2,
+      "points_for": 179,
+      "points_against": 175
     },
     {
       "rank": 4,
       "team": "PGE GiEK Skra Bełchatów",
-      "points": 3,
-      "played": 1,
-      "wins": 1,
+      "points": 5,
+      "played": 2,
+      "wins": 2,
       "losses": 0,
-      "sets_for": 3,
-      "sets_against": 1,
-      "points_for": 100,
-      "points_against": 95
+      "sets_for": 6,
+      "sets_against": 3,
+      "points_for": 203,
+      "points_against": 196
     },
     {
       "rank": 5,
-      "team": "Steam Hemarpol Norwid Częstochowa",
-      "points": 2,
-      "played": 1,
+      "team": "PGE Projekt Warszawa",
+      "points": 4,
+      "played": 2,
       "wins": 1,
-      "losses": 0,
-      "sets_for": 3,
-      "sets_against": 2,
-      "points_for": 112,
-      "points_against": 104
-    },
-    {
-      "rank": 6,
-      "team": "Cuprum Stilon Gorzów",
-      "points": 2,
-      "played": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_for": 3,
-      "sets_against": 2,
-      "points_for": 105,
-      "points_against": 99
+      "losses": 1,
+      "sets_for": 5,
+      "sets_against": 4,
+      "points_for": 203,
+      "points_against": 188
     },
     {
       "rank": 6,
@@ -497,15 +499,27 @@
     },
     {
       "rank": 8,
-      "team": "Ślepsk Malow Suwałki",
-      "points": 1,
-      "played": 1,
-      "wins": 0,
+      "team": "Steam Hemarpol Norwid Częstochowa",
+      "points": 2,
+      "played": 2,
+      "wins": 1,
       "losses": 1,
-      "sets_for": 2,
-      "sets_against": 3,
-      "points_for": 102,
-      "points_against": 105
+      "sets_for": 3,
+      "sets_against": 5,
+      "points_for": 171,
+      "points_against": 179
+    },
+    {
+      "rank": 9,
+      "team": "Cuprum Stilon Gorzów",
+      "points": 2,
+      "played": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_for": 3,
+      "sets_against": 5,
+      "points_for": 165,
+      "points_against": 174
     },
     {
       "rank": 9,
@@ -521,6 +535,18 @@
     },
     {
       "rank": 10,
+      "team": "Ślepsk Malow Suwałki",
+      "points": 2,
+      "played": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_for": 4,
+      "sets_against": 6,
+      "points_for": 208,
+      "points_against": 208
+    },
+    {
+      "rank": 10,
       "team": "Asseco Resovia Rzeszów",
       "points": 1,
       "played": 1,
@@ -532,28 +558,28 @@
       "points_against": 112
     },
     {
-      "rank": 11,
+      "rank": 13,
       "team": "Trefl Gdańsk",
       "points": 0,
-      "played": 1,
+      "played": 2,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "sets_for": 1,
-      "sets_against": 3,
-      "points_for": 95,
-      "points_against": 100
+      "sets_against": 6,
+      "points_for": 160,
+      "points_against": 175
     },
     {
       "rank": 14,
       "team": "ZAKSA Kędzierzyn-Koźle",
       "points": 0,
-      "played": 1,
+      "played": 2,
       "wins": 0,
-      "losses": 1,
-      "sets_for": 0,
-      "sets_against": 3,
-      "points_for": 66,
-      "points_against": 75
+      "losses": 2,
+      "sets_for": 1,
+      "sets_against": 6,
+      "points_for": 160,
+      "points_against": 179
     }
   ],
   "source": "https://www.tauronliga.pl",
