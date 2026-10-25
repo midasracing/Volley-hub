@@ -58,24 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-25T18:20:10.928255+00:00",
+  "updated_at": "2026-10-25T18:23:06.772214+00:00",
   "matches": [
-    {
-      "id": "1104809",
-      "date": "18.10.2026",
-      "time": "15:00",
-      "status": "finished",
-      "home": "ZAKSA Kędzierzyn-Koźle",
-      "away": "BOGDANKA LUK Lublin",
-      "home_sets": 0,
-      "away_sets": 3,
-      "set_scores": [
-        "23:25",
-        "22:25",
-        "21:25"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104814",
       "date": "18.10.2026",
@@ -233,15 +217,17 @@
       "id": "1104817",
       "date": "25.10.2026",
       "time": "18:00",
-      "status": "live",
+      "status": "finished",
       "home": "ChKS Chełm",
       "away": "Asseco Resovia Rzeszów",
       "home_sets": 0,
-      "away_sets": 1,
+      "away_sets": 3,
       "set_scores": [
-        "19:25"
+        "19:25",
+        "17:25",
+        "13:25"
       ],
-      "current_points": "4:7"
+      "current_points": null
     },
     {
       "id": "1104836",
@@ -410,6 +396,18 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104842",
+      "date": "07.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "ChKS Chełm",
+      "away": "Steam Hemarpol Norwid Częstochowa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -463,6 +461,18 @@
     },
     {
       "rank": 5,
+      "team": "Asseco Resovia Rzeszów",
+      "points": 4,
+      "played": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_for": 5,
+      "sets_against": 3,
+      "points_for": 179,
+      "points_against": 161
+    },
+    {
+      "rank": 6,
       "team": "PGE Projekt Warszawa",
       "points": 4,
       "played": 2,
@@ -474,7 +484,7 @@
       "points_against": 188
     },
     {
-      "rank": 6,
+      "rank": 7,
       "team": "Indykpol AZS Olsztyn",
       "points": 3,
       "played": 2,
@@ -486,7 +496,7 @@
       "points_against": 161
     },
     {
-      "rank": 7,
+      "rank": 8,
       "team": "Aluron CMC Warta Zawiercie",
       "points": 3,
       "played": 2,
@@ -498,7 +508,7 @@
       "points_against": 170
     },
     {
-      "rank": 8,
+      "rank": 9,
       "team": "Steam Hemarpol Norwid Częstochowa",
       "points": 2,
       "played": 2,
@@ -510,7 +520,7 @@
       "points_against": 179
     },
     {
-      "rank": 9,
+      "rank": 10,
       "team": "Cuprum Stilon Gorzów",
       "points": 2,
       "played": 2,
@@ -522,19 +532,7 @@
       "points_against": 174
     },
     {
-      "rank": 9,
-      "team": "ChKS Chełm",
-      "points": 1,
-      "played": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_for": 2,
-      "sets_against": 3,
-      "points_for": 99,
-      "points_against": 105
-    },
-    {
-      "rank": 10,
+      "rank": 11,
       "team": "Ślepsk Malow Suwałki",
       "points": 2,
       "played": 2,
@@ -546,16 +544,16 @@
       "points_against": 208
     },
     {
-      "rank": 10,
-      "team": "Asseco Resovia Rzeszów",
+      "rank": 12,
+      "team": "ChKS Chełm",
       "points": 1,
-      "played": 1,
+      "played": 2,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "sets_for": 2,
-      "sets_against": 3,
-      "points_for": 104,
-      "points_against": 112
+      "sets_against": 6,
+      "points_for": 148,
+      "points_against": 180
     },
     {
       "rank": 13,
