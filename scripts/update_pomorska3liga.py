@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch Pomorska III Liga Męska only from its official VolleyStation phase."""
+"""Fetch Pomorska III Liga Męska from the official VolleyStation schedule and results pages."""
 import json
 import re
 import sys
@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 BASE = "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska"
 SCHEDULE_URL = BASE + "/schedule/"
+RESULTS_URL = BASE + "/results/"
 STANDINGS_URL = BASE + "/standings/"
 OUT = Path("data/pomorska3liga.json")
 MONTHS = {
@@ -18,15 +19,15 @@ MONTHS = {
     "maja": 5, "czerwca": 6, "lipca": 7, "sierpnia": 8,
     "września": 9, "października": 10, "listopada": 11, "grudnia": 12,
 }
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Referer": "https://pomorskie.volleystation.com/",
+}
 
 def fetch(url):
-    response = requests.get(url, timeout=30, headers={
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-        "Accept-Language": "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Referer": "https://pomorskie.volleystation.com/",
-        "Cache-Control": "no-cache",
-    })
+    response = requests.get(url, timeout=30, headers=HEADERS)
     response.raise_for_status()
     return BeautifulSoup(response.text, "html.parser")
 
@@ -41,24 +42,24 @@ def parse_date(text):
     return f"{int(day):02d}.{month:02d}.{year}"
 
 def heading_date(anchor):
+    # VolleyStation groups match links below date headings (e.g. "25 października 2026, Niedziela").
     for previous in anchor.find_all_previous(re.compile(r"^h[1-6]$")):
         result = parse_date(previous.get_text(" ", strip=True))
         if result:
             return result
-    # Some VolleyStation page versions put the date into a parent section.
+    # Fallback for a layout version that wraps each day in a section.
     parent = anchor.parent
     for _ in range(4):
         if not parent:
             break
-        result = parse_date(parent.get_text(" ", strip=True)[:100])
+        result = parse_date(parent.get_text(" ", strip=True)[:160])
         if result:
             return result
         parent = parent.parent
     return None
 
-def parse_matches(soup):
+def parse_matches(soup, source_url):
     matches = []
-    seen = set()
     for anchor in soup.find_all("a", href=True):
         text = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True))
         prefix = re.match(r"^(?:TV\s+)?Runda:\s*(\d+)\s+Nr\s+(\d+)\s+(.+)$", text, re.I)
@@ -69,9 +70,8 @@ def parse_matches(soup):
         if not date:
             continue
 
-        # A played match has a set score such as 3:0; an unplayed match has
-        # a kickoff time such as 18:00. Requiring two digits in the hour
-        # distinguishes the time from a volleyball set score.
+        # Official VolleyStation labels completed matches with set score (3:0)
+        # and scheduled matches with kickoff time (18:00).
         score_match = re.search(r"\s([0-3]):([0-3])\s+", rest)
         if score_match:
             home = rest[:score_match.start()].strip(" ·-")
@@ -84,19 +84,15 @@ def parse_matches(soup):
                 continue
             home = rest[:time_match.start()].strip(" ·-")
             away = rest[time_match.end():].strip(" ·-")
-            home_sets, away_sets = 0, 0
+            home_sets, away_sets = None, None
             status, time = "scheduled", time_match.group(1)
 
         if not home or not away:
             continue
-        href_id = re.search(r"(?:match|game|event)[-/=](\d+)", anchor["href"], re.I)
-        match_id = href_id.group(1) if href_id else f"{date}-{match_no}-{home}-{away}"
-        key = (date, home, away)
-        if key in seen:
-            continue
-        seen.add(key)
+        # Keep source page and round/match number as a stable identity even if
+        # VolleyStation's link path changes between page versions.
         matches.append({
-            "id": match_id,
+            "id": f"{date}-{round_no}-{match_no}",
             "competition": "Pomorska III Liga Męska",
             "date": date,
             "time": time,
@@ -109,20 +105,19 @@ def parse_matches(soup):
             "current_points": None,
             "round": int(round_no),
             "match_number": int(match_no),
-            "source_url": SCHEDULE_URL,
+            "source_url": source_url,
         })
-    matches.sort(key=lambda m: (datetime.strptime(m["date"], "%d.%m.%Y"), m["time"] or "99:99", m["match_number"]))
     return matches
 
 def parse_table(soup):
-    table = []
+    rows = []
     for row in soup.select("table tr"):
         cells = [re.sub(r"\s+", " ", cell.get_text(" ", strip=True)) for cell in row.find_all(["td", "th"], recursive=False)]
         if len(cells) < 9 or not cells[0].isdigit():
             continue
         try:
             played, points, wins = int(cells[2]), int(cells[3]), int(cells[4])
-            table.append({
+            rows.append({
                 "rank": int(cells[0]), "team": cells[1], "played": played,
                 "points": points, "wins": wins, "losses": max(0, played - wins),
                 "sets_for": int(cells[5]), "sets_against": int(cells[6]),
@@ -130,24 +125,39 @@ def parse_table(soup):
             })
         except (ValueError, IndexError):
             continue
-    return table
+    return rows
 
 def main():
-    schedule = fetch(SCHEDULE_URL)
-    matches = parse_matches(schedule)
+    # IMPORTANT: VolleyStation separates upcoming fixtures (/schedule/) from
+    # played results (/results/). Both pages must be read to build a full calendar.
+    schedule = parse_matches(fetch(SCHEDULE_URL), SCHEDULE_URL)
+    results = parse_matches(fetch(RESULTS_URL), RESULTS_URL)
+    by_id = {match["id"]: match for match in results}
+    by_id.update({match["id"]: match for match in schedule})
+    matches = list(by_id.values())
     if not matches:
-        raise RuntimeError("VolleyStation returned no recognizable fixtures; refusing to overwrite the last good data.")
+        raise RuntimeError("No recognizable matches found on official VolleyStation schedule or results pages; refusing to overwrite existing data.")
+
     try:
         standings = parse_table(fetch(STANDINGS_URL))
+        if not standings:
+            print("Warning: standings page loaded but its layout did not match the expected table; schedule/results will still be saved.", file=sys.stderr)
     except Exception as exc:
-        print(f"Warning: standings unavailable, keeping schedule only: {exc}", file=sys.stderr)
+        print(f"Warning: standings unavailable, keeping schedule/results only: {exc}", file=sys.stderr)
         standings = []
 
-    teams = sorted({name for m in matches for name in (m["home"], m["away"])}, key=str.casefold)
+    matches.sort(key=lambda m: (
+        datetime.strptime(m["date"], "%d.%m.%Y"),
+        m["time"] or "99:99",
+        m["round"],
+        m["match_number"],
+    ))
+    teams = sorted({name for match in matches for name in (match["home"], match["away"])}, key=str.casefold)
     data = {
         "league": "pomorska3liga",
         "competition": "Pomorska III Liga Męska",
         "source": SCHEDULE_URL,
+        "results_source": RESULTS_URL,
         "standings_source": STANDINGS_URL,
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "teams": [{"name": name, "logo": ""} for name in teams],
@@ -156,7 +166,7 @@ def main():
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Saved {len(matches)} matches and {len(teams)} teams; standings rows: {len(standings)}")
+    print(f"Saved {len(matches)} matches ({len(results)} from results, {len(schedule)} from schedule), {len(teams)} teams; standings rows: {len(standings)}")
 
 if __name__ == "__main__":
     main()
