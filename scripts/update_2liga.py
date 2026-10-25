@@ -188,7 +188,7 @@ def main():
         table = tables_by_group.get(group_name, [])
         groups.append({
             "name": group_name,
-            "teams": [{"name": n, "logo": ""} for n in group_teams],
+            "teams": [{"name": n, "logo": logos_by_team.get(n, "")} for n in group_teams],
             "matches": group_matches,
             "table": table,
             "results_source": PZPS_RESULTS_URL,
