@@ -252,10 +252,10 @@ def detect_competition(text, default_competition):
     """Identify cup/supercup fixtures from the official match-card label."""
     label = norm(text)
     patterns = [
-        (r"(?i)AL[-‑– ]?KO\\s+Superpuchar\\s+Polski(?:\\s+Mężczyzn)?(?:\\s+\\d{4})?", "AL-KO Superpuchar Polski"),
-        (r"(?i)TAURON\\s+Puchar\\s+Polski", "TAURON Puchar Polski"),
-        (r"(?i)Puchar\\s+Polski", "Puchar Polski"),
-        (r"(?i)Superpuchar\\s+Polski", "Superpuchar Polski"),
+        (r"(?i)AL[-‑– ]?KO\s+Superpuchar\s+Polski(?:\s+Mężczyzn)?(?:\s+\\d{4})?", "AL-KO Superpuchar Polski"),
+        (r"(?i)TAURON\s+Puchar\s+Polski", "TAURON Puchar Polski"),
+        (r"(?i)Puchar\s+Polski", "Puchar Polski"),
+        (r"(?i)Superpuchar\s+Polski", "Superpuchar Polski"),
     ]
     for pattern, name in patterns:
         if re.search(pattern, label):
