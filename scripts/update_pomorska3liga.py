@@ -35,6 +35,16 @@ def fetch(url):
           args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
+        // Controlled test: browser-like UA + varied viewport. Keep headless mode for CI.
+        await page.setUserAgent(
+          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' +
+          (await browser.version()).match(/Chrome\\/(\\d+\\.\\d+\\.\\d+\\.\\d+/)?.[1] +
+          ' Safari/537.36'
+        );
+        await page.setViewport({
+          width: Math.floor(1024 + Math.random() * 100),
+          height: Math.floor(768 + Math.random() * 100)
+        });
         await page.setExtraHTTPHeaders({
           'Accept-Language': 'pl-PL,pl;q=0.9,en;q=0.8'
         });
