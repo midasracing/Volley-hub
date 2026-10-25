@@ -344,60 +344,10 @@ def parse_team_logos(soup, page_url):
                 logos[name] = src
                 break
 
-    # VolleyStation often links each team name to its own profile; logos can be
-    # exposed there even when the standings table itself contains no image node.
-    for anchor in soup.select('a[href*="/teams/"]'):
-        href = urljoin(page_url, anchor.get("href", ""))
-        name = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
-        # Some layouts wrap the badge in a link and keep the team name elsewhere
-        # in the same standings row; use that row's team cell as a fallback.
-        if not name:
-            row = anchor.find_parent("tr")
-            cells = row.find_all(["td", "th"], recursive=False) if row else []
-            if len(cells) >= 2:
-                name = re.sub(r"\s+", " ", cells[1].get_text(" ", strip=True)).strip()
-        if not name or not href or name in logos:
-            continue
-        try:
-            team_soup = fetch(href)
-        except Exception as exc:
-            print(f"Warning: couldn't inspect team profile for logo {name!r}: {exc}", file=sys.stderr)
-            continue
-
-        # The official badge can be embedded in JSON/script markup instead of an <img>.
-        # Search the raw profile HTML first for VolleyStation's canonical badge URL.
-        html_text = str(team_soup).replace(r"\/", "/").replace(r"\u002F", "/")
-        badge_match = re.search(
-            r"(?:https?:)?//assets\.volleystation\.com/website/teams/\d+/badge\.png(?:[?#][^\s\"'<>]*)?",
-            html_text,
-            re.I,
-        )
-        if badge_match:
-            logos[name] = urljoin(href, badge_match.group(0))
-            print(f"Team logo mapped: {name} -> {logos[name]}", flush=True)
-            continue
-
-        image_candidates = []
-        for selector in (
-            'meta[property="og:image"]', 'meta[name="twitter:image"]',
-            'img[alt*="logo" i]', 'img[class*="logo" i]',
-            'img[src]', 'img[data-src]', 'img[data-lazy-src]',
-            'img[data-original]', 'img[data-image]', 'img[srcset]',
-            '[style*="background-image"]',
-        ):
-            image_candidates.extend(team_soup.select(selector))
-        for node in image_candidates:
-            if node.name == "meta":
-                src = urljoin(href, (node.get("content") or "").strip())
-            else:
-                src = extract_url(node)
-            if not src or not re.search(r"\.(?:svg|png|jpe?g|webp)(?:[?#].*)?$", src, re.I):
-                continue
-            if any(token in src.lower() for token in ("flag", "avatar", "default", "placeholder")):
-                continue
-            logos[name] = src
-            print(f"Team logo mapped: {name} -> {src}", flush=True)
-            break
+    # Do not crawl every team profile on each refresh. With Puppeteer each
+    # navigation is expensive and profile pages can multiply runtime dramatically.
+    # Logos already present in the standings are collected above; main() falls back
+    # to the last known logo for teams whose badge is not embedded in this table.
 
     return logos
 
@@ -467,6 +417,7 @@ def main():
     }
 
     for group_name, phase_base in group_sources:
+        print(f"Starting {group_name}: {phase_base}", flush=True)
         schedule_url = page_url(phase_base, "schedule")
         results_url = page_url(phase_base, "results")
         standings_url = page_url(phase_base, "standings")
@@ -506,7 +457,17 @@ def main():
             if match.get("status") == "finished" and match.get("match_url")
             and not match.get("set_scores")
         ]
-        for match in detail_candidates:
+        # Match-detail pages are optional enrichment. Do not open every finished
+        # match in a fresh Chromium process; cap extra requests per group so the
+        # scheduled workflow finishes predictably. Core fixtures/results remain
+        # sourced from the official group schedule/results pages above.
+        detail_limit = 3
+        print(
+            f"{group_name}: optional match-detail lookups "
+            f"{min(len(detail_candidates), detail_limit)}/{len(detail_candidates)}",
+            flush=True,
+        )
+        for match in detail_candidates[:detail_limit]:
             try:
                 detail_data = parse_match_detail(fetch(match["match_url"]))
                 if not match.get("time") and detail_data["time"]:
