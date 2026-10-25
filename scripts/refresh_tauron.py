@@ -10,7 +10,7 @@ HEADERS = {"User-Agent": "VolleyHub/1.0 (+https://github.com/midasracing/Volley-
 TEAM_NAMES = [
 "PGE GiEK SKRA Bełchatów","Energa Trefl Gdańsk","ZAKSA Kędzierzyn-Koźle","BOGDANKA LUK Lublin",
 "Ślepsk Malow Suwałki","Jastrzębie Barkom","Podziemia Kredowe ChKS Chełm","Stilon Gorzów",
-"Energa Indykpol AZS Olsztyn","Steam Hemarpol Politechnika Częstochowa","Aluron CMC Warta Zawiercie",
+"Energa Indykpol AZS Olsztyn","NEONET Norwid Częstochowa","Aluron CMC Warta Zawiercie",
 "GKS Katowice","PGE Projekt Warszawa","Asseco Resovia Rzeszów","NEONET Norwid Częstochowa"
 ]
 def get(url):
@@ -60,18 +60,20 @@ def parse_matches(soup):
             if pos1<0 or pos2<0: continue
             middle=text[min(pos1+len(names[0]),pos2):max(pos1+len(names[0]),pos2)]
             score=re.search(r"(?<!\d)([0-3])\s+([0-3])(?!\d)",middle)
-            if not score: continue
+            scheduled=not score and any(mark in middle for mark in ("···","…","–","—"))
+            if not score and not scheduled: continue
             home,away=(names[0],names[1]) if pos1<pos2 else (names[1],names[0])
-            hs,aws=(int(score.group(1)),int(score.group(2))) if pos1<pos2 else (int(score.group(2)),int(score.group(1)))
-            # Set points appear after the score; retain compact pairs where available.
+            if score:
+                hs,aws=(int(score.group(1)),int(score.group(2))) if pos1<pos2 else (int(score.group(2)),int(score.group(1)))
+            else:
+                hs,aws=0,0
             set_scores=[]
-            # Small-point pairs are located after the set score between team labels.
-            after_score=middle[score.end():]
+            after_score=middle[score.end():] if score else middle
             pairs=re.findall(r"(?<!\d)(\d{1,2})\s+(\d{1,2})(?!\d)",after_score)
             for x,y in pairs[:5]:
                 if int(x)>=15 and int(y)>=15: set_scores.append(f"{x}:{y}")
             date_match=re.search(r"(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela),?\s+\d{1,2}\s+[a-ząćęłńóśźż]+(?:,?\s+\d{1,2}:\d{2})?",text,re.I)
-            status="finished" if (hs+aws)>0 else "scheduled"
+            status="scheduled" if scheduled else ("finished" if hs+aws>=3 else ("live" if hs+aws>0 else "scheduled"))
             key=(home,away,hs,aws)
             found.setdefault(key,{"date":date_match.group(0) if date_match else "Sezon 2026/27","status":status,"home":home,"away":away,"home_sets":hs,"away_sets":aws,"set_scores":set_scores})
             break
