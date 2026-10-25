@@ -87,17 +87,48 @@ def extract_team_logos(*soups):
     return [{"name": name, "logo": logo} for name, logo in sorted(logos.items())]
 
 def parse_date(text):
-    # Official fixtures use numeric dates like '16.10.2026, 17:30'.
-    match = re.search(r"\b(\d{1,2}\.\d{1,2}\.\d{4})\s*,?\s*(\d{1,2}:\d{2})?", text)
+    """Parse only known Polish calendar formats; never mistake set scores for dates."""
+    months = {
+        "sty": 1, "stycznia": 1, "lut": 2, "lutego": 2,
+        "mar": 3, "marca": 3, "kwi": 4, "kwietnia": 4,
+        "maj": 5, "maja": 5, "cze": 6, "czerwca": 6,
+        "lip": 7, "lipca": 7, "sie": 8, "sierpnia": 8,
+        "wrz": 9, "września": 9, "paź": 10, "października": 10,
+        "lis": 11, "listopada": 11, "gru": 12, "grudnia": 12,
+    }
+    # Numeric full date, e.g. 16.10.2026, 17:30.
+    match = re.search(r"(?<!\\d)(\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})(?:\\s*,?\\s*(\\d{1,2}:\\d{2}))?(?!\\d)", text)
     if match:
-        return match.group(1), match.group(2)
-    # Fallback for pages showing a Polish weekday/month without the year.
+        day, month, year, clock = match.groups()
+        try:
+            parsed = datetime.date(int(year), int(month), int(day))
+            return parsed.strftime("%d.%m.%Y"), clock
+        except ValueError:
+            return None, None
+
+    # Official TAURON fixture cards usually show e.g. "sobota, 17 paź, 18:00".
     match = re.search(
-        r"(?:(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela),?\s+)?"
-        r"(\d{1,2}\s+[a-ząćęłńóśźż]+)(?:,?\s+(\d{1,2}:\d{2}))?",
-        text, re.I
+        r"(?i)(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela)?"
+        r"\\s*,?\\s*(\\d{1,2})\\s+([a-ząćęłńóśźż]+)"
+        r"(?:\\.?\\s*,?\\s*(\\d{1,2}:\\d{2}))?",
+        text
     )
-    return (match.group(1), match.group(2)) if match else (None, None)
+    if not match:
+        return None, None
+    day, month_name, clock = match.groups()
+    month_name = month_name.casefold().rstrip(".")
+    month = months.get(month_name)
+    if not month:
+        return None, None
+    # The current competition season is 2026/27: autumn fixtures are 2026,
+    # winter/spring fixtures are 2027.
+    year = 2026 if month >= 7 else 2027
+    try:
+        parsed = datetime.date(year, month, int(day))
+        return parsed.strftime("%d.%m.%Y"), clock
+    except ValueError:
+        return None, None
+
 def parse_matches(soup):
     found = {}
     for img in soup.find_all("img"):
@@ -160,7 +191,10 @@ def parse_matches(soup):
                 set_scores = []
                 status = "scheduled"
             date, time = parse_date(text)
-            key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
+            # The closest two-team container may omit the date; keep climbing to the full fixture card.
+            if not date:
+                continue
+            key = (date, time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
                 "date": date or "Termin do potwierdzenia",
                 "time": time,
