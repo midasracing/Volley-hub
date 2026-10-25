@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch II Liga fixtures from PZPS and results/standings from VolleyTime."""
+"""Fetch II Liga fixtures, results and standings from the official PZPS referee system."""
 import json
 import re
 import unicodedata
@@ -10,7 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 
 PZPS_URL = "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/"
-VOLLEYTIME_URL = "https://volleytime.pl/rozgrywki/2-liga/grupa-{group}/"
+PZPS_RESULTS_URL = "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
 OUT = Path("data/2liga.json")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; VolleyHub/1.0)"}
 
@@ -81,117 +81,120 @@ def parse_pzps():
     return matches, teams
 
 
-def parse_volleytime_group(group_number):
-    url = VOLLEYTIME_URL.format(group=group_number)
-    response = requests.get(url, timeout=30, headers=HEADERS)
+def parse_pzps_results(matches):
+    """Parse played scores and standings from the official PZPS results page."""
+    response = requests.get(PZPS_RESULTS_URL, timeout=30, headers=HEADERS)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
-    standings = []
-    heading = next((h for h in soup.find_all(["h2", "h3"]) if re.search(rf"Tabela\s+grupy\s+{group_number}\b", clean(h.get_text(" ", strip=True)), re.I)), None)
-    table = heading.find_next("table") if heading else soup.find("table")
-    if table:
+    results = []
+    # Rows on this page contain: match id, ISO date, home, separator, away, set score.
+    for row in soup.find_all("tr"):
+        cells = [clean(td.get_text(" ", strip=True)) for td in row.find_all("td")]
+        if len(cells) < 6:
+            continue
+        date_index = next((i for i, cell in enumerate(cells) if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", cell)), None)
+        if date_index is None or date_index + 4 >= len(cells):
+            continue
+        home = cells[date_index + 1].strip()
+        away_index = date_index + 3
+        if cells[date_index + 2] not in {"-", "–", "—"}:
+            sep = next((i for i in range(date_index + 1, len(cells)) if cells[i] in {"-", "–", "—"}), -1)
+            if sep < 1 or sep + 1 >= len(cells):
+                continue
+            home, away_index = cells[sep - 1], sep + 1
+        away = cells[away_index].strip()
+        score_cell = " ".join(cells[away_index + 1:])
+        set_match = re.search(r"\b([0-3])\s*:\s*([0-3])\b", score_cell)
+        if not home or not away or not set_match:
+            continue
+        year, month, day = cells[date_index].split("-")
+        results.append({
+            "date": f"{day}.{month}.{year}", "home": home, "away": away,
+            "home_sets": int(set_match.group(1)), "away_sets": int(set_match.group(2)),
+            "set_scores": re.findall(r"\b\d{1,2}\s*:\s*\d{1,2}\b", score_cell)[1:]
+        })
+
+    # Match results onto the fixture list by team pair. PZPS occasionally uses
+    # a leading zero/spacing variation in team names, so compare normalized names.
+    for result in results:
+        pair = {norm(result["home"]), norm(result["away"])}
+        candidates = [m for m in matches
+                      if {norm(m["home"]), norm(m["away"])} == pair]
+        if not candidates:
+            candidates = [m for m in matches
+                          if all(any(n.startswith(norm(team)[:12]) or norm(team).startswith(n[:12])
+                                     for n in (norm(m["home"]), norm(m["away"])))
+                                 for team in (result["home"], result["away"]))]
+        if candidates:
+            match = next((m for m in candidates if m["date"] == result["date"]), candidates[0])
+            match.update({k: result[k] for k in ("home_sets", "away_sets", "set_scores")})
+            match["status"] = "finished" if result["home_sets"] + result["away_sets"] > 0 else "scheduled"
+
+    # Parse standings tables when the page exposes them. Keep rows grouped by
+    # team membership from the fixture list; do not fabricate standings.
+    tables_by_group = {f"Grupa {i}": [] for i in range(1, 6)}
+    team_group = {}
+    for match in matches:
+        if match.get("group"):
+            team_group[norm(match["home"])] = match["group"]
+            team_group[norm(match["away"])] = match["group"]
+    for table in soup.find_all("table"):
         for row in table.find_all("tr"):
             cells = [clean(c.get_text(" ", strip=True)) for c in row.find_all(["th", "td"])]
-            if len(cells) < 7:
+            if len(cells) < 6:
                 continue
-            # Common layout: rank, team, played, wins, losses, sets, small points, points.
-            rank_match = re.search(r"\d+", cells[0])
-            if any(c.strip().lower() in {"team", "drużyna", "drużyny", "pkt", "punkty", "#", "miejsce"} for c in cells[:2]):
+            joined = " ".join(cells).lower()
+            if not any(word in joined for word in ("pkt", "punkty", "zwyci", "set", "mecz")):
                 continue
-            if rank_match and len(cells) >= 8:
-                rank = int(rank_match.group())
-                offset = 1
-            elif len(cells) >= 7 and re.search(r"\d+\s*:\s*\d+", cells[4]):
-                # Some tables omit the explicit rank cell in the first row.
-                rank = len(standings) + 1
-                offset = 0
-            else:
+            team_cell = next((c for c in cells if norm(c) in team_group), None)
+            if not team_cell:
                 continue
-            try:
-                sets = re.search(r"(\d+)\s*:\s*(\d+)", cells[4 + offset])
-                small = re.search(r"(\d+)\s*:\s*(\d+)", cells[5 + offset])
-                points_cell = cells[6 + offset]
-                standings.append({
-                    "rank": rank,
-                    "team": cells[0 + offset],
-                    "played": int(re.sub(r"\D", "", cells[1 + offset]) or 0),
-                    "wins": int(re.sub(r"\D", "", cells[2 + offset]) or 0),
-                    "losses": int(re.sub(r"\D", "", cells[3 + offset]) or 0),
-                    "sets_for": int(sets.group(1)) if sets else 0,
-                    "sets_against": int(sets.group(2)) if sets else 0,
-                    "points_for": int(small.group(1)) if small else 0,
-                    "points_against": int(small.group(2)) if small else 0,
-                    "points": int(re.sub(r"\D", "", points_cell) or 0),
-                })
-            except (ValueError, IndexError):
+            group = team_group[norm(team_cell)]
+            nums = [int(x) for c in cells if re.fullmatch(r"\d+", c) for x in [c]]
+            ratios = [tuple(map(int, x)) for c in cells for x in [re.fullmatch(r"(\d+)\s*:\s*(\d+)", c)] if x]
+            if len(nums) < 4:
                 continue
-
-    results = []
-    for h3 in soup.find_all(["h3", "h4"]):
-        title = clean(h3.get_text(" ", strip=True))
-        if " vs " not in title.lower():
-            continue
-        home, away = re.split(r"\s+vs\s+", title, maxsplit=1, flags=re.I)
-        # Walk up to a compact match card; avoid taking text from the whole page.
-        card = h3
-        card_text = title
-        for _ in range(4):
-            if card.parent is None:
-                break
-            card = card.parent
-            card_text = clean(card.get_text(" ", strip=True))
-            if re.search(r"\b\d{1,2}\.\d{2}\b", card_text) and re.search(r"\b\d\s*:\s*\d\b", card_text):
-                break
-        date_match = re.search(r"\b(\d{1,2})\.(\d{2})(?:\s+[A-Za-ząćęłńóśźż]+)?(?:\s+(\d{1,2}:\d{2}))?", card_text, re.I)
-        score_match = re.search(r"\b([0-3])\s*:\s*([0-3])\s+((?:\d{1,2}:\d{1,2})(?:\s*,\s*\d{1,2}:\d{1,2}){2,4})", card_text)
-        if not date_match or not score_match:
-            continue
-        day, month, clock = date_match.groups()
-        year = 2026 if int(month) >= 8 else 2027
-        scores = re.findall(r"\d{1,2}:\d{1,2}", score_match.group(3))
-        results.append({
-            "home": home, "away": away, "date": f"{int(day):02d}.{month}.{year}",
-            "time": clock or "", "home_sets": int(score_match.group(1)),
-            "away_sets": int(score_match.group(2)), "set_scores": scores,
-        })
-    return standings, results
-
+            tables_by_group[group].append({
+                "rank": nums[0] if nums[0] <= 20 else len(tables_by_group[group]) + 1,
+                "team": team_cell,
+                "played": nums[1] if len(nums) > 1 else 0,
+                "wins": nums[2] if len(nums) > 2 else 0,
+                "losses": nums[3] if len(nums) > 3 else 0,
+                "sets_for": ratios[0][0] if ratios else 0,
+                "sets_against": ratios[0][1] if ratios else 0,
+                "points_for": ratios[1][0] if len(ratios) > 1 else 0,
+                "points_against": ratios[1][1] if len(ratios) > 1 else 0,
+                "points": nums[-1] if nums else 0,
+            })
+    for group in tables_by_group:
+        seen = set()
+        tables_by_group[group] = [r for r in tables_by_group[group]
+                                  if not (norm(r["team"]) in seen or seen.add(norm(r["team"])))]
+        tables_by_group[group].sort(key=lambda r: r["rank"])
+    return tables_by_group
 
 def main():
     matches, teams = parse_pzps()
+    tables_by_group = parse_pzps_results(matches)
     groups = []
     for number in range(1, 6):
         group_name = f"Grupa {number}"
-        try:
-            table, results = parse_volleytime_group(number)
-            for result in results:
-                pair = {norm(result["home"]), norm(result["away"])}
-                candidates = [m for m in matches if m.get("group") == group_name and {norm(m["home"]), norm(m["away"])} == pair]
-                if not candidates:
-                    # Some providers use shortened sponsor names; match by unique normalized team prefixes.
-                    candidates = [m for m in matches if m.get("group") == group_name and
-                                  ((norm(m["home"]) in pair or any(n.startswith(norm(m["home"])[:12]) for n in pair)) and
-                                   (norm(m["away"]) in pair or any(n.startswith(norm(m["away"])[:12]) for n in pair)))]
-                if candidates:
-                    match = candidates[0]
-                    match.update({k: result[k] for k in ("home_sets", "away_sets", "set_scores")})
-                    match["status"] = "finished"
-            group_matches = [m for m in matches if m.get("group") == group_name]
-            group_teams = sorted({name for m in group_matches for name in (m["home"], m["away"])})
-            groups.append({"name": group_name, "teams": [{"name": n, "logo": ""} for n in group_teams],
-                           "matches": group_matches, "table": table, "results_source": url if False else VOLLEYTIME_URL.format(group=number)})
-            print(f"{group_name}: {len(group_matches)} fixtures, {sum(m['status']=='finished' for m in group_matches)} results, {len(table)} table rows")
-        except Exception as exc:
-            group_matches = [m for m in matches if m.get("group") == group_name]
-            group_teams = sorted({name for m in group_matches for name in (m["home"], m["away"])})
-            groups.append({"name": group_name, "teams": [{"name": n, "logo": ""} for n in group_teams],
-                           "matches": group_matches, "table": [], "results_source": VOLLEYTIME_URL.format(group=number), "error": str(exc)})
-            print(f"Warning: {group_name} results/table unavailable: {exc}")
+        group_matches = [m for m in matches if m.get("group") == group_name]
+        group_teams = sorted({name for m in group_matches for name in (m["home"], m["away"])})
+        table = tables_by_group.get(group_name, [])
+        groups.append({
+            "name": group_name,
+            "teams": [{"name": n, "logo": ""} for n in group_teams],
+            "matches": group_matches,
+            "table": table,
+            "results_source": PZPS_RESULTS_URL,
+        })
+        print(f"{group_name}: {len(group_matches)} fixtures, {sum(m['status']=='finished' for m in group_matches)} results, {len(table)} table rows")
 
     data = {
         "competition": "II Liga Mężczyzn",
         "source": PZPS_URL,
-        "results_source": "https://volleytime.pl/rozgrywki/2-liga/",
+        "results_source": PZPS_RESULTS_URL,
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "groups": groups,
     }
