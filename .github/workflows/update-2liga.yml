@@ -35,7 +35,7 @@ jobs:
         run: python -m pip install beautifulsoup4 requests
       - name: Install Puppeteer Extra and Stealth plugin
         run: npm install --no-save puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
-      - name: Fetch II Liga fixtures and results from VolleyStation
+      - name: Fetch II Liga fixtures/results from PZPS and logos from VolleyStation
         run: python scripts/update_2liga.py
       - name: Commit updated schedule
         run: |
