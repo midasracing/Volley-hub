@@ -2,22 +2,23 @@
   "competition": "II Liga Mężczyzn",
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
-  "updated_at": "2026-10-25T21:52:16.497681+00:00",
+  "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
+  "updated_at": "2026-10-25T22:10:24.981112+00:00",
   "groups": [
     {
       "name": "Grupa 1",
       "teams": [
         {
           "name": "BKS Chemik Bydgoszcz Siatkówka Młodzieżowa",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248442/badge.png"
         },
         {
           "name": "Enea Energetyk Poznań",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248444/badge.png"
         },
         {
           "name": "Energa Trefl Gdańsk II",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248450/badge.png"
         },
         {
           "name": "Fort Tarnowo Podgórne",
@@ -25,27 +26,27 @@
         },
         {
           "name": "GKS Stoczniowiec",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248443/badge.png"
         },
         {
           "name": "KRISHOME Września",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248449/badge.png"
         },
         {
           "name": "LOMS Joker Piła",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248445/badge.png"
         },
         {
           "name": "Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248446/badge.png"
         },
         {
           "name": "Polipack UKS 1 Reda",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248447/badge.jpg"
         },
         {
           "name": "SPS Cargill Słupca",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248451/badge.jpeg"
         }
       ],
       "matches": [
@@ -1354,23 +1355,23 @@
       "teams": [
         {
           "name": "AZS UWM Olsztyn",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248457/badge.png"
         },
         {
           "name": "Elektromet Huragan Błonie",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248456/badge.png"
         },
         {
           "name": "GKS Orlęta Raszyn",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248462/badge.jpg"
         },
         {
           "name": "Integracyjny Klub Sportowy Atak Elbląg",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248459/badge.jpg"
         },
         {
           "name": "KS Camper Wyszków",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248453/badge.png"
         },
         {
           "name": "KS Metro Family Warszawa",
@@ -1378,7 +1379,7 @@
         },
         {
           "name": "MOS Wola Tramwaje Warszawskie",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248461/badge.png"
         },
         {
           "name": "MTS Międzyrzec Podlaski",
@@ -1386,15 +1387,15 @@
         },
         {
           "name": "NECKO Augustów",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248455/badge.png"
         },
         {
           "name": "REA CIRRO BAS Białystok",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248460/badge.png"
         },
         {
           "name": "SwK KARTPOL Kobyłka",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248452/badge.png"
         }
       ],
       "matches": [
@@ -2994,15 +2995,15 @@
       "teams": [
         {
           "name": "Astra Nowa Sól",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248466/badge.png"
         },
         {
           "name": "BS ŻAGAŃ WKS Sobieski Żagań",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248474/badge.png"
         },
         {
           "name": "BTS Willowa Bolesławiec",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248468/badge.png"
         },
         {
           "name": "Gwardia Wrocław",
@@ -3010,35 +3011,35 @@
         },
         {
           "name": "Ikar Legnica",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248470/badge.png"
         },
         {
           "name": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248463/badge.png"
         },
         {
           "name": "KPS Chełmiec ANS AS Wałbrzych",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248469/badge.png"
         },
         {
           "name": "KS AS Słubice",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248464/badge.jpg"
         },
         {
           "name": "KS Bielawianka-Bester",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248472/badge.png"
         },
         {
           "name": "MLKS Volley Gubin",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248473/badge.jpeg"
         },
         {
           "name": "PGE Akademia Siatkówki Stilon",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248471/badge.png"
         },
         {
           "name": "STS Olimpia Sulęcin",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248465/badge.png"
         }
       ],
       "matches": [
@@ -4957,39 +4958,39 @@
         },
         {
           "name": "Aluron CMC Wybicki Kielce",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248891/badge.png"
         },
         {
           "name": "Boat.Systems Resursa Łódź",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248889/badge.png"
         },
         {
           "name": "Bugaj Volley Radomsko",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248884/badge.png"
         },
         {
           "name": "KS Norwid Politechnika Częstochowa",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248890/badge.png"
         },
         {
           "name": "MKS Bzura Ozorków",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248888/badge.png"
         },
         {
           "name": "ProNutiva SKK Belsk Duży",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248883/badge.png"
         },
         {
           "name": "SMS PZPS Spała II",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248886/badge.png"
         },
         {
           "name": "Volley Team Żychlin",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248882/badge.png"
         },
         {
           "name": "WKS Wieluń",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248887/badge.png"
         }
       ],
       "matches": [
@@ -6276,31 +6277,31 @@
       "teams": [
         {
           "name": "AKS V LO Rzeszów",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248498/badge.png"
         },
         {
           "name": "AZS AGH Kraków",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248502/badge.png"
         },
         {
           "name": "Feniks Heron Przeworsk",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248507/badge.jpg"
         },
         {
           "name": "KS Hutnik Kraków",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248497/badge.png"
         },
         {
           "name": "KS Jastrzębie-Borynia",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248506/badge.webp"
         },
         {
           "name": "Karpaty - PANS Krosno",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248504/badge.png"
         },
         {
           "name": "MKS Andrychów",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248499/badge.png"
         },
         {
           "name": "TKS Tychy",
@@ -6308,15 +6309,15 @@
         },
         {
           "name": "TS Volley Rybnik",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248501/badge.png"
         },
         {
           "name": "UMKS Kęczanin Kęty",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248500/badge.png"
         },
         {
           "name": "Volley Dąbrowa Górnicza",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248505/badge.png"
         }
       ],
       "matches": [
