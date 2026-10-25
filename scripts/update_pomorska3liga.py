@@ -3,10 +3,11 @@
 import json
 import re
 import sys
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 from datetime import datetime, timezone
 from pathlib import Path
 
-import requests
 from bs4 import BeautifulSoup
 
 BASE = "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska"
@@ -20,16 +21,30 @@ MONTHS = {
     "września": 9, "października": 10, "listopada": 11, "grudnia": 12,
 }
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    # Match the known-working HTTP client pattern used by the Tauron scraper.
+    # Some sites reject requests that impersonate a full desktop browser.
+    "User-Agent": "VolleyHub/1.0 (+https://github.com/midasracing/Volley-hub)",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Referer": "https://pomorskie.volleystation.com/",
+    "Accept-Language": "pl-PL,pl;q=0.9,en;q=0.8",
 }
 
 def fetch(url):
-    response = requests.get(url, timeout=30, headers=HEADERS)
-    response.raise_for_status()
-    return BeautifulSoup(response.text, "html.parser")
+    """Fetch a VolleyStation page using the same standard-library client as Tauron."""
+    request = Request(url, headers=HEADERS)
+    try:
+        with urlopen(request, timeout=30) as response:
+            raw = response.read()
+    except HTTPError as exc:
+        # Include a short response excerpt in Actions logs to distinguish a block page.
+        body = exc.read(1200).decode("utf-8", errors="replace")
+        excerpt = re.sub(r"\s+", " ", BeautifulSoup(body, "html.parser").get_text(" ", strip=True))[:350]
+        raise RuntimeError(
+            f"VolleyStation returned HTTP {exc.code} for {url}. "
+            f"Response excerpt: {excerpt or '[empty response body]'}"
+        ) from exc
+    except URLError as exc:
+        raise RuntimeError(f"Could not fetch {url}: {exc.reason}") from exc
+    return BeautifulSoup(raw, "html.parser")
 
 def parse_date(text):
     match = re.search(r"(\d{1,2})\s+([a-ząćęłńóśźż]+)\s+(\d{4})", text.lower())
