@@ -204,11 +204,29 @@ def main():
     # played results (/results/). Both pages must be read to build a full calendar.
     schedule = parse_matches(fetch(SCHEDULE_URL), SCHEDULE_URL)
     results = parse_matches(fetch(RESULTS_URL), RESULTS_URL)
-    by_id = {match["id"]: match for match in results}
-    by_id.update({match["id"]: match for match in schedule})
+    # Start with fixtures, then let official results replace them for the same match.
+    # This prevents a stale schedule entry from overwriting a completed result.
+    by_id = {match["id"]: match for match in schedule}
+    by_id.update({match["id"]: match for match in results})
     matches = list(by_id.values())
+    print(
+        f"Parsed official pages: schedule={len(schedule)}, results={len(results)}, "
+        f"unique matches={len(matches)}",
+        flush=True,
+    )
     if not matches:
-        raise RuntimeError("No recognizable matches found on official VolleyStation schedule or results pages; refusing to overwrite existing data.")
+        raise RuntimeError(
+            "No recognizable matches found on official VolleyStation schedule or results pages; "
+            "refusing to overwrite existing data."
+        )
+
+    # Avoid silently publishing a suspiciously incomplete feed if the source layout changes.
+    previous_matches = previous.get("matches", [])
+    if len(previous_matches) >= 8 and len(matches) < max(4, int(len(previous_matches) * 0.5)):
+        raise RuntimeError(
+            f"Only {len(matches)} matches parsed, versus {len(previous_matches)} in the last saved feed; "
+            "refusing to replace potentially valid data with an incomplete scrape."
+        )
 
     try:
         standings = parse_table(fetch(STANDINGS_URL))
@@ -224,7 +242,14 @@ def main():
         m["round"],
         m["match_number"],
     ))
-    teams = sorted({name for match in matches for name in (match["home"], match["away"])}, key=str.casefold)
+    teams = sorted(
+        {name.strip() for match in matches for name in (match["home"], match["away"]) if name and name.strip()},
+        key=str.casefold,
+    )
+    if len(teams) < 8:
+        raise RuntimeError(
+            f"Only {len(teams)} distinct teams found in parsed matches; refusing to publish incomplete data."
+        )
     data = {
         "league": "pomorska3liga",
         "competition": "Pomorska III Liga Męska",
