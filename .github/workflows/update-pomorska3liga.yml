@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: update-pomorska3liga
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   update:
