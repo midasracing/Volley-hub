@@ -32,13 +32,6 @@ Zakres rozgrywek obejmuje zespoły z województw pomorskiego i kujawsko-pomorski
 
 Na obecnym etapie repozytorium zawiera interfejs aplikacji i podstawową obsługę nawigacji, wyszukiwania oraz ulubionych zapisywanych lokalnie w przeglądarce. **Terminarze i wyniki nie są jeszcze podłączone do źródeł danych**, dlatego aplikacja nie powinna być traktowana jako aktualny serwis wynikowy.
 
-## Uruchomienie przez GitHub Pages
-
-1. Otwórz **Settings → Pages** w ustawieniach repozytorium.
-2. Wybierz **Deploy from a branch**.
-3. Ustaw branch `main` i folder `/(root)`, a następnie kliknij **Save**.
-4. Po zakończeniu wdrożenia aplikacja powinna być dostępna pod adresem: https://midasracing.github.io/Volley-hub/
-
 ## Dalszy rozwój
 
 Kolejne etapy to podłączenie zweryfikowanych źródeł danych, rozpoczęcie integracji Pomorskiej III Ligi Męskiej wyłącznie z VolleyStation oraz dodanie szczegółów spotkań i aktualizacji wyników.
