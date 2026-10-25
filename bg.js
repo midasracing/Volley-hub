@@ -4,6 +4,7 @@
   var cv = document.getElementById("hero-bg");
   if (!cv) return;
   var box = cv.parentElement;
+  var fullScreen = cv.classList.contains("hero-bg");
   var CFG = { bg: "#02060f", colors: ["#2f7bf0", "#0a60d6", "#08306b", "#02060f"], speed: 1.2, grain: 0.25 };
 
   var gl = cv.getContext("webgl", { antialias: false, powerPreference: "low-power" });
@@ -79,14 +80,18 @@
 
   function resize() {
     var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    cv.width = Math.round(box.clientWidth * dpr);
-    cv.height = Math.round(box.clientHeight * dpr);
+    var width = fullScreen ? window.innerWidth : box.clientWidth;
+    var height = fullScreen ? window.innerHeight : box.clientHeight;
+    cv.width = Math.round(width * dpr);
+    cv.height = Math.round(height * dpr);
+    if (fullScreen) { cv.style.width = width + "px"; cv.style.height = height + "px"; }
     gl.viewport(0, 0, cv.width, cv.height);
     gl.uniform2f(uRes, cv.width, cv.height);
     draw(last);
   }
 
   new ResizeObserver(resize).observe(box);
+  window.addEventListener("resize", resize, { passive: true });
   new IntersectionObserver(function (e) { visible = e[0].isIntersecting; visible ? start() : stop(); }).observe(box);
   document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
   reduce.addEventListener && reduce.addEventListener("change", function () { reduce.matches ? stop() : start(); });
