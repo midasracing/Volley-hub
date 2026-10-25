@@ -1,37 +1,50 @@
-name: Refresh men's TAURON Liga data
+name: Refresh TAURON data
+
 on:
-  push:
-    paths:
-      - ".github/workflows/refresh-tauron.yml"
-      - "scripts/refresh_tauron.py"
   schedule:
-    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
-  workflow_dispatch:
+    # Match hours (UTC covers both summer and winter time in Poland): every 5 minutes.
+    - cron: "*/5 12-22 * * *"
+    # Rest of the day: once, to pick up schedule and table changes.
+    - cron: "20 6 * * *"
+  workflow_dispatch: # manual "Run workflow" button in the Actions tab
+
+# Allows the job to push the updated JSON back to the repo.
 permissions:
   contents: write
+
+# Never run two refreshes at once (they would fight over the same commit).
 concurrency:
-  group: tauron-feed
+  group: refresh-tauron
   cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install beautifulsoup4
-      - name: Scrape official public pages
+
+      - name: Install dependencies
+        run: pip install beautifulsoup4
+
+      - name: Refresh data (TAURON Liga + TAURON 1. Liga, men)
         run: python scripts/refresh_tauron.py
-      - name: Commit updated data
+
+      - name: Commit changes
         run: |
-          if git diff --quiet -- data/tauron.json; then
-            echo "No data changes."
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/tauron.json
-          git commit -m "Refresh official TAURON Liga data"
-          git pull --rebase origin main
+          for f in data/tauron.json data/tauron1liga.json; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh TAURON data"
+          git pull --rebase
           git push
