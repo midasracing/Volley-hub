@@ -96,18 +96,27 @@ def parse_volleytime_group(group_number):
                 continue
             # Common layout: rank, team, played, wins, losses, sets, small points, points.
             rank_match = re.search(r"\d+", cells[0])
-            if not rank_match or re.search(r"team|drużyn|pkt", cells[1], re.I):
+            if re.search(r"team|drużyn|pkt", " ".join(cells[:2]), re.I):
                 continue
-            sets = re.search(r"(\d+)\s*:\s*(\d+)", cells[5])
-            small = re.search(r"(\d+)\s*:\s*(\d+)", cells[6]) if len(cells) > 7 else None
-            points_cell = cells[7] if len(cells) > 7 else cells[-1]
+            if rank_match and len(cells) >= 8:
+                rank = int(rank_match.group())
+                offset = 1
+            elif len(cells) >= 7 and re.search(r"\d+\s*:\s*\d+", cells[4]):
+                # Some tables omit the explicit rank cell in the first row.
+                rank = len(standings) + 1
+                offset = 0
+            else:
+                continue
             try:
+                sets = re.search(r"(\d+)\s*:\s*(\d+)", cells[4 + offset])
+                small = re.search(r"(\d+)\s*:\s*(\d+)", cells[5 + offset])
+                points_cell = cells[6 + offset]
                 standings.append({
-                    "rank": int(rank_match.group()),
-                    "team": cells[1],
-                    "played": int(re.sub(r"\D", "", cells[2]) or 0),
-                    "wins": int(re.sub(r"\D", "", cells[3]) or 0),
-                    "losses": int(re.sub(r"\D", "", cells[4]) or 0),
+                    "rank": rank,
+                    "team": cells[0 + offset],
+                    "played": int(re.sub(r"\D", "", cells[1 + offset]) or 0),
+                    "wins": int(re.sub(r"\D", "", cells[2 + offset]) or 0),
+                    "losses": int(re.sub(r"\D", "", cells[3 + offset]) or 0),
                     "sets_for": int(sets.group(1)) if sets else 0,
                     "sets_against": int(sets.group(2)) if sets else 0,
                     "points_for": int(small.group(1)) if small else 0,
