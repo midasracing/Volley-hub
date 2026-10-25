@@ -223,11 +223,23 @@ def parse_match_detail(soup):
             continue
         candidates.append(node_text)
 
+    def is_volleyball_set_score(a, b, token=""):
+        # Never interpret a clock token (e.g. 18:00) as a set score.
+        if re.fullmatch(r"(?:[01]?\\d|2[0-3]):[0-5]\\d", token.strip()):
+            return False
+        if a > 40 or b > 40 or a == b:
+            return False
+        winner, loser = max(a, b), min(a, b)
+        # Regular sets are won at 25+; a deciding set is won at 15+.
+        # Require a two-point margin and reject impossible artifacts such as 18:0.
+        return (winner >= 25 and winner - loser >= 2) or (
+            15 <= winner <= 20 and loser <= 18 and winner - loser >= 2
+        )
+
     for node_text in candidates:
         for match in score_pattern.finditer(node_text):
             a, b = int(match.group(1)), int(match.group(2))
-            # Volleyball sets are generally 25+ points; deciding sets are played to 15.
-            if a > 40 or b > 40 or max(a, b) < 15:
+            if not is_volleyball_set_score(a, b, match.group(0)):
                 continue
             set_scores.append(f"{a}:{b}")
 
@@ -235,7 +247,7 @@ def parse_match_detail(soup):
     if not set_scores:
         for match in score_pattern.finditer(text):
             a, b = int(match.group(1)), int(match.group(2))
-            if a > 40 or b > 40 or max(a, b) < 15:
+            if not is_volleyball_set_score(a, b, match.group(0)):
                 continue
             set_scores.append(f"{a}:{b}")
 
@@ -398,6 +410,25 @@ def main():
 
     # Finished matches expose kickoff time and point-by-point set scores on the
     # official individual match page, so inspect each completed match directly.
+    # Remove bogus scores saved by older parser versions (e.g. "18:0" from 18:00).
+    def valid_saved_set_score(value):
+        parsed = re.fullmatch(r"(\\d{1,2}):(\\d{1,2})", str(value).strip())
+        if not parsed:
+            return False
+        a, b = map(int, parsed.groups())
+        if a > 40 or b > 40 or a == b:
+            return False
+        winner, loser = max(a, b), min(a, b)
+        return (winner >= 25 and winner - loser >= 2) or (
+            15 <= winner <= 20 and loser <= 18 and winner - loser >= 2
+        )
+
+    for match in matches:
+        match["set_scores"] = [
+            score for score in (match.get("set_scores") or [])
+            if valid_saved_set_score(score)
+        ]
+
     detail_candidates = [
         match for match in matches
         if match.get("status") == "finished" and match.get("match_url")
