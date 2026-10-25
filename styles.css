@@ -1,10 +1,10 @@
 /* Volley Hub — styl inspirowany Apple HIG: systemowa czcionka, jasny i ciemny tryb,
    cele dotyku min. 44 px, tekst min. 12 px, półprzezroczysty pasek kart. */
-:root{color-scheme:light dark;--bg:#f2f2f7;--card:#fff;--fill:#e8e8ed;--line:#d1d1d6;--text:#000;--sub:#5c5c61;--tint:#0a60d6;--on-tint:#fff;--live:#d70015;--bar:rgba(249,249,251,.82);--glass:rgba(255,255,255,.7);--glass-line:rgba(255,255,255,.8)}
-@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--fill:#2c2c2e;--line:#38383a;--text:#fff;--sub:#a1a1a6;--tint:#4da3ff;--on-tint:#000;--live:#ff6961;--bar:rgba(28,28,30,.8);--glass:rgba(58,58,62,.6);--glass-line:rgba(255,255,255,.22)}}
+:root{color-scheme:light dark;--bg:#f2f2f7;--card:#fff;--fill:#e8e8ed;--line:#d1d1d6;--text:#000;--sub:#5c5c61;--tint:#0a60d6;--on-tint:#fff;--live:#d70015;--bar:rgba(249,249,251,.82);--glass:rgba(255,255,255,.7);--g1:rgba(255,255,255,.7);--g2:rgba(255,255,255,.22);--glass-line:rgba(255,255,255,.8)}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--fill:#2c2c2e;--line:#38383a;--text:#fff;--sub:#a1a1a6;--tint:#4da3ff;--on-tint:#000;--live:#ff6961;--bar:rgba(28,28,30,.8);--glass:rgba(58,58,62,.6);--g1:rgba(255,255,255,.24);--g2:rgba(255,255,255,.05);--glass-line:rgba(255,255,255,.22)}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:1.0625rem/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:radial-gradient(70% 38% at 100% 0,color-mix(in srgb,var(--tint) 16%,transparent),transparent 70%) fixed,radial-gradient(60% 34% at 0 100%,color-mix(in srgb,var(--tint) 14%,transparent),transparent 70%) fixed,var(--bg);color:var(--text);font:1.0625rem/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .app{max-width:720px;margin:auto;padding:0 max(16px,env(safe-area-inset-right)) calc(112px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -20,14 +20,14 @@ header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-
 /* Strony i typografia */
 .page{display:none;padding-top:12px}
 .page.active{display:block}
-h1{font-size:clamp(2rem,7vw,2.5rem);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 8px}
+h1{font-size:clamp(2rem,7vw,2.5rem);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin:0 0 8px;text-wrap:balance}
 h2{font-size:1.375rem;line-height:1.2;letter-spacing:-.01em;font-weight:600;margin:0}
 label{display:block;font-size:.8125rem;color:var(--sub)}
 .intro{margin:12px 0 20px}
 .intro p,.hero p{margin:0;color:var(--sub);font-size:1.0625rem;line-height:1.4;max-width:34ch}
 
 /* Hero z linią boiska */
-.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:28px 24px 0;margin:12px 0 28px;border-radius:22px;background:var(--card)}
+.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:28px 24px 0;margin:12px 0 28px;border-radius:26px;background:var(--card)}
 .eyebrow{font-size:.9375rem;color:var(--tint);font-weight:600;margin-bottom:8px}
 .hero h1{margin-bottom:10px}
 .primary{align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;margin-top:22px;padding:0 24px;border:0;border-radius:999px;background:var(--tint);color:var(--on-tint);font-weight:600}
@@ -43,8 +43,8 @@ label{display:block;font-size:.8125rem;color:var(--sub)}
 .notice p,.empty p{margin:4px 0 0;color:var(--sub);font-size:.9375rem;line-height:1.4}
 .info{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--fill);color:var(--tint);font-weight:700;font-size:.9375rem}
 .tiles{overflow:hidden;border-radius:14px;background:var(--card)}
-.tiles button{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:10px 16px;border:0;border-bottom:.5px solid var(--line);background:none;text-align:left}
-.tiles button:last-child{border-bottom:0}
+.tiles button{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:10px 16px;border:0;background:none;text-align:left;position:relative}
+.tiles button:not(:last-child)::after{content:"";position:absolute;left:66px;right:0;bottom:0;border-bottom:.5px solid var(--line)}
 .tiles button>strong{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:9px;background:var(--fill);color:var(--tint);font-size:.8125rem;font-weight:700}
 .tiles button span{flex:1}
 .tiles b,.tiles small{display:block}
@@ -90,7 +90,7 @@ label{display:block;font-size:.8125rem;color:var(--sub)}
 .hidden{display:none}
 
 /* Pasek kart (materiał półprzezroczysty) */
-.bottom{position:fixed;z-index:10;left:50%;bottom:calc(8px + env(safe-area-inset-bottom));transform:translateX(-50%);width:calc(100% - 24px);max-width:520px;display:flex;justify-content:space-around;gap:2px;padding:5px;border-radius:30px;background:var(--glass);-webkit-backdrop-filter:blur(24px) saturate(190%);backdrop-filter:blur(24px) saturate(190%);border:1px solid var(--glass-line);box-shadow:0 10px 32px rgba(0,0,0,.18),inset 0 1px 0 var(--glass-line)}
+.bottom{position:fixed;z-index:10;left:50%;bottom:calc(8px + env(safe-area-inset-bottom));transform:translateX(-50%);width:calc(100% - 24px);max-width:520px;display:flex;justify-content:space-around;gap:2px;padding:5px;border-radius:30px;background:linear-gradient(160deg,var(--g1),var(--g2)),var(--glass);-webkit-backdrop-filter:blur(18px) saturate(220%) brightness(1.04);backdrop-filter:blur(18px) saturate(220%) brightness(1.04);border:1px solid var(--glass-line);box-shadow:0 12px 36px rgba(0,0,0,.22),inset 0 1.5px 0 var(--glass-line),inset 0 -1px 0 rgba(0,0,0,.08),inset 0 0 18px rgba(255,255,255,.12)}
 .nav{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;padding:4px;border-radius:24px;border:0;background:none;color:var(--sub);font-size:.75rem;font-weight:500}
 .nav i{display:grid;place-items:center;height:26px;font-style:normal}
 .nav.active{color:var(--tint);font-weight:600;background:rgba(127,127,127,.18)}
@@ -100,4 +100,14 @@ label{display:block;font-size:.8125rem;color:var(--sub)}
 @media(hover:hover){.link:hover,.tiles button:hover,.secondary:hover{opacity:.7}}
 @media(min-width:760px){.app{max-width:760px}.hero{padding:36px 36px 0}}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){header,.bottom{background:var(--card);-webkit-backdrop-filter:none;backdrop-filter:none}.bottom{border-color:var(--sub)}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* Detale: reakcja na dotyk, aktywna ikona, liczby, płynne wejście strony */
+::selection{background:color-mix(in srgb,var(--tint) 30%,transparent)}
+.calendar b,.calendar small{font-variant-numeric:tabular-nums}
+button{transition:transform .15s,opacity .15s}
+button:active{transform:scale(.97);opacity:.85}
+.nav.active svg{fill:currentColor;fill-opacity:.18}
+.page.active{animation:enter .28s ease-out}
+@keyframes enter{from{opacity:0;transform:translateY(6px)}}
+.hero,.tiles,.notice,.empty,.calendar,.competition-row,.fav-row{box-shadow:0 0 0 .5px var(--line)}
