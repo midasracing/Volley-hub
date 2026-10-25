@@ -4,7 +4,7 @@
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
   "results_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
   "standings_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
-  "updated_at": "2026-10-25T22:41:24.444233+00:00",
+  "updated_at": "2026-10-25T22:47:02.614479+00:00",
   "teams": [
     {
       "name": "Energa Trefl Gdańsk III",
@@ -85,28 +85,6 @@
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
-      "id": "04.10.2026-1-3",
-      "competition": "Pomorska III Liga Męska",
-      "date": "04.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "LZS Gminy Dragacz",
-      "away": "KS AZS AWFiS Gdańsk",
-      "home_sets": 2,
-      "away_sets": 3,
-      "set_scores": [
-        "25:21",
-        "19:25",
-        "24:26",
-        "27:25",
-        "12:15"
-      ],
-      "current_points": null,
-      "round": 1,
-      "match_number": 3,
-      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
-    },
-    {
       "id": "04.10.2026-1-4",
       "competition": "Pomorska III Liga Męska",
       "date": "04.10.2026",
@@ -126,6 +104,22 @@
       "current_points": null,
       "round": 1,
       "match_number": 4,
+      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
+    },
+    {
+      "id": "04.10.2026-1-3",
+      "competition": "Pomorska III Liga Męska",
+      "date": "04.10.2026",
+      "time": null,
+      "status": "finished",
+      "home": "LZS Gminy Dragacz",
+      "away": "KS AZS AWFiS Gdańsk",
+      "home_sets": 2,
+      "away_sets": 3,
+      "set_scores": [],
+      "current_points": null,
+      "round": 1,
+      "match_number": 3,
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
@@ -335,18 +329,13 @@
       "id": "25.10.2026-4-18",
       "competition": "Pomorska III Liga Męska",
       "date": "25.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "KATS ALPAT CYMMAT GDYNIA",
       "away": "UKS Olimpijczyk Pruszcz Gdański",
       "home_sets": 1,
       "away_sets": 3,
-      "set_scores": [
-        "18:25",
-        "25:21",
-        "21:25",
-        "22:25"
-      ],
+      "set_scores": [],
       "current_points": null,
       "round": 4,
       "match_number": 18,
