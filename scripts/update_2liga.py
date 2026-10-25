@@ -18,7 +18,7 @@ MONTHS = {
     "września": 9, "października": 10, "listopada": 11, "grudnia": 12,
 }
 def fetch(url):
-    """Fetch a VolleyStation page with the existing Puppeteer + Stealth test setup."""
+    """Fetch VolleyStation in a real Puppeteer session, retaining warm-up cookies."""
     import subprocess
 
     node_script = r"""
@@ -31,30 +31,70 @@ def fetch(url):
       try {
         browser = await puppeteer.launch({
           headless: true,
-          args: ['--no-sandbox', '--disable-setuid-sandbox']
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage'
+          ]
         });
         const page = await browser.newPage();
-        // Controlled test: browser-like UA + varied viewport. Keep headless mode for CI.
-        const chromeVersion = (await browser.version()).match(/Chrome\/(\d+\.\d+\.\d+\.\d+)/)?.[1] || '120.0.0.0';
+        const chromeVersion = (await browser.version()).match(/Chrome\/(\d+\.\d+\.\d+\.\d+)/)?.[1];
+        if (!chromeVersion) throw new Error('Could not determine Chromium version');
+
+        // Keep the User-Agent aligned with the actual Chromium binary. Avoid
+        // randomized fingerprints, which can make a session less consistent.
         await page.setUserAgent(
           'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' +
           chromeVersion + ' Safari/537.36'
         );
-        await page.setViewport({
-          width: Math.floor(1024 + Math.random() * 100),
-          height: Math.floor(768 + Math.random() * 100)
-        });
+        await page.setViewport({ width: 1365, height: 900, deviceScaleFactor: 1 });
         await page.setExtraHTTPHeaders({
-          'Accept-Language': 'pl-PL,pl;q=0.9,en;q=0.8'
+          'Accept-Language': 'pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7'
         });
-        const response = await page.goto(process.argv[1], {
+        page.setDefaultNavigationTimeout(60000);
+
+        const targetUrl = new URL(process.argv[1]);
+        const landingUrl = targetUrl.origin + '/pl/teams/';
+
+        // Establish first-party cookies on the league site before visiting a
+        // deeper route. The target request then uses the same page/session.
+        if (targetUrl.pathname.replace(/\/+$/, '') !== '/pl/teams') {
+          const landingResponse = await page.goto(landingUrl, {
+            waitUntil: 'domcontentloaded',
+            timeout: 60000
+          });
+          try { await page.waitForNetworkIdle({ timeout: 15000 }); } catch (_) {}
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          const landingState = await page.evaluate(() => ({
+            title: document.title || '',
+            body: (document.body?.innerText || '').slice(0, 500)
+          }));
+          if (landingResponse && landingResponse.status() === 403) {
+            throw new Error('League landing page returned HTTP 403: ' + landingState.title + ' ' + landingState.body);
+          }
+        }
+
+        let response = await page.goto(process.argv[1], {
           waitUntil: 'domcontentloaded',
           timeout: 60000
         });
-        try {
-          await page.waitForNetworkIdle({ timeout: 20000 });
-        } catch (_) {}
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        try { await page.waitForNetworkIdle({ timeout: 20000 }); } catch (_) {}
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        // Wait for a legitimate site challenge to finish; do not inject scripts
+        // or skip verification. If it remains, return diagnostics and fail closed.
+        for (let i = 0; i < 20; i++) {
+          const state = await page.evaluate(() => ({
+            title: document.title || '',
+            body: (document.body?.innerText || '').slice(0, 500)
+          }));
+          const challenge = /just a moment|verify you are human|checking your browser|cierpliwości/i.test(
+            state.title + ' ' + state.body
+          );
+          if (!challenge) break;
+          await new Promise(resolve => setTimeout(resolve, 1500));
+        }
+
         const result = {
           status: response ? response.status() : null,
           title: await page.title(),
@@ -76,7 +116,7 @@ def fetch(url):
             check=True,
             capture_output=True,
             text=True,
-            timeout=90,
+            timeout=150,
         )
         page_data = json.loads(result.stdout)
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
@@ -89,8 +129,8 @@ def fetch(url):
     print(f"VolleyStation fetch: HTTP {status}; title={title!r}", flush=True)
     if status == 403:
         raise RuntimeError(f"VolleyStation HTTP 403 for {url}; title={title!r}; body={body[:250]!r}")
-    if "Just a moment..." in title or "Verify you are human" in body:
-        raise RuntimeError(f"Cloudflare challenge did not clear for {url}; title={title!r}; body={body[:250]!r}")
+    if re.search(r"just a moment|verify you are human|checking your browser|cierpliwości", title + " " + body, re.I):
+        raise RuntimeError(f"VolleyStation challenge did not clear for {url}; title={title!r}; body={body[:250]!r}")
     return BeautifulSoup(page_data["html"], "html.parser")
 
 def parse_date(text):
