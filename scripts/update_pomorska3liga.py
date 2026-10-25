@@ -5,6 +5,7 @@ import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
 
@@ -209,6 +210,31 @@ def parse_table(soup):
         print(f"Warning: expected 9 standings rows, parsed {len(rows)}", file=sys.stderr)
     return rows
 
+def parse_team_logos(soup, page_url):
+    """Extract official team logos when they are embedded in standings rows."""
+    logos = {}
+    for row in soup.select("table tr"):
+        cells = row.find_all(["td", "th"], recursive=False)
+        if len(cells) < 2:
+            continue
+        team_cell = cells[1]
+        name = re.sub(r"\\s+", " ", team_cell.get_text(" ", strip=True)).strip()
+        if not name:
+            continue
+        image = team_cell.find("img", src=True)
+        if not image:
+            # Some page versions put the logo inside a linked wrapper.
+            image = row.find("img", src=True)
+        if not image:
+            continue
+        src = (image.get("src") or image.get("data-src") or "").strip()
+        if not src:
+            continue
+        if src.startswith("data:"):
+            continue
+        logos[name] = urljoin(page_url, src)
+    return logos
+
 def load_previous(path):
     """Keep the last good data available if the official site temporarily fails."""
     try:
@@ -247,13 +273,22 @@ def main():
             "refusing to replace potentially valid data with an incomplete scrape."
         )
 
+    team_logos = {}
     try:
-        standings = parse_table(fetch(STANDINGS_URL))
+        standings_soup = fetch(STANDINGS_URL)
+        standings = parse_table(standings_soup)
+        team_logos = parse_team_logos(standings_soup, STANDINGS_URL)
         if len(standings) < 8:
             raise RuntimeError(f"only {len(standings)} standings rows parsed")
+        print(f"Official team logos found in standings: {len(team_logos)}", flush=True)
     except Exception as exc:
         print(f"Warning: standings unavailable, keeping previous table: {exc}", file=sys.stderr)
         standings = previous.get("table", [])
+        team_logos = {
+            team.get("name", ""): team.get("logo", "")
+            for team in previous.get("teams", [])
+            if team.get("name") and team.get("logo")
+        }
 
     matches.sort(key=lambda m: (
         datetime.strptime(m["date"], "%d.%m.%Y"),
@@ -276,7 +311,23 @@ def main():
         "results_source": RESULTS_URL,
         "standings_source": STANDINGS_URL,
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "teams": [{"name": name, "logo": ""} for name in teams],
+        "teams": [
+            {
+                "name": name,
+                "logo": team_logos.get(name)
+                    or next(
+                        (logo for known_name, logo in team_logos.items()
+                         if known_name.casefold() == name.casefold()),
+                        ""
+                    )
+                    or next(
+                        (team.get("logo", "") for team in previous.get("teams", [])
+                         if team.get("name", "").casefold() == name.casefold()),
+                        ""
+                    ),
+            }
+            for name in teams
+        ],
         "matches": matches,
         "table": standings,
     }
