@@ -201,19 +201,27 @@ def parse_match_detail(soup):
     # VolleyStation shows set-by-set points on the individual match page.
     # Collect plausible volleyball set scores, excluding clock times and set-count scores.
     set_scores = []
-    seen = set()
     score_pattern = re.compile(r"(?<!\d)(\d{1,2})\s*[:\-–]\s*(\d{1,2})(?!\d)")
-    for node in soup.select("table td, table th, [class*='set'], [class*='score'], [data-testid*='score']"):
+    score_nodes = soup.select("table td, table th, [class*='set'], [class*='score'], [data-testid*='score']")
+    # Prefer the most specific matching nodes so parent containers don't duplicate
+    # the same set, while still preserving repeated scores from different sets.
+    candidates = []
+    for node in score_nodes:
         node_text = re.sub(r"\s+", " ", node.get_text(" ", strip=True))
+        if not score_pattern.search(node_text):
+            continue
+        if any(score_pattern.search(re.sub(r"\s+", " ", child.get_text(" ", strip=True)))
+               for child in node.find_all(True)):
+            continue
+        candidates.append(node_text)
+
+    for node_text in candidates:
         for match in score_pattern.finditer(node_text):
             a, b = int(match.group(1)), int(match.group(2))
             # Volleyball sets are generally 25+ points; deciding sets are played to 15.
-            if a > 40 or b > 40 or (max(a, b) < 15):
+            if a > 40 or b > 40 or max(a, b) < 15:
                 continue
-            score = f"{a}:{b}"
-            if score not in seen:
-                seen.add(score)
-                set_scores.append(score)
+            set_scores.append(f"{a}:{b}")
 
     # Fallback to full page text if scores aren't in identifiable score/table elements.
     if not set_scores:
@@ -221,10 +229,7 @@ def parse_match_detail(soup):
             a, b = int(match.group(1)), int(match.group(2))
             if a > 40 or b > 40 or max(a, b) < 15:
                 continue
-            score = f"{a}:{b}"
-            if score not in seen:
-                seen.add(score)
-                set_scores.append(score)
+            set_scores.append(f"{a}:{b}")
 
     return {"time": kickoff, "set_scores": set_scores}
 
