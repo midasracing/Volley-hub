@@ -65,8 +65,9 @@ def parse_matches(soup):
             hs,aws=(int(score.group(1)),int(score.group(2))) if pos1<pos2 else (int(score.group(2)),int(score.group(1)))
             # Set points appear after the score; retain compact pairs where available.
             set_scores=[]
-            tail=text[max(pos1,pos2):]
-            pairs=re.findall(r"(?<!\d)(\d{1,2})\s+(\d{1,2})(?!\d)",tail)
+            # Small-point pairs are located after the set score between team labels.
+            after_score=middle[score.end():]
+            pairs=re.findall(r"(?<!\d)(\d{1,2})\s+(\d{1,2})(?!\d)",after_score)
             for x,y in pairs[:5]:
                 if int(x)>=15 and int(y)>=15: set_scores.append(f"{x}:{y}")
             date_match=re.search(r"(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela),?\s+\d{1,2}\s+[a-ząćęłńóśźż]+(?:,?\s+\d{1,2}:\d{2})?",text,re.I)
