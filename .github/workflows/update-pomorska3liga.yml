@@ -35,17 +35,13 @@ jobs:
         with:
           node-version: "22"
       - name: Install scraper dependencies
-        run: python -m pip install beautifulsoup4 playwright requests
-      - name: Install Chromium
-        run: python -m playwright install --with-deps chromium
+        run: python -m pip install beautifulsoup4 requests
       - name: Install Puppeteer Extra and Stealth plugin
         run: npm install --no-save puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
       - name: Diagnose VolleyStation access
         run: |
           python - <<'PY'
           import requests
-          from playwright.sync_api import sync_playwright
-
           url = "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/"
           print("=== Plain HTTPS request ===", flush=True)
           try:
@@ -54,17 +50,6 @@ jobs:
           except Exception as e:
               print(f"REQUEST ERROR: {type(e).__name__}: {e}", flush=True)
 
-          print("=== Playwright Chromium ===", flush=True)
-          try:
-              with sync_playwright() as p:
-                  browser = p.chromium.launch(headless=True)
-                  page = browser.new_page(locale="pl-PL")
-                  response = page.goto(url, wait_until="domcontentloaded", timeout=40000)
-                  page.wait_for_timeout(3000)
-                  print(f"HTTP {response.status if response else 'no response'}; title={page.title()!r}; body={page.locator('body').inner_text()[:220]!r}", flush=True)
-                  browser.close()
-          except Exception as e:
-              print(f"PLAYWRIGHT ERROR: {type(e).__name__}: {e}", flush=True)
           PY
           node <<'JS'
           const puppeteer = require('puppeteer-extra');
