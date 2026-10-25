@@ -40,7 +40,7 @@ ALIASES = sorted(
 )
 
 def norm(value):
-    return re.sub(r"\\s+", " ", html.unescape(value or "")).strip()
+    return re.sub(r"\s+", " ", html.unescape(value or "")).strip()
 
 def get(url):
     req = Request(url, headers=HEADERS)
@@ -73,8 +73,8 @@ def team_names_in_node(node):
 
 def parse_date(text):
     match = re.search(
-        r"(?:(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela),?\\s+)?"
-        r"\\d{1,2}\\s+[a-ząćęłńóśźż]+,?\\s+\\d{1,2}:\\d{2}",
+        r"(?:(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela),?\s+)?"
+        r"\d{1,2}\s+[a-ząćęłńóśźż]+,?\s+\d{1,2}:\d{2}",
         text, re.I
     )
     return match.group(0) if match else None
@@ -120,14 +120,14 @@ def parse_matches(soup):
             if p2 <= p1:
                 continue
             middle = text[p1 + l1:p2].strip()
-            score = re.match(r"^([0-3])\\s+([0-3])(?:\\s+|$)", middle)
+            score = re.match(r"^([0-3])\s+([0-3])(?:\s+|$)", middle)
             placeholder = bool(re.search(r"···|…|[-–—]", middle))
             if not score and not placeholder:
                 continue
             if score:
                 home_sets, away_sets = int(score.group(1)), int(score.group(2))
                 tail = middle[score.end():]
-                nums = [int(x) for x in re.findall(r"(?<!\\d)\\d{1,2}(?!\\d)", tail)]
+                nums = [int(x) for x in re.findall(r"(?<!\d)\d{1,2}(?!\d)", tail)]
                 set_scores = []
                 for i in range(0, min(len(nums), 10) - 1, 2):
                     a, b = nums[i], nums[i + 1]
@@ -166,7 +166,7 @@ def parse_table(soup):
         nums = []
         for cell in cells:
             value = cell.replace(" ", "")
-            if re.fullmatch(r"\\d+", value):
+            if re.fullmatch(r"\d+", value):
                 nums.append(int(value))
         if len(nums) < 8:
             continue
@@ -220,7 +220,7 @@ def main():
     }
     path = Path("data/tauron.json")
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Updated {len(matches)} PlusLiga matches and {len(standings)} standings rows.")
 
 if __name__ == "__main__":
