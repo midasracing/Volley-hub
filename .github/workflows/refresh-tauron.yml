@@ -5,13 +5,13 @@ on:
       - ".github/workflows/refresh-tauron.yml"
       - "scripts/refresh_tauron.py"
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
 concurrency:
   group: tauron-feed
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   refresh:
     runs-on: ubuntu-latest
