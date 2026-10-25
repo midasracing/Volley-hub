@@ -316,10 +316,17 @@ def parse_team_logos(soup, page_url):
 
     # VolleyStation often links each team name to its own profile; logos can be
     # exposed there even when the standings table itself contains no image node.
-    for anchor in soup.select("table tr td a[href]"):
-        name = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
+    for anchor in soup.select('a[href*="/teams/"]'):
         href = urljoin(page_url, anchor.get("href", ""))
-        if not name or not href or name in logos or "/teams/" not in href:
+        name = re.sub(r"\\s+", " ", anchor.get_text(" ", strip=True)).strip()
+        # Some layouts wrap the badge in a link and keep the team name elsewhere
+        # in the same standings row; use that row's team cell as a fallback.
+        if not name:
+            row = anchor.find_parent("tr")
+            cells = row.find_all(["td", "th"], recursive=False) if row else []
+            if len(cells) >= 2:
+                name = re.sub(r"\\s+", " ", cells[1].get_text(" ", strip=True)).strip()
+        if not name or not href or name in logos:
             continue
         try:
             team_soup = fetch(href)
