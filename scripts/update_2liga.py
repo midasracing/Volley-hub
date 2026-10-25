@@ -13,6 +13,45 @@ PZPS_URL = "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/"
 PZPS_RESULTS_URL = "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
 OUT = Path("data/2liga.json")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; VolleyHub/1.0)"}
+PZPS_CLUBS_URL = "https://sedziowie.pzps.pl/system/index.php?mode=8"
+
+
+def parse_pzps_logos(team_names):
+    """Discover club logo image URLs from the official PZPS clubs directory."""
+    try:
+        response = requests.get(PZPS_CLUBS_URL, timeout=30, headers=HEADERS)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+    except requests.RequestException as exc:
+        print(f"Could not fetch PZPS club logos: {exc}")
+        return {}
+
+    wanted = {norm(name): name for name in team_names}
+    logos = {}
+    for anchor in soup.find_all("a", href=True):
+        label = clean(anchor.get_text(" ", strip=True))
+        key = norm(label)
+        if key not in wanted:
+            continue
+        candidates = list(anchor.find_all("img"))
+        parent = anchor.parent
+        if parent:
+            candidates.extend(parent.find_all("img"))
+            if parent.parent:
+                candidates.extend(parent.parent.find_all("img"))
+        for img in candidates:
+            src = img.get("src") or img.get("data-src") or img.get("data-original")
+            if not src:
+                continue
+            src = requests.compat.urljoin(PZPS_CLUBS_URL, src.strip())
+            filename = norm(src.rsplit("/", 1)[-1])
+            alt = norm(img.get("alt", ""))
+            if alt == key or any(token in filename for token in ("logo", "club", "klub")):
+                logos[wanted[key]] = src
+                break
+    print(f"Found {len(logos)}/{len(team_names)} team logo images in the official PZPS directory")
+    return logos
+
 
 
 def clean(value):
@@ -179,6 +218,7 @@ def parse_pzps_results(matches):
 
 def main():
     matches, teams = parse_pzps()
+    logos_by_team = parse_pzps_logos(teams)
     tables_by_group = parse_pzps_results(matches)
     groups = []
     for number in range(1, 6):
