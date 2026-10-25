@@ -57,10 +57,10 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-25T16:14:28.052534+00:00",
+  "updated_at": "2026-10-25T16:17:03.787390+00:00",
   "matches": [
     {
-      "date": "0 BOGDANKA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "ZAKSA Kędzierzyn-Koźle",
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "date": "0 ZAKSA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "BOGDANKA LUK Lublin",
@@ -84,7 +84,7 @@
       "set_scores": []
     },
     {
-      "date": "3 BOGDANKA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "ZAKSA Kędzierzyn-Koźle",
@@ -94,7 +94,7 @@
       "set_scores": []
     },
     {
-      "date": "15 Jastrzębie",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Ślepsk Malow Suwałki",
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "date": "0 Ślepsk",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Barkom Każany Lwów",
@@ -120,7 +120,7 @@
       "set_scores": []
     },
     {
-      "date": "3 Jastrzębie",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Ślepsk Malow Suwałki",
@@ -130,7 +130,7 @@
       "set_scores": []
     },
     {
-      "date": "15 Stilon",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "ChKS Chełm",
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "date": "0 Podziemia",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Cuprum Stilon Gorzów",
@@ -156,7 +156,7 @@
       "set_scores": []
     },
     {
-      "date": "3 Stilon",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "ChKS Chełm",
@@ -166,7 +166,7 @@
       "set_scores": []
     },
     {
-      "date": "0 NEONET",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Indykpol AZS Olsztyn",
@@ -180,7 +180,7 @@
       ]
     },
     {
-      "date": "0 Energa",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Steam Hemarpol Norwid Częstochowa",
@@ -190,7 +190,7 @@
       "set_scores": []
     },
     {
-      "date": "0 NEONET",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Indykpol AZS Olsztyn",
@@ -200,7 +200,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Energa",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "BOGDANKA LUK Lublin",
@@ -214,7 +214,7 @@
       ]
     },
     {
-      "date": "0 BOGDANKA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Trefl Gdańsk",
@@ -224,7 +224,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Energa",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "BOGDANKA LUK Lublin",
@@ -234,7 +234,7 @@
       "set_scores": []
     },
     {
-      "date": "0 ZAKSA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Aluron CMC Warta Zawiercie",
@@ -249,7 +249,7 @@
       ]
     },
     {
-      "date": "0 Aluron",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "ZAKSA Kędzierzyn-Koźle",
@@ -259,7 +259,7 @@
       "set_scores": []
     },
     {
-      "date": "1 ZAKSA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Aluron CMC Warta Zawiercie",
@@ -269,7 +269,7 @@
       "set_scores": []
     },
     {
-      "date": "15 GKS",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Ślepsk Malow Suwałki",
@@ -285,7 +285,7 @@
       ]
     },
     {
-      "date": "0 Ślepsk",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "GKS Katowice",
@@ -295,7 +295,7 @@
       "set_scores": []
     },
     {
-      "date": "3 GKS",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Ślepsk Malow Suwałki",
@@ -305,7 +305,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Jastrzębie",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Cuprum Stilon Gorzów",
@@ -319,7 +319,7 @@
       ]
     },
     {
-      "date": "0 Stilon",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Barkom Każany Lwów",
@@ -329,7 +329,7 @@
       "set_scores": []
     },
     {
-      "date": "3 Jastrzębie",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Cuprum Stilon Gorzów",
@@ -339,7 +339,7 @@
       "set_scores": []
     },
     {
-      "date": "12 PGE",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "PGE GiEK Skra Bełchatów",
@@ -355,7 +355,7 @@
       ]
     },
     {
-      "date": "0 PGE",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "PGE Projekt Warszawa",
@@ -365,7 +365,7 @@
       "set_scores": []
     },
     {
-      "date": "2 PGE",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "PGE GiEK Skra Bełchatów",
@@ -375,7 +375,7 @@
       "set_scores": []
     },
     {
-      "date": "0 BOGDANKA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Aluron CMC Warta Zawiercie",
@@ -389,7 +389,7 @@
       ]
     },
     {
-      "date": "0 Aluron",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "BOGDANKA LUK Lublin",
@@ -399,7 +399,7 @@
       "set_scores": []
     },
     {
-      "date": "3 BOGDANKA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "finished",
       "home": "Aluron CMC Warta Zawiercie",
@@ -409,7 +409,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Asseco",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "ChKS Chełm",
@@ -419,7 +419,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Podziemia",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Asseco Resovia Rzeszów",
@@ -432,16 +432,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "ChKS Chełm",
-      "away": "Asseco Resovia Rzeszów",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 GKS",
-      "time": null,
-      "status": "scheduled",
       "home": "PGE GiEK Skra Bełchatów",
       "away": "GKS Katowice",
       "home_sets": 0,
@@ -449,7 +439,7 @@
       "set_scores": []
     },
     {
-      "date": "0 PGE",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "GKS Katowice",
@@ -462,16 +452,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "PGE GiEK Skra Bełchatów",
-      "away": "GKS Katowice",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Aluron",
-      "time": null,
-      "status": "scheduled",
       "home": "PGE Projekt Warszawa",
       "away": "Aluron CMC Warta Zawiercie",
       "home_sets": 0,
@@ -479,7 +459,7 @@
       "set_scores": []
     },
     {
-      "date": "0 PGE",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Aluron CMC Warta Zawiercie",
@@ -492,16 +472,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "PGE Projekt Warszawa",
-      "away": "Aluron CMC Warta Zawiercie",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 ZAKSA",
-      "time": null,
-      "status": "scheduled",
       "home": "Indykpol AZS Olsztyn",
       "away": "ZAKSA Kędzierzyn-Koźle",
       "home_sets": 0,
@@ -509,7 +479,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Energa",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "ZAKSA Kędzierzyn-Koźle",
@@ -522,16 +492,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Indykpol AZS Olsztyn",
-      "away": "ZAKSA Kędzierzyn-Koźle",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Energa",
-      "time": null,
-      "status": "scheduled",
       "home": "Asseco Resovia Rzeszów",
       "away": "Trefl Gdańsk",
       "home_sets": 0,
@@ -539,7 +499,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Asseco",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Trefl Gdańsk",
@@ -552,16 +512,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Asseco Resovia Rzeszów",
-      "away": "Trefl Gdańsk",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 NEONET",
-      "time": null,
-      "status": "scheduled",
       "home": "Ślepsk Malow Suwałki",
       "away": "Steam Hemarpol Norwid Częstochowa",
       "home_sets": 0,
@@ -569,7 +519,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Ślepsk",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Steam Hemarpol Norwid Częstochowa",
@@ -582,16 +532,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Ślepsk Malow Suwałki",
-      "away": "Steam Hemarpol Norwid Częstochowa",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 PGE",
-      "time": null,
-      "status": "scheduled",
       "home": "Cuprum Stilon Gorzów",
       "away": "PGE Projekt Warszawa",
       "home_sets": 0,
@@ -599,7 +539,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Stilon",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "PGE Projekt Warszawa",
@@ -612,16 +552,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Cuprum Stilon Gorzów",
-      "away": "PGE Projekt Warszawa",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Aluron",
-      "time": null,
-      "status": "scheduled",
       "home": "PGE GiEK Skra Bełchatów",
       "away": "Aluron CMC Warta Zawiercie",
       "home_sets": 0,
@@ -629,7 +559,7 @@
       "set_scores": []
     },
     {
-      "date": "0 PGE",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Aluron CMC Warta Zawiercie",
@@ -642,16 +572,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "PGE GiEK Skra Bełchatów",
-      "away": "Aluron CMC Warta Zawiercie",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 GKS",
-      "time": null,
-      "status": "scheduled",
       "home": "BOGDANKA LUK Lublin",
       "away": "GKS Katowice",
       "home_sets": 0,
@@ -659,7 +579,7 @@
       "set_scores": []
     },
     {
-      "date": "0 BOGDANKA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "GKS Katowice",
@@ -672,16 +592,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "BOGDANKA LUK Lublin",
-      "away": "GKS Katowice",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Podziemia",
-      "time": null,
-      "status": "scheduled",
       "home": "Barkom Każany Lwów",
       "away": "ChKS Chełm",
       "home_sets": 0,
@@ -689,7 +599,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Jastrzębie",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "ChKS Chełm",
@@ -702,16 +612,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Barkom Każany Lwów",
-      "away": "ChKS Chełm",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Stilon",
-      "time": null,
-      "status": "scheduled",
       "home": "Trefl Gdańsk",
       "away": "Cuprum Stilon Gorzów",
       "home_sets": 0,
@@ -719,7 +619,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Energa",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Cuprum Stilon Gorzów",
@@ -732,16 +632,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Trefl Gdańsk",
-      "away": "Cuprum Stilon Gorzów",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Energa",
-      "time": null,
-      "status": "scheduled",
       "home": "Aluron CMC Warta Zawiercie",
       "away": "Indykpol AZS Olsztyn",
       "home_sets": 0,
@@ -749,7 +639,7 @@
       "set_scores": []
     },
     {
-      "date": "0 Aluron",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Indykpol AZS Olsztyn",
@@ -762,16 +652,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Aluron CMC Warta Zawiercie",
-      "away": "Indykpol AZS Olsztyn",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 PGE",
-      "time": null,
-      "status": "scheduled",
       "home": "BOGDANKA LUK Lublin",
       "away": "PGE GiEK Skra Bełchatów",
       "home_sets": 0,
@@ -779,7 +659,7 @@
       "set_scores": []
     },
     {
-      "date": "0 BOGDANKA",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "PGE GiEK Skra Bełchatów",
@@ -792,16 +672,6 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "BOGDANKA LUK Lublin",
-      "away": "PGE GiEK Skra Bełchatów",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Ślepsk",
-      "time": null,
-      "status": "scheduled",
       "home": "PGE Projekt Warszawa",
       "away": "Ślepsk Malow Suwałki",
       "home_sets": 0,
@@ -809,7 +679,7 @@
       "set_scores": []
     },
     {
-      "date": "0 PGE",
+      "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
       "home": "Ślepsk Malow Suwałki",
@@ -822,28 +692,8 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "PGE Projekt Warszawa",
-      "away": "Ślepsk Malow Suwałki",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 ZAKSA",
-      "time": null,
-      "status": "scheduled",
       "home": "Cuprum Stilon Gorzów",
       "away": "ZAKSA Kędzierzyn-Koźle",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": []
-    },
-    {
-      "date": "0 Stilon",
-      "time": null,
-      "status": "scheduled",
-      "home": "ZAKSA Kędzierzyn-Koźle",
-      "away": "Cuprum Stilon Gorzów",
       "home_sets": 0,
       "away_sets": 0,
       "set_scores": []
@@ -852,8 +702,8 @@
       "date": "Termin do potwierdzenia",
       "time": null,
       "status": "scheduled",
-      "home": "Cuprum Stilon Gorzów",
-      "away": "ZAKSA Kędzierzyn-Koźle",
+      "home": "ZAKSA Kędzierzyn-Koźle",
+      "away": "Cuprum Stilon Gorzów",
       "home_sets": 0,
       "away_sets": 0,
       "set_scores": []
