@@ -236,28 +236,50 @@ def parse_table(soup):
     return rows
 
 def parse_team_logos(soup, page_url):
-    """Extract official team logos when they are embedded in standings rows."""
+    """Extract official team logos from lazy-loaded images in standings rows."""
     logos = {}
+
+    def image_url(image):
+        # VolleyStation may lazy-load images without a normal src attribute.
+        for attr in ("src", "data-src", "data-lazy-src", "data-original", "data-image"):
+            value = (image.get(attr) or "").strip()
+            if value and not value.startswith("data:"):
+                return urljoin(page_url, value)
+        for attr in ("srcset", "data-srcset"):
+            value = (image.get(attr) or "").strip()
+            if value:
+                candidate = value.split(",")[0].strip().split()[0]
+                if candidate and not candidate.startswith("data:"):
+                    return urljoin(page_url, candidate)
+        return ""
+
     for row in soup.select("table tr"):
         cells = row.find_all(["td", "th"], recursive=False)
         if len(cells) < 2:
             continue
         team_cell = cells[1]
-        name = re.sub(r"\\s+", " ", team_cell.get_text(" ", strip=True)).strip()
+        name = re.sub(r"\s+", " ", team_cell.get_text(" ", strip=True)).strip()
         if not name:
             continue
-        image = team_cell.find("img", src=True)
+
+        # Do not require src=True: lazy-loaded logos often only have data-src.
+        image = team_cell.find("img")
         if not image:
-            # Some page versions put the logo inside a linked wrapper.
-            image = row.find("img", src=True)
-        if not image:
-            continue
-        src = (image.get("src") or image.get("data-src") or "").strip()
+            image = row.find("img")
+        src = image_url(image) if image else ""
+
+        # Some layouts put the logo on a CSS background instead of an img.
         if not src:
-            continue
-        if src.startswith("data:"):
-            continue
-        logos[name] = urljoin(page_url, src)
+            for element in [team_cell, *team_cell.find_all(True)]:
+                style = element.get("style", "")
+                match = re.search(r"url\(['\"]?([^)'\"]+)", style)
+                if match:
+                    src = urljoin(page_url, match.group(1).strip())
+                    break
+
+        if src:
+            logos[name] = src
+
     return logos
 
 def load_previous(path):
