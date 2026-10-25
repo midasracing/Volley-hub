@@ -190,13 +190,21 @@ def parse_match_detail(soup):
             kickoff = f"{int(hour):02d}:{minute}"
             break
     if not kickoff:
-        date_match = re.search(r"\d{1,2}\s+[a-ząćęłńóśźż]+\s+\d{4}", text, re.I)
-        if date_match:
-            nearby = text[date_match.end():date_match.end() + 180]
-            time_match = re.search(r"\b(\d{1,2}:\d{2})\b", nearby)
+        # Match detail pages may display the kickoff as a standalone time rather
+        # than next to a Polish label; use the first valid clock token in the page.
+        time_match = re.search(r"(?<!\d)([01]?\d|2[0-3]):([0-5]\d)(?!\d)", text)
+        if time_match:
+            kickoff = f"{int(time_match.group(1)):02d}:{time_match.group(2)}"
+
+    if not kickoff:
+        # Some versions keep the kickoff in structured metadata rather than visible text.
+        for node in soup.select("[datetime], time, [data-start-time], [data-kickoff]"):
+            candidate = " ".join(str(node.get(attr, "")) for attr in ("datetime", "data-start-time", "data-kickoff"))
+            candidate += " " + node.get_text(" ", strip=True)
+            time_match = re.search(r"(?<!\d)([01]?\d|2[0-3]):([0-5]\d)(?!\d)", candidate)
             if time_match:
-                hour, minute = time_match.group(1).split(":")
-                kickoff = f"{int(hour):02d}:{minute}"
+                kickoff = f"{int(time_match.group(1)):02d}:{time_match.group(2)}"
+                break
 
     # VolleyStation shows set-by-set points on the individual match page.
     # Collect plausible volleyball set scores, excluding clock times and set-count scores.
@@ -271,22 +279,23 @@ def parse_table(soup):
     return rows
 
 def parse_team_logos(soup, page_url):
-    """Extract official team logos from lazy-loaded images in standings rows."""
+    """Extract team logos from standings and team profile links."""
     logos = {}
 
-    def image_url(image):
-        # VolleyStation may lazy-load images without a normal src attribute.
-        for attr in ("src", "data-src", "data-lazy-src", "data-original", "data-image"):
-            value = (image.get(attr) or "").strip()
-            if value and not value.startswith("data:"):
+    def extract_url(node):
+        for attr in ("src", "data-src", "data-lazy-src", "data-original", "data-image", "href"):
+            value = (node.get(attr) or "").strip()
+            if value and not value.startswith("data:") and not value.startswith("javascript:"):
                 return urljoin(page_url, value)
         for attr in ("srcset", "data-srcset"):
-            value = (image.get(attr) or "").strip()
+            value = (node.get(attr) or "").strip()
             if value:
                 candidate = value.split(",")[0].strip().split()[0]
                 if candidate and not candidate.startswith("data:"):
                     return urljoin(page_url, candidate)
-        return ""
+        style = node.get("style", "")
+        match = re.search(r"url\(['\"]?([^)'\"]+)", style)
+        return urljoin(page_url, match.group(1).strip()) if match else ""
 
     for row in soup.select("table tr"):
         cells = row.find_all(["td", "th"], recursive=False)
@@ -294,26 +303,48 @@ def parse_team_logos(soup, page_url):
             continue
         team_cell = cells[1]
         name = re.sub(r"\s+", " ", team_cell.get_text(" ", strip=True)).strip()
-        if not name:
+        if not name or name.isdigit() or name.lower() in {"drużyna", "team"}:
+            continue
+        candidates = team_cell.select("img, source, [style*='background'], a")
+        if not candidates:
+            candidates = row.select("img, source, [style*='background']")
+        for node in candidates:
+            src = extract_url(node)
+            if src and re.search(r"\.(?:svg|png|jpe?g|webp)(?:[?#].*)?$", src, re.I):
+                logos[name] = src
+                break
+
+    # VolleyStation often links each team name to its own profile; logos can be
+    # exposed there even when the standings table itself contains no image node.
+    for anchor in soup.select("table tr td a[href]"):
+        name = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
+        href = urljoin(page_url, anchor.get("href", ""))
+        if not name or not href or name in logos or "/teams/" not in href:
+            continue
+        try:
+            team_soup = fetch(href)
+        except Exception as exc:
+            print(f"Warning: couldn't inspect team profile for logo {name!r}: {exc}", file=sys.stderr)
             continue
 
-        # Do not require src=True: lazy-loaded logos often only have data-src.
-        image = team_cell.find("img")
-        if not image:
-            image = row.find("img")
-        src = image_url(image) if image else ""
-
-        # Some layouts put the logo on a CSS background instead of an img.
-        if not src:
-            for element in [team_cell, *team_cell.find_all(True)]:
-                style = element.get("style", "")
-                match = re.search(r"url\(['\"]?([^)'\"]+)", style)
-                if match:
-                    src = urljoin(page_url, match.group(1).strip())
-                    break
-
-        if src:
+        image_candidates = []
+        for selector in (
+            'meta[property="og:image"]', 'meta[name="twitter:image"]',
+            'img[alt*="logo" i]', 'img[class*="logo" i]',
+            'img[src]', 'img[data-src]', 'img[data-lazy-src]',
+            '[style*="background-image"]',
+        ):
+            image_candidates.extend(team_soup.select(selector))
+        for node in image_candidates:
+            src = extract_url(node)
+            if node.name == "meta":
+                src = urljoin(href, (node.get("content") or "").strip())
+            if not src or not re.search(r"\.(?:svg|png|jpe?g|webp)(?:[?#].*)?$", src, re.I):
+                continue
+            if any(token in src.lower() for token in ("flag", "avatar", "default", "placeholder")):
+                continue
             logos[name] = src
+            break
 
     return logos
 
