@@ -36,7 +36,9 @@ def parse_pzps_logos(team_names):
         except requests.RequestException as exc:
             print(f"Could not fetch VolleyStation team logos from {page_url}: {exc}")
             continue
-        for img in soup.find_all("img"):
+        image_nodes = soup.find_all("img")
+        print(f"VolleyStation {page_url}: {len(image_nodes)} img tags")
+        for img in image_nodes:
             src = img.get("src") or img.get("data-src") or img.get("data-original")
             if not src:
                 continue
