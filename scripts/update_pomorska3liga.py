@@ -174,42 +174,39 @@ def parse_matches(soup, source_url):
 
 def parse_table(soup):
     rows = []
-    tables = soup.select("table")
-    if tables:
-        print(
-            "Standings table diagnostic:",
-            json.dumps(
-                {
-                    "headers": [
-                        re.sub(r"\\s+", " ", cell.get_text(" ", strip=True))
-                        for cell in tables[0].select("tr:first-child th, tr:first-child td")
-                    ],
-                    "sample_rows": [
-                        [
-                            re.sub(r"\\s+", " ", cell.get_text(" ", strip=True))
-                            for cell in tr.find_all(["td", "th"], recursive=False)
-                        ]
-                        for tr in tables[0].select("tr")[1:4]
-                    ],
-                },
-                ensure_ascii=False,
-            ),
-            flush=True,
-        )
     for row in soup.select("table tr"):
-        cells = [re.sub(r"\s+", " ", cell.get_text(" ", strip=True)) for cell in row.find_all(["td", "th"], recursive=False)]
-        if len(cells) < 9 or not cells[0].isdigit():
+        cells = [
+            re.sub(r"\s+", " ", cell.get_text(" ", strip=True))
+            for cell in row.find_all(["td", "th"], recursive=False)
+        ]
+        # VolleyStation standings rows contain 18 cells:
+        # rank, team, points, matches, sets won/lost, points won/lost,
+        # ratios, then match-result counts (3-0, 3-1, 3-2, 2-3, 1-3, 0-3).
+        if len(cells) < 18 or not cells[0].isdigit():
             continue
         try:
-            played, points, wins = int(cells[2]), int(cells[3]), int(cells[4])
+            rank = int(cells[0])
+            points = int(cells[2])
+            played = int(cells[3])
+            sets_for, sets_against = int(cells[6]), int(cells[7])
+            points_for, points_against = int(cells[8]), int(cells[9])
+            result_counts = [int(value) for value in cells[12:18]]
+            wins = sum(result_counts[:3])
+            losses = sum(result_counts[3:])
+            if wins + losses != played:
+                raise ValueError(
+                    f"result counts ({wins + losses}) do not match played ({played})"
+                )
             rows.append({
-                "rank": int(cells[0]), "team": cells[1], "played": played,
-                "points": points, "wins": wins, "losses": max(0, played - wins),
-                "sets_for": int(cells[5]), "sets_against": int(cells[6]),
-                "points_for": int(cells[7]), "points_against": int(cells[8]),
+                "rank": rank, "team": cells[1], "played": played,
+                "points": points, "wins": wins, "losses": losses,
+                "sets_for": sets_for, "sets_against": sets_against,
+                "points_for": points_for, "points_against": points_against,
             })
-        except (ValueError, IndexError):
-            continue
+        except (ValueError, IndexError) as exc:
+            print(f"Skipping invalid standings row {cells[:4]!r}: {exc}", file=sys.stderr)
+    if rows and len(rows) != 9:
+        print(f"Warning: expected 9 standings rows, parsed {len(rows)}", file=sys.stderr)
     return rows
 
 def load_previous(path):
