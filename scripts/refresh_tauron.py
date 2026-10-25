@@ -73,13 +73,13 @@ def team_names_in_node(node):
 
 def parse_date(text):
     # Official fixtures use numeric dates like '16.10.2026, 17:30'.
-    match = re.search(r'\\b(\\d{1,2}\\.\\d{1,2}\\.\\d{4})\\s*,?\\s*(\\d{1,2}:\\d{2})?', text)
+    match = re.search(r"\b(\d{1,2}\.\d{1,2}\.\d{4})\s*,?\s*(\d{1,2}:\d{2})?", text)
     if match:
         return match.group(1), match.group(2)
     # Fallback for pages showing a Polish weekday/month without the year.
     match = re.search(
-        r'(?:(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela),?\\s+)?'
-        r'(\\d{1,2}\\s+[a-ząćęłńóśźż]+)(?:,?\\s+(\\d{1,2}:\\d{2}))?',
+        r"(?:(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela),?\s+)?"
+        r"(\d{1,2}\s+[a-ząćęłńóśźż]+)(?:,?\s+(\d{1,2}:\d{2}))?",
         text, re.I
     )
     return (match.group(1), match.group(2)) if match else (None, None)
