@@ -1,25 +1,57 @@
 #!/usr/bin/env python3
-"""Refresh men's top-tier volleyball fixtures/results and standings from the official TAURON Liga site."""
+"""Refresh men's volleyball fixtures/results and standings from the official league sites.
+
+Leagues:
+  men    -> TAURON Liga          (tauronliga.pl)   -> data/tauron.json
+  first  -> TAURON 1. Liga       (tauron1liga.pl)  -> data/tauron1liga.json
+
+Usage:
+  python scripts/refresh_tauron.py                 # all leagues
+  python scripts/refresh_tauron.py --league men    # only the top tier
+  python scripts/refresh_tauron.py --league first  # only 1. Liga
+"""
+
+import argparse
 import datetime
 import html
 import json
 import re
+import sys
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
-from urllib.parse import urlparse, urljoin
 from zoneinfo import ZoneInfo
+
 from bs4 import BeautifulSoup
 
-BASE = "https://www.tauronliga.pl"
-GAMES_URL = BASE + "/games/nocookies/1.html"
-TABLE_URL = BASE + "/table/nocookies/1.html"
 HEADERS = {
     "User-Agent": "VolleyHub/1.0 (+https://github.com/midasracing/Volley-hub)",
     "Accept-Language": "pl-PL,pl;q=0.9,en;q=0.8",
 }
 
-# Canonical names as displayed in Volley Hub. Include known variants used by the official site.
-TEAM_ALIASES = {
+TZ = ZoneInfo("Europe/Warsaw")
+
+# Team ids come from the official links (/teams/id/93.html). They are stable even
+# when a sponsor changes a club name. Canonical names are the ones Volley Hub shows.
+MEN_TEAM_IDS = {
+    2: "Aluron CMC Warta Zawiercie",
+    3: "Asseco Resovia Rzeszów",
+    8: "Barkom Każany Lwów",
+    18: "GKS Katowice",
+    21: "ZAKSA Kędzierzyn-Koźle",
+    24: "Indykpol AZS Olsztyn",
+    28: "Cuprum Stilon Gorzów",
+    45: "BOGDANKA LUK Lublin",
+    56: "Ślepsk Malow Suwałki",
+    61: "PGE GiEK Skra Bełchatów",
+    62: "PGE Projekt Warszawa",
+    71: "Steam Hemarpol Norwid Częstochowa",
+    78: "Trefl Gdańsk",
+    93: "ChKS Chełm",
+}
+
+# Extra spellings, used as a fallback when a name is not found through a team link.
+MEN_ALIASES = {
     "BOGDANKA LUK Lublin": ["BOGDANKA LUK Lublin", "Bogdanka LUK Lublin", "LKPS Lublin"],
     "Barkom Każany Lwów": ["Barkom Każany Lwów", "Jastrzębie Barkom", "Jastrzebie Barkom"],
     "GKS Katowice": ["GKS Katowice"],
@@ -27,7 +59,9 @@ TEAM_ALIASES = {
     "PGE GiEK Skra Bełchatów": ["PGE GiEK Skra Bełchatów", "PGE GiEK Skra Belchatów", "Skra Bełchatów"],
     "Indykpol AZS Olsztyn": ["Indykpol AZS Olsztyn", "Energa Indykpol AZS Olsztyn"],
     "Aluron CMC Warta Zawiercie": ["Aluron CMC Warta Zawiercie"],
-    "Steam Hemarpol Norwid Częstochowa": ["Steam Hemarpol Norwid Częstochowa", "NEONET Norwid Częstochowa", "Norwid Częstochowa"],
+    "Steam Hemarpol Norwid Częstochowa": [
+        "Steam Hemarpol Norwid Częstochowa", "NEONET Norwid Częstochowa", "Norwid Częstochowa",
+    ],
     "Cuprum Stilon Gorzów": ["Cuprum Stilon Gorzów", "Stilon Gorzów"],
     "Ślepsk Malow Suwałki": ["Ślepsk Malow Suwałki"],
     "ChKS Chełm": ["Podziemia Kredowe ChKS Chełm", "ChKS Chełm"],
@@ -35,57 +69,126 @@ TEAM_ALIASES = {
     "Trefl Gdańsk": ["Trefl Gdańsk", "Energa Trefl Gdańsk"],
     "ZAKSA Kędzierzyn-Koźle": ["ZAKSA Kędzierzyn-Koźle", "ZAKSA Kedzierzyn-Kozle"],
 }
-ALIASES = sorted(
-    ((alias, canonical) for canonical, aliases in TEAM_ALIASES.items() for alias in aliases),
-    key=lambda item: len(item[0]), reverse=True
-)
+
+LEAGUES = {
+    "men": {
+        "base": "https://www.tauronliga.pl",
+        "out": "data/tauron.json",
+        "competition": "TAURON Liga (mężczyźni)",
+        "team_ids": MEN_TEAM_IDS,
+        "aliases": MEN_ALIASES,
+    },
+    # 1. Liga: team names are read straight from the site (no fixed list needed).
+    "first": {
+        "base": "https://www.tauron1liga.pl",
+        "out": "data/tauron1liga.json",
+        "competition": "TAURON 1. Liga (mężczyźni)",
+        "team_ids": {},
+        "aliases": {},
+    },
+}
+
 
 def norm(value):
     return re.sub(r"\s+", " ", html.unescape(value or "")).strip()
 
-def get(url):
+
+def get(url, base):
     req = Request(url, headers=HEADERS)
     with urlopen(req, timeout=30) as response:
         final_host = urlparse(response.geturl()).hostname or ""
-        if not final_host.endswith("tauronliga.pl"):
-            raise RuntimeError(f"Official PlusLiga URL redirected to unexpected host: {final_host}")
+        allowed = (urlparse(base).hostname or "").removeprefix("www.")
+        if final_host != allowed and not final_host.endswith("." + allowed):
+            raise RuntimeError(f"{url} redirected to unexpected host: {final_host}")
         return response.read()
 
-def team_in(text):
+
+def load_previous(path):
+    """Previously saved file, so a failed refresh never wipes good data."""
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def build_aliases(cfg, *soups):
+    """List of (name as written on the page, canonical name), longest names first.
+
+    Names are discovered from team links (/teams/id/N), so renamed clubs and the
+    whole 1. Liga work without maintaining a list by hand.
+    """
+    mapping = {}
+    for canonical, names in cfg["aliases"].items():
+        for name in names:
+            mapping[name] = canonical
+    for soup in soups:
+        if soup is None:
+            continue
+        for link in soup.find_all("a", href=True):
+            found = re.search(r"/teams/id/(\d+)", link["href"])
+            if not found:
+                continue
+            name = norm(link.get_text(" ", strip=True))
+            if not name:
+                img = link.find("img")
+                name = norm((img.get("alt") or img.get("title") or "")) if img else ""
+            if not name or len(name) > 60:
+                continue
+            team_id = int(found.group(1))
+            if team_id in cfg["team_ids"]:
+                mapping[name] = cfg["team_ids"][team_id]
+            else:
+                mapping.setdefault(name, name)
+    return sorted(mapping.items(), key=lambda item: len(item[0]), reverse=True)
+
+
+def team_in(text, aliases):
     lower = text.casefold()
-    for alias, canonical in ALIASES:
+    for alias, canonical in aliases:
         if alias.casefold() in lower:
             return canonical
     return None
 
-def team_names_in_node(node):
+
+def team_names_in_node(node, aliases):
     names = []
     for img in node.find_all("img"):
         alt = norm(img.get("alt", "")) + " " + norm(img.get("title", ""))
-        name = team_in(alt)
+        name = team_in(alt, aliases)
         if name and name not in names:
             names.append(name)
     # Some site cards expose team names as text rather than image alt text.
     text = norm(node.get_text(" ", strip=True))
-    for alias, canonical in ALIASES:
+    for alias, canonical in aliases:
         if alias.casefold() in text.casefold() and canonical not in names:
             names.append(canonical)
     return names
 
-def extract_team_logos(*soups):
+
+def extract_team_logos(base, aliases, *soups):
     """Collect official team logo URLs from team images on official league pages."""
     logos = {}
     for soup in soups:
+        if soup is None:
+            continue
         for img in soup.find_all("img"):
             label = norm(img.get("alt", "")) + " " + norm(img.get("title", ""))
-            team = team_in(label)
+            team = team_in(label, aliases)
             if not team:
                 continue
             src = norm(img.get("src", "") or img.get("data-src", "") or img.get("data-lazy-src", ""))
             if not src or src.startswith("data:"):
                 continue
-            logos.setdefault(team, urljoin(BASE, src))
+            logos.setdefault(team, urljoin(base, src))
     return [{"name": name, "logo": logo} for name, logo in sorted(logos.items())]
+
+
+def season_year(month):
+    """Year of a calendar month inside the current season (July - June)."""
+    today = datetime.datetime.now(TZ).date()
+    start = today.year if today.month >= 7 else today.year - 1
+    return start if month >= 7 else start + 1
+
 
 def parse_date(text):
     """Parse only known Polish calendar formats; never mistake set scores for dates."""
@@ -97,6 +200,7 @@ def parse_date(text):
         "wrz": 9, "września": 9, "paź": 10, "października": 10,
         "lis": 11, "listopada": 11, "gru": 12, "grudnia": 12,
     }
+
     # Numeric full date, e.g. 16.10.2026, 17:30.
     match = re.search(r"(?<!\d)(\d{1,2})\.(\d{1,2})\.(\d{4})(?:\s*,?\s*(\d{1,2}:\d{2}))?(?!\d)", text)
     if match:
@@ -107,32 +211,47 @@ def parse_date(text):
         except ValueError:
             return None, None
 
-    # Official TAURON fixture labels: "sobota, 17 paź, 18:00".
+    # Official fixture labels: "sobota, 17 paź, 18:00".
     match = re.search(
         r"(?i)(?:poniedziałek|wtorek|środa|czwartek|piątek|sobota|niedziela)?"
         r"\s*,?\s*(\d{1,2})\s+([a-ząćęłńóśźż]+)"
         r"\.?\s*,?\s*(\d{1,2}:\d{2})?",
-        text
+        text,
     )
     if not match:
         return None, None
     day, month_name, clock = match.groups()
-    month_name = month_name.casefold().rstrip(".")
-    month = months.get(month_name)
+    month = months.get(month_name.casefold().rstrip("."))
     if not month:
         return None, None
-    # The current competition season is 2026/27.
-    year = 2026 if month >= 7 else 2027
     try:
-        parsed = datetime.date(year, month, int(day))
+        parsed = datetime.date(season_year(month), month, int(day))
         return parsed.strftime("%d.%m.%Y"), clock
     except ValueError:
         return None, None
 
-def parse_matches(soup):
+
+def find_match_id(node):
+    """Official match number from the 'Więcej' link, or None when it is not certain."""
+    for scope in (node, node.parent):
+        if scope is None:
+            continue
+        ids = set()
+        for link in scope.find_all("a", href=True):
+            found = re.search(r"/games/action/show/id/(\d+)", link["href"])
+            if found:
+                ids.add(found.group(1))
+        if len(ids) == 1:
+            return ids.pop()
+        if len(ids) > 1:
+            return None  # the scope holds several matches: do not guess
+    return None
+
+
+def parse_matches(soup, aliases):
     found = {}
     for img in soup.find_all("img"):
-        name = team_in(norm(img.get("alt", "")) + " " + norm(img.get("title", "")))
+        name = team_in(norm(img.get("alt", "")) + " " + norm(img.get("title", "")), aliases)
         if not name:
             continue
         node = img
@@ -143,19 +262,20 @@ def parse_matches(soup):
             text = norm(node.get_text(" ", strip=True))
             if len(text) > 1800:
                 continue
+
             # Only parse the actual fixture section. Some official cards append a
             # reversed head-to-head block labelled "Wyniki pierwszego meczu".
-            # Do not let that historical block become a second fixture.
             primary_text = re.split(r"(?i)wyniki pierwszego meczu", text, maxsplit=1)[0].strip()
             if not primary_text:
                 continue
-            names = team_names_in_node(node)
+
+            names = team_names_in_node(node, aliases)
             # Parent containers may contain both the current fixture and the
             # historical head-to-head. Resolve the two teams only from the part
             # before that heading instead of discarding the whole card.
             if len(names) != 2:
                 positions = []
-                for alias, canonical in ALIASES:
+                for alias, canonical in aliases:
                     pos = primary_text.casefold().find(alias.casefold())
                     if pos >= 0:
                         positions.append((pos, canonical, len(alias)))
@@ -168,6 +288,7 @@ def parse_matches(soup):
                     names = [unique[0][1], unique[1][1]]
                 else:
                     continue
+
             # Team names occur in match order; the match score is between them.
             text = primary_text
             p1 = text.casefold().find(names[0].casefold())
@@ -175,7 +296,7 @@ def parse_matches(soup):
             if p1 < 0 or p2 < 0:
                 # Retry using alias positions in the actual text.
                 positions = []
-                for alias, canonical in ALIASES:
+                for alias, canonical in aliases:
                     pos = text.casefold().find(alias.casefold())
                     if pos >= 0 and canonical in names:
                         positions.append((pos, canonical, len(alias)))
@@ -192,6 +313,7 @@ def parse_matches(soup):
                 l1 = len(names[0])
             if p2 <= p1:
                 continue
+
             middle = text[p1 + l1:p2].strip()
             score = re.match(r"^([0-3])\s+([0-3])(?:\s+|$)", middle)
             placeholder = bool(re.search(r"···|…|[-–—]", middle))
@@ -215,27 +337,23 @@ def parse_matches(soup):
             ]
             nonzero_pairs = [(a, b) for a, b in point_pairs if a != 0 or b != 0]
             set_scores = [f"{a}:{b}" for a, b in nonzero_pairs]
-            current_points = None
 
+            current_points = None
             if max(home_sets, away_sets) >= 3:
                 status = "finished"
             else:
                 completed_sets = home_sets + away_sets
                 # A live set appears as an extra non-zero points pair after the
-                # completed sets. Remove that pair from set_scores: it is not a
-                # finished set yet. This also handles the first set when the
-                # official site displays the set tally as placeholders.
+                # completed sets. It is not a finished set yet.
                 if len(nonzero_pairs) > completed_sets:
                     a, b = nonzero_pairs[-1]
                     current_points = f"{a}:{b}"
                     if set_scores:
                         set_scores.pop()
-                # If the set tally itself is numeric and non-zero, the match has
-                # started even if the current points have not appeared yet.
                 status = "live" if current_points is not None or home_sets > 0 or away_sets > 0 else "scheduled"
+
             date, time = parse_date(text)
             # The date label is often a sibling of the team/score container, not inside it.
-            # Walk backwards through nearby document text to find the nearest official date label.
             if not date:
                 for previous_text in node.find_all_previous(string=True):
                     candidate_date, candidate_time = parse_date(norm(str(previous_text)))
@@ -243,18 +361,15 @@ def parse_matches(soup):
                         date, time = candidate_date, candidate_time
                         break
 
-            # The official fixtures page can show "Trwa" for every card and keep
-            # the score row at zero, so its label alone is not a reliable signal.
-            # If a scheduled match's known kickoff has passed within a plausible
-            # match window, expose it as live even while the source has no points.
-            # This avoids leaving a match permanently "scheduled" after kickoff.
+            # The official page can show "Trwa" for every card and keep the score
+            # row at zero, so its label alone is not a reliable signal. If kickoff
+            # passed within a plausible match window, expose the match as live.
             if status == "scheduled" and date and time:
                 try:
                     kickoff = datetime.datetime.strptime(
                         f"{date} {time}", "%d.%m.%Y %H:%M"
-                    ).replace(tzinfo=ZoneInfo("Europe/Warsaw"))
-                    now_local = datetime.datetime.now(ZoneInfo("Europe/Warsaw"))
-                    elapsed = (now_local - kickoff).total_seconds()
+                    ).replace(tzinfo=TZ)
+                    elapsed = (datetime.datetime.now(TZ) - kickoff).total_seconds()
                     if 0 <= elapsed <= 3 * 60 * 60:
                         status = "live"
                 except ValueError:
@@ -262,6 +377,7 @@ def parse_matches(soup):
 
             key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
+                "id": find_match_id(node),
                 "date": date or "Termin do potwierdzenia",
                 "time": time,
                 "status": status,
@@ -273,15 +389,13 @@ def parse_matches(soup):
                 "current_points": current_points,
             }
             break
+
     # A fixture is identified by its actual date, kickoff and unordered team pair.
-    # Historical head-to-head snippets are excluded above, before fixture parsing,
-    # so they cannot introduce last-season matches or overwrite current home/away order.
     grouped = {}
     for match in found.values():
         pair = tuple(sorted((match["home"], match["away"])))
         key = (match["date"], match.get("time") or "", pair)
         # Prefer completed scorelines, then the candidate with the most set scores.
-        # A real 0:3 result is valid; the zeroes in the per-set placeholders are not.
         quality = (
             1 if match["status"] == "finished" else 0,
             len(match.get("set_scores", [])),
@@ -292,13 +406,19 @@ def parse_matches(soup):
             grouped[key] = (quality, match)
     return [entry[1] for entry in grouped.values()]
 
-def parse_table(soup):
-    rows = []
+
+def parse_table(soup, aliases):
+    """Standings. The page lists rows for many rounds, so keep each team's LATEST row."""
+    latest = {}
     for tr in soup.select("tr"):
         cells = [norm(c.get_text(" ", strip=True)) for c in tr.find_all(["td", "th"], recursive=False)]
         if not cells:
             continue
-        team = next((canonical for alias, canonical in ALIASES if any(alias.casefold() in c.casefold() for c in cells)), None)
+        team = next(
+            (canonical for alias, canonical in aliases
+             if any(alias.casefold() in c.casefold() for c in cells)),
+            None,
+        )
         if not team:
             continue
         nums = []
@@ -306,13 +426,11 @@ def parse_table(soup):
             value = cell.replace(" ", "")
             if re.fullmatch(r"\d+", value):
                 nums.append(int(value))
-        if len(nums) < 8:
-            continue
         # Official table order: rank, league points, played, wins, losses,
         # sets won/lost and points won/lost, followed by scoreline counts.
         if len(nums) < 9:
             continue
-        rows.append({
+        row = {
             "rank": nums[0],
             "team": team,
             "points": nums[1],
@@ -323,43 +441,77 @@ def parse_table(soup):
             "sets_against": nums[6],
             "points_for": nums[7],
             "points_against": nums[8],
-        })
-    unique = {}
-    for row in rows:
-        unique.setdefault(row["team"], row)
-    return list(unique.values())
+        }
+        current = latest.get(team)
+        if current is None or row["played"] > current["played"]:
+            latest[team] = row
+    return sorted(latest.values(), key=lambda row: row["rank"])
 
-def main():
-    games = BeautifulSoup(get(GAMES_URL), "html.parser")
-    matches = parse_matches(games)
-    if len(matches) < 8:
-        raise RuntimeError(f"Only {len(matches)} men's TAURON Liga matches parsed; refusing to overwrite feed.")
 
-    # Table page may redirect incorrectly on the upstream site. Never replace good data
-    # with an unrelated women's table or an empty table.
+def run_league(key, cfg):
+    base = cfg["base"]
+    out = Path(cfg["out"])
+    previous = load_previous(out)
+
+    games = BeautifulSoup(get(base + "/games/nocookies/1.html", base), "html.parser")
+
+    table_soup = None
+    table_error = None
     try:
-        table_soup = BeautifulSoup(get(TABLE_URL), "html.parser")
-        standings = parse_table(table_soup)
-        if len(standings) < 8:
-            raise RuntimeError(f"Only {len(standings)} standings rows parsed.")
-    except Exception as exc:
-        print(f"WARNING: Could not refresh PlusLiga standings; keeping existing table data: {exc}")
-        # Do not retain a stale table from another competition/source.
-        standings = []
+        table_soup = BeautifulSoup(get(base + "/table/nocookies/1.html", base), "html.parser")
+    except Exception as exc:  # network / redirect problems
+        table_error = exc
 
-    team_logos = extract_team_logos(games, table_soup if "table_soup" in locals() else games)
+    aliases = build_aliases(cfg, games, table_soup)
+
+    matches = parse_matches(games, aliases)
+    if not matches:
+        raise RuntimeError("No matches parsed; refusing to overwrite the feed.")
+    if len(matches) < 4:
+        print(f"WARNING [{key}]: only {len(matches)} matches parsed (end of season or a layout change?).")
+
+    standings = []
+    if table_soup is not None:
+        standings = parse_table(table_soup, aliases)
+        if len(standings) < 8:
+            table_error = table_error or RuntimeError(f"only {len(standings)} standings rows parsed")
+            standings = []
+    if not standings:
+        # Keep the last good table instead of publishing an empty one.
+        standings = previous.get("table", [])
+        print(f"WARNING [{key}]: could not refresh standings, keeping previous table: {table_error}")
+
     payload = {
-        "teams": team_logos,
+        "league": key,
+        "teams": extract_team_logos(base, aliases, games, table_soup),
         "updated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "matches": matches,
         "table": standings,
-        "source": BASE,
-        "competition": "TAURON Liga (mężczyźni)",
+        "source": base,
+        "competition": cfg["competition"],
     }
-    path = Path("data/tauron.json")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Updated {len(matches)} men's TAURON Liga matches and {len(standings)} standings rows.")
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"[{key}] Updated {len(matches)} matches and {len(standings)} standings rows -> {out}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Refresh TAURON Liga data for Volley Hub.")
+    parser.add_argument("--league", choices=[*LEAGUES, "all"], default="all")
+    args = parser.parse_args()
+
+    keys = list(LEAGUES) if args.league == "all" else [args.league]
+    updated = 0
+    for key in keys:
+        try:
+            run_league(key, LEAGUES[key])
+            updated += 1
+        except Exception as exc:  # one broken league must not block the others
+            print(f"WARNING [{key}]: not updated: {exc}", file=sys.stderr)
+    if updated == 0:
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
