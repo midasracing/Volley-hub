@@ -62,7 +62,7 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-25T18:23:16.068483+00:00",
+  "updated_at": "2026-10-25T18:42:57.394263+00:00",
   "matches": [
     {
       "id": "1105168",
@@ -217,16 +217,17 @@
       "id": "1105172",
       "date": "25.10.2026",
       "time": "18:00",
-      "status": "live",
+      "status": "finished",
       "home": "PZL LEONARDO Avia Świdnik",
       "away": "KPS Płock",
-      "home_sets": 2,
+      "home_sets": 3,
       "away_sets": 0,
       "set_scores": [
         "25:20",
+        "25:20",
         "25:20"
       ],
-      "current_points": "12:11"
+      "current_points": null
     },
     {
       "id": "1105122",
@@ -425,17 +426,17 @@
     {
       "rank": 2,
       "team": "PZL LEONARDO Avia Świdnik",
-      "points": 13,
-      "played": 6,
-      "wins": 5,
+      "points": 16,
+      "played": 7,
+      "wins": 6,
       "losses": 1,
-      "sets_for": 16,
+      "sets_for": 19,
       "sets_against": 9,
-      "points_for": 573,
-      "points_against": 531
+      "points_for": 648,
+      "points_against": 591
     },
     {
-      "rank": 2,
+      "rank": 3,
       "team": "FORT Poznań",
       "points": 15,
       "played": 7,
@@ -594,13 +595,13 @@
       "rank": 16,
       "team": "KPS Płock",
       "points": 1,
-      "played": 5,
+      "played": 6,
       "wins": 0,
-      "losses": 5,
+      "losses": 6,
       "sets_for": 2,
-      "sets_against": 15,
-      "points_for": 351,
-      "points_against": 405
+      "sets_against": 18,
+      "points_for": 411,
+      "points_against": 480
     }
   ],
   "source": "https://www.tauron1liga.pl",
