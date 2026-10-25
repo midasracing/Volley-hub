@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-10-25T22:10:24.981112+00:00",
+  "updated_at": "2026-10-25T23:33:38.827788+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -22,7 +22,7 @@
         },
         {
           "name": "Fort Tarnowo Podgórne",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248448/badge.png"
         },
         {
           "name": "GKS Stoczniowiec",
@@ -1375,7 +1375,7 @@
         },
         {
           "name": "KS Metro Family Warszawa",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248458/badge.png"
         },
         {
           "name": "MOS Wola Tramwaje Warszawskie",
@@ -1383,7 +1383,7 @@
         },
         {
           "name": "MTS Międzyrzec Podlaski",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248454/badge.png"
         },
         {
           "name": "NECKO Augustów",
@@ -3007,7 +3007,7 @@
         },
         {
           "name": "Gwardia Wrocław",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248467/badge.jpg"
         },
         {
           "name": "Ikar Legnica",
@@ -4954,7 +4954,7 @@
       "teams": [
         {
           "name": "AZS Częstochowa",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248885/badge.png"
         },
         {
           "name": "Aluron CMC Wybicki Kielce",
@@ -6305,7 +6305,7 @@
         },
         {
           "name": "TKS Tychy",
-          "logo": ""
+          "logo": "https://assets.volleystation.com/website/teams/2248503/badge.png"
         },
         {
           "name": "TS Volley Rybnik",
