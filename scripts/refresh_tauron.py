@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh PlusLiga (men) fixtures/results and standings from the official site."""
+"""Refresh men's top-tier volleyball fixtures/results and standings from the official TAURON Liga site."""
 import datetime
 import html
 import json
@@ -9,7 +9,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 
-BASE = "https://www.plusliga.pl"
+BASE = "https://www.tauronliga.pl"
 GAMES_URL = BASE + "/games/nocookies/1.html"
 TABLE_URL = BASE + "/table/nocookies/1.html"
 HEADERS = {
@@ -46,7 +46,7 @@ def get(url):
     req = Request(url, headers=HEADERS)
     with urlopen(req, timeout=30) as response:
         final_host = urlparse(response.geturl()).hostname or ""
-        if not final_host.endswith("plusliga.pl"):
+        if not final_host.endswith("tauronliga.pl"):
             raise RuntimeError(f"Official PlusLiga URL redirected to unexpected host: {final_host}")
         return response.read()
 
@@ -194,7 +194,7 @@ def main():
     games = BeautifulSoup(get(GAMES_URL), "html.parser")
     matches = parse_matches(games)
     if len(matches) < 8:
-        raise RuntimeError(f"Only {len(matches)} PlusLiga matches parsed; refusing to overwrite feed.")
+        raise RuntimeError(f"Only {len(matches)} men's TAURON Liga matches parsed; refusing to overwrite feed.")
 
     # Table page may redirect incorrectly on the upstream site. Never replace good data
     # with an unrelated women's table or an empty table.
@@ -213,12 +213,12 @@ def main():
         "matches": matches,
         "table": standings,
         "source": BASE,
-        "competition": "PlusLiga",
+        "competition": "TAURON Liga (mężczyźni)",
     }
     path = Path("data/tauron.json")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Updated {len(matches)} PlusLiga matches and {len(standings)} standings rows.")
+    print(f"Updated {len(matches)} men's TAURON Liga matches and {len(standings)} standings rows.")
 
 if __name__ == "__main__":
     main()
