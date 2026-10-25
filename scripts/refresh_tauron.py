@@ -170,20 +170,21 @@ def parse_table(soup):
                 nums.append(int(value))
         if len(nums) < 8:
             continue
-        # Common PlusLiga table columns: rank, played, wins, losses, sets won/lost,
-        # points won/lost, league points. Locate the leading rank and preserve source order.
-        rank = nums[0]
+        # Official table order: rank, league points, played, wins, losses,
+        # sets won/lost and points won/lost, followed by scoreline counts.
+        if len(nums) < 9:
+            continue
         rows.append({
-            "rank": rank,
+            "rank": nums[0],
             "team": team,
-            "played": nums[1],
-            "wins": nums[2],
-            "losses": nums[3],
-            "sets_for": nums[4],
-            "sets_against": nums[5],
-            "points_for": nums[6],
-            "points_against": nums[7],
-            "points": nums[-1],
+            "points": nums[1],
+            "played": nums[2],
+            "wins": nums[3],
+            "losses": nums[4],
+            "sets_for": nums[5],
+            "sets_against": nums[6],
+            "points_for": nums[7],
+            "points_against": nums[8],
         })
     unique = {}
     for row in rows:
