@@ -365,7 +365,7 @@ def parse_matches(soup, aliases):
             # placeholders/zeros. Treat that label as live only during a bounded
             # window after kickoff; future fixtures also sometimes carry this label.
             # Real set scores take precedence, and a 3-set win above remains finished.
-            if status == "scheduled" and date and time and re.search(r"(?i)\\btrwa!?\\b", text):
+            if status == "scheduled" and date and time and re.search(r"(?i)\btrwa!?\b", text):
                 try:
                     kickoff = datetime.datetime.strptime(
                         f"{date} {time}", "%d.%m.%Y %H:%M"
