@@ -207,17 +207,20 @@ def parse_matches(soup):
                         continue
                     if a >= 0 and b >= 0:
                         set_scores.append(f"{a}:{b}")
+                current_points = None
                 if max(home_sets, away_sets) >= 3:
                     status = "finished"
-                elif home_sets > 0 or away_sets > 0 or set_scores:
-                    # A partial set tally / points means the match has started.
-                    # Do not leave an in-progress fixture labelled as scheduled.
-                    status = "live"
                 else:
-                    status = "scheduled"
+                    # In a live match the last pair after completed set scores can
+                    # be the current set points (e.g. sets 1:0, points 18:16).
+                    completed_sets = home_sets + away_sets
+                    if len(set_scores) > completed_sets:
+                        current_points = set_scores.pop()
+                    status = "live" if current_points or home_sets > 0 or away_sets > 0 or set_scores else "scheduled"
             else:
                 home_sets = away_sets = 0
                 set_scores = []
+                current_points = None
                 status = "scheduled"
             date, time = parse_date(text)
             # The date label is often a sibling of the team/score container, not inside it.
@@ -238,6 +241,7 @@ def parse_matches(soup):
                 "home_sets": home_sets,
                 "away_sets": away_sets,
                 "set_scores": set_scores,
+                "current_points": current_points,
             }
             break
     # A fixture is identified by its actual date, kickoff and unordered team pair.
