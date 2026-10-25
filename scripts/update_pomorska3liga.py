@@ -59,7 +59,7 @@ def fetch(url):
         const result = {
           status: response ? response.status() : null,
           title: await page.title(),
-          body: (await page.locator('body').innerText()).slice(0, 500),
+          body: (await page.evaluate(() => document.body ? document.body.innerText : '')).slice(0, 500),
           html: await page.content()
         };
         process.stdout.write(JSON.stringify(result));
