@@ -40,32 +40,6 @@ jobs:
         run: python -m playwright install --with-deps chromium
       - name: Install Puppeteer Extra and Stealth plugin
         run: npm install --no-save puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
-      - name: Test Puppeteer Extra plugin activation on example.com
-        run: |
-          node <<'JS'
-          const puppeteer = require('puppeteer-extra');
-          const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-
-          puppeteer.use(StealthPlugin());
-
-          (async () => {
-            let browser;
-            try {
-              browser = await puppeteer.launch({
-                headless: true,
-                args: ['--no-sandbox', '--disable-setuid-sandbox']
-              });
-              const page = await browser.newPage();
-              await page.goto('https://example.com', { waitUntil: 'domcontentloaded', timeout: 30000 });
-              console.log('Stealth plugin loaded; example.com title:', await page.title());
-            } finally {
-              if (browser) await browser.close();
-            }
-          })().catch(error => {
-            console.error(error);
-            process.exitCode = 1;
-          });
-          JS
       - name: Diagnose VolleyStation access
         run: |
           python - <<'PY'
