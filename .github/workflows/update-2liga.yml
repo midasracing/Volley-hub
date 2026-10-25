@@ -33,7 +33,7 @@ jobs:
         run: python scripts/update_2liga.py
       - name: Commit updated schedule
         run: |
-          if git diff --quiet -- data/2liga.json; then
+          if [ -z "$(git status --porcelain -- data/2liga.json)" ]; then
             echo "No schedule changes."
             exit 0
           fi
