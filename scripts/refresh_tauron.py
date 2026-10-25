@@ -361,8 +361,20 @@ def parse_matches(soup, aliases):
                         date, time = candidate_date, candidate_time
                         break
 
-            # Never infer a live match from kickoff time alone: postponed or delayed
-            # fixtures must remain scheduled until the feed contains actual score data.
+            # The official fixture card can say "Trwa" while its point row is still
+            # placeholders/zeros. Treat that label as live only during a bounded
+            # window after kickoff; future fixtures also sometimes carry this label.
+            # Real set scores take precedence, and a 3-set win above remains finished.
+            if status == "scheduled" and date and time and re.search(r"(?i)\\btrwa!?\\b", text):
+                try:
+                    kickoff = datetime.datetime.strptime(
+                        f"{date} {time}", "%d.%m.%Y %H:%M"
+                    ).replace(tzinfo=TZ)
+                    now = datetime.datetime.now(TZ)
+                    if kickoff <= now <= kickoff + datetime.timedelta(hours=3):
+                        status = "live"
+                except ValueError:
+                    pass
 
             key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
