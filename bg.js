@@ -1,11 +1,10 @@
 /* Animowane tło sekcji głównej — port komponentu Velaris (WebGL) na czysty JavaScript.
    Wstrzymuje się poza ekranem i przy ukrytej karcie, a przy „Ogranicz ruch" rysuje jedną klatkę. */
 (function () {
-  var cv = document.getElementById("hero-bg");
+  var cv = document.getElementById("page-bg");
   if (!cv) return;
-  var box = cv.parentElement;
-  var fullScreen = cv.classList.contains("hero-bg");
-  var CFG = { bg: "#02060f", colors: ["#2f7bf0", "#0a60d6", "#08306b", "#02060f"], speed: 1.2, grain: 0.25 };
+  var box = document.documentElement;
+  var CFG = { speed: 1.0 };
 
   var gl = cv.getContext("webgl", { antialias: false, powerPreference: "low-power" });
   if (!gl) { box.classList.add("no-gl"); return; }
@@ -13,7 +12,7 @@
   var VS = "attribute vec2 position;varying vec2 vUv;void main(){vUv=position*0.5+0.5;gl_Position=vec4(position,0.0,1.0);}";
   var FS = [
     "#ifdef GL_FRAGMENT_PRECISION_HIGH", "precision highp float;", "#else", "precision mediump float;", "#endif",
-    "varying vec2 vUv;uniform vec2 u_resolution;uniform float u_time;uniform float u_grain;uniform vec3 u_colors[4];uniform vec3 u_bg;",
+    "varying vec2 vUv;uniform vec2 u_resolution;uniform float u_time;uniform float u_grain;uniform vec3 u_colors[4];uniform vec3 u_bg;uniform float u_vig;",
     "vec3 permute(vec3 x){return mod(((x*34.0)+1.0)*x,289.0);}",
     "float snoise(vec2 v){const vec4 C=vec4(0.211324865405187,0.366025403784439,-0.577350269189626,0.024390243902439);",
     "vec2 i=floor(v+dot(v,C.yy));vec2 x0=v-i+dot(i,C.xx);vec2 i1=(x0.x>x0.y)?vec2(1.0,0.0):vec2(0.0,1.0);",
@@ -32,7 +31,7 @@
     "col=mix(col,u_colors[1],smoothstep(-0.1,0.6,n2)*0.7);",
     "col=mix(col,u_colors[2],smoothstep(-0.3,0.4,n3)*0.6);",
     "col=mix(col,u_colors[3],smoothstep(0.0,0.7,n1*n2)*0.5);",
-    "float glow=smoothstep(0.8,0.0,dist)*0.3;col+=u_colors[1]*glow;col=mix(col*0.2,col,vignette);",
+    "float glow=smoothstep(0.8,0.0,dist)*0.3;col+=u_colors[1]*glow;col=mix(col*u_vig,col,vignette);",
     "float grain=fract(sin(dot(uv,vec2(12.9898,78.233))*1.0)*43758.5453+u_time);col+=(grain-0.5)*u_grain*0.1;",
     "gl_FragColor=vec4(col,1.0);}"
   ].join("\n");
@@ -61,9 +60,19 @@
     return [0, 2, 4].map(function (i) { return parseInt(h.slice(i, i + 2), 16) / 255; });
   }
   var uRes = gl.getUniformLocation(prog, "u_resolution"), uTime = gl.getUniformLocation(prog, "u_time");
-  gl.uniform1f(gl.getUniformLocation(prog, "u_grain"), CFG.grain);
-  gl.uniform3fv(gl.getUniformLocation(prog, "u_colors"), new Float32Array(CFG.colors.reduce(function (a, c) { return a.concat(rgb(c)); }, [])));
-  var b = rgb(CFG.bg); gl.uniform3f(gl.getUniformLocation(prog, "u_bg"), b[0], b[1], b[2]);
+  var uCols = gl.getUniformLocation(prog, "u_colors"), uBg = gl.getUniformLocation(prog, "u_bg"), uVig = gl.getUniformLocation(prog, "u_vig");
+  var scheme = window.matchMedia("(prefers-color-scheme: dark)");
+  var THEMES = {
+    dark: { bg: "#02060f", colors: ["#1e5fd0", "#0a4ab8", "#08306b", "#02060f"], vig: 0.2 },
+    light: { bg: "#e8f1ff", colors: ["#9cc4ff", "#c4dcff", "#7fb0f5", "#f4f8ff"], vig: 0.9 }
+  };
+  gl.uniform1f(gl.getUniformLocation(prog, "u_grain"), 0.12);
+  function applyTheme() {
+    var T = scheme.matches ? THEMES.dark : THEMES.light, b = rgb(T.bg);
+    gl.uniform3fv(uCols, new Float32Array(T.colors.reduce(function (a, c) { return a.concat(rgb(c)); }, [])));
+    gl.uniform3f(uBg, b[0], b[1], b[2]);
+    gl.uniform1f(uVig, T.vig);
+  }
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   var raf = 0, visible = true, last = 8000;
@@ -74,27 +83,25 @@
     gl.uniform1f(uTime, ms * 0.001 * CFG.speed);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   }
-  function frame(ms) { draw(ms); raf = requestAnimationFrame(frame); }
-  function start() { if (!raf && visible && !document.hidden && !reduce.matches) raf = requestAnimationFrame(frame); }
+  var lastT = 0;
+  function frame(ms) { if (ms - lastT >= 33) { lastT = ms; draw(ms); } raf = requestAnimationFrame(frame); }
+  function start() { if (!raf && !document.hidden && !reduce.matches) raf = requestAnimationFrame(frame); }
   function stop() { cancelAnimationFrame(raf); raf = 0; }
 
+  /* Gradient jest miękki, więc rysujemy w połowie rozdzielczości: oszczędza baterię. */
   function resize() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    var width = fullScreen ? window.innerWidth : box.clientWidth;
-    var height = fullScreen ? window.innerHeight : box.clientHeight;
-    cv.width = Math.round(width * dpr);
-    cv.height = Math.round(height * dpr);
-    if (fullScreen) { cv.style.width = width + "px"; cv.style.height = height + "px"; }
+    cv.width = Math.max(1, Math.round(window.innerWidth * 0.5));
+    cv.height = Math.max(1, Math.round(window.innerHeight * 0.5));
     gl.viewport(0, 0, cv.width, cv.height);
     gl.uniform2f(uRes, cv.width, cv.height);
     draw(last);
   }
 
-  new ResizeObserver(resize).observe(box);
-  window.addEventListener("resize", resize, { passive: true });
-  new IntersectionObserver(function (e) { visible = e[0].isIntersecting; visible ? start() : stop(); }).observe(box);
+  window.addEventListener("resize", resize);
   document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
   reduce.addEventListener && reduce.addEventListener("change", function () { reduce.matches ? stop() : start(); });
+  scheme.addEventListener && scheme.addEventListener("change", function () { applyTheme(); draw(last); });
+  applyTheme();
   resize();
   start();
 })();
