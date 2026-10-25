@@ -135,7 +135,7 @@ def parse_matches(soup):
                         continue
                     if a >= 0 and b >= 0:
                         set_scores.append(f"{a}:{b}")
-                status = "finished" if home_sets + away_sets >= 3 else "scheduled"
+                status = "finished" if max(home_sets, away_sets) >= 3 else "scheduled"
             else:
                 home_sets = away_sets = 0
                 set_scores = []
@@ -205,11 +205,8 @@ def main():
             raise RuntimeError(f"Only {len(standings)} standings rows parsed.")
     except Exception as exc:
         print(f"WARNING: Could not refresh PlusLiga standings; keeping existing table data: {exc}")
-        existing = Path("data/tauron.json")
-        try:
-            standings = json.loads(existing.read_text(encoding="utf-8")).get("table", [])
-        except Exception:
-            standings = []
+        # Do not retain a stale table from another competition/source.
+        standings = []
 
     payload = {
         "updated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
