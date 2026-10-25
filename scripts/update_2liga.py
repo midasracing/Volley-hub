@@ -93,10 +93,23 @@ def main():
         raise RuntimeError("PZPS page loaded, but no match rows were parsed; keeping existing data.")
 
     matches.sort(key=lambda m: (datetime.strptime(m["date"], "%d.%m.%Y"), m["time"]))
+    group_names = sorted({m["group"] for m in matches if m.get("group")}, key=lambda x: int(re.search(r"\d+", x).group()))
+    grouped = []
+    for group_name in group_names:
+        group_matches = [m for m in matches if m.get("group") == group_name]
+        group_teams = sorted({name for m in group_matches for name in (m["home"], m["away"])})
+        grouped.append({
+            "name": group_name,
+            "teams": [{"name": name, "logo": ""} for name in group_teams],
+            "matches": group_matches,
+            "table": [],
+        })
+
     data = {
         "competition": "II Liga Mężczyzn",
         "source": URL,
         "updated_at": datetime.now(timezone.utc).isoformat(),
+        "groups": grouped,
         "matches": matches,
         "teams": [{"name": name, "logo": ""} for name in sorted(teams)],
         "table": [],
