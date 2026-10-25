@@ -170,8 +170,33 @@ def parse_matches(soup, source_url):
             "round": int(round_no),
             "match_number": int(match_no),
             "source_url": source_url,
+            "match_url": urljoin(source_url, anchor.get("href", "")),
         })
     return matches
+
+
+def parse_match_detail_time(soup):
+    """Extract the scheduled start time from a match detail page."""
+    text = re.sub(r"\\s+", " ", soup.get_text(" ", strip=True))
+    # Prefer explicit kickoff labels to avoid mistaking set scores or other times for kickoff.
+    patterns = [
+        r"(?:godzina rozpoczęcia|godzina meczu|początek meczu|rozpoczęcie|start meczu|match start|kick.?off|data i godzina|termin meczu)[^0-9]{0,80}(\\d{1,2}:\\d{2})",
+        r"(?:data|termin)[^0-9]{0,50}\\d{1,2}[. /-]\\d{1,2}[. /-]\\d{4}[^0-9]{0,80}(\\d{1,2}:\\d{2})",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            hour, minute = match.group(1).split(":")
+            return f"{int(hour):02d}:{minute}"
+    # Last resort: use the first time only if it appears near the match date.
+    date_match = re.search(r"\\d{1,2}\\s+[a-ząćęłńóśźż]+\\s+\\d{4}", text, re.I)
+    if date_match:
+        nearby = text[date_match.end():date_match.end() + 180]
+        time_match = re.search(r"\\b(\\d{1,2}:\\d{2})\\b", nearby)
+        if time_match:
+            hour, minute = time_match.group(1).split(":")
+            return f"{int(hour):02d}:{minute}"
+    return None
 
 def parse_table(soup):
     rows = []
@@ -259,6 +284,33 @@ def main():
             merged["time"] = fixture["time"]
         by_id[result["id"]] = merged
     matches = list(by_id.values())
+
+    # Finished matches may still expose their original kickoff time on the
+    # official individual match page even when /results/ omits it.
+    detail_candidates = [
+        match for match in matches
+        if not match.get("time") and match.get("status") == "finished"
+        and match.get("match_url")
+    ]
+    detail_times_found = 0
+    for match in detail_candidates:
+        try:
+            detail_soup = fetch(match["match_url"])
+            detail_time = parse_match_detail_time(detail_soup)
+            if detail_time:
+                match["time"] = detail_time
+                detail_times_found += 1
+        except Exception as exc:
+            print(f"Warning: could not read kickoff time from match detail {match['match_url']}: {exc}", file=sys.stderr)
+    print(
+        f"Match detail time lookup: checked={len(detail_candidates)}, recovered={detail_times_found}",
+        flush=True,
+    )
+
+    # Internal helper URL is not needed in the public JSON feed.
+    for match in matches:
+        match.pop("match_url", None)
+
     with_time = sum(bool(match.get("time")) for match in matches)
     missing_time = sum(not match.get("time") for match in matches)
     missing_time_finished = sum(not match.get("time") and match.get("status") == "finished" for match in matches)
