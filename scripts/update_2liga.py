@@ -200,6 +200,18 @@ def main():
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "groups": groups,
     }
+    # Avoid timestamp-only commits on every scheduled run. Keep the last
+    # update timestamp when the actual fixtures/results/table are unchanged.
+    previous = {}
+    try:
+        previous = json.loads(OUT.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        pass
+    previous_content = {k: v for k, v in previous.items() if k != "updated_at"}
+    current_content = {k: v for k, v in data.items() if k != "updated_at"}
+    if previous_content == current_content:
+        data["updated_at"] = previous.get("updated_at", data["updated_at"])
+        print("No fixture, result, or table changes; preserving updated_at.")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Saved {len(matches)} fixtures across {len(teams)} teams to {OUT}")
