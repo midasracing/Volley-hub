@@ -194,9 +194,6 @@ def main():
         "results_source": "https://volleytime.pl/rozgrywki/2-liga/",
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "groups": groups,
-        "matches": matches,
-        "teams": [{"name": name, "logo": ""} for name in sorted(teams)],
-        "table": [],
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
