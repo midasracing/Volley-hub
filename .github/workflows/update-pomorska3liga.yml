@@ -1,6 +1,10 @@
 name: Update Pomorska III Liga Męska
 
 on:
+  push:
+    paths:
+      - ".github/workflows/update-pomorska3liga.yml"
+      - "scripts/update_pomorska3liga.py"
   workflow_dispatch:
   schedule:
     - cron: "*/15 * * * *"
