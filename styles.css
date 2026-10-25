@@ -107,20 +107,6 @@ button:active{transform:scale(.97);opacity:.85}
 @keyframes enter{from{opacity:0;transform:translateY(6px)}}
 .hero,.tiles,.notice,.empty,.calendar,.competition-row,.fav-row{box-shadow:0 0 0 .5px var(--line)}
 
-/* Tło sekcji głównej: animowany gradient WebGL (bg.js) */
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.4))}
-.hero>*:not(.hero-bg){position:relative;z-index:1}
-.hero .eyebrow{color:rgba(255,255,255,.88)}
-.hero p{color:rgba(255,255,255,.9)}
-.hero .primary{background:#fff;color:#0a2a5e}
-.hero .primary:focus-visible{outline-color:#fff}
-.hero .ball{border-color:rgba(255,255,255,.9)}
-.hero .ball::before{border-left-color:#fff}
-.hero .ball::after{border-left-color:#fff;border-right-color:#fff}
-.hero.no-gl{background:linear-gradient(135deg,#0a60d6,#071a3d)}
-
-
 /* Dolne menu od nowa: kapsuła z ikonami, aktywna zakładka rozwija się w pigułkę z podpisem */
 .bottom{position:fixed;z-index:10;left:50%;bottom:calc(10px + env(safe-area-inset-bottom));transform:translateX(-50%);width:calc(100% - 24px);max-width:520px;display:flex;align-items:center;justify-content:space-between;gap:4px;padding:8px;border-radius:999px;overflow:hidden;background:var(--navbg);border:1px solid var(--navline);box-shadow:0 10px 30px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%)}
 .nav{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;flex:0 0 52px;min-width:52px;height:52px;padding:0;border:0;border-radius:999px;background:none;color:var(--sub);font-size:1rem;font-weight:600;overflow:hidden;transition:flex .35s cubic-bezier(.3,1.2,.4,1),min-width .35s,background-color .25s}
@@ -142,3 +128,20 @@ button:active{transform:scale(.97);opacity:.85}
 @media(hover:hover){.bottom:hover::after{opacity:1}}
 @media(prefers-reduced-motion:reduce){.nav,.nav .lbl,.nav::before,.bottom::after{transition:none}}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.bottom{background:var(--card);-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* Tło całej strony: animowany gradient WebGL (bg.js) */
+:root{--subbg:#3c3c43}
+@media(prefers-color-scheme:dark){:root{--subbg:#d1d5dd}}
+#page-bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:rgba(0,0,0,.3)}
+@media(prefers-color-scheme:light){body::after{background:rgba(255,255,255,.3)}}
+html.no-gl body{background:linear-gradient(160deg,#0a4ab8,#02060f)}
+@media(prefers-color-scheme:light){html.no-gl body{background:linear-gradient(160deg,#c4dcff,#f4f8ff)}}
+.hero{overflow:visible;padding:16px 4px 0;margin:8px 0 12px;background:none;color:inherit;box-shadow:none}
+.ball{margin:28px 8px 0 auto}
+.intro p,.hero p,.footnote,.league-filter label,.eyebrow{color:var(--subbg)}
+
+/* Górny pasek: pływająca kapsuła jak dolne menu */
+header{top:calc(8px + env(safe-area-inset-top));min-height:60px;margin:8px 0 14px;padding:8px 8px 8px 16px;border:1px solid var(--navline);border-radius:999px;background:var(--navbg);box-shadow:0 8px 24px rgba(0,0,0,.14);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%)}
+header .round{background:var(--pill)}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){header{background:var(--card);-webkit-backdrop-filter:none;backdrop-filter:none}}
