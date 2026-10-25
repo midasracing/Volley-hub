@@ -436,9 +436,18 @@ def main():
     ]
     detail_times_found = 0
     detail_scores_found = 0
-    for match in detail_candidates:
+    for detail_index, match in enumerate(detail_candidates):
         try:
             detail_soup = fetch(match["match_url"])
+            if detail_index == 0:
+                print("DEBUG MATCH DETAIL URL:", match["match_url"], flush=True)
+                print("DEBUG MATCH DETAIL TEXT:", re.sub(r"\\s+", " ", detail_soup.get_text(" ", strip=True))[:5000], flush=True)
+                for table_index, table in enumerate(detail_soup.select("table")[:8]):
+                    print(f"DEBUG TABLE {table_index}:", re.sub(r"\\s+", " ", table.get_text(" ", strip=True))[:1500], flush=True)
+                for node in detail_soup.select("[class*=set], [class*=score], [data-testid*=score], [data-testid*=set]")[:50]:
+                    node_text = re.sub(r"\\s+", " ", node.get_text(" ", strip=True))
+                    if node_text:
+                        print("DEBUG SCORE NODE:", node.name, node.get("class"), node.get("data-testid"), repr(node_text[:180]), flush=True)
             detail_data = parse_match_detail(detail_soup)
             if not match.get("time") and detail_data["time"]:
                 match["time"] = detail_data["time"]
