@@ -56,7 +56,7 @@ def fetch(url):
         try {
           await page.waitForNetworkIdle({ timeout: 20000 });
         } catch (_) {}
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
         const result = {
           status: response ? response.status() : null,
           title: await page.title(),
@@ -229,20 +229,6 @@ def parse_match_detail(soup):
                 if 0 <= a <= 40 and 0 <= b <= 40 and a != b:
                     set_scores.append(f"{a}:{b}")
 
-    # Fallback for alternate VolleyStation markup: look for individual
-    # .set-points values and pair adjacent team rows, rather than expecting
-    # the points to appear as colon-separated text.
-    if not set_scores:
-        point_nodes = soup.select(".set-points")
-        values = [node.get_text(" ", strip=True) for node in point_nodes]
-        if len(values) >= 2 and len(values) % 2 == 0:
-            midpoint = len(values) // 2
-            home_points, away_points = values[:midpoint], values[midpoint:]
-            for home_value, away_value in zip(home_points, away_points):
-                if home_value.isdigit() and away_value.isdigit():
-                    a, b = int(home_value), int(away_value)
-                    if 0 <= a <= 40 and 0 <= b <= 40 and a != b:
-                        set_scores.append(f"{a}:{b}")
 
     return {"time": kickoff, "set_scores": set_scores}
 
@@ -323,14 +309,14 @@ def parse_team_logos(soup, page_url):
     # exposed there even when the standings table itself contains no image node.
     for anchor in soup.select('a[href*="/teams/"]'):
         href = urljoin(page_url, anchor.get("href", ""))
-        name = re.sub(r"\\s+", " ", anchor.get_text(" ", strip=True)).strip()
+        name = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
         # Some layouts wrap the badge in a link and keep the team name elsewhere
         # in the same standings row; use that row's team cell as a fallback.
         if not name:
             row = anchor.find_parent("tr")
             cells = row.find_all(["td", "th"], recursive=False) if row else []
             if len(cells) >= 2:
-                name = re.sub(r"\\s+", " ", cells[1].get_text(" ", strip=True)).strip()
+                name = re.sub(r"\s+", " ", cells[1].get_text(" ", strip=True)).strip()
         if not name or not href or name in logos:
             continue
         try:
@@ -405,7 +391,7 @@ def main():
     # official individual match page, so inspect each completed match directly.
     # Remove bogus scores saved by older parser versions (e.g. "18:0" from 18:00).
     def valid_saved_set_score(value):
-        parsed = re.fullmatch(r"(\\d{1,2}):(\\d{1,2})", str(value).strip())
+        parsed = re.fullmatch(r"(\d{1,2}):(\d{1,2})", str(value).strip())
         if not parsed:
             return False
         a, b = map(int, parsed.groups())
@@ -425,22 +411,13 @@ def main():
     detail_candidates = [
         match for match in matches
         if match.get("status") == "finished" and match.get("match_url")
-        and (not match.get("time") or not match.get("set_scores"))
+        and not match.get("set_scores")
     ]
     detail_times_found = 0
     detail_scores_found = 0
     for detail_index, match in enumerate(detail_candidates):
         try:
             detail_soup = fetch(match["match_url"])
-            if detail_index == 0:
-                print("DEBUG MATCH DETAIL URL:", match["match_url"], flush=True)
-                print("DEBUG MATCH DETAIL TEXT:", re.sub(r"\\s+", " ", detail_soup.get_text(" ", strip=True))[:5000], flush=True)
-                for table_index, table in enumerate(detail_soup.select("table")[:8]):
-                    print(f"DEBUG TABLE {table_index}:", re.sub(r"\\s+", " ", table.get_text(" ", strip=True))[:1500], flush=True)
-                for node in detail_soup.select("[class*=set], [class*=score], [data-testid*=score], [data-testid*=set]")[:50]:
-                    node_text = re.sub(r"\\s+", " ", node.get_text(" ", strip=True))
-                    if node_text:
-                        print("DEBUG SCORE NODE:", node.name, node.get("class"), node.get("data-testid"), repr(node_text[:180]), flush=True)
             detail_data = parse_match_detail(detail_soup)
             if not match.get("time") and detail_data["time"]:
                 match["time"] = detail_data["time"]
