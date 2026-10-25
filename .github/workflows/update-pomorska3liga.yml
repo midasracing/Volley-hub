@@ -22,7 +22,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,10 +30,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - name: Install scraper dependencies
         run: python -m pip install beautifulsoup4 playwright requests
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
+      - name: Install Puppeteer Extra
+        run: npm install --no-save puppeteer puppeteer-extra
       - name: Diagnose VolleyStation access
         run: |
           python - <<'PY'
@@ -60,6 +66,28 @@ jobs:
           except Exception as e:
               print(f"PLAYWRIGHT ERROR: {type(e).__name__}: {e}", flush=True)
           PY
+          node <<'JS'
+          const puppeteer = require('puppeteer-extra');
+          const url = 'https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/';
+          (async () => {
+            let browser;
+            try {
+              browser = await puppeteer.launch({ headless: true });
+              const page = await browser.newPage();
+              await page.setExtraHTTPHeaders({ 'Accept-Language': 'pl-PL,pl;q=0.9,en;q=0.8' });
+              const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 40000 });
+              await new Promise(resolve => setTimeout(resolve, 3000));
+              console.log('=== Puppeteer Extra (standard Chromium; no stealth plugin) ===');
+              console.log('HTTP:', response ? response.status() : 'no response');
+              console.log('Title:', await page.title());
+              console.log('Body:', (await page.locator('body').innerText()).slice(0, 220));
+            } catch (error) {
+              console.log('PUPPETEER ERROR:', error.name, error.message);
+            } finally {
+              if (browser) await browser.close();
+            }
+          })();
+          JS
       - name: Fetch official VolleyStation data
         run: python scripts/update_pomorska3liga.py
       - name: Commit updated data when changed
