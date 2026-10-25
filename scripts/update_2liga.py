@@ -139,20 +139,24 @@ def parse_pzps_results(matches):
             team_group[norm(match["home"])] = match["group"]
             team_group[norm(match["away"])] = match["group"]
     for table in soup.find_all("table"):
-        for row in table.find_all("tr"):
+        rows = table.find_all("tr")
+        header_text = " ".join(clean(c.get_text(" ", strip=True)).lower()
+                                for row in rows[:2] for c in row.find_all(["th", "td"]))
+        # Only parse a table that looks like a league standings table.
+        if not any(word in header_text for word in ("mecze", "mecz", "zwyci", "poraż", "poraz", "punkty", "pkt", "stosunek")):
+            continue
+        for row in rows:
             cells = [clean(c.get_text(" ", strip=True)) for c in row.find_all(["th", "td"])]
-            if len(cells) < 6:
-                continue
-            joined = " ".join(cells).lower()
-            if not any(word in joined for word in ("pkt", "punkty", "zwyci", "set", "mecz")):
+            if len(cells) < 5:
                 continue
             team_cell = next((c for c in cells if norm(c) in team_group), None)
             if not team_cell:
                 continue
             group = team_group[norm(team_cell)]
-            nums = [int(x) for c in cells if re.fullmatch(r"\d+", c) for x in [c]]
-            ratios = [tuple(map(int, x)) for c in cells for x in [re.fullmatch(r"(\d+)\s*:\s*(\d+)", c)] if x]
-            if len(nums) < 4:
+            nums = [int(c) for c in cells if re.fullmatch(r"\d+", c)]
+            ratios = [tuple(map(int, match.groups())) for c in cells
+                      for match in [re.fullmatch(r"(\d+)\s*:\s*(\d+)", c)] if match]
+            if len(nums) < 3:
                 continue
             tables_by_group[group].append({
                 "rank": nums[0] if nums[0] <= 20 else len(tables_by_group[group]) + 1,
