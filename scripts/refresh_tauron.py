@@ -248,7 +248,22 @@ def find_match_id(node):
     return None
 
 
-def parse_matches(soup, aliases):
+def detect_competition(text, default_competition):
+    """Identify cup/supercup fixtures from the official match-card label."""
+    label = norm(text)
+    patterns = [
+        (r"(?i)AL[-‑– ]?KO\\s+Superpuchar\\s+Polski(?:\\s+Mężczyzn)?(?:\\s+\\d{4})?", "AL-KO Superpuchar Polski"),
+        (r"(?i)TAURON\\s+Puchar\\s+Polski", "TAURON Puchar Polski"),
+        (r"(?i)Puchar\\s+Polski", "Puchar Polski"),
+        (r"(?i)Superpuchar\\s+Polski", "Superpuchar Polski"),
+    ]
+    for pattern, name in patterns:
+        if re.search(pattern, label):
+            return name
+    return default_competition
+
+
+def parse_matches(soup, aliases, default_competition="TAURON Liga"):
     found = {}
     for img in soup.find_all("img"):
         name = team_in(norm(img.get("alt", "")) + " " + norm(img.get("title", "")), aliases)
@@ -378,6 +393,7 @@ def parse_matches(soup, aliases):
             key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
                 "id": find_match_id(node),
+                "competition": detect_competition(text, default_competition),
                 "date": date or "Termin do potwierdzenia",
                 "time": time,
                 "status": status,
@@ -464,7 +480,7 @@ def run_league(key, cfg):
 
     aliases = build_aliases(cfg, games, table_soup)
 
-    matches = parse_matches(games, aliases)
+    matches = parse_matches(games, aliases, cfg["competition"])
     if not matches:
         raise RuntimeError("No matches parsed; refusing to overwrite the feed.")
 
@@ -486,7 +502,7 @@ def run_league(key, cfg):
         detail_url = f"{base}/games/action/show/id/{match['id']}/nocookies/1.html"
         try:
             detail_soup = BeautifulSoup(get(detail_url, base), "html.parser")
-            detail_matches = parse_matches(detail_soup, aliases)
+            detail_matches = parse_matches(detail_soup, aliases, cfg["competition"])
         except Exception as exc:
             print(f"INFO [{key}]: detail page unavailable for match {match['id']}: {exc}")
             continue
