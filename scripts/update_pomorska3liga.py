@@ -142,7 +142,16 @@ def parse_table(soup):
             continue
     return rows
 
+def load_previous(path):
+    """Keep the last good data available if the official site temporarily fails."""
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
 def main():
+    previous = load_previous(OUT)
     # IMPORTANT: VolleyStation separates upcoming fixtures (/schedule/) from
     # played results (/results/). Both pages must be read to build a full calendar.
     schedule = parse_matches(fetch(SCHEDULE_URL), SCHEDULE_URL)
@@ -155,11 +164,11 @@ def main():
 
     try:
         standings = parse_table(fetch(STANDINGS_URL))
-        if not standings:
-            print("Warning: standings page loaded but its layout did not match the expected table; schedule/results will still be saved.", file=sys.stderr)
+        if len(standings) < 8:
+            raise RuntimeError(f"only {len(standings)} standings rows parsed")
     except Exception as exc:
-        print(f"Warning: standings unavailable, keeping schedule/results only: {exc}", file=sys.stderr)
-        standings = []
+        print(f"Warning: standings unavailable, keeping previous table: {exc}", file=sys.stderr)
+        standings = previous.get("table", [])
 
     matches.sort(key=lambda m: (
         datetime.strptime(m["date"], "%d.%m.%Y"),
