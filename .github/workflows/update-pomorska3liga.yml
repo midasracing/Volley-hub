@@ -67,7 +67,7 @@ jobs:
               console.log('=== Puppeteer Extra + Stealth plugin (authorized VolleyStation security test) ===');
               console.log('HTTP:', response ? response.status() : 'no response');
               console.log('Title:', await page.title());
-              console.log('Body:', (await page.locator('body').innerText()).slice(0, 220));
+              console.log('Body:', (await page.evaluate(() => document.body ? document.body.innerText : '')).slice(0, 220));
             } catch (error) {
               console.log('PUPPETEER ERROR:', error.name, error.message);
             } finally {
