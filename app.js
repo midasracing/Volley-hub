@@ -1,5 +1,5 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const categories={"Polska":[["1. TAURON Liga Mężczyzn","Najwyższa liga · Polska"],["2. TAURON 1. Liga Mężczyzn","Drugi poziom · Polska"],["3. Pomorska Liga Seniorów","Trzeci poziom · Pomorze"]],"Europa":[],"Reprezentacje":[],"Świat":[]};
+const categories={"Polska":[["TAURON Liga Mężczyzn","1. poziom · Polska"],["TAURON 1. Liga Mężczyzn","2. poziom · Polska"],["2. Liga Mężczyzn","3. poziom · Polska"],["3. Pomorska Liga Mężczyzn","Pomorze · liga regionalna"]],"Europa":[],"Reprezentacje":[],"Świat":[]};
 const teams=["PGE Projekt Warszawa","Aluron CMC Warta Zawiercie","Bogdanka LUK Lublin","JSW Jastrzębski Węgiel","Trefl Gdańsk","Indykpol AZS Olsztyn","ZAKSA Kędzierzyn-Koźle","BKS BOSTIK ZGO Bielsko-Biała","KS DevelopRes Rzeszów","ŁKS Commercecon Łódź"];
 let favorites=JSON.parse(localStorage.getItem("vh-favs")||'{"teams":[],"leagues":[]}'),chosenCategory="Polska",favTab="teams",date=new Date();
 function save(){localStorage.setItem("vh-favs",JSON.stringify(favorites))}
