@@ -1,1 +1,626 @@
-{"updated_at":null,"matches":[],"table":[]}
+{
+  "updated_at": "2026-10-25T15:38:50.950530+00:00",
+  "matches": [
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Energa Trefl Gdańsk",
+      "away": "PGE GiEK SKRA Bełchatów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "PGE GiEK SKRA Bełchatów",
+      "away": "Energa Trefl Gdańsk",
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "BOGDANKA LUK Lublin",
+      "away": "ZAKSA Kędzierzyn-Koźle",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "ZAKSA Kędzierzyn-Koźle",
+      "away": "BOGDANKA LUK Lublin",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Jastrzębie Barkom",
+      "away": "Ślepsk Malow Suwałki",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "Ślepsk Malow Suwałki",
+      "away": "Jastrzębie Barkom",
+      "home_sets": 2,
+      "away_sets": 3,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Stilon Gorzów",
+      "away": "Podziemia Kredowe ChKS Chełm",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "Podziemia Kredowe ChKS Chełm",
+      "away": "Stilon Gorzów",
+      "home_sets": 2,
+      "away_sets": 3,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "NEONET Norwid Częstochowa",
+      "away": "Energa Indykpol AZS Olsztyn",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "Energa Indykpol AZS Olsztyn",
+      "away": "NEONET Norwid Częstochowa",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Energa Trefl Gdańsk",
+      "away": "BOGDANKA LUK Lublin",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "BOGDANKA LUK Lublin",
+      "away": "Energa Trefl Gdańsk",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "ZAKSA Kędzierzyn-Koźle",
+      "away": "Aluron CMC Warta Zawiercie",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "ZAKSA Kędzierzyn-Koźle",
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "GKS Katowice",
+      "away": "Ślepsk Malow Suwałki",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "Ślepsk Malow Suwałki",
+      "away": "GKS Katowice",
+      "home_sets": 2,
+      "away_sets": 3,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Jastrzębie Barkom",
+      "away": "Stilon Gorzów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "Stilon Gorzów",
+      "away": "Jastrzębie Barkom",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "PGE Projekt Warszawa",
+      "away": "PGE GiEK SKRA Bełchatów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "finished",
+      "home": "PGE GiEK SKRA Bełchatów",
+      "away": "PGE Projekt Warszawa",
+      "home_sets": 3,
+      "away_sets": 2,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "BOGDANKA LUK Lublin",
+      "away": "Aluron CMC Warta Zawiercie",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "live",
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "BOGDANKA LUK Lublin",
+      "home_sets": 0,
+      "away_sets": 1,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Asseco Resovia Rzeszów",
+      "away": "Podziemia Kredowe ChKS Chełm",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Podziemia Kredowe ChKS Chełm",
+      "away": "Asseco Resovia Rzeszów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "GKS Katowice",
+      "away": "PGE GiEK SKRA Bełchatów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "PGE GiEK SKRA Bełchatów",
+      "away": "GKS Katowice",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "PGE Projekt Warszawa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "PGE Projekt Warszawa",
+      "away": "Aluron CMC Warta Zawiercie",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "ZAKSA Kędzierzyn-Koźle",
+      "away": "Energa Indykpol AZS Olsztyn",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Energa Indykpol AZS Olsztyn",
+      "away": "ZAKSA Kędzierzyn-Koźle",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Energa Trefl Gdańsk",
+      "away": "Asseco Resovia Rzeszów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Asseco Resovia Rzeszów",
+      "away": "Energa Trefl Gdańsk",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "NEONET Norwid Częstochowa",
+      "away": "Ślepsk Malow Suwałki",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Ślepsk Malow Suwałki",
+      "away": "NEONET Norwid Częstochowa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "PGE Projekt Warszawa",
+      "away": "Stilon Gorzów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Stilon Gorzów",
+      "away": "PGE Projekt Warszawa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "PGE GiEK SKRA Bełchatów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "PGE GiEK SKRA Bełchatów",
+      "away": "Aluron CMC Warta Zawiercie",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "GKS Katowice",
+      "away": "BOGDANKA LUK Lublin",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "BOGDANKA LUK Lublin",
+      "away": "GKS Katowice",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Podziemia Kredowe ChKS Chełm",
+      "away": "Jastrzębie Barkom",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Jastrzębie Barkom",
+      "away": "Podziemia Kredowe ChKS Chełm",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Stilon Gorzów",
+      "away": "Energa Trefl Gdańsk",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Energa Trefl Gdańsk",
+      "away": "Stilon Gorzów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Energa Indykpol AZS Olsztyn",
+      "away": "Aluron CMC Warta Zawiercie",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "Energa Indykpol AZS Olsztyn",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "PGE GiEK SKRA Bełchatów",
+      "away": "BOGDANKA LUK Lublin",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "BOGDANKA LUK Lublin",
+      "away": "PGE GiEK SKRA Bełchatów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "Ślepsk Malow Suwałki",
+      "away": "PGE Projekt Warszawa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    },
+    {
+      "date": "Sezon 2026/27",
+      "status": "scheduled",
+      "home": "PGE Projekt Warszawa",
+      "away": "Ślepsk Malow Suwałki",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": []
+    }
+  ],
+  "table": [
+    {
+      "rank": 1,
+      "team": "BOGDANKA LUK Lublin",
+      "points": 3,
+      "played": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_for": 3,
+      "sets_against": 0,
+      "points_for": 75,
+      "points_against": 66
+    },
+    {
+      "rank": 2,
+      "team": "GKS Katowice",
+      "points": 3,
+      "played": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_for": 3,
+      "sets_against": 0,
+      "points_for": 76,
+      "points_against": 69
+    },
+    {
+      "rank": 2,
+      "team": "Jastrzębie Barkom",
+      "points": 5,
+      "played": 2,
+      "wins": 2,
+      "losses": 0,
+      "sets_for": 6,
+      "sets_against": 2,
+      "points_for": 180,
+      "points_against": 162
+    },
+    {
+      "rank": 3,
+      "team": "PGE Projekt Warszawa",
+      "points": 3,
+      "played": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_for": 3,
+      "sets_against": 1,
+      "points_for": 102,
+      "points_against": 85
+    },
+    {
+      "rank": 4,
+      "team": "PGE GiEK SKRA Bełchatów",
+      "points": 3,
+      "played": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_for": 3,
+      "sets_against": 1,
+      "points_for": 100,
+      "points_against": 95
+    },
+    {
+      "rank": 5,
+      "team": "NEONET Norwid Częstochowa",
+      "points": 2,
+      "played": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_for": 3,
+      "sets_against": 2,
+      "points_for": 112,
+      "points_against": 104
+    },
+    {
+      "rank": 6,
+      "team": "Stilon Gorzów",
+      "points": 2,
+      "played": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_for": 3,
+      "sets_against": 2,
+      "points_for": 105,
+      "points_against": 99
+    },
+    {
+      "rank": 6,
+      "team": "Energa Indykpol AZS Olsztyn",
+      "points": 3,
+      "played": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_for": 4,
+      "sets_against": 3,
+      "points_for": 160,
+      "points_against": 161
+    },
+    {
+      "rank": 7,
+      "team": "Aluron CMC Warta Zawiercie",
+      "points": 3,
+      "played": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_for": 3,
+      "sets_against": 4,
+      "points_for": 173,
+      "points_against": 170
+    },
+    {
+      "rank": 8,
+      "team": "Ślepsk Malow Suwałki",
+      "points": 1,
+      "played": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_for": 2,
+      "sets_against": 3,
+      "points_for": 102,
+      "points_against": 105
+    },
+    {
+      "rank": 9,
+      "team": "Podziemia Kredowe ChKS Chełm",
+      "points": 1,
+      "played": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_for": 2,
+      "sets_against": 3,
+      "points_for": 99,
+      "points_against": 105
+    },
+    {
+      "rank": 10,
+      "team": "Asseco Resovia Rzeszów",
+      "points": 1,
+      "played": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_for": 2,
+      "sets_against": 3,
+      "points_for": 104,
+      "points_against": 112
+    },
+    {
+      "rank": 11,
+      "team": "Energa Trefl Gdańsk",
+      "points": 0,
+      "played": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_for": 1,
+      "sets_against": 3,
+      "points_for": 95,
+      "points_against": 100
+    },
+    {
+      "rank": 14,
+      "team": "ZAKSA Kędzierzyn-Koźle",
+      "points": 0,
+      "played": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_for": 0,
+      "sets_against": 3,
+      "points_for": 66,
+      "points_against": 75
+    }
+  ],
+  "source": "https://www.tauronliga.pl"
+}
