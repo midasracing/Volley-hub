@@ -36,10 +36,10 @@ def fetch(url):
         });
         const page = await browser.newPage();
         // Controlled test: browser-like UA + varied viewport. Keep headless mode for CI.
+        const chromeVersion = (await browser.version()).match(/Chrome\/(\d+\.\d+\.\d+\.\d+)/)?.[1] || '120.0.0.0';
         await page.setUserAgent(
           'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' +
-          (await browser.version()).match(/Chrome\\/(\\d+\\.\\d+\\.\\d+\\.\\d+/)?.[1] +
-          ' Safari/537.36'
+          chromeVersion + ' Safari/537.36'
         );
         await page.setViewport({
           width: Math.floor(1024 + Math.random() * 100),
