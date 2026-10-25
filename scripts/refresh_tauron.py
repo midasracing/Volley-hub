@@ -361,19 +361,8 @@ def parse_matches(soup, aliases):
                         date, time = candidate_date, candidate_time
                         break
 
-            # The official page can show "Trwa" for every card and keep the score
-            # row at zero, so its label alone is not a reliable signal. If kickoff
-            # passed within a plausible match window, expose the match as live.
-            if status == "scheduled" and date and time:
-                try:
-                    kickoff = datetime.datetime.strptime(
-                        f"{date} {time}", "%d.%m.%Y %H:%M"
-                    ).replace(tzinfo=TZ)
-                    elapsed = (datetime.datetime.now(TZ) - kickoff).total_seconds()
-                    if 0 <= elapsed <= 3 * 60 * 60:
-                        status = "live"
-                except ValueError:
-                    pass
+            # Never infer a live match from kickoff time alone: postponed or delayed
+            # fixtures must remain scheduled until the feed contains actual score data.
 
             key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
