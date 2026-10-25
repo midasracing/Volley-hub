@@ -210,7 +210,25 @@ def parse_matches(soup):
                 "set_scores": set_scores,
             }
             break
-    return list(found.values())
+    # A single official match card contains both the current result and a
+    # reversed "Wyniki pierwszego meczu" / head-to-head snippet. The old parser
+    # treated those snippets as separate fixtures. Collapse them by date + kickoff
+    # + unordered team pair, retaining the candidate with the richest real result.
+    grouped = {}
+    for match in found.values():
+        pair = tuple(sorted((match["home"], match["away"])))
+        key = (match["date"], match.get("time") or "", pair)
+        # Prefer completed scorelines, then the candidate with the most set scores.
+        # A real 0:3 result is valid; the zeroes in the per-set placeholders are not.
+        quality = (
+            1 if match["status"] == "finished" else 0,
+            len(match.get("set_scores", [])),
+            sum(1 for score in match.get("set_scores", []) if score != "0:0"),
+        )
+        previous = grouped.get(key)
+        if previous is None or quality > previous[0]:
+            grouped[key] = (quality, match)
+    return [entry[1] for entry in grouped.values()]
 
 def parse_table(soup):
     rows = []
