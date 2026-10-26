@@ -204,7 +204,7 @@ async function start() {
     installCalendar();
     const page = $("#matches") || document.body;
     const pageObserver = new MutationObserver(installCalendar);
-    pageObserver.observe(page, { childList: true, subtree: true });
+    pageObserver.observe(page, { childList: true, subtree: true, attributes: true, attributeFilter: ["class", "aria-selected"] });
     window.__vhReactFluidGlass = { React, FluidGlass };
   } catch (error) {
     console.error("Volley Hub React / Fluid Glass:", error);
