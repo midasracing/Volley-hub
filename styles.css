@@ -110,12 +110,12 @@ button:active{transform:scale(.97);opacity:.85}
 /* Dolne menu od nowa: kapsuła z ikonami, aktywna zakładka rozwija się w pigułkę z podpisem */
 .bottom{position:fixed;z-index:10;left:50%;bottom:calc(10px + env(safe-area-inset-bottom));transform:translateX(-50%);width:calc(100% - 24px);max-width:520px;display:flex;align-items:center;justify-content:space-between;gap:4px;padding:8px;border-radius:999px;overflow:hidden;background:var(--navbg);border:1px solid var(--navline);box-shadow:0 10px 30px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%)}
 .nav{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;flex:0 0 52px;min-width:52px;height:52px;padding:0;border:0;border-radius:999px;background:none;color:var(--sub);font-size:1rem;font-weight:600;overflow:hidden;transition:flex .35s cubic-bezier(.3,1.2,.4,1),min-width .35s,background-color .25s}
-.nav.active{flex:1 1 52px;min-width:132px;justify-content:flex-start;padding:0 18px;background:transparent;color:var(--text)}
+.nav.active{flex:1 1 52px;min-width:132px;justify-content:flex-start;padding:0 18px;background:rgba(255,255,255,.14);color:var(--text)}
 /* Ruchoma tafla Liquid Glass wewnątrz aktywnej zakładki */
-.nav.active::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border:1px solid rgba(255,255,255,.72);border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,.76),rgba(255,255,255,.24) 48%,rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.72),inset 0 -1px 0 rgba(255,255,255,.12),0 3px 12px rgba(0,0,0,.09);-webkit-backdrop-filter:blur(16px) saturate(190%);backdrop-filter:blur(16px) saturate(190%);transition:inset .35s cubic-bezier(.3,1.2,.4,1),background .25s,box-shadow .25s}
+.nav.active::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border:1px solid rgba(255,255,255,.72);border-radius:inherit;background:linear-gradient(145deg,rgba(255,255,255,.48),rgba(255,255,255,.16) 48%,rgba(255,255,255,.08));box-shadow:inset 0 1px 0 rgba(255,255,255,.46),inset 0 -1px 0 rgba(255,255,255,.08),0 3px 10px rgba(0,0,0,.07);-webkit-backdrop-filter:blur(16px) saturate(190%);backdrop-filter:blur(16px) saturate(190%);transition:inset .35s cubic-bezier(.3,1.2,.4,1),background .25s,box-shadow .25s}
 .nav i{position:relative;z-index:1;display:grid;place-items:center;flex:none;font-style:normal}
 .nav .lbl{position:relative;z-index:1;max-width:0;opacity:0;white-space:nowrap;overflow:hidden;transition:max-width .35s,opacity .25s}
-.nav.active .lbl{max-width:120px;opacity:1}
+.nav.active .lbl{max-width:160px;opacity:1}
 .nav:focus-visible{outline-offset:-3px}
 @media(prefers-color-scheme:dark){.nav.active::after{border-color:rgba(255,255,255,.3);background:linear-gradient(145deg,rgba(255,255,255,.25),rgba(255,255,255,.1) 48%,rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(255,255,255,.04),0 3px 14px rgba(0,0,0,.25)}}
 /* Gradient: poświata aktywnej zakładki (kolor na zakładkę) i wielokolorowa poświata całego paska */
