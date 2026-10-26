@@ -1,5 +1,5 @@
-const CACHE="volley-hub-v44";
-const FILES=["./","./index.html","./styles.css","./app.js","./matches-ios.css","./matches-ios.js","./fluid-glass.js","./fluid-glass.css","./fluid-glass-react.js","./data/tauron.json","./data/tauron1liga.json","./data/pomorska3liga.json","./data/2liga.json","./manifest.webmanifest"];
+const CACHE="volley-hub-v45";
+const FILES=["./","./index.html","./styles.css","./app.js","./matches-ios.css","./matches-ios.js","./fluid-glass-react.js","./fluid-glass-component.jsx","./fluid-glass-component.css","./data/tauron.json","./data/tauron1liga.json","./data/pomorska3liga.json","./data/2liga.json","./manifest.webmanifest"];
 self.addEventListener("install",event=>{
   event.waitUntil((async()=>{
     const cache=await caches.open(CACHE);
