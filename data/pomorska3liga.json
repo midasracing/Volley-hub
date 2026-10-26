@@ -4,7 +4,7 @@
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
   "results_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
   "standings_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
-  "updated_at": "2026-10-26T10:26:09.278194+00:00",
+  "updated_at": "2026-10-26T14:32:17.681672+00:00",
   "teams": [
     {
       "name": "Energa Trefl Gdańsk III",
@@ -254,13 +254,17 @@
       "id": "18.10.2026-3-13",
       "competition": "Pomorska III Liga Męska",
       "date": "18.10.2026",
-      "time": null,
+      "time": "18:00",
       "status": "finished",
       "home": "Energa Trefl Gdańsk III",
       "away": "KATS ALPAT CYMMAT GDYNIA",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:18",
+        "25:15",
+        "25:12"
+      ],
       "current_points": null,
       "round": 3,
       "match_number": 13,
@@ -291,13 +295,17 @@
       "id": "24.10.2026-4-17",
       "competition": "Pomorska III Liga Męska",
       "date": "24.10.2026",
-      "time": null,
+      "time": "18:00",
       "status": "finished",
       "home": "GKS Stoczniowiec Gdańsk",
       "away": "KS AZS AWFiS Gdańsk",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:21",
+        "25:19",
+        "25:18"
+      ],
       "current_points": null,
       "round": 4,
       "match_number": 17,
