@@ -200,8 +200,15 @@ async function start() {
         createRoot(root).render(h(CalendarGlass, { FluidGlass }));
       }
       // Fixed overlay: the strip scrolls underneath it; the glass never tracks a moving button.
-      root.style.width = selected.offsetWidth + "px";
-      root.style.height = selected.offsetHeight + "px";
+      const dayRect = selected.getBoundingClientRect();
+      root.style.left = "50%";
+      root.style.top = Math.max(0, (wrap.clientHeight - dayRect.height) / 2) + "px";
+      root.style.transform = "translateX(-50%)";
+      root.style.width = Math.max(58, selected.offsetWidth) + "px";
+      root.style.height = Math.max(1, selected.offsetHeight) + "px";
+      root.style.display = "block";
+      root.style.visibility = "visible";
+      root.style.opacity = "1";
     };
     installCalendar();
     const page = $("#matches") || document.body;
