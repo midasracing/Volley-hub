@@ -144,49 +144,84 @@
     strip.classList.toggle("dim", liveOnly);
   }
 
-  // Poziomy pasek działa jak natywny picker iOS: bezwładność + zatrzymanie na dniu.
+  // Mechanika jak w iOS wheel pickers: natywna bezwładność podczas gestu,
+  // a wybór daty zatwierdzamy dopiero po wyhamowaniu i dociągnięciu do środka.
   let stripSettleTimer = null;
   let stripWasDragged = false;
   let stripStartX = 0;
+  let stripSnapInProgress = false;
+  const hasScrollEnd = "onscrollend" in strip;
+
   strip.addEventListener("touchstart", (e) => {
     stripWasDragged = false;
     stripStartX = e.touches[0] ? e.touches[0].clientX : 0;
+    // Nowy gest przerywa programowe dociąganie, ale nie natywny fling.
+    stripSnapInProgress = false;
+    if (stripSettleTimer) clearTimeout(stripSettleTimer);
+    stripSettleTimer = null;
   }, { passive: true });
   strip.addEventListener("touchmove", (e) => {
     if (e.touches[0] && Math.abs(e.touches[0].clientX - stripStartX) > 7) stripWasDragged = true;
   }, { passive: true });
 
-  function settleStripSelection() {
-    stripSettleTimer = null;
-    const days = Array.from(strip.querySelectorAll(".im-day"));
-    if (!days.length || !strip.clientWidth) return;
+  function nearestStripDay() {
+    const days = strip.querySelectorAll(".im-day");
+    if (!days.length || !strip.clientWidth) return null;
     const center = strip.getBoundingClientRect().left + strip.clientWidth / 2;
-    let nearest = days[0];
+    let nearest = null;
     let distance = Infinity;
     days.forEach((b) => {
       const r = b.getBoundingClientRect();
       const d = Math.abs((r.left + r.width / 2) - center);
       if (d < distance) { distance = d; nearest = b; }
     });
-    if (nearest.dataset.key !== keyOf(selected)) {
-      selected = noon(new Date(nearest.dataset.key + "T12:00:00"));
-      liveOnly = false;
-      syncLive();
-      markSel();
-      draw();
-    }
+    return nearest;
   }
-  // Na iOS oddajemy fizykę przewijania przeglądarce. Datę zatwierdzamy
-  // dopiero po zakończeniu bezwładności i animacji snap — nie w trakcie flingu.
+
+  function commitStripDay(day) {
+    if (!day || day.dataset.key === keyOf(selected)) return;
+    selected = noon(new Date(day.dataset.key + "T12:00:00"));
+    liveOnly = false;
+    syncLive();
+    markSel();
+    draw();
+  }
+
+  function settleStripSelection() {
+    stripSettleTimer = null;
+    const nearest = nearestStripDay();
+    if (!nearest) return;
+
+    const stripRect = strip.getBoundingClientRect();
+    const dayRect = nearest.getBoundingClientRect();
+    const delta = (dayRect.left + dayRect.width / 2) - (stripRect.left + stripRect.width / 2);
+
+    // Jeżeli natywne scroll-snap nie ustawiło idealnie środka, dociągnij
+    // najbliższy dzień krótkim płynnym ruchem. Datę zatwierdź dopiero potem.
+    if (!stripSnapInProgress && Math.abs(delta) > 1.5) {
+      stripSnapInProgress = true;
+      strip.scrollTo({ left: strip.scrollLeft + delta, behavior: "smooth" });
+      if (!hasScrollEnd) {
+        stripSettleTimer = setTimeout(() => {
+          stripSettleTimer = null;
+          stripSnapInProgress = false;
+          commitStripDay(nearestStripDay());
+        }, 420);
+      }
+      return;
+    }
+
+    stripSnapInProgress = false;
+    commitStripDay(nearest);
+  }
+
   function scheduleStripSettle() {
-    if ("onscrollend" in strip) return;
+    if (hasScrollEnd) return;
     if (stripSettleTimer) clearTimeout(stripSettleTimer);
-    stripSettleTimer = setTimeout(settleStripSelection, 260);
+    stripSettleTimer = setTimeout(settleStripSelection, stripSnapInProgress ? 420 : 190);
   }
   strip.addEventListener("scroll", scheduleStripSettle, { passive: true });
-  if ("onscrollend" in strip) {
-    strip.addEventListener("scrollend", settleStripSelection, { passive: true });
-  }
+  if (hasScrollEnd) strip.addEventListener("scrollend", settleStripSelection, { passive: true });
 
   strip.addEventListener("click", (e) => {
     if (stripWasDragged) {
