@@ -4,7 +4,7 @@ import { createRoot } from "https://esm.sh/react-dom@19.1.0/client";
 
 const REACT_URL = "https://esm.sh/react@19.1.0";
 const $ = (selector, root = document) => root.querySelector(selector);
-const $ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+const queryAll = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 const h = React.createElement;
 const PILL_HEIGHT_RATIO = 0.412; // React Bits pill SDF height relative to its width.
 
@@ -93,7 +93,7 @@ function BottomNavigation({ FluidGlass }) {
     observer.observe(root, { subtree: true, attributes: true, attributeFilter: ["class"] });
     const resize = new ResizeObserver(update);
     resize.observe(root);
-    $$(".vh-react-nav-items .nav", root).forEach(item => resize.observe(item));
+    queryAll(".vh-react-nav-items .nav", root).forEach(item => resize.observe(item));
     root.addEventListener("transitionend", update);
     window.addEventListener("resize", update, { passive: true });
     requestAnimationFrame(update);
