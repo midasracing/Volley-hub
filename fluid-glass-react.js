@@ -113,7 +113,7 @@ function CalendarGlass({ FluidGlass }) {
     const wrap = $("#ios-matches .im-strip-wrap");
     if (!wrap) return;
     const update = () => {
-      const selected = $(".im-strip button.selected", wrap) || $(".im-strip button[aria-pressed='true']", wrap);
+      const selected = $(".im-strip button.is-sel", wrap) || $(".im-strip button[aria-selected='true']", wrap);
       if (!selected) return;
       const wr = wrap.getBoundingClientRect(), sr = selected.getBoundingClientRect();
       if (wr.width && wr.height) setPosition([
@@ -123,7 +123,7 @@ function CalendarGlass({ FluidGlass }) {
     };
     update();
     const observer = new MutationObserver(update);
-    observer.observe(wrap, { subtree: true, childList: true, attributes: true, attributeFilter: ["class", "aria-pressed"] });
+    observer.observe(wrap, { subtree: true, childList: true, attributes: true, attributeFilter: ["class", "aria-selected"] });
     window.addEventListener("resize", update, { passive: true });
     return () => { observer.disconnect(); window.removeEventListener("resize", update); };
   }, []);
