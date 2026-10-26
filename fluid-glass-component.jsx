@@ -576,6 +576,7 @@ const FluidGlass = ({
   morphOnClick = true,
   onShapeChange,
   position = [0.5, 0.5],
+  rotation = 0,
   intro = true,
   maxDevicePixelRatio = 2,
   className = '',
@@ -617,6 +618,7 @@ const FluidGlass = ({
     morphOnClick,
     onShapeChange,
     position: [clamp(position?.[0] ?? 0.5, 0, 1), clamp(position?.[1] ?? 0.5, 0, 1)],
+    rotation: Number(rotation) || 0,
     intro,
     maxRatio: clamp(maxDevicePixelRatio, 0.5, 3)
   };
@@ -1122,6 +1124,7 @@ const FluidGlass = ({
       const turnZ = slerp([0, 0, 0, 1], quaternion(0, 0, angle), sway);
       orientation = multiply(multiply(quaternion(Math.sin(body.spin * 0.6) * 0.18 * tumble, 0, 0), turnY), orientation);
       orientation = multiply(turnZ, orientation);
+      if (s.rotation) orientation = multiply(quaternion(0, 0, s.rotation * Math.PI / 180), orientation);
       orientation = multiply(quaternion(spring.tiltX, spring.tiltY, 0), orientation);
       const r = toMatrix(orientation);
       const sx = Math.max(0.2, spring.stretch);
