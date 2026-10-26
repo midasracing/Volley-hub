@@ -50,7 +50,7 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
 .im-strip::-webkit-scrollbar{display:none}
 .im-strip.dim .im-day{opacity:.35}
 .im-day{
-  position:relative;flex:0 0 58px;display:flex;flex-direction:column;align-items:center;gap:5px;
+  position:relative;isolation:isolate;flex:0 0 58px;display:flex;flex-direction:column;align-items:center;gap:5px;
   padding:2px 0 6px;scroll-snap-align:center;scroll-snap-stop:normal;
   border-radius:18px;transition:opacity .18s ease,color .18s ease;
 }
