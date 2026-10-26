@@ -43,13 +43,15 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
 
 /* ---------- 4. Pasek dni ---------- */
 .im-strip{
-  position:relative;display:flex;gap:2px;overflow-x:auto;margin:0 -16px;padding:2px 10px 12px;
+  position:relative;display:flex;gap:2px;overflow-x:auto;margin:0 -16px;
+  padding:2px max(10px,calc((100% - 58px)/2)) 12px;
   border-bottom:1px solid var(--line);scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
   transition:opacity .2s;
 }
 .im-strip::-webkit-scrollbar{display:none}
 .im-strip.dim .im-day{opacity:.35}
-.im-day{flex:0 0 58px;display:flex;flex-direction:column;align-items:center;gap:7px;padding:6px 0}
+.im-day{flex:0 0 58px;display:flex;flex-direction:column;align-items:center;gap:7px;padding:6px 0;scroll-snap-align:center;scroll-snap-stop:normal}
 .im-day b{font-size:30px;line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
 .im-day span{font-size:15px;font-weight:500;color:var(--muted);letter-spacing:.2px}
 .im-day.is-sel b{font-weight:800;font-style:italic}
