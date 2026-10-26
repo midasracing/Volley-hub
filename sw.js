@@ -1,4 +1,4 @@
-const CACHE="volley-hub-v48";
+const CACHE="volley-hub-v49";
 const FILES=["./","./index.html","./styles.css","./app.js","./matches-ios.css","./matches-ios.js","./fluid-glass-react.js","./fluid-glass-component.jsx","./fluid-glass-component.css","./data/tauron.json","./data/tauron1liga.json","./data/pomorska3liga.json","./data/2liga.json","./manifest.webmanifest"];
 self.addEventListener("install",event=>{
   event.waitUntil((async()=>{
