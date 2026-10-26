@@ -104,29 +104,10 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
 .im-skel{height:160px;margin:16px 0;border-radius:26px;background:linear-gradient(90deg,#eceef2,#f7f8fa,#eceef2);background-size:200% 100%;animation:imShimmer 1.2s linear infinite}
 .im-note{margin:6px 4px 0;font-size:13px;line-height:1.5;color:#8a94a4}
 
-/* ---------- 7. Dolna nawigacja: pływająca „pigułka” + okrągłe szukanie ---------- */
-body.ios-matches .bottom{
-  left:var(--edge);right:calc(var(--edge) + 76px);bottom:calc(14px + env(safe-area-inset-bottom,0px));
-  width:auto;height:68px;transform:none;padding:6px;gap:2px;align-items:stretch;
-  border:1px solid rgba(0,0,0,.05);border-radius:34px;
-  background:rgba(255,255,255,.84);
-  -webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);
-  box-shadow:0 10px 32px rgba(20,24,40,.13);
-}
-body.ios-matches .nav{
-  flex:1;min-width:0;justify-content:center;gap:3px;border-radius:28px;padding:0 2px;
-  color:#14161c;font:600 12px Barlow,-apple-system,system-ui,sans-serif;
-}
-body.ios-matches .nav i{display:grid;place-items:center;line-height:0}
-body.ios-matches .nav.active{background:#e9e9ec;color:#2f6bf0}
-.im-search{
-  display:none;position:fixed;z-index:11;right:var(--edge,16px);bottom:calc(14px + env(safe-area-inset-bottom,0px));
-  width:68px;height:68px;border-radius:50%;place-items:center;color:#14161c;
-  background:rgba(255,255,255,.84);border:1px solid rgba(0,0,0,.05);
-  -webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);
-  box-shadow:0 10px 32px rgba(20,24,40,.13);
-}
-body.ios-matches .im-search{display:grid}
+/* ---------- 7. Dolna nawigacja ---------- */
+/* Na stronie Mecze korzystamy z tych samych reguł .bottom i .nav co na pozostałych stronach. */
+/* Dodatkowy przycisk wyszukiwania nie może zmieniać szerokości ani położenia paska nawigacji. */
+body.ios-matches .im-search{display:none!important}
 
 /* Wyszukiwarka w jasnym wydaniu */
 body.ios-matches .search{border-bottom:0;padding-top:calc(env(safe-area-inset-top,0px) + 12px)}
