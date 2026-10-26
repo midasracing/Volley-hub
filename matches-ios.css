@@ -7,7 +7,7 @@
 
 /* ---------- 1. Jasny motyw tylko na stronie Mecze ---------- */
 :root:has(body.ios-matches){color-scheme:light}
-body.ios-matches{background:#111214;color:#f1f2f4}
+body.ios-matches{background:#fafafb;color:#f1f2f4}
 body.ios-matches header{display:none}
 body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(50vw - 264px))}
 
