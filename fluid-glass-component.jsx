@@ -892,8 +892,9 @@ const FluidGlass = ({
     };
 
     const radius = () => {
-      const s = settingsRef.current;
-      return Math.min(s.size / 2, Math.min(view.width, view.height) * 0.36);
+      // Let the caller size the glass to the actual target element. The old
+      // viewport-height cap made wide menu pills much smaller than their tab.
+      return Math.max(8, settingsRef.current.size / 2);
     };
 
     const bindContent = (u, s) => {
