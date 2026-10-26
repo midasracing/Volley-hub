@@ -196,10 +196,12 @@ async function start() {
         root = document.createElement("div");
         root.id = "vh-calendar-glass-root";
         root.setAttribute("aria-hidden", "true");
+        wrap.appendChild(root);
         createRoot(root).render(h(CalendarGlass, { FluidGlass }));
       }
-      // Anchor the glass to the selected date itself instead of the scrolling strip viewport.
-      if (root.parentElement !== selected) selected.appendChild(root);
+      // Fixed overlay: the strip scrolls underneath it; the glass never tracks a moving button.
+      root.style.width = selected.offsetWidth + "px";
+      root.style.height = selected.offsetHeight + "px";
     };
     installCalendar();
     const page = $("#matches") || document.body;
