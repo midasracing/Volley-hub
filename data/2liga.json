@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-10-26T06:59:01.880499+00:00",
+  "updated_at": "2026-10-26T14:00:35.117918+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -386,6 +386,18 @@
           "group": "Grupa 1"
         },
         {
+          "date": "06.11.2026",
+          "time": "20:00",
+          "home": "Energa Trefl Gdańsk II",
+          "away": "BKS Chemik Bydgoszcz Siatkówka Młodzieżowa",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 1",
+          "group": "Grupa 1"
+        },
+        {
           "date": "07.11.2026",
           "time": "",
           "home": "Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn",
@@ -402,18 +414,6 @@
           "time": "",
           "home": "Fort Tarnowo Podgórne",
           "away": "Enea Energetyk Poznań",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 1",
-          "group": "Grupa 1"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "",
-          "home": "Energa Trefl Gdańsk II",
-          "away": "BKS Chemik Bydgoszcz Siatkówka Młodzieżowa",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
@@ -2122,6 +2122,18 @@
           "group": "Grupa 2"
         },
         {
+          "date": "22.11.2026",
+          "time": "",
+          "home": "KS Metro Family Warszawa",
+          "away": "MOS Wola Tramwaje Warszawskie",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 2",
+          "group": "Grupa 2"
+        },
+        {
           "date": "25.11.2026",
           "time": "",
           "home": "Elektromet Huragan Błonie",
@@ -2833,18 +2845,6 @@
           "date": "06.03.2027",
           "time": "",
           "home": "Integracyjny Klub Sportowy Atak Elbląg",
-          "away": "MOS Wola Tramwaje Warszawskie",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 2",
-          "group": "Grupa 2"
-        },
-        {
-          "date": "01.05.2027",
-          "time": "",
-          "home": "KS Metro Family Warszawa",
           "away": "MOS Wola Tramwaje Warszawskie",
           "home_sets": 0,
           "away_sets": 0,
