@@ -39,6 +39,7 @@
   const ICONS = {
     home: '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/>',
     matches: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    today: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2.2" fill="currentColor" stroke="none"/>',
     competitions: '<path d="M8 4h8v5a4 4 0 0 1-8 0V4z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8.5 20h7M10 17h4"/>',
     favorites: '<path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/>',
     search: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
@@ -79,7 +80,7 @@
     '<div class="im-top">' +
       '<div class="im-actions">' +
         '<button class="im-round" id="im-cal" type="button" aria-label="Wybierz datę">' + svg(ICONS.matches, 22) + "</button>" +
-        '<button class="im-round" id="im-live" type="button" aria-label="Pokaż tylko mecze na żywo" aria-pressed="false"><i class="im-dot"></i></button>' +
+        '<button class="im-round" id="im-today" type="button" aria-label="Przejdź do dzisiaj" title="Dzisiaj">' + svg(ICONS.today, 22) + '</button>' +
       "</div>" +
       "<h1>Mecze</h1>" +
     "</div>" +
@@ -90,7 +91,7 @@
 
   const strip = byId("im-strip");
   const list = byId("im-list");
-  const liveBtn = byId("im-live");
+  const todayBtn = byId("im-today");
 
   /* ---------- Pasek dni ---------- */
   function renderStrip() {
@@ -99,9 +100,12 @@
     for (let i = 0; i < STRIP_DAYS; i++) {
       const d = addDays(stripStart, i);
       const k = keyOf(d);
+      const monthLabel = (d.getDate() === 1 || i === 0)
+        ? '<small class="im-month">' + esc(new Intl.DateTimeFormat("pl-PL", { month: "short" }).format(d).replace(".", "").toUpperCase()) + '</small>'
+        : '<small class="im-month is-empty" aria-hidden="true"></small>';
       html +=
         '<button type="button" role="tab" class="im-day' + (k === today ? " is-today" : "") +
-        '" data-key="' + k + '" aria-selected="false"><b>' + d.getDate() + "</b><span>" + DAY_NAMES[d.getDay()] + "</span></button>";
+        '" data-key="' + k + '" aria-selected="false">' + monthLabel + '<b>' + d.getDate() + "</b><span>" + DAY_NAMES[d.getDay()] + "</span></button>";
     }
     strip.innerHTML = html;
     markSel();
@@ -137,7 +141,6 @@
     draw();
   }
   function syncLive() {
-    liveBtn.setAttribute("aria-pressed", liveOnly ? "true" : "false");
     strip.classList.toggle("dim", liveOnly);
   }
 
@@ -195,11 +198,7 @@
     const b = e.target.closest(".im-day");
     if (b) setDate(new Date(b.dataset.key + "T12:00:00"), true);
   });
-  liveBtn.addEventListener("click", () => {
-    liveOnly = !liveOnly;
-    syncLive();
-    draw();
-  });
+  todayBtn.addEventListener("click", () => setDate(noon(new Date()), true));
   byId("im-cal").addEventListener("click", () => {
     const p = byId("im-date");
     p.value = keyOf(selected);
@@ -282,12 +281,10 @@
           '<button type="button" class="im-btn" data-act="retry">Spróbuj ponownie</button></div>';
       }
       push(html);
-      liveBtn.classList.remove("has-live");
       return;
     }
 
     // czy gdziekolwiek trwa mecz (kropka na przycisku pulsuje)
-    liveBtn.classList.toggle("has-live", have.some((L) => uniqueMatches(store[L.key].matches).some(isMatchLive)));
 
     const key = keyOf(selected);
     const groups = [];
