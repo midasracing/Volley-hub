@@ -3,8 +3,8 @@
 :root{color-scheme:light dark;--bg:#f2f2f7;--card:#fff;--fill:#e8e8ed;--line:#d1d1d6;--text:#000;--sub:#5c5c61;--tint:#0a60d6;--on-tint:#fff;--live:#d70015;--bar:rgba(249,249,251,.82);--glass:rgba(255,255,255,.7);--g1:rgba(255,255,255,.7);--g2:rgba(255,255,255,.22);--glass-line:rgba(255,255,255,.8);--navbg:rgba(255,255,255,.9);--navline:rgba(0,0,0,.1);--pill:#e8e8ed}
 @media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--fill:#2c2c2e;--line:#38383a;--text:#fff;--sub:#a1a1a6;--tint:#4da3ff;--on-tint:#000;--live:#ff6961;--bar:rgba(28,28,30,.8);--glass:rgba(58,58,62,.6);--g1:rgba(255,255,255,.24);--g2:rgba(255,255,255,.05);--glass-line:rgba(255,255,255,.22);--navbg:rgba(26,26,26,.92);--navline:rgba(255,255,255,.12);--pill:#383838}}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:radial-gradient(70% 38% at 100% 0,color-mix(in srgb,var(--tint) 16%,transparent),transparent 70%) fixed,radial-gradient(60% 34% at 0 100%,color-mix(in srgb,var(--tint) 14%,transparent),transparent 70%) fixed,var(--bg);color:var(--text);font:1.0625rem/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;min-height:100%;background:var(--bg)}
+body{margin:0;min-height:100vh;min-height:100dvh;background-color:var(--bg);background-image:radial-gradient(70% 38% at 100% 0,color-mix(in srgb,var(--tint) 16%,transparent),transparent 70%),radial-gradient(60% 34% at 0 100%,color-mix(in srgb,var(--tint) 14%,transparent),transparent 70%);background-attachment:fixed,fixed; background-size:100% 100%,100% 100%;color:var(--text);font:1.0625rem/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .app{max-width:720px;margin:auto;padding:0 max(16px,env(safe-area-inset-right)) calc(112px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
