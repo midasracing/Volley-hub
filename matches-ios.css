@@ -36,9 +36,7 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
   transition:background .15s,transform .15s;
 }
 .im-round:active{transform:scale(.94)}
-.im-dot{display:block;width:15px;height:15px;border-radius:50%;background:var(--red)}
-.im-round.has-live .im-dot{animation:imPulse 1.6s ease-out infinite}
-.im-round[aria-pressed="true"]{background:#ffe1e4;box-shadow:0 0 0 5px rgba(255,255,255,.92),0 0 0 7px var(--red)}
+
 .im-top h1{font-size:40px;line-height:1;font-weight:800;letter-spacing:-.6px;margin:18px 0 20px}
 
 /* ---------- 4. Pasek dni ---------- */
@@ -51,7 +49,9 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
 }
 .im-strip::-webkit-scrollbar{display:none}
 .im-strip.dim .im-day{opacity:.35}
-.im-day{flex:0 0 58px;display:flex;flex-direction:column;align-items:center;gap:7px;padding:6px 0;scroll-snap-align:center;scroll-snap-stop:normal}
+.im-day{flex:0 0 58px;display:flex;flex-direction:column;align-items:center;gap:5px;padding:2px 0 6px;scroll-snap-align:center;scroll-snap-stop:normal}
+.im-month{height:14px;font-size:11px;line-height:14px;font-style:normal;font-weight:700;letter-spacing:.35px;color:var(--blue);text-transform:uppercase}
+.im-month.is-empty{visibility:hidden}
 .im-day b{font-size:30px;line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
 .im-day span{font-size:15px;font-weight:500;color:var(--muted);letter-spacing:.2px}
 .im-day.is-sel b{font-weight:800;font-style:italic}
@@ -124,5 +124,5 @@ body.ios-matches .search-result{background:#fff;border-color:#dde1e8;color:#0b0c
 @keyframes imBlink{0%,100%{opacity:1}50%{opacity:.35}}
 @keyframes imShimmer{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){
-  .im-round.has-live .im-dot,.im-live::before,.im-skel{animation:none}
+  .im-live::before,.im-skel{animation:none}
 }
