@@ -6,7 +6,6 @@ const REACT_URL = "https://esm.sh/react@19.1.0";
 const $ = (selector, root = document) => root.querySelector(selector);
 const queryAll = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 const h = React.createElement;
-const PILL_HEIGHT_RATIO = 0.412; // React Bits pill SDF height relative to its width.
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
@@ -66,7 +65,6 @@ function BottomNavigation({ FluidGlass }) {
   const [active, setActive] = useState(getActive);
   const [position, setPosition] = useState([0.125, 0.5]);
   const [glassSize, setGlassSize] = useState(140);
-  const [glassHeight, setGlassHeight] = useState(52);
 
   useEffect(() => {
     const root = $(".vh-react-bottom");
@@ -83,7 +81,6 @@ function BottomNavigation({ FluidGlass }) {
       ];
       setPosition(prev => Math.abs(prev[0] - nextPosition[0]) < .002 && Math.abs(prev[1] - nextPosition[1]) < .002 ? prev : nextPosition);
       setGlassSize(prev => Math.abs(prev - sr.width) < .5 ? prev : sr.width);
-      setGlassHeight(prev => Math.abs(prev - sr.height) < .5 ? prev : sr.height);
     };
     const observer = new MutationObserver(() => {
       const next = getActive();
@@ -105,14 +102,11 @@ function BottomNavigation({ FluidGlass }) {
     };
   }, []);
 
-  const scaleY = Math.max(.1, glassHeight / Math.max(1, glassSize * PILL_HEIGHT_RATIO));
   return h(FluidGlass, {
     className: "vh-fluid-nav-glass",
     style: {
       width: "100%",
       height: "100%",
-      "--vh-glass-origin": (position[0] * 100) + "% " + (position[1] * 100) + "%",
-      "--vh-glass-transform": "scaleY(" + scaleY.toFixed(3) + ")"
     },
     text: "",
     shape: "pill",
@@ -152,14 +146,12 @@ function BottomNavigation({ FluidGlass }) {
     if (!rr.width || !rr.height || !sr.width || !sr.height) return;
     setPosition([(sr.left + sr.width / 2 - rr.left) / rr.width, (sr.top + sr.height / 2 - rr.top) / rr.height]);
     setGlassSize(sr.width);
-    setGlassHeight(sr.height);
   }
 }
 
 function CalendarGlass({ FluidGlass }) {
   const [position, setPosition] = useState([0.5, 0.5]);
   const [glassWidth, setGlassWidth] = useState(58);
-  const [glassHeight, setGlassHeight] = useState(70);
 
   useEffect(() => {
     const wrap = $("#ios-matches .im-strip-wrap");
@@ -176,14 +168,12 @@ function CalendarGlass({ FluidGlass }) {
       ];
       setPosition(prev => Math.abs(prev[0] - nextPosition[0]) < .002 && Math.abs(prev[1] - nextPosition[1]) < .002 ? prev : nextPosition);
       setGlassWidth(prev => Math.abs(prev - sr.width) < .5 ? prev : sr.width);
-      setGlassHeight(prev => Math.abs(prev - sr.height) < .5 ? prev : sr.height);
     };
     const observer = new MutationObserver(update);
     observer.observe(wrap, { subtree: true, childList: true, attributes: true, attributeFilter: ["class", "aria-selected"] });
     const resize = new ResizeObserver(update);
     resize.observe(wrap);
-    const selected = $(".im-day.is-sel", wrap);
-    if (selected) resize.observe(selected);
+    queryAll(".im-day", wrap).forEach(item => resize.observe(item));
     strip.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update, { passive: true });
     requestAnimationFrame(update);
@@ -195,21 +185,16 @@ function CalendarGlass({ FluidGlass }) {
     };
   }, []);
 
-  // The pill is horizontal in FluidGlass; rotate it for the taller day tile,
-  // then stretch only the horizontal axis so its bounds match the measured button.
-  const scaleX = Math.max(.1, glassWidth / Math.max(1, glassHeight * PILL_HEIGHT_RATIO));
   return h(FluidGlass, {
     className: "vh-calendar-fluid",
     style: {
       width: "100%",
       height: "100%",
-      "--vh-glass-origin": (position[0] * 100) + "% " + (position[1] * 100) + "%",
-      "--vh-glass-transform": "scaleX(" + scaleX.toFixed(3) + ") rotate(90deg)"
     },
     text: "",
     shape: "pill",
     shapes: ["pill"],
-    size: glassHeight,
+    size: glassWidth,
     position,
     interaction: "static",
     morphOnClick: false,
