@@ -173,14 +173,25 @@
       draw();
     }
   }
+  // Na iOS oddajemy fizykę przewijania przeglądarce. Datę zatwierdzamy
+  // dopiero po zakończeniu bezwładności i animacji snap — nie w trakcie flingu.
   function scheduleStripSettle() {
+    if ("onscrollend" in strip) return;
     if (stripSettleTimer) clearTimeout(stripSettleTimer);
-    stripSettleTimer = setTimeout(settleStripSelection, 120);
+    stripSettleTimer = setTimeout(settleStripSelection, 260);
   }
   strip.addEventListener("scroll", scheduleStripSettle, { passive: true });
-  strip.addEventListener("scrollend", settleStripSelection, { passive: true });
+  if ("onscrollend" in strip) {
+    strip.addEventListener("scrollend", settleStripSelection, { passive: true });
+  }
 
   strip.addEventListener("click", (e) => {
+    if (stripWasDragged) {
+      e.preventDefault();
+      e.stopPropagation();
+      stripWasDragged = false;
+      return;
+    }
     const b = e.target.closest(".im-day");
     if (b) setDate(new Date(b.dataset.key + "T12:00:00"), true);
   });
