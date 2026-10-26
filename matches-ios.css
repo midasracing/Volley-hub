@@ -7,7 +7,7 @@
 
 /* ---------- 1. Jasny motyw tylko na stronie Mecze ---------- */
 :root:has(body.ios-matches){color-scheme:light}
-body.ios-matches{min-height:100vh;min-height:100dvh;background:#08090c;color:#f1f2f4;background-attachment:fixed}
+body.ios-matches{min-height:100vh;min-height:100dvh;background-color:var(--bg);background-image:radial-gradient(70% 38% at 100% 0,color-mix(in srgb,var(--tint) 16%,transparent),transparent 70%),radial-gradient(60% 34% at 0 100%,color-mix(in srgb,var(--tint) 14%,transparent),transparent 70%);background-attachment:fixed,fixed;background-size:100% 100%,100% 100%;color:#f1f2f4}
 body.ios-matches header{display:none}
 body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(50vw - 264px))}
 
