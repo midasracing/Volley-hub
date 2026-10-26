@@ -84,7 +84,7 @@
       "</div>" +
       "<h1>Mecze</h1>" +
     "</div>" +
-    '<div class="im-strip-wrap">' +'<div class="im-selection-glass" aria-hidden="true"></div>' +'<div class="im-strip" id="im-strip" role="tablist" aria-label="Wybór dnia"></div>' +'</div>' +
+    '<div class="im-strip-wrap">' +'<div class="im-strip" id="im-strip" role="tablist" aria-label="Wybór dnia"></div>' +'</div>' +
     '<div id="im-list" aria-live="polite"></div>' +
     '<input type="date" id="im-date" class="im-date" tabindex="-1" aria-hidden="true">';
   page.prepend(root);
