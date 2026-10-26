@@ -7,7 +7,7 @@
 
 /* ---------- 1. Jasny motyw tylko na stronie Mecze ---------- */
 :root:has(body.ios-matches){color-scheme:light}
-body.ios-matches{background:#fafafb;color:#0b0c10}
+body.ios-matches{background:#111214;color:#f1f2f4}
 body.ios-matches header{display:none}
 body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(50vw - 264px))}
 
@@ -18,7 +18,7 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
 
 /* ---------- 2. Kontener ---------- */
 #ios-matches{
-  --blue:#2f6bf0;--line:#dde1e8;--muted:#6b778a;--red:#e5333f;--ink:#0b0c10;
+  --blue:#7ea5ff;--line:#343840;--muted:#b0b7c4;--red:#ff5964;--ink:#f1f2f4;
   font-family:Barlow,-apple-system,"SF Pro Text",system-ui,sans-serif;
   color:var(--ink);
 }
@@ -62,7 +62,7 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
 .im-league{display:flex;align-items:center;gap:12px;font-size:23px;font-weight:700;letter-spacing:-.2px;margin:28px 0 14px 4px}
 .im-flag{font-size:22px;line-height:1}
 .im-card{
-  background:#fff;border:1px solid #dfe3ea;border-radius:26px;
+  color:#0b0c10;background:#fff;border:1px solid #dfe3ea;border-radius:26px;
   padding:14px 18px 16px;margin:0 0 14px;
 }
 .im-meta{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px;font-size:14px;font-weight:500;color:#566680}
