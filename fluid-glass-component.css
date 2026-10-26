@@ -74,5 +74,7 @@
 .vh-calendar-fluid{position:absolute!important;inset:0;width:100%;height:100%;overflow:visible!important;pointer-events:none}
 .vh-calendar-fluid .fluid-glass__canvas{pointer-events:none}
 #ios-matches .im-selection-glass{display:none!important}
-#ios-matches .im-strip{position:relative;z-index:1}\n#ios-matches .im-day.is-sel{background:transparent!important}\n#ios-matches .im-day.is-sel::before{display:none!important}
+#ios-matches .im-strip{position:relative;z-index:1}
+#ios-matches .im-day.is-sel{background:transparent!important}
+#ios-matches .im-day.is-sel::before{display:none!important}
 @media(prefers-reduced-motion:reduce){.vh-fluid-nav-glass .fluid-glass__canvas,.vh-calendar-fluid .fluid-glass__canvas{display:none}}
