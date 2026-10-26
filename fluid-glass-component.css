@@ -68,7 +68,7 @@
 .vh-react-nav-items{position:absolute;inset:8px;display:flex;align-items:stretch;gap:4px;z-index:2}
 .vh-react-nav-items .nav{flex:1 1 0;min-width:0;height:100%;padding:0 10px;overflow:hidden}
 .vh-react-nav-items .nav.active{flex:1.45 1 0;min-width:0;justify-content:center;padding:0 10px;background:transparent;color:var(--text)}
-.vh-react-nav-items .nav.active::after{display:none!important}
+.vh-react-nav-items .nav.active::after{display:none!important}\n.vh-react-bottom .nav::before,.vh-react-bottom::after{display:none!important}
 .vh-react-nav-items .nav i,.vh-react-nav-items .nav .lbl{z-index:2}
 #vh-calendar-glass-root{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .vh-calendar-fluid{position:absolute!important;inset:0;width:100%;height:100%;overflow:visible!important;pointer-events:none}
