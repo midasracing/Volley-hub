@@ -64,7 +64,7 @@ function NavButton({ item, active, onNavigate }) {
 
 function BottomNavigation({ FluidGlass }) {
   const getActive = () => $(".bottom .nav.active")?.dataset.go || "home";
-  const [active, setActive] = useState(getActive);
+  const [active, setActive] = useState(getActive);\n  const [glassPosition, setGlassPosition] = useState([0.5, 0.5]);
   useEffect(() => {
     const observer = new MutationObserver(() => setActive(getActive()));
     observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["class"] });
@@ -76,7 +76,7 @@ function BottomNavigation({ FluidGlass }) {
       setActive(button.dataset.go);
     };
     document.addEventListener("click", delegated);
-    return () => { observer.disconnect(); document.removeEventListener("click", delegated); };
+    return () => { observer.disconnect(); resize.disconnect(); document.removeEventListener("click", delegated); };
   }, []);
   const index = Math.max(0, navItems.findIndex(item => item.id === active));
   return h(FluidGlass, {
@@ -86,7 +86,7 @@ function BottomNavigation({ FluidGlass }) {
     shape: "pill",
     shapes: ["pill"],
     size: 58,
-    position: [(index + 0.5) / navItems.length, 0.5],
+    position: glassPosition,
     interaction: "static",
     morphOnClick: false,
     idle: false,
