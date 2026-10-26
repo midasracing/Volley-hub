@@ -150,85 +150,56 @@ function BottomNavigation({ FluidGlass }) {
 }
 
 function CalendarGlass({ FluidGlass }) {
-  const [position, setPosition] = useState([0.5, 0.5]);
-  const [glassWidth, setGlassWidth] = useState(58);
-
-  useEffect(() => {
-    const wrap = $("#ios-matches .im-strip-wrap");
-    const strip = $("#ios-matches .im-strip");
-    if (!wrap || !strip) return;
-    const update = () => {
-      const selected = $(".im-strip button.is-sel", wrap) || $(".im-strip button[aria-selected='true']", wrap);
-      if (!selected) return;
-      const wr = wrap.getBoundingClientRect(), sr = selected.getBoundingClientRect();
-      if (!wr.width || !wr.height || !sr.width || !sr.height) return;
-      const nextPosition = [
-        Math.min(.999, Math.max(.001, (sr.left + sr.width / 2 - wr.left) / wr.width)),
-        Math.min(.999, Math.max(.001, (sr.top + sr.height / 2 - wr.top) / wr.height))
-      ];
-      setPosition(prev => Math.abs(prev[0] - nextPosition[0]) < .002 && Math.abs(prev[1] - nextPosition[1]) < .002 ? prev : nextPosition);
-      setGlassWidth(prev => Math.abs(prev - sr.width) < .5 ? prev : sr.width);
-    };
-    const observer = new MutationObserver(update);
-    observer.observe(wrap, { subtree: true, childList: true, attributes: true, attributeFilter: ["class", "aria-selected"] });
-    const resize = new ResizeObserver(update);
-    resize.observe(wrap);
-    queryAll(".im-day", wrap).forEach(item => resize.observe(item));
-    strip.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
-    requestAnimationFrame(update);
-    return () => {
-      observer.disconnect();
-      resize.disconnect();
-      strip.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
-
   return h(FluidGlass, {
     className: "vh-calendar-fluid",
-    style: {
-      width: "100%",
-      height: "100%",
-    },
+    style: { width: "100%", height: "100%" },
     text: "",
     shape: "pill",
     shapes: ["pill"],
-    size: glassWidth,
-    position,
+    size: 72,
+    position: [0.5, 0.5],
+    rotation: 90,
     interaction: "static",
     morphOnClick: false,
     idle: false,
     spin: 0,
-    wobble: 0.04,
-    refraction: 1.1,
-    dispersion: 0.18,
-    reflection: 1,
-    tint: 0.1,
-    shadow: 0.24,
+    wobble: 0.025,
+    refraction: 1.05,
+    dispersion: 0.12,
+    reflection: 0.82,
+    tint: 0.08,
+    shadow: 0.2,
     color: "#ffffff"
   });
 }
-
 async function start() {
+  // Replace legacy navigation before downloading React/Babel, preventing its old active rectangle from flashing.
+  let navRoot = $(".vh-react-bottom");
+  const oldNav = $(".bottom");
+  if (!navRoot && oldNav) {
+    navRoot = document.createElement("nav");
+    navRoot.className = "bottom vh-react-bottom";
+    navRoot.setAttribute("aria-label", "Główna nawigacja");
+    navRoot.innerHTML = '<div class="vh-react-nav-items">' + oldNav.innerHTML + "</div>";
+    oldNav.replaceWith(navRoot);
+  }
   try {
     const FluidGlass = await loadFluidGlass();
-    const oldNav = $(".bottom");
-    if (oldNav && !oldNav.classList.contains("vh-react-bottom")) {
-      const root = document.createElement("nav");
-      root.className = "bottom vh-react-bottom";
-      root.setAttribute("aria-label", "Główna nawigacja");
-      oldNav.replaceWith(root);
-      createRoot(root).render(h(BottomNavigation, { FluidGlass }));
-    }
+    if (navRoot) createRoot(navRoot).render(h(BottomNavigation, { FluidGlass }));
     const installCalendar = () => {
       const wrap = $("#ios-matches .im-strip-wrap");
-      if (!wrap || $("#vh-calendar-glass-root", wrap)) return;
-      const root = document.createElement("div");
-      root.id = "vh-calendar-glass-root";
-      root.setAttribute("aria-hidden", "true");
-      wrap.insertBefore(root, wrap.firstChild);
-      createRoot(root).render(h(CalendarGlass, { FluidGlass }));
+      if (!wrap) return;
+      const selected = $(".im-day.is-sel", wrap) || $(".im-day[aria-selected='true']", wrap);
+      if (!selected) return;
+      let root = $("#vh-calendar-glass-root", wrap);
+      if (!root) {
+        root = document.createElement("div");
+        root.id = "vh-calendar-glass-root";
+        root.setAttribute("aria-hidden", "true");
+        createRoot(root).render(h(CalendarGlass, { FluidGlass }));
+      }
+      // Anchor the glass to the selected date itself instead of the scrolling strip viewport.
+      if (root.parentElement !== selected) selected.appendChild(root);
     };
     installCalendar();
     const page = $("#matches") || document.body;
