@@ -46,7 +46,7 @@ body.ios-matches .app{max-width:560px;padding:0 16px 132px;--edge:max(16px,calc(
   position:relative;display:flex;gap:2px;overflow-x:auto;margin:0 -16px;
   padding:2px max(10px,calc((100% - 58px)/2)) 12px;
   border-bottom:1px solid var(--line);scrollbar-width:none;-webkit-overflow-scrolling:touch;
-  scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;overscroll-behavior-x:contain;
   transition:opacity .2s;
 }
 .im-strip::-webkit-scrollbar{display:none}
