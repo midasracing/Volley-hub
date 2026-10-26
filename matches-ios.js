@@ -141,6 +141,45 @@
     strip.classList.toggle("dim", liveOnly);
   }
 
+  // Poziomy pasek działa jak natywny picker iOS: bezwładność + zatrzymanie na dniu.
+  let stripSettleTimer = null;
+  let stripWasDragged = false;
+  let stripStartX = 0;
+  strip.addEventListener("touchstart", (e) => {
+    stripWasDragged = false;
+    stripStartX = e.touches[0] ? e.touches[0].clientX : 0;
+  }, { passive: true });
+  strip.addEventListener("touchmove", (e) => {
+    if (e.touches[0] && Math.abs(e.touches[0].clientX - stripStartX) > 7) stripWasDragged = true;
+  }, { passive: true });
+
+  function settleStripSelection() {
+    stripSettleTimer = null;
+    const days = Array.from(strip.querySelectorAll(".im-day"));
+    if (!days.length || !strip.clientWidth) return;
+    const center = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+    let nearest = days[0];
+    let distance = Infinity;
+    days.forEach((b) => {
+      const r = b.getBoundingClientRect();
+      const d = Math.abs((r.left + r.width / 2) - center);
+      if (d < distance) { distance = d; nearest = b; }
+    });
+    if (nearest.dataset.key !== keyOf(selected)) {
+      selected = noon(new Date(nearest.dataset.key + "T12:00:00"));
+      liveOnly = false;
+      syncLive();
+      markSel();
+      draw();
+    }
+  }
+  function scheduleStripSettle() {
+    if (stripSettleTimer) clearTimeout(stripSettleTimer);
+    stripSettleTimer = setTimeout(settleStripSelection, 120);
+  }
+  strip.addEventListener("scroll", scheduleStripSettle, { passive: true });
+  strip.addEventListener("scrollend", settleStripSelection, { passive: true });
+
   strip.addEventListener("click", (e) => {
     const b = e.target.closest(".im-day");
     if (b) setDate(new Date(b.dataset.key + "T12:00:00"), true);
