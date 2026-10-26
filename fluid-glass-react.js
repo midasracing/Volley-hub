@@ -1,12 +1,9 @@
-/* React integration for Volley Hub + the original React Bits FluidGlass component.
-   The app remains a static PWA, so Babel compiles the checked-in JSX module in-browser.
-   React renders the bottom navigation and adds a FluidGlass layer to the selected calendar day. */
-import React, { useEffect, useMemo, useState } from "https://esm.sh/react@19.1.0";
+/* React integration: official React Bits FluidGlass powers the active nav item and selected calendar date. */
+import React, { useEffect, useState } from "https://esm.sh/react@19.1.0";
 import { createRoot } from "https://esm.sh/react-dom@19.1.0/client";
 
 const REACT_URL = "https://esm.sh/react@19.1.0";
 const $ = (selector, root = document) => root.querySelector(selector);
-const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const h = React.createElement;
 
 function loadScript(src) {
@@ -64,51 +61,84 @@ function NavButton({ item, active, onNavigate }) {
 
 function BottomNavigation({ FluidGlass }) {
   const getActive = () => $(".bottom .nav.active")?.dataset.go || "home";
-  const [active, setActive] = useState(getActive);\n  const [glassPosition, setGlassPosition] = useState([0.5, 0.5]);
+  const [active, setActive] = useState(getActive);
+  const [position, setPosition] = useState([0.125, 0.5]);
+
   useEffect(() => {
-    const observer = new MutationObserver(() => setActive(getActive()));
-    observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["class"] });
-    const delegated = event => {
-      const button = event.target.closest(".vh-react-nav-items [data-go]");
-      if (!button) return;
-      event.preventDefault();
-      if (typeof window.go === "function") window.go(button.dataset.go);
-      setActive(button.dataset.go);
+    const root = $(".vh-react-bottom");
+    if (!root) return;
+    const update = () => {
+      const selected = $(".vh-react-nav-items .nav.active", root);
+      if (!selected) return;
+      const rr = root.getBoundingClientRect();
+      const sr = selected.getBoundingClientRect();
+      if (rr.width && rr.height) {
+        setPosition([
+          Math.min(.98, Math.max(.02, (sr.left + sr.width / 2 - rr.left) / rr.width)),
+          Math.min(.98, Math.max(.02, (sr.top + sr.height / 2 - rr.top) / rr.height))
+        ]);
+      }
     };
-    document.addEventListener("click", delegated);
-    return () => { observer.disconnect(); resize.disconnect(); document.removeEventListener("click", delegated); };
+    const observer = new MutationObserver(() => {
+      const next = getActive();
+      setActive(current => current === next ? current : next);
+      requestAnimationFrame(update);
+    });
+    observer.observe(root, { subtree: true, attributes: true, attributeFilter: ["class"] });
+    const resize = new ResizeObserver(update);
+    resize.observe(root);
+    window.addEventListener("resize", update, { passive: true });
+    requestAnimationFrame(update);
+    return () => {
+      observer.disconnect();
+      resize.disconnect();
+      window.removeEventListener("resize", update);
+    };
   }, []);
-  const index = Math.max(0, navItems.findIndex(item => item.id === active));
+
   return h(FluidGlass, {
     className: "vh-fluid-nav-glass",
     style: { width: "100%", height: "100%" },
     text: "",
     shape: "pill",
     shapes: ["pill"],
-    size: 58,
-    position: glassPosition,
+    size: 33,
+    position,
     interaction: "static",
     morphOnClick: false,
     idle: false,
     spin: 0,
-    wobble: 0.12,
+    wobble: 0.08,
     refraction: 1.15,
-    dispersion: 0.24,
+    dispersion: 0.2,
     reflection: 1.1,
-    tint: 0.18,
-    shadow: 0.38,
+    tint: 0.12,
+    shadow: 0.28,
     color: "#ffffff",
     children: h("div", { className: "vh-react-nav-items" },
-      ...navItems.map(item => h(NavButton, { key: item.id, item, active: item.id === active, onNavigate: id => {
-        if (typeof window.go === "function") window.go(id);
-        setActive(id);
-      }}))
+      ...navItems.map(item => h(NavButton, {
+        key: item.id,
+        item,
+        active: item.id === active,
+        onNavigate: id => {
+          if (typeof window.go === "function") window.go(id);
+          setActive(id);
+          requestAnimationFrame(() => {
+            const root = $(".vh-react-bottom");
+            const selected = $(".vh-react-nav-items .nav.active", root);
+            if (!root || !selected) return;
+            const rr = root.getBoundingClientRect(), sr = selected.getBoundingClientRect();
+            setPosition([(sr.left + sr.width / 2 - rr.left) / rr.width, (sr.top + sr.height / 2 - rr.top) / rr.height]);
+          });
+        }
+      }))
     )
   });
 }
 
 function CalendarGlass({ FluidGlass }) {
   const [position, setPosition] = useState([0.5, 0.5]);
+
   useEffect(() => {
     const wrap = $("#ios-matches .im-strip-wrap");
     if (!wrap) return;
@@ -116,35 +146,44 @@ function CalendarGlass({ FluidGlass }) {
       const selected = $(".im-strip button.is-sel", wrap) || $(".im-strip button[aria-selected='true']", wrap);
       if (!selected) return;
       const wr = wrap.getBoundingClientRect(), sr = selected.getBoundingClientRect();
-      if (wr.width && wr.height) setPosition([
-        Math.min(0.98, Math.max(0.02, (sr.left + sr.width / 2 - wr.left) / wr.width)),
-        Math.min(0.98, Math.max(0.02, (sr.top + sr.height / 2 - wr.top) / wr.height))
-      ]);
+      if (wr.width && wr.height) {
+        setPosition([
+          Math.min(.98, Math.max(.02, (sr.left + sr.width / 2 - wr.left) / wr.width)),
+          Math.min(.98, Math.max(.02, (sr.top + sr.height / 2 - wr.top) / wr.height))
+        ]);
+      }
     };
-    update();
     const observer = new MutationObserver(update);
     observer.observe(wrap, { subtree: true, childList: true, attributes: true, attributeFilter: ["class", "aria-selected"] });
+    const resize = new ResizeObserver(update);
+    resize.observe(wrap);
     window.addEventListener("resize", update, { passive: true });
-    return () => { observer.disconnect(); window.removeEventListener("resize", update); };
+    requestAnimationFrame(update);
+    return () => {
+      observer.disconnect();
+      resize.disconnect();
+      window.removeEventListener("resize", update);
+    };
   }, []);
+
   return h(FluidGlass, {
     className: "vh-calendar-fluid",
     style: { width: "100%", height: "100%" },
     text: "",
-    shape: "pill",
-    shapes: ["pill"],
-    size: 58,
+    shape: "cube",
+    shapes: ["cube"],
+    size: 34,
     position,
     interaction: "static",
     morphOnClick: false,
     idle: false,
     spin: 0,
-    wobble: 0.08,
+    wobble: 0,
     refraction: 1.1,
     dispersion: 0.18,
     reflection: 1,
-    tint: 0.12,
-    shadow: 0.3,
+    tint: 0.1,
+    shadow: 0.24,
     color: "#ffffff"
   });
 }
@@ -153,7 +192,7 @@ async function start() {
   try {
     const FluidGlass = await loadFluidGlass();
     const oldNav = $(".bottom");
-    if (oldNav) {
+    if (oldNav && !oldNav.classList.contains("vh-react-bottom")) {
       const root = document.createElement("nav");
       root.className = "bottom vh-react-bottom";
       root.setAttribute("aria-label", "Główna nawigacja");
@@ -170,8 +209,9 @@ async function start() {
       createRoot(root).render(h(CalendarGlass, { FluidGlass }));
     };
     installCalendar();
+    const page = $("#matches") || document.body;
     const pageObserver = new MutationObserver(installCalendar);
-    pageObserver.observe($("#matches") || document.body, { childList: true, subtree: true });
+    pageObserver.observe(page, { childList: true, subtree: true });
     window.__vhReactFluidGlass = { React, FluidGlass };
   } catch (error) {
     console.error("Volley Hub React / Fluid Glass:", error);
