@@ -4,7 +4,7 @@
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
   "results_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
   "standings_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
-  "updated_at": "2026-10-27T16:04:03.474412+00:00",
+  "updated_at": "2026-10-27T20:43:25.827869+00:00",
   "teams": [
     {
       "name": "Energa Trefl Gdańsk III",
@@ -65,6 +65,26 @@
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
+      "id": "04.10.2026-1-2",
+      "competition": "Pomorska III Liga Męska",
+      "date": "04.10.2026",
+      "time": "12:00",
+      "status": "finished",
+      "home": "LZS GNIEWKO Gniewkowo",
+      "away": "KATS ALPAT CYMMAT GDYNIA",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": [
+        "25:8",
+        "25:17",
+        "25:20"
+      ],
+      "current_points": null,
+      "round": 1,
+      "match_number": 2,
+      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
+    },
+    {
       "id": "04.10.2026-1-3",
       "competition": "Pomorska III Liga Męska",
       "date": "04.10.2026",
@@ -106,22 +126,6 @@
       "current_points": null,
       "round": 1,
       "match_number": 4,
-      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
-    },
-    {
-      "id": "04.10.2026-1-2",
-      "competition": "Pomorska III Liga Męska",
-      "date": "04.10.2026",
-      "time": null,
-      "status": "finished",
-      "home": "LZS GNIEWKO Gniewkowo",
-      "away": "KATS ALPAT CYMMAT GDYNIA",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [],
-      "current_points": null,
-      "round": 1,
-      "match_number": 2,
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
