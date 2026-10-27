@@ -58,27 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-27T17:43:47.073056+00:00",
+  "updated_at": "2026-10-27T21:30:13.507860+00:00",
   "matches": [
-    {
-      "id": "1104814",
-      "competition": "TAURON Liga",
-      "date": "18.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "Ślepsk Malow Suwałki",
-      "away": "Barkom Każany Lwów",
-      "home_sets": 2,
-      "away_sets": 3,
-      "set_scores": [
-        "23:25",
-        "19:25",
-        "25:22",
-        "25:18",
-        "10:15"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104813",
       "competition": "TAURON Liga",
@@ -244,15 +225,17 @@
       "competition": "TAURON Liga",
       "date": "27.10.2026",
       "time": "17:30",
-      "status": "live",
+      "status": "finished",
       "home": "PGE GiEK Skra Bełchatów",
       "away": "GKS Katowice",
-      "home_sets": 1,
+      "home_sets": 3,
       "away_sets": 0,
       "set_scores": [
-        "25:18"
+        "25:18",
+        "25:21",
+        "26:24"
       ],
-      "current_points": "21:16"
+      "current_points": null
     },
     {
       "id": "1104883",
@@ -435,6 +418,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104838",
+      "competition": "TAURON Liga",
+      "date": "08.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "Asseco Resovia Rzeszów",
+      "away": "Aluron CMC Warta Zawiercie",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -451,6 +447,18 @@
       "points_against": 131
     },
     {
+      "rank": 1,
+      "team": "PGE GiEK Skra Bełchatów",
+      "points": 8,
+      "played": 3,
+      "wins": 3,
+      "losses": 0,
+      "sets_for": 9,
+      "sets_against": 3,
+      "points_for": 279,
+      "points_against": 259
+    },
+    {
       "rank": 2,
       "team": "Barkom Każany Lwów",
       "points": 5,
@@ -463,28 +471,16 @@
       "points_against": 162
     },
     {
-      "rank": 3,
+      "rank": 4,
       "team": "GKS Katowice",
       "points": 5,
-      "played": 2,
+      "played": 3,
       "wins": 2,
-      "losses": 0,
+      "losses": 1,
       "sets_for": 6,
-      "sets_against": 2,
-      "points_for": 179,
-      "points_against": 175
-    },
-    {
-      "rank": 4,
-      "team": "PGE GiEK Skra Bełchatów",
-      "points": 5,
-      "played": 2,
-      "wins": 2,
-      "losses": 0,
-      "sets_for": 6,
-      "sets_against": 3,
-      "points_for": 203,
-      "points_against": 196
+      "sets_against": 5,
+      "points_for": 242,
+      "points_against": 251
     },
     {
       "rank": 5,
