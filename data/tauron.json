@@ -58,7 +58,7 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-28T00:42:50.672297+00:00",
+  "updated_at": "2026-10-28T13:14:33.621754+00:00",
   "matches": [
     {
       "id": "1104813",
@@ -397,7 +397,7 @@
       "id": "1104839",
       "competition": "TAURON Liga",
       "date": "07.11.2026",
-      "time": null,
+      "time": "15:00",
       "status": "scheduled",
       "home": "Cuprum Stilon Gorzów",
       "away": "ZAKSA Kędzierzyn-Koźle",
@@ -410,7 +410,7 @@
       "id": "1104842",
       "competition": "TAURON Liga",
       "date": "07.11.2026",
-      "time": null,
+      "time": "18:00",
       "status": "scheduled",
       "home": "ChKS Chełm",
       "away": "Steam Hemarpol Norwid Częstochowa",
@@ -423,7 +423,7 @@
       "id": "1104838",
       "competition": "TAURON Liga",
       "date": "08.11.2026",
-      "time": null,
+      "time": "15:00",
       "status": "scheduled",
       "home": "Asseco Resovia Rzeszów",
       "away": "Aluron CMC Warta Zawiercie",
