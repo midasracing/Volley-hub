@@ -62,25 +62,8 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-28T13:14:39.008041+00:00",
+  "updated_at": "2026-10-28T18:05:55.604032+00:00",
   "matches": [
-    {
-      "id": "1105168",
-      "competition": "TAURON 1. Liga",
-      "date": "18.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "KPS Płock",
-      "away": "Nowak-Mosty MKS Będzin",
-      "home_sets": 0,
-      "away_sets": 3,
-      "set_scores": [
-        "23:25",
-        "18:25",
-        "18:25"
-      ],
-      "current_points": null
-    },
     {
       "id": "1105162",
       "competition": "TAURON 1. Liga",
@@ -244,7 +227,7 @@
       "competition": "TAURON 1. Liga",
       "date": "28.10.2026",
       "time": "19:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "CUK Anioły Toruń",
       "away": "MCKiS Jaworzno",
       "home_sets": 0,
@@ -429,6 +412,19 @@
       "status": "scheduled",
       "home": "KPS Siedlce",
       "away": "KKS MICKIEWICZ Kluczbork",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105189",
+      "competition": "TAURON 1. Liga",
+      "date": "08.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "AVIA Sędziszów Małopolski",
+      "away": "KPS Płock",
       "home_sets": 0,
       "away_sets": 0,
       "set_scores": [],
