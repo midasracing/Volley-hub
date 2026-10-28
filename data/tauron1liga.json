@@ -62,7 +62,7 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-28T18:05:55.604032+00:00",
+  "updated_at": "2026-10-28T22:31:41.448664+00:00",
   "matches": [
     {
       "id": "1105162",
@@ -227,12 +227,16 @@
       "competition": "TAURON 1. Liga",
       "date": "28.10.2026",
       "time": "19:00",
-      "status": "live",
+      "status": "finished",
       "home": "CUK Anioły Toruń",
       "away": "MCKiS Jaworzno",
-      "home_sets": 0,
+      "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:20",
+        "25:18",
+        "25:19"
+      ],
       "current_points": null
     },
     {
@@ -458,6 +462,18 @@
     },
     {
       "rank": 3,
+      "team": "CUK Anioły Toruń",
+      "points": 15,
+      "played": 6,
+      "wins": 5,
+      "losses": 1,
+      "sets_for": 17,
+      "sets_against": 6,
+      "points_for": 523,
+      "points_against": 488
+    },
+    {
+      "rank": 4,
       "team": "FORT Poznań",
       "points": 15,
       "played": 7,
@@ -469,7 +485,7 @@
       "points_against": 657
     },
     {
-      "rank": 3,
+      "rank": 4,
       "team": "ICT PIERROT Czarni Radom",
       "points": 12,
       "played": 5,
@@ -481,7 +497,7 @@
       "points_against": 426
     },
     {
-      "rank": 4,
+      "rank": 5,
       "team": "KKS MICKIEWICZ Kluczbork",
       "points": 13,
       "played": 6,
@@ -491,18 +507,6 @@
       "sets_against": 7,
       "points_for": 529,
       "points_against": 478
-    },
-    {
-      "rank": 5,
-      "team": "CUK Anioły Toruń",
-      "points": 12,
-      "played": 5,
-      "wins": 4,
-      "losses": 1,
-      "sets_for": 14,
-      "sets_against": 6,
-      "points_for": 448,
-      "points_against": 431
     },
     {
       "rank": 7,
@@ -530,18 +534,6 @@
     },
     {
       "rank": 8,
-      "team": "MCKiS Jaworzno",
-      "points": 8,
-      "played": 6,
-      "wins": 3,
-      "losses": 3,
-      "sets_for": 12,
-      "sets_against": 14,
-      "points_for": 564,
-      "points_against": 579
-    },
-    {
-      "rank": 9,
       "team": "AVIA Sędziszów Małopolski",
       "points": 8,
       "played": 6,
@@ -551,6 +543,18 @@
       "sets_against": 12,
       "points_for": 488,
       "points_against": 517
+    },
+    {
+      "rank": 9,
+      "team": "MCKiS Jaworzno",
+      "points": 8,
+      "played": 7,
+      "wins": 3,
+      "losses": 4,
+      "sets_for": 12,
+      "sets_against": 17,
+      "points_for": 621,
+      "points_against": 654
     },
     {
       "rank": 11,

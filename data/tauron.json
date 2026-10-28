@@ -58,27 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-28T18:05:47.888943+00:00",
+  "updated_at": "2026-10-28T22:31:35.170832+00:00",
   "matches": [
-    {
-      "id": "1104813",
-      "competition": "TAURON Liga",
-      "date": "19.10.2026",
-      "time": "17:30",
-      "status": "finished",
-      "home": "ChKS Chełm",
-      "away": "Cuprum Stilon Gorzów",
-      "home_sets": 2,
-      "away_sets": 3,
-      "set_scores": [
-        "25:19",
-        "21:25",
-        "21:25",
-        "25:21",
-        "7:15"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104818",
       "competition": "TAURON Liga",
@@ -242,12 +223,17 @@
       "competition": "TAURON Liga",
       "date": "28.10.2026",
       "time": "20:30",
-      "status": "scheduled",
+      "status": "finished",
       "home": "PGE Projekt Warszawa",
       "away": "Aluron CMC Warta Zawiercie",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 1,
+      "away_sets": 3,
+      "set_scores": [
+        "25:18",
+        "22:25",
+        "17:25",
+        "21:25"
+      ],
       "current_points": null
     },
     {
@@ -431,6 +417,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104840",
+      "competition": "TAURON Liga",
+      "date": "08.11.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "Ślepsk Malow Suwałki",
+      "away": "Trefl Gdańsk",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -471,6 +470,18 @@
       "points_against": 162
     },
     {
+      "rank": 3,
+      "team": "Aluron CMC Warta Zawiercie",
+      "points": 6,
+      "played": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_for": 6,
+      "sets_against": 5,
+      "points_for": 266,
+      "points_against": 255
+    },
+    {
       "rank": 4,
       "team": "GKS Katowice",
       "points": 5,
@@ -495,16 +506,16 @@
       "points_against": 161
     },
     {
-      "rank": 6,
+      "rank": 7,
       "team": "PGE Projekt Warszawa",
       "points": 4,
-      "played": 2,
+      "played": 3,
       "wins": 1,
-      "losses": 1,
-      "sets_for": 5,
-      "sets_against": 4,
-      "points_for": 203,
-      "points_against": 188
+      "losses": 2,
+      "sets_for": 6,
+      "sets_against": 7,
+      "points_for": 288,
+      "points_against": 281
     },
     {
       "rank": 7,
@@ -517,18 +528,6 @@
       "sets_against": 3,
       "points_for": 160,
       "points_against": 161
-    },
-    {
-      "rank": 8,
-      "team": "Aluron CMC Warta Zawiercie",
-      "points": 3,
-      "played": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_for": 3,
-      "sets_against": 4,
-      "points_for": 173,
-      "points_against": 170
     },
     {
       "rank": 9,
