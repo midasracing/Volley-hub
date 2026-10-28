@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-10-28T16:53:50.958729+00:00",
+  "updated_at": "2026-10-28T21:30:50.719087+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -1886,10 +1886,14 @@
           "time": "18:00",
           "home": "MTS Międzyrzec Podlaski",
           "away": "AZS UWM Olsztyn",
-          "home_sets": 0,
+          "home_sets": 3,
           "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "set_scores": [
+            "25:18",
+            "25:15",
+            "25:18"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 2",
           "group": "Grupa 2"
         },
@@ -1898,10 +1902,16 @@
           "time": "18:00",
           "home": "REA CIRRO BAS Białystok",
           "away": "GKS Orlęta Raszyn",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 3,
+          "away_sets": 2,
+          "set_scores": [
+            "21:25",
+            "25:19",
+            "23:25",
+            "27:25",
+            "15:13"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 2",
           "group": "Grupa 2"
         },
@@ -1910,10 +1920,15 @@
           "time": "19:30",
           "home": "Elektromet Huragan Błonie",
           "away": "Integracyjny Klub Sportowy Atak Elbląg",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 3,
+          "away_sets": 1,
+          "set_scores": [
+            "24:26",
+            "25:21",
+            "27:25",
+            "25:18"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 2",
           "group": "Grupa 2"
         },
@@ -1922,10 +1937,14 @@
           "time": "20:00",
           "home": "SwK KARTPOL Kobyłka",
           "away": "NECKO Augustów",
-          "home_sets": 0,
+          "home_sets": 3,
           "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "set_scores": [
+            "27:25",
+            "25:17",
+            "25:23"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 2",
           "group": "Grupa 2"
         },
@@ -2857,6 +2876,18 @@
       "table": [
         {
           "rank": 1,
+          "team": "SwK KARTPOL Kobyłka",
+          "played": 7,
+          "wins": 18,
+          "losses": 6,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 524
+        },
+        {
+          "rank": 2,
           "team": "KS Camper Wyszków",
           "played": 6,
           "wins": 17,
@@ -2868,55 +2899,67 @@
           "points": 379
         },
         {
-          "rank": 2,
-          "team": "SwK KARTPOL Kobyłka",
+          "rank": 3,
+          "team": "REA CIRRO BAS Białystok",
           "played": 6,
-          "wins": 15,
+          "wins": 13,
+          "losses": 4,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 520
+        },
+        {
+          "rank": 4,
+          "team": "MTS Międzyrzec Podlaski",
+          "played": 7,
+          "wins": 12,
           "losses": 5,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 459
+          "points": 609
         },
         {
-          "rank": 3,
+          "rank": 5,
           "team": "NECKO Augustów",
-          "played": 5,
+          "played": 6,
           "wins": 12,
           "losses": 4,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 288
+          "points": 365
         },
         {
-          "rank": 4,
-          "team": "REA CIRRO BAS Białystok",
-          "played": 5,
-          "wins": 11,
+          "rank": 6,
+          "team": "Elektromet Huragan Błonie",
+          "played": 6,
+          "wins": 9,
           "losses": 3,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 413
+          "points": 482
         },
         {
-          "rank": 5,
-          "team": "MTS Międzyrzec Podlaski",
+          "rank": 7,
+          "team": "GKS Orlęta Raszyn",
           "played": 6,
-          "wins": 9,
-          "losses": 4,
+          "wins": 7,
+          "losses": 2,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 558
+          "points": 467
         },
         {
-          "rank": 6,
+          "rank": 8,
           "team": "MOS Wola Tramwaje Warszawskie",
           "played": 6,
           "wins": 7,
@@ -2928,40 +2971,16 @@
           "points": 478
         },
         {
-          "rank": 7,
-          "team": "GKS Orlęta Raszyn",
-          "played": 5,
-          "wins": 6,
-          "losses": 2,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 356
-        },
-        {
-          "rank": 8,
-          "team": "Elektromet Huragan Błonie",
-          "played": 5,
-          "wins": 6,
-          "losses": 2,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 392
-        },
-        {
           "rank": 9,
           "team": "Integracyjny Klub Sportowy Atak Elbląg",
-          "played": 5,
+          "played": 6,
           "wins": 2,
           "losses": 1,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 420
+          "points": 521
         },
         {
           "rank": 10,
@@ -2978,14 +2997,14 @@
         {
           "rank": 11,
           "team": "AZS UWM Olsztyn",
-          "played": 5,
+          "played": 6,
           "wins": 1,
           "losses": 0,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 458
+          "points": 533
         }
       ],
       "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
@@ -3653,10 +3672,15 @@
           "time": "18:00",
           "home": "MLKS Volley Gubin",
           "away": "STS Olimpia Sulęcin",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 1,
+          "away_sets": 3,
+          "set_scores": [
+            "23:25",
+            "19:25",
+            "25:19",
+            "18:25"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 3",
           "group": "Grupa 3"
         },
@@ -3665,10 +3689,16 @@
           "time": "18:00",
           "home": "KS Bielawianka-Bester",
           "away": "Astra Nowa Sól",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 3,
+          "away_sets": 2,
+          "set_scores": [
+            "18:25",
+            "25:23",
+            "14:25",
+            "25:17",
+            "15:10"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 3",
           "group": "Grupa 3"
         },
@@ -3677,10 +3707,14 @@
           "time": "19:00",
           "home": "KPS Chełmiec ANS AS Wałbrzych",
           "away": "KS AS Słubice",
-          "home_sets": 0,
+          "home_sets": 3,
           "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "set_scores": [
+            "25:18",
+            "25:23",
+            "25:13"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 3",
           "group": "Grupa 3"
         },
@@ -3689,10 +3723,16 @@
           "time": "19:00",
           "home": "BS ŻAGAŃ WKS Sobieski Żagań",
           "away": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 2,
+          "away_sets": 3,
+          "set_scores": [
+            "25:20",
+            "15:25",
+            "9:25",
+            "25:23",
+            "14:16"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 3",
           "group": "Grupa 3"
         },
@@ -3714,9 +3754,13 @@
           "home": "PGE Akademia Siatkówki Stilon",
           "away": "Gwardia Wrocław",
           "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "away_sets": 3,
+          "set_scores": [
+            "17:25",
+            "17:25",
+            "23:25"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 3",
           "group": "Grupa 3"
         },
@@ -4805,122 +4849,122 @@
         {
           "rank": 1,
           "team": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
-          "played": 6,
-          "wins": 18,
-          "losses": 6,
+          "played": 7,
+          "wins": 20,
+          "losses": 7,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 374
+          "points": 462
         },
         {
           "rank": 2,
-          "team": "Astra Nowa Sól",
-          "played": 6,
-          "wins": 13,
+          "team": "KPS Chełmiec ANS AS Wałbrzych",
+          "played": 7,
+          "wins": 14,
           "losses": 5,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 570
+          "points": 585
         },
         {
           "rank": 3,
+          "team": "Astra Nowa Sól",
+          "played": 7,
+          "wins": 14,
+          "losses": 5,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 667
+        },
+        {
+          "rank": 4,
+          "team": "Gwardia Wrocław",
+          "played": 7,
+          "wins": 14,
+          "losses": 4,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 533
+        },
+        {
+          "rank": 5,
+          "team": "KS Bielawianka-Bester",
+          "played": 7,
+          "wins": 12,
+          "losses": 5,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 576
+        },
+        {
+          "rank": 6,
           "team": "KS AS Słubice",
-          "played": 6,
+          "played": 7,
           "wins": 12,
           "losses": 4,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 515
-        },
-        {
-          "rank": 4,
-          "team": "KPS Chełmiec ANS AS Wałbrzych",
-          "played": 6,
-          "wins": 11,
-          "losses": 4,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 531
-        },
-        {
-          "rank": 5,
-          "team": "Gwardia Wrocław",
-          "played": 6,
-          "wins": 11,
-          "losses": 3,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 476
-        },
-        {
-          "rank": 6,
-          "team": "KS Bielawianka-Bester",
-          "played": 6,
-          "wins": 10,
-          "losses": 4,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 476
+          "points": 590
         },
         {
           "rank": 7,
           "team": "BS ŻAGAŃ WKS Sobieski Żagań",
-          "played": 6,
-          "wins": 8,
+          "played": 7,
+          "wins": 9,
           "losses": 3,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 498
+          "points": 607
         },
         {
           "rank": 8,
+          "team": "STS Olimpia Sulęcin",
+          "played": 7,
+          "wins": 9,
+          "losses": 3,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 615
+        },
+        {
+          "rank": 9,
           "team": "MLKS Volley Gubin",
-          "played": 6,
+          "played": 7,
           "wins": 8,
           "losses": 2,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 530
-        },
-        {
-          "rank": 9,
-          "team": "STS Olimpia Sulęcin",
-          "played": 6,
-          "wins": 6,
-          "losses": 2,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 530
+          "points": 624
         },
         {
           "rank": 10,
           "team": "PGE Akademia Siatkówki Stilon",
-          "played": 6,
+          "played": 7,
           "wins": 5,
           "losses": 2,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 502
+          "points": 577
         },
         {
           "rank": 11,
@@ -5322,18 +5366,6 @@
         {
           "date": "07.11.2026",
           "time": "",
-          "home": "Volley Team Żychlin",
-          "away": "ProNutiva SKK Belsk Duży",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 4",
-          "group": "Grupa 4"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "",
           "home": "WKS Wieluń",
           "away": "AZS Częstochowa",
           "home_sets": 0,
@@ -5348,6 +5380,18 @@
           "time": "17:00",
           "home": "Bugaj Volley Radomsko",
           "away": "KS Norwid Politechnika Częstochowa",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 4",
+          "group": "Grupa 4"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "17:00",
+          "home": "Volley Team Żychlin",
+          "away": "ProNutiva SKK Belsk Duży",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
@@ -6792,10 +6836,14 @@
           "time": "18:30",
           "home": "AZS AGH Kraków",
           "away": "UMKS Kęczanin Kęty",
-          "home_sets": 0,
+          "home_sets": 3,
           "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "set_scores": [
+            "25:22",
+            "25:17",
+            "25:21"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 5",
           "group": "Grupa 5"
         },
@@ -6804,10 +6852,14 @@
           "time": "19:00",
           "home": "TKS Tychy",
           "away": "MKS Andrychów",
-          "home_sets": 0,
+          "home_sets": 3,
           "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "set_scores": [
+            "25:22",
+            "25:23",
+            "25:23"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 5",
           "group": "Grupa 5"
         },
@@ -6828,10 +6880,14 @@
           "time": "19:00",
           "home": "Karpaty - PANS Krosno",
           "away": "AKS V LO Rzeszów",
-          "home_sets": 0,
+          "home_sets": 3,
           "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "set_scores": [
+            "25:18",
+            "25:10",
+            "25:17"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 5",
           "group": "Grupa 5"
         },
@@ -7775,6 +7831,18 @@
       "table": [
         {
           "rank": 1,
+          "team": "Karpaty - PANS Krosno",
+          "played": 5,
+          "wins": 14,
+          "losses": 5,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 343
+        },
+        {
+          "rank": 2,
           "team": "Feniks Heron Przeworsk",
           "played": 5,
           "wins": 14,
@@ -7784,18 +7852,6 @@
           "points_for": 0,
           "points_against": 0,
           "points": 457
-        },
-        {
-          "rank": 2,
-          "team": "Karpaty - PANS Krosno",
-          "played": 4,
-          "wins": 11,
-          "losses": 4,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 298
         },
         {
           "rank": 3,
@@ -7835,6 +7891,30 @@
         },
         {
           "rank": 6,
+          "team": "AZS AGH Kraków",
+          "played": 6,
+          "wins": 9,
+          "losses": 3,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 431
+        },
+        {
+          "rank": 7,
+          "team": "TKS Tychy",
+          "played": 7,
+          "wins": 7,
+          "losses": 2,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 624
+        },
+        {
+          "rank": 8,
           "team": "KS Jastrzębie-Borynia",
           "played": 3,
           "wins": 6,
@@ -7846,20 +7926,8 @@
           "points": 214
         },
         {
-          "rank": 7,
+          "rank": 9,
           "team": "MKS Andrychów",
-          "played": 4,
-          "wins": 6,
-          "losses": 2,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 369
-        },
-        {
-          "rank": 8,
-          "team": "AZS AGH Kraków",
           "played": 5,
           "wins": 6,
           "losses": 2,
@@ -7867,43 +7935,31 @@
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 371
-        },
-        {
-          "rank": 9,
-          "team": "TKS Tychy",
-          "played": 6,
-          "wins": 4,
-          "losses": 1,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 556
+          "points": 444
         },
         {
           "rank": 10,
           "team": "UMKS Kęczanin Kęty",
-          "played": 6,
+          "played": 7,
           "wins": 4,
           "losses": 1,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 525
+          "points": 600
         },
         {
           "rank": 11,
           "team": "AKS V LO Rzeszów",
-          "played": 7,
+          "played": 8,
           "wins": 2,
           "losses": 1,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 604
+          "points": 679
         }
       ],
       "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
