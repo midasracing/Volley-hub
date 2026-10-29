@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-10-28T21:30:50.719087+00:00",
+  "updated_at": "2026-10-29T01:12:28.507436+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -3741,10 +3741,16 @@
           "time": "19:00",
           "home": "Ikar Legnica",
           "away": "BTS Willowa Bolesławiec",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 2,
+          "away_sets": 3,
+          "set_scores": [
+            "18:25",
+            "25:19",
+            "22:25",
+            "25:15",
+            "7:15"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 3",
           "group": "Grupa 3"
         },
@@ -4956,6 +4962,18 @@
         },
         {
           "rank": 10,
+          "team": "BTS Willowa Bolesławiec",
+          "played": 7,
+          "wins": 7,
+          "losses": 2,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 657
+        },
+        {
+          "rank": 11,
           "team": "PGE Akademia Siatkówki Stilon",
           "played": 7,
           "wins": 5,
@@ -4967,28 +4985,16 @@
           "points": 577
         },
         {
-          "rank": 11,
-          "team": "BTS Willowa Bolesławiec",
-          "played": 6,
-          "wins": 5,
-          "losses": 1,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 560
-        },
-        {
           "rank": 12,
           "team": "Ikar Legnica",
-          "played": 6,
-          "wins": 1,
+          "played": 7,
+          "wins": 2,
           "losses": 0,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 509
+          "points": 608
         }
       ],
       "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
@@ -6868,10 +6874,15 @@
           "time": "19:00",
           "home": "Volley Dąbrowa Górnicza",
           "away": "KS Hutnik Kraków",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 1,
+          "away_sets": 3,
+          "set_scores": [
+            "17:25",
+            "20:25",
+            "25:23",
+            "22:25"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 5",
           "group": "Grupa 5"
         },
@@ -7856,14 +7867,14 @@
         {
           "rank": 3,
           "team": "KS Hutnik Kraków",
-          "played": 5,
-          "wins": 11,
-          "losses": 4,
+          "played": 6,
+          "wins": 14,
+          "losses": 5,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 390
+          "points": 474
         },
         {
           "rank": 4,
@@ -7880,14 +7891,14 @@
         {
           "rank": 5,
           "team": "Volley Dąbrowa Górnicza",
-          "played": 6,
+          "played": 7,
           "wins": 10,
           "losses": 3,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 456
+          "points": 554
         },
         {
           "rank": 6,
