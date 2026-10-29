@@ -58,25 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-29T18:14:02.321808+00:00",
+  "updated_at": "2026-10-29T22:50:58.623650+00:00",
   "matches": [
-    {
-      "id": "1104820",
-      "competition": "TAURON Liga",
-      "date": "21.10.2026",
-      "time": "17:30",
-      "status": "finished",
-      "home": "BOGDANKA LUK Lublin",
-      "away": "Trefl Gdańsk",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:22",
-        "25:22",
-        "25:21"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104821",
       "competition": "TAURON Liga",
@@ -241,12 +224,17 @@
       "competition": "TAURON Liga",
       "date": "29.10.2026",
       "time": "20:30",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Asseco Resovia Rzeszów",
       "away": "Trefl Gdańsk",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "22:25",
+        "25:20",
+        "25:20",
+        "25:14"
+      ],
       "current_points": null
     },
     {
@@ -430,6 +418,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104837",
+      "competition": "TAURON Liga",
+      "date": "09.11.2026",
+      "time": "17:30",
+      "status": "scheduled",
+      "home": "Indykpol AZS Olsztyn",
+      "away": "BOGDANKA LUK Lublin",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -444,6 +445,18 @@
       "sets_against": 0,
       "points_for": 150,
       "points_against": 131
+    },
+    {
+      "rank": 1,
+      "team": "Asseco Resovia Rzeszów",
+      "points": 7,
+      "played": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_for": 8,
+      "sets_against": 4,
+      "points_for": 276,
+      "points_against": 240
     },
     {
       "rank": 1,
@@ -470,7 +483,7 @@
       "points_against": 162
     },
     {
-      "rank": 3,
+      "rank": 4,
       "team": "Aluron CMC Warta Zawiercie",
       "points": 6,
       "played": 3,
@@ -482,7 +495,7 @@
       "points_against": 255
     },
     {
-      "rank": 4,
+      "rank": 5,
       "team": "GKS Katowice",
       "points": 5,
       "played": 3,
@@ -492,18 +505,6 @@
       "sets_against": 5,
       "points_for": 242,
       "points_against": 251
-    },
-    {
-      "rank": 5,
-      "team": "Asseco Resovia Rzeszów",
-      "points": 4,
-      "played": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_for": 5,
-      "sets_against": 3,
-      "points_for": 179,
-      "points_against": 161
     },
     {
       "rank": 7,
@@ -590,16 +591,16 @@
       "points_against": 180
     },
     {
-      "rank": 13,
+      "rank": 14,
       "team": "Trefl Gdańsk",
       "points": 0,
-      "played": 2,
+      "played": 3,
       "wins": 0,
-      "losses": 2,
-      "sets_for": 1,
-      "sets_against": 6,
-      "points_for": 160,
-      "points_against": 175
+      "losses": 3,
+      "sets_for": 2,
+      "sets_against": 9,
+      "points_for": 239,
+      "points_against": 272
     }
   ],
   "source": "https://www.tauronliga.pl",
