@@ -58,25 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-29T13:21:13.451046+00:00",
+  "updated_at": "2026-10-29T18:14:02.321808+00:00",
   "matches": [
-    {
-      "id": "1104818",
-      "competition": "TAURON Liga",
-      "date": "20.10.2026",
-      "time": "17:30",
-      "status": "finished",
-      "home": "Indykpol AZS Olsztyn",
-      "away": "Steam Hemarpol Norwid Częstochowa",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:18",
-        "25:23",
-        "25:18"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104820",
       "competition": "TAURON Liga",
@@ -241,12 +224,16 @@
       "competition": "TAURON Liga",
       "date": "29.10.2026",
       "time": "17:30",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Indykpol AZS Olsztyn",
       "away": "ZAKSA Kędzierzyn-Koźle",
       "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "away_sets": 3,
+      "set_scores": [
+        "17:25",
+        "20:25",
+        "23:25"
+      ],
       "current_points": null
     },
     {
@@ -430,6 +417,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104841",
+      "competition": "TAURON Liga",
+      "date": "08.11.2026",
+      "time": "20:30",
+      "status": "scheduled",
+      "home": "Barkom Każany Lwów",
+      "away": "PGE Projekt Warszawa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -518,16 +518,16 @@
       "points_against": 281
     },
     {
-      "rank": 7,
-      "team": "Indykpol AZS Olsztyn",
+      "rank": 8,
+      "team": "ZAKSA Kędzierzyn-Koźle",
       "points": 3,
-      "played": 2,
+      "played": 3,
       "wins": 1,
-      "losses": 1,
+      "losses": 2,
       "sets_for": 4,
-      "sets_against": 3,
-      "points_for": 160,
-      "points_against": 161
+      "sets_against": 6,
+      "points_for": 235,
+      "points_against": 239
     },
     {
       "rank": 9,
@@ -540,6 +540,18 @@
       "sets_against": 5,
       "points_for": 171,
       "points_against": 179
+    },
+    {
+      "rank": 9,
+      "team": "Indykpol AZS Olsztyn",
+      "points": 3,
+      "played": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_for": 4,
+      "sets_against": 6,
+      "points_for": 220,
+      "points_against": 236
     },
     {
       "rank": 10,
@@ -588,18 +600,6 @@
       "sets_against": 6,
       "points_for": 160,
       "points_against": 175
-    },
-    {
-      "rank": 14,
-      "team": "ZAKSA Kędzierzyn-Koźle",
-      "points": 0,
-      "played": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_for": 1,
-      "sets_against": 6,
-      "points_for": 160,
-      "points_against": 179
     }
   ],
   "source": "https://www.tauronliga.pl",
