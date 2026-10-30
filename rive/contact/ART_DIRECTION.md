@@ -33,3 +33,9 @@ The first ball path overlapped the V in frame 12, creating a visual error. The O
 
 ## Installable icon system
 The standalone split-O symbol is the sole icon source. A light/dark adaptive SVG is used for browser tabs. A neutral midnight container is allowed **only for OS home-screen icon tiles**; it is not part of the wordmark. The same SVG is deterministically rasterized to 192 and 512px PNG for reliable Android/iOS PWA support. The current header itself stays unboxed.
+
+## Verified browser and rendering proof
+- GitHub Actions contact renders six actual native Rive frames (1 / 12 / 23 / 39 / 54 / 70).
+- React Playwright checks mobile viewports at 320 and 390 CSS px, tests native Rive load, touch replay and reduced-motion fallback, and uploads actual header screenshots as an artifact.
+- CI compares the native Rive resting frame to the static SVG at exactly 234×48. Channel-wise mean absolute color deviation must stay under 7/255, accounting for two different anti-aliasing engines. This guards against accidentally editing only one version of the logo.
+- Design review still requires a real physical device session before a production merge.

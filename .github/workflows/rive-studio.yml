@@ -64,6 +64,22 @@ jobs:
           for size in (192,512):
               cairosvg.svg2png(url='public/brand/volley-hub-app-icon.svg', write_to=f'public/brand/volley-hub-icon-{size}.png', output_width=size, output_height=size)
           PY
+      - name: Optical parity — native Rive resting frame vs vector master
+        run: |
+          /tmp/contact-icon-venv/bin/pip install --quiet pillow
+          /tmp/contact-icon-venv/bin/python - <<'PY'
+          from PIL import Image, ImageChops, ImageStat
+          import cairosvg, io
+          source=open('public/brand/volley-hub-static.svg','rb').read()
+          svg=Image.open(io.BytesIO(cairosvg.svg2png(bytestring=source,output_width=234,output_height=48))).convert('RGBA')
+          background=Image.new('RGBA',svg.size,(29,29,29,255))
+          background.alpha_composite(svg)
+          rive=Image.open('.rive-captures/contact/frame-70.png').convert('RGBA')
+          if rive.size != svg.size: raise SystemExit(f'Unexpected Rive dimensions {rive.size}')
+          mae=ImageStat.Stat(ImageChops.difference(rive,background).convert('RGB')).mean
+          print('Rive/SVG per-channel mean absolute error (0..255):',mae)
+          if max(mae) > 7: raise SystemExit('Rive resting image diverges from our static brand master')
+          PY
       - name: Update compiled runtime asset on feature branch only
         if: github.ref == 'refs/heads/feat/contact-brand-rive'
         run: |
