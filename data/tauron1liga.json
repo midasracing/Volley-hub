@@ -62,44 +62,8 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-30T13:12:55.226939+00:00",
+  "updated_at": "2026-10-30T17:51:05.668458+00:00",
   "matches": [
-    {
-      "id": "1105162",
-      "competition": "TAURON 1. Liga",
-      "date": "19.10.2026",
-      "time": "18:30",
-      "status": "finished",
-      "home": "MCKiS Jaworzno",
-      "away": "FORT Poznań",
-      "home_sets": 3,
-      "away_sets": 2,
-      "set_scores": [
-        "30:28",
-        "21:25",
-        "25:19",
-        "27:29",
-        "15:8"
-      ],
-      "current_points": null
-    },
-    {
-      "id": "1105164",
-      "competition": "TAURON 1. Liga",
-      "date": "19.10.2026",
-      "time": "19:00",
-      "status": "finished",
-      "home": "KS Sparta Grodzisk Mazowiecki",
-      "away": "ICT PIERROT Czarni Radom",
-      "home_sets": 0,
-      "away_sets": 3,
-      "set_scores": [
-        "27:29",
-        "15:25",
-        "15:25"
-      ],
-      "current_points": null
-    },
     {
       "id": "1105177",
       "competition": "TAURON 1. Liga",
@@ -244,7 +208,7 @@
       "competition": "TAURON 1. Liga",
       "date": "30.10.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "BBTS Bielsko-Biała",
       "away": "ICT PIERROT Czarni Radom",
       "home_sets": 0,
@@ -257,7 +221,7 @@
       "competition": "TAURON 1. Liga",
       "date": "30.10.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "Stal Nysa",
       "away": "Nowak-Mosty MKS Będzin",
       "home_sets": 0,
@@ -429,6 +393,32 @@
       "status": "scheduled",
       "home": "AVIA Sędziszów Małopolski",
       "away": "KPS Płock",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105190",
+      "competition": "TAURON 1. Liga",
+      "date": "09.11.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "ICT PIERROT Czarni Radom",
+      "away": "CUK Anioły Toruń",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105195",
+      "competition": "TAURON 1. Liga",
+      "date": "12.11.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "BBTS Bielsko-Biała",
+      "away": "FORT Poznań",
       "home_sets": 0,
       "away_sets": 0,
       "set_scores": [],
