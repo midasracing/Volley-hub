@@ -1,37 +1,47 @@
-# VOLLEY HUB
+# Volley Hub — React 19
 
-**VOLLEY HUB** to mobilne centrum informacji o siatkówce. Celem aplikacji jest zebranie w jednym miejscu terminarzy, wyników i informacji o rozgrywkach, aby łatwo sprawdzić, kto gra, kiedy odbywa się mecz i jak zakończyło się spotkanie. Projekt jest rozwijany przede wszystkim z myślą o wygodnym korzystaniu na telefonie.
+Mobilna aplikacja siatkarska PWA oparta na React 19 + Vite 6. Językiem wizualnym całej strony jest zakładka Mecze: duża typografia Barlow, jasne karty wyników, ciemny interfejs i zaokrąglona nawigacja.
 
-## Co ma oferować aplikacja
+## Funkcje
 
-- **Główna** — szybki podgląd najważniejszych meczów i wydarzeń.
-- **Mecze** — przegląd spotkań z możliwością wyszukiwania oraz filtrowania według daty i statusu.
-- **Rozgrywki** — dostęp do lig i turniejów.
-- **Ulubione** — szybki dostęp do wybranych drużyn i rozgrywek.
-- **Wyszukiwarka** — odnajdywanie interesujących meczów, zespołów i rozgrywek.
+- Główna: mecze dnia, nadchodzące mecze, rozgrywki i ulubione.
+- Mecze: kalendarz, filtry lig i grup, status na żywo, wyniki i sety.
+- Rozgrywki: terminarz, wyniki, tabela oraz drużyny każdej dostępnej ligi.
+- Ulubione: drużyny i ligi zapisywane w localStorage (zgodność z kluczem vh-favs).
+- Wyszukiwarka drużyn i lig, czytelne stany ładowania, pustych wyników i błędów.
+- PWA: manifest, cache aplikacji i network-first dla danych ligowych.
 
-Interfejs jest przygotowywany jako aplikacja webowa typu PWA, dzięki czemu można korzystać z niego w przeglądarce i dodać go do ekranu początkowego telefonu.
+## Lokalnie
 
-## Skąd pochodzą informacje
+Node 20+:
 
-Rzetelność danych jest ważniejsza niż pokazywanie niezweryfikowanych wyników. Informacje o meczach powinny pochodzić ze sprawdzonych źródeł organizatorów rozgrywek lub oficjalnych systemów wynikowych.
+    npm install
+    npm run dev
+    npm test
+    npm run build
+    npm run preview
 
-### Pomorska III Liga Męska
+Przed uruchomieniem Vite i buildem skrypt scripts/sync-data.mjs kopiuje najnowsze dane z data/*.json do public/data/*.json. Istniejące skrypty Python i workflow aktualizują nadal folder data, bez zmiany ich działania.
 
-Dla Pomorskiej III Ligi Męskiej jedynym źródłem danych jest **VolleyStation** — zgodnie z założeniami projektu nie należy uzupełniać tej ligi informacjami z innych serwisów.
+## Publikacja
 
-- Terminarz: https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/
+Po scaleniu pull requesta do main ustaw w GitHub Settings > Pages > Build and deployment > Source na GitHub Actions. Workflow Deploy React to GitHub Pages buduje dist/ i publikuje gotową aplikację. Samo serwowanie katalogu głównego repo bez buildu nie uruchomi Reacta.
 
-Zakres rozgrywek obejmuje zespoły z województw pomorskiego i kujawsko-pomorskiego. Przed automatycznym pobieraniem danych należy sprawdzić dostępność źródła oraz warunki jego wykorzystania.
+## Źródła
 
-### Pozostałe ligi i turnieje
+- data/tauron.json — TAURON Liga
+- data/tauron1liga.json — TAURON 1. Liga
+- data/2liga.json — II Liga Mężczyzn (PZPS)
+- data/pomorska3liga.json — Pomorska III Liga (WYŁĄCZNIE VolleyStation)
 
-Źródła dla pozostałych rozgrywek wymagają osobnej weryfikacji. Nie należy zakładać, że dane są już zintegrowane, ani prezentować fikcyjnych terminarzy czy wyników. Przy każdej integracji trzeba ustalić źródło i sprawdzić, czy dostarcza aktualne informacje.
+Nie generujemy fikcyjnych wyników. Aktualność danych zależy od działania scraperów i cyklu synchronizacji.
 
-## Aktualny stan projektu
+## Architektura
 
-Na obecnym etapie repozytorium zawiera interfejs aplikacji i podstawową obsługę nawigacji, wyszukiwania oraz ulubionych zapisywanych lokalnie w przeglądarce. **Terminarze i wyniki nie są jeszcze podłączone do źródeł danych**, dlatego aplikacja nie powinna być traktowana jako aktualny serwis wynikowy.
+- src/main.jsx — wspólne drzewo React (nawigacja, Mecze, Główna, Rozgrywki, Ulubione, wyszukiwarka)
+- src/data.js — pobieranie, transformacja i normalizacja danych
+- src/app.css oraz matches-ios.css — wspólny design system
+- public — manifest, service worker, kopiowane dane
+- tests — testy logiki danych
 
-## Dalszy rozwój
-
-Kolejne etapy to podłączenie zweryfikowanych źródeł danych, rozpoczęcie integracji Pomorskiej III Ligi Męskiej wyłącznie z VolleyStation oraz dodanie szczegółów spotkań i aktualizacji wyników.
+Stare app.js, matches-ios.js i fluid-glass-react.js pozostają wyłącznie dla porównania i nie są ładowane przez nowy index.html.

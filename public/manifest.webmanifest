@@ -1,0 +1,11 @@
+{
+  "name": "VOLLEY HUB",
+  "short_name": "Volley Hub",
+  "lang": "pl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e1118",
+  "theme_color": "#0e1118",
+  "description": "Siatkówka w jednym miejscu — terminarze, wyniki i rozgrywki."
+}
