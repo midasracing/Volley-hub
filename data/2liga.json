@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-10-30T00:12:43.615403+00:00",
+  "updated_at": "2026-10-30T06:19:51.587704+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -6907,10 +6907,15 @@
           "time": "19:00",
           "home": "MKS Andrychów",
           "away": "TS Volley Rybnik",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 1,
+          "away_sets": 3,
+          "set_scores": [
+            "14:25",
+            "24:26",
+            "25:20",
+            "15:25"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 5",
           "group": "Grupa 5"
         },
@@ -7879,14 +7884,14 @@
         {
           "rank": 4,
           "team": "TS Volley Rybnik",
-          "played": 5,
-          "wins": 10,
-          "losses": 3,
+          "played": 6,
+          "wins": 13,
+          "losses": 4,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 354
+          "points": 432
         },
         {
           "rank": 5,
@@ -7939,14 +7944,14 @@
         {
           "rank": 9,
           "team": "MKS Andrychów",
-          "played": 5,
+          "played": 6,
           "wins": 6,
           "losses": 2,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 444
+          "points": 540
         },
         {
           "rank": 10,
