@@ -40,5 +40,16 @@ jobs:
           echo '===== RML TRIANGLE ====='
           cp -R "$(rive samples --path)/rml_triangle" /tmp/rive-triangle
           sed -n '1,160p' /tmp/rive-triangle/scene.rml
+          echo '===== DOCS DRAWING ====='
+          rive docs drawing | head -n 240 || true
+          echo '===== SCHEMA PATH ====='
+          rive schema Path || true
+          rive schema StraightVertex || true
+          rive schema CubicVertex || true
+          echo '===== SCHEMA PAINT ====='
+          rive schema Stroke || true
+          rive schema SolidColor || true
+          rive schema LinearGradient || true
+          rive schema GradientStop || true
           echo '===== DOCS SKELETON ====='
           rive docs skeleton | head -n 190 || true
