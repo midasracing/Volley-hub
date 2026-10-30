@@ -4,6 +4,7 @@ on:
     branches: [feat/contact-brand-rive, main]
     paths:
       - 'rive/contact/**'
+      - 'public/brand/volley-hub-app-icon.svg'
       - '.github/workflows/rive-studio.yml'
   workflow_dispatch:
 permissions:
@@ -54,11 +55,20 @@ jobs:
             rive/contact/build/contact.riv
           include-hidden-files: true
           retention-days: 30
+      - name: Rasterize app icon from one vector master
+        run: |
+          python3 -m venv /tmp/contact-icon-venv
+          /tmp/contact-icon-venv/bin/pip install --quiet --disable-pip-version-check cairosvg
+          /tmp/contact-icon-venv/bin/python - <<'PY'
+          import cairosvg
+          for size in (192,512):
+              cairosvg.svg2png(url='public/brand/volley-hub-app-icon.svg', write_to=f'public/brand/volley-hub-icon-{size}.png', output_width=size, output_height=size)
+          PY
       - name: Update compiled runtime asset on feature branch only
         if: github.ref == 'refs/heads/feat/contact-brand-rive'
         run: |
           cp rive/contact/build/contact.riv public/brand/volley-hub.riv
-          git add public/brand/volley-hub.riv
+          git add public/brand/volley-hub.riv public/brand/volley-hub-icon-192.png public/brand/volley-hub-icon-512.png
           if git diff --cached --quiet; then
             echo 'The native Rive asset is already current.'
             exit 0

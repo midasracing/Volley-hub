@@ -96,3 +96,15 @@ test('native CONTACT Rive binary is served as a nonempty asset', async ({ reques
   const body = await response.body();
   expect(body.length).toBeGreaterThan(500);
 });
+
+test('installable mobile PWA icon assets are valid PNG files', async ({ request }) => {
+  for (const size of [192, 512]) {
+    const response = await request.get('/brand/volley-hub-icon-' + size + '.png');
+    expect(response.ok()).toBeTruthy();
+    const buffer = await response.body();
+    expect(Array.from(buffer.subarray(0, 8))).toEqual([137, 80, 78, 71, 13, 10, 26, 10]);
+    expect(buffer.length).toBeGreaterThan(500);
+  }
+  const manifest = await (await request.get('/manifest.webmanifest')).json();
+  expect(manifest.icons).toEqual(expect.arrayContaining([expect.objectContaining({ sizes: '512x512', type: 'image/png' })]));
+});

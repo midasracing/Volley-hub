@@ -30,3 +30,6 @@ The movement happens **inside the sign**. No generic rounded V badge, fake liqui
 
 ## Review notes — motion refinement
 The first ball path overlapped the V in frame 12, creating a visual error. The O now approaches from **above/right** and resolves into its designed position by frame 30, avoiding the V and the arriving Ls. The mark uses the standalone contact glyph as an SVG favicon, not a generic square V.
+
+## Installable icon system
+The standalone split-O symbol is the sole icon source. A light/dark adaptive SVG is used for browser tabs. A neutral midnight container is allowed **only for OS home-screen icon tiles**; it is not part of the wordmark. The same SVG is deterministically rasterized to 192 and 512px PNG for reliable Android/iOS PWA support. The current header itself stays unboxed.
