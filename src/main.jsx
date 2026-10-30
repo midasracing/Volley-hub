@@ -172,7 +172,7 @@ function MatchesPage({ feeds, loading, errors, refresh, logos, selectedDate, set
   return <>
     <PageHeader title="Mecze" subtitle="Terminarze i wyniki w jednym miejscu." actions={<>
       <IconButton Icon={SlidersHorizontal} label={liveOnly ? 'Pokaż wszystkie mecze' : 'Tylko mecze na żywo'} active={liveOnly} onClick={() => setLiveOnly(current => !current)} />
-      <IconButton Icon={CalendarDays} label="Wybierz datę" onClick={() => input.current?.showPicker?.() || input.current?.click()} />
+      <IconButton Icon={CalendarDays} label="Wybierz datę" onClick={() => { const picker = input.current; if (!picker) return; if (typeof picker.showPicker === 'function') picker.showPicker(); else picker.click(); }} />
       <IconButton Icon={CalendarCheck2} label="Przejdź do dzisiaj" onClick={() => { setLiveOnly(false); setSelectedDate(NOW()); }} />
     </>} />
     <input className="vh-visually-hidden-date" type="date" aria-label="Wybierz datę" ref={input} value={dateKey(selectedDate)} onChange={event => { const next = fromKey(event.target.value); if (next) { setLiveOnly(false); setSelectedDate(next); } }} />
@@ -282,14 +282,21 @@ function FavoritesPage({ feeds, logos, favorites, toggleFavorite, onOpenLeague }
 function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites, toggleFavorite }) {
   const [query, setQuery] = useState('');
   const input = useRef(null);
-  useEffect(() => { input.current?.focus(); const onEscape = event => { if (event.key === 'Escape') onClose(); }; window.addEventListener('keydown', onEscape); return () => window.removeEventListener('keydown', onEscape); }, [onClose]);
+  useEffect(() => { input.current?.focus(); const onEscape = event => { if (event.key === 'Escape') onClose(); }; window.addEventListener('keydown', onEscape); return () => { window.removeEventListener('keydown', onEscape); document.querySelector('.vh-global-search')?.focus(); }; }, []);
   const results = useMemo(() => {
     const term = normalizeName(query);
     if (!term) return { leagues: LEAGUES, teams: [] };
     return { leagues: LEAGUES.filter(item => normalizeName(item.name).includes(term)), teams: teamIndex(feeds).filter(team => normalizeName(team.name).includes(term)).slice(0, 24) };
   }, [query, feeds]);
   return <div className="vh-search-overlay" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }}>
-    <section className="vh-search-sheet" role="dialog" aria-modal="true" aria-label="Wyszukiwarka">
+    <section className="vh-search-sheet" role="dialog" aria-modal="true" aria-label="Wyszukiwarka" onKeyDown={event => {
+      if (event.key !== 'Tab') return;
+      const elements = Array.from(event.currentTarget.querySelectorAll('button:not([disabled]), input:not([disabled])'));
+      if (!elements.length) return;
+      const first = elements[0], last = elements[elements.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }}>
       <div className="vh-sheet-header"><h2>Szukaj</h2><button className="vh-close" type="button" aria-label="Zamknij wyszukiwarkę" onClick={onClose}><X size={22} /></button></div>
       <label className="vh-search-input"><Search size={20} /><input ref={input} type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Drużyna lub rozgrywki…" /></label>
       <div className="vh-search-results">
