@@ -1,4 +1,4 @@
-const CACHE = 'volley-hub-react-v1';
+const CACHE = 'volley-hub-react-v2';
 const SHELL = ['./', './index.html', './manifest.webmanifest'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -12,7 +12,8 @@ self.addEventListener('fetch', event => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
   const json = url.pathname.includes('/data/') && url.pathname.endsWith('.json');
-  if (json || request.mode === 'navigate') {
+  const riveAsset = url.pathname.endsWith('.riv');
+  if (json || riveAsset || request.mode === 'navigate') {
     event.respondWith(fetch(request).then(response => {
       if (response.ok) caches.open(CACHE).then(cache => cache.put(request, response.clone())).catch(() => {});
       return response;

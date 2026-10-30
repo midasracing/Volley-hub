@@ -1,0 +1,70 @@
+name: Rive identity — verify, render and export
+on:
+  push:
+    branches: [feat/rive-wordmark-motion-v1, main]
+    paths:
+      - 'rive/**'
+      - '.github/workflows/rive-studio.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rive-identity-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  author:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rive renderer dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgles2 libx11-6 libgl1 libxkbcommon0
+      - name: Install official Rive CLI
+        run: |
+          curl -fsSL https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
+          bash /tmp/install-rive.sh
+          echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
+      - name: Verify and compile RML scene
+        run: |
+          rive --version
+          rive rive/volley-hub-signature --verify
+          rive rive/volley-hub-signature --once
+          ls -lah rive/volley-hub-signature/build/
+          test -s rive/volley-hub-signature/build/volley-hub-signature.riv
+          rive inspect rive/volley-hub-signature --json
+      - name: Render animation keyframes
+        run: |
+          mkdir -p .rive-captures
+          rive rive/volley-hub-signature --screenshot=.rive-captures/start.png --advance=1
+          rive rive/volley-hub-signature --screenshot=.rive-captures/contact-10.png --advance=10
+          rive rive/volley-hub-signature --screenshot=.rive-captures/contact-20.png --advance=20
+          rive rive/volley-hub-signature --screenshot=.rive-captures/contact-30.png --advance=30
+          rive rive/volley-hub-signature --screenshot=.rive-captures/assembly.png --advance=35
+          rive rive/volley-hub-signature --screenshot=.rive-captures/impact.png --advance=52
+          rive rive/volley-hub-signature --screenshot=.rive-captures/finish.png --advance=80
+          file .rive-captures/*.png
+      - name: Archive proof frames and native animation
+        uses: actions/upload-artifact@v4
+        with:
+          name: volley-hub-rive-proof
+          path: |
+            .rive-captures/*.png
+            rive/volley-hub-signature/build/*.riv
+          include-hidden-files: true
+          retention-days: 30
+      - name: Save verified animation in app public assets
+        run: |
+          mkdir -p public/brand
+          cp rive/volley-hub-signature/build/volley-hub-signature.riv public/brand/volley-hub.riv
+          git add public/brand/volley-hub.riv
+          if git diff --cached --quiet; then
+            echo "No changes to the compiled Rive asset."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "build: update verified Rive wordmark binary"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"

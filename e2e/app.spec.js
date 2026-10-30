@@ -32,3 +32,44 @@ test('search overlay finds an existing league and opens its details', async ({ p
   await expect(page.getByRole('heading', { name: 'Pomorska III Liga Męska' })).toBeVisible();
   await expect(dialog).toHaveCount(0);
 });
+
+test('mobile brand stays accessible and can replay without hover', async ({ page }) => {
+  await page.goto('/');
+  const brand = page.getByRole('button', { name: 'Volley Hub — odtwórz animację logo' });
+  await expect(brand).toBeVisible();
+  await expect(brand).toContainText('VOLLEY');
+  await brand.tap();
+  await expect(brand).toBeVisible();
+});
+
+test('reduced motion preserves readable brand without Rive canvas', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const brand = page.getByRole('img', { name: 'VOLLEY HUB' });
+  await expect(brand).toBeVisible();
+  await expect(brand).toContainText('VOLLEY');
+  await expect(brand.locator('canvas')).toHaveCount(0);
+});
+
+test('static brand asset is available and remains usable offline-first', async ({ page, request }) => {
+  const asset = await request.get('/brand/volley-hub-static.svg');
+  expect(asset.ok()).toBeTruthy();
+  const svg = await asset.text();
+  expect(svg).toContain('viewBox="0 0 234 48"');
+  expect((svg.match(/<path /g) || []).length).toBe(9);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await expect(page.locator('.vh-brand-static img')).toBeVisible();
+  await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /odtwórz animację logo/ })).toHaveCount(0);
+});
+
+test('320px mobile header does not collide with search control', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto('/');
+  const brand = await page.locator('.vh-brand-signature').boundingBox();
+  const search = await page.getByRole('button', { name: 'Szukaj', exact: true }).boundingBox();
+  expect(brand).toBeTruthy();
+  expect(search).toBeTruthy();
+  expect(brand.x + brand.width).toBeLessThanOrEqual(search.x + 0.5);
+});

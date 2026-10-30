@@ -5,6 +5,7 @@ import {
   LEAGUES, CATEGORIES, WEEKDAYS, dateKey, fromKey, addDays, feedDateKey,
   isLive, isFinished, fetchLeague, matchesFromFeeds, teamIndex, normalizeName, readFavorites
 } from './data.js';
+import BrandSignature from './components/BrandSignature.jsx';
 import '../matches-ios.css';
 import './app.css';
 
@@ -407,7 +408,7 @@ function App() {
     });
   }
   return <div className="vh-app" id="ios-matches">
-    <div className="vh-topline"><span className="vh-wordmark"><span className="vh-wordmark-icon">V</span>VOLLEY<span>HUB</span></span><button type="button" className="vh-global-search" aria-label="Szukaj" onClick={() => setSearchOpen(true)}><Search size={22} /></button></div>
+    <div className="vh-topline"><BrandSignature /><button type="button" className="vh-global-search" aria-label="Szukaj" onClick={() => setSearchOpen(true)}><Search size={22} /></button></div>
     <main id="main-content" key={page}>
       {page === 'home' && <HomePage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />}
       {page === 'matches' && <MatchesPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />}
