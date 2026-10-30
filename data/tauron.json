@@ -58,26 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-30T18:12:59.496566+00:00",
+  "updated_at": "2026-10-30T21:49:57.569413+00:00",
   "matches": [
-    {
-      "id": "1104821",
-      "competition": "TAURON Liga",
-      "date": "21.10.2026",
-      "time": "20:30",
-      "status": "finished",
-      "home": "Aluron CMC Warta Zawiercie",
-      "away": "ZAKSA Kędzierzyn-Koźle",
-      "home_sets": 3,
-      "away_sets": 1,
-      "set_scores": [
-        "25:17",
-        "25:22",
-        "22:25",
-        "32:30"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104815",
       "competition": "TAURON Liga",
@@ -242,12 +224,17 @@
       "competition": "TAURON Liga",
       "date": "30.10.2026",
       "time": "20:30",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Ślepsk Malow Suwałki",
       "away": "Steam Hemarpol Norwid Częstochowa",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "25:21",
+        "25:15",
+        "19:25",
+        "25:18"
+      ],
       "current_points": null
     },
     {
@@ -431,6 +418,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104829",
+      "competition": "TAURON Liga",
+      "date": "10.11.2026",
+      "time": "17:30",
+      "status": "scheduled",
+      "home": "GKS Katowice",
+      "away": "ChKS Chełm",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -507,7 +507,19 @@
       "points_against": 251
     },
     {
-      "rank": 7,
+      "rank": 6,
+      "team": "Ślepsk Malow Suwałki",
+      "points": 5,
+      "played": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_for": 7,
+      "sets_against": 7,
+      "points_for": 302,
+      "points_against": 287
+    },
+    {
+      "rank": 8,
       "team": "PGE Projekt Warszawa",
       "points": 4,
       "played": 3,
@@ -519,7 +531,7 @@
       "points_against": 281
     },
     {
-      "rank": 8,
+      "rank": 9,
       "team": "ZAKSA Kędzierzyn-Koźle",
       "points": 3,
       "played": 3,
@@ -529,30 +541,6 @@
       "sets_against": 6,
       "points_for": 235,
       "points_against": 239
-    },
-    {
-      "rank": 9,
-      "team": "Steam Hemarpol Norwid Częstochowa",
-      "points": 2,
-      "played": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_for": 3,
-      "sets_against": 5,
-      "points_for": 171,
-      "points_against": 179
-    },
-    {
-      "rank": 9,
-      "team": "Indykpol AZS Olsztyn",
-      "points": 3,
-      "played": 3,
-      "wins": 1,
-      "losses": 2,
-      "sets_for": 4,
-      "sets_against": 6,
-      "points_for": 220,
-      "points_against": 236
     },
     {
       "rank": 10,
@@ -567,16 +555,28 @@
       "points_against": 174
     },
     {
-      "rank": 11,
-      "team": "Ślepsk Malow Suwałki",
-      "points": 2,
-      "played": 2,
-      "wins": 0,
+      "rank": 10,
+      "team": "Indykpol AZS Olsztyn",
+      "points": 3,
+      "played": 3,
+      "wins": 1,
       "losses": 2,
       "sets_for": 4,
       "sets_against": 6,
-      "points_for": 208,
-      "points_against": 208
+      "points_for": 220,
+      "points_against": 236
+    },
+    {
+      "rank": 12,
+      "team": "Steam Hemarpol Norwid Częstochowa",
+      "points": 2,
+      "played": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_for": 4,
+      "sets_against": 8,
+      "points_for": 250,
+      "points_against": 273
     },
     {
       "rank": 12,

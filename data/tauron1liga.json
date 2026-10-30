@@ -62,7 +62,7 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-30T18:13:08.577778+00:00",
+  "updated_at": "2026-10-30T21:50:02.552182+00:00",
   "matches": [
     {
       "id": "1105177",
@@ -208,30 +208,34 @@
       "competition": "TAURON 1. Liga",
       "date": "30.10.2026",
       "time": "18:00",
-      "status": "live",
+      "status": "finished",
       "home": "BBTS Bielsko-Biała",
       "away": "ICT PIERROT Czarni Radom",
-      "home_sets": 1,
+      "home_sets": 3,
       "away_sets": 0,
       "set_scores": [
-        "25:10"
+        "25:10",
+        "28:26",
+        "25:21"
       ],
-      "current_points": "22:21"
+      "current_points": null
     },
     {
       "id": "1105185",
       "competition": "TAURON 1. Liga",
       "date": "30.10.2026",
       "time": "18:00",
-      "status": "live",
+      "status": "finished",
       "home": "Stal Nysa",
       "away": "Nowak-Mosty MKS Będzin",
-      "home_sets": 1,
+      "home_sets": 3,
       "away_sets": 0,
       "set_scores": [
+        "25:23",
+        "25:19",
         "25:23"
       ],
-      "current_points": "21:16"
+      "current_points": null
     },
     {
       "id": "1105182",
@@ -434,13 +438,13 @@
       "rank": 1,
       "team": "Nowak-Mosty MKS Będzin",
       "points": 17,
-      "played": 7,
+      "played": 8,
       "wins": 6,
-      "losses": 1,
+      "losses": 2,
       "sets_for": 18,
-      "sets_against": 7,
-      "points_for": 583,
-      "points_against": 504
+      "sets_against": 10,
+      "points_for": 648,
+      "points_against": 579
     },
     {
       "rank": 2,
@@ -479,18 +483,6 @@
       "points_against": 657
     },
     {
-      "rank": 4,
-      "team": "ICT PIERROT Czarni Radom",
-      "points": 12,
-      "played": 5,
-      "wins": 4,
-      "losses": 1,
-      "sets_for": 14,
-      "sets_against": 7,
-      "points_for": 468,
-      "points_against": 426
-    },
-    {
       "rank": 5,
       "team": "KKS MICKIEWICZ Kluczbork",
       "points": 13,
@@ -503,19 +495,31 @@
       "points_against": 478
     },
     {
-      "rank": 7,
+      "rank": 6,
       "team": "Stal Nysa",
-      "points": 9,
-      "played": 4,
-      "wins": 3,
+      "points": 12,
+      "played": 5,
+      "wins": 4,
       "losses": 1,
-      "sets_for": 10,
+      "sets_for": 13,
       "sets_against": 3,
-      "points_for": 329,
-      "points_against": 288
+      "points_for": 404,
+      "points_against": 353
     },
     {
       "rank": 7,
+      "team": "ICT PIERROT Czarni Radom",
+      "points": 12,
+      "played": 6,
+      "wins": 4,
+      "losses": 2,
+      "sets_for": 14,
+      "sets_against": 10,
+      "points_for": 525,
+      "points_against": 504
+    },
+    {
+      "rank": 8,
       "team": "Lechia Tomaszów Mazowiecki",
       "points": 10,
       "played": 8,
@@ -563,16 +567,16 @@
       "points_against": 529
     },
     {
-      "rank": 12,
+      "rank": 11,
       "team": "BBTS Bielsko-Biała",
-      "points": 4,
-      "played": 4,
-      "wins": 1,
+      "points": 7,
+      "played": 5,
+      "wins": 2,
       "losses": 3,
-      "sets_for": 5,
+      "sets_for": 8,
       "sets_against": 9,
-      "points_for": 303,
-      "points_against": 336
+      "points_for": 381,
+      "points_against": 393
     },
     {
       "rank": 13,
