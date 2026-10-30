@@ -62,7 +62,7 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-30T17:51:05.668458+00:00",
+  "updated_at": "2026-10-30T18:13:08.577778+00:00",
   "matches": [
     {
       "id": "1105177",
@@ -211,10 +211,12 @@
       "status": "live",
       "home": "BBTS Bielsko-Biała",
       "away": "ICT PIERROT Czarni Radom",
-      "home_sets": 0,
+      "home_sets": 1,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:10"
+      ],
+      "current_points": "22:21"
     },
     {
       "id": "1105185",
@@ -224,10 +226,12 @@
       "status": "live",
       "home": "Stal Nysa",
       "away": "Nowak-Mosty MKS Będzin",
-      "home_sets": 0,
+      "home_sets": 1,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:23"
+      ],
+      "current_points": "21:16"
     },
     {
       "id": "1105182",
