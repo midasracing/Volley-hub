@@ -50,11 +50,14 @@ Stary interfejs vanilla JS oraz nieaktualne kopie komponentu szkła zostały usu
 The header uses [React Bits / TechText](https://reactbits.dev/text-animations/tech-text)
 by David Haz (MIT + Commons Clause; included attribution at
 `src/components/react-bits/LICENSE.md`). It is an **actual local component**,
-not an imitation and not the previous Rive wordmark. `intro="assemble"`
-starts automatically on page load; sweeping, drag, click and hover interactions
-are disabled to keep phone navigation light. After its 1.55-second reveal the
-canvas rests. `prefers-reduced-motion`, slow JS loading and missing canvas
-show an immediately readable HTML wordmark.
+not an imitation and not the previous Rive wordmark. It uses the original
+TechText **idle outline sweep** (`intro="none"`, `reveal="letter"`,
+`lineStyle="dashed"`, `sweep={true}`), moving the dashed vector contour
+and selection frame automatically across the `VOLLEY HUB` letters. There is
+**no particle assembly and no touch, mouse, click or hover interaction**.
+The animation only runs while the logo is visible in the active tab;
+`prefers-reduced-motion`, slow JS loading and missing canvas show an
+immediately readable HTML wordmark.
 
 The old top bar is removed: `vh-floating-head` positions the signature top-left
 and a separate accessible glass search bubble top-right. This is a visual change

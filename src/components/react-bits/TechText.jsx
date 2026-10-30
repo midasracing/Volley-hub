@@ -63,7 +63,6 @@ const TechText = ({
   speed = 1,
   clickKick = true,
   interactive = true,
-  replayKey = 0,
   intro = 'none',
   introDuration = 2,
   guides = false,
@@ -104,7 +103,6 @@ const TechText = ({
       speed,
       clickKick,
       interactive,
-      replayKey,
       intro,
       introDuration,
       guides
@@ -127,6 +125,7 @@ const TechText = ({
     let raf = 0;
     let last = performance.now();
     let visible = false;
+    let intersects = false;
     let didSignalCanvas = false;
     let alive = true;
     let layoutKey = '';
@@ -141,7 +140,6 @@ const TechText = ({
     let cursor = '';
     let introClock = 0;
     let introKind = '';
-    let lastReplayKey = replayKey;
     let introducing = false;
     let fontsReady = !document.fonts;
     let guideAlpha = 0;
@@ -702,9 +700,8 @@ const TechText = ({
       const view = ensureLayout(s, ink);
       const damping = 2 * Math.sqrt(SPRING) * (1 - clamp01(s.bounce) * 0.96);
 
-      if (s.intro !== introKind || s.replayKey !== lastReplayKey) {
+      if (s.intro !== introKind) {
         introKind = s.intro;
-        lastReplayKey = s.replayKey;
         introClock = 0;
       }
       const introOn = introKind !== 'none' && !reducedMotion && glyphs.length > 0;
@@ -974,11 +971,21 @@ const TechText = ({
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
+    const updateVisibility = () => {
+      visible = intersects && document.visibilityState === 'visible';
+      if (!visible) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      } else {
+        wake();
+      }
+    };
     const intersectionObserver = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      wake();
+      intersects = entry.isIntersecting;
+      updateVisibility();
     });
     intersectionObserver.observe(container);
+    document.addEventListener('visibilitychange', updateVisibility);
     const themeObserver = new MutationObserver(wake);
     for (const node of [document.documentElement, document.body]) {
       if (node) themeObserver.observe(node, { attributes: true, attributeFilter: ['class', 'style', 'data-theme'] });
@@ -995,6 +1002,7 @@ const TechText = ({
       wakeRef.current = () => {};
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
+      document.removeEventListener('visibilitychange', updateVisibility);
       themeObserver.disconnect();
       schemeQuery?.removeEventListener?.('change', wake);
       container.style.cursor = '';

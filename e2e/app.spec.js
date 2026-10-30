@@ -52,29 +52,34 @@ test('Tech Text logo animates itself with no mouse interaction and search bubble
   await expect(page.getByRole('dialog', { name: 'Wyszukiwarka' })).toBeVisible();
 });
 
-test('TechText logo ignores all pointer events after its automatic intro', async ({ page }) => {
+test('TechText logo does not register pointer interactions', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__techTextPointerListeners = 0;
+    const originalAdd = EventTarget.prototype.addEventListener;
+    EventTarget.prototype.addEventListener = function (type, listener, options) {
+      if (String(type).startsWith('pointer') && this instanceof HTMLElement && this.classList.contains('tech-text')) {
+        window.__techTextPointerListeners += 1;
+      }
+      return originalAdd.call(this, type, listener, options);
+    };
+  });
   await page.goto('/');
   const logo = page.locator('.vh-brand-tech .tech-text');
-  const canvas = logo.locator('canvas');
   await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
-  await page.waitForTimeout(2600);
-  const before = await canvas.evaluate(el => el.toDataURL());
-  for (const event of ['pointermove', 'pointerdown', 'pointerup']) {
-    await logo.dispatchEvent(event, { clientX: 90, clientY: 25, pointerType: 'mouse' });
-  }
-  await page.waitForTimeout(350);
-  expect(await canvas.evaluate(el => el.toDataURL())).toBe(before);
+  await expect(logo).toHaveCSS('pointer-events', 'none');
+  expect(await page.evaluate(() => window.__techTextPointerListeners)).toBe(0);
 });
 
-test('TechText logo replays by itself without a tap', async ({ page }) => {
-  await page.clock.install();
+test('TechText performs its dashed outline sweep automatically, not particle assembly', async ({ page }) => {
   await page.goto('/');
   const canvas = page.locator('.vh-brand-tech .tech-text canvas');
   await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
-  await page.waitForTimeout(2600);
-  const settled = await canvas.evaluate(el => el.toDataURL());
-  await page.clock.fastForward(18000);
-  await expect.poll(() => canvas.evaluate(el => el.toDataURL()), { timeout: 4000 }).not.toBe(settled);
+  const start = await canvas.evaluate(el => el.toDataURL());
+  await page.waitForTimeout(1500);
+  const middle = await canvas.evaluate(el => el.toDataURL());
+  expect(middle).not.toBe(start);
+  await page.waitForTimeout(1600);
+  expect(await canvas.evaluate(el => el.toDataURL())).not.toBe(middle);
 });
 
 test('reduced motion keeps accessible static logo and no canvas', async ({ page }) => {
