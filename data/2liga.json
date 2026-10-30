@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-10-29T20:10:27.037847+00:00",
+  "updated_at": "2026-10-30T00:12:43.615403+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -3797,18 +3797,6 @@
         {
           "date": "07.11.2026",
           "time": "",
-          "home": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
-          "away": "KS Bielawianka-Bester",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 3",
-          "group": "Grupa 3"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "",
           "home": "Gwardia Wrocław",
           "away": "MLKS Volley Gubin",
           "home_sets": 0,
@@ -3823,6 +3811,18 @@
           "time": "",
           "home": "KPS Chełmiec ANS AS Wałbrzych",
           "away": "PGE Akademia Siatkówki Stilon",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 3",
+          "group": "Grupa 3"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "18:00",
+          "home": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
+          "away": "KS Bielawianka-Bester",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
