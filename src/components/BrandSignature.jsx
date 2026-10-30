@@ -31,23 +31,31 @@ export default function BrandSignature() {
     setTake(value => value + 1);
   };
 
-  return (
-    <button
-      type="button"
-      className={'vh-brand-signature' + (ready && !reducedMotion ? ' is-ready' : '')}
-      onClick={replay}
-      aria-label={reducedMotion ? 'Volley Hub' : 'Volley Hub — odtwórz animację logo'}
-      title={reducedMotion ? 'Volley Hub' : 'Dotknij, aby odtworzyć animację'}
-    >
+  const fallback = (
+    <>
       <span className="vh-brand-static" aria-hidden="true">
         <img src={import.meta.env.BASE_URL + 'brand/volley-hub-static.svg'} width="234" height="48" alt="" />
       </span>
       <span className="vh-brand-sr">VOLLEY HUB</span>
-      {!reducedMotion && (
-        <Suspense fallback={null}>
-          <RiveWordmark key={take} onReady={onReady} />
-        </Suspense>
-      )}
+    </>
+  );
+
+  if (reducedMotion) {
+    return <span className="vh-brand-signature" role="img" aria-label="VOLLEY HUB">{fallback}</span>;
+  }
+
+  return (
+    <button
+      type="button"
+      className={'vh-brand-signature' + (ready ? ' is-ready' : '')}
+      onClick={replay}
+      aria-label="Volley Hub — odtwórz animację logo"
+      title="Dotknij, aby odtworzyć animację"
+    >
+      {fallback}
+      <Suspense fallback={null}>
+        <RiveWordmark key={take} onReady={onReady} />
+      </Suspense>
     </button>
   );
 }

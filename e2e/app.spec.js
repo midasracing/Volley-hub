@@ -45,7 +45,7 @@ test('mobile brand stays accessible and can replay without hover', async ({ page
 test('reduced motion preserves readable brand without Rive canvas', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  const brand = page.getByRole('button', { name: 'Volley Hub', exact: true });
+  const brand = page.getByRole('img', { name: 'VOLLEY HUB' });
   await expect(brand).toBeVisible();
   await expect(brand).toContainText('VOLLEY');
   await expect(brand.locator('canvas')).toHaveCount(0);
@@ -61,4 +61,15 @@ test('static brand asset is available and remains usable offline-first', async (
   await page.goto('/');
   await expect(page.locator('.vh-brand-static img')).toBeVisible();
   await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /odtwórz animację logo/ })).toHaveCount(0);
+});
+
+test('320px mobile header does not collide with search control', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto('/');
+  const brand = await page.locator('.vh-brand-signature').boundingBox();
+  const search = await page.getByRole('button', { name: 'Szukaj', exact: true }).boundingBox();
+  expect(brand).toBeTruthy();
+  expect(search).toBeTruthy();
+  expect(brand.x + brand.width).toBeLessThanOrEqual(search.x + 0.5);
 });

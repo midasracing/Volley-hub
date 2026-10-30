@@ -63,3 +63,5 @@ References are for design thinking, not copying. No third-party logo shapes or i
 - The first Rive frame shows the anchor V instead of an empty header.
 - The alternate one-color SVG is retained for reproduction proofs; all-blue rounded tile removed.
 - The first logo adaptation is still a **draft** until optical checks on a real iPhone and Android device.
+
+**Accessibility refinement:** the reduced-motion branch now renders a non-interactive labeled SVG signature, rather than a button that does nothing. On motion-enabled devices it is a properly labeled replay button.
