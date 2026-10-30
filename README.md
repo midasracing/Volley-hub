@@ -25,7 +25,7 @@ Przed uruchomieniem Vite i buildem skrypt scripts/sync-data.mjs kopiuje najnowsz
 
 ## Publikacja
 
-Po scaleniu pull requesta do main ustaw w GitHub Settings > Pages > Build and deployment > Source na GitHub Actions. Workflow Deploy React to GitHub Pages buduje dist/ i publikuje gotową aplikację. Samo serwowanie katalogu głównego repo bez buildu nie uruchomi Reacta.
+Publikacja odbywa się z gałęzi main. W GitHub Settings > Pages > Build and deployment > Source należy wybrać GitHub Actions. Workflow Deploy React to GitHub Pages buduje dist/ i publikuje gotową aplikację. Samo serwowanie katalogu głównego repo bez buildu nie uruchomi Reacta.
 
 ## Źródła
 
@@ -44,4 +44,26 @@ Nie generujemy fikcyjnych wyników. Aktualność danych zależy od działania sc
 - public — manifest, service worker, kopiowane dane
 - tests — testy logiki danych
 
-Stare app.js, matches-ios.js i fluid-glass-react.js pozostają wyłącznie dla porównania i nie są ładowane przez nowy index.html.
+Stary interfejs vanilla JS oraz nieaktualne kopie komponentu szkła zostały usunięte. W repo pozostaje tylko działająca aplikacja React.
+
+## Logo & floating header (React Bits TechText)
+The header uses [React Bits / TechText](https://reactbits.dev/text-animations/tech-text)
+by David Haz (MIT + Commons Clause; included attribution at
+`src/components/react-bits/LICENSE.md`). It is an **actual local component**,
+not an imitation and not the previous Rive wordmark. `intro="assemble"`
+starts automatically on page load; sweeping, drag, click and hover interactions
+are disabled to keep phone navigation light. After its 1.55-second reveal the
+canvas rests. `prefers-reduced-motion`, slow JS loading and missing canvas
+show an immediately readable HTML wordmark.
+
+The old top bar is removed: `vh-floating-head` positions the signature top-left
+and a separate accessible glass search bubble top-right. This is a visual change
+only; search, match data, favorites and the bottom navigation keep their behavior.
+
+Rive is intentionally **not used for the logo**. It may still be used later
+for useful interaction-driven animations elsewhere in the PWA.
+
+## Repository cleanup (2026-10-30)
+The deployed site is **Vite + React only**. The previous root-level plain-JS app, legacy CSS, duplicate fluid-glass implementation, and old root-level service worker/manifest were removed. The only source-of-truth files for the web app are `src/`, `matches-ios.css`, `fluid-glass-component.css`, `public/`, and the active data/scraper workflows.
+
+The bottom navigation uses the **original React FluidGlass component** at `src/FluidGlass.jsx`. Active-tab highlighting no longer uses an overlapping CSS gradient capsule. The search bubble uses the same React glass component with a lightweight, opaque fallback if WebGL or accessibility settings prevent the shader. Any app-critical text and actions remain regular accessible HTML.

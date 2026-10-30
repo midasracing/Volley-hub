@@ -60,25 +60,3 @@
   pointer-events: auto;
 }
 
-
-/* React mounts for the real React Bits FluidGlass component */
-.vh-react-bottom{display:block!important;position:fixed!important;height:70px;padding:0!important;overflow:visible!important;isolation:isolate;touch-action:manipulation;background:var(--navbg)!important;border:1px solid var(--navline)!important;box-shadow:0 10px 30px rgba(0,0,0,.18)!important;-webkit-backdrop-filter:blur(20px) saturate(180%)!important;backdrop-filter:blur(20px) saturate(180%)!important;border-radius:999px!important}
-.vh-fluid-nav-glass{position:absolute!important;inset:0;width:100%;height:100%;overflow:hidden;border-radius:inherit;pointer-events:none}
-.vh-fluid-nav-glass .fluid-glass__canvas{pointer-events:none;z-index:0}
-.vh-react-nav-items{position:absolute;inset:6px;display:flex;align-items:stretch;gap:3px;z-index:2}
-.vh-react-nav-items .nav{flex:1 1 0;min-width:0;height:100%;padding:0 7px;overflow:hidden;gap:7px}
-.vh-react-nav-items .nav.active{flex:2.2 1 0;min-width:0;justify-content:center;padding:0 7px;background:transparent!important;border:0!important;box-shadow:none!important;color:var(--text)}
-.vh-react-nav-items .nav.active::after{display:none!important}
-.vh-react-bottom .nav::before,.vh-react-bottom .nav.active::after,.vh-react-bottom::after{display:none!important}
-.vh-react-nav-items .nav i,.vh-react-nav-items .nav .lbl{z-index:2}
-#ios-matches .im-strip-wrap{position:relative;isolation:isolate}
-#vh-calendar-glass-root{position:absolute;left:50%;top:2px;transform:translateX(-50%);width:58px;height:100px;display:block;visibility:visible;opacity:1;z-index:20;pointer-events:none;overflow:hidden;border-radius:18px}
-.vh-calendar-fluid{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;visibility:visible!important;opacity:1!important;overflow:hidden!important;pointer-events:none;border-radius:inherit}
-.vh-calendar-fluid .fluid-glass__canvas{pointer-events:none}
-#ios-matches .im-strip{position:relative;z-index:1}
-#ios-matches .im-day{isolation:isolate;overflow:hidden}
-#ios-matches .im-day.is-sel{background:transparent!important}
-#ios-matches .im-day > :not(#vh-calendar-glass-root){position:relative;z-index:3}
-@media(prefers-reduced-motion:reduce){.vh-fluid-nav-glass .fluid-glass__canvas,.vh-calendar-fluid .fluid-glass__canvas{display:none}}
-
-#vh-calendar-glass-root .fluid-glass__canvas{display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;height:100%!important;z-index:1!important}

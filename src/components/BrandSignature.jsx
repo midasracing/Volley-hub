@@ -1,61 +1,81 @@
 import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 
-const RiveWordmark = lazy(() => import('./RiveWordmark.jsx'));
+const TechText = lazy(() => import('./react-bits/TechText.jsx'));
 
-function prefersReducedMotion() {
-  return typeof window !== 'undefined' &&
-    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
-}
+const motionDisabled = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
 
 /**
- * Meaningful static signature first, native Rive enhancement after loading.
- * Animation is never required to read the brand or navigate the app.
+ * Single brand signature: actual React Bits TechText, auto-animated once.
+ * Solid HTML fallback is readable before lazy canvas/Google font has loaded.
+ * The canvas never depends on hover or pointer events to begin animation.
  */
 export default function BrandSignature() {
-  const [reducedMotion, setReducedMotion] = useState(prefersReducedMotion);
-  const [ready, setReady] = useState(false);
-  const [take, setTake] = useState(0);
-  const onReady = useCallback(value => setReady(value), []);
+  const [reducedMotion, setReducedMotion] = useState(motionDisabled);
+  const [canvasReady, setCanvasReady] = useState(false);
+  const [settled, setSettled] = useState(false);
+  const onCanvasReady = useCallback(() => setCanvasReady(true), []);
 
   useEffect(() => {
-    const preference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
-    if (!preference) return;
-    const update = () => { setReducedMotion(preference.matches); setReady(false); };
-    preference.addEventListener?.('change', update);
-    return () => preference.removeEventListener?.('change', update);
+    const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (!media) return undefined;
+    const onChange = () => {
+      setReducedMotion(media.matches);
+      setCanvasReady(false);
+      setSettled(false);
+    };
+    media.addEventListener?.('change', onChange);
+    return () => media.removeEventListener?.('change', onChange);
   }, []);
 
-  const replay = () => {
-    if (reducedMotion) return;
-    setReady(false);
-    setTake(value => value + 1);
-  };
-
-  const fallback = (
-    <>
-      <span className="vh-brand-static" aria-hidden="true">
-        <img src={import.meta.env.BASE_URL + 'brand/volley-hub-static.svg'} width="234" height="48" alt="" />
-      </span>
-      <span className="vh-brand-sr">VOLLEY HUB</span>
-    </>
-  );
-
-  if (reducedMotion) {
-    return <span className="vh-brand-signature" role="img" aria-label="VOLLEY HUB">{fallback}</span>;
-  }
+  useEffect(() => {
+    if (!canvasReady || reducedMotion) return undefined;
+    // Keep a faint readable mark under the fragments until the short intro ends.
+    const timeout = window.setTimeout(() => setSettled(true), 1750);
+    return () => window.clearTimeout(timeout);
+  }, [canvasReady, reducedMotion]);
 
   return (
-    <button
-      type="button"
-      className={'vh-brand-signature' + (ready ? ' is-ready' : '')}
-      onClick={replay}
-      aria-label="Volley Hub — odtwórz animację logo"
-      title="Dotknij, aby odtworzyć animację"
+    <div
+      className={'vh-brand-tech' + (canvasReady && !reducedMotion ? ' has-canvas' : '') + (settled ? ' is-settled' : '')}
+      role="img"
+      aria-label="VOLLEY HUB"
     >
-      {fallback}
-      <Suspense fallback={null}>
-        <RiveWordmark key={take} onReady={onReady} />
-      </Suspense>
-    </button>
+      <span className="vh-brand-tech-fallback" aria-hidden="true">
+        VOLLEY <span>HUB</span>
+      </span>
+      {!reducedMotion && (
+        <Suspense fallback={null}>
+          <TechText
+            text="VOLLEY HUB"
+            fontFamily="Barlow, sans-serif"
+            fontSize={43}
+            fontWeight={800}
+            letterSpacing={-0.038}
+            color="#F5F7FF"
+            accentColor="#9EBFFF"
+            align="left"
+            intro="assemble"
+            introDuration={1.55}
+            reveal="letter"
+            specks={9}
+            dashLength={2.8}
+            dashGap={2}
+            strokeWidth={1.2}
+            lineStyle="solid"
+            selection={false}
+            labels={false}
+            guides={false}
+            draggable={false}
+            clickKick={false}
+            sweep={false}
+            bounce={0}
+            onCanvasReady={onCanvasReady}
+            className="vh-brand-tech-canvas"
+          />
+        </Suspense>
+      )}
+    </div>
   );
 }

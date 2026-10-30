@@ -9,13 +9,6 @@ button{cursor:pointer}
 button:disabled{cursor:not-allowed;opacity:.5}
 button:focus-visible,a:focus-visible,input:focus-visible,[tabindex="0"]:focus-visible{outline:3px solid #a3baff;outline-offset:3px}
 .vh-app{width:min(100%,600px);margin:0 auto;padding:0 20px calc(136px + env(safe-area-inset-bottom));min-height:100dvh}
-.vh-topline{display:flex;align-items:center;justify-content:space-between;padding:calc(12px + env(safe-area-inset-top)) 0 6px;min-height:70px}
-.vh-wordmark{display:inline-flex;gap:2px;align-items:center;font-size:15px;font-weight:800;letter-spacing:.09em}
-.vh-wordmark>span:last-child{color:var(--blue)}
-.vh-wordmark-icon{display:grid;place-items:center;width:28px;height:28px;margin-right:8px;border-radius:9px;background:linear-gradient(145deg,#a5bbff,#5472e8);color:#0d1637;font-size:20px;font-weight:800;letter-spacing:-2px;box-shadow:0 5px 18px rgba(90,130,245,.28)}
-.vh-global-search{width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.065);color:var(--ink);transition:background .2s,transform .2s}
-.vh-global-search:hover{background:rgba(255,255,255,.13)}
-.vh-global-search:active,.vh-icon-button:active{transform:scale(.95)}
 .vh-page-head{padding-top:22px}
 .vh-page-head .vh-header-actions{display:flex;justify-content:flex-end;gap:10px;min-height:12px}
 .vh-page-head h1{margin:8px 0 7px;font-size:clamp(38px,8vw,48px);line-height:1.04;letter-spacing:-.045em;font-weight:800}
@@ -58,11 +51,11 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-favorites-teaser>span:nth-child(2){flex:1}
 .vh-heart-icon{flex:0 0 52px;height:52px;display:grid;place-items:center;border-radius:16px;color:#ff8997;background:rgba(255,106,126,.14)}
 .vh-favorites-teaser>svg{color:#a8b1c4}
-.vh-bottom{position:fixed;left:50%;bottom:calc(15px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(calc(100% - 32px),540px);height:72px;z-index:100;border:1px solid rgba(255,255,255,.21);border-radius:999px;background:linear-gradient(125deg,rgba(46,56,77,.91),rgba(32,38,54,.93));box-shadow:0 12px 40px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%)}
+.vh-bottom{position:fixed;left:50%;bottom:calc(15px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(calc(100% - 32px),540px);height:72px;z-index:100;border:1px solid rgba(255,255,255,.21);border-radius:999px;background:rgba(24,30,42,.93);box-shadow:0 12px 40px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14);-webkit-backdrop-filter:none;backdrop-filter:none}
 .vh-nav-items{display:flex;align-items:stretch;gap:3px;height:100%;padding:7px}
 .vh-nav-item{display:flex;align-items:center;justify-content:center;gap:7px;min-width:0;flex:1 1 0;border:0;border-radius:99px;background:transparent;color:#afbacd;white-space:nowrap;transition:flex .3s cubic-bezier(.2,.8,.2,1),background .2s,color .2s;padding:0 7px}
 .vh-nav-item>span{display:none;font-size:14px;font-weight:750}
-.vh-nav-item.active{flex:2.5 1 0;background:linear-gradient(140deg,rgba(198,214,255,.27),rgba(124,151,219,.15));color:white;box-shadow:inset 0 1px 0 rgba(255,255,255,.27),0 4px 14px rgba(0,0,0,.14)}
+.vh-nav-item.active{flex:2.5 1 0;background:transparent;color:white;box-shadow:none}
 .vh-nav-item.active>span{display:inline}
 .vh-nav-item.active svg{color:#b4caff}
 .vh-match-groups .im-league{margin:23px 0 14px;font-size:22px;color:#f1f4fa;line-height:1.3;letter-spacing:-.015em}
@@ -88,7 +81,9 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-details-button{display:flex;align-items:center;gap:5px;color:#4866a4;background:transparent;border:0;padding:4px 0;font-size:13px;font-weight:750}
 .vh-details-button svg{transition:transform .15s}
 .vh-details-button .vh-rotate{transform:rotate(90deg)}
-.vh-sets{display:flex;gap:8px;flex-wrap:wrap;padding-top:13px}
+.vh-sets-wrap{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .3s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+.vh-sets-wrap.is-expanded{grid-template-rows:1fr;opacity:1}
+.vh-sets{display:flex;min-height:0;overflow:hidden;gap:8px;flex-wrap:wrap;padding-top:13px}
 .vh-sets>span{display:grid;gap:4px;min-width:68px;background:#f2f4f8;border-radius:12px;padding:9px;text-align:center}
 .vh-sets small{font-size:10px;color:#727e91;font-weight:700}
 .vh-sets strong{font-size:15px}
@@ -156,7 +151,7 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-mini-league{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:#293750;color:#b2c6ff}
 .vh-picker-check{display:grid;place-items:center;width:32px;height:32px;border:1px solid #4b5870;border-radius:11px;color:#9caac3}
 .vh-picker-check.selected{color:#202c46;background:#bcd0ff;border-color:#bcd0ff}
-.vh-search-overlay{position:fixed;inset:0;z-index:200;background:rgba(3,6,13,.72);display:flex;justify-content:center;align-items:flex-start;padding:calc(40px + env(safe-area-inset-top)) 13px 18px;backdrop-filter:blur(12px)}
+.vh-search-overlay{position:fixed;inset:0;z-index:200;background:rgba(3,6,13,.84);display:flex;justify-content:center;align-items:flex-start;padding:calc(40px + env(safe-area-inset-top)) 13px 18px}
 .vh-search-sheet{width:min(100%,560px);max-height:calc(100dvh - 80px);overflow-y:auto;background:#171d29;color:white;border:1px solid #38445a;border-radius:30px;padding:23px;box-shadow:0 30px 90px rgba(0,0,0,.55)}
 .vh-sheet-header{display:flex;align-items:center;justify-content:space-between}
 .vh-sheet-header h2{font-size:30px;margin:0}
@@ -170,41 +165,69 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.vh-bottom{background:#222b3b;backdrop-filter:none;-webkit-backdrop-filter:none}.vh-hero{background:#233b78}}
 
 
-/* Progressive-enhancement lens: React renders the original Fluid Glass shader
-   behind the navigation; CSS glass remains visible when WebGL is unavailable. */
+/* The React FluidGlass shader is the only selected navigation shape.
+   No competing CSS gradient capsule or CSS glass. */
 .vh-bottom{isolation:isolate}
 .vh-bottom .vh-glass-layer{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit;pointer-events:none}
 .vh-bottom .vh-glass-layer .fluid-glass{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .vh-bottom .vh-glass-layer .fluid-glass__canvas{pointer-events:none}
 .vh-bottom .vh-nav-items{position:relative;z-index:2}
 
-/* Native Rive signature — 234×48 authored artboard, no layout shift on phones. */
-.vh-brand-signature{
-  display:block;position:relative;flex:0 1 234px;
-  width:min(234px,calc(100vw - 104px));height:48px;
-  min-width:0;max-width:234px;padding:0;margin:0;
-  border:0;background:none;color:inherit;text-align:left;
-  border-radius:12px;touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
+
+/* FLOATING HEADER — no top bar. Left signature + one independent search bubble. */
+.vh-floating-head{
+  position:relative;display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(10px,4vw,24px);padding:calc(14px + env(safe-area-inset-top)) 0 8px;
+  min-height:calc(78px + env(safe-area-inset-top));isolation:isolate;
 }
-.vh-brand-signature .vh-brand-static{
-  position:absolute;inset:0;display:flex;align-items:center;gap:2px;
-  font-size:15px;letter-spacing:.09em;white-space:nowrap;
-  pointer-events:none;transition:opacity 120ms ease;
+.vh-brand-tech{
+  position:relative;flex:1 1 270px;width:min(270px,calc(100vw - 113px));
+  max-width:270px;min-width:0;height:55px;overflow:visible;color:#F5F7FF;
 }
-.vh-brand-signature .vh-brand-static>span:last-child{color:var(--blue)}
-.vh-brand-signature.is-ready .vh-brand-static{opacity:0}
-.vh-brand-signature .vh-rive-layer{
+.vh-brand-tech-fallback{
+  display:flex;align-items:center;position:absolute;inset:0;
+  font-family:Barlow,Arial,sans-serif;font-weight:800;
+  font-size:clamp(19px,5.5vw,27px);letter-spacing:-.038em;
+  white-space:nowrap;line-height:1;opacity:1;
+  transition:opacity 90ms ease-out;pointer-events:none;
+}
+.vh-brand-tech-fallback span{color:#F5F7FF;margin-left:.24em}
+.vh-brand-tech.has-canvas .vh-brand-tech-fallback{opacity:.18}
+.vh-brand-tech.has-canvas.is-settled .vh-brand-tech-fallback{opacity:0}
+.vh-brand-tech .tech-text{
   position:absolute;inset:0;width:100%;height:100%;
-  overflow:hidden;pointer-events:none;
+  pointer-events:none;cursor:default!important;
 }
-.vh-brand-signature canvas{width:100%!important;height:100%!important;display:block}
-.vh-brand-signature:focus-visible{outline:2px solid #A8C7FF;outline-offset:3px}
+.vh-brand-tech .tech-text canvas{display:block;width:100%;height:100%}
+.vh-floating-actions{position:relative;display:flex;align-items:center;flex:0 0 auto}
+.vh-search-bubble{
+  position:relative;display:grid;place-items:center;isolation:isolate;
+  width:50px;height:50px;flex:none;border-radius:999px;
+  border:1px solid rgba(204,219,255,.28);
+  background:rgba(30,40,58,.94);
+  color:#F4F7FF;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 9px 28px rgba(0,0,0,.20);
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .2s cubic-bezier(.2,.8,.2,1),border-color .2s,background .2s;
+}
+.vh-search-bubble:hover{border-color:rgba(196,216,255,.52)}
+.vh-search-bubble>svg{position:relative;z-index:2;pointer-events:none}
+.vh-search-glass{position:absolute;inset:0;z-index:1;overflow:hidden;border-radius:inherit;pointer-events:none}
+.vh-search-glass .fluid-glass,.vh-search-glass .fluid-glass__canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.vh-search-glass .fluid-glass__handle{display:none}
+.vh-search-bubble:active{transform:scale(.94)}
+.vh-search-bubble:focus-visible{outline:3px solid #A3BAFF;outline-offset:4px}
+@media(max-width:390px){
+  .vh-floating-head{gap:10px;padding-top:calc(11px + env(safe-area-inset-top))}
+  .vh-brand-tech{height:51px}
+  .vh-search-bubble{width:47px;height:47px}
+}
 @media(prefers-reduced-motion:reduce){
-  .vh-brand-signature .vh-brand-static{opacity:1!important;transition:none}
+  .vh-brand-tech-fallback{transition:none}
+  .vh-search-bubble{transition:none}
+}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){
+  .vh-search-bubble{background:#263451}
 }
 
-/* One exact art direction for reduced-motion, offline and animated states. */
-.vh-brand-signature .vh-brand-static{display:block;pointer-events:none}
-.vh-brand-signature .vh-brand-static img{display:block;width:100%;height:100%;object-fit:contain;object-position:left center}
-.vh-brand-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;border:0;overflow:hidden;white-space:nowrap;clip:rect(0,0,0,0);clip-path:inset(50%)}
+/* Respect viewport semantics: selected indicator is React FluidGlass, never a CSS overlay. */
+@media(prefers-reduced-motion:reduce){.vh-sets-wrap{transition:none}.vh-search-glass,.vh-bottom .vh-glass-layer{display:none}}
