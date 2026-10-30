@@ -14,6 +14,7 @@ const motionDisabled = () =>
 export default function BrandSignature() {
   const [reducedMotion, setReducedMotion] = useState(motionDisabled);
   const [canvasReady, setCanvasReady] = useState(false);
+  const [settled, setSettled] = useState(false);
   const onCanvasReady = useCallback(() => setCanvasReady(true), []);
 
   useEffect(() => {
@@ -22,14 +23,22 @@ export default function BrandSignature() {
     const onChange = () => {
       setReducedMotion(media.matches);
       setCanvasReady(false);
+      setSettled(false);
     };
     media.addEventListener?.('change', onChange);
     return () => media.removeEventListener?.('change', onChange);
   }, []);
 
+  useEffect(() => {
+    if (!canvasReady || reducedMotion) return undefined;
+    // Keep a faint readable mark under the fragments until the short intro ends.
+    const timeout = window.setTimeout(() => setSettled(true), 1750);
+    return () => window.clearTimeout(timeout);
+  }, [canvasReady, reducedMotion]);
+
   return (
     <div
-      className={'vh-brand-tech' + (canvasReady && !reducedMotion ? ' has-canvas' : '')}
+      className={'vh-brand-tech' + (canvasReady && !reducedMotion ? ' has-canvas' : '') + (settled ? ' is-settled' : '')}
       role="img"
       aria-label="VOLLEY HUB"
     >
