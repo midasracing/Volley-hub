@@ -62,3 +62,8 @@ only; search, match data, favorites and the bottom navigation keep their behavio
 
 Rive is intentionally **not used for the logo**. It may still be used later
 for useful interaction-driven animations elsewhere in the PWA.
+
+## Repository cleanup (2026-10-30)
+The deployed site is **Vite + React only**. The previous root-level plain-JS app, legacy CSS, duplicate fluid-glass implementation, and old root-level service worker/manifest were removed. The only source-of-truth files for the web app are `src/`, `matches-ios.css`, `fluid-glass-component.css`, `public/`, and the active data/scraper workflows.
+
+The bottom navigation uses the **original React FluidGlass component** at `src/FluidGlass.jsx`. Active-tab highlighting no longer uses an overlapping CSS gradient capsule. The search bubble uses the same React glass component with a lightweight, opaque fallback if WebGL or accessibility settings prevent the shader. Any app-critical text and actions remain regular accessible HTML.

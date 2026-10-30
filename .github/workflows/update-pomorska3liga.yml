@@ -6,9 +6,6 @@ on:
     paths:
       - ".github/workflows/update-pomorska3liga.yml"
       - "scripts/update_pomorska3liga.py"
-      - "app.js"
-      - "index.html"
-      - "sw.js"
   workflow_dispatch:
   schedule:
     - cron: "*/15 * * * *"

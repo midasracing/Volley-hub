@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Home, CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check, Info, Volleyball } from 'lucide-react';
 import {
@@ -96,6 +96,7 @@ function Status({ match }) {
 }
 function MatchCard({ match, logos, compact = false }) {
   const [expanded, setExpanded] = useState(false);
+  const detailsId = useId();
   const finished = isFinished(match);
   const score = finished || isLive(match);
   const homeWins = score && Number(match.home_sets) > Number(match.away_sets);
@@ -119,10 +120,14 @@ function MatchCard({ match, logos, compact = false }) {
     </div>
     {(score || match.time) && <div className="vh-match-footer">
       <span><Clock3 size={14} /> {match.time || 'Godzina nieustalona'}</span>
-      {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
+      {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded} aria-controls={detailsId}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
       {!scores.length && isLive(match) && match.current_points && <span>Aktualny set: {String(match.current_points)}</span>}
     </div>}
-    {expanded && scores.length > 0 && <div className="vh-sets" aria-label="Wyniki setów">{scores.map((set, index) => <span key={index}><small>SET {index + 1}</small><strong>{set}</strong></span>)}</div>}
+    {scores.length > 0 && <div className={'vh-sets-wrap' + (expanded ? ' is-expanded' : '')} aria-hidden={!expanded} inert={!expanded}>
+      <div id={detailsId} className="vh-sets" role="region" aria-label="Wyniki setów">
+        {scores.map((set, index) => <span key={index}><small>SET {index + 1}</small><strong>{set}</strong></span>)}
+      </div>
+    </div>}
   </article>;
 }
 function MatchGroups({ matches, logos, emptyMessage, compact = false }) {
@@ -198,7 +203,7 @@ function HomePage({ feeds, loading, errors, refresh, logos, favorites, onNavigat
   return <>
     <PageHeader title="Volley Hub" subtitle="Twoje centrum siatkówki. Wszystko, co ważne, w jednym miejscu." actions={<span className="vh-date-stamp">{new Intl.DateTimeFormat('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' }).format(NOW())}</span>} />
     <div className="vh-hero">
-      <span className="vh-hero-tag"><span className="vh-hero-dot" /> SIATKÓWKA NA ŻYWO</span>
+      <span className="vh-hero-tag"><span className="vh-hero-dot" /> WSZYSTKO O SIATKÓWCE</span>
       <h2>Gra toczy się <em>tutaj.</em></h2>
       <p>Sprawdź mecze, poznaj wyniki i bądź bliżej swoich drużyn.</p>
       <button type="button" className="vh-hero-action" onClick={() => onNavigate('matches')}>Przejdź do meczów <ArrowRight size={20} /></button>
@@ -283,7 +288,7 @@ function FavoritesPage({ feeds, logos, favorites, toggleFavorite, onOpenLeague }
 function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites, toggleFavorite }) {
   const [query, setQuery] = useState('');
   const input = useRef(null);
-  useEffect(() => { input.current?.focus(); const onEscape = event => { if (event.key === 'Escape') onClose(); }; window.addEventListener('keydown', onEscape); return () => { window.removeEventListener('keydown', onEscape); document.querySelector('.vh-global-search')?.focus(); }; }, []);
+  useEffect(() => { input.current?.focus(); const onEscape = event => { if (event.key === 'Escape') onClose(); }; window.addEventListener('keydown', onEscape); return () => { window.removeEventListener('keydown', onEscape); document.querySelector('.vh-search-bubble')?.focus(); }; }, []);
   const results = useMemo(() => {
     const term = normalizeName(query);
     if (!term) return { leagues: LEAGUES, teams: [] };
@@ -310,15 +315,25 @@ function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites
   </div>;
 }
 
-function NavGlass({ hostRef, active }) {
+// One React FluidGlass implementation for every glass element; matte fallback
+// when WebGL2 or motion/transparency accessibility settings disallow the effect.
+function useFluidGlass() {
   const [Glass, setGlass] = useState(null);
-  const [placement, setPlacement] = useState({ position: [.5, .5], size: 116 });
   useEffect(() => {
-    if (!window.WebGL2RenderingContext || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    const off = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ||
+      window.matchMedia?.('(prefers-reduced-transparency: reduce)').matches;
+    if (!window.WebGL2RenderingContext || off) return undefined;
     let alive = true;
-    import('./FluidGlass.jsx').then(module => { if (alive) setGlass(() => module.default); }).catch(error => console.warn('Fluid Glass is unavailable; using CSS fallback.', error));
+    import('./FluidGlass.jsx').then(module => {
+      if (alive) setGlass(() => module.default);
+    }).catch(() => { /* Keep the readable solid fallback if shader compilation fails. */ });
     return () => { alive = false; };
   }, []);
+  return Glass;
+}
+function NavGlass({ hostRef, active }) {
+  const Glass = useFluidGlass();
+  const [placement, setPlacement] = useState({ position: [.5, .5], size: 116 });
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
@@ -348,10 +363,24 @@ function NavGlass({ hostRef, active }) {
   }, [active, hostRef]);
   return Glass ? <div className="vh-glass-layer" aria-hidden="true"><Glass
     text="" shape="pill" shapes={['pill']} size={placement.size} position={placement.position}
-    interaction="static" morphOnClick={false} idle={false} spin={0} wobble={0.02}
-    refraction={1.15} dispersion={0.2} reflection={1.1} tint={0.1} shadow={0.24}
-    color="#ffffff" intro={false} maxDevicePixelRatio={1.5}
+    interaction="static" morphOnClick={false} idle={false} spin={0} wobble={0}
+    refraction={1.08} dispersion={0} reflection={0.7} tint={0.08} shadow={0.12}
+    color="#ffffff" intro={false} maxDevicePixelRatio={1.25}
   /></div> : null;
+}
+function SearchBubble({ onClick }) {
+  const Glass = useFluidGlass();
+  return <button type="button" className="vh-search-bubble" aria-label="Szukaj" title="Szukaj w Volley Hub" onClick={onClick}>
+    {Glass && <div className="vh-search-glass" aria-hidden="true">
+      <Glass
+        text="" shape="lens" shapes={['lens']} size={43} position={[.5, .5]}
+        interaction="static" morphOnClick={false} idle={false} spin={0} wobble={0}
+        refraction={1.07} dispersion={0} reflection={0.6} tint={0.07} shadow={0.1}
+        color="#ffffff" intro={false} maxDevicePixelRatio={1}
+      />
+    </div>}
+    <Search size={23} strokeWidth={2.1} aria-hidden="true" />
+  </button>;
 }
 function BottomNav({ active, onNavigate }) {
   const hostRef = useRef(null);
@@ -411,9 +440,7 @@ function App() {
     <div className="vh-floating-head" aria-label="Nagłówek Volley Hub">
       <BrandSignature />
       <div className="vh-floating-actions">
-        <button type="button" className="vh-search-bubble" aria-label="Szukaj" title="Szukaj w Volley Hub" onClick={() => setSearchOpen(true)}>
-          <Search size={23} strokeWidth={2.1} aria-hidden="true" />
-        </button>
+        <SearchBubble onClick={() => setSearchOpen(true)} />
       </div>
     </div>
     <main id="main-content" key={page}>

@@ -80,3 +80,47 @@ test('old Rive wordmark assets are no longer used', async ({ page }) => {
   await expect(page.locator('.vh-rive-layer')).toHaveCount(0);
   await expect(page.locator('.vh-wordmark-icon')).toHaveCount(0);
 });
+
+test('bottom navigation uses just one React glass lens and no CSS pill overlay', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await expect(nav).toBeVisible();
+  const active = nav.locator('.vh-nav-item.active');
+  await expect(active).toHaveCount(1);
+  const css = await active.evaluate(el => {
+    const style = getComputedStyle(el);
+    return { background: style.backgroundColor, image: style.backgroundImage, shadow: style.boxShadow };
+  });
+  expect(css.background).toBe('rgba(0, 0, 0, 0)');
+  expect(css.image).toBe('none');
+  expect(css.shadow).toBe('none');
+  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
+  await expect(nav.getByRole('button', { name: 'Mecze' })).toHaveAttribute('aria-current', 'page');
+});
+
+test('search bubble is glass powered by React or a readable static fallback', async ({ page }) => {
+  await page.goto('/');
+  const bubble = page.getByRole('button', { name: 'Szukaj', exact: true });
+  await expect(bubble).toBeVisible();
+  expect(await bubble.evaluate(el => getComputedStyle(el).backdropFilter)).toBe('none');
+  await bubble.click();
+  const search = page.getByRole('dialog', { name: 'Wyszukiwarka' });
+  await expect(search).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(search).toHaveCount(0);
+  await expect(bubble).toBeFocused();
+});
+
+test('mobile navigation, date strip and saved favorites survive the cleanup', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await expect(page.getByRole('tablist', { name: 'Wybierz dzień' })).toBeVisible();
+  await nav.getByRole('button', { name: 'Rozgrywki' }).click();
+  await page.getByRole('button', { name: 'Dodaj do ulubionych: TAURON Liga Mężczyzn' }).click();
+  await nav.getByRole('button', { name: 'Ulubione' }).click();
+  await page.getByRole('tab', { name: /Rozgrywki/ }).click();
+  await expect(page.getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
+});

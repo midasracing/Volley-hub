@@ -1,4 +1,4 @@
-const CACHE = 'volley-hub-techtext-v1';
+const CACHE = 'volley-hub-techtext-clean-v2';
 const SHELL = ['./', './index.html', './manifest.webmanifest'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
