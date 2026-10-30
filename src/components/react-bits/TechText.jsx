@@ -62,6 +62,8 @@ const TechText = ({
   sweep = true,
   speed = 1,
   clickKick = true,
+  interactive = true,
+  replayKey = 0,
   intro = 'none',
   introDuration = 2,
   guides = false,
@@ -101,6 +103,8 @@ const TechText = ({
       sweep,
       speed,
       clickKick,
+      interactive,
+      replayKey,
       intro,
       introDuration,
       guides
@@ -137,6 +141,7 @@ const TechText = ({
     let cursor = '';
     let introClock = 0;
     let introKind = '';
+    let lastReplayKey = replayKey;
     let introducing = false;
     let fontsReady = !document.fonts;
     let guideAlpha = 0;
@@ -697,8 +702,9 @@ const TechText = ({
       const view = ensureLayout(s, ink);
       const damping = 2 * Math.sqrt(SPRING) * (1 - clamp01(s.bounce) * 0.96);
 
-      if (s.intro !== introKind) {
+      if (s.intro !== introKind || s.replayKey !== lastReplayKey) {
         introKind = s.intro;
+        lastReplayKey = s.replayKey;
         introClock = 0;
       }
       const introOn = introKind !== 'none' && !reducedMotion && glyphs.length > 0;
@@ -715,7 +721,7 @@ const TechText = ({
         targetX = view.left + (view.right - view.left) * (0.5 - 0.5 * Math.cos(clock * 0.45));
         targetY = view.top + (view.bottom - view.top) * (0.45 + 0.1 * Math.sin(clock * 0.8));
       }
-      const active = !introducing && (pointer.inside || sweeping || dragging >= 0);
+      const active = !introducing && ((interactive && pointer.inside) || sweeping || dragging >= 0);
       if (active && !placed) {
         lens.x = targetX;
         lens.y = targetY;
@@ -956,12 +962,15 @@ const TechText = ({
       wake();
     };
 
-    container.addEventListener('pointermove', onMove, { passive: true });
-    container.addEventListener('pointerenter', onMove, { passive: true });
-    container.addEventListener('pointerdown', onDown, { passive: true });
-    container.addEventListener('pointerup', onUp, { passive: true });
-    container.addEventListener('pointercancel', onUp, { passive: true });
-    container.addEventListener('pointerleave', onLeave, { passive: true });
+    // Purely decorative wordmarks never subscribe to touch/mouse interactions.
+    if (interactive) {
+      container.addEventListener('pointermove', onMove, { passive: true });
+      container.addEventListener('pointerenter', onMove, { passive: true });
+      container.addEventListener('pointerdown', onDown, { passive: true });
+      container.addEventListener('pointerup', onUp, { passive: true });
+      container.addEventListener('pointercancel', onUp, { passive: true });
+      container.addEventListener('pointerleave', onLeave, { passive: true });
+    }
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
@@ -989,14 +998,16 @@ const TechText = ({
       themeObserver.disconnect();
       schemeQuery?.removeEventListener?.('change', wake);
       container.style.cursor = '';
-      container.removeEventListener('pointermove', onMove);
-      container.removeEventListener('pointerenter', onMove);
-      container.removeEventListener('pointerdown', onDown);
-      container.removeEventListener('pointerup', onUp);
-      container.removeEventListener('pointercancel', onUp);
-      container.removeEventListener('pointerleave', onLeave);
+      if (interactive) {
+        container.removeEventListener('pointermove', onMove);
+        container.removeEventListener('pointerenter', onMove);
+        container.removeEventListener('pointerdown', onDown);
+        container.removeEventListener('pointerup', onUp);
+        container.removeEventListener('pointercancel', onUp);
+        container.removeEventListener('pointerleave', onLeave);
+      }
     };
-  }, []);
+  }, [interactive]);
 
   return (
     <div ref={containerRef} className={`tech-text ${className}`.trim()} style={style} role="presentation" aria-hidden="true">

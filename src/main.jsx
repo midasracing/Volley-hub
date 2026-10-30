@@ -20,6 +20,7 @@ const DATE_FORMAT = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'l
 const NOW = () => { const today = new Date(); today.setHours(12, 0, 0, 0); return today; };
 const leagueByName = name => LEAGUES.find(item => item.name === name);
 const sameName = (a, b) => normalizeName(a) === normalizeName(b);
+const MONTH_FORMAT = new Intl.DateTimeFormat('pl-PL', { month: 'short' });
 
 function useFeeds() {
   const [feeds, setFeeds] = useState({});
@@ -47,10 +48,20 @@ function useFeeds() {
     return () => { active = false; controller.abort(); };
   }, [revision]);
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      if (document.visibilityState === 'visible') setRevision(current => current + 1);
-    }, 60000);
-    return () => window.clearInterval(timer);
+    let lastRefresh = Date.now();
+    const refreshWhenVisible = () => {
+      if (document.visibilityState !== 'visible') return;
+      const now = Date.now();
+      if (now - lastRefresh < 60000) return;
+      lastRefresh = now;
+      setRevision(current => current + 1);
+    };
+    const timer = window.setInterval(refreshWhenVisible, 60000);
+    document.addEventListener('visibilitychange', refreshWhenVisible);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener('visibilitychange', refreshWhenVisible);
+    };
   }, []);
   return { feeds, errors, loading, refresh: () => setRevision(current => current + 1) };
 }
@@ -148,6 +159,7 @@ function IconButton({ Icon, label, onClick, active = false }) {
 function DateStrip({ selected, onSelect }) {
   const strip = useRef(null);
   const selectedKey = dateKey(selected);
+  const todayKey = dateKey(NOW());
   const days = useMemo(() => Array.from({ length: 61 }, (_, index) => addDays(selected, index - 30)), [selectedKey]);
   useEffect(() => {
     const active = strip.current?.querySelector('[aria-selected="true"]');
@@ -158,8 +170,8 @@ function DateStrip({ selected, onSelect }) {
       {days.map((day, index) => {
         const key = dateKey(day);
         const active = key === selectedKey;
-        return <button className={'im-day ' + (active ? 'is-sel ' : '') + (key === dateKey(NOW()) ? 'is-today' : '')} role="tab" aria-selected={active} aria-label={DATE_FORMAT.format(day)} onClick={() => onSelect(day)} key={key} type="button">
-          <small className={'im-month ' + (day.getDate() === 1 || index === 0 ? '' : 'is-empty')}>{new Intl.DateTimeFormat('pl-PL', { month: 'short' }).format(day).replace('.', '').toUpperCase()}</small>
+        return <button className={'im-day ' + (active ? 'is-sel ' : '') + (key === todayKey ? 'is-today' : '')} role="tab" aria-selected={active} aria-label={DATE_FORMAT.format(day)} onClick={() => onSelect(day)} key={key} type="button">
+          <small className={'im-month ' + (day.getDate() === 1 || index === 0 ? '' : 'is-empty')}>{MONTH_FORMAT.format(day).replace('.', '').toUpperCase()}</small>
           <b>{day.getDate()}</b><span>{WEEKDAYS[day.getDay()]}</span>
         </button>;
       })}
@@ -196,8 +208,10 @@ function MatchesPage({ feeds, loading, errors, refresh, logos, selectedDate, set
 }
 
 function HomePage({ feeds, loading, errors, refresh, logos, favorites, onNavigate, onOpenLeague }) {
-  const todayMatches = matchesFromFeeds(feeds).filter(match => feedDateKey(match.date) === dateKey(NOW()));
-  const upcoming = matchesFromFeeds(feeds).filter(match => feedDateKey(match.date) >= dateKey(NOW())).slice(0, 3);
+  const allMatches = useMemo(() => matchesFromFeeds(feeds), [feeds]);
+  const today = dateKey(NOW());
+  const todayMatches = allMatches.filter(match => feedDateKey(match.date) === today);
+  const upcoming = allMatches.filter(match => feedDateKey(match.date) >= today).slice(0, 3);
   const featured = todayMatches.length ? todayMatches : upcoming;
   const savedCount = favorites.teams.length + favorites.leagues.length;
   return <>
@@ -288,12 +302,13 @@ function FavoritesPage({ feeds, logos, favorites, toggleFavorite, onOpenLeague }
 function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites, toggleFavorite }) {
   const [query, setQuery] = useState('');
   const input = useRef(null);
+  const searchableTeams = useMemo(() => teamIndex(feeds), [feeds]);
   useEffect(() => { input.current?.focus(); const onEscape = event => { if (event.key === 'Escape') onClose(); }; window.addEventListener('keydown', onEscape); return () => { window.removeEventListener('keydown', onEscape); document.querySelector('.vh-search-bubble')?.focus(); }; }, []);
   const results = useMemo(() => {
     const term = normalizeName(query);
     if (!term) return { leagues: LEAGUES, teams: [] };
-    return { leagues: LEAGUES.filter(item => normalizeName(item.name).includes(term)), teams: teamIndex(feeds).filter(team => normalizeName(team.name).includes(term)).slice(0, 24) };
-  }, [query, feeds]);
+    return { leagues: LEAGUES.filter(item => normalizeName(item.name).includes(term)), teams: searchableTeams.filter(team => normalizeName(team.name).includes(term)).slice(0, 24) };
+  }, [query, searchableTeams]);
   return <div className="vh-search-overlay" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }}>
     <section className="vh-search-sheet" role="dialog" aria-modal="true" aria-label="Wyszukiwarka" onKeyDown={event => {
       if (event.key !== 'Tab') return;
