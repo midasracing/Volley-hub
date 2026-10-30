@@ -4,6 +4,7 @@ on:
     branches: [feat/contact-brand-rive, main]
     paths:
       - 'rive/contact/**'
+      - 'scripts/verify-serve-motion.py'
       - 'public/brand/volley-hub-app-icon.svg'
       - '.github/workflows/rive-studio.yml'
   workflow_dispatch:
