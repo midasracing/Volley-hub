@@ -1,0 +1,40 @@
+name: Rive Studio — inspect authoring environment
+on:
+  push:
+    branches: [feat/rive-wordmark-motion-v1]
+    paths:
+      - '.github/workflows/rive-studio.yml'
+      - 'rive/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  authoring:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install official Rive CLI
+        run: |
+          curl --fail --silent --show-error --location https://releases.rive.app/cli/install.sh -o /tmp/install-rive.sh
+          bash /tmp/install-rive.sh
+          echo "$HOME/.rive/bin" >> "$GITHUB_PATH"
+          "$HOME/.rive/bin/rive" --version
+      - name: Discover reference RML and prepare authoring notes
+        run: |
+          rive create /tmp/rive-reference
+          echo '===== RML SCAFFOLD ====='
+          sed -n '1,180p' /tmp/rive-reference/scene.rml
+          echo '===== PROJECT CONFIG ====='
+          cat /tmp/rive-reference/rive.yaml
+          echo '===== REFERENCE ANIMATION ====='
+          rive schema LinearAnimation --animatable || true
+          echo '===== RECTANGLE ====='
+          rive schema Rectangle || true
+          echo '===== SHAPE ====='
+          rive schema Shape --animatable || true
+          echo '===== RML TRIANGLE ====='
+          cp -R "$(rive samples --path)/rml_triangle" /tmp/rive-triangle
+          sed -n '1,160p' /tmp/rive-triangle/scene.rml
+          echo '===== DOCS SKELETON ====='
+          rive docs skeleton | head -n 190 || true
