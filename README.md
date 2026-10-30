@@ -47,7 +47,7 @@ Nie generujemy fikcyjnych wyników. Aktualność danych zależy od działania sc
 Stare app.js, matches-ios.js i fluid-glass-react.js pozostają wyłącznie dla porównania i nie są ładowane przez nowy index.html.
 
 ## CONTACT — brand identity (native Rive)
-The header wordmark is an editable native Rive artboard, not a CSS imitation. Its signature moment is the split lowercase `o` (ball contact) that lands on a deliberate court-line underline formed by the descender of `y`. No persistent animation or cursor required.
+The header wordmark is an editable native Rive artboard, not a CSS imitation. Its signature moment is a **five-panel volleyball** forming the lowercase `o` after a gentle right-to-left serve. The final vector wordmark uses a single ice-blue tone `#DCE9FF`; the underline growing beneath `hub` is a quiet court reference. The animation lasts 2 seconds with a soft easing curve, subtle 26-degree spin, and no ambient loop. No persistent animation or cursor required.
 
 Source: `rive/contact/scene.rml` · native runtime file: `public/brand/volley-hub.riv` · accessible fallback: `public/brand/volley-hub-static.svg` · one-color master: `public/brand/volley-hub-mono.svg` · standalone sign: `public/brand/volley-hub-symbol.svg`.
 

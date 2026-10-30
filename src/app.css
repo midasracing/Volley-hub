@@ -211,7 +211,7 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 
 /* CONTACT identity: subtle blue UI + one electric contact point.
    Brand motion is native Rive; no WebGL shaders or CSS decoration. */
-:root{--brand-contact:#CCFD61}
+:root{--brand-contact:#DCE9FF}
 .vh-brand-signature{aspect-ratio:234/48}
 @media(prefers-reduced-motion:reduce){
   .vh-brand-signature .vh-rive-layer{display:none}
