@@ -50,3 +50,8 @@ The serve is intentionally optimized for **a 48px-tall phone header**, so the ve
 
 ### Motion QA — measured from rendered frames
 A deterministic CI test inspects the lime volleyball panel in actual Rive screenshots to verify right-to-left serve motion, high arc/apex, descent, arrival in the lowercase O and completely static rest state. We measure the produced visual frames, not just animation XML keys. See `scripts/verify-serve-motion.py`.
+
+## Direction 05 — soft serve / single-colour volleyball
+Replaces the previous five/six contrasting coloured lobes with **five swooping, softly curved volleyball panels in a single ice-blue #DCE9FF**. All seams are literal *negative space*: one matching tone for letters, volleyball and line. This is not a basketball illustration, a gradient or a multicoloured sports ball. The circle is constructed from a high-resolution radius-10.95 geometry with custom Bézier seam curves; polygons simplified for native Rive and drawn from the identical SVG master.
+
+Motion is **120 frames at 60fps (2 seconds)**. The volleyball floats in from the right along a low Bézier-like arc and turns only 26 degrees; cosine easing makes both launch and landing soft. The logotype itself breathes in gently. The ball's small response on landing is <1px, with almost no deformation. The line under hub extends in the last 0.45 seconds. At the end everything is still and readable. No bright lime, impact flash, fake chrome or permanent effects.

@@ -56,7 +56,7 @@ test('static brand asset is available and remains usable offline-first', async (
   expect(asset.ok()).toBeTruthy();
   const svg = await asset.text();
   expect(svg).toContain('viewBox="0 0 234 48"');
-  expect((svg.match(/<path /g) || []).length).toBe(15);
+  expect((svg.match(/<path /g) || []).length).toBe(14);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await expect(page.locator('.vh-brand-static img')).toBeVisible();
@@ -79,7 +79,8 @@ test('CONTACT original mark is vector, not a copied font or raster', async ({ re
   expect(response.ok()).toBeTruthy();
   const text = await response.text();
   expect(text).toContain('fill-rule="evenodd"');
-  expect(text).toContain('#CCFD61');
+  expect(text).toContain('#DCE9FF');
+  expect(text).not.toContain('#CCFD61');
   expect(text).not.toContain('<image');
   expect(text).not.toContain('<text');
 });
@@ -113,8 +114,17 @@ test('volleyball-themed O, standalone icon and original court-line identity shar
   const wordmark = await (await request.get('/brand/volley-hub-static.svg')).text();
   const ball = await (await request.get('/brand/volley-hub-ball.svg')).text();
   const favicon = await (await request.get('/brand/volley-hub-symbol.svg')).text();
-  expect((wordmark.match(/<path /g) || []).length).toBe(15);
-  expect((ball.match(/<path /g) || []).length).toBe(6);
-  expect((favicon.match(/<path /g) || []).length).toBe(6);
+  expect((wordmark.match(/<path /g) || []).length).toBe(14);
+  expect((ball.match(/<path /g) || []).length).toBe(5);
+  expect((favicon.match(/<path /g) || []).length).toBe(5);
   expect(ball).toContain('piłka siatkowa');
+});
+
+test('volleyball uses one muted ice-blue tone and curved seams instead of colored basketball panels', async ({ request }) => {
+  const asset = await (await request.get('/brand/volley-hub-ball.svg')).text();
+  expect(asset.match(/<path\b/g)).toHaveLength(5);
+  expect(asset.match(/fill="#DCE9FF"/g)).toHaveLength(5);
+  expect(asset).not.toContain('#CCFD61');
+  const word = await (await request.get('/brand/volley-hub-static.svg')).text();
+  expect(new Set([...word.matchAll(/fill="#([A-Fa-f0-9]{6})"/g)].map(match => match[1]))).toEqual(new Set(['DCE9FF']));
 });
