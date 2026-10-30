@@ -216,3 +216,8 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 @media(prefers-reduced-motion:reduce){
   .vh-brand-signature .vh-rive-layer{display:none}
 }
+
+/* One visual language: the custom volleyball mark appears in the hero,
+   while the working match cards retain their existing design. */
+.vh-hero-decor img{width:120px;height:120px;display:block;opacity:.32;filter:drop-shadow(0 0 18px rgba(181,210,255,.18))}
+@media(prefers-reduced-motion:reduce){.vh-hero-decor img{filter:none}}

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Home, CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check, Info, Volleyball } from 'lucide-react';
+import { Home, CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check, Info } from 'lucide-react';
 import {
   LEAGUES, CATEGORIES, WEEKDAYS, dateKey, fromKey, addDays, feedDateKey,
   isLive, isFinished, fetchLeague, matchesFromFeeds, teamIndex, normalizeName, readFavorites
@@ -202,7 +202,7 @@ function HomePage({ feeds, loading, errors, refresh, logos, favorites, onNavigat
       <h2>Gra toczy się <em>tutaj.</em></h2>
       <p>Sprawdź mecze, poznaj wyniki i bądź bliżej swoich drużyn.</p>
       <button type="button" className="vh-hero-action" onClick={() => onNavigate('matches')}>Przejdź do meczów <ArrowRight size={20} /></button>
-      <div className="vh-hero-decor" aria-hidden="true"><Volleyball size={120} strokeWidth={0.7} /></div>
+      <div className="vh-hero-decor" aria-hidden="true"><img src={import.meta.env.BASE_URL + 'brand/volley-hub-ball.svg'} width="120" height="120" alt="" /></div>
     </div>
     <SectionTitle eyebrow={todayMatches.length ? 'DZISIAJ NA PARKIECIE' : 'NAJBLIŻSZE SPOTKANIA'} title={todayMatches.length ? 'Mecze dzisiaj' : 'Co przed nami'} action="Zobacz mecze" onAction={() => onNavigate('matches')} />
     <FeedWarning errors={errors} refresh={refresh} />

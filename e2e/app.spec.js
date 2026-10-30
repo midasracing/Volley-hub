@@ -56,7 +56,7 @@ test('static brand asset is available and remains usable offline-first', async (
   expect(asset.ok()).toBeTruthy();
   const svg = await asset.text();
   expect(svg).toContain('viewBox="0 0 234 48"');
-  expect((svg.match(/<path /g) || []).length).toBe(11);
+  expect((svg.match(/<path /g) || []).length).toBe(15);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await expect(page.locator('.vh-brand-static img')).toBeVisible();
@@ -107,4 +107,14 @@ test('installable mobile PWA icon assets are valid PNG files', async ({ request 
   }
   const manifest = await (await request.get('/manifest.webmanifest')).json();
   expect(manifest.icons).toEqual(expect.arrayContaining([expect.objectContaining({ sizes: '512x512', type: 'image/png' })]));
+});
+
+test('volleyball-themed O, standalone icon and original court-line identity share vector sources', async ({ request }) => {
+  const wordmark = await (await request.get('/brand/volley-hub-static.svg')).text();
+  const ball = await (await request.get('/brand/volley-hub-ball.svg')).text();
+  const favicon = await (await request.get('/brand/volley-hub-symbol.svg')).text();
+  expect((wordmark.match(/<path /g) || []).length).toBe(15);
+  expect((ball.match(/<path /g) || []).length).toBe(6);
+  expect((favicon.match(/<path /g) || []).length).toBe(6);
+  expect(ball).toContain('piłka siatkowa');
 });

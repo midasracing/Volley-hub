@@ -39,3 +39,11 @@ The standalone split-O symbol is the sole icon source. A light/dark adaptive SVG
 - React Playwright checks mobile viewports at 320 and 390 CSS px, tests native Rive load, touch replay and reduced-motion fallback, and uploads actual header screenshots as an artifact.
 - CI compares the native Rive resting frame to the static SVG at exactly 234×48. Channel-wise mean absolute color deviation must stay under 7/255, accounting for two different anti-aliasing engines. This guards against accidentally editing only one version of the logo.
 - Design review still requires a real physical device session before a production merge.
+
+## Iteration 04 — volleyball serve, not an abstract logo reveal
+The lowercase O is now literally an **original six-panel volleyball**, not a broken ring. The six leather shapes are separated by curved, narrow negative-space seams; one lime panel becomes the brand's memorable accent, with no manufacturer's design copied. The same vector polygons drive the Rive scene, the SVG wordmark, PWA icon, favicon and quiet decorative hero mark.
+
+### Movement
+One ball begins near the right edge of the 234px header and moves right-to-left on a compressed serve trajectory, rising to the apex at frame 24, then dropping toward the O's final baseline position. All six panels share the same translations, counterclockwise spin and squash-and-settle response. The rest of VOLLEY assembles as the ball travels; HUB lands after the serve; a court line extends from the y beneath HUB. Total duration **84 frames at 60fps** (1.4 s), no ambient looping.
+
+The serve is intentionally optimized for **a 48px-tall phone header**, so the vertical arc is restrained; in a future full-screen splash screen we can allow a longer trajectory. Mobile usability overrides a cinematic but clipped ball.

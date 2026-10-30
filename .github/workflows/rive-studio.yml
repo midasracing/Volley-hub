@@ -43,14 +43,14 @@ jobs:
       - name: Render six genuine Rive keyframes
         run: |
           mkdir -p .rive-captures/contact
-          for f in 1 12 23 39 54 70; do
+          for f in 1 12 24 40 47 63 84; do
             rive rive/contact --screenshot=".rive-captures/contact/frame-$f.png" --advance="$f"
           done
           file .rive-captures/contact/*.png
       - name: Render full native Rive motion timeline
         run: |
           mkdir -p .rive-motion-preview
-          for f in $(seq 1 2 69) 70; do
+          for f in $(seq 1 2 83) 84; do
             printf -v frame '%03d' "$f"
             rive rive/contact --screenshot=".rive-motion-preview/${frame}.png" --advance="$f"
           done
@@ -87,7 +87,7 @@ jobs:
           svg=Image.open(io.BytesIO(cairosvg.svg2png(bytestring=source,output_width=234,output_height=48))).convert('RGBA')
           background=Image.new('RGBA',svg.size,(29,29,29,255))
           background.alpha_composite(svg)
-          rive=Image.open('.rive-captures/contact/frame-70.png').convert('RGBA')
+          rive=Image.open('.rive-captures/contact/frame-84.png').convert('RGBA')
           if rive.size != svg.size: raise SystemExit(f'Unexpected Rive dimensions {rive.size}')
           mae=ImageStat.Stat(ImageChops.difference(rive,background).convert('RGB')).mean
           print('Rive/SVG per-channel mean absolute error (0..255):',mae)
