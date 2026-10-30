@@ -13,12 +13,35 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  deployments: read
 concurrency:
   group: github-pages
   cancel-in-progress: true
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    outputs:
+      should_build: ${{ steps.check.outputs.should_build }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ github.event_name }}" != "workflow_run" ]; then
+            echo 'should_build=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          CURRENT=$(gh api 'repos/${{ github.repository }}/git/ref/heads/main' --jq '.object.sha')
+          LAST=$(gh api 'repos/${{ github.repository }}/deployments?environment=github-pages&per_page=1' --jq '.[0].sha // empty' || true)
+          if [ -n "$LAST" ] && [ "$CURRENT" = "$LAST" ]; then
+            echo 'should_build=false' >> "$GITHUB_OUTPUT"
+            echo 'Published commit is unchanged; skipping rebuild.'
+          else
+            echo 'should_build=true' >> "$GITHUB_OUTPUT"
+          fi
   build:
-    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    needs: verify
+    if: needs.verify.outputs.should_build == 'true' && (github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

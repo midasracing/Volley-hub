@@ -168,3 +168,12 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 @media(min-width:760px){.vh-app{width:min(100%,680px)}.vh-hero{padding:35px 32px}.vh-bottom{width:min(calc(100% - 32px),580px)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.vh-bottom{background:#222b3b;backdrop-filter:none;-webkit-backdrop-filter:none}.vh-hero{background:#233b78}}
+
+
+/* Progressive-enhancement lens: React renders the original Fluid Glass shader
+   behind the navigation; CSS glass remains visible when WebGL is unavailable. */
+.vh-bottom{isolation:isolate}
+.vh-bottom .vh-glass-layer{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit;pointer-events:none}
+.vh-bottom .vh-glass-layer .fluid-glass{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.vh-bottom .vh-glass-layer .fluid-glass__canvas{pointer-events:none}
+.vh-bottom .vh-nav-items{position:relative;z-index:2}

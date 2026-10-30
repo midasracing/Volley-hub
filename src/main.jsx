@@ -309,8 +309,52 @@ function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites
   </div>;
 }
 
+function NavGlass({ hostRef, active }) {
+  const [Glass, setGlass] = useState(null);
+  const [placement, setPlacement] = useState({ position: [.5, .5], size: 116 });
+  useEffect(() => {
+    if (!window.WebGL2RenderingContext || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    let alive = true;
+    import('./FluidGlass.jsx').then(module => { if (alive) setGlass(() => module.default); }).catch(error => console.warn('Fluid Glass is unavailable; using CSS fallback.', error));
+    return () => { alive = false; };
+  }, []);
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host) return;
+    const update = () => {
+      const button = host.querySelector('.vh-nav-item.active');
+      if (!button) return;
+      const bounds = host.getBoundingClientRect();
+      const selected = button.getBoundingClientRect();
+      if (!bounds.width || !bounds.height || !selected.width) return;
+      const next = {
+        position: [(selected.left + selected.width / 2 - bounds.left) / bounds.width, (selected.top + selected.height / 2 - bounds.top) / bounds.height],
+        size: selected.width
+      };
+      setPlacement(previous => (
+        Math.abs(previous.position[0] - next.position[0]) < .002 &&
+        Math.abs(previous.position[1] - next.position[1]) < .002 &&
+        Math.abs(previous.size - next.size) < 1 ? previous : next
+      ));
+    };
+    const resize = new ResizeObserver(update);
+    resize.observe(host);
+    const buttons = host.querySelectorAll('.vh-nav-item');
+    buttons.forEach(button => resize.observe(button));
+    host.addEventListener('transitionend', update);
+    requestAnimationFrame(update);
+    return () => { resize.disconnect(); host.removeEventListener('transitionend', update); };
+  }, [active, hostRef]);
+  return Glass ? <div className="vh-glass-layer" aria-hidden="true"><Glass
+    text="" shape="pill" shapes={['pill']} size={placement.size} position={placement.position}
+    interaction="static" morphOnClick={false} idle={false} spin={0} wobble={0.02}
+    refraction={1.15} dispersion={0.2} reflection={1.1} tint={0.1} shadow={0.24}
+    color="#ffffff" intro={false} maxDevicePixelRatio={1.5}
+  /></div> : null;
+}
 function BottomNav({ active, onNavigate }) {
-  return <nav className="vh-bottom" aria-label="Główna nawigacja"><div className="vh-nav-items">{NAV.map(({ id, label, Icon }) => <button key={id} onClick={() => onNavigate(id)} className={'vh-nav-item ' + (active === id ? 'active' : '')} type="button" aria-current={active === id ? 'page' : undefined} aria-label={label}><Icon size={23} strokeWidth={active === id ? 2.3 : 1.8} fill={active === id && id === 'favorites' ? 'currentColor' : 'none'} /><span>{label}</span></button>)}</div></nav>;
+  const hostRef = useRef(null);
+  return <nav ref={hostRef} className="vh-bottom" aria-label="Główna nawigacja"><NavGlass hostRef={hostRef} active={active} /><div className="vh-nav-items">{NAV.map(({ id, label, Icon }) => <button key={id} onClick={() => onNavigate(id)} className={'vh-nav-item ' + (active === id ? 'active' : '')} type="button" aria-current={active === id ? 'page' : undefined} aria-label={label}><Icon size={23} strokeWidth={active === id ? 2.3 : 1.8} fill={active === id && id === 'favorites' ? 'currentColor' : 'none'} /><span>{label}</span></button>)}</div></nav>;
 }
 
 function App() {
