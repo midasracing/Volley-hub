@@ -25,7 +25,7 @@ Przed uruchomieniem Vite i buildem skrypt scripts/sync-data.mjs kopiuje najnowsz
 
 ## Publikacja
 
-Po scaleniu pull requesta do main ustaw w GitHub Settings > Pages > Build and deployment > Source na GitHub Actions. Workflow Deploy React to GitHub Pages buduje dist/ i publikuje gotową aplikację. Samo serwowanie katalogu głównego repo bez buildu nie uruchomi Reacta.
+Publikacja odbywa się z gałęzi main. W GitHub Settings > Pages > Build and deployment > Source należy wybrać GitHub Actions. Workflow Deploy React to GitHub Pages buduje dist/ i publikuje gotową aplikację. Samo serwowanie katalogu głównego repo bez buildu nie uruchomi Reacta.
 
 ## Źródła
 
@@ -44,7 +44,7 @@ Nie generujemy fikcyjnych wyników. Aktualność danych zależy od działania sc
 - public — manifest, service worker, kopiowane dane
 - tests — testy logiki danych
 
-Stare app.js, matches-ios.js i fluid-glass-react.js pozostają wyłącznie dla porównania i nie są ładowane przez nowy index.html.
+Stary interfejs vanilla JS oraz nieaktualne kopie komponentu szkła zostały usunięte. W repo pozostaje tylko działająca aplikacja React.
 
 ## Logo & floating header (React Bits TechText)
 The header uses [React Bits / TechText](https://reactbits.dev/text-animations/tech-text)
