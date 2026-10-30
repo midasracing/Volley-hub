@@ -47,3 +47,6 @@ The lowercase O is now literally an **original six-panel volleyball**, not a bro
 One ball begins near the right edge of the 234px header and moves right-to-left on a compressed serve trajectory, rising to the apex at frame 24, then dropping toward the O's final baseline position. All six panels share the same translations, counterclockwise spin and squash-and-settle response. The rest of VOLLEY assembles as the ball travels; HUB lands after the serve; a court line extends from the y beneath HUB. Total duration **84 frames at 60fps** (1.4 s), no ambient looping.
 
 The serve is intentionally optimized for **a 48px-tall phone header**, so the vertical arc is restrained; in a future full-screen splash screen we can allow a longer trajectory. Mobile usability overrides a cinematic but clipped ball.
+
+### Motion QA — measured from rendered frames
+A deterministic CI test inspects the lime volleyball panel in actual Rive screenshots to verify right-to-left serve motion, high arc/apex, descent, arrival in the lowercase O and completely static rest state. We measure the produced visual frames, not just animation XML keys. See `scripts/verify-serve-motion.py`.

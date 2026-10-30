@@ -93,6 +93,8 @@ jobs:
           print('Rive/SVG per-channel mean absolute error (0..255):',mae)
           if max(mae) > 7: raise SystemExit('Rive resting image diverges from our static brand master')
           PY
+      - name: Validate the rendered volleyball serve actually moves into the letter O
+        run: /tmp/contact-icon-venv/bin/python scripts/verify-serve-motion.py
       - name: Update compiled runtime asset on feature branch only
         if: github.ref == 'refs/heads/feat/contact-brand-rive'
         run: |
