@@ -52,6 +52,31 @@ test('Tech Text logo animates itself with no mouse interaction and search bubble
   await expect(page.getByRole('dialog', { name: 'Wyszukiwarka' })).toBeVisible();
 });
 
+test('TechText logo ignores all pointer events after its automatic intro', async ({ page }) => {
+  await page.goto('/');
+  const logo = page.locator('.vh-brand-tech .tech-text');
+  const canvas = logo.locator('canvas');
+  await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
+  await page.waitForTimeout(2600);
+  const before = await canvas.evaluate(el => el.toDataURL());
+  for (const event of ['pointermove', 'pointerdown', 'pointerup']) {
+    await logo.dispatchEvent(event, { clientX: 90, clientY: 25, pointerType: 'mouse' });
+  }
+  await page.waitForTimeout(350);
+  expect(await canvas.evaluate(el => el.toDataURL())).toBe(before);
+});
+
+test('TechText logo replays by itself without a tap', async ({ page }) => {
+  await page.clock.install();
+  await page.goto('/');
+  const canvas = page.locator('.vh-brand-tech .tech-text canvas');
+  await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
+  await page.waitForTimeout(2600);
+  const settled = await canvas.evaluate(el => el.toDataURL());
+  await page.clock.fastForward(18000);
+  await expect.poll(() => canvas.evaluate(el => el.toDataURL()), { timeout: 4000 }).not.toBe(settled);
+});
+
 test('reduced motion keeps accessible static logo and no canvas', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
