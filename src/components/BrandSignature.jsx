@@ -39,10 +39,10 @@ export default function BrandSignature() {
       aria-label={reducedMotion ? 'Volley Hub' : 'Volley Hub — odtwórz animację logo'}
       title={reducedMotion ? 'Volley Hub' : 'Dotknij, aby odtworzyć animację'}
     >
-      <span className="vh-wordmark vh-brand-static" aria-hidden="true">
-        <span className="vh-wordmark-icon">V</span>
-        VOLLEY<span>HUB</span>
+      <span className="vh-brand-static" aria-hidden="true">
+        <img src={import.meta.env.BASE_URL + 'brand/volley-hub-static.svg'} width="234" height="48" alt="" />
       </span>
+      <span className="vh-brand-sr">VOLLEY HUB</span>
       {!reducedMotion && (
         <Suspense fallback={null}>
           <RiveWordmark key={take} onReady={onReady} />

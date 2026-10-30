@@ -56,3 +56,10 @@ Volley Hub is an app for **fixtures, scores and people who care about volleyball
 ## Ownership and claims
 
 References are for design thinking, not copying. No third-party logo shapes or images are used in the Rive source. The wordmark is a designed exploration, not a legally clearance-tested trademark. A separate trademark similarity search and domain/brand check are required before widespread launch.
+
+## Implementation correction (static identity)
+
+- Native Rive and fallback SVG now share the **same nine vector shapes**, independent of the font stack.
+- The first Rive frame shows the anchor V instead of an empty header.
+- The alternate one-color SVG is retained for reproduction proofs; all-blue rounded tile removed.
+- The first logo adaptation is still a **draft** until optical checks on a real iPhone and Android device.

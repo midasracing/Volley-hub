@@ -50,3 +50,15 @@ test('reduced motion preserves readable brand without Rive canvas', async ({ pag
   await expect(brand).toContainText('VOLLEY');
   await expect(brand.locator('canvas')).toHaveCount(0);
 });
+
+test('static brand asset is available and remains usable offline-first', async ({ page, request }) => {
+  const asset = await request.get('/brand/volley-hub-static.svg');
+  expect(asset.ok()).toBeTruthy();
+  const svg = await asset.text();
+  expect(svg).toContain('viewBox="0 0 234 48"');
+  expect((svg.match(/<path /g) || []).length).toBe(9);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await expect(page.locator('.vh-brand-static img')).toBeVisible();
+  await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
+});

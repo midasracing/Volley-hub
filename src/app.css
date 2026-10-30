@@ -203,3 +203,8 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 @media(prefers-reduced-motion:reduce){
   .vh-brand-signature .vh-brand-static{opacity:1!important;transition:none}
 }
+
+/* One exact art direction for reduced-motion, offline and animated states. */
+.vh-brand-signature .vh-brand-static{display:block;pointer-events:none}
+.vh-brand-signature .vh-brand-static img{display:block;width:100%;height:100%;object-fit:contain;object-position:left center}
+.vh-brand-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;border:0;overflow:hidden;white-space:nowrap;clip:rect(0,0,0,0);clip-path:inset(50%)}

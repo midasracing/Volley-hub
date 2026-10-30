@@ -38,6 +38,9 @@ jobs:
         run: |
           mkdir -p .rive-captures
           rive rive/volley-hub-signature --screenshot=.rive-captures/start.png --advance=1
+          rive rive/volley-hub-signature --screenshot=.rive-captures/contact-10.png --advance=10
+          rive rive/volley-hub-signature --screenshot=.rive-captures/contact-20.png --advance=20
+          rive rive/volley-hub-signature --screenshot=.rive-captures/contact-30.png --advance=30
           rive rive/volley-hub-signature --screenshot=.rive-captures/assembly.png --advance=35
           rive rive/volley-hub-signature --screenshot=.rive-captures/impact.png --advance=52
           rive rive/volley-hub-signature --screenshot=.rive-captures/finish.png --advance=80
