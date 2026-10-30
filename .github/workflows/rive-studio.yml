@@ -43,7 +43,7 @@ jobs:
       - name: Render six genuine Rive keyframes
         run: |
           mkdir -p .rive-captures/contact
-          for f in 1 18 36 60 84 96 108 120; do
+          for f in 1 18 36 60 84 96 108 120 130; do
             rive rive/contact --screenshot=".rive-captures/contact/frame-$f.png" --advance="$f"
           done
           file .rive-captures/contact/*.png

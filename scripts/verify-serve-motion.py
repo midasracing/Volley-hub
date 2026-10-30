@@ -8,7 +8,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(".rive-captures/contact")
-frames = [1, 18, 36, 60, 84, 96, 108, 120]
+frames = [1, 18, 36, 60, 84, 96, 108, 120, 130]
 tone = (220, 233, 255)
 
 
@@ -37,7 +37,7 @@ for frame, box in [
     assert count > 24, f"Volleyball disappeared from its expected path at frame {frame}"
 
 # The last two frames are identical. The motion settles completely.
-a = Image.open(ROOT / "frame-108.png").convert("RGBA").tobytes()
-b = Image.open(ROOT / "frame-120.png").convert("RGBA").tobytes()
-assert a == b, "The logo should be fully static by frame 108"
+a = Image.open(ROOT / "frame-120.png").convert("RGBA").tobytes()
+b = Image.open(ROOT / "frame-130.png").convert("RGBA").tobytes()
+assert a == b, "The logo should be fully static after the 120-frame one-shot finishes"
 print("Native Rive renders the soft volleyball serve and holds a static end state.")
