@@ -1,30 +1,16 @@
 <!doctype html>
-<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"><meta name="description" content="Volley Hub — siatkówka w jednym miejscu"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./styles.css?v=20261026-glassfix4"><link rel="stylesheet" href="./matches-ios.css?v=20261026-glassfix4"><link rel="stylesheet" href="./fluid-glass-component.css?v=20261026-glassfix4"><title>Volley Hub</title></head>
-<body><canvas id="page-bg" aria-hidden="true"></canvas><div class="app">
-<header><a class="brand" href="#"><span class="mark">V</span>Volley Hub</a><button id="search-open" class="round" aria-label="Szukaj"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button></header>
-<section id="search-panel" class="search hidden"><input id="search" aria-label="Szukaj" placeholder="Szukaj drużyny lub rozgrywek" type="search"><div id="search-results"></div></section>
-<main>
-<section class="page active" id="home"><div class="hero"><div class="eyebrow">Twoje centrum siatkówki</div><h1>Cała siatkówka w jednym miejscu</h1><p>Terminarze i wyniki meczów. Zaczynamy od Pomorskiej III Ligi Męskiej.</p><button class="primary" data-go="matches">Otwórz terminarz</button><div class="ball" aria-hidden="true"></div></div>
-
-<div class="section-head"><h2>Mecze dzisiaj</h2><button class="link" data-go="matches">Wszystkie mecze</button></div><div id="home-today" class="official-feed"><div class="data-state"><p>Pobieram mecze z bazy…</p></div></div>
-<div class="section-head"><h2>Pomorska III Liga Męska</h2><button class="link" data-open-pomorska>Otwórz ligę</button></div><div class="notice league-promo"><span class="info" aria-hidden="true">🏐</span><div><b>Terminarz, wyniki i tabela</b><p>Oficjalne dane VolleyStation dla Pomorskiej III Ligi Męskiej.</p></div></div>
-
-<div class="notice"><span class="info" aria-hidden="true">i</span><div><b>Oficjalna relacja TAURON Liga Mężczyzn</b><p>Terminarz i wyniki otworzysz w zakładce Mecze. Dane pochodzą z oficjalnego serwisu ligi.</p></div></div>
-
-<div class="section-head"><h2>Rozgrywki</h2></div><div class="tiles">
-<button data-cat="Polska"><strong>PL</strong><span><b>Polska</b><small>TAURON Liga, TAURON 1. Liga, 2. Liga i 3. Pomorska Liga Mężczyzn</small></span><i class="chev" aria-hidden="true">›</i></button><button data-cat="Europa"><strong>EU</strong><span><b>Europa</b><small>Wkrótce</small></span><i class="chev" aria-hidden="true">›</i></button><button data-cat="Reprezentacje"><strong>INT</strong><span><b>Reprezentacje</b><small>Wkrótce</small></span><i class="chev" aria-hidden="true">›</i></button><button data-cat="Świat"><strong>ŚW</strong><span><b>Cały świat</b><small>Wkrótce</small></span><i class="chev" aria-hidden="true">›</i></button></div>
-
-<div class="section-head"><h2>Twoje ulubione</h2><button class="link" data-go="favorites">Edytuj</button></div><div id="home-favs" class="empty"><b>Dodaj ulubione drużyny</b><p>Wybierz zespoły, aby szybciej sprawdzać ich mecze.</p><button class="secondary" data-go="favorites">Dodaj drużynę</button></div></section>
-
-<section class="page" id="matches"><div class="intro"><h1>Terminarz</h1><p>Wszystkie mecze wybranego dnia w jednym widoku.</p></div>
-
-<div class="tabs league-calendar-tabs" id="league-calendar-tabs"><button class="selected" data-calendar-league="men">TAURON Liga</button><button data-calendar-league="first">TAURON 1. Liga</button><button data-calendar-league="pomorska">Pomorska III Liga</button><button data-calendar-league="second">II Liga Mężczyzn</button></div><div class="calendar"><button id="prev" aria-label="Poprzedni dzień">‹</button><div><label id="weekday">Wybrany dzień</label><b id="date-label"></b><small id="month-label"></small></div><button id="next" aria-label="Następny dzień">›</button><button id="pick" aria-label="Wybierz datę z kalendarza"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg></button><input id="date-picker" type="date" aria-label="Wybierz datę"></div>
-
-
-<div id="official-content" class="official-feed"><div class="data-state"><p>Pobieram dane ligi…</p></div></div></section>
-
-<section class="page" id="competitions"><div class="intro"><h1>Rozgrywki</h1><p>Polska jest już dostępna. Pozostałe sekcje pojawią się wkrótce.</p></div><div class="tabs" id="cat-tabs"><button class="selected" data-category="Polska">Polska</button><button data-category="Europa">Europa</button><button data-category="Reprezentacje">Reprezentacje</button><button data-category="Świat">Świat</button></div><div id="competition-content"></div><div class="notice"><span class="info" aria-hidden="true">i</span><div><b>Kolejne rozgrywki już wkrótce</b><p>Na razie dostępne są męskie ligi w Polsce. Sekcje Europa, Reprezentacje i Świat zostaną uzupełnione później.</p></div></div></section>
-
-<section class="page" id="favorites"><div class="intro"><h1>Ulubione</h1><p>Śledź swoje drużyny i rozgrywki.</p></div><div class="tabs"><button class="selected" data-favtab="teams">Drużyny</button><button data-favtab="leagues">Rozgrywki</button></div><div id="favorite-content"></div></section>
-
-</main><nav class="bottom vh-react-bottom" aria-label="Główna nawigacja"><button class="nav active" data-go="home" aria-label="Główna"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg></i><span class="lbl">Główna</span></button><button class="nav" data-go="matches" aria-label="Mecze"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg></i><span class="lbl">Mecze</span></button><button class="nav" data-go="competitions" aria-label="Rozgrywki"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg></i><span class="lbl">Rozgrywki</span></button><button class="nav" data-go="favorites" aria-label="Ulubione"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/></svg></i><span class="lbl">Ulubione</span></button></nav><div id="toast" class="toast" role="status" aria-live="polite"></div></div><script src="./bg.js" defer></script><script src="./app.js?v=20261025-2liga-fix"></script><script src="./matches-ios.js"></script><script type="module" src="./fluid-glass-react.js?v=20261026-glassfix4"></script></body></html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#111318" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Volley Hub — terminarze, wyniki, tabele i ulubione drużyny siatkarskie." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>Volley Hub — siatkówka w jednym miejscu</title>
+  </head>
+  <body class="ios-matches">
+    <div id="root"></div>
+    <script type="module" src="./src/main.jsx"></script>
+  </body>
+</html>
