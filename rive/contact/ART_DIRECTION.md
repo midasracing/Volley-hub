@@ -27,3 +27,6 @@ The movement happens **inside the sign**. No generic rounded V badge, fake liqui
 - [COLLINS — Muse Group](https://wearecollins.com/case-studies/musegroup/): motion logic derived from forms.
 - [Rive CLI](https://github.com/rive-app/rive-docs/blob/main/cli/overview.mdx): native editable markup and runtime export.
 - [save.design Rive](https://save.design/tech/rive) and [Awwwards](https://www.awwwards.com/websites/): design craft benchmark, not assets to clone.
+
+## Review notes — motion refinement
+The first ball path overlapped the V in frame 12, creating a visual error. The O now approaches from **above/right** and resolves into its designed position by frame 30, avoiding the V and the arriving Ls. The mark uses the standalone contact glyph as an SVG favicon, not a generic square V.
