@@ -32,3 +32,21 @@ test('search overlay finds an existing league and opens its details', async ({ p
   await expect(page.getByRole('heading', { name: 'Pomorska III Liga Męska' })).toBeVisible();
   await expect(dialog).toHaveCount(0);
 });
+
+test('mobile brand stays accessible and can replay without hover', async ({ page }) => {
+  await page.goto('/');
+  const brand = page.getByRole('button', { name: 'Volley Hub — odtwórz animację logo' });
+  await expect(brand).toBeVisible();
+  await expect(brand).toContainText('VOLLEY');
+  await brand.tap();
+  await expect(brand).toBeVisible();
+});
+
+test('reduced motion preserves readable brand without Rive canvas', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const brand = page.getByRole('button', { name: 'Volley Hub — odtwórz animację logo' });
+  await expect(brand).toBeVisible();
+  await expect(brand).toContainText('VOLLEY');
+  await expect(brand.locator('canvas')).toHaveCount(0);
+});

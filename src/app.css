@@ -177,3 +177,29 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-bottom .vh-glass-layer .fluid-glass{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .vh-bottom .vh-glass-layer .fluid-glass__canvas{pointer-events:none}
 .vh-bottom .vh-nav-items{position:relative;z-index:2}
+
+/* Native Rive signature — 234×48 authored artboard, no layout shift on phones. */
+.vh-brand-signature{
+  display:block;position:relative;flex:0 1 234px;
+  width:min(234px,calc(100vw - 104px));height:48px;
+  min-width:0;max-width:234px;padding:0;margin:0;
+  border:0;background:none;color:inherit;text-align:left;
+  border-radius:12px;touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.vh-brand-signature .vh-brand-static{
+  position:absolute;inset:0;display:flex;align-items:center;gap:2px;
+  font-size:15px;letter-spacing:.09em;white-space:nowrap;
+  pointer-events:none;transition:opacity 120ms ease;
+}
+.vh-brand-signature .vh-brand-static>span:last-child{color:var(--blue)}
+.vh-brand-signature.is-ready .vh-brand-static{opacity:0}
+.vh-brand-signature .vh-rive-layer{
+  position:absolute;inset:0;width:100%;height:100%;
+  overflow:hidden;pointer-events:none;
+}
+.vh-brand-signature canvas{width:100%!important;height:100%!important;display:block}
+.vh-brand-signature:focus-visible{outline:2px solid #A8C7FF;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){
+  .vh-brand-signature .vh-brand-static{opacity:1!important;transition:none}
+}
