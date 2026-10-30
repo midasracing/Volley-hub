@@ -47,6 +47,19 @@ jobs:
             rive rive/contact --screenshot=".rive-captures/contact/frame-$f.png" --advance="$f"
           done
           file .rive-captures/contact/*.png
+      - name: Render full native Rive motion timeline
+        run: |
+          mkdir -p .rive-motion-preview
+          for f in $(seq 1 2 69) 70; do
+            printf -v frame '%03d' "$f"
+            rive rive/contact --screenshot=".rive-motion-preview/${frame}.png" --advance="$f"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: contact-motion-frames
+          path: .rive-motion-preview/*.png
+          include-hidden-files: true
+          retention-days: 14
       - uses: actions/upload-artifact@v4
         with:
           name: contact-brand-native-rive-proof
