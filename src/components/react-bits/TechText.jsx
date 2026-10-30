@@ -999,7 +999,7 @@ const TechText = ({
   }, []);
 
   return (
-    <div ref={containerRef} className={`tech-text ${className}`.trim()} style={style} role="img" aria-label={text}>
+    <div ref={containerRef} className={`tech-text ${className}`.trim()} style={style} role="presentation" aria-hidden="true">
       <canvas ref={canvasRef} className="tech-text-canvas" />
     </div>
   );
