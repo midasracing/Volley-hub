@@ -1,5 +1,5 @@
-name: volley-hub-signature
-main: VOLLEY HUB / SIDEOUT
+name: contact
+main: CONTACT
 logs:
   file: build/rive.log
   problems: build/problems.log

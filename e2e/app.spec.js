@@ -56,7 +56,7 @@ test('static brand asset is available and remains usable offline-first', async (
   expect(asset.ok()).toBeTruthy();
   const svg = await asset.text();
   expect(svg).toContain('viewBox="0 0 234 48"');
-  expect((svg.match(/<path /g) || []).length).toBe(9);
+  expect((svg.match(/<path /g) || []).length).toBe(11);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await expect(page.locator('.vh-brand-static img')).toBeVisible();
@@ -72,4 +72,27 @@ test('320px mobile header does not collide with search control', async ({ page }
   expect(brand).toBeTruthy();
   expect(search).toBeTruthy();
   expect(brand.x + brand.width).toBeLessThanOrEqual(search.x + 0.5);
+});
+
+test('CONTACT original mark is vector, not a copied font or raster', async ({ request }) => {
+  const response = await request.get('/brand/volley-hub-static.svg');
+  expect(response.ok()).toBeTruthy();
+  const text = await response.text();
+  expect(text).toContain('fill-rule="evenodd"');
+  expect(text).toContain('#CCFD61');
+  expect(text).not.toContain('<image');
+  expect(text).not.toContain('<text');
+});
+
+test('CONTACT symbol is a valid standalone vector', async ({ request }) => {
+  const response = await request.get('/brand/volley-hub-symbol.svg');
+  expect(response.ok()).toBeTruthy();
+  expect(await response.text()).toContain('viewBox="0 0 64 64"');
+});
+
+test('native CONTACT Rive binary is served as a nonempty asset', async ({ request }) => {
+  const response = await request.get('/brand/volley-hub.riv');
+  expect(response.ok()).toBeTruthy();
+  const body = await response.body();
+  expect(body.length).toBeGreaterThan(500);
 });

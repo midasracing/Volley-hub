@@ -208,3 +208,11 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-brand-signature .vh-brand-static{display:block;pointer-events:none}
 .vh-brand-signature .vh-brand-static img{display:block;width:100%;height:100%;object-fit:contain;object-position:left center}
 .vh-brand-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;border:0;overflow:hidden;white-space:nowrap;clip:rect(0,0,0,0);clip-path:inset(50%)}
+
+/* CONTACT identity: subtle blue UI + one electric contact point.
+   Brand motion is native Rive; no WebGL shaders or CSS decoration. */
+:root{--brand-contact:#CCFD61}
+.vh-brand-signature{aspect-ratio:234/48}
+@media(prefers-reduced-motion:reduce){
+  .vh-brand-signature .vh-rive-layer{display:none}
+}

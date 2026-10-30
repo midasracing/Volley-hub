@@ -45,3 +45,10 @@ Nie generujemy fikcyjnych wyników. Aktualność danych zależy od działania sc
 - tests — testy logiki danych
 
 Stare app.js, matches-ios.js i fluid-glass-react.js pozostają wyłącznie dla porównania i nie są ładowane przez nowy index.html.
+
+## CONTACT — brand identity (native Rive)
+The header wordmark is an editable native Rive artboard, not a CSS imitation. Its signature moment is the split lowercase `o` (ball contact) that lands on a deliberate court-line underline formed by the descender of `y`. No persistent animation or cursor required.
+
+Source: `rive/contact/scene.rml` · native runtime file: `public/brand/volley-hub.riv` · accessible fallback: `public/brand/volley-hub-static.svg` · one-color master: `public/brand/volley-hub-mono.svg` · standalone sign: `public/brand/volley-hub-symbol.svg`.
+
+Authoring notes, design rationale and license details: `rive/contact/ART_DIRECTION.md`. Rive CLI compiles and verifies the scene in `.github/workflows/rive-studio.yml`. This brand change must be visually approved before merging.

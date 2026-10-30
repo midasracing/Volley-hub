@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useRive } from '@rive-app/react-canvas';
 
 /**
- * Native vector Rive scene, authored in rive/volley-hub-signature/scene.rml.
+ * Native vector Rive scene, authored in rive/contact/scene.rml.
  * No raster, fonts, remote CDN assets, JS animation loops, or runtime scripts.
  */
 export default function RiveWordmark({ onReady }) {
