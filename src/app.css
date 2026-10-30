@@ -9,13 +9,6 @@ button{cursor:pointer}
 button:disabled{cursor:not-allowed;opacity:.5}
 button:focus-visible,a:focus-visible,input:focus-visible,[tabindex="0"]:focus-visible{outline:3px solid #a3baff;outline-offset:3px}
 .vh-app{width:min(100%,600px);margin:0 auto;padding:0 20px calc(136px + env(safe-area-inset-bottom));min-height:100dvh}
-.vh-topline{display:flex;align-items:center;justify-content:space-between;padding:calc(12px + env(safe-area-inset-top)) 0 6px;min-height:70px}
-.vh-wordmark{display:inline-flex;gap:2px;align-items:center;font-size:15px;font-weight:800;letter-spacing:.09em}
-.vh-wordmark>span:last-child{color:var(--blue)}
-.vh-wordmark-icon{display:grid;place-items:center;width:28px;height:28px;margin-right:8px;border-radius:9px;background:linear-gradient(145deg,#a5bbff,#5472e8);color:#0d1637;font-size:20px;font-weight:800;letter-spacing:-2px;box-shadow:0 5px 18px rgba(90,130,245,.28)}
-.vh-global-search{width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.065);color:var(--ink);transition:background .2s,transform .2s}
-.vh-global-search:hover{background:rgba(255,255,255,.13)}
-.vh-global-search:active,.vh-icon-button:active{transform:scale(.95)}
 .vh-page-head{padding-top:22px}
 .vh-page-head .vh-header-actions{display:flex;justify-content:flex-end;gap:10px;min-height:12px}
 .vh-page-head h1{margin:8px 0 7px;font-size:clamp(38px,8vw,48px);line-height:1.04;letter-spacing:-.045em;font-weight:800}
@@ -178,33 +171,61 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-bottom .vh-glass-layer .fluid-glass__canvas{pointer-events:none}
 .vh-bottom .vh-nav-items{position:relative;z-index:2}
 
-/* Native Rive signature — 234×48 authored artboard, no layout shift on phones. */
-.vh-brand-signature{
-  display:block;position:relative;flex:0 1 234px;
-  width:min(234px,calc(100vw - 104px));height:48px;
-  min-width:0;max-width:234px;padding:0;margin:0;
-  border:0;background:none;color:inherit;text-align:left;
-  border-radius:12px;touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
-}
-.vh-brand-signature .vh-brand-static{
-  position:absolute;inset:0;display:flex;align-items:center;gap:2px;
-  font-size:15px;letter-spacing:.09em;white-space:nowrap;
-  pointer-events:none;transition:opacity 120ms ease;
-}
-.vh-brand-signature .vh-brand-static>span:last-child{color:var(--blue)}
-.vh-brand-signature.is-ready .vh-brand-static{opacity:0}
-.vh-brand-signature .vh-rive-layer{
-  position:absolute;inset:0;width:100%;height:100%;
-  overflow:hidden;pointer-events:none;
-}
-.vh-brand-signature canvas{width:100%!important;height:100%!important;display:block}
-.vh-brand-signature:focus-visible{outline:2px solid #A8C7FF;outline-offset:3px}
-@media(prefers-reduced-motion:reduce){
-  .vh-brand-signature .vh-brand-static{opacity:1!important;transition:none}
-}
 
-/* One exact art direction for reduced-motion, offline and animated states. */
-.vh-brand-signature .vh-brand-static{display:block;pointer-events:none}
-.vh-brand-signature .vh-brand-static img{display:block;width:100%;height:100%;object-fit:contain;object-position:left center}
-.vh-brand-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;border:0;overflow:hidden;white-space:nowrap;clip:rect(0,0,0,0);clip-path:inset(50%)}
+/* FLOATING HEADER — no top bar. Left signature + one independent search bubble. */
+.vh-floating-head{
+  position:relative;display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(10px,4vw,24px);padding:calc(14px + env(safe-area-inset-top)) 0 8px;
+  min-height:calc(78px + env(safe-area-inset-top));isolation:isolate;
+}
+.vh-brand-tech{
+  position:relative;flex:1 1 270px;width:min(270px,calc(100vw - 113px));
+  max-width:270px;min-width:0;height:55px;overflow:visible;color:#F5F7FF;
+}
+.vh-brand-tech-fallback{
+  display:flex;align-items:center;position:absolute;inset:0;
+  font-family:Barlow,Arial,sans-serif;font-weight:800;
+  font-size:clamp(19px,5.5vw,27px);letter-spacing:-.038em;
+  white-space:nowrap;line-height:1;opacity:1;
+  transition:opacity 90ms ease-out;pointer-events:none;
+}
+.vh-brand-tech-fallback span{color:#9EBFFF;margin-left:.24em}
+.vh-brand-tech.has-canvas .vh-brand-tech-fallback{opacity:0}
+.vh-brand-tech .tech-text{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;cursor:default!important;
+}
+.vh-brand-tech .tech-text canvas{display:block;width:100%;height:100%}
+.vh-floating-actions{position:relative;display:flex;align-items:center;flex:0 0 auto}
+.vh-search-bubble{
+  position:relative;display:grid;place-items:center;isolation:isolate;
+  width:50px;height:50px;flex:none;border-radius:999px;
+  border:1px solid rgba(204,219,255,.28);
+  background:linear-gradient(145deg,rgba(148,173,235,.20),rgba(42,58,90,.45));
+  -webkit-backdrop-filter:blur(14px) saturate(145%);
+  backdrop-filter:blur(14px) saturate(145%);
+  color:#F4F7FF;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 9px 28px rgba(0,0,0,.20);
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .2s cubic-bezier(.2,.8,.2,1),border-color .2s,background .2s;
+}
+.vh-search-bubble::before{
+  content:"";position:absolute;width:10px;height:10px;right:-3px;top:-5px;
+  border:1px solid rgba(185,209,255,.5);border-radius:50%;
+  background:rgba(123,159,236,.25);box-shadow:0 0 11px rgba(145,183,255,.12);
+  pointer-events:none;
+}
+.vh-search-bubble:hover{border-color:rgba(196,216,255,.52);background:rgba(128,159,231,.24)}
+.vh-search-bubble:active{transform:scale(.94)}
+.vh-search-bubble:focus-visible{outline:3px solid #A3BAFF;outline-offset:4px}
+@media(max-width:390px){
+  .vh-floating-head{gap:10px;padding-top:calc(11px + env(safe-area-inset-top))}
+  .vh-brand-tech{height:51px}
+  .vh-search-bubble{width:47px;height:47px}
+}
+@media(prefers-reduced-motion:reduce){
+  .vh-brand-tech-fallback{transition:none}
+  .vh-search-bubble{transition:none}
+}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){
+  .vh-search-bubble{backdrop-filter:none;-webkit-backdrop-filter:none;background:#263451}
+}

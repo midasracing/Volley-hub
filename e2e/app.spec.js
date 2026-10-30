@@ -33,43 +33,50 @@ test('search overlay finds an existing league and opens its details', async ({ p
   await expect(dialog).toHaveCount(0);
 });
 
-test('mobile brand stays accessible and can replay without hover', async ({ page }) => {
+
+test('Tech Text logo animates itself with no mouse interaction and search bubble opens', async ({ page }) => {
   await page.goto('/');
-  const brand = page.getByRole('button', { name: 'Volley Hub — odtwórz animację logo' });
-  await expect(brand).toBeVisible();
-  await expect(brand).toContainText('VOLLEY');
-  await brand.tap();
-  await expect(brand).toBeVisible();
+  const logo = page.getByRole('img', { name: 'VOLLEY HUB' });
+  await expect(logo).toBeVisible();
+  await expect(logo).toContainText('VOLLEY');
+  await expect(page.locator('.vh-topline')).toHaveCount(0);
+  await expect(page.locator('.vh-floating-head')).toBeVisible();
+  const canvas = page.locator('.vh-brand-tech .tech-text canvas');
+  await expect(canvas).toBeVisible();
+  await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
+  const first = await canvas.evaluate(element => element.toDataURL());
+  await page.waitForTimeout(1900);
+  const last = await canvas.evaluate(element => element.toDataURL());
+  expect(last).not.toBe(first);
+  await page.getByRole('button', { name: 'Szukaj', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Wyszukiwarka' })).toBeVisible();
 });
 
-test('reduced motion preserves readable brand without Rive canvas', async ({ page }) => {
+test('reduced motion keeps accessible static logo and no canvas', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  const brand = page.getByRole('img', { name: 'VOLLEY HUB' });
-  await expect(brand).toBeVisible();
-  await expect(brand).toContainText('VOLLEY');
-  await expect(brand.locator('canvas')).toHaveCount(0);
+  const logo = page.getByRole('img', { name: 'VOLLEY HUB' });
+  await expect(logo).toBeVisible();
+  await expect(logo).toContainText('VOLLEY');
+  await expect(logo).toContainText('HUB');
+  await expect(page.locator('.vh-brand-tech canvas')).toHaveCount(0);
 });
 
-test('static brand asset is available and remains usable offline-first', async ({ page, request }) => {
-  const asset = await request.get('/brand/volley-hub-static.svg');
-  expect(asset.ok()).toBeTruthy();
-  const svg = await asset.text();
-  expect(svg).toContain('viewBox="0 0 234 48"');
-  expect((svg.match(/<path /g) || []).length).toBe(9);
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
-  await expect(page.locator('.vh-brand-static img')).toBeVisible();
-  await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: /odtwórz animację logo/ })).toHaveCount(0);
+test('floating logo and search bubble never overlap at 320px and 375px', async ({ page }) => {
+  for (const width of [320, 375]) {
+    await page.setViewportSize({ width, height: 700 });
+    await page.goto('/');
+    const logo = await page.locator('.vh-brand-tech').boundingBox();
+    const bubble = await page.getByRole('button', { name: 'Szukaj', exact: true }).boundingBox();
+    expect(logo).toBeTruthy();
+    expect(bubble).toBeTruthy();
+    expect(logo.x + logo.width).toBeLessThanOrEqual(bubble.x - 2);
+    expect(bubble.x + bubble.width).toBeLessThanOrEqual(width);
+  }
 });
 
-test('320px mobile header does not collide with search control', async ({ page }) => {
-  await page.setViewportSize({ width: 320, height: 700 });
+test('old Rive wordmark assets are no longer used', async ({ page }) => {
   await page.goto('/');
-  const brand = await page.locator('.vh-brand-signature').boundingBox();
-  const search = await page.getByRole('button', { name: 'Szukaj', exact: true }).boundingBox();
-  expect(brand).toBeTruthy();
-  expect(search).toBeTruthy();
-  expect(brand.x + brand.width).toBeLessThanOrEqual(search.x + 0.5);
+  await expect(page.locator('.vh-rive-layer')).toHaveCount(0);
+  await expect(page.locator('.vh-wordmark-icon')).toHaveCount(0);
 });

@@ -408,7 +408,14 @@ function App() {
     });
   }
   return <div className="vh-app" id="ios-matches">
-    <div className="vh-topline"><BrandSignature /><button type="button" className="vh-global-search" aria-label="Szukaj" onClick={() => setSearchOpen(true)}><Search size={22} /></button></div>
+    <div className="vh-floating-head" aria-label="Nagłówek Volley Hub">
+      <BrandSignature />
+      <div className="vh-floating-actions">
+        <button type="button" className="vh-search-bubble" aria-label="Szukaj" title="Szukaj w Volley Hub" onClick={() => setSearchOpen(true)}>
+          <Search size={23} strokeWidth={2.1} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
     <main id="main-content" key={page}>
       {page === 'home' && <HomePage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />}
       {page === 'matches' && <MatchesPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />}

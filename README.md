@@ -45,3 +45,20 @@ Nie generujemy fikcyjnych wyników. Aktualność danych zależy od działania sc
 - tests — testy logiki danych
 
 Stare app.js, matches-ios.js i fluid-glass-react.js pozostają wyłącznie dla porównania i nie są ładowane przez nowy index.html.
+
+## Logo & floating header (React Bits TechText)
+The header uses [React Bits / TechText](https://reactbits.dev/text-animations/tech-text)
+by David Haz (MIT + Commons Clause; included attribution at
+`src/components/react-bits/LICENSE.md`). It is an **actual local component**,
+not an imitation and not the previous Rive wordmark. `intro="assemble"`
+starts automatically on page load; sweeping, drag, click and hover interactions
+are disabled to keep phone navigation light. After its 1.55-second reveal the
+canvas rests. `prefers-reduced-motion`, slow JS loading and missing canvas
+show an immediately readable HTML wordmark.
+
+The old top bar is removed: `vh-floating-head` positions the signature top-left
+and a separate accessible glass search bubble top-right. This is a visual change
+only; search, match data, favorites and the bottom navigation keep their behavior.
+
+Rive is intentionally **not used for the logo**. It may still be used later
+for useful interaction-driven animations elsewhere in the PWA.
