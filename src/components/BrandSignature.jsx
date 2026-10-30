@@ -36,7 +36,7 @@ export default function BrandSignature() {
       type="button"
       className={'vh-brand-signature' + (ready && !reducedMotion ? ' is-ready' : '')}
       onClick={replay}
-      aria-label="Volley Hub — odtwórz animację logo"
+      aria-label={reducedMotion ? 'Volley Hub' : 'Volley Hub — odtwórz animację logo'}
       title={reducedMotion ? 'Volley Hub' : 'Dotknij, aby odtworzyć animację'}
     >
       <span className="vh-wordmark vh-brand-static" aria-hidden="true">

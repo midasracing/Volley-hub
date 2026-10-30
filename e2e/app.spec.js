@@ -45,7 +45,7 @@ test('mobile brand stays accessible and can replay without hover', async ({ page
 test('reduced motion preserves readable brand without Rive canvas', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  const brand = page.getByRole('button', { name: 'Volley Hub — odtwórz animację logo' });
+  const brand = page.getByRole('button', { name: 'Volley Hub', exact: true });
   await expect(brand).toBeVisible();
   await expect(brand).toContainText('VOLLEY');
   await expect(brand.locator('canvas')).toHaveCount(0);
