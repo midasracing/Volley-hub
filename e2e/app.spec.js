@@ -164,25 +164,53 @@ test('quick tab changes keep navigation and content synchronized', async ({ page
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
 });
 
-test('glass menu uses stable animated grid tracks instead of rerendering on every frame', async ({ page }) => {
-  await page.setViewportSize({ width: 375, height: 760 });
+test('bubble and icons share compositor timing instead of animating the grid', async ({page}) => {
+  await page.setViewportSize({width:375,height:760});
   await page.goto('/');
-  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  const track = nav.locator('.vh-nav-items');
-  await expect(track).toHaveAttribute('data-active', 'home');
-  const initial = await track.evaluate(el => {
-    const style = getComputedStyle(el);
-    return { property: style.transitionProperty, duration: parseFloat(style.transitionDuration) };
+  const nav=page.getByRole('navigation',{name:'Główna nawigacja'});
+  const lens=nav.locator('.vh-nav-lens');
+  const track=nav.locator('.vh-nav-items');
+  await expect(track).toHaveClass(/is-ready/);
+  await expect(lens).toBeVisible();
+  const timings=await nav.evaluate(root=>{
+    const pill=getComputedStyle(root.querySelector('.vh-nav-lens'));
+    const icon=getComputedStyle(root.querySelector('.vh-nav-item'));
+    const tabs=getComputedStyle(root.querySelector('.vh-nav-items'));
+    return {
+      pillDuration:pill.transitionDuration.split(',')[0],
+      iconDuration:icon.transitionDuration.split(',')[0],
+      pillCurve:pill.transitionTimingFunction.split('),')[0],
+      iconCurve:icon.transitionTimingFunction.split('),')[0],
+      tabsProperty:tabs.transitionProperty
+    };
   });
-  expect(initial.property).toContain('grid-template-columns');
-  expect(initial.duration).toBeGreaterThan(0.4);
-  await nav.getByRole('button', { name: 'Rozgrywki' }).click();
-  await expect(track).toHaveAttribute('data-active', 'competitions');
-  await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
-  await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
-  await expect(page.locator('.vh-page-exit')).toHaveCount(0);
-  const glassCount = await nav.locator('.fluid-glass').count();
-  expect(glassCount).toBeLessThanOrEqual(1);
+  expect(timings.pillDuration).toBe(timings.iconDuration);
+  expect(timings.pillCurve).toBe(timings.iconCurve);
+  expect(timings.tabsProperty).not.toContain('grid-template-columns');
+  await nav.getByRole('button',{name:'Rozgrywki'}).click();
+  await expect(track).toHaveAttribute('data-active','competitions');
+  await expect(page.locator('#main-content').getByRole('heading',{name:'Rozgrywki'})).toBeVisible();
+});
+
+test('buttons remain separated throughout the transition at 320px and 375px',async({page})=>{
+  for(const width of [320,375]){
+    await page.setViewportSize({width,height:760});
+    await page.goto('/');
+    const nav=page.getByRole('navigation',{name:'Główna nawigacja'});
+    for(const name of ['Mecze','Rozgrywki','Ulubione','Główna']){
+      await nav.getByRole('button',{name}).click();
+      for(const pause of [60,100,130,260]){
+        await page.waitForTimeout(pause);
+        const positions=await nav.locator('.vh-nav-item').evaluateAll(items=>items.map(item=>{
+          const rect=item.getBoundingClientRect();
+          return {left:rect.left,right:rect.right};
+        }));
+        for(let i=1;i<positions.length;i++){
+          expect(positions[i].left+1).toBeGreaterThanOrEqual(positions[i-1].right);
+        }
+      }
+    }
+  }
 });
 
 test('menu remains aligned and readable at narrow mobile widths', async ({ page }) => {

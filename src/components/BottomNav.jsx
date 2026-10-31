@@ -1,56 +1,71 @@
-import { memo, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import useFluidGlass from '../hooks/useFluidGlass.js';
 import { NAV } from '../navigation.js';
+import { calculateNavLayout } from './navLayout.js';
 import './BottomNav.css';
 
-// Persistent overlay. All WebGL state survives page transitions.
-function NavGlass({ hostRef, active }) {
-  const Glass = useFluidGlass();
-  const [placement, setPlacement] = useState({ position: [0.23, 0.5], size: 116 });
-
-  useLayoutEffect(() => {
-    const host = hostRef.current;
-    const track = host?.querySelector('.vh-nav-items');
-    if (!host || !track) return undefined;
-    const index = NAV.findIndex(item => item.id === active);
-    if (index < 0) return undefined;
-    const update = () => {
-      const styles = getComputedStyle(track);
-      const leftPadding = parseFloat(styles.paddingLeft) || 0;
-      const rightPadding = parseFloat(styles.paddingRight) || 0;
-      const gap = parseFloat(styles.columnGap) || 0;
-      const available = track.clientWidth - leftPadding - rightPadding - gap * (NAV.length - 1);
-      if (available <= 0 || host.clientWidth <= 0 || host.clientHeight <= 0) return;
-
-      // Track uses one 2.5fr slot and three 1fr slots. Compute the *final*
-      // center directly: no layout reads or React updates during the animation.
-      const small = available / (NAV.length - 1 + 2.5);
-      const selectedWidth = small * 2.5;
-      const x = track.offsetLeft + leftPadding + index * (small + gap) + selectedWidth / 2;
-      const y = track.offsetTop + track.clientHeight / 2;
-      const next = { position: [x / host.clientWidth, y / host.clientHeight], size: selectedWidth };
-      setPlacement(previous =>
-        Math.abs(previous.position[0] - next.position[0]) < 0.001 &&
-        Math.abs(previous.position[1] - next.position[1]) < 0.001 &&
-        Math.abs(previous.size - next.size) < 0.5 ? previous : next
-      );
-    };
-    update();
-    const observer = new ResizeObserver(update);
-    observer.observe(host);
-    return () => observer.disconnect();
-  }, [active, hostRef]);
-
-  return Glass ? <div className="vh-glass-layer" aria-hidden="true"><Glass
-    text="" shape="pill" shapes={['pill']} size={placement.size} position={placement.position}
-    interaction="static" smoothness={0.48} morphOnClick={false} idle={false} spin={0} wobble={0}
+const CENTER=[0.5,0.5];
+// The WebGL image never follows the user's finger or rerenders during tab changes.
+// A single DOM layer carries it to the next destination with the same easing as icons.
+const StaticGlass=memo(function StaticGlass({width}){
+  const Glass=useFluidGlass();
+  return Glass?<Glass
+    text="" shape="pill" shapes={['pill']} size={width} position={CENTER}
+    interaction="static" morphOnClick={false} idle={false} spin={0} wobble={0}
     refraction={1.08} dispersion={0} reflection={0.7} tint={0.08} shadow={0.12}
     color="#ffffff" intro={false} maxDevicePixelRatio={2}
-  /></div> : null;
-}
-function BottomNav({ active, onNavigate }) {
-  const hostRef = useRef(null);
-  return <nav ref={hostRef} className="vh-bottom" aria-label="Główna nawigacja"><NavGlass hostRef={hostRef} active={active} /><div className="vh-nav-items" data-active={active}>{NAV.map(({ id, label, Icon }) => <button key={id} onClick={() => onNavigate(id)} className={'vh-nav-item ' + (active === id ? 'active' : '')} type="button" aria-current={active === id ? 'page' : undefined} aria-label={label}><Icon size={23} strokeWidth={active === id ? 2.3 : 1.8} fill={active === id && id === 'favorites' ? 'currentColor' : 'none'} /><span>{label}</span></button>)}</div></nav>;
+  />:null;
+});
+
+function BottomNav({active,onNavigate}){
+  const trackRef=useRef(null);
+  const [dimensions,setDimensions]=useState(null);
+  const activeIndex=Math.max(0,NAV.findIndex(item=>item.id===active));
+
+  useLayoutEffect(()=>{
+    const track=trackRef.current;
+    if(!track)return undefined;
+    const measure=()=>{
+      const style=getComputedStyle(track);
+      const width=track.clientWidth;
+      const padding=parseFloat(style.paddingLeft)||0;
+      const gap=parseFloat(style.getPropertyValue('--vh-nav-gap'))||0;
+      setDimensions(previous=>
+        previous&&Math.abs(previous.width-width)<0.5&&previous.padding===padding&&previous.gap===gap
+        ?previous:{width,padding,gap}
+      );
+    };
+    measure();
+    const observer=new ResizeObserver(measure);
+    observer.observe(track);
+    return ()=>observer.disconnect();
+  },[]);
+
+  const layout=useMemo(()=>dimensions?calculateNavLayout({
+    ...dimensions,activeIndex,count:NAV.length
+  }):null,[dimensions,activeIndex]);
+
+  return <nav className="vh-bottom" aria-label="Główna nawigacja">
+    <div ref={trackRef} className={'vh-nav-items'+(layout?' is-ready':'')} data-active={active}>
+      {layout&&<div className="vh-nav-lens" aria-hidden="true"
+        style={{transform:`translate3d(${layout.lens.left}px,0,0)`,width:layout.lens.width}}>
+        <StaticGlass width={layout.lens.width}/>
+      </div>}
+      {NAV.map(({id,label,Icon},index)=>{
+        const selected=active===id;
+        const slot=layout?.items[index];
+        return <button key={id} type="button" aria-label={label}
+          aria-current={selected?'page':undefined}
+          onClick={()=>onNavigate(id)}
+          className={'vh-nav-item'+(selected?' active':'')}
+          style={slot?{transform:`translate3d(${slot.left}px,0,0)`,width:slot.width}:{visibility:'hidden'}}>
+          <Icon size={23} strokeWidth={selected?2.3:1.8}
+            fill={selected&&id==='favorites'?'currentColor':'none'}/>
+          <span>{label}</span>
+        </button>;
+      })}
+    </div>
+  </nav>;
 }
 
 export default memo(BottomNav);
