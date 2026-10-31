@@ -204,6 +204,31 @@ test('menu remains aligned and readable at narrow mobile widths', async ({ page 
   }
 });
 
+test('floating nav is a persistent portal, separate from route content', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await expect(nav).toBeVisible();
+  expect(await nav.evaluate(el => el.parentElement === document.body)).toBe(true);
+  for (const target of ['Mecze', 'Rozgrywki', 'Ulubione', 'Główna']) {
+    await nav.getByRole('button', { name: target }).click();
+    await expect(nav.getByRole('button', { name: target })).toHaveAttribute('aria-current', 'page');
+    await expect(nav).toBeVisible();
+    expect(await nav.evaluate(el => el.parentElement === document.body)).toBe(true);
+  }
+});
+
+test('nav glass draws at higher device pixel ratio when WebGL is available', async ({ page }) => {
+  await page.goto('/');
+  const canvas = page.getByRole('navigation', { name: 'Główna nawigacja' }).locator('.fluid-glass__canvas');
+  if (await canvas.count()) {
+    const ratio = await canvas.evaluate(el => {
+      const rect = el.getBoundingClientRect();
+      return rect.width ? el.width / rect.width : 0;
+    });
+    expect(ratio).toBeGreaterThanOrEqual(1.5);
+  }
+});
+
 test('bottom navigation uses just one React glass lens and no CSS pill overlay', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });

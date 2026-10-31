@@ -1,0 +1,5 @@
+.vh-route-stage{position:relative;isolation:isolate;--vh-page-shift:7px}
+.vh-route-stage.is-backward{--vh-page-shift:-7px}
+.vh-page{position:relative;min-width:0}
+.vh-page-enter{animation:vh-page-in .2s ease-out both}
+@keyframes vh-page-in{from{opacity:.65;transform:translate3d(var(--vh-page-shift),0,0)}to{opacity:1;transform:translate3d(0,0,0)}}

@@ -1,21 +1,19 @@
-import React, { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Home, CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
 import {
   LEAGUES, CATEGORIES, WEEKDAYS, dateKey, fromKey, addDays, feedDateKey,
   isLive, isFinished, fetchLeague, matchesFromFeeds, teamIndex, normalizeName, readFavorites
 } from './data.js';
 import BrandSignature from './components/BrandSignature.jsx';
+import BottomNav from './components/BottomNav.jsx';
+import PageStage from './components/PageStage.jsx';
+import useFluidGlass from './hooks/useFluidGlass.js';
+import { ROUTES } from './navigation.js';
 import '../matches-ios.css';
 import './app.css';
 
-const NAV = [
-  { id: 'home', label: 'Główna', Icon: Home },
-  { id: 'matches', label: 'Mecze', Icon: CalendarDays },
-  { id: 'competitions', label: 'Rozgrywki', Icon: Trophy },
-  { id: 'favorites', label: 'Ulubione', Icon: Heart }
-];
-const ROUTES = NAV.map(item => item.id);
 const DATE_FORMAT = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
 const NOW = () => { const today = new Date(); today.setHours(12, 0, 0, 0); return today; };
 const leagueByName = name => LEAGUES.find(item => item.name === name);
@@ -322,66 +320,6 @@ function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites
   </div>;
 }
 
-// One React FluidGlass implementation for every glass element; matte fallback
-// when WebGL2 or motion/transparency accessibility settings disallow the effect.
-function useFluidGlass() {
-  const [Glass, setGlass] = useState(null);
-  useEffect(() => {
-    const off = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ||
-      window.matchMedia?.('(prefers-reduced-transparency: reduce)').matches;
-    if (!window.WebGL2RenderingContext || off) return undefined;
-    let alive = true;
-    import('./FluidGlass.jsx').then(module => {
-      if (alive) setGlass(() => module.default);
-    }).catch(() => { /* Keep the readable solid fallback if shader compilation fails. */ });
-    return () => { alive = false; };
-  }, []);
-  return Glass;
-}
-function NavGlass({ hostRef, active }) {
-  const Glass = useFluidGlass();
-  const [placement, setPlacement] = useState({ position: [0.23, 0.5], size: 116 });
-
-  useLayoutEffect(() => {
-    const host = hostRef.current;
-    const track = host?.querySelector('.vh-nav-items');
-    if (!host || !track) return undefined;
-    const index = NAV.findIndex(item => item.id === active);
-    if (index < 0) return undefined;
-    const update = () => {
-      const styles = getComputedStyle(track);
-      const leftPadding = parseFloat(styles.paddingLeft) || 0;
-      const rightPadding = parseFloat(styles.paddingRight) || 0;
-      const gap = parseFloat(styles.columnGap) || 0;
-      const available = track.clientWidth - leftPadding - rightPadding - gap * (NAV.length - 1);
-      if (available <= 0 || host.clientWidth <= 0 || host.clientHeight <= 0) return;
-
-      // Track uses one 2.5fr slot and three 1fr slots. Compute the *final*
-      // center directly: no layout reads or React updates during the animation.
-      const small = available / (NAV.length - 1 + 2.5);
-      const selectedWidth = small * 2.5;
-      const x = track.offsetLeft + leftPadding + index * (small + gap) + selectedWidth / 2;
-      const y = track.offsetTop + track.clientHeight / 2;
-      const next = { position: [x / host.clientWidth, y / host.clientHeight], size: selectedWidth };
-      setPlacement(previous =>
-        Math.abs(previous.position[0] - next.position[0]) < 0.001 &&
-        Math.abs(previous.position[1] - next.position[1]) < 0.001 &&
-        Math.abs(previous.size - next.size) < 0.5 ? previous : next
-      );
-    };
-    update();
-    const observer = new ResizeObserver(update);
-    observer.observe(host);
-    return () => observer.disconnect();
-  }, [active, hostRef]);
-
-  return Glass ? <div className="vh-glass-layer" aria-hidden="true"><Glass
-    text="" shape="pill" shapes={['pill']} size={placement.size} position={placement.position}
-    interaction="static" smoothness={0.48} morphOnClick={false} idle={false} spin={0} wobble={0}
-    refraction={1.08} dispersion={0} reflection={0.7} tint={0.08} shadow={0.12}
-    color="#ffffff" intro={false} maxDevicePixelRatio={1.25}
-  /></div> : null;
-}
 function SearchBubble({ onClick }) {
   const Glass = useFluidGlass();
   return <button type="button" className="vh-search-bubble" aria-label="Szukaj" title="Szukaj w Volley Hub" onClick={onClick}>
@@ -396,11 +334,6 @@ function SearchBubble({ onClick }) {
     <Search size={23} strokeWidth={2.1} aria-hidden="true" />
   </button>;
 }
-function BottomNav({ active, onNavigate }) {
-  const hostRef = useRef(null);
-  return <nav ref={hostRef} className="vh-bottom" aria-label="Główna nawigacja"><NavGlass hostRef={hostRef} active={active} /><div className="vh-nav-items" data-active={active}>{NAV.map(({ id, label, Icon }) => <button key={id} onClick={() => onNavigate(id)} className={'vh-nav-item ' + (active === id ? 'active' : '')} type="button" aria-current={active === id ? 'page' : undefined} aria-label={label}><Icon size={23} strokeWidth={active === id ? 2.3 : 1.8} fill={active === id && id === 'favorites' ? 'currentColor' : 'none'} /><span>{label}</span></button>)}</div></nav>;
-}
-
 function App() {
   const route = () => { const hash = window.location.hash.replace(/^#\/?/, ''); return ROUTES.includes(hash) ? hash : 'home'; };
   const [page, setPage] = useState(route);
@@ -421,7 +354,7 @@ function App() {
     const sync = () => switchPage(route());
     window.addEventListener('hashchange', sync);
     return () => window.removeEventListener('hashchange', sync);
-  }, []);
+  }, [switchPage]);
   useEffect(() => {
     const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
     if (!media) return undefined;
@@ -441,22 +374,25 @@ function App() {
       navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js').catch(() => {});
     }
   }, []);
-  function switchPage(id) {
+  const switchPage = useCallback(id => {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
     const previous = currentPage.current;
     currentPage.current = id;
-    setDirection(ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward');
-    // Highlight the tapped tab immediately, even if rendering the next page is heavy.
+    // React keeps the nav update urgent, and the page update low priority.
     setNavPage(id);
-    React.startTransition(() => setPage(id));
-  }
-  function navigate(id) {
+    const nextDirection = ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward';
+    React.startTransition(() => {
+      setDirection(nextDirection);
+      setPage(id);
+    });
+  }, []);
+  const navigate = useCallback(id => {
     if (!ROUTES.includes(id)) return;
     setSearchOpen(false);
     window.scrollTo({ top: 0, behavior: 'instant' });
     switchPage(id);
     if (window.location.hash !== '#' + id) window.location.hash = id;
-  }
+  }, [switchPage]);
   function openLeague(id) {
     if (!id) return;
     setSelectedLeague(id);
@@ -486,12 +422,10 @@ function App() {
         <SearchBubble onClick={() => setSearchOpen(true)} />
       </div>
     </div>
-    <div className={'vh-route-stage is-' + direction}>
-      <main id="main-content" key={page} className={'vh-page' + (!reducedMotion ? ' vh-page-enter' : '')}>
-        {renderPage(page)}
-      </main>
-    </div>
-    <BottomNav active={navPage} onNavigate={navigate} />
+    <PageStage page={page} direction={direction} reducedMotion={reducedMotion}>
+      {renderPage(page)}
+    </PageStage>
+    {createPortal(<BottomNav active={navPage} onNavigate={navigate} />, document.body)}
     {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
   </div>;
 }

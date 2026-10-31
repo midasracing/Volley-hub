@@ -39,27 +39,9 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-favorites-teaser>span:nth-child(2){flex:1}
 .vh-heart-icon{flex:0 0 52px;height:52px;display:grid;place-items:center;border-radius:16px;color:#ff8997;background:rgba(255,106,126,.14)}
 .vh-favorites-teaser>svg{color:#a8b1c4}
-.vh-bottom{position:fixed;left:50%;bottom:calc(15px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(calc(100% - 32px),540px);height:72px;z-index:100;border:1px solid rgba(255,255,255,.21);border-radius:999px;background:rgba(24,30,42,.93);box-shadow:0 12px 40px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14);-webkit-backdrop-filter:none;backdrop-filter:none;animation:vh-nav-enter .38s cubic-bezier(.22,1,.36,1) both}
 /* Animate just four stable grid tracks. The WebGL lens receives one final
    destination per tab change rather than chasing every flex layout frame. */
-.vh-nav-items{display:grid;grid-template-columns:minmax(0,2.5fr) repeat(3,minmax(0,1fr));align-items:stretch;gap:3px;height:100%;padding:7px;transition:grid-template-columns .52s cubic-bezier(.22,1,.36,1)}
-.vh-nav-items[data-active="matches"]{grid-template-columns:minmax(0,1fr) minmax(0,2.5fr) repeat(2,minmax(0,1fr))}
-.vh-nav-items[data-active="competitions"]{grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,2.5fr) minmax(0,1fr)}
-.vh-nav-items[data-active="favorites"]{grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,2.5fr)}
-.vh-nav-item{display:flex;align-items:center;justify-content:center;gap:0;min-width:0;min-height:0;border:0;border-radius:99px;background:transparent;color:#afbacd;white-space:nowrap;overflow:hidden;transition:gap .46s cubic-bezier(.22,1,.36,1),color .24s ease;padding:0 5px;-webkit-tap-highlight-color:transparent}
-.vh-nav-item>span{display:block;min-width:0;max-width:0;opacity:0;overflow:hidden;font-size:14px;font-weight:750;transform:translate3d(-5px,0,0);transition:max-width .46s cubic-bezier(.22,1,.36,1),opacity .3s ease,transform .46s cubic-bezier(.22,1,.36,1)}
-.vh-nav-item svg{flex:none;transition:transform .3s cubic-bezier(.22,1,.36,1),color .3s ease}
-.vh-nav-item.active{gap:7px;background:transparent;color:white;box-shadow:none}
-.vh-nav-item.active>span{max-width:110px;opacity:1;transform:translate3d(0,0,0)}
-.vh-nav-item.active svg{color:#b4caff;transform:translateY(-1px) scale(1.05)}
-.vh-nav-item:active svg{transform:scale(.92)}
 /* Content fades in lightly. No second page is mounted while switching tabs. */
-.vh-route-stage{position:relative;isolation:isolate;--vh-page-shift:7px}
-.vh-route-stage.is-backward{--vh-page-shift:-7px}
-.vh-page{position:relative;min-width:0}
-.vh-page-enter{animation:vh-page-in .2s ease-out both}
-@keyframes vh-page-in{from{opacity:.65;transform:translate3d(var(--vh-page-shift),0,0)}to{opacity:1;transform:translate3d(0,0,0)}}
-@keyframes vh-nav-enter{from{opacity:0;transform:translate(-50%,12px) scale(.98)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
 .vh-match-groups .im-league{margin:23px 0 14px;font-size:22px;color:#f1f4fa;line-height:1.3;letter-spacing:-.015em}
 .vh-count{display:inline-grid;place-items:center;min-width:27px;height:25px;padding:0 8px;border-radius:10px;background:#30384b;color:#d1daf0;font-size:12px;font-weight:700}
 .vh-match.im-card{background:#fff;color:#10141d;border:1px solid #e3e7f0;box-shadow:0 6px 24px rgba(0,0,0,.07);margin-bottom:13px;transition:transform .18s,box-shadow .18s}
@@ -161,19 +143,11 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-search-results{padding-top:5px}
 .vh-search-results h3{font-size:12px;color:#8eafe8;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin:19px 4px 10px}
 .vh-visually-hidden-date{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-@media(max-width:390px){.vh-app{padding-left:14px;padding-right:14px}.vh-date-wrap{margin-left:-14px;margin-right:-14px}.vh-nav-item.active>span{font-size:12px}.vh-nav-items{gap:0}.vh-match .im-name{font-size:14px}.vh-match .im-meta{font-size:12px}.vh-team-grid{gap:8px}}
-@media(min-width:760px){.vh-app{width:min(100%,680px)}.vh-bottom{width:min(calc(100% - 32px),580px)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-@media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.vh-bottom{background:#222b3b;backdrop-filter:none;-webkit-backdrop-filter:none}}
 
 
 /* The React FluidGlass shader is the only selected navigation shape.
    No competing CSS gradient capsule or CSS glass. */
-.vh-bottom{isolation:isolate}
-.vh-bottom .vh-glass-layer{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit;pointer-events:none}
-.vh-bottom .vh-glass-layer .fluid-glass{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.vh-bottom .vh-glass-layer .fluid-glass__canvas{pointer-events:none}
-.vh-bottom .vh-nav-items{position:relative;z-index:2}
 
 
 /* FLOATING HEADER — no top bar. Left signature + one independent search bubble. */
@@ -231,4 +205,7 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 }
 
 /* Respect viewport semantics: selected indicator is React FluidGlass, never a CSS overlay. */
-@media(prefers-reduced-motion:reduce){.vh-sets-wrap{transition:none}.vh-search-glass,.vh-bottom .vh-glass-layer{display:none}}
+
+@media(max-width:390px){.vh-app{padding-left:14px;padding-right:14px}.vh-date-wrap{margin-left:-14px;margin-right:-14px}.vh-match .im-name{font-size:14px}.vh-match .im-meta{font-size:12px}.vh-team-grid{gap:8px}}
+@media(min-width:760px){.vh-app{width:min(100%,680px)}}
+@media(prefers-reduced-motion:reduce){.vh-sets-wrap{transition:none}.vh-search-glass}
