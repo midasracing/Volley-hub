@@ -66,7 +66,7 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-31T17:02:00.593447+00:00",
+  "updated_at": "2026-10-31T20:26:39.215497+00:00",
   "matches": [
     {
       "id": "1105170",
@@ -193,27 +193,37 @@
       "competition": "TAURON 1. Liga",
       "date": "31.10.2026",
       "time": "17:00",
-      "status": "live",
+      "status": "finished",
       "home": "KPS Płock",
       "away": "KPS Siedlce",
-      "home_sets": 1,
-      "away_sets": 0,
+      "home_sets": 2,
+      "away_sets": 3,
       "set_scores": [
-        "25:18"
+        "25:18",
+        "24:26",
+        "15:25",
+        "33:31",
+        "16:18"
       ],
-      "current_points": "21:21"
+      "current_points": null
     },
     {
       "id": "1105179",
       "competition": "TAURON 1. Liga",
       "date": "31.10.2026",
       "time": "18:00",
-      "status": "live",
+      "status": "finished",
       "home": "KS Sparta Grodzisk Mazowiecki",
       "away": "FORT Poznań",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 3,
+      "away_sets": 2,
+      "set_scores": [
+        "20:25",
+        "19:25",
+        "25:20",
+        "26:24",
+        "15:11"
+      ],
       "current_points": null
     },
     {
@@ -221,12 +231,18 @@
       "competition": "TAURON 1. Liga",
       "date": "31.10.2026",
       "time": "18:00",
-      "status": "live",
+      "status": "finished",
       "home": "KKS MICKIEWICZ Kluczbork",
       "away": "PZL LEONARDO Avia Świdnik",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 2,
+      "away_sets": 3,
+      "set_scores": [
+        "25:20",
+        "19:25",
+        "25:21",
+        "21:25",
+        "12:15"
+      ],
       "current_points": null
     },
     {
@@ -428,6 +444,18 @@
   "table": [
     {
       "rank": 1,
+      "team": "PZL LEONARDO Avia Świdnik",
+      "points": 18,
+      "played": 8,
+      "wins": 7,
+      "losses": 1,
+      "sets_for": 22,
+      "sets_against": 11,
+      "points_for": 754,
+      "points_against": 693
+    },
+    {
+      "rank": 2,
       "team": "CUK Anioły Toruń",
       "points": 18,
       "played": 7,
@@ -439,7 +467,7 @@
       "points_against": 572
     },
     {
-      "rank": 2,
+      "rank": 3,
       "team": "Nowak-Mosty MKS Będzin",
       "points": 17,
       "played": 8,
@@ -451,40 +479,28 @@
       "points_against": 579
     },
     {
-      "rank": 2,
-      "team": "PZL LEONARDO Avia Świdnik",
-      "points": 16,
-      "played": 7,
-      "wins": 6,
-      "losses": 1,
-      "sets_for": 19,
-      "sets_against": 9,
-      "points_for": 648,
-      "points_against": 591
-    },
-    {
       "rank": 4,
       "team": "FORT Poznań",
-      "points": 15,
-      "played": 7,
+      "points": 16,
+      "played": 8,
       "wins": 5,
-      "losses": 2,
-      "sets_for": 19,
-      "sets_against": 12,
-      "points_for": 686,
-      "points_against": 657
+      "losses": 3,
+      "sets_for": 21,
+      "sets_against": 15,
+      "points_for": 791,
+      "points_against": 762
     },
     {
       "rank": 5,
       "team": "KKS MICKIEWICZ Kluczbork",
-      "points": 13,
-      "played": 6,
+      "points": 14,
+      "played": 7,
       "wins": 4,
-      "losses": 2,
-      "sets_for": 15,
-      "sets_against": 7,
-      "points_for": 529,
-      "points_against": 478
+      "losses": 3,
+      "sets_for": 17,
+      "sets_against": 10,
+      "points_for": 631,
+      "points_against": 584
     },
     {
       "rank": 6,
@@ -572,6 +588,30 @@
     },
     {
       "rank": 13,
+      "team": "KPS Siedlce",
+      "points": 5,
+      "played": 6,
+      "wins": 2,
+      "losses": 4,
+      "sets_for": 7,
+      "sets_against": 14,
+      "points_for": 478,
+      "points_against": 509
+    },
+    {
+      "rank": 14,
+      "team": "KS Sparta Grodzisk Mazowiecki",
+      "points": 5,
+      "played": 7,
+      "wins": 2,
+      "losses": 5,
+      "sets_for": 8,
+      "sets_against": 17,
+      "points_for": 519,
+      "points_against": 603
+    },
+    {
+      "rank": 15,
       "team": "SMS PZPS Spała",
       "points": 4,
       "played": 6,
@@ -583,40 +623,16 @@
       "points_against": 531
     },
     {
-      "rank": 14,
-      "team": "KPS Siedlce",
-      "points": 3,
-      "played": 5,
-      "wins": 1,
-      "losses": 4,
-      "sets_for": 4,
-      "sets_against": 12,
-      "points_for": 360,
-      "points_against": 396
-    },
-    {
-      "rank": 15,
-      "team": "KS Sparta Grodzisk Mazowiecki",
-      "points": 3,
-      "played": 6,
-      "wins": 1,
-      "losses": 5,
-      "sets_for": 5,
-      "sets_against": 15,
-      "points_for": 414,
-      "points_against": 498
-    },
-    {
       "rank": 16,
       "team": "KPS Płock",
-      "points": 1,
-      "played": 6,
+      "points": 2,
+      "played": 7,
       "wins": 0,
-      "losses": 6,
-      "sets_for": 2,
-      "sets_against": 18,
-      "points_for": 411,
-      "points_against": 480
+      "losses": 7,
+      "sets_for": 4,
+      "sets_against": 21,
+      "points_for": 524,
+      "points_against": 598
     }
   ],
   "source": "https://www.tauron1liga.pl",
