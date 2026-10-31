@@ -81,6 +81,31 @@ test('floating logo and search bubble never overlap at 320px and 375px', async (
   }
 });
 
+test('stacked SVG wordmark stays proportional to the search control and page title', async ({ page }) => {
+  for (const width of [320, 375, 430, 768]) {
+    await page.setViewportSize({ width, height: 780 });
+    await page.goto('/#favorites');
+    const { brand, image, bubble, heading, header } = await page.evaluate(() => {
+      const box = element => {
+        const { x, y, width, height } = element.getBoundingClientRect();
+        return { x, y, width, height };
+      };
+      return {
+        brand: box(document.querySelector('.vh-brand-signature')),
+        image: box(document.querySelector('.vh-brand-signature img')),
+        bubble: box(document.querySelector('.vh-search-bubble')),
+        heading: box(document.querySelector('#main-content h1')),
+        header: box(document.querySelector('.vh-floating-head'))
+      };
+    });
+    expect(brand.width).toBeLessThanOrEqual(197);
+    expect(image.height).toBeLessThanOrEqual(110);
+    expect(Math.abs((image.y + image.height / 2) - (bubble.y + bubble.height / 2))).toBeLessThan(10);
+    expect(image.x + image.width + 10).toBeLessThanOrEqual(bubble.x);
+    expect(heading.y - (header.y + header.height)).toBeLessThan(35);
+  }
+});
+
 test('old Rive wordmark assets are no longer used', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.vh-rive-layer')).toHaveCount(0);

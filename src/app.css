@@ -9,7 +9,7 @@ button{cursor:pointer}
 button:disabled{cursor:not-allowed;opacity:.5}
 button:focus-visible,a:focus-visible,input:focus-visible,[tabindex="0"]:focus-visible{outline:3px solid #a3baff;outline-offset:3px}
 .vh-app{width:min(100%,600px);margin:0 auto;padding:0 20px calc(136px + env(safe-area-inset-bottom));min-height:100dvh}
-.vh-page-head{padding-top:22px}
+.vh-page-head{padding-top:15px}
 .vh-page-head .vh-header-actions{display:flex;justify-content:flex-end;gap:10px;min-height:12px}
 .vh-page-head h1{margin:8px 0 7px;font-size:clamp(38px,8vw,48px);line-height:1.04;letter-spacing:-.045em;font-weight:800}
 .vh-page-head p{margin:0;color:var(--muted);font-size:16px;line-height:1.5}
@@ -151,14 +151,19 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 
 
 /* FLOATING HEADER — no top bar. Left signature + one independent search bubble. */
+/* Stacked editorial wordmark: scaled as ONE SVG, never as two independent
+   text layers. It must read like a compact app signature, not a hero banner. */
 .vh-floating-head{
   position:relative;display:flex;align-items:center;justify-content:space-between;
-  gap:clamp(10px,4vw,24px);padding:calc(14px + env(safe-area-inset-top)) 0 8px;
-  min-height:calc(78px + env(safe-area-inset-top));isolation:isolate;
+  gap:clamp(12px,3vw,22px);
+  padding:calc(10px + env(safe-area-inset-top)) 0 5px;
+  min-height:calc(110px + env(safe-area-inset-top));
+  isolation:isolate;
 }
 .vh-brand-signature{
-  display:block;flex:0 1 auto;width:min(252px,calc(100vw - 113px));
-  max-width:252px;min-width:0;line-height:0;
+  display:block;flex:0 1 auto;
+  width:min(clamp(168px,52vw,196px),calc(100vw - 120px));
+  max-width:196px;min-width:0;line-height:0;
   pointer-events:none;user-select:none;
 }
 .vh-brand-signature img{
@@ -183,7 +188,7 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 .vh-search-bubble:active{transform:scale(.94)}
 .vh-search-bubble:focus-visible{outline:3px solid #A3BAFF;outline-offset:4px}
 @media(max-width:390px){
-  .vh-floating-head{gap:10px;padding-top:calc(11px + env(safe-area-inset-top))}
+  .vh-floating-head{gap:12px;padding-top:calc(10px + env(safe-area-inset-top))}
   .vh-search-bubble{width:47px;height:47px}
 }
 @media(prefers-reduced-motion:reduce){
