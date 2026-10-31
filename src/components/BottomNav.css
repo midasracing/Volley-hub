@@ -7,9 +7,9 @@
   border-radius:999px;background:rgba(24,30,42,.93);
   box-shadow:0 12px 40px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14);
   animation:vh-nav-enter .38s cubic-bezier(.22,1,.36,1) both}
-.vh-nav-items{--vh-nav-gap:3px;position:relative;height:100%;width:100%;padding:7px}
-.vh-nav-item,.vh-nav-lens{position:absolute;top:7px;bottom:7px;left:0;min-width:0;
-  border-radius:999px;transform-origin:left center}
+.vh-nav-items{--vh-nav-gap:3px;position:relative;display:flex;gap:var(--vh-nav-gap);height:100%;width:100%;padding:7px}
+.vh-nav-lens{position:absolute;top:7px;bottom:7px;left:0;min-width:0;border-radius:999px}
+.vh-nav-item{position:relative;flex:1 1 0px;min-width:0;border-radius:999px}
 /* The moving indicator has one JS spring, not a competing CSS transition.
    Stretching and travel happen together on the compositor layer. */
 .vh-nav-lens{transform-origin:center center;transition:none;will-change:transform}
@@ -23,8 +23,7 @@
 .vh-nav-item{z-index:1;display:flex;align-items:center;justify-content:center;gap:0;
   padding:0 5px;border:0;background:transparent;color:#afbacd;white-space:nowrap;
   overflow:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
-  transition:transform .48s cubic-bezier(.2,.85,.24,1),
-    width .48s cubic-bezier(.2,.85,.24,1),gap .25s ease,color .24s ease}
+  transition:flex-grow .42s cubic-bezier(.18,.78,.24,1),gap .25s ease,color .24s ease}
 .vh-nav-item>span{display:block;max-width:0;opacity:0;overflow:hidden;min-width:0;
   font-size:14px;font-weight:750;transform:translate3d(-4px,0,0);
   transition:max-width .25s ease,opacity .1s ease,transform .25s ease}
