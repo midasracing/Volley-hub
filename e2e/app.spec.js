@@ -191,8 +191,9 @@ test('liquid lens moves with one interruptible spring, not a CSS lens transition
   const inFlight = await left();
   expect(inFlight).toBeGreaterThan(initial);
 
-  // A second tap retargets the same moving lens without removing it.
-  await nav.getByRole('button', { name: 'Mecze' }).click();
+  // Dispatch immediately: Playwright's standard click waits for moving
+  // elements to become stable, which would skip the interruption case.
+  await nav.getByRole('button', { name: 'Mecze' }).evaluate(el => el.click());
   await expect(track).toHaveAttribute('data-active', 'matches');
   await page.waitForTimeout(850);
   const settled = await left();
