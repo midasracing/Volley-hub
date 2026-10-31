@@ -164,32 +164,58 @@ test('quick tab changes keep navigation and content synchronized', async ({ page
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
 });
 
-test('bubble and icons share compositor timing instead of animating the grid', async ({page}) => {
-  await page.setViewportSize({width:375,height:760});
+test('liquid lens moves with one interruptible spring, not a CSS lens transition', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 760 });
   await page.goto('/');
-  const nav=page.getByRole('navigation',{name:'Główna nawigacja'});
-  const lens=nav.locator('.vh-nav-lens');
-  const track=nav.locator('.vh-nav-items');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  const lens = nav.locator('.vh-nav-lens');
+  const track = nav.locator('.vh-nav-items');
   await expect(track).toHaveClass(/is-ready/);
   await expect(lens).toBeVisible();
-  const timings=await nav.evaluate(root=>{
-    const pill=getComputedStyle(root.querySelector('.vh-nav-lens'));
-    const icon=getComputedStyle(root.querySelector('.vh-nav-item'));
-    const tabs=getComputedStyle(root.querySelector('.vh-nav-items'));
-    return {
-      pillDuration:pill.transitionDuration.split(',')[0],
-      iconDuration:icon.transitionDuration.split(',')[0],
-      pillCurve:pill.transitionTimingFunction.split('),')[0],
-      iconCurve:icon.transitionTimingFunction.split('),')[0],
-      tabsProperty:tabs.transitionProperty
-    };
+
+  const computed = await nav.evaluate(root => ({
+    lensTransition: getComputedStyle(root.querySelector('.vh-nav-lens')).transitionDuration,
+    tabTransition: getComputedStyle(root.querySelector('.vh-nav-item')).transitionDuration,
+    trackProperties: getComputedStyle(root.querySelector('.vh-nav-items')).transitionProperty
+  }));
+  expect(computed.lensTransition).toBe('0s');
+  expect(computed.tabTransition).not.toBe('0s');
+  expect(computed.trackProperties).not.toContain('grid-template-columns');
+
+  const left = async () => lens.evaluate(el =>
+    new DOMMatrixReadOnly(getComputedStyle(el).transform).m41);
+  const initial = await left();
+  await nav.getByRole('button', { name: 'Rozgrywki' }).click();
+  await expect(track).toHaveAttribute('data-active', 'competitions');
+  await page.waitForTimeout(60);
+  const inFlight = await left();
+  expect(inFlight).toBeGreaterThan(initial);
+
+  // Dispatch immediately: Playwright's standard click waits for moving
+  // elements to become stable, which would skip the interruption case.
+  await nav.getByRole('button', { name: 'Mecze' }).evaluate(el => el.click());
+  await expect(track).toHaveAttribute('data-active', 'matches');
+  await page.waitForTimeout(850);
+  const settled = await left();
+  const target = await nav.getByRole('button', { name: 'Mecze' }).evaluate(el =>
+    Number(el.style.transform.match(/translate3d\(([-.\d]+)px/)?.[1]));
+  expect(Math.abs(settled - target)).toBeLessThan(0.6);
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
+});
+
+test('reduced motion snaps the liquid lens immediately to its selected tab', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  const targetButton = nav.getByRole('button', { name: 'Ulubione' });
+  await targetButton.click();
+  const difference = await nav.evaluate(root => {
+    const lens = root.querySelector('.vh-nav-lens');
+    const selected = root.querySelector('.vh-nav-item.active');
+    const x = value => new DOMMatrixReadOnly(getComputedStyle(value).transform).m41;
+    return Math.abs(x(lens) - x(selected));
   });
-  expect(timings.pillDuration).toBe(timings.iconDuration);
-  expect(timings.pillCurve).toBe(timings.iconCurve);
-  expect(timings.tabsProperty).not.toContain('grid-template-columns');
-  await nav.getByRole('button',{name:'Rozgrywki'}).click();
-  await expect(track).toHaveAttribute('data-active','competitions');
-  await expect(page.locator('#main-content').getByRole('heading',{name:'Rozgrywki'})).toBeVisible();
+  expect(difference).toBeLessThan(0.6);
 });
 
 test('buttons remain separated throughout the transition at 320px and 375px',async({page})=>{
