@@ -359,8 +359,8 @@ test('tabs display a new page without CSS entrance delay or extra icon animation
     await expect(page.locator('#main-content')).toHaveCSS('animation-name','none');
     await expect(page.locator('.vh-page')).toHaveCount(1);
   }
-  const motion = await nav.locator('.vh-nav-item svg').evaluateAll(icons =>
+  const motionCount = await nav.locator('.vh-nav-item svg').evaluateAll(icons =>
     icons.flatMap(icon => icon.getAnimations())
-      .filter(animation => animation.effect?.getKeyframes?.().some(frame => frame.transform != null)));
-  expect(motion).toHaveLength(0);
+      .filter(animation => animation.effect?.getKeyframes?.().some(frame => frame.transform != null)).length);
+  expect(motionCount).toBe(0);
 });
