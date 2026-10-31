@@ -162,7 +162,7 @@ function BottomNav({ active, onNavigate }) {
           aria-current={selected ? 'page' : undefined}
           onClick={() => onNavigate(id)}
           className={'vh-nav-item' + (selected ? ' active' : '')}
-          style={slot ? { transform: `translate3d(${slot.left}px,0,0)`, width: slot.width } : { visibility: 'hidden' }}>
+          style={slot ? { flexGrow: selected ? 2.5 : 1 } : { visibility: 'hidden' }}>
           <Icon size={23} strokeWidth={selected ? 2.3 : 1.8}
             fill={selected && id === 'favorites' ? 'currentColor' : 'none'} />
           <span>{label}</span>
