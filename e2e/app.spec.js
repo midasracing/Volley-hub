@@ -50,8 +50,17 @@ test('Kiedy Siatka SVG loads without an animated or hidden logo', async ({ page 
   const logo = page.getByRole('img', { name: 'Kiedy Siatka?' });
   await expect(logo).toBeVisible();
   await expect(page.locator('.vh-brand-signature img')).toHaveCount(1);
-  await expect.poll(() => logo.evaluate(img => img.naturalWidth)).toBe(340);
-  await expect.poll(() => logo.evaluate(img => img.naturalHeight)).toBe(184);
+  const vector = await page.evaluate(async () => {
+    const img = document.querySelector('.vh-brand-signature img');
+    const res = await fetch(img.currentSrc, { cache: 'no-store' });
+    return await res.text();
+  });
+  expect(vector).toContain('viewBox="0 0 1180 655"');
+  expect((vector.match(/<path /g) || []).length).toBe(15);
+  expect(vector).not.toContain('<image ');
+  expect(vector).not.toContain('<text ');
+  await expect.poll(() => logo.evaluate(img => img.naturalWidth)).toBe(1180);
+  await expect.poll(() => logo.evaluate(img => img.naturalHeight)).toBe(655);
   await expect(page.locator('.vh-brand-tech, .vh-brand-tech-fallback, .tech-text, .vh-rive-layer, .vh-wordmark-icon')).toHaveCount(0);
   await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
   await expect(page.locator('.vh-floating-head img')).toHaveCount(1);
