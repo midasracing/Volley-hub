@@ -122,6 +122,33 @@ test('old Rive wordmark assets are no longer used', async ({ page }) => {
   await expect(page.locator('.vh-wordmark-icon')).toHaveCount(0);
 });
 
+
+test('navigation and search use React Bits GlassSurface without old bubble canvases', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await expect(nav.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
+  await expect(nav.locator('.vh-nav-lens .fluid-glass')).toHaveCount(0);
+  await expect(page.locator('.vh-search-glass .glass-surface')).toHaveCount(1);
+  await expect(page.locator('.vh-search-glass .fluid-glass')).toHaveCount(0);
+  for (const name of ['Główna', 'Mecze', 'Rozgrywki', 'Ulubione']) {
+    await expect(nav.getByRole('button', { name })).toBeVisible();
+  }
+  await nav.getByRole('button', { name: 'Ulubione' }).click();
+  await expect(nav.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
+});
+
+test('route changes preserve the outgoing page as an inert layer during crossfade', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await nav.getByRole('button', { name: 'Mecze' }).evaluate(element => element.click());
+  await expect(page.locator('.vh-page-exit')).toHaveCount(1);
+  await expect(page.locator('.vh-page-exit')).toHaveAttribute('aria-hidden', 'true');
+  await expect(page.locator('.vh-page-exit')).toHaveJSProperty('inert', true);
+  await expect(page.locator('#main-content')).toHaveCount(1);
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
+  await expect(page.locator('.vh-page-exit')).toHaveCount(0, { timeout: 1800 });
+});
+
 test('switching tabs crossfades pages and animates the menu label', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
