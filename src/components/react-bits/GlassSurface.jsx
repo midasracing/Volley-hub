@@ -1,4 +1,8 @@
-/* React Bits GlassSurface — David Haz (MIT + Commons Clause).\n * Original: https://github.com/DavidHDev/react-bits\n * License: ./LICENSE.md\n */\n'use client';
+/* React Bits GlassSurface — David Haz (MIT + Commons Clause).
+ * Original: https://github.com/DavidHDev/react-bits
+ * License: ./LICENSE.md
+ */
+'use client';
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useRef, useId } from 'react';
