@@ -1,5 +1,4 @@
 <div align="center">
-  <img src=".github/assets/volley-hub-hero.svg" alt="Volley Hub — siatkówka w jednym miejscu" width="100%" />
 
   <br />
 
