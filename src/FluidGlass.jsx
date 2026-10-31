@@ -1232,7 +1232,8 @@ const FluidGlass = ({
     wakeRef.current = () => {
       calm = false;
       loadMedia();
-      resize();
+      // ResizeObserver handles dimensions; clearing the WebGL canvas on each
+      // animated position update causes avoidable flicker and GPU work.
       wake();
     };
 

@@ -111,6 +111,48 @@ test('old Rive wordmark assets are no longer used', async ({ page }) => {
   await expect(page.locator('.vh-wordmark-icon')).toHaveCount(0);
 });
 
+test('switching tabs crossfades pages and animates the menu label', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
+  await expect(nav.getByRole('button', { name: 'Mecze' })).toHaveAttribute('aria-current', 'page');
+  const label = nav.locator('.vh-nav-item.active > span');
+  await expect(label).toHaveCSS('display', 'block');
+  await expect.poll(() => label.evaluate(el => parseFloat(getComputedStyle(el).maxWidth))).toBeGreaterThan(0);
+  await expect(page.locator('.vh-page-exit')).toHaveCount(0, { timeout: 3000 });
+  await nav.getByRole('button', { name: 'Ulubione' }).click();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Ulubione' })).toBeVisible();
+  await expect(page.locator('.vh-route-stage')).toHaveClass(/is-forward/);
+  await nav.getByRole('button', { name: 'Główna' }).click();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Volley Hub' })).toBeVisible();
+  await expect(page.locator('.vh-route-stage')).toHaveClass(/is-backward/);
+  await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
+});
+
+test('reduced motion skips page exit transitions', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await page.getByRole('navigation', { name: 'Główna nawigacja' })
+    .getByRole('button', { name: 'Rozgrywki' }).click();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
+  await expect(page.locator('.vh-page-exit')).toHaveCount(0);
+  await expect(page.locator('.vh-page-enter')).toHaveCount(0);
+});
+
+test('quick tab changes keep navigation and content synchronized', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await nav.getByRole('button', { name: 'Rozgrywki' }).click();
+  await nav.getByRole('button', { name: 'Ulubione' }).click();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Ulubione' })).toBeVisible();
+  await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
+  await expect(page.locator('.vh-page-exit')).toHaveCount(0, { timeout: 3000 });
+  await page.goBack();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
+});
+
 test('bottom navigation uses just one React glass lens and no CSS pill overlay', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });

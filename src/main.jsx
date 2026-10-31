@@ -351,8 +351,10 @@ function NavGlass({ hostRef, active }) {
   const [placement, setPlacement] = useState({ position: [.5, .5], size: 116 });
   useEffect(() => {
     const host = hostRef.current;
-    if (!host) return;
-    const update = () => {
+    if (!host) return undefined;
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
       const button = host.querySelector('.vh-nav-item.active');
       if (!button) return;
       const bounds = host.getBoundingClientRect();
@@ -368,13 +370,20 @@ function NavGlass({ hostRef, active }) {
         Math.abs(previous.size - next.size) < 1 ? previous : next
       ));
     };
-    const resize = new ResizeObserver(update);
+    // Read layout at most once per frame while CSS flex is moving.
+    const scheduleMeasure = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+    const resize = new ResizeObserver(scheduleMeasure);
     resize.observe(host);
-    const buttons = host.querySelectorAll('.vh-nav-item');
-    buttons.forEach(button => resize.observe(button));
-    host.addEventListener('transitionend', update);
-    requestAnimationFrame(update);
-    return () => { resize.disconnect(); host.removeEventListener('transitionend', update); };
+    host.querySelectorAll('.vh-nav-item').forEach(button => resize.observe(button));
+    host.addEventListener('transitionend', scheduleMeasure);
+    scheduleMeasure();
+    return () => {
+      cancelAnimationFrame(frame);
+      resize.disconnect();
+      host.removeEventListener('transitionend', scheduleMeasure);
+    };
   }, [active, hostRef]);
   return Glass ? <div className="vh-glass-layer" aria-hidden="true"><Glass
     text="" shape="pill" shapes={['pill']} size={placement.size} position={placement.position}
@@ -405,6 +414,10 @@ function BottomNav({ active, onNavigate }) {
 function App() {
   const route = () => { const hash = window.location.hash.replace(/^#\/?/, ''); return ROUTES.includes(hash) ? hash : 'home'; };
   const [page, setPage] = useState(route);
+  const [leavingPage, setLeavingPage] = useState(null);
+  const [direction, setDirection] = useState('forward');
+  const currentPage = useRef(page);
+  const exitTimer = useRef(null);
   const [selectedDate, setSelectedDate] = useState(NOW);
   const [leagueFilter, setLeagueFilter] = useState(null);
   const [selectedLeague, setSelectedLeague] = useState(null);
@@ -413,9 +426,12 @@ function App() {
   const { feeds, errors, loading, refresh } = useFeeds();
   const logos = useMemo(() => new Map(teamIndex(feeds).filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [feeds]);
   useEffect(() => {
-    const sync = () => setPage(route());
+    const sync = () => switchPage(route());
     window.addEventListener('hashchange', sync);
-    return () => window.removeEventListener('hashchange', sync);
+    return () => {
+      window.removeEventListener('hashchange', sync);
+      window.clearTimeout(exitTimer.current);
+    };
   }, []);
   useEffect(() => {
     try { localStorage.setItem('vh-favs', JSON.stringify(favorites)); } catch { /* storage may be blocked */ }
@@ -429,12 +445,23 @@ function App() {
       navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js').catch(() => {});
     }
   }, []);
+  function switchPage(id) {
+    if (!ROUTES.includes(id) || currentPage.current === id) return;
+    const previous = currentPage.current;
+    currentPage.current = id;
+    window.clearTimeout(exitTimer.current);
+    setDirection(ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward');
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    setLeavingPage(reduceMotion ? null : previous);
+    setPage(id);
+    if (!reduceMotion) exitTimer.current = window.setTimeout(() => setLeavingPage(null), 280);
+  }
   function navigate(id) {
     if (!ROUTES.includes(id)) return;
     setSearchOpen(false);
-    setPage(id);
-    window.location.hash = id;
     window.scrollTo({ top: 0, behavior: 'instant' });
+    switchPage(id);
+    if (window.location.hash !== '#' + id) window.location.hash = id;
   }
   function openLeague(id) {
     if (!id) return;
@@ -451,6 +478,13 @@ function App() {
       return { ...current, [type]: exists ? current[type].filter(value => !sameName(value, name)) : [...current[type], name] };
     });
   }
+  function renderPage(id) {
+    if (id === 'home') return <HomePage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />;
+    if (id === 'matches') return <MatchesPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />;
+    if (id === 'competitions') return <CompetitionsPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
+    if (id === 'favorites') return <FavoritesPage feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;
+    return null;
+  }
   return <div className="vh-app" id="ios-matches">
     <div className="vh-floating-head" aria-label="Nagłówek Volley Hub">
       <BrandSignature />
@@ -458,12 +492,16 @@ function App() {
         <SearchBubble onClick={() => setSearchOpen(true)} />
       </div>
     </div>
-    <main id="main-content" key={page}>
-      {page === 'home' && <HomePage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />}
-      {page === 'matches' && <MatchesPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />}
-      {page === 'competitions' && <CompetitionsPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />}
-      {page === 'favorites' && <FavoritesPage feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />}
-    </main>
+    <div className={'vh-route-stage is-' + direction}>
+      {leavingPage && leavingPage !== page && (
+        <main key={leavingPage} className="vh-page vh-page-exit" aria-hidden="true" inert>
+          {renderPage(leavingPage)}
+        </main>
+      )}
+      <main id="main-content" key={page} className={'vh-page' + (leavingPage ? ' vh-page-enter' : '')}>
+        {renderPage(page)}
+      </main>
+    </div>
     <BottomNav active={page} onNavigate={navigate} />
     {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
   </div>;
