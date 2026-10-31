@@ -95,6 +95,10 @@ GitHub Actions + skrypty aktualizujące dane
   React + Vite  →  GitHub Pages  →  Przeglądarka / PWA
 ```
 
+Podczas korzystania z aplikacji ligi z meczami oznaczonymi jako live są sprawdzane co 10 sekund. Pełna synchronizacja co minutę wykrywa nowe mecze i zmiany terminarza. Ukrycie aplikacji wstrzymuje odpytywanie; powrót uruchamia synchronizację. Zmiana wyniku aktualizuje kartę danego meczu, zachowując pozostałe karty, filtry i rozwinięte sety. Błąd połączenia pozostawia ostatnie dostępne wyniki.
+
+Częstotliwość pobierania w przeglądarce jest niezależna od aktualizacji źródła: obecne zadania GitHub Actions sprawdzają TAURON co 5 minut w godzinach meczowych, Pomorską III ligę co 15 minut, a II ligę co 30 minut. Publikacja danych dodaje czas wdrożenia. Wyniki punkt po punkcie wymagają źródła/API aktualizowanego częściej.
+
 Przed `npm run dev` i `npm run build` skrypt `scripts/sync-data.mjs` kopiuje bieżące dane z `data/` do `public/data/`. Interfejs następnie pobiera i normalizuje dane na potrzeby widoków meczowych.
 
 ### Stack

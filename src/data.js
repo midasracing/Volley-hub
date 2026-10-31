@@ -1,3 +1,5 @@
+import { shareFeedValue } from './feedUpdates.js';
+
 export const LEAGUES = [
   { id: 'men', name: 'TAURON Liga Mężczyzn', short: 'TAURON Liga', category: 'Polska', description: 'Najwyższa klasa rozgrywkowa mężczyzn', file: 'tauron.json' },
   { id: 'first', name: 'TAURON 1. Liga Mężczyzn', short: 'TAURON 1. Liga', category: 'Polska', description: 'Pierwsza liga mężczyzn', file: 'tauron1liga.json' },
@@ -44,16 +46,31 @@ export function flattenFeed(data, id) {
     teams: groups.flatMap(group => group.teams || [])
   };
 }
+const matchMeta = new WeakMap();
+const matchViews = new WeakMap();
+const leagueViews = new WeakMap();
+function metadata(match) {
+  let value = matchMeta.get(match);
+  if (!value) {
+    value = {
+      order: feedDateKey(match.date) + (match.time || ''),
+      key: [feedDateKey(match.date), match.time || '', ...[normalizeName(match.home), normalizeName(match.away)].sort()].join('|'),
+      weight: (isFinished(match) ? 2 : isLive(match) ? 1 : 0) * 100 + (match.set_scores?.length || 0)
+    };
+    matchMeta.set(match, value);
+  }
+  return value;
+}
+const compareMatches = (a, b) => metadata(a).order.localeCompare(metadata(b).order);
 export function uniqueMatches(matches) {
   const seen = new Map();
   for (const match of matches || []) {
     if (!match?.home || !match?.away) continue;
-    const key = [feedDateKey(match.date), match.time || '', ...[normalizeName(match.home), normalizeName(match.away)].sort()].join('|');
+    const { key, weight } = metadata(match);
     const previous = seen.get(key);
-    const weight = value => (isFinished(value) ? 2 : isLive(value) ? 1 : 0) * 100 + (value?.set_scores?.length || 0);
-    if (!previous || weight(match) > weight(previous)) seen.set(key, match);
+    if (!previous || weight > metadata(previous).weight) seen.set(key, match);
   }
-  return [...seen.values()].sort((a, b) => (feedDateKey(a.date) + (a.time || '')).localeCompare(feedDateKey(b.date) + (b.time || '')));
+  return [...seen.values()].sort(compareMatches);
 }
 export function teamIndex(feeds) {
   const teams = new Map();
@@ -68,17 +85,38 @@ export function teamIndex(feeds) {
   return [...teams.values()].sort((a, b) => a.name.localeCompare(b.name, 'pl'));
 }
 export function matchesFromFeeds(feeds, selectedLeague = null) {
-  return LEAGUES.filter(league => !selectedLeague || league.id === selectedLeague).flatMap(league =>
-    uniqueMatches(feeds[league.id]?.matches).map(match => ({ ...match, leagueId: league.id, leagueName: league.short }))
-  ).sort((a, b) => (feedDateKey(a.date) + (a.time || '')).localeCompare(feedDateKey(b.date) + (b.time || '')));
+  return LEAGUES.filter(league => !selectedLeague || league.id === selectedLeague).flatMap(league => {
+    const source = feeds[league.id]?.matches;
+    if (!source) return [];
+    let byLeague = leagueViews.get(source);
+    if (!byLeague) { byLeague = new Map(); leagueViews.set(source, byLeague); }
+    if (!byLeague.has(league.id)) {
+      byLeague.set(league.id, uniqueMatches(source).map(match => {
+        let views = matchViews.get(match);
+        if (!views) { views = new Map(); matchViews.set(match, views); }
+        if (!views.has(league.id)) views.set(league.id, { ...match, leagueId: league.id, leagueName: league.short });
+        return views.get(league.id);
+      }));
+    }
+    return byLeague.get(league.id);
+  }).sort(compareMatches);
 }
+// Requests stay fresh; identical bodies skip parsing and changed bodies retain
+// references for unchanged teams and matches. Four bounded league snapshots.
+const feedCache = new Map();
 export async function fetchLeague(league, signal) {
-  const path = import.meta.env.BASE_URL + 'data/' + league.file;
+  const path = (import.meta.env?.BASE_URL ?? './') + 'data/' + league.file;
   const response = await fetch(path, { signal, cache: 'no-store' });
   if (!response.ok) throw new Error('HTTP ' + response.status);
-  const json = await response.json();
+  const text = await response.text();
+  const key = league.id + ':' + path;
+  const cached = feedCache.get(key);
+  if (cached?.text === text) return cached.data;
+  const json = JSON.parse(text);
   if (!json || typeof json !== 'object') throw new Error('Nieprawidłowy format danych');
-  return flattenFeed(json, league.id);
+  const data = shareFeedValue(cached?.data, flattenFeed(json, league.id));
+  feedCache.set(key, { text, data });
+  return data;
 }
 export function readFavorites() {
   try {

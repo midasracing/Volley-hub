@@ -4,11 +4,12 @@ import { createPortal } from 'react-dom';
 import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
 import {
   LEAGUES, CATEGORIES, WEEKDAYS, dateKey, fromKey, addDays, feedDateKey,
-  isLive, isFinished, fetchLeague, matchesFromFeeds, teamIndex, normalizeName, readFavorites
+  isLive, isFinished, matchesFromFeeds, teamIndex, normalizeName, readFavorites
 } from './data.js';
 import BrandSignature from './components/BrandSignature.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import PageStage from './components/PageStage.jsx';
+import useFeeds from './useFeeds.js';
 import { ROUTES } from './navigation.js';
 import '../matches-ios.css';
 import './app.css';
@@ -19,50 +20,6 @@ const leagueByName = name => LEAGUES.find(item => item.name === name);
 const sameName = (a, b) => normalizeName(a) === normalizeName(b);
 const MONTH_FORMAT = new Intl.DateTimeFormat('pl-PL', { month: 'short' });
 
-function useFeeds() {
-  const [feeds, setFeeds] = useState({});
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [revision, setRevision] = useState(0);
-  useEffect(() => {
-    const controller = new AbortController();
-    let active = true;
-    async function load() {
-      const results = await Promise.all(LEAGUES.map(async league => {
-        try { return { id: league.id, data: await fetchLeague(league, controller.signal) }; }
-        catch (error) { return { id: league.id, error }; }
-      }));
-      if (!active) return;
-      setFeeds(previous => {
-        const next = { ...previous };
-        for (const result of results) if (result.data) next[result.id] = result.data;
-        return next;
-      });
-      setErrors(Object.fromEntries(results.filter(result => result.error).map(result => [result.id, result.error.message])));
-      setLoading(false);
-    }
-    load();
-    return () => { active = false; controller.abort(); };
-  }, [revision]);
-  useEffect(() => {
-    let lastRefresh = Date.now();
-    const refreshWhenVisible = () => {
-      if (document.visibilityState !== 'visible') return;
-      const now = Date.now();
-      if (now - lastRefresh < 60000) return;
-      lastRefresh = now;
-      setRevision(current => current + 1);
-    };
-    const timer = window.setInterval(refreshWhenVisible, 60000);
-    document.addEventListener('visibilitychange', refreshWhenVisible);
-    return () => {
-      window.clearInterval(timer);
-      document.removeEventListener('visibilitychange', refreshWhenVisible);
-    };
-  }, []);
-  const refresh = useCallback(() => setRevision(current => current + 1), []);
-  return { feeds, errors, loading, refresh };
-}
 
 function TeamLogo({ name, logo, className = '' }) {
   const [broken, setBroken] = useState(false);
@@ -103,7 +60,7 @@ function Status({ match }) {
   if (isFinished(match)) return <span>Zakończony</span>;
   return <span>Zaplanowany</span>;
 }
-function MatchCard({ match, logos, compact = false }) {
+const MatchCard = React.memo(function MatchCard({ match, logos, compact = false }) {
   const [expanded, setExpanded] = useState(false);
   const detailsId = useId();
   const finished = isFinished(match);
@@ -111,7 +68,7 @@ function MatchCard({ match, logos, compact = false }) {
   const homeWins = score && Number(match.home_sets) > Number(match.away_sets);
   const awayWins = score && Number(match.away_sets) > Number(match.home_sets);
   const scores = Array.isArray(match.set_scores) ? match.set_scores : [];
-  return <article className={'im-card vh-match ' + (compact ? 'vh-match-compact' : '')}>
+  return <article data-match-id={match.id || [match.leagueId, match.date, match.home, match.away].join(':')} className={'im-card vh-match ' + (compact ? 'vh-match-compact' : '')}>
     <div className="im-meta"><span>{match.group ? match.group + ' · ' : ''}{match.leagueName || match.competition || 'Siatkówka'}</span><Status match={match} /></div>
     <div className={'im-body ' + (score ? 'has-score' : '')}>
       <div className="im-row">
@@ -130,7 +87,7 @@ function MatchCard({ match, logos, compact = false }) {
     {(score || match.time) && <div className="vh-match-footer">
       <span><Clock3 size={14} /> {match.time || 'Godzina nieustalona'}</span>
       {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded} aria-controls={detailsId}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
-      {!scores.length && isLive(match) && match.current_points && <span>Aktualny set: {String(match.current_points)}</span>}
+      {isLive(match) && match.current_points && <span>Aktualny set: {String(match.current_points)}</span>}
     </div>}
     {scores.length > 0 && <div className={'vh-sets-wrap' + (expanded ? ' is-expanded' : '')} aria-hidden={!expanded} inert={!expanded}>
       <div id={detailsId} className="vh-sets" role="region" aria-label="Wyniki setów">
@@ -138,13 +95,14 @@ function MatchCard({ match, logos, compact = false }) {
       </div>
     </div>}
   </article>;
-}
+});
+
 function MatchGroups({ matches, logos, emptyMessage, compact = false }) {
   if (!matches.length) return <EmptyState title="Brak meczów" message={emptyMessage || 'Na razie nie ma spotkań spełniających te kryteria.'} />;
   const groups = LEAGUES.map(league => ({ league, matches: matches.filter(match => match.leagueId === league.id) })).filter(group => group.matches.length);
   return <div className="vh-match-groups">{groups.map(group => <section key={group.league.id}>
     <h3 className="im-league"><span className="im-flag">🇵🇱</span>{group.league.short}<span className="vh-count">{group.matches.length}</span></h3>
-    {group.matches.map((match, index) => <MatchCard key={group.league.id + ':' + (match.id || index) + ':' + match.date} match={match} logos={logos} compact={compact} />)}
+    {group.matches.map(match => <MatchCard key={group.league.id + ':' + (match.id ?? [match.date, match.time || '', match.home, match.away].join('|'))} match={match} logos={logos} compact={compact} />)}
   </section>)}</div>;
 }
 function PageHeader({ title, subtitle, actions }) {
@@ -356,8 +314,8 @@ function App() {
   const { feeds, errors, loading, refresh } = useFeeds();
   // A single normalized/sorted feed shared by all tabs. Avoid expensive
   // duplicate sorting on every page mount, especially on older iPhones.
-  const matches = useMemo(() => matchesFromFeeds(feeds), [feeds]);
-  const teams = useMemo(() => teamIndex(feeds), [feeds]);
+  const matches = useMemo(() => matchesFromFeeds(feeds), [feeds.men?.matches, feeds.first?.matches, feeds.second?.matches, feeds.pomorska?.matches]);
+  const teams = useMemo(() => teamIndex(feeds), [feeds.men?.teams, feeds.first?.teams, feeds.second?.teams, feeds.pomorska?.teams]);
   const logos = useMemo(() => new Map(teams.filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [teams]);
   const switchPage = useCallback(id => {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
