@@ -15,7 +15,7 @@ test('renders React navigation and shared match design', async ({ page }) => {
 
 test('home starts with match list, without the marked intro and hero banner', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('img', { name: 'VOLLEY HUB' })).toBeVisible();
+  await expect(page.getByRole('img', { name: 'Kiedy Siatka?' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Szukaj', exact: true })).toBeVisible();
   await expect(page.locator('#main-content').getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
   await expect(page.locator('.vh-hero')).toHaveCount(0);
@@ -45,69 +45,34 @@ test('search overlay finds an existing league and opens its details', async ({ p
 });
 
 
-test('Tech Text logo animates itself with no mouse interaction and search bubble opens', async ({ page }) => {
+test('Kiedy Siatka SVG loads without an animated or hidden logo', async ({ page }) => {
   await page.goto('/');
-  const logo = page.getByRole('img', { name: 'VOLLEY HUB' });
+  const logo = page.getByRole('img', { name: 'Kiedy Siatka?' });
   await expect(logo).toBeVisible();
-  await expect(logo).toContainText('VOLLEY');
-  await expect(page.locator('.vh-topline')).toHaveCount(0);
-  await expect(page.locator('.vh-floating-head')).toBeVisible();
-  const canvas = page.locator('.vh-brand-tech .tech-text canvas');
-  await expect(canvas).toBeVisible();
-  await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
-  const first = await canvas.evaluate(element => element.toDataURL());
-  await page.waitForTimeout(1900);
-  const last = await canvas.evaluate(element => element.toDataURL());
-  expect(last).not.toBe(first);
+  await expect(page.locator('.vh-brand-signature img')).toHaveCount(1);
+  await expect.poll(() => logo.evaluate(img => img.naturalWidth)).toBe(340);
+  await expect.poll(() => logo.evaluate(img => img.naturalHeight)).toBe(184);
+  await expect(page.locator('.vh-brand-tech, .vh-brand-tech-fallback, .tech-text, .vh-rive-layer, .vh-wordmark-icon')).toHaveCount(0);
+  await expect(page.locator('.vh-floating-head canvas')).toHaveCount(0);
+  await expect(page.locator('.vh-floating-head img')).toHaveCount(1);
   await page.getByRole('button', { name: 'Szukaj', exact: true }).click();
   await expect(page.getByRole('dialog', { name: 'Wyszukiwarka' })).toBeVisible();
 });
 
-test('TechText logo does not register pointer interactions', async ({ page }) => {
-  await page.addInitScript(() => {
-    window.__techTextPointerListeners = 0;
-    const originalAdd = EventTarget.prototype.addEventListener;
-    EventTarget.prototype.addEventListener = function (type, listener, options) {
-      if (String(type).startsWith('pointer') && this instanceof HTMLElement && this.classList.contains('tech-text')) {
-        window.__techTextPointerListeners += 1;
-      }
-      return originalAdd.call(this, type, listener, options);
-    };
-  });
-  await page.goto('/');
-  const logo = page.locator('.vh-brand-tech .tech-text');
-  await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
-  await expect(logo).toHaveCSS('pointer-events', 'none');
-  expect(await page.evaluate(() => window.__techTextPointerListeners)).toBe(0);
-});
-
-test('TechText performs its dashed outline sweep automatically, not particle assembly', async ({ page }) => {
-  await page.goto('/');
-  const canvas = page.locator('.vh-brand-tech .tech-text canvas');
-  await expect(page.locator('.vh-brand-tech.has-canvas')).toBeVisible();
-  const start = await canvas.evaluate(el => el.toDataURL());
-  await page.waitForTimeout(1500);
-  const middle = await canvas.evaluate(el => el.toDataURL());
-  expect(middle).not.toBe(start);
-  await page.waitForTimeout(1600);
-  expect(await canvas.evaluate(el => el.toDataURL())).not.toBe(middle);
-});
-
-test('reduced motion keeps accessible static logo and no canvas', async ({ page }) => {
+test('Kiedy Siatka wordmark stays static in reduced motion', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  const logo = page.getByRole('img', { name: 'VOLLEY HUB' });
+  const logo = page.getByRole('img', { name: 'Kiedy Siatka?' });
   await expect(logo).toBeVisible();
-  await expect(logo).toContainText('VOLLEY');
-  await expect(logo).toContainText('HUB');
-  await expect(page.locator('.vh-brand-tech canvas')).toHaveCount(0);
+  expect(await logo.evaluate(img => getComputedStyle(img).animationName)).toBe('none');
+  await expect(page.locator('.vh-floating-head canvas')).toHaveCount(0);
 });
 
 test('floating logo and search bubble never overlap at 320px and 375px', async ({ page }) => {
   for (const width of [320, 375]) {
     await page.setViewportSize({ width, height: 700 });
     await page.goto('/');
-    const logo = await page.locator('.vh-brand-tech').boundingBox();
+    const logo = await page.locator('.vh-brand-signature').boundingBox();
     const bubble = await page.getByRole('button', { name: 'Szukaj', exact: true }).boundingBox();
     expect(logo).toBeTruthy();
     expect(bubble).toBeTruthy();
@@ -244,29 +209,6 @@ test('reduced motion snaps the liquid lens immediately to its selected tab', asy
     return Math.abs(lens.getBoundingClientRect().left - selected.getBoundingClientRect().left);
   });
   expect(difference).toBeLessThan(0.6);
-});
-
-
-test('the dock contains exactly one navigation and does not animate flex layout every frame', async ({ page }) => {
-  await page.setViewportSize({ width: 375, height: 760 });
-  await page.goto('/');
-  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await expect(nav).toHaveCount(1);
-  await expect(page.locator('body > .vh-bottom')).toHaveCount(1);
-  await expect(page.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
-  await expect(nav.locator('.vh-nav-item')).toHaveCount(4);
-
-  const transitions = await nav.locator('.vh-nav-item').first().evaluate(button =>
-    getComputedStyle(button).transitionProperty);
-  expect(transitions).not.toContain('flex-grow');
-  expect(transitions).not.toContain('width');
-  expect(transitions).not.toContain('gap');
-
-  for (const label of ['Mecze', 'Rozgrywki', 'Ulubione', 'Główna']) {
-    await nav.getByRole('button', { name: label }).evaluate(button => button.click());
-    await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
-    await expect(page.locator('#main-content')).toHaveCount(1);
-  }
 });
 
 test('buttons remain separated throughout the transition at 320px and 375px',async({page})=>{

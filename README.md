@@ -9,7 +9,7 @@
   <br />
 
   <a href="https://midasracing.github.io/Volley-hub/">
-    <img src="https://img.shields.io/badge/OTWÓRZ_APLIKACJĘ-8BABFF?style=for-the-badge&amp;logo=githubpages&amp;logoColor=0E1118" alt="Otwórz Volley Hub" />
+    <img src="https://img.shields.io/badge/OTWÓRZ_APLIKACJĘ-8BABFF?style=for-the-badge&amp;logo=githubpages&amp;logoColor=0E1118" alt="Otwórz Kiedy Siatka?" />
   </a>
   <a href="https://github.com/midasracing/Volley-hub/actions/workflows/deploy-react.yml">
     <img src="https://img.shields.io/github/actions/workflow/status/midasracing/Volley-hub/deploy-react.yml?branch=main&amp;style=for-the-badge&amp;label=GitHub%20Pages&amp;logo=githubactions" alt="Status wdrożenia GitHub Pages" />
@@ -29,7 +29,7 @@
 
 ## 🏐 Siatkówka ma swoje miejsce
 
-**Volley Hub** to aplikacja webowa stworzona z myślą o szybkim sprawdzaniu tego, co dzieje się na polskich parkietach. Bez przeskakiwania między stronami: wybierasz ligę, sprawdzasz mecz i wracasz do gry.
+**Kiedy Siatka?** to aplikacja webowa stworzona z myślą o szybkim sprawdzaniu tego, co dzieje się na polskich parkietach. Bez przeskakiwania między stronami: wybierasz ligę, sprawdzasz mecz i wracasz do gry.
 
 Projekt powstał w podejściu **mobile-first**. Działa w przeglądarce i jako **PWA**, które można dodać do ekranu głównego telefonu.
 
@@ -39,7 +39,7 @@ Projekt powstał w podejściu **mobile-first**. Działa w przeglądarce i jako *
 | :--- | :--- |
 | **🏟️ Mecze i wyniki**<br />Mecze dnia, nadchodzące spotkania, wyniki, sety i status rozgrywanego meczu. | **📅 Terminarze i tabele**<br />Kalendarz meczów, filtry lig i grup oraz widoki rozgrywek i drużyn. |
 | **⭐ Ulubione pod ręką**<br />Zapisuj wybrane drużyny i ligi — pozostają w pamięci przeglądarki dzięki `localStorage`. | **🔎 Szybkie wyszukiwanie**<br />Szukaj drużyn i lig bez przekopywania się przez kolejne zestawienia. |
-| **📱 PWA i mobilny interfejs**<br />Aplikacja z manifestem i service workerem, dostosowana do wygodnej obsługi na telefonie. | **🎨 Dopieszczone detale**<br />Ciemny interfejs, karty wyników, animowane logo TechText i nawigacja FluidGlass. |
+| **📱 PWA i mobilny interfejs**<br />Aplikacja z manifestem i service workerem, dostosowana do wygodnej obsługi na telefonie. | **🎨 Dopieszczone detale**<br />Ciemny interfejs, karty wyników, wektorowy logotyp SVG i nawigacja GlassSurface. |
 
 > [!NOTE]
 > Dostępność wyników i ich aktualność zależą od danych pobieranych ze źródeł ligowych. Nie generujemy fikcyjnych wyników.
@@ -108,7 +108,7 @@ Przed `npm run dev` i `npm run build` skrypt `scripts/sync-data.mjs` kopiuje bie
 **Frontend:** React 19, Vite 6, JavaScript, CSS  
 **Doświadczenie:** mobile-first, PWA, `localStorage`, service worker  
 **Testy i automatyzacja:** Node Test Runner, Playwright, GitHub Actions  
-**Interfejs:** React Bits TechText, GlassSurface (liquid glass)
+**Interfejs:** Wektorowy logotyp SVG, React Bits GlassSurface (liquid glass)
 
 <details>
 <summary><strong>📂 Struktura projektu</strong></summary>
@@ -145,7 +145,7 @@ Główne miejsca do poznania kodu:
 W ustawieniach repozytorium w **Settings → Pages → Build and deployment** jako **Source** powinno być wybrane **GitHub Actions**.
 
 <p align="center">
-  <a href="https://midasracing.github.io/Volley-hub/"><strong>↗ Otwórz Volley Hub</strong></a>
+  <a href="https://midasracing.github.io/Volley-hub/"><strong>↗ Otwórz Kiedy Siatka?</strong></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/midasracing/Volley-hub/actions"><strong>Zobacz automatyzacje</strong></a>
   &nbsp;·&nbsp;
@@ -158,8 +158,8 @@ W ustawieniach repozytorium w **Settings → Pages → Build and deployment** ja
 
 **Made for the love of volleyball. 🏐**
 
-<sub>Volley Hub jest niezależnym projektem. Materiały i dane zewnętrzne należą do ich właścicieli.</sub>
+<sub>Kiedy Siatka? jest niezależnym projektem. Materiały i dane zewnętrzne należą do ich właścicieli.</sub>
 
-<sub>Komponenty TechText i GlassSurface pochodzą z React Bits — [informacje licencyjne i atrybucja](src/components/react-bits/LICENSE.md).</sub>
+<sub>Komponent GlassSurface pochodzi z React Bits — [informacje licencyjne i atrybucja](src/components/react-bits/LICENSE.md).</sub>
 
 </div>

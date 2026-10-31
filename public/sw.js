@@ -1,5 +1,5 @@
 /* The app shell must be built by Vite, not GitHub Pages' Jekyll branch build. */
-const CACHE = 'volley-hub-vite-shell-v3';
+const CACHE = 'kiedy-siatka-vite-shell-v1';
 const SHELL = ['./manifest.webmanifest'];
 const isBuiltApp = html =>
   html.includes('assets/index-') &&
@@ -12,7 +12,7 @@ self.addEventListener('install', event => {
 });
 self.addEventListener('activate', event => {
   event.waitUntil(caches.keys()
-    .then(keys => Promise.all(keys.filter(key => key.startsWith('volley-hub-') && key !== CACHE)
+    .then(keys => Promise.all(keys.filter(key => (key.startsWith('volley-hub-') || key.startsWith('kiedy-siatka-')) && key !== CACHE)
       .map(key => caches.delete(key))))
     .then(() => self.clients.claim()));
 });
