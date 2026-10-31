@@ -58,27 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-31T12:49:12.338666+00:00",
+  "updated_at": "2026-10-31T17:01:50.129596+00:00",
   "matches": [
-    {
-      "id": "1104815",
-      "competition": "TAURON Liga",
-      "date": "23.10.2026",
-      "time": "17:30",
-      "status": "finished",
-      "home": "Ślepsk Malow Suwałki",
-      "away": "GKS Katowice",
-      "home_sets": 2,
-      "away_sets": 3,
-      "set_scores": [
-        "22:25",
-        "25:16",
-        "23:25",
-        "25:22",
-        "11:15"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104816",
       "competition": "TAURON Liga",
@@ -242,12 +223,16 @@
       "competition": "TAURON Liga",
       "date": "31.10.2026",
       "time": "15:00",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Cuprum Stilon Gorzów",
       "away": "PGE Projekt Warszawa",
       "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "away_sets": 3,
+      "set_scores": [
+        "23:25",
+        "18:25",
+        "25:27"
+      ],
       "current_points": null
     },
     {
@@ -255,7 +240,7 @@
       "competition": "TAURON Liga",
       "date": "31.10.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "PGE GiEK Skra Bełchatów",
       "away": "Aluron CMC Warta Zawiercie",
       "home_sets": 0,
@@ -431,6 +416,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104830",
+      "competition": "TAURON Liga",
+      "date": "11.11.2026",
+      "time": "17:30",
+      "status": "scheduled",
+      "home": "Steam Hemarpol Norwid Częstochowa",
+      "away": "Barkom Każany Lwów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -483,7 +481,19 @@
       "points_against": 162
     },
     {
-      "rank": 4,
+      "rank": 3,
+      "team": "PGE Projekt Warszawa",
+      "points": 7,
+      "played": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_for": 9,
+      "sets_against": 7,
+      "points_for": 365,
+      "points_against": 347
+    },
+    {
+      "rank": 5,
       "team": "Aluron CMC Warta Zawiercie",
       "points": 6,
       "played": 3,
@@ -495,7 +505,7 @@
       "points_against": 255
     },
     {
-      "rank": 5,
+      "rank": 6,
       "team": "GKS Katowice",
       "points": 5,
       "played": 3,
@@ -507,7 +517,7 @@
       "points_against": 251
     },
     {
-      "rank": 6,
+      "rank": 7,
       "team": "Ślepsk Malow Suwałki",
       "points": 5,
       "played": 3,
@@ -517,18 +527,6 @@
       "sets_against": 7,
       "points_for": 302,
       "points_against": 287
-    },
-    {
-      "rank": 8,
-      "team": "PGE Projekt Warszawa",
-      "points": 4,
-      "played": 3,
-      "wins": 1,
-      "losses": 2,
-      "sets_for": 6,
-      "sets_against": 7,
-      "points_for": 288,
-      "points_against": 281
     },
     {
       "rank": 9,
@@ -544,18 +542,6 @@
     },
     {
       "rank": 10,
-      "team": "Cuprum Stilon Gorzów",
-      "points": 2,
-      "played": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_for": 3,
-      "sets_against": 5,
-      "points_for": 165,
-      "points_against": 174
-    },
-    {
-      "rank": 10,
       "team": "Indykpol AZS Olsztyn",
       "points": 3,
       "played": 3,
@@ -567,7 +553,7 @@
       "points_against": 236
     },
     {
-      "rank": 12,
+      "rank": 11,
       "team": "Steam Hemarpol Norwid Częstochowa",
       "points": 2,
       "played": 3,
@@ -577,6 +563,18 @@
       "sets_against": 8,
       "points_for": 250,
       "points_against": 273
+    },
+    {
+      "rank": 12,
+      "team": "Cuprum Stilon Gorzów",
+      "points": 2,
+      "played": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_for": 3,
+      "sets_against": 8,
+      "points_for": 231,
+      "points_against": 251
     },
     {
       "rank": 12,

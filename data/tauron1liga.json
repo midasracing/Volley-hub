@@ -58,83 +58,16 @@
       "logo": "https://www.tauron1liga.pl/dl/725006/inline/scalecrop=70x70/5a10f5/pzl_avia_swidnik.png"
     },
     {
+      "name": "SMS PZPS Spała",
+      "logo": "https://www.tauron1liga.pl/dl/725007/inline/scalecrop=70x70/a0bfee/sms_spala.png"
+    },
+    {
       "name": "Stal Nysa",
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-10-31T12:49:18.327703+00:00",
+  "updated_at": "2026-10-31T17:02:00.593447+00:00",
   "matches": [
-    {
-      "id": "1105177",
-      "competition": "TAURON 1. Liga",
-      "date": "22.10.2026",
-      "time": "20:30",
-      "status": "finished",
-      "home": "FORT Poznań",
-      "away": "BKS Bydgoszcz",
-      "home_sets": 3,
-      "away_sets": 1,
-      "set_scores": [
-        "20:25",
-        "25:18",
-        "25:18",
-        "25:22"
-      ],
-      "current_points": null
-    },
-    {
-      "id": "1105173",
-      "competition": "TAURON 1. Liga",
-      "date": "23.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "KPS Siedlce",
-      "away": "CUK Anioły Toruń",
-      "home_sets": 0,
-      "away_sets": 3,
-      "set_scores": [
-        "21:25",
-        "23:25",
-        "20:25"
-      ],
-      "current_points": null
-    },
-    {
-      "id": "1105171",
-      "competition": "TAURON 1. Liga",
-      "date": "24.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "Nowak-Mosty MKS Będzin",
-      "away": "KKS MICKIEWICZ Kluczbork",
-      "home_sets": 0,
-      "away_sets": 3,
-      "set_scores": [
-        "23:25",
-        "18:25",
-        "18:25"
-      ],
-      "current_points": null
-    },
-    {
-      "id": "1105174",
-      "competition": "TAURON 1. Liga",
-      "date": "24.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "AVIA Sędziszów Małopolski",
-      "away": "BBTS Bielsko-Biała",
-      "home_sets": 3,
-      "away_sets": 2,
-      "set_scores": [
-        "25:16",
-        "25:22",
-        "29:31",
-        "24:26",
-        "15:13"
-      ],
-      "current_points": null
-    },
     {
       "id": "1105170",
       "competition": "TAURON 1. Liga",
@@ -242,12 +175,17 @@
       "competition": "TAURON 1. Liga",
       "date": "31.10.2026",
       "time": "15:00",
-      "status": "scheduled",
+      "status": "finished",
       "home": "CUK Anioły Toruń",
       "away": "AVIA Sędziszów Małopolski",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "25:21",
+        "21:25",
+        "25:19",
+        "25:19"
+      ],
       "current_points": null
     },
     {
@@ -255,20 +193,22 @@
       "competition": "TAURON 1. Liga",
       "date": "31.10.2026",
       "time": "17:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "KPS Płock",
       "away": "KPS Siedlce",
-      "home_sets": 0,
+      "home_sets": 1,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:18"
+      ],
+      "current_points": "21:21"
     },
     {
       "id": "1105179",
       "competition": "TAURON 1. Liga",
       "date": "31.10.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "KS Sparta Grodzisk Mazowiecki",
       "away": "FORT Poznań",
       "home_sets": 0,
@@ -281,7 +221,7 @@
       "competition": "TAURON 1. Liga",
       "date": "31.10.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "live",
       "home": "KKS MICKIEWICZ Kluczbork",
       "away": "PZL LEONARDO Avia Świdnik",
       "home_sets": 0,
@@ -431,11 +371,75 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1105200",
+      "competition": "TAURON 1. Liga",
+      "date": "12.11.2026",
+      "time": "20:30",
+      "status": "scheduled",
+      "home": "Stal Nysa",
+      "away": "KPS Siedlce",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105196",
+      "competition": "TAURON 1. Liga",
+      "date": "13.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "SMS PZPS Spała",
+      "away": "BKS Bydgoszcz",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105199",
+      "competition": "TAURON 1. Liga",
+      "date": "14.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "KKS MICKIEWICZ Kluczbork",
+      "away": "AVIA Sędziszów Małopolski",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105201",
+      "competition": "TAURON 1. Liga",
+      "date": "14.11.2026",
+      "time": "18:00",
+      "status": "scheduled",
+      "home": "Nowak-Mosty MKS Będzin",
+      "away": "PZL LEONARDO Avia Świdnik",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
     {
       "rank": 1,
+      "team": "CUK Anioły Toruń",
+      "points": 18,
+      "played": 7,
+      "wins": 6,
+      "losses": 1,
+      "sets_for": 20,
+      "sets_against": 7,
+      "points_for": 619,
+      "points_against": 572
+    },
+    {
+      "rank": 2,
       "team": "Nowak-Mosty MKS Będzin",
       "points": 17,
       "played": 8,
@@ -457,18 +461,6 @@
       "sets_against": 9,
       "points_for": 648,
       "points_against": 591
-    },
-    {
-      "rank": 3,
-      "team": "CUK Anioły Toruń",
-      "points": 15,
-      "played": 6,
-      "wins": 5,
-      "losses": 1,
-      "sets_for": 17,
-      "sets_against": 6,
-      "points_for": 523,
-      "points_against": 488
     },
     {
       "rank": 4,
@@ -531,18 +523,6 @@
       "points_against": 726
     },
     {
-      "rank": 8,
-      "team": "AVIA Sędziszów Małopolski",
-      "points": 8,
-      "played": 6,
-      "wins": 3,
-      "losses": 3,
-      "sets_for": 10,
-      "sets_against": 12,
-      "points_for": 488,
-      "points_against": 517
-    },
-    {
       "rank": 9,
       "team": "MCKiS Jaworzno",
       "points": 8,
@@ -553,6 +533,18 @@
       "sets_against": 17,
       "points_for": 621,
       "points_against": 654
+    },
+    {
+      "rank": 9,
+      "team": "AVIA Sędziszów Małopolski",
+      "points": 8,
+      "played": 7,
+      "wins": 3,
+      "losses": 4,
+      "sets_for": 11,
+      "sets_against": 15,
+      "points_for": 572,
+      "points_against": 613
     },
     {
       "rank": 11,
