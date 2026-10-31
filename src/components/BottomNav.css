@@ -46,3 +46,14 @@
 @media(prefers-reduced-motion:reduce){.vh-bottom{animation:none}
   .vh-nav-item,.vh-nav-lens,.vh-nav-item>span,.vh-nav-item svg{transition:none}
   .vh-nav-lens .glass-surface{backdrop-filter:none;-webkit-backdrop-filter:none}}
+
+/* iOS WebKit: animating a filtered backdrop forces expensive offscreen paints.
+   Keep the genuine React Bits surface, rim and sheen; drop ONLY the GPU blur
+   on the moving lens while keeping the spring and existing typography. */
+@supports (-webkit-touch-callout: none){
+  .vh-nav-lens .glass-surface{
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    background:linear-gradient(145deg,rgba(199,216,255,.30),rgba(103,132,191,.17) 55%,rgba(167,189,232,.23));
+  }
+  .vh-nav-lens .glass-surface__rim{opacity:.85}
+}

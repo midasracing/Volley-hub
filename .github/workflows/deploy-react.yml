@@ -51,6 +51,11 @@ jobs:
       - run: npm install --no-audit --no-fund
       - run: npm test
       - run: npm run build
+      - name: Verify a real Vite production shell
+        run: |
+          test -f dist/index.html
+          test -f dist/sw.js
+          grep -q 'assets/index-' dist/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

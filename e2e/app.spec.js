@@ -137,16 +137,18 @@ test('navigation and search use React Bits GlassSurface without old bubble canva
   await expect(nav.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
 });
 
-test('route changes preserve the outgoing page as an inert layer during crossfade', async ({ page }) => {
+test('rapid switches keep one live screen and menu in sync, without cloning page lists', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Mecze' }).evaluate(element => element.click());
-  await expect(page.locator('.vh-page-exit')).toHaveCount(1);
-  await expect(page.locator('.vh-page-exit')).toHaveAttribute('aria-hidden', 'true');
-  await expect(page.locator('.vh-page-exit')).toHaveJSProperty('inert', true);
-  await expect(page.locator('#main-content')).toHaveCount(1);
-  await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
-  await expect(page.locator('.vh-page-exit')).toHaveCount(0, { timeout: 1800 });
+  for (const [name, route] of [
+    ['Mecze','matches'], ['Ulubione','favorites'], ['Rozgrywki','competitions'], ['Główna','home']
+  ]) {
+    await nav.getByRole('button', { name }).evaluate(button => button.click());
+    await expect(nav.locator('.vh-nav-items')).toHaveAttribute('data-active', route);
+    await expect(page.locator('#main-content')).toHaveAttribute('data-page', route);
+    await expect(page.locator('.vh-page')).toHaveCount(1);
+    await expect(page.locator('.vh-page-exit')).toHaveCount(0);
+  }
 });
 
 test('switching tabs crossfades pages and animates the menu label', async ({ page }) => {

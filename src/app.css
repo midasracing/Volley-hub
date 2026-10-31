@@ -211,3 +211,10 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 @media(max-width:390px){.vh-app{padding-left:14px;padding-right:14px}.vh-date-wrap{margin-left:-14px;margin-right:-14px}.vh-match .im-name{font-size:14px}.vh-match .im-meta{font-size:12px}.vh-team-grid{gap:8px}}
 @media(min-width:760px){.vh-app{width:min(100%,680px)}}
 @media(prefers-reduced-motion:reduce){.vh-sets-wrap{transition:none}.vh-search-glass .glass-surface{backdrop-filter:none;-webkit-backdrop-filter:none}}
+/* The static search glass is likewise compositor-friendly on iPhone Safari. */
+@supports (-webkit-touch-callout: none){
+  .vh-search-glass .glass-surface{
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    background:linear-gradient(145deg,rgba(180,203,255,.20),rgba(75,101,154,.12));
+  }
+}

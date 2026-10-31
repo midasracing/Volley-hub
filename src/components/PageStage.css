@@ -1,22 +1,11 @@
-/* Route content crossfades while the persistent glass dock remains untouched. */
-.vh-route-stage{position:relative;isolation:isolate;--vh-enter-x:16px;--vh-exit-x:-9px}
-.vh-route-stage.is-backward{--vh-enter-x:-16px;--vh-exit-x:9px}
+/* Compositor-friendly navigation: render ONE screen, never duplicate lists. */
+.vh-route-stage{position:relative;isolation:isolate;--vh-enter-x:10px}
+.vh-route-stage.is-backward{--vh-enter-x:-10px}
 .vh-page{position:relative;min-width:0}
-.vh-page-enter{animation:vh-page-enter .34s cubic-bezier(.18,.82,.22,1) both;
+.vh-page-enter{animation:vh-page-in .25s cubic-bezier(.18,.8,.24,1) both;
   will-change:transform,opacity}
-.vh-page-exit{position:absolute;left:0;top:0;width:100%;z-index:0;
-  pointer-events:none;user-select:none;overflow:hidden;
-  animation:vh-page-exit .32s cubic-bezier(.32,0,.68,1) both;
-  will-change:transform,opacity}
-.vh-page-enter{z-index:1}
-@keyframes vh-page-enter{
-  from{opacity:.24;transform:translate3d(var(--vh-enter-x),0,0) scale(.994)}
-  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+@keyframes vh-page-in{
+  from{opacity:.84;transform:translate3d(var(--vh-enter-x),0,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
 }
-@keyframes vh-page-exit{
-  from{opacity:1;transform:translate3d(0,0,0) scale(1)}
-  to{opacity:0;transform:translate3d(var(--vh-exit-x),0,0) scale(.996)}
-}
-@media(prefers-reduced-motion:reduce){
-  .vh-page-enter,.vh-page-exit{animation:none;will-change:auto}
-}
+@media(prefers-reduced-motion:reduce){.vh-page-enter{animation:none;will-change:auto}}

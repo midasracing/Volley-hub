@@ -335,7 +335,6 @@ function SearchBubble({ onClick }) {
 function App() {
   const route = () => { const hash = window.location.hash.replace(/^#\/?/, ''); return ROUTES.includes(hash) ? hash : 'home'; };
   const [page, setPage] = useState(route);
-  const [navPage, setNavPage] = useState(route);
   const [direction, setDirection] = useState('forward');
   const [reducedMotion, setReducedMotion] = useState(() =>
     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
@@ -352,13 +351,11 @@ function App() {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
     const previous = currentPage.current;
     currentPage.current = id;
-    // React keeps the nav update urgent, and the page update low priority.
-    setNavPage(id);
+    // Render the page and the selected tab in the SAME React update.
+    // Deferring the page made the bar jump ahead of the content on Safari.
     const nextDirection = ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward';
-    React.startTransition(() => {
-      setDirection(nextDirection);
-      setPage(id);
-    });
+    setDirection(nextDirection);
+    setPage(id);
   }, []);
   const navigate = useCallback(id => {
     if (!ROUTES.includes(id)) return;
@@ -423,7 +420,7 @@ function App() {
     <PageStage page={page} direction={direction} reducedMotion={reducedMotion}>
       {renderPage(page)}
     </PageStage>
-    {createPortal(<BottomNav active={navPage} onNavigate={navigate} />, document.body)}
+    {createPortal(<BottomNav active={page} onNavigate={navigate} />, document.body)}
     {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
   </div>;
 }
