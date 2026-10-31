@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-10-31T15:02:32.005500+00:00",
+  "updated_at": "2026-10-31T19:33:29.985640+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -1975,18 +1975,6 @@
         {
           "date": "07.11.2026",
           "time": "",
-          "home": "Integracyjny Klub Sportowy Atak Elbląg",
-          "away": "KS Metro Family Warszawa",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 2",
-          "group": "Grupa 2"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "",
           "home": "NECKO Augustów",
           "away": "MTS Międzyrzec Podlaski",
           "home_sets": 0,
@@ -2001,6 +1989,18 @@
           "time": "14:30",
           "home": "AZS UWM Olsztyn",
           "away": "Elektromet Huragan Błonie",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 2",
+          "group": "Grupa 2"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "15:00",
+          "home": "Integracyjny Klub Sportowy Atak Elbląg",
+          "away": "KS Metro Family Warszawa",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
