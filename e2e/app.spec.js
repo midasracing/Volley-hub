@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('renders React navigation and shared match design', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Volley Hub' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   await nav.getByRole('button', { name: 'Mecze' }).click();
   await expect(page.getByRole('heading', { name: 'Mecze' })).toBeVisible();
@@ -11,6 +11,17 @@ test('renders React navigation and shared match design', async ({ page }) => {
   await nav.getByRole('button', { name: 'Rozgrywki' }).click();
   await expect(page.getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
   await expect(page.getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
+});
+
+test('home starts with match list, without the marked intro and hero banner', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('img', { name: 'VOLLEY HUB' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Szukaj', exact: true })).toBeVisible();
+  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
+  await expect(page.locator('.vh-hero')).toHaveCount(0);
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Volley Hub', exact: true })).toHaveCount(0);
+  await expect(page.getByText('Twoje centrum siatkówki. Wszystko, co ważne, w jednym miejscu.')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Zobacz mecze' })).toBeVisible();
 });
 
 test('favorites persist after reload', async ({ page }) => {
@@ -125,7 +136,7 @@ test('switching tabs crossfades pages and animates the menu label', async ({ pag
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Ulubione' })).toBeVisible();
   await expect(page.locator('.vh-route-stage')).toHaveClass(/is-forward/);
   await nav.getByRole('button', { name: 'Główna' }).click();
-  await expect(page.locator('#main-content').getByRole('heading', { name: 'Volley Hub' })).toBeVisible();
+  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
   await expect(page.locator('.vh-route-stage')).toHaveClass(/is-backward/);
   await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
 });

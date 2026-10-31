@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Home, CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check, Volleyball } from 'lucide-react';
+import { Home, CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
 import {
   LEAGUES, CATEGORIES, WEEKDAYS, dateKey, fromKey, addDays, feedDateKey,
   isLive, isFinished, fetchLeague, matchesFromFeeds, teamIndex, normalizeName, readFavorites
@@ -215,14 +215,6 @@ function HomePage({ feeds, loading, errors, refresh, logos, favorites, onNavigat
   const featured = todayMatches.length ? todayMatches : upcoming;
   const savedCount = favorites.teams.length + favorites.leagues.length;
   return <>
-    <PageHeader title="Volley Hub" subtitle="Twoje centrum siatkówki. Wszystko, co ważne, w jednym miejscu." actions={<span className="vh-date-stamp">{new Intl.DateTimeFormat('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' }).format(NOW())}</span>} />
-    <div className="vh-hero">
-      <span className="vh-hero-tag"><span className="vh-hero-dot" /> WSZYSTKO O SIATKÓWCE</span>
-      <h2>Gra toczy się <em>tutaj.</em></h2>
-      <p>Sprawdź mecze, poznaj wyniki i bądź bliżej swoich drużyn.</p>
-      <button type="button" className="vh-hero-action" onClick={() => onNavigate('matches')}>Przejdź do meczów <ArrowRight size={20} /></button>
-      <div className="vh-hero-decor" aria-hidden="true"><Volleyball size={120} strokeWidth={0.7} /></div>
-    </div>
     <SectionTitle eyebrow={todayMatches.length ? 'DZISIAJ NA PARKIECIE' : 'NAJBLIŻSZE SPOTKANIA'} title={todayMatches.length ? 'Mecze dzisiaj' : 'Co przed nami'} action="Zobacz mecze" onAction={() => onNavigate('matches')} />
     <FeedWarning errors={errors} refresh={refresh} />
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups compact matches={featured} logos={logos} emptyMessage="Nie mamy jeszcze zaplanowanych spotkań w pobranych danych." />}
