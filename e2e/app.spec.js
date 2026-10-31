@@ -239,8 +239,7 @@ test('reduced motion snaps the liquid lens immediately to its selected tab', asy
   const difference = await nav.evaluate(root => {
     const lens = root.querySelector('.vh-nav-lens');
     const selected = root.querySelector('.vh-nav-item.active');
-    const x = value => new DOMMatrixReadOnly(getComputedStyle(value).transform).m41;
-    return Math.abs(x(lens) - x(selected));
+    return Math.abs(lens.getBoundingClientRect().left - selected.getBoundingClientRect().left);
   });
   expect(difference).toBeLessThan(0.6);
 });
