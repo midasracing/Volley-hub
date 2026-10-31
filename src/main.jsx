@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Home, CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
 import {
@@ -340,46 +340,44 @@ function useFluidGlass() {
 }
 function NavGlass({ hostRef, active }) {
   const Glass = useFluidGlass();
-  const [placement, setPlacement] = useState({ position: [.5, .5], size: 116 });
-  useEffect(() => {
+  const [placement, setPlacement] = useState({ position: [0.23, 0.5], size: 116 });
+
+  useLayoutEffect(() => {
     const host = hostRef.current;
-    if (!host) return undefined;
-    let frame = 0;
-    const measure = () => {
-      frame = 0;
-      const button = host.querySelector('.vh-nav-item.active');
-      if (!button) return;
-      const bounds = host.getBoundingClientRect();
-      const selected = button.getBoundingClientRect();
-      if (!bounds.width || !bounds.height || !selected.width) return;
-      const next = {
-        position: [(selected.left + selected.width / 2 - bounds.left) / bounds.width, (selected.top + selected.height / 2 - bounds.top) / bounds.height],
-        size: selected.width
-      };
-      setPlacement(previous => (
-        Math.abs(previous.position[0] - next.position[0]) < .002 &&
-        Math.abs(previous.position[1] - next.position[1]) < .002 &&
-        Math.abs(previous.size - next.size) < 1 ? previous : next
-      ));
+    const track = host?.querySelector('.vh-nav-items');
+    if (!host || !track) return undefined;
+    const index = NAV.findIndex(item => item.id === active);
+    if (index < 0) return undefined;
+    const update = () => {
+      const styles = getComputedStyle(track);
+      const leftPadding = parseFloat(styles.paddingLeft) || 0;
+      const rightPadding = parseFloat(styles.paddingRight) || 0;
+      const gap = parseFloat(styles.columnGap) || 0;
+      const available = track.clientWidth - leftPadding - rightPadding - gap * (NAV.length - 1);
+      if (available <= 0 || host.clientWidth <= 0 || host.clientHeight <= 0) return;
+
+      // Track uses one 2.5fr slot and three 1fr slots. Compute the *final*
+      // center directly: no layout reads or React updates during the animation.
+      const small = available / (NAV.length - 1 + 2.5);
+      const selectedWidth = small * 2.5;
+      const x = track.offsetLeft + leftPadding + index * (small + gap) + selectedWidth / 2;
+      const y = track.offsetTop + track.clientHeight / 2;
+      const next = { position: [x / host.clientWidth, y / host.clientHeight], size: selectedWidth };
+      setPlacement(previous =>
+        Math.abs(previous.position[0] - next.position[0]) < 0.001 &&
+        Math.abs(previous.position[1] - next.position[1]) < 0.001 &&
+        Math.abs(previous.size - next.size) < 0.5 ? previous : next
+      );
     };
-    // Read layout at most once per frame while CSS flex is moving.
-    const scheduleMeasure = () => {
-      if (!frame) frame = requestAnimationFrame(measure);
-    };
-    const resize = new ResizeObserver(scheduleMeasure);
-    resize.observe(host);
-    host.querySelectorAll('.vh-nav-item').forEach(button => resize.observe(button));
-    host.addEventListener('transitionend', scheduleMeasure);
-    scheduleMeasure();
-    return () => {
-      cancelAnimationFrame(frame);
-      resize.disconnect();
-      host.removeEventListener('transitionend', scheduleMeasure);
-    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(host);
+    return () => observer.disconnect();
   }, [active, hostRef]);
+
   return Glass ? <div className="vh-glass-layer" aria-hidden="true"><Glass
     text="" shape="pill" shapes={['pill']} size={placement.size} position={placement.position}
-    interaction="static" morphOnClick={false} idle={false} spin={0} wobble={0}
+    interaction="static" smoothness={0.48} morphOnClick={false} idle={false} spin={0} wobble={0}
     refraction={1.08} dispersion={0} reflection={0.7} tint={0.08} shadow={0.12}
     color="#ffffff" intro={false} maxDevicePixelRatio={1.25}
   /></div> : null;
@@ -400,16 +398,18 @@ function SearchBubble({ onClick }) {
 }
 function BottomNav({ active, onNavigate }) {
   const hostRef = useRef(null);
-  return <nav ref={hostRef} className="vh-bottom" aria-label="Główna nawigacja"><NavGlass hostRef={hostRef} active={active} /><div className="vh-nav-items">{NAV.map(({ id, label, Icon }) => <button key={id} onClick={() => onNavigate(id)} className={'vh-nav-item ' + (active === id ? 'active' : '')} type="button" aria-current={active === id ? 'page' : undefined} aria-label={label}><Icon size={23} strokeWidth={active === id ? 2.3 : 1.8} fill={active === id && id === 'favorites' ? 'currentColor' : 'none'} /><span>{label}</span></button>)}</div></nav>;
+  return <nav ref={hostRef} className="vh-bottom" aria-label="Główna nawigacja"><NavGlass hostRef={hostRef} active={active} /><div className="vh-nav-items" data-active={active}>{NAV.map(({ id, label, Icon }) => <button key={id} onClick={() => onNavigate(id)} className={'vh-nav-item ' + (active === id ? 'active' : '')} type="button" aria-current={active === id ? 'page' : undefined} aria-label={label}><Icon size={23} strokeWidth={active === id ? 2.3 : 1.8} fill={active === id && id === 'favorites' ? 'currentColor' : 'none'} /><span>{label}</span></button>)}</div></nav>;
 }
 
 function App() {
   const route = () => { const hash = window.location.hash.replace(/^#\/?/, ''); return ROUTES.includes(hash) ? hash : 'home'; };
   const [page, setPage] = useState(route);
-  const [leavingPage, setLeavingPage] = useState(null);
+  const [navPage, setNavPage] = useState(route);
   const [direction, setDirection] = useState('forward');
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
+  );
   const currentPage = useRef(page);
-  const exitTimer = useRef(null);
   const [selectedDate, setSelectedDate] = useState(NOW);
   const [leagueFilter, setLeagueFilter] = useState(null);
   const [selectedLeague, setSelectedLeague] = useState(null);
@@ -420,10 +420,14 @@ function App() {
   useEffect(() => {
     const sync = () => switchPage(route());
     window.addEventListener('hashchange', sync);
-    return () => {
-      window.removeEventListener('hashchange', sync);
-      window.clearTimeout(exitTimer.current);
-    };
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
+  useEffect(() => {
+    const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (!media) return undefined;
+    const onChange = () => setReducedMotion(media.matches);
+    media.addEventListener?.('change', onChange);
+    return () => media.removeEventListener?.('change', onChange);
   }, []);
   useEffect(() => {
     try { localStorage.setItem('vh-favs', JSON.stringify(favorites)); } catch { /* storage may be blocked */ }
@@ -441,12 +445,10 @@ function App() {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
     const previous = currentPage.current;
     currentPage.current = id;
-    window.clearTimeout(exitTimer.current);
     setDirection(ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward');
-    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    setLeavingPage(reduceMotion ? null : previous);
-    setPage(id);
-    if (!reduceMotion) exitTimer.current = window.setTimeout(() => setLeavingPage(null), 280);
+    // Highlight the tapped tab immediately, even if rendering the next page is heavy.
+    setNavPage(id);
+    React.startTransition(() => setPage(id));
   }
   function navigate(id) {
     if (!ROUTES.includes(id)) return;
@@ -485,16 +487,11 @@ function App() {
       </div>
     </div>
     <div className={'vh-route-stage is-' + direction}>
-      {leavingPage && leavingPage !== page && (
-        <main key={leavingPage} className="vh-page vh-page-exit" aria-hidden="true" inert>
-          {renderPage(leavingPage)}
-        </main>
-      )}
-      <main id="main-content" key={page} className={'vh-page' + (leavingPage ? ' vh-page-enter' : '')}>
+      <main id="main-content" key={page} className={'vh-page' + (!reducedMotion ? ' vh-page-enter' : '')}>
         {renderPage(page)}
       </main>
     </div>
-    <BottomNav active={page} onNavigate={navigate} />
+    <BottomNav active={navPage} onNavigate={navigate} />
     {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
   </div>;
 }

@@ -164,6 +164,46 @@ test('quick tab changes keep navigation and content synchronized', async ({ page
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
 });
 
+test('glass menu uses stable animated grid tracks instead of rerendering on every frame', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 760 });
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  const track = nav.locator('.vh-nav-items');
+  await expect(track).toHaveAttribute('data-active', 'home');
+  const initial = await track.evaluate(el => {
+    const style = getComputedStyle(el);
+    return { property: style.transitionProperty, duration: parseFloat(style.transitionDuration) };
+  });
+  expect(initial.property).toContain('grid-template-columns');
+  expect(initial.duration).toBeGreaterThan(0.4);
+  await nav.getByRole('button', { name: 'Rozgrywki' }).click();
+  await expect(track).toHaveAttribute('data-active', 'competitions');
+  await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
+  await expect(page.locator('.vh-page-exit')).toHaveCount(0);
+  const glassCount = await nav.locator('.fluid-glass').count();
+  expect(glassCount).toBeLessThanOrEqual(1);
+});
+
+test('menu remains aligned and readable at narrow mobile widths', async ({ page }) => {
+  for (const width of [320, 375]) {
+    await page.setViewportSize({ width, height: 720 });
+    await page.goto('/');
+    const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+    for (const name of ['Mecze', 'Rozgrywki', 'Ulubione', 'Główna']) {
+      await nav.getByRole('button', { name }).click();
+      await expect(nav.getByRole('button', { name })).toHaveAttribute('aria-current', 'page');
+      const rects = await nav.evaluate(element => {
+        const active = element.querySelector('.vh-nav-item.active').getBoundingClientRect();
+        const host = element.getBoundingClientRect();
+        return { left: active.left, right: active.right, hostLeft: host.left, hostRight: host.right };
+      });
+      expect(rects.left).toBeGreaterThanOrEqual(rects.hostLeft - 1);
+      expect(rects.right).toBeLessThanOrEqual(rects.hostRight + 1);
+    }
+  }
+});
+
 test('bottom navigation uses just one React glass lens and no CSS pill overlay', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
