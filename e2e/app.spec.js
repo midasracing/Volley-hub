@@ -53,7 +53,7 @@ test('Kiedy Siatka SVG loads without an animated or hidden logo', async ({ page 
   await expect.poll(() => logo.evaluate(img => img.naturalWidth)).toBe(340);
   await expect.poll(() => logo.evaluate(img => img.naturalHeight)).toBe(184);
   await expect(page.locator('.vh-brand-tech, .vh-brand-tech-fallback, .tech-text, .vh-rive-layer, .vh-wordmark-icon')).toHaveCount(0);
-  await expect(page.locator('.vh-floating-head canvas')).toHaveCount(0);
+  await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
   await expect(page.locator('.vh-floating-head img')).toHaveCount(1);
   await page.getByRole('button', { name: 'Szukaj', exact: true }).click();
   await expect(page.getByRole('dialog', { name: 'Wyszukiwarka' })).toBeVisible();
@@ -65,7 +65,7 @@ test('Kiedy Siatka wordmark stays static in reduced motion', async ({ page }) =>
   const logo = page.getByRole('img', { name: 'Kiedy Siatka?' });
   await expect(logo).toBeVisible();
   expect(await logo.evaluate(img => getComputedStyle(img).animationName)).toBe('none');
-  await expect(page.locator('.vh-floating-head canvas')).toHaveCount(0);
+  await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
 });
 
 test('floating logo and search bubble never overlap at 320px and 375px', async ({ page }) => {
