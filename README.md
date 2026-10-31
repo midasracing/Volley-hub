@@ -1,72 +1,166 @@
-# Volley Hub — React 19
+<div align="center">
+  <img src=".github/assets/volley-hub-hero.svg" alt="Volley Hub — siatkówka w jednym miejscu" width="100%" />
 
-Mobilna aplikacja siatkarska PWA oparta na React 19 + Vite 6. Językiem wizualnym całej strony jest zakładka Mecze: duża typografia Barlow, jasne karty wyników, ciemny interfejs i zaokrąglona nawigacja.
+  <br />
 
-## Funkcje
+  **Mecze, wyniki i rozgrywki. Cała siatkówka w jednym miejscu.**
 
-- Główna: mecze dnia, nadchodzące mecze, rozgrywki i ulubione.
-- Mecze: kalendarz, filtry lig i grup, status na żywo, wyniki i sety.
-- Rozgrywki: terminarz, wyniki, tabela oraz drużyny każdej dostępnej ligi.
-- Ulubione: drużyny i ligi zapisywane w localStorage (zgodność z kluczem vh-favs).
-- Wyszukiwarka drużyn i lig, czytelne stany ładowania, pustych wyników i błędów.
-- PWA: manifest, cache aplikacji i network-first dla danych ligowych.
+  Mobilne centrum polskiej siatkówki — od terminarza po ostatni set.
 
-## Lokalnie
+  <br />
 
-Node 20+:
+  <a href="https://midasracing.github.io/Volley-hub/">
+    <img src="https://img.shields.io/badge/OTWÓRZ_APLIKACJĘ-8BABFF?style=for-the-badge&amp;logo=githubpages&amp;logoColor=0E1118" alt="Otwórz Volley Hub" />
+  </a>
+  <a href="https://github.com/midasracing/Volley-hub/actions/workflows/deploy-react.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/midasracing/Volley-hub/deploy-react.yml?branch=main&amp;style=for-the-badge&amp;label=GitHub%20Pages&amp;logo=githubactions" alt="Status wdrożenia GitHub Pages" />
+  </a>
 
-    npm install
-    npm run dev
-    npm test
-    npm run build
-    npm run preview
+  <br />
+  <br />
 
-Przed uruchomieniem Vite i buildem skrypt scripts/sync-data.mjs kopiuje najnowsze dane z data/*.json do public/data/*.json. Istniejące skrypty Python i workflow aktualizują nadal folder data, bez zmiany ich działania.
+  <a href="#funkcje">Funkcje</a> ·
+  <a href="#rozgrywki">Rozgrywki</a> ·
+  <a href="#szybki-start">Szybki start</a> ·
+  <a href="#jak-to-działa">Jak to działa</a> ·
+  <a href="#publikacja">Publikacja</a>
+</div>
 
-## Publikacja
+---
 
-Publikacja odbywa się z gałęzi main. W GitHub Settings > Pages > Build and deployment > Source należy wybrać GitHub Actions. Workflow Deploy React to GitHub Pages buduje dist/ i publikuje gotową aplikację. Samo serwowanie katalogu głównego repo bez buildu nie uruchomi Reacta.
+## 🏐 Siatkówka ma swoje miejsce
 
-## Źródła
+**Volley Hub** to aplikacja webowa stworzona z myślą o szybkim sprawdzaniu tego, co dzieje się na polskich parkietach. Bez przeskakiwania między stronami: wybierasz ligę, sprawdzasz mecz i wracasz do gry.
 
-- data/tauron.json — TAURON Liga
-- data/tauron1liga.json — TAURON 1. Liga
-- data/2liga.json — II Liga Mężczyzn (PZPS)
-- data/pomorska3liga.json — Pomorska III Liga (WYŁĄCZNIE VolleyStation)
+Projekt powstał w podejściu **mobile-first**. Działa w przeglądarce i jako **PWA**, które można dodać do ekranu głównego telefonu.
 
-Nie generujemy fikcyjnych wyników. Aktualność danych zależy od działania scraperów i cyklu synchronizacji.
+## ✨ Funkcje
 
-## Architektura
+| | |
+| :--- | :--- |
+| **🏟️ Mecze i wyniki**<br />Mecze dnia, nadchodzące spotkania, wyniki, sety i status rozgrywanego meczu. | **📅 Terminarze i tabele**<br />Kalendarz meczów, filtry lig i grup oraz widoki rozgrywek i drużyn. |
+| **⭐ Ulubione pod ręką**<br />Zapisuj wybrane drużyny i ligi — pozostają w pamięci przeglądarki dzięki `localStorage`. | **🔎 Szybkie wyszukiwanie**<br />Szukaj drużyn i lig bez przekopywania się przez kolejne zestawienia. |
+| **📱 PWA i mobilny interfejs**<br />Aplikacja z manifestem i service workerem, dostosowana do wygodnej obsługi na telefonie. | **🎨 Dopieszczone detale**<br />Ciemny interfejs, karty wyników, animowane logo TechText i nawigacja FluidGlass. |
 
-- src/main.jsx — wspólne drzewo React (nawigacja, Mecze, Główna, Rozgrywki, Ulubione, wyszukiwarka)
-- src/data.js — pobieranie, transformacja i normalizacja danych
-- src/app.css oraz matches-ios.css — wspólny design system
-- public — manifest, service worker, kopiowane dane
-- tests — testy logiki danych
+> [!NOTE]
+> Dostępność wyników i ich aktualność zależą od danych pobieranych ze źródeł ligowych. Nie generujemy fikcyjnych wyników.
 
-Stary interfejs vanilla JS oraz nieaktualne kopie komponentu szkła zostały usunięte. W repo pozostaje tylko działająca aplikacja React.
+## 🏆 Rozgrywki
 
-## Logo & floating header (React Bits TechText)
-The header uses [React Bits / TechText](https://reactbits.dev/text-animations/tech-text)
-by David Haz (MIT + Commons Clause; included attribution at
-`src/components/react-bits/LICENSE.md`). It is an **actual local component**,
-not an imitation and not the previous Rive wordmark. It uses the original
-TechText **idle outline sweep** (`intro="none"`, `reveal="letter"`,
-`lineStyle="dashed"`, `sweep={true}`), moving the dashed vector contour
-and selection frame automatically across the `VOLLEY HUB` letters. There is
-**no particle assembly and no touch, mouse, click or hover interaction**.
-The animation only runs while the logo is visible in the active tab;
-`prefers-reduced-motion`, slow JS loading and missing canvas show an
-immediately readable HTML wordmark.
+| Liga | Dane |
+| :--- | :--- |
+| **TAURON Liga** | [`data/tauron.json`](data/tauron.json) |
+| **TAURON 1. Liga** | [`data/tauron1liga.json`](data/tauron1liga.json) |
+| **II Liga Mężczyzn** | [`data/2liga.json`](data/2liga.json) |
+| **Pomorska III Liga Mężczyzn** | [`data/pomorska3liga.json`](data/pomorska3liga.json) |
 
-The old top bar is removed: `vh-floating-head` positions the signature top-left
-and a separate accessible glass search bubble top-right. This is a visual change
-only; search, match data, favorites and the bottom navigation keep their behavior.
+Dane są aktualizowane przez istniejące skrypty i zadania **GitHub Actions**. Dla II ligi wykorzystywane są dane PZPS, a dla Pomorskiej III ligi — VolleyStation.
 
-Rive is intentionally **not used for the logo**. It may still be used later
-for useful interaction-driven animations elsewhere in the PWA.
+## 🚀 Szybki start
 
-## Repository cleanup (2026-10-30)
-The deployed site is **Vite + React only**. The previous root-level plain-JS app, legacy CSS, duplicate fluid-glass implementation, and old root-level service worker/manifest were removed. The only source-of-truth files for the web app are `src/`, `matches-ios.css`, `fluid-glass-component.css`, `public/`, and the active data/scraper workflows.
+Potrzebujesz **Node.js 20+** i **npm**.
 
-The bottom navigation uses the **original React FluidGlass component** at `src/FluidGlass.jsx`. Active-tab highlighting no longer uses an overlapping CSS gradient capsule. The search bubble uses the same React glass component with a lightweight, opaque fallback if WebGL or accessibility settings prevent the shader. Any app-critical text and actions remain regular accessible HTML.
+```bash
+git clone https://github.com/midasracing/Volley-hub.git
+cd Volley-hub
+npm install
+npm run dev
+```
+
+Następnie otwórz lokalny adres wskazany przez Vite.
+
+| Komenda | Działanie |
+| :--- | :--- |
+| `npm run dev` | Start serwera developerskiego |
+| `npm test` | Testy logiki (Node Test Runner) |
+| `npm run test:e2e` | Testy przeglądarkowe (Playwright; wymaga przygotowanego środowiska) |
+| `npm run build` | Produkcyjny build do `dist/` |
+| `npm run preview` | Podgląd lokalnego buildu |
+
+## ⚙️ Jak to działa
+
+```text
+Źródła ligowe
+      │
+      ▼
+GitHub Actions + skrypty aktualizujące dane
+      │
+      ▼
+   data/*.json
+      │
+      │  scripts/sync-data.mjs
+      ▼
+ public/data/*.json
+      │
+      ▼
+  React + Vite  →  GitHub Pages  →  Przeglądarka / PWA
+```
+
+Przed `npm run dev` i `npm run build` skrypt `scripts/sync-data.mjs` kopiuje bieżące dane z `data/` do `public/data/`. Interfejs następnie pobiera i normalizuje dane na potrzeby widoków meczowych.
+
+### Stack
+
+![React](https://img.shields.io/badge/React-19-149ECA?style=flat-square&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?style=flat-square&logo=javascript&logoColor=111111)
+![PWA](https://img.shields.io/badge/PWA-Mobile_First-7D8DA8?style=flat-square&logo=pwa&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/Hosting-GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white)
+
+**Frontend:** React 19, Vite 6, JavaScript, CSS  
+**Doświadczenie:** mobile-first, PWA, `localStorage`, service worker  
+**Testy i automatyzacja:** Node Test Runner, Playwright, GitHub Actions  
+**Interfejs:** React Bits TechText, FluidGlass
+
+<details>
+<summary><strong>📂 Struktura projektu</strong></summary>
+
+```text
+Volley-hub/
+├── .github/workflows/   # testy, aktualizacje danych i deploy
+├── data/                # źródłowe pliki JSON rozgrywek
+├── public/              # manifest, service worker, dane dla aplikacji
+├── scripts/             # synchronizacja i skrypty danych
+├── src/                 # aplikacja React, widoki i komponenty
+├── tests/               # testy logiki
+├── e2e/                 # testy przeglądarkowe
+├── vite.config.js       # konfiguracja buildu
+└── package.json
+```
+
+Główne miejsca do poznania kodu:
+- [`src/main.jsx`](src/main.jsx) — główne widoki i nawigacja.
+- [`src/data.js`](src/data.js) — pobieranie i normalizacja danych.
+- [`src/app.css`](src/app.css) — design system i style aplikacji.
+- [`src/FluidGlass.jsx`](src/FluidGlass.jsx) — szklany efekt nawigacji.
+
+</details>
+
+## 🌐 Publikacja
+
+**Hosting: GitHub Pages.** Aplikacja publikowana jest z gałęzi `main` przez workflow [**Deploy React to GitHub Pages**](.github/workflows/deploy-react.yml).
+
+1. GitHub Actions weryfikuje, czy należy wykonać nowy build.
+2. Instalowane są zależności, uruchamiane testy i wykonywany jest `npm run build`.
+3. Zawartość `dist/` jest publikowana na GitHub Pages.
+
+W ustawieniach repozytorium w **Settings → Pages → Build and deployment** jako **Source** powinno być wybrane **GitHub Actions**.
+
+<p align="center">
+  <a href="https://midasracing.github.io/Volley-hub/"><strong>↗ Otwórz Volley Hub</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/midasracing/Volley-hub/actions"><strong>Zobacz automatyzacje</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/midasracing/Volley-hub/issues"><strong>Zgłoś problem</strong></a>
+</p>
+
+---
+
+<div align="center">
+
+**Made for the love of volleyball. 🏐**
+
+<sub>Volley Hub jest niezależnym projektem. Materiały i dane zewnętrzne należą do ich właścicieli.</sub>
+
+<sub>Komponent logo TechText pochodzi z React Bits — [informacje licencyjne i atrybucja](src/components/react-bits/LICENSE.md).</sub>
+
+</div>
