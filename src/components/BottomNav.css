@@ -1,5 +1,5 @@
-/* The dock is a fixed, standalone layer. Every moving element follows one
-   compositor transform + width transition, never CSS grid relayout or JS RAF. */
+/* Stable four-tab layout and original typography. Only the selected
+   glass lens runs through an interruptible requestAnimationFrame spring. */
 .vh-bottom,.vh-bottom *{box-sizing:border-box}
 .vh-bottom{position:fixed;left:50%;bottom:calc(15px + env(safe-area-inset-bottom));
   transform:translateX(-50%);width:min(calc(100% - 32px),540px);height:72px;
@@ -9,8 +9,10 @@
   animation:vh-nav-enter .38s cubic-bezier(.22,1,.36,1) both}
 .vh-nav-items{--vh-nav-gap:3px;position:relative;height:100%;width:100%;padding:7px}
 .vh-nav-item,.vh-nav-lens{position:absolute;top:7px;bottom:7px;left:0;min-width:0;
-  border-radius:999px;transform-origin:left center;
-  transition:transform .48s cubic-bezier(.22,1,.36,1),width .48s cubic-bezier(.22,1,.36,1)}
+  border-radius:999px;transform-origin:left center}
+/* The moving indicator has one JS spring, not a competing CSS transition.
+   Stretching and travel happen together on the compositor layer. */
+.vh-nav-lens{transform-origin:center center;transition:none;will-change:transform}
 .vh-nav-lens{z-index:0;overflow:hidden;pointer-events:none;
   border:1px solid rgba(207,224,255,.22);background:rgba(150,174,225,.045);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 4px 16px rgba(0,0,0,.15);
@@ -19,9 +21,9 @@
   position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .vh-nav-item{z-index:1;display:flex;align-items:center;justify-content:center;gap:0;
   padding:0 5px;border:0;background:transparent;color:#afbacd;white-space:nowrap;
-  overflow:hidden;-webkit-tap-highlight-color:transparent;
-  transition:transform .48s cubic-bezier(.22,1,.36,1),
-    width .48s cubic-bezier(.22,1,.36,1),gap .25s ease,color .24s ease}
+  overflow:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
+  transition:transform .48s cubic-bezier(.2,.85,.24,1),
+    width .48s cubic-bezier(.2,.85,.24,1),gap .25s ease,color .24s ease}
 .vh-nav-item>span{display:block;max-width:0;opacity:0;overflow:hidden;min-width:0;
   font-size:14px;font-weight:750;transform:translate3d(-4px,0,0);
   transition:max-width .25s ease,opacity .1s ease,transform .25s ease}
@@ -40,6 +42,6 @@
 @media(min-width:760px){.vh-bottom{width:min(calc(100% - 32px),580px)}}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){
   .vh-bottom{background:#222b3b;backdrop-filter:none;-webkit-backdrop-filter:none}}
-@media(prefers-reduced-motion:reduce){.vh-nav-item,.vh-nav-lens,
-  .vh-nav-item>span,.vh-nav-item svg{transition:none}
+@media(prefers-reduced-motion:reduce){.vh-bottom{animation:none}
+  .vh-nav-item,.vh-nav-lens,.vh-nav-item>span,.vh-nav-item svg{transition:none}
   .vh-nav-lens .fluid-glass{display:none}}
