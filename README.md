@@ -109,7 +109,7 @@ Przed `npm run dev` i `npm run build` skrypt `scripts/sync-data.mjs` kopiuje bie
 **Frontend:** React 19, Vite 6, JavaScript, CSS  
 **Doświadczenie:** mobile-first, PWA, `localStorage`, service worker  
 **Testy i automatyzacja:** Node Test Runner, Playwright, GitHub Actions  
-**Interfejs:** React Bits TechText, FluidGlass
+**Interfejs:** React Bits TechText, GlassSurface (liquid glass)
 
 <details>
 <summary><strong>📂 Struktura projektu</strong></summary>
@@ -131,7 +131,7 @@ Główne miejsca do poznania kodu:
 - [`src/main.jsx`](src/main.jsx) — główne widoki i nawigacja.
 - [`src/data.js`](src/data.js) — pobieranie i normalizacja danych.
 - [`src/app.css`](src/app.css) — design system i style aplikacji.
-- [`src/FluidGlass.jsx`](src/FluidGlass.jsx) — szklany efekt nawigacji.
+- [`src/components/react-bits/GlassSurface.jsx`](src/components/react-bits/GlassSurface.jsx) — refrakcyjne szkło dolnej nawigacji i wyszukiwarki.
 
 </details>
 
@@ -161,6 +161,6 @@ W ustawieniach repozytorium w **Settings → Pages → Build and deployment** ja
 
 <sub>Volley Hub jest niezależnym projektem. Materiały i dane zewnętrzne należą do ich właścicieli.</sub>
 
-<sub>Komponent logo TechText pochodzi z React Bits — [informacje licencyjne i atrybucja](src/components/react-bits/LICENSE.md).</sub>
+<sub>Komponenty TechText i GlassSurface pochodzą z React Bits — [informacje licencyjne i atrybucja](src/components/react-bits/LICENSE.md).</sub>
 
 </div>

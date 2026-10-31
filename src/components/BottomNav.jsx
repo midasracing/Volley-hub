@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import useFluidGlass from '../hooks/useFluidGlass.js';
+import GlassSurface from './react-bits/GlassSurface.jsx';
 import { NAV } from '../navigation.js';
 import { calculateNavLayout } from './navLayout.js';
 import { advanceNavSpring, isNavSpringSettled, navLensStretch } from './navSpring.js';
@@ -7,16 +7,17 @@ import './BottomNav.css';
 
 const CENTER = [0.5, 0.5];
 
-// Keep the actual FluidGlass material mounted while tabs change. Moving the
-// already-rendered layer avoids recompiling WebGL or resizing its canvas.
-const StaticGlass = memo(function StaticGlass({ width }) {
-  const Glass = useFluidGlass();
-  return Glass ? <Glass
-    text="" shape="pill" shapes={['pill']} size={width} position={CENTER}
-    interaction="static" morphOnClick={false} idle={false} spin={0} wobble={0}
-    refraction={1.08} dispersion={0} reflection={0.7} tint={0.08} shadow={0.12}
-    color="#ffffff" intro={false} maxDevicePixelRatio={2}
-  /> : null;
+// React Bits GlassSurface is made for custom shapes like this pill.
+// It stays mounted as one uninterrupted glass layer while the spring moves it.
+const StaticGlass = memo(function StaticGlass() {
+  return <GlassSurface
+    className="vh-react-glass"
+    width="100%" height="100%" borderRadius={999}
+    borderWidth={0.12} brightness={55} opacity={0.9} blur={8}
+    displace={0} backgroundOpacity={0.06} saturation={1.16}
+    distortionScale={-82} redOffset={-7} greenOffset={4} blueOffset={14}
+    mixBlendMode="screen"
+  />;
 });
 
 function BottomNav({ active, onNavigate }) {
@@ -152,7 +153,7 @@ function BottomNav({ active, onNavigate }) {
     <div ref={trackRef} className={'vh-nav-items' + (layout ? ' is-ready' : '')} data-active={active}>
       {layout && <div ref={lensRef} className="vh-nav-lens" aria-hidden="true"
         style={{ width: layout.lens.width }}>
-        <StaticGlass width={layout.lens.width} />
+        <StaticGlass />
       </div>}
       {NAV.map(({ id, label, Icon }, index) => {
         const selected = active === id;
@@ -161,7 +162,7 @@ function BottomNav({ active, onNavigate }) {
           aria-current={selected ? 'page' : undefined}
           onClick={() => onNavigate(id)}
           className={'vh-nav-item' + (selected ? ' active' : '')}
-          style={slot ? { transform: `translate3d(${slot.left}px,0,0)`, width: slot.width } : { visibility: 'hidden' }}>
+          style={slot ? { flexGrow: selected ? 2.5 : 1 } : { visibility: 'hidden' }}>
           <Icon size={23} strokeWidth={selected ? 2.3 : 1.8}
             fill={selected && id === 'favorites' ? 'currentColor' : 'none'} />
           <span>{label}</span>

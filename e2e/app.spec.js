@@ -30,7 +30,7 @@ test('favorites persist after reload', async ({ page }) => {
   await page.reload();
   await page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('button', { name: 'Ulubione' }).click();
   await page.getByRole('tab', { name: /Rozgrywki/ }).click();
-  await expect(page.locator('.vh-league-stack').getByText('TAURON Liga Mężczyzn')).toBeVisible();
+  await expect(page.locator('#main-content .vh-league-stack').getByText('TAURON Liga Mężczyzn')).toBeVisible();
 });
 
 test('search overlay finds an existing league and opens its details', async ({ page }) => {
@@ -122,6 +122,33 @@ test('old Rive wordmark assets are no longer used', async ({ page }) => {
   await expect(page.locator('.vh-wordmark-icon')).toHaveCount(0);
 });
 
+
+test('navigation and search use React Bits GlassSurface without old bubble canvases', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await expect(nav.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
+  await expect(nav.locator('.vh-nav-lens .fluid-glass')).toHaveCount(0);
+  await expect(page.locator('.vh-search-glass .glass-surface')).toHaveCount(1);
+  await expect(page.locator('.vh-search-glass .fluid-glass')).toHaveCount(0);
+  for (const name of ['Główna', 'Mecze', 'Rozgrywki', 'Ulubione']) {
+    await expect(nav.getByRole('button', { name })).toBeVisible();
+  }
+  await nav.getByRole('button', { name: 'Ulubione' }).click();
+  await expect(nav.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
+});
+
+test('route changes preserve the outgoing page as an inert layer during crossfade', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await nav.getByRole('button', { name: 'Mecze' }).evaluate(element => element.click());
+  await expect(page.locator('.vh-page-exit')).toHaveCount(1);
+  await expect(page.locator('.vh-page-exit')).toHaveAttribute('aria-hidden', 'true');
+  await expect(page.locator('.vh-page-exit')).toHaveJSProperty('inert', true);
+  await expect(page.locator('#main-content')).toHaveCount(1);
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
+  await expect(page.locator('.vh-page-exit')).toHaveCount(0, { timeout: 1800 });
+});
+
 test('switching tabs crossfades pages and animates the menu label', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
@@ -198,7 +225,7 @@ test('liquid lens moves with one interruptible spring, not a CSS lens transition
   await page.waitForTimeout(850);
   const settled = await left();
   const target = await nav.getByRole('button', { name: 'Mecze' }).evaluate(el =>
-    Number(el.style.transform.match(/translate3d\(([-.\d]+)px/)?.[1]));
+    el.getBoundingClientRect().left - el.parentElement.getBoundingClientRect().left);
   expect(Math.abs(settled - target)).toBeLessThan(0.6);
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
 });
@@ -212,8 +239,7 @@ test('reduced motion snaps the liquid lens immediately to its selected tab', asy
   const difference = await nav.evaluate(root => {
     const lens = root.querySelector('.vh-nav-lens');
     const selected = root.querySelector('.vh-nav-item.active');
-    const x = value => new DOMMatrixReadOnly(getComputedStyle(value).transform).m41;
-    return Math.abs(x(lens) - x(selected));
+    return Math.abs(lens.getBoundingClientRect().left - selected.getBoundingClientRect().left);
   });
   expect(difference).toBeLessThan(0.6);
 });
