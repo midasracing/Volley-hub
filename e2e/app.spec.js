@@ -30,7 +30,7 @@ test('favorites persist after reload', async ({ page }) => {
   await page.reload();
   await page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('button', { name: 'Ulubione' }).click();
   await page.getByRole('tab', { name: /Rozgrywki/ }).click();
-  await expect(page.locator('.vh-league-stack').getByText('TAURON Liga Mężczyzn')).toBeVisible();
+  await expect(page.locator('#main-content .vh-league-stack').getByText('TAURON Liga Mężczyzn')).toBeVisible();
 });
 
 test('search overlay finds an existing league and opens its details', async ({ page }) => {
@@ -225,7 +225,7 @@ test('liquid lens moves with one interruptible spring, not a CSS lens transition
   await page.waitForTimeout(850);
   const settled = await left();
   const target = await nav.getByRole('button', { name: 'Mecze' }).evaluate(el =>
-    Number(el.style.transform.match(/translate3d\(([-.\d]+)px/)?.[1]));
+    el.getBoundingClientRect().left - el.parentElement.getBoundingClientRect().left);
   expect(Math.abs(settled - target)).toBeLessThan(0.6);
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
 });
