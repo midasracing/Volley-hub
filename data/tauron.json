@@ -58,27 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-10-31T20:26:33.855803+00:00",
+  "updated_at": "2026-10-31T23:37:09.034810+00:00",
   "matches": [
-    {
-      "id": "1104819",
-      "competition": "TAURON Liga",
-      "date": "24.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "PGE GiEK Skra Bełchatów",
-      "away": "PGE Projekt Warszawa",
-      "home_sets": 3,
-      "away_sets": 2,
-      "set_scores": [
-        "25:17",
-        "25:22",
-        "15:25",
-        "23:25",
-        "15:12"
-      ],
-      "current_points": null
-    },
     {
       "id": null,
       "competition": "AL-KO Superpuchar Polski",
@@ -240,15 +221,17 @@
       "competition": "TAURON Liga",
       "date": "31.10.2026",
       "time": "20:30",
-      "status": "live",
+      "status": "finished",
       "home": "BOGDANKA LUK Lublin",
       "away": "GKS Katowice",
-      "home_sets": 1,
+      "home_sets": 3,
       "away_sets": 0,
       "set_scores": [
-        "25:18"
+        "25:18",
+        "25:17",
+        "25:21"
       ],
-      "current_points": "2:2"
+      "current_points": null
     },
     {
       "id": "1104828",
@@ -431,56 +414,33 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104844",
+      "competition": "TAURON Liga",
+      "date": "13.11.2026",
+      "time": "17:30",
+      "status": "scheduled",
+      "home": "PGE Projekt Warszawa",
+      "away": "ChKS Chełm",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
     {
       "rank": 1,
       "team": "BOGDANKA LUK Lublin",
-      "points": 6,
-      "played": 2,
-      "wins": 2,
-      "losses": 0,
-      "sets_for": 6,
-      "sets_against": 0,
-      "points_for": 150,
-      "points_against": 131
-    },
-    {
-      "rank": 1,
-      "team": "Asseco Resovia Rzeszów",
-      "points": 7,
-      "played": 3,
-      "wins": 2,
-      "losses": 1,
-      "sets_for": 8,
-      "sets_against": 4,
-      "points_for": 276,
-      "points_against": 240
-    },
-    {
-      "rank": 1,
-      "team": "PGE GiEK Skra Bełchatów",
-      "points": 8,
-      "played": 4,
-      "wins": 3,
-      "losses": 1,
-      "sets_for": 9,
-      "sets_against": 6,
-      "points_for": 332,
-      "points_against": 334
-    },
-    {
-      "rank": 1,
-      "team": "Aluron CMC Warta Zawiercie",
       "points": 9,
-      "played": 4,
+      "played": 3,
       "wins": 3,
-      "losses": 1,
+      "losses": 0,
       "sets_for": 9,
-      "sets_against": 5,
-      "points_for": 341,
-      "points_against": 308
+      "sets_against": 0,
+      "points_for": 225,
+      "points_against": 187
     },
     {
       "rank": 2,
@@ -495,7 +455,43 @@
       "points_against": 162
     },
     {
-      "rank": 4,
+      "rank": 2,
+      "team": "Asseco Resovia Rzeszów",
+      "points": 7,
+      "played": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_for": 8,
+      "sets_against": 4,
+      "points_for": 276,
+      "points_against": 240
+    },
+    {
+      "rank": 2,
+      "team": "PGE GiEK Skra Bełchatów",
+      "points": 8,
+      "played": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_for": 9,
+      "sets_against": 6,
+      "points_for": 332,
+      "points_against": 334
+    },
+    {
+      "rank": 2,
+      "team": "Aluron CMC Warta Zawiercie",
+      "points": 9,
+      "played": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_for": 9,
+      "sets_against": 5,
+      "points_for": 341,
+      "points_against": 308
+    },
+    {
+      "rank": 5,
       "team": "PGE Projekt Warszawa",
       "points": 7,
       "played": 4,
@@ -510,13 +506,13 @@
       "rank": 7,
       "team": "GKS Katowice",
       "points": 5,
-      "played": 3,
+      "played": 4,
       "wins": 2,
-      "losses": 1,
+      "losses": 2,
       "sets_for": 6,
-      "sets_against": 5,
-      "points_for": 242,
-      "points_against": 251
+      "sets_against": 8,
+      "points_for": 298,
+      "points_against": 326
     },
     {
       "rank": 8,
