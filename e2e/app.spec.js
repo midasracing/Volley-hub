@@ -10,7 +10,7 @@ test('renders React navigation and shared match design', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Wszystkie ligi' })).toBeVisible();
   await nav.getByRole('button', { name: 'Rozgrywki' }).click();
   await expect(page.getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
-  await expect(page.getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
+  await expect(page.locator('.vh-tab-panel:not([hidden])').getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
 });
 
 test('home starts with match list, without the marked intro and hero banner', async ({ page }) => {
@@ -30,7 +30,7 @@ test('favorites persist after reload', async ({ page }) => {
   await page.reload();
   await page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('button', { name: 'Ulubione' }).click();
   await page.getByRole('tab', { name: /Rozgrywki/ }).click();
-  await expect(page.locator('#main-content .vh-league-stack').getByText('TAURON Liga Mężczyzn')).toBeVisible();
+  await expect(page.locator('.vh-tab-panel:not([hidden]) .vh-league-stack').getByText('TAURON Liga Mężczyzn')).toBeVisible();
 });
 
 test('search overlay finds an existing league and opens its details', async ({ page }) => {
@@ -216,6 +216,7 @@ test('liquid lens moves with one interruptible spring, not a CSS lens transition
   const initial = await left();
   await nav.getByRole('button', { name: 'Rozgrywki' }).click();
   await expect(track).toHaveAttribute('data-active', 'competitions');
+  await lens.evaluate(el => Promise.all(el.getAnimations().map(animation => animation.ready)));
   await page.waitForTimeout(60);
   const inFlight = await left();
   expect(inFlight).toBeGreaterThan(initial);
@@ -347,7 +348,7 @@ test('mobile navigation, date strip and saved favorites survive the cleanup', as
   await page.getByRole('button', { name: 'Dodaj do ulubionych: TAURON Liga Mężczyzn' }).click();
   await nav.getByRole('button', { name: 'Ulubione' }).click();
   await page.getByRole('tab', { name: /Rozgrywki/ }).click();
-  await expect(page.getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
+  await expect(page.locator('.vh-tab-panel:not([hidden])').getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
 });
 
 test('tabs display a new page without CSS entrance delay or extra icon animations', async ({ page }) => {
@@ -363,4 +364,68 @@ test('tabs display a new page without CSS entrance delay or extra icon animation
     icons.flatMap(icon => icon.getAnimations())
       .filter(animation => animation.effect?.getKeyframes?.().some(frame => frame.transform != null)).length);
   expect(motionCount).toBe(0);
+});
+
+test('prepared tabs reuse their DOM and keep filters while only one panel is visible', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.vh-tab-panel')).toHaveCount(4);
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await page.getByRole('button', { name: 'TAURON 1. Liga', exact: true }).click();
+  const strip = page.getByRole('tablist', { name: 'Wybierz dzień' });
+  await expect.poll(() => strip.evaluate(el => {
+    const selected = el.querySelector('[aria-selected="true"]').getBoundingClientRect();
+    const host = el.getBoundingClientRect();
+    return Math.abs(selected.left + selected.width / 2 - host.left - host.width / 2);
+  })).toBeLessThan(3);
+  const panel = await page.locator('[data-route="matches"]').elementHandle();
+  const stripHandle = await strip.elementHandle();
+  await nav.getByRole('button', { name: 'Ulubione' }).click();
+  await expect(page.getByRole('tablist', { name: 'Wybierz dzień' })).toHaveCount(0);
+  await nav.getByRole('button', { name: 'Mecze' }).click();
+  expect(await panel.evaluate(el => el === document.querySelector('[data-route="matches"]'))).toBe(true);
+  expect(await stripHandle.evaluate(el => el === document.querySelector('.im-strip'))).toBe(true);
+  await expect(page.getByRole('button', { name: 'TAURON 1. Liga', exact: true })).toHaveClass(/chosen/);
+  await expect(page.locator('.vh-tab-panel:not([hidden])')).toHaveCount(1);
+
+  // No page/list nodes may be created by a warm route switch. This catches
+  // remount regressions without a timing budget that depends on CI hardware.
+  const added = await page.evaluate(async () => {
+    let count = 0;
+    const observer = new MutationObserver(records => {
+      for (const record of records) count += record.addedNodes.length;
+    });
+    observer.observe(document.querySelector('#main-content'), { childList: true, subtree: true });
+    for (const label of ['Rozgrywki', 'Ulubione', 'Główna', 'Mecze']) {
+      document.querySelector(`.vh-nav-item[aria-label="${label}"]`).click();
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    }
+    observer.disconnect();
+    return count;
+  });
+  expect(added).toBe(0);
+});
+
+test('moving lens uses native transforms with no backdrop filters or filter maps', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await expect(nav.locator('.vh-nav-lens')).toBeVisible();
+  const animated = await nav.evaluate(root => new Promise(resolve => {
+    const observer = new MutationObserver(() => {
+      if (root.querySelector('.vh-nav-items').dataset.active !== 'favorites') return;
+      observer.disconnect();
+      const lens = root.querySelector('.vh-nav-lens');
+      const material = lens.querySelector('.glass-surface');
+      resolve({
+        nativeTransforms: lens.getAnimations().some(animation =>
+          animation.effect.getKeyframes().every(frame => typeof frame.transform === 'string')),
+        backdrop: getComputedStyle(material).backdropFilter,
+        filter: getComputedStyle(material).filter,
+        filterNodes: lens.querySelectorAll('svg, canvas, filter').length
+      });
+    });
+    observer.observe(root, { attributes: true, subtree: true });
+    root.querySelector('[aria-label="Ulubione"]').click();
+  }));
+  expect(animated).toEqual({ nativeTransforms: true, backdrop: 'none', filter: 'none', filterNodes: 0 });
 });

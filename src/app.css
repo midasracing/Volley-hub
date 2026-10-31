@@ -202,3 +202,8 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 @media(max-width:390px){.vh-app{padding-left:14px;padding-right:14px}.vh-date-wrap{margin-left:-14px;margin-right:-14px}.vh-match .im-name{font-size:14px}.vh-match .im-meta{font-size:12px}.vh-team-grid{gap:8px}}
 @media(min-width:760px){.vh-app{width:min(100%,680px)}}
 @media(prefers-reduced-motion:reduce){.vh-sets-wrap{transition:none}}
+
+/* Long lists only lay out and paint rows near the viewport. No scroll-container
+   virtualization: browser find and accessibility still see the full list. */
+.vh-picker-row{content-visibility:auto;contain-intrinsic-size:auto 64px}
+.vh-match.im-card{content-visibility:auto;contain-intrinsic-size:auto 190px}

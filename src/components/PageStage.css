@@ -3,3 +3,6 @@
 .vh-route-stage{position:relative;isolation:isolate}
 .vh-page{position:relative;min-width:0}
 .vh-page-enter{animation:none;transition:none;transform:none;opacity:1}
+
+/* Hidden tabs keep local filters and DOM, but have no layout, paint or focus targets. */
+.vh-tab-panel[hidden]{display:none!important}

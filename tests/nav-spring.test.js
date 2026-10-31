@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  advanceNavSpring, isNavSpringSettled, navLensStretch
+  advanceNavSpring, isNavSpringSettled, navLensStretch, planNavMotion, sampleNavMotion
 } from '../src/components/navSpring.js';
 
 const move = (target, fps, duration = 1.2, initial = { position: 0, velocity: 0 }) => {
@@ -44,4 +44,16 @@ test('the glass stretch is bounded and disappears when settled', () => {
   assert.equal(navLensStretch(Number.NaN, 500), 1);
   assert.ok(navLensStretch(1200, 100) > 1);
   assert.ok(navLensStretch(9000, 2000) <= 1.16);
+});
+
+test('native motion preserves position and velocity when a tap interrupts it', () => {
+  const motion = planNavMotion({ position: 7, velocity: 0 }, 220);
+  const interrupted = sampleNavMotion(motion, 125);
+  assert.ok(interrupted.position > 7 && interrupted.position < 220);
+  assert.ok(interrupted.velocity > 0);
+  const reversed = planNavMotion(interrupted, 35);
+  assert.deepEqual(reversed.samples[0], interrupted);
+  assert.deepEqual(sampleNavMotion(reversed, reversed.duration), { position: 35, velocity: 0 });
+  assert.deepEqual(sampleNavMotion(reversed, reversed.duration + 5000), { position: 35, velocity: 0 });
+  assert.ok(reversed.duration < 1000);
 });

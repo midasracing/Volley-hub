@@ -825,4 +825,10 @@ const GlassSurface = ({
   );
 };
 
+// Lightweight variant for moving controls: no backdrop reads, SVG displacement
+// maps, ResizeObserver, canvas or runtime feature detection.
+export function StaticGlassSurface({ className = '' }) {
+  return <div className={'glass-surface glass-surface--static ' + className} />;
+}
+
 export default GlassSurface;

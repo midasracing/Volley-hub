@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createPortal } from 'react-dom';
 import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
@@ -60,7 +60,8 @@ function useFeeds() {
       document.removeEventListener('visibilitychange', refreshWhenVisible);
     };
   }, []);
-  return { feeds, errors, loading, refresh: () => setRevision(current => current + 1) };
+  const refresh = useCallback(() => setRevision(current => current + 1), []);
+  return { feeds, errors, loading, refresh };
 }
 
 function TeamLogo({ name, logo, className = '' }) {
@@ -160,11 +161,18 @@ function DateStrip({ selected, onSelect }) {
   const days = useMemo(() => Array.from({ length: 61 }, (_, index) => addDays(selected, index - 30)), [selectedKey]);
   useEffect(() => {
     const host = strip.current;
-    const active = host?.querySelector('[aria-selected="true"]');
-    if (host && active) {
+    if (!host) return undefined;
+    const center = () => {
+      if (!host.clientWidth) return; // A prepared tab may still be hidden.
+      const active = host.querySelector('[aria-selected="true"]');
+      if (!active) return;
       const left = active.offsetLeft + active.offsetWidth / 2 - host.clientWidth / 2;
       host.scrollLeft = Math.max(0, left);
-    }
+    };
+    center();
+    const observer = new ResizeObserver(center);
+    observer.observe(host);
+    return () => observer.disconnect();
   }, [selectedKey]);
   return <div className="im-strip-wrap vh-date-wrap">
     <div className="im-strip" role="tablist" aria-label="Wybierz dzień" ref={strip}>
@@ -180,7 +188,7 @@ function DateStrip({ selected, onSelect }) {
   </div>;
 }
 
-function MatchesPage({ feeds, matches, loading, errors, refresh, logos, selectedDate, setSelectedDate, leagueFilter, setLeagueFilter }) {
+const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, errors, refresh, logos, selectedDate, setSelectedDate, leagueFilter, setLeagueFilter }) {
   const [liveOnly, setLiveOnly] = useState(false);
   const [groupFilter, setGroupFilter] = useState('all');
   const input = useRef(null);
@@ -206,9 +214,9 @@ function MatchesPage({ feeds, matches, loading, errors, refresh, logos, selected
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups matches={filtered} logos={logos} emptyMessage={liveOnly ? 'Żaden z obserwowanych meczów nie jest obecnie oznaczony jako na żywo.' : 'Nie znaleziono meczów na wybrany dzień. Przesuń kalendarz lub wybierz inną ligę.'} />}
     <p className="vh-source-note">Dane pochodzą z oficjalnych źródeł rozgrywek. Wyniki aktualizują się automatycznie, gdy aplikacja jest aktywna.</p>
   </>;
-}
+});
 
-function HomePage({ feeds, matches, loading, errors, refresh, logos, favorites, onNavigate, onOpenLeague }) {
+const HomePage = React.memo(function HomePage({ feeds, matches, loading, errors, refresh, logos, favorites, onNavigate, onOpenLeague }) {
   const allMatches = matches;
   const today = dateKey(NOW());
   const todayMatches = allMatches.filter(match => feedDateKey(match.date) === today);
@@ -224,7 +232,7 @@ function HomePage({ feeds, matches, loading, errors, refresh, logos, favorites, 
     <SectionTitle eyebrow="TWOJA STREFA" title="Ulubione" action="Otwórz" onAction={() => onNavigate('favorites')} />
     <button type="button" className="vh-favorites-teaser" onClick={() => onNavigate('favorites')}><span className="vh-heart-icon"><Heart size={24} /></span><span><strong>{savedCount ? savedCount + ' zapisanych elementów' : 'Twój skład, Twoje ligi'}</strong><small>{savedCount ? 'Przejdź do obserwowanych drużyn i rozgrywek' : 'Dodaj drużyny i ligi, które chcesz śledzić'}</small></span><ChevronRight size={19} /></button>
   </>;
-}
+});
 
 function Standings({ rows = [], logos }) {
   if (!rows.length) return <EmptyState title="Tabela niedostępna" message="Oficjalne źródło nie udostępnia jeszcze tabeli dla tej grupy." Icon={Trophy} />;
@@ -237,7 +245,7 @@ function TeamsGrid({ teams = [], logos, favorites, toggleFavorite }) {
   if (!teams.length) return <EmptyState title="Brak listy drużyn" message="Lista zespołów nie jest jeszcze dostępna w oficjalnym źródle." />;
   return <div className="vh-team-grid">{teams.map((team, index) => <article className="vh-team-tile" key={team.name + index}><TeamLogo name={team.name} logo={team.logo || logos.get(normalizeName(team.name))} /><strong>{team.name}</strong><button type="button" aria-label={(favorites.teams.some(x => sameName(x, team.name)) ? 'Usuń z' : 'Dodaj do') + ' ulubionych: ' + team.name} onClick={() => toggleFavorite('teams', team.name)} className={favorites.teams.some(x => sameName(x, team.name)) ? 'is-favorite' : ''}><Star size={19} fill={favorites.teams.some(x => sameName(x, team.name)) ? 'currentColor' : 'none'} /></button></article>)}</div>;
 }
-function CompetitionsPage({ feeds, matches, loading, errors, refresh, logos, favorites, toggleFavorite, selectedLeague, setSelectedLeague, onMatches }) {
+const CompetitionsPage = React.memo(function CompetitionsPage({ feeds, matches, loading, errors, refresh, logos, favorites, toggleFavorite, selectedLeague, setSelectedLeague, onMatches }) {
   const [category, setCategory] = useState('Polska');
   const [view, setView] = useState('matches');
   const [group, setGroup] = useState('all');
@@ -269,13 +277,15 @@ function CompetitionsPage({ feeds, matches, loading, errors, refresh, logos, fav
       {category === 'Polska' ? <><SectionTitle eyebrow="POLSKA · MĘŻCZYŹNI" title="Dostępne ligi" /><div className="vh-league-stack">{LEAGUES.map((item, index) => <article className="vh-league-tile vh-league-select" key={item.id}><button className="vh-league-main" onClick={() => openLeague(item.id)}><span className="vh-league-number">{String(index + 1).padStart(2, '0')}</span><span><strong>{item.name}</strong><small>{item.description}</small></span><ChevronRight size={20} /></button><button type="button" className={'vh-star-button ' + (favorites.leagues.includes(item.name) ? 'is-favorite' : '')} aria-label={(favorites.leagues.includes(item.name) ? 'Usuń z' : 'Dodaj do') + ' ulubionych: ' + item.name} onClick={() => toggleFavorite('leagues', item.name)}><Star size={20} fill={favorites.leagues.includes(item.name) ? 'currentColor' : 'none'} /></button></article>)}</div></> : <EmptyState Icon={Trophy} title="Wkrótce" message="Nowe rozgrywki dodamy dopiero po weryfikacji oficjalnych źródeł danych. Nie pokazujemy fikcyjnych wyników." />}
     </>}
   </>;
-}
+});
 
-function FavoritesPage({ feeds, logos, favorites, toggleFavorite, onOpenLeague }) {
+const FavoritesPage = React.memo(function FavoritesPage({ teams, logos, favorites, toggleFavorite, onOpenLeague }) {
   const [tab, setTab] = useState('teams');
   const [query, setQuery] = useState('');
-  const teams = teamIndex(feeds);
-  const matches = teams.filter(team => normalizeName(team.name).includes(normalizeName(query)));
+  const matches = useMemo(() => {
+    const term = normalizeName(query);
+    return teams.filter(team => normalizeName(team.name).includes(term));
+  }, [teams, query]);
   const selected = tab === 'teams' ? favorites.teams : favorites.leagues;
   return <>
     <PageHeader title="Ulubione" subtitle="Twoje drużyny i ligi. Zawsze pod ręką." />
@@ -290,7 +300,7 @@ function FavoritesPage({ feeds, logos, favorites, toggleFavorite, onOpenLeague }
       return <button key={item.name} type="button" className="vh-picker-row" onClick={() => toggleFavorite(tab, item.name)}>{tab === 'teams' ? <TeamLogo name={item.name} logo={item.logo || logos.get(normalizeName(item.name))} /> : <span className="vh-mini-league"><Trophy size={17} /></span>}<span>{item.name}</span><span className={'vh-picker-check ' + (chosen ? 'selected' : '')}>{chosen ? <Check size={17} /> : <Star size={16} />}</span></button>;
     })}{tab === 'teams' && !matches.length && <p className="vh-source-note">Nie znaleziono drużyn.</p>}</div>
   </>;
-}
+});
 
 function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites, toggleFavorite }) {
   const [query, setQuery] = useState('');
@@ -332,6 +342,7 @@ function SearchBubble({ onClick }) {
 function App() {
   const route = () => { const hash = window.location.hash.replace(/^#\/?/, ''); return ROUTES.includes(hash) ? hash : 'home'; };
   const [page, setPage] = useState(route);
+  const [visitedPages, setVisitedPages] = useState(() => [page]);
   const [direction, setDirection] = useState('forward');
   const [reducedMotion, setReducedMotion] = useState(() =>
     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
@@ -346,7 +357,8 @@ function App() {
   // A single normalized/sorted feed shared by all tabs. Avoid expensive
   // duplicate sorting on every page mount, especially on older iPhones.
   const matches = useMemo(() => matchesFromFeeds(feeds), [feeds]);
-  const logos = useMemo(() => new Map(teamIndex(feeds).filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [feeds]);
+  const teams = useMemo(() => teamIndex(feeds), [feeds]);
+  const logos = useMemo(() => new Map(teams.filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [teams]);
   const switchPage = useCallback(id => {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
     const previous = currentPage.current;
@@ -355,20 +367,46 @@ function App() {
     // Deferring the page made the bar jump ahead of the content on Safari.
     const nextDirection = ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward';
     setDirection(nextDirection);
+    setVisitedPages(previous => previous.includes(id) ? previous : [...previous, id]);
     setPage(id);
   }, []);
+  // Only four bounded tabs: prepare one hidden panel at a time after data
+  // arrives. Low-priority renders can yield to a tap; subsequent navigation
+  // only toggles visibility, including the first visit after the app settles.
+  useEffect(() => {
+    if (loading) return undefined;
+    const next = ROUTES.find(id => !visitedPages.includes(id));
+    if (!next) return undefined;
+    const prepare = () => startTransition(() => {
+      setVisitedPages(previous => previous.includes(next) ? previous : [...previous, next]);
+    });
+    if (window.requestIdleCallback) {
+      const task = window.requestIdleCallback(prepare, { timeout: 2000 });
+      return () => window.cancelIdleCallback(task);
+    }
+    const task = window.setTimeout(prepare, 150);
+    return () => window.clearTimeout(task);
+  }, [loading, visitedPages]);
   const navigate = useCallback(id => {
     if (!ROUTES.includes(id)) return;
     setSearchOpen(false);
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (currentPage.current === id) window.scrollTo({ top: 0, behavior: 'instant' });
     switchPage(id);
-    if (window.location.hash !== '#' + id) window.location.hash = id;
+    if (window.location.hash !== '#' + id) window.history.pushState(null, '', '#' + id);
   }, [switchPage]);
   useEffect(() => {
     const sync = () => switchPage(route());
     window.addEventListener('hashchange', sync);
-    return () => window.removeEventListener('hashchange', sync);
+    window.addEventListener('popstate', sync);
+    return () => {
+      window.removeEventListener('hashchange', sync);
+      window.removeEventListener('popstate', sync);
+    };
   }, [switchPage]);
+  // Reset after the new panel is visible, avoiding layout of the outgoing list.
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [page]);
   useEffect(() => {
     const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
     if (!media) return undefined;
@@ -388,26 +426,26 @@ function App() {
       navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js').catch(() => {});
     }
   }, []);
-  function openLeague(id) {
+  const openLeague = useCallback(id => {
     if (!id) return;
     setSelectedLeague(id);
     navigate('competitions');
-  }
-  function goToMatches(id) {
+  }, [navigate]);
+  const goToMatches = useCallback(id => {
     setLeagueFilter(id || null);
     navigate('matches');
-  }
-  function toggleFavorite(type, name) {
+  }, [navigate]);
+  const toggleFavorite = useCallback((type, name) => {
     setFavorites(current => {
       const exists = current[type].some(value => sameName(value, name));
       return { ...current, [type]: exists ? current[type].filter(value => !sameName(value, name)) : [...current[type], name] };
     });
-  }
+  }, []);
   function renderPage(id) {
     if (id === 'home') return <HomePage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />;
     if (id === 'matches') return <MatchesPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />;
     if (id === 'competitions') return <CompetitionsPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
-    if (id === 'favorites') return <FavoritesPage feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;
+    if (id === 'favorites') return <FavoritesPage teams={teams} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;
     return null;
   }
   return <div className="vh-app" id="ios-matches">
@@ -418,7 +456,9 @@ function App() {
       </div>
     </div>
     <PageStage page={page} direction={direction} reducedMotion={reducedMotion}>
-      {renderPage(page)}
+      {visitedPages.map(id => <div key={id} className="vh-tab-panel" data-route={id} hidden={page !== id}>
+        {renderPage(id)}
+      </div>)}
     </PageStage>
     {createPortal(<BottomNav active={page} onNavigate={navigate} />, document.body)}
     {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
