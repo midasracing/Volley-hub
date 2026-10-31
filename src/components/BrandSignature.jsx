@@ -5,8 +5,8 @@ export default function BrandSignature() {
     <img
       src={import.meta.env.BASE_URL + 'kiedy-siatka-logo.svg'}
       alt="Kiedy Siatka?"
-      width="340"
-      height="184"
+      width="1180"
+      height="655"
       decoding="async"
       draggable={false}
     />
