@@ -160,8 +160,12 @@ function DateStrip({ selected, onSelect }) {
   const todayKey = dateKey(NOW());
   const days = useMemo(() => Array.from({ length: 61 }, (_, index) => addDays(selected, index - 30)), [selectedKey]);
   useEffect(() => {
-    const active = strip.current?.querySelector('[aria-selected="true"]');
-    if (active) active.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
+    const host = strip.current;
+    const active = host?.querySelector('[aria-selected="true"]');
+    if (host && active) {
+      const targetLeft = active.offsetLeft + active.offsetWidth / 2 - host.clientWidth / 2;
+      host.scrollLeft = Math.max(0, targetLeft);
+    }
   }, [selectedKey]);
   return <div className="im-strip-wrap vh-date-wrap">
     <div className="im-strip" role="tablist" aria-label="Wybierz dzień" ref={strip}>
@@ -177,11 +181,11 @@ function DateStrip({ selected, onSelect }) {
   </div>;
 }
 
-function MatchesPage({ feeds, loading, errors, refresh, logos, selectedDate, setSelectedDate, leagueFilter, setLeagueFilter }) {
+function MatchesPage({ feeds, matches, loading, errors, refresh, logos, selectedDate, setSelectedDate, leagueFilter, setLeagueFilter }) {
   const [liveOnly, setLiveOnly] = useState(false);
   const [groupFilter, setGroupFilter] = useState('all');
   const input = useRef(null);
-  const all = useMemo(() => matchesFromFeeds(feeds, leagueFilter), [feeds, leagueFilter]);
+  const all = useMemo(() => leagueFilter ? matches.filter(match => match.leagueId === leagueFilter) : matches, [matches, leagueFilter]);
   const groups = [...new Set(all.filter(match => match.leagueId === 'second').map(match => match.group).filter(Boolean))];
   const filtered = all.filter(match => (!liveOnly || isLive(match)) && (liveOnly || feedDateKey(match.date) === dateKey(selectedDate)) && (groupFilter === 'all' || match.leagueId !== 'second' || match.group === groupFilter));
   const updateLeague = id => { setLeagueFilter(id); setGroupFilter('all'); };
@@ -205,8 +209,8 @@ function MatchesPage({ feeds, loading, errors, refresh, logos, selectedDate, set
   </>;
 }
 
-function HomePage({ feeds, loading, errors, refresh, logos, favorites, onNavigate, onOpenLeague }) {
-  const allMatches = useMemo(() => matchesFromFeeds(feeds), [feeds]);
+function HomePage({ feeds, matches, loading, errors, refresh, logos, favorites, onNavigate, onOpenLeague }) {
+  const allMatches = matches;
   const today = dateKey(NOW());
   const todayMatches = allMatches.filter(match => feedDateKey(match.date) === today);
   const upcoming = allMatches.filter(match => feedDateKey(match.date) >= today).slice(0, 3);
@@ -234,7 +238,7 @@ function TeamsGrid({ teams = [], logos, favorites, toggleFavorite }) {
   if (!teams.length) return <EmptyState title="Brak listy drużyn" message="Lista zespołów nie jest jeszcze dostępna w oficjalnym źródle." />;
   return <div className="vh-team-grid">{teams.map((team, index) => <article className="vh-team-tile" key={team.name + index}><TeamLogo name={team.name} logo={team.logo || logos.get(normalizeName(team.name))} /><strong>{team.name}</strong><button type="button" aria-label={(favorites.teams.some(x => sameName(x, team.name)) ? 'Usuń z' : 'Dodaj do') + ' ulubionych: ' + team.name} onClick={() => toggleFavorite('teams', team.name)} className={favorites.teams.some(x => sameName(x, team.name)) ? 'is-favorite' : ''}><Star size={19} fill={favorites.teams.some(x => sameName(x, team.name)) ? 'currentColor' : 'none'} /></button></article>)}</div>;
 }
-function CompetitionsPage({ feeds, loading, errors, refresh, logos, favorites, toggleFavorite, selectedLeague, setSelectedLeague, onMatches }) {
+function CompetitionsPage({ feeds, matches, loading, errors, refresh, logos, favorites, toggleFavorite, selectedLeague, setSelectedLeague, onMatches }) {
   const [category, setCategory] = useState('Polska');
   const [view, setView] = useState('matches');
   const [group, setGroup] = useState('all');
@@ -243,7 +247,7 @@ function CompetitionsPage({ feeds, loading, errors, refresh, logos, favorites, t
   const grouped = league?.id === 'second' ? (data?.groups || []) : [];
   const groupChoices = group === 'all' ? grouped : grouped.filter(item => item.name === group);
   const openLeague = id => { setSelectedLeague(id); setView('matches'); setGroup('all'); };
-  const all = league ? matchesFromFeeds(feeds, league.id).filter(match => group === 'all' || match.group === group) : [];
+  const all = league ? matches.filter(match => match.leagueId === league.id && (group === 'all' || match.group === group)) : [];
   const today = dateKey(NOW());
   const pageMatches = view === 'results' ? all.filter(isFinished).reverse().slice(0, 40) : all.filter(match => feedDateKey(match.date) >= today).slice(0, 25);
   return <>
@@ -346,6 +350,9 @@ function App() {
   const [favorites, setFavorites] = useState(readFavorites);
   const [searchOpen, setSearchOpen] = useState(false);
   const { feeds, errors, loading, refresh } = useFeeds();
+  // Normalize, deduplicate and sort league feeds only when the data changes.
+  // Recomputing on every tab mount delayed the first paint on slower phones.
+  const matches = useMemo(() => matchesFromFeeds(feeds), [feeds]);
   const logos = useMemo(() => new Map(teamIndex(feeds).filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [feeds]);
   const switchPage = useCallback(id => {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
@@ -404,9 +411,9 @@ function App() {
     });
   }
   function renderPage(id) {
-    if (id === 'home') return <HomePage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />;
-    if (id === 'matches') return <MatchesPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />;
-    if (id === 'competitions') return <CompetitionsPage feeds={feeds} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
+    if (id === 'home') return <HomePage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />;
+    if (id === 'matches') return <MatchesPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />;
+    if (id === 'competitions') return <CompetitionsPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
     if (id === 'favorites') return <FavoritesPage feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;
     return null;
   }

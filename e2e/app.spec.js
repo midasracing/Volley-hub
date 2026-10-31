@@ -246,6 +246,29 @@ test('reduced motion snaps the liquid lens immediately to its selected tab', asy
   expect(difference).toBeLessThan(0.6);
 });
 
+
+test('the dock contains exactly one navigation and does not animate flex layout every frame', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 760 });
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await expect(nav).toHaveCount(1);
+  await expect(page.locator('body > .vh-bottom')).toHaveCount(1);
+  await expect(page.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
+  await expect(nav.locator('.vh-nav-item')).toHaveCount(4);
+
+  const transitions = await nav.locator('.vh-nav-item').first().evaluate(button =>
+    getComputedStyle(button).transitionProperty);
+  expect(transitions).not.toContain('flex-grow');
+  expect(transitions).not.toContain('width');
+  expect(transitions).not.toContain('gap');
+
+  for (const label of ['Mecze', 'Rozgrywki', 'Ulubione', 'Główna']) {
+    await nav.getByRole('button', { name: label }).evaluate(button => button.click());
+    await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
+    await expect(page.locator('#main-content')).toHaveCount(1);
+  }
+});
+
 test('buttons remain separated throughout the transition at 320px and 375px',async({page})=>{
   for(const width of [320,375]){
     await page.setViewportSize({width,height:760});

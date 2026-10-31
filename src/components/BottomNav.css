@@ -23,15 +23,16 @@
 .vh-nav-item{z-index:1;display:flex;align-items:center;justify-content:center;gap:0;
   padding:0;border:0;background:transparent;color:#afbacd;white-space:nowrap;
   overflow:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
-  transition:flex-grow .42s cubic-bezier(.18,.78,.24,1),gap .25s ease,color .24s ease}
+  /* Geometry switches once per tap; the icon and lens animate via transforms.
+     Animating flex-grow forced a full dock layout on EVERY frame in Safari. */
+  transition:color .22s ease}
 .vh-nav-item>span{display:block;max-width:0;opacity:0;overflow:hidden;min-width:0;
   font-size:14px;font-weight:750;transform:translate3d(-4px,0,0);
-  transition:max-width .25s ease,opacity .1s ease,transform .25s ease}
-.vh-nav-item svg{flex:none;transition:transform .24s ease,color .24s ease}
+  transition:opacity .15s ease}
+.vh-nav-item svg{flex:none;transition:color .22s ease}
 .vh-nav-item.active{gap:7px;background:transparent;color:white;box-shadow:none}
 .vh-nav-item.active>span{max-width:110px;opacity:1;transform:translate3d(0,0,0);
-  transition:max-width .38s cubic-bezier(.22,1,.36,1),
-    opacity .16s ease .14s,transform .38s cubic-bezier(.22,1,.36,1)}
+  transition:opacity .18s ease .06s}
 .vh-nav-item.active svg{color:#b4caff;transform:translateY(-1px) scale(1.05)}
 .vh-nav-item:active svg{transform:scale(.94)}
 .vh-nav-items:not(.is-ready) .vh-nav-item,
