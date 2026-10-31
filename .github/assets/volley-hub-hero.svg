@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="560" viewBox="0 0 1480 560" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">VOLLEY HUB — Siatkówka w jednym miejscu</title>
+  <desc id="desc">Granatowy baner z wyrazistym napisem VOLLEY HUB, niebieskimi i czerwonymi akcentami oraz autorską ilustracją piłki siatkowej.</desc>
+  <defs>
+    <linearGradient id="bg" x1="54" y1="18" x2="1426" y2="596" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101722"/>
+      <stop offset=".55" stop-color="#0E1118"/>
+      <stop offset="1" stop-color="#172139"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C0D0FF"/>
+      <stop offset="1" stop-color="#7194F4"/>
+    </linearGradient>
+    <linearGradient id="ball" x1="967" y1="130" x2="1316" y2="452" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3F6FF"/>
+      <stop offset=".48" stop-color="#DFE8FF"/>
+      <stop offset="1" stop-color="#7892C4"/>
+    </linearGradient>
+    <linearGradient id="stripe" x1="1030" y1="120" x2="1290" y2="436" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9DB8FF"/>
+      <stop offset="1" stop-color="#5676C9"/>
+    </linearGradient>
+    <linearGradient id="red" x1="1130" y1="185" x2="1270" y2="465" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7E89"/>
+      <stop offset="1" stop-color="#EA4D67"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="translate(1160 265) rotate(90) scale(278 310)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#789BFF" stop-opacity=".33"/>
+      <stop offset="1" stop-color="#789BFF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" stroke="#C3CEEC" stroke-opacity=".065"/>
+    </pattern>
+    <clipPath id="ballClip"><circle cx="1150" cy="278" r="151"/></clipPath>
+    <clipPath id="canvas"><rect width="1480" height="560" rx="28"/></clipPath>
+  </defs>
+  <g clip-path="url(#canvas)">
+    <rect width="1480" height="560" fill="url(#bg)"/>
+    <rect width="1480" height="560" fill="url(#grid)"/>
+    <circle cx="1160" cy="265" r="310" fill="url(#halo)"/>
+    <path d="M0 0H1480V4H0Z" fill="#8BABFF"/>
+    <path d="M1108 4H1480V8H1108Z" fill="#FB5967"/>
+    <path d="M0 556H1480V560H0Z" fill="#202D43"/>
+    <path d="M80 89H1380" stroke="#667B9D" stroke-opacity=".3"/>
+    <rect x="80" y="57" width="9" height="9" rx="2" fill="#8BABFF"/>
+    <text x="104" y="67" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" letter-spacing="4" fill="#B7C5E0">POLSKA SIATKÓWKA</text>
+    <text x="1382" y="67" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="3" fill="#8394B2">DIGITAL MATCH CENTER  /  01</text>
+    <path d="M80 146H80.5" stroke="#8BABFF" stroke-width="10" stroke-linecap="round"/>
+    <text x="75" y="280" font-family="'Arial Black',Arial,Helvetica,sans-serif" font-size="136" font-weight="900" letter-spacing="-8" fill="#F5F6FA">VOLLEY</text>
+    <text x="78" y="408" font-family="'Arial Black',Arial,Helvetica,sans-serif" font-size="136" font-weight="900" letter-spacing="-8" fill="url(#blue)">HUB</text>
+    <circle cx="368" cy="386" r="12" fill="#FB5967"/>
+    <path d="M80 445H680" stroke="#8BABFF" stroke-opacity=".25"/>
+    <text x="80" y="483" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" letter-spacing="4.5" fill="#ECF0F9">MECZE  /  WYNIKI  /  ROZGRYWKI</text>
+    <text x="81" y="518" font-family="Arial,Helvetica,sans-serif" font-size="17" letter-spacing=".8" fill="#AEB7C8">Wszystko, co ważne, zanim zabrzmi ostatni gwizdek.</text>
+    <g opacity=".65">
+      <path d="M824 116V470M908 116V470M1390 116V470" stroke="#91A7D5" stroke-opacity=".24" stroke-dasharray="7 13"/>
+      <path d="M778 194H1420M778 367H1420" stroke="#91A7D5" stroke-opacity=".18" stroke-dasharray="7 13"/>
+      <path d="M828 116H1393V470H828Z" stroke="#AEC5FE" stroke-opacity=".16" stroke-width="2"/>
+      <path d="M1111 116V470" stroke="#AEC5FE" stroke-opacity=".12" stroke-width="2"/>
+    </g>
+    <circle cx="1150" cy="278" r="199" stroke="#98ACD6" stroke-opacity=".12"/>
+    <circle cx="1150" cy="278" r="179" stroke="#98ACD6" stroke-opacity=".25" stroke-dasharray="3 12"/>
+    <circle cx="1150" cy="278" r="159" fill="#1B2D4B"/>
+    <circle cx="1150" cy="278" r="151" fill="url(#ball)"/>
+    <g clip-path="url(#ballClip)">
+      <path d="M1000 135C1058 180 1082 215 1074 290C1066 359 1029 402 970 438" stroke="url(#stripe)" stroke-width="38"/>
+      <path d="M1040 117C1130 174 1176 233 1192 311C1201 357 1187 410 1154 460" stroke="#647FBD" stroke-width="28"/>
+      <path d="M1304 160C1218 195 1170 243 1157 307C1145 371 1172 417 1239 451" stroke="url(#red)" stroke-width="46"/>
+      <path d="M989 244C1088 233 1182 189 1257 122" stroke="#173460" stroke-opacity=".8" stroke-width="7"/>
+      <path d="M1002 336C1107 308 1227 319 1316 385" stroke="#243D66" stroke-opacity=".8" stroke-width="7"/>
+      <path d="M1085 124C1118 212 1107 337 1061 438" stroke="#243D66" stroke-opacity=".72" stroke-width="6"/>
+      <path d="M1163 126C1220 192 1259 254 1306 304" stroke="#F8FBFF" stroke-opacity=".6" stroke-width="5"/>
+      <path d="M1010 193C1046 162 1076 146 1110 134" stroke="#FFFFFF" stroke-opacity=".48" stroke-width="9" stroke-linecap="round"/>
+    </g>
+    <circle cx="1150" cy="278" r="151" stroke="#D8E3FF" stroke-opacity=".55" stroke-width="2"/>
+    <rect x="863" y="395" width="160" height="48" rx="12" fill="#121C2B" stroke="#40516C"/>
+    <circle cx="889" cy="419" r="6" fill="#FB5967"/>
+    <text x="908" y="425" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" letter-spacing="2" fill="#E7EEFC">MATCH DAY</text>
+    <rect x="1278" y="112" width="113" height="43" rx="12" fill="#1A283E" stroke="#425775"/>
+    <text x="1334.5" y="139" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" letter-spacing="2" fill="#C4D3F2">PWA</text>
+    <text x="1382" y="523" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#8294B4">BUILT FOR THE GAME.</text>
+  </g>
+</svg>
