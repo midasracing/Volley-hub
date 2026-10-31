@@ -350,6 +350,25 @@ function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const { feeds, errors, loading, refresh } = useFeeds();
   const logos = useMemo(() => new Map(teamIndex(feeds).filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [feeds]);
+  const switchPage = useCallback(id => {
+    if (!ROUTES.includes(id) || currentPage.current === id) return;
+    const previous = currentPage.current;
+    currentPage.current = id;
+    // React keeps the nav update urgent, and the page update low priority.
+    setNavPage(id);
+    const nextDirection = ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward';
+    React.startTransition(() => {
+      setDirection(nextDirection);
+      setPage(id);
+    });
+  }, []);
+  const navigate = useCallback(id => {
+    if (!ROUTES.includes(id)) return;
+    setSearchOpen(false);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    switchPage(id);
+    if (window.location.hash !== '#' + id) window.location.hash = id;
+  }, [switchPage]);
   useEffect(() => {
     const sync = () => switchPage(route());
     window.addEventListener('hashchange', sync);
@@ -374,25 +393,6 @@ function App() {
       navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js').catch(() => {});
     }
   }, []);
-  const switchPage = useCallback(id => {
-    if (!ROUTES.includes(id) || currentPage.current === id) return;
-    const previous = currentPage.current;
-    currentPage.current = id;
-    // React keeps the nav update urgent, and the page update low priority.
-    setNavPage(id);
-    const nextDirection = ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward';
-    React.startTransition(() => {
-      setDirection(nextDirection);
-      setPage(id);
-    });
-  }, []);
-  const navigate = useCallback(id => {
-    if (!ROUTES.includes(id)) return;
-    setSearchOpen(false);
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    switchPage(id);
-    if (window.location.hash !== '#' + id) window.location.hash = id;
-  }, [switchPage]);
   function openLeague(id) {
     if (!id) return;
     setSelectedLeague(id);
