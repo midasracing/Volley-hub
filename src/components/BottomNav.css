@@ -6,7 +6,7 @@
   z-index:100;isolation:isolate;border:1px solid rgba(255,255,255,.21);
   border-radius:999px;background:rgba(24,30,42,.93);
   box-shadow:0 12px 40px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.14);
-  animation:vh-nav-enter .38s cubic-bezier(.22,1,.36,1) both}
+  animation:none}
 .vh-nav-items{--vh-nav-gap:3px;position:relative;display:flex;gap:var(--vh-nav-gap);height:100%;width:100%;padding:7px}
 .vh-nav-lens{position:absolute;top:7px;bottom:7px;left:0;min-width:0;border-radius:999px}
 .vh-nav-item{position:relative;flex:1 1 0px;min-width:0;border-radius:999px}
@@ -25,20 +25,18 @@
   overflow:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
   /* Geometry switches once per tap; the icon and lens animate via transforms.
      Animating flex-grow forced a full dock layout on EVERY frame in Safari. */
-  transition:color .22s ease}
+  transition:color .09s ease}
 .vh-nav-item>span{display:block;max-width:0;opacity:0;overflow:hidden;min-width:0;
   font-size:14px;font-weight:750;transform:translate3d(-4px,0,0);
-  transition:opacity .15s ease}
-.vh-nav-item svg{flex:none;transition:color .22s ease}
+  transition:opacity .09s ease}
+.vh-nav-item svg{flex:none;transition:color .09s ease}
 .vh-nav-item.active{gap:7px;background:transparent;color:white;box-shadow:none}
 .vh-nav-item.active>span{max-width:110px;opacity:1;transform:translate3d(0,0,0);
-  transition:opacity .18s ease .06s}
+  transition:opacity .09s ease}
 .vh-nav-item.active svg{color:#b4caff;transform:translateY(-1px) scale(1.05)}
 .vh-nav-item:active svg{transform:scale(.94)}
 .vh-nav-items:not(.is-ready) .vh-nav-item,
 .vh-nav-items:not(.is-ready) .vh-nav-lens{transition:none}
-@keyframes vh-nav-enter{from{opacity:0;transform:translate(-50%,12px) scale(.98)}
-  to{opacity:1;transform:translate(-50%,0) scale(1)}}
 @media(max-width:390px){.vh-nav-items{--vh-nav-gap:0px}.vh-nav-item.active>span{font-size:12px}}
 @media(min-width:760px){.vh-bottom{width:min(calc(100% - 32px),580px)}}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){
@@ -57,4 +55,10 @@
     background:linear-gradient(145deg,rgba(199,216,255,.30),rgba(103,132,191,.17) 55%,rgba(167,189,232,.23));
   }
   .vh-nav-lens .glass-surface__rim{opacity:.85}
+}
+
+/* Safari touch: only one static-glass material on the transformed lens. */
+@supports (-webkit-touch-callout: none){
+  .vh-nav-lens .glass-surface__filter{display:none}
+  .vh-nav-lens .glass-surface--fallback{box-shadow:inset 0 1px rgba(255,255,255,.2),0 5px 15px rgba(0,0,0,.14)}
 }

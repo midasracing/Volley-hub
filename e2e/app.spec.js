@@ -122,13 +122,13 @@ test('old Rive wordmark assets are no longer used', async ({ page }) => {
 });
 
 
-test('navigation and search use React Bits GlassSurface without old bubble canvases', async ({ page }) => {
+test('exactly one React Bits glass surface is mounted in the dock, without legacy FluidGlass', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   await expect(nav.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
   await expect(nav.locator('.vh-nav-lens .fluid-glass')).toHaveCount(0);
-  await expect(page.locator('.vh-search-glass .glass-surface')).toHaveCount(1);
-  await expect(page.locator('.vh-search-glass .fluid-glass')).toHaveCount(0);
+  await expect(page.locator('.glass-surface')).toHaveCount(1);
+  await expect(page.locator('.fluid-glass')).toHaveCount(0);
   for (const name of ['Główna', 'Mecze', 'Rozgrywki', 'Ulubione']) {
     await expect(nav.getByRole('button', { name })).toBeVisible();
   }
@@ -150,11 +150,12 @@ test('rapid switches keep one live screen and menu in sync, without cloning page
   }
 });
 
-test('switching tabs crossfades pages and animates the menu label', async ({ page }) => {
+test('switching tabs renders the page immediately without delayed transitions', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   await nav.getByRole('button', { name: 'Mecze' }).click();
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
+  await expect(page.locator('#main-content')).toHaveCSS('animation-name', 'none');
   await expect(nav.getByRole('button', { name: 'Mecze' })).toHaveAttribute('aria-current', 'page');
   const label = nav.locator('.vh-nav-item.active > span');
   await expect(label).toHaveCSS('display', 'block');
@@ -298,16 +299,11 @@ test('floating nav is a persistent portal, separate from route content', async (
   }
 });
 
-test('nav glass draws at higher device pixel ratio when WebGL is available', async ({ page }) => {
+test('no unused WebGL fluid glass canvas or second navigation is rendered', async ({ page }) => {
   await page.goto('/');
-  const canvas = page.getByRole('navigation', { name: 'Główna nawigacja' }).locator('.fluid-glass__canvas');
-  if (await canvas.count()) {
-    const ratio = await canvas.evaluate(el => {
-      const rect = el.getBoundingClientRect();
-      return rect.width ? el.width / rect.width : 0;
-    });
-    expect(ratio).toBeGreaterThanOrEqual(1.5);
-  }
+  await expect(page.locator('.fluid-glass__canvas')).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'Główna nawigacja' })).toHaveCount(1);
+  await expect(page.locator('.vh-nav-lens .glass-surface')).toHaveCount(1);
 });
 
 test('bottom navigation uses just one React glass lens and no CSS pill overlay', async ({ page }) => {
@@ -352,4 +348,18 @@ test('mobile navigation, date strip and saved favorites survive the cleanup', as
   await nav.getByRole('button', { name: 'Ulubione' }).click();
   await page.getByRole('tab', { name: /Rozgrywki/ }).click();
   await expect(page.getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
+});
+
+test('tabs display a new page without CSS entrance delay or extra icon animations', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  for (const [label, target] of [['Mecze','matches'], ['Ulubione','favorites'], ['Główna','home']]) {
+    await nav.getByRole('button',{name:label}).evaluate(button=>button.click());
+    await expect(page.locator('#main-content')).toHaveAttribute('data-page',target);
+    await expect(page.locator('#main-content')).toHaveCSS('animation-name','none');
+    await expect(page.locator('.vh-page')).toHaveCount(1);
+  }
+  const animations = await nav.locator('.vh-nav-item svg').evaluateAll(icons =>
+    icons.reduce((count, icon) => count + icon.getAnimations().length, 0));
+  expect(animations).toBe(0);
 });

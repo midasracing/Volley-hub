@@ -130,7 +130,7 @@ Główne miejsca do poznania kodu:
 - [`src/main.jsx`](src/main.jsx) — główne widoki i nawigacja.
 - [`src/data.js`](src/data.js) — pobieranie i normalizacja danych.
 - [`src/app.css`](src/app.css) — design system i style aplikacji.
-- [`src/components/react-bits/GlassSurface.jsx`](src/components/react-bits/GlassSurface.jsx) — refrakcyjne szkło dolnej nawigacji i wyszukiwarki.
+- [`src/components/react-bits/GlassSurface.jsx`](src/components/react-bits/GlassSurface.jsx) — pojedynczy szklany wskaźnik dolnej nawigacji. Wyszukiwarka używa lekkiego statycznego stylu.
 
 </details>
 
@@ -163,3 +163,7 @@ W ustawieniach repozytorium w **Settings → Pages → Build and deployment** ja
 <sub>Komponent GlassSurface pochodzi z React Bits — [informacje licencyjne i atrybucja](src/components/react-bits/LICENSE.md).</sub>
 
 </div>
+
+### Porządek po animacjach
+
+W interfejsie pozostaje jeden wskaźnik szkła oparty na React Bits GlassSurface. Stary, nieużywany silnik WebGL `src/FluidGlass.jsx` wraz z hookiem i arkuszem stylów został usunięty. Wybór tego komponentu jest celowy: oficjalny React Bits FluidGlass jest pełną sceną 3D wymagającą Three.js i nie nadaje się do małej, szybkiej kapsuły z zachowaniem natywnych ikon. Przełączanie stron nie ma sztucznego opóźnienia ani animacji wejścia.

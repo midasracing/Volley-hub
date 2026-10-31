@@ -21,8 +21,6 @@ const StaticGlass = memo(function StaticGlass() {
 function BottomNav({ active, onNavigate }) {
   const trackRef = useRef(null);
   const lensRef = useRef(null);
-  const buttonsRef = useRef([]);
-  const previousIconCentersRef = useRef(null);
   const frameRef = useRef(0);
   const reducedMotionRef = useRef(false);
   const springRef = useRef({
@@ -149,42 +147,6 @@ function BottomNav({ active, onNavigate }) {
     };
   }, [paintLens]);
 
-  // Capture icon positions before the selected flex track snaps to its new
-  // width. On the next layout pass animate *only the SVG icons*: no per-frame
-  // flex layout, no overlapping button hit areas, no second nav layer.
-  const navigateWithSnapshot = useCallback(id => {
-    if (id !== active) {
-      previousIconCentersRef.current = buttonsRef.current.map(button => {
-        const icon = button?.querySelector('svg');
-        if (!icon) return null;
-        const rect = icon.getBoundingClientRect();
-        return rect.left + rect.width / 2;
-      });
-    }
-    onNavigate(id);
-  }, [active, onNavigate]);
-
-  useLayoutEffect(() => {
-    const previous = previousIconCentersRef.current;
-    previousIconCentersRef.current = null;
-    if (!previous || reducedMotionRef.current) return;
-    buttonsRef.current.forEach((button, index) => {
-      const icon = button?.querySelector('svg');
-      if (!icon || previous[index] == null) return;
-      // In-flight tap: use the current visual position from the last frame,
-      // then replace the previous motion instead of queueing another one.
-      icon.getAnimations?.().forEach(animation => animation.cancel());
-      const rect = icon.getBoundingClientRect();
-      const delta = previous[index] - (rect.left + rect.width / 2);
-      if (Math.abs(delta) < 0.6) return;
-      const resting = getComputedStyle(icon).transform;
-      icon.animate?.([
-        { transform: `translate3d(${delta.toFixed(2)}px,0,0) ${resting === 'none' ? '' : resting}` },
-        { transform: resting === 'none' ? 'none' : resting }
-      ], { duration: 340, easing: 'cubic-bezier(.18,.85,.25,1)' });
-    });
-  }, [active]);
-
   return <nav className="vh-bottom" aria-label="Główna nawigacja">
     <div ref={trackRef} className={'vh-nav-items' + (layout ? ' is-ready' : '')} data-active={active}>
       {layout && <div ref={lensRef} className="vh-nav-lens" aria-hidden="true"
@@ -195,9 +157,8 @@ function BottomNav({ active, onNavigate }) {
         const selected = active === id;
         const slot = layout?.items[index];
         return <button key={id} type="button" aria-label={label}
-          ref={element => { buttonsRef.current[index] = element; }}
           aria-current={selected ? 'page' : undefined}
-          onClick={() => navigateWithSnapshot(id)}
+          onClick={() => onNavigate(id)}
           className={'vh-nav-item' + (selected ? ' active' : '')}
           style={slot ? { flexGrow: selected ? 2.5 : 1 } : { visibility: 'hidden' }}>
           <Icon size={23} strokeWidth={selected ? 2.3 : 1.8}

@@ -9,7 +9,6 @@ import {
 import BrandSignature from './components/BrandSignature.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import PageStage from './components/PageStage.jsx';
-import GlassSurface from './components/react-bits/GlassSurface.jsx';
 import { ROUTES } from './navigation.js';
 import '../matches-ios.css';
 import './app.css';
@@ -326,13 +325,7 @@ function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites
 
 function SearchBubble({ onClick }) {
   return <button type="button" className="vh-search-bubble" aria-label="Szukaj" title="Szukaj w Kiedy Siatka?" onClick={onClick}>
-    <span className="vh-search-glass" aria-hidden="true">
-      <GlassSurface className="vh-react-glass-search" width="100%" height="100%"
-        borderRadius={999} borderWidth={0.12} brightness={55} opacity={0.9}
-        blur={7} displace={0} backgroundOpacity={0.04} saturation={1.14}
-        distortionScale={-66} redOffset={-5} greenOffset={4} blueOffset={12}
-        mixBlendMode="screen" />
-    </span>
+    <span className="vh-search-glass" aria-hidden="true" />
     <Search size={23} strokeWidth={2.1} aria-hidden="true" />
   </button>;
 }
