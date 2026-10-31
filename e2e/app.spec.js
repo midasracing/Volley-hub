@@ -429,3 +429,44 @@ test('moving lens uses native transforms with no backdrop filters or filter maps
   }));
   expect(animated).toEqual({ nativeTransforms: true, backdrop: 'none', filter: 'none', filterNodes: 0 });
 });
+
+test('cached inactive tabs stay out of focus, accessibility and document scrolling', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.vh-tab-panel')).toHaveCount(4);
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  // Give the longest page a real layout before hiding it again.
+  await nav.getByRole('button', { name: 'Ulubione' }).click();
+  await expect(page.getByRole('heading', { name: 'Dodaj drużyny' })).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await nav.getByRole('button', { name: 'Rozgrywki' }).click();
+  await expect(page.getByRole('heading', { name: 'Rozgrywki', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Dodaj drużyny' })).toHaveCount(0);
+  const metrics = await page.evaluate(() => {
+    const active = document.querySelector('.vh-tab-panel:not([hidden])');
+    const hidden = [...document.querySelectorAll('.vh-tab-panel[hidden]')];
+    const focus = document.activeElement;
+    hidden[0].querySelector('button')?.focus();
+    return {
+      activeInert: active.inert,
+      hiddenInert: hidden.every(panel => panel.inert),
+      focusPreserved: document.activeElement === focus,
+      top: window.scrollY,
+      excessHeight: document.documentElement.scrollHeight - Math.max(
+        window.innerHeight, document.querySelector('.vh-app').getBoundingClientRect().bottom + window.scrollY
+      ),
+      cachedLayout: !CSS.supports('content-visibility', 'hidden') || hidden.every(panel =>
+        getComputedStyle(panel).display !== 'none' && getComputedStyle(panel).contentVisibility === 'hidden')
+    };
+  });
+  expect(metrics).toMatchObject({ activeInert: false, hiddenInert: true, focusPreserved: true, top: 0, cachedLayout: true });
+  expect(metrics.excessHeight).toBeLessThanOrEqual(2);
+  // Returning to the cached calendar must still center the selected day.
+  await nav.getByRole('button', { name: 'Mecze' }).click();
+  const strip = page.getByRole('tablist', { name: 'Wybierz dzień' });
+  await expect(strip).toBeVisible();
+  await expect.poll(() => strip.evaluate(el => {
+    const day = el.querySelector('[aria-selected="true"]').getBoundingClientRect();
+    const host = el.getBoundingClientRect();
+    return Math.abs(day.left + day.width / 2 - host.left - host.width / 2);
+  })).toBeLessThan(3);
+});

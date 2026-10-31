@@ -4,5 +4,18 @@
 .vh-page{position:relative;min-width:0}
 .vh-page-enter{animation:none;transition:none;transform:none;opacity:1}
 
-/* Hidden tabs keep local filters and DOM, but have no layout, paint or focus targets. */
+/* Fallback for browsers without content-visibility. */
 .vh-tab-panel[hidden]{display:none!important}
+
+/* display:none discards the subtree's layout on every switch. Keep that layout
+   cached while skipping hidden contents. A zero-height, clipped, out-of-flow
+   shell prevents long inactive lists from extending the document's scroll area.
+   Active panels use layout/style containment only: calendars and focus outlines
+   can still extend into the page gutter without being clipped by paint containment. */
+@supports(content-visibility:hidden){
+  .vh-tab-panel{contain:layout style}
+  .vh-tab-panel[hidden]{
+    display:block!important;position:absolute;left:0;top:0;width:100%;height:0;
+    overflow:clip;content-visibility:hidden;
+  }
+}

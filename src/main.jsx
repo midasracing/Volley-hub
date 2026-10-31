@@ -456,7 +456,7 @@ function App() {
       </div>
     </div>
     <PageStage page={page} direction={direction} reducedMotion={reducedMotion}>
-      {visitedPages.map(id => <div key={id} className="vh-tab-panel" data-route={id} hidden={page !== id}>
+      {visitedPages.map(id => <div key={id} className="vh-tab-panel" data-route={id} hidden={page !== id} inert={page !== id}>
         {renderPage(id)}
       </div>)}
     </PageStage>
