@@ -21,7 +21,7 @@
 /* React Bits renders a single refractive surface; no second CSS bubble. */
 .vh-nav-lens .glass-surface__content{padding:0}
 .vh-nav-item{z-index:1;display:flex;align-items:center;justify-content:center;gap:0;
-  padding:0 5px;border:0;background:transparent;color:#afbacd;white-space:nowrap;
+  padding:0;border:0;background:transparent;color:#afbacd;white-space:nowrap;
   overflow:hidden;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
   transition:flex-grow .42s cubic-bezier(.18,.78,.24,1),gap .25s ease,color .24s ease}
 .vh-nav-item>span{display:block;max-width:0;opacity:0;overflow:hidden;min-width:0;
