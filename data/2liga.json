@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-11-01T15:54:07.353586+00:00",
+  "updated_at": "2026-11-01T20:10:30.860683+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -5371,18 +5371,6 @@
         },
         {
           "date": "07.11.2026",
-          "time": "",
-          "home": "WKS Wieluń",
-          "away": "AZS Częstochowa",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 4",
-          "group": "Grupa 4"
-        },
-        {
-          "date": "07.11.2026",
           "time": "17:00",
           "home": "Bugaj Volley Radomsko",
           "away": "KS Norwid Politechnika Częstochowa",
@@ -5398,6 +5386,18 @@
           "time": "17:00",
           "home": "Volley Team Żychlin",
           "away": "ProNutiva SKK Belsk Duży",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 4",
+          "group": "Grupa 4"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "18:00",
+          "home": "WKS Wieluń",
+          "away": "AZS Częstochowa",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
