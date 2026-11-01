@@ -58,25 +58,8 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-11-01T13:37:50.063993+00:00",
+  "updated_at": "2026-11-01T17:46:13.837154+00:00",
   "matches": [
-    {
-      "id": null,
-      "competition": "AL-KO Superpuchar Polski",
-      "date": "25.10.2026",
-      "time": "15:00",
-      "status": "finished",
-      "home": "Aluron CMC Warta Zawiercie",
-      "away": "BOGDANKA LUK Lublin",
-      "home_sets": 0,
-      "away_sets": 3,
-      "set_scores": [
-        "32:34",
-        "20:25",
-        "18:25"
-      ],
-      "current_points": null
-    },
     {
       "id": "1104817",
       "competition": "TAURON Liga",
@@ -238,12 +221,18 @@
       "competition": "TAURON Liga",
       "date": "01.11.2026",
       "time": "15:00",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Barkom Każany Lwów",
       "away": "ChKS Chełm",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 2,
+      "away_sets": 3,
+      "set_scores": [
+        "25:14",
+        "22:25",
+        "25:20",
+        "23:25",
+        "10:15"
+      ],
       "current_points": null
     },
     {
@@ -427,6 +416,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104843",
+      "competition": "TAURON Liga",
+      "date": "13.11.2026",
+      "time": "20:30",
+      "status": "scheduled",
+      "home": "GKS Katowice",
+      "away": "Steam Hemarpol Norwid Częstochowa",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -441,18 +443,6 @@
       "sets_against": 0,
       "points_for": 225,
       "points_against": 187
-    },
-    {
-      "rank": 2,
-      "team": "Barkom Każany Lwów",
-      "points": 5,
-      "played": 2,
-      "wins": 2,
-      "losses": 0,
-      "sets_for": 6,
-      "sets_against": 2,
-      "points_for": 180,
-      "points_against": 162
     },
     {
       "rank": 2,
@@ -489,6 +479,18 @@
       "sets_against": 5,
       "points_for": 341,
       "points_against": 308
+    },
+    {
+      "rank": 4,
+      "team": "Barkom Każany Lwów",
+      "points": 6,
+      "played": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_for": 8,
+      "sets_against": 5,
+      "points_for": 285,
+      "points_against": 261
     },
     {
       "rank": 5,
@@ -552,6 +554,18 @@
     },
     {
       "rank": 11,
+      "team": "ChKS Chełm",
+      "points": 3,
+      "played": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_for": 5,
+      "sets_against": 8,
+      "points_for": 247,
+      "points_against": 285
+    },
+    {
+      "rank": 12,
       "team": "Steam Hemarpol Norwid Częstochowa",
       "points": 2,
       "played": 3,
@@ -563,7 +577,7 @@
       "points_against": 273
     },
     {
-      "rank": 12,
+      "rank": 13,
       "team": "Cuprum Stilon Gorzów",
       "points": 2,
       "played": 3,
@@ -573,18 +587,6 @@
       "sets_against": 8,
       "points_for": 231,
       "points_against": 251
-    },
-    {
-      "rank": 12,
-      "team": "ChKS Chełm",
-      "points": 1,
-      "played": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_for": 2,
-      "sets_against": 6,
-      "points_for": 148,
-      "points_against": 180
     },
     {
       "rank": 14,
