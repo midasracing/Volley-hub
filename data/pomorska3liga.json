@@ -4,7 +4,7 @@
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
   "results_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
   "standings_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
-  "updated_at": "2026-10-31T13:08:01.804259+00:00",
+  "updated_at": "2026-11-01T11:20:43.723269+00:00",
   "teams": [
     {
       "name": "Energa Trefl Gdańsk III",
@@ -172,18 +172,13 @@
       "id": "10.10.2026-2-10",
       "competition": "Pomorska III Liga Męska",
       "date": "10.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "PTPS TELMAX Człuchów",
       "away": "LZS GNIEWKO Gniewkowo",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [
-        "25:21",
-        "25:19",
-        "18:25",
-        "25:22"
-      ],
+      "set_scores": [],
       "current_points": null,
       "round": 2,
       "match_number": 10,
@@ -274,18 +269,13 @@
       "id": "22.10.2026-4-19",
       "competition": "Pomorska III Liga Męska",
       "date": "22.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "PTPS TELMAX Człuchów",
       "away": "Energa Trefl Gdańsk III",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [
-        "25:23",
-        "25:20",
-        "24:26",
-        "25:17"
-      ],
+      "set_scores": [],
       "current_points": null,
       "round": 4,
       "match_number": 19,
@@ -312,44 +302,35 @@
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
-      "id": "25.10.2026-4-20",
-      "competition": "Pomorska III Liga Męska",
-      "date": "25.10.2026",
-      "time": "12:00",
-      "status": "finished",
-      "home": "LZS GNIEWKO Gniewkowo",
-      "away": "LZS Gminy Dragacz",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:16",
-        "25:17",
-        "25:17"
-      ],
-      "current_points": null,
-      "round": 4,
-      "match_number": 20,
-      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
-    },
-    {
       "id": "25.10.2026-4-18",
       "competition": "Pomorska III Liga Męska",
       "date": "25.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "KATS ALPAT CYMMAT GDYNIA",
       "away": "UKS Olimpijczyk Pruszcz Gdański",
       "home_sets": 1,
       "away_sets": 3,
-      "set_scores": [
-        "18:25",
-        "25:21",
-        "21:25",
-        "22:25"
-      ],
+      "set_scores": [],
       "current_points": null,
       "round": 4,
       "match_number": 18,
+      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
+    },
+    {
+      "id": "25.10.2026-4-20",
+      "competition": "Pomorska III Liga Męska",
+      "date": "25.10.2026",
+      "time": null,
+      "status": "finished",
+      "home": "LZS GNIEWKO Gniewkowo",
+      "away": "LZS Gminy Dragacz",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null,
+      "round": 4,
+      "match_number": 20,
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
