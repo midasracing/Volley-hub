@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-11-02T12:46:31.880782+00:00",
+  "updated_at": "2026-11-02T22:16:07.094127+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -400,18 +400,6 @@
         {
           "date": "07.11.2026",
           "time": "",
-          "home": "Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn",
-          "away": "GKS Stoczniowiec",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 1",
-          "group": "Grupa 1"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "",
           "home": "Fort Tarnowo Podgórne",
           "away": "Enea Energetyk Poznań",
           "home_sets": 0,
@@ -426,6 +414,18 @@
           "time": "17:00",
           "home": "KRISHOME Września",
           "away": "Polipack UKS 1 Reda",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 1",
+          "group": "Grupa 1"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "18:00",
+          "home": "Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn",
+          "away": "GKS Stoczniowiec",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
@@ -1974,18 +1974,6 @@
         },
         {
           "date": "07.11.2026",
-          "time": "",
-          "home": "NECKO Augustów",
-          "away": "MTS Międzyrzec Podlaski",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 2",
-          "group": "Grupa 2"
-        },
-        {
-          "date": "07.11.2026",
           "time": "14:30",
           "home": "AZS UWM Olsztyn",
           "away": "Elektromet Huragan Błonie",
@@ -2001,6 +1989,18 @@
           "time": "15:00",
           "home": "Integracyjny Klub Sportowy Atak Elbląg",
           "away": "KS Metro Family Warszawa",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 2",
+          "group": "Grupa 2"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "18:00",
+          "home": "NECKO Augustów",
+          "away": "MTS Międzyrzec Podlaski",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
@@ -3773,18 +3773,6 @@
         {
           "date": "07.11.2026",
           "time": "",
-          "home": "KS AS Słubice",
-          "away": "BTS Willowa Bolesławiec",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 3",
-          "group": "Grupa 3"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "",
           "home": "Astra Nowa Sól",
           "away": "Ikar Legnica",
           "home_sets": 0,
@@ -3799,6 +3787,18 @@
           "time": "",
           "home": "Gwardia Wrocław",
           "away": "MLKS Volley Gubin",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 3",
+          "group": "Grupa 3"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "17:00",
+          "home": "KS AS Słubice",
+          "away": "BTS Willowa Bolesławiec",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
