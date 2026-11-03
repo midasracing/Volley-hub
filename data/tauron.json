@@ -58,22 +58,22 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-11-03T14:28:47.378973+00:00",
+  "updated_at": "2026-11-03T19:15:57.144296+00:00",
   "matches": [
     {
-      "id": "1104817",
-      "competition": "TAURON Liga",
+      "id": null,
+      "competition": "AL-KO Superpuchar Polski",
       "date": "25.10.2026",
-      "time": "18:00",
+      "time": "15:00",
       "status": "finished",
-      "home": "ChKS Chełm",
-      "away": "Asseco Resovia Rzeszów",
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "BOGDANKA LUK Lublin",
       "home_sets": 0,
       "away_sets": 3,
       "set_scores": [
-        "19:25",
-        "17:25",
-        "13:25"
+        "32:34",
+        "20:25",
+        "18:25"
       ],
       "current_points": null
     },
@@ -240,13 +240,17 @@
       "competition": "TAURON Liga",
       "date": "03.11.2026",
       "time": "17:30",
-      "status": "scheduled",
+      "status": "live",
       "home": "Trefl Gdańsk",
       "away": "Cuprum Stilon Gorzów",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "home_sets": 1,
+      "away_sets": 2,
+      "set_scores": [
+        "22:25",
+        "19:25",
+        "25:21"
+      ],
+      "current_points": "11:10"
     },
     {
       "id": "1104834",
