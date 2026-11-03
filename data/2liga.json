@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-11-02T22:16:07.094127+00:00",
+  "updated_at": "2026-11-03T03:36:32.864019+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -3773,18 +3773,6 @@
         {
           "date": "07.11.2026",
           "time": "",
-          "home": "Astra Nowa Sól",
-          "away": "Ikar Legnica",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 3",
-          "group": "Grupa 3"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "",
           "home": "Gwardia Wrocław",
           "away": "MLKS Volley Gubin",
           "home_sets": 0,
@@ -3799,6 +3787,18 @@
           "time": "17:00",
           "home": "KS AS Słubice",
           "away": "BTS Willowa Bolesławiec",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 3",
+          "group": "Grupa 3"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "17:00",
+          "home": "Astra Nowa Sól",
+          "away": "Ikar Legnica",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
