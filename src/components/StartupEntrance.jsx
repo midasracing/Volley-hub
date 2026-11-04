@@ -40,20 +40,23 @@ export default function StartupEntrance({ enabled, onComplete }) {
         document.querySelector('.vh-floating-head'),
         home?.querySelector('.vh-section-heading, .vh-page-head'),
         home?.querySelector('.im-league'),
-        ...Array.from(home?.querySelectorAll('.vh-match') || []).slice(0, 6),
+        ...Array.from(home?.querySelectorAll('.vh-match') || []).filter(card => {
+          const box = card.getBoundingClientRect();
+          return box.top < window.innerHeight + 40 && box.bottom > 0;
+        }).slice(0, 4),
         home?.querySelectorAll('.vh-section-heading')[1],
       ].filter(Boolean);
       elements.forEach((element, index) => {
         const card = element.classList.contains('vh-match');
         animate(element, [
-          { opacity: 0, transform: `translateY(${card ? 54 : 24}px) scale(${card ? .96 : 1})`, clipPath: card ? 'inset(0 0 100% round 22px)' : 'inset(0)' },
-          { opacity: 1, transform: 'translateY(0) scale(1)', clipPath: card ? 'inset(0 round 22px)' : 'inset(0)' },
-        ], { duration: card ? 800 : 650, delay: index * 75 });
+          { opacity: 0, transform: `translate3d(0,${card ? 28 : 12}px,0)` },
+          { opacity: 1, transform: 'translate3d(0,0,0)' },
+        ], { duration: 460, delay: index * 40 });
       });
       // Preserve the fixed dock's centering and its independent spring.
-      animate(document.querySelector('.vh-bottom'), [{ opacity: 0 }, { opacity: 1 }], { duration: 650, delay: 450 });
+      animate(document.querySelector('.vh-bottom'), [{ opacity: 0 }, { opacity: 1 }], { duration: 460, delay: 200 });
     }, 1490);
-    later(finish, 3000);
+    later(finish, 2350);
     const onVisibility = () => { if (document.hidden) finish(); };
     const onKey = () => finish();
     document.addEventListener('visibilitychange', onVisibility);

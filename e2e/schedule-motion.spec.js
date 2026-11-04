@@ -21,12 +21,19 @@ test('calendar selection responds immediately and rapid taps settle on the lates
   await setup(page);
   const results = page.locator('[data-route="matches"] .vh-day-results');
   const next = page.getByRole('tab', { name: '5 listopada 2026', exact: true });
+  const originalPosition = await next.evaluate(element => element.offsetLeft);
   await next.click();
   await expect(next).toHaveAttribute('aria-selected', 'true');
+  expect(await next.evaluate(element => element.offsetLeft)).toBe(originalPosition);
   await expect(results).toHaveAttribute('aria-busy', 'true');
   await page.clock.runFor(200);
   await expect(results).toHaveAttribute('data-day', '2026-11-05');
   await expect(results).toContainText('Gospodarze dnia 5');
+  await expect.poll(() => next.evaluate(button => {
+    const selected = button.getBoundingClientRect();
+    const marker = button.parentElement.querySelector('.vh-date-indicator').getBoundingClientRect();
+    return Math.abs(marker.left + marker.width / 2 - selected.left - selected.width / 2);
+  })).toBeLessThan(1);
   await page.getByRole('tab', { name: '6 listopada 2026', exact: true }).click();
   await page.getByRole('tab', { name: '4 listopada 2026', exact: true }).click();
   await page.clock.runFor(700);

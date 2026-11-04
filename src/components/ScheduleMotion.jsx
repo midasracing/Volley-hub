@@ -1,6 +1,7 @@
 import { useContext, useLayoutEffect, useRef, useState } from 'react';
 import { dateKey } from '../data.js';
 import { MotionEnabled } from './MatchMotion.jsx';
+import './ScheduleMotion.css';
 
 const cancel = animations => { animations.splice(0).forEach(animation => animation.cancel()); };
 function play(element, frames, options, animations) {
@@ -11,17 +12,19 @@ function play(element, frames, options, animations) {
 }
 
 // The calendar responds immediately. Only the outgoing result cards stay for
-// 160ms, then the latest requested day enters. Rapid taps cancel pending work.
+// 180ms, then the latest requested day enters. Rapid taps cancel pending work.
 export function useAnimatedDate(selectedDate, results) {
   const enabled = useContext(MotionEnabled);
   const [displayedDate, setDisplayedDate] = useState(selectedDate);
   const selectedKey = dateKey(selectedDate), displayedKey = dateKey(displayedDate);
   const previous = useRef(displayedKey);
+  const direction = useRef(1);
   const entering = useRef([]), leaving = useRef([]);
   useLayoutEffect(() => {
     cancel(entering.current);
     cancel(leaving.current);
     if (selectedKey === displayedKey) return undefined;
+    direction.current = selectedKey > displayedKey ? 1 : -1;
     const host = results.current;
     const cards = Array.from(host?.querySelectorAll('.vh-match, .vh-empty') || []).slice(0, 8);
     if (!enabled || document.hidden || host?.closest('[hidden]') || !cards.length || !cards[0].animate) {
@@ -29,10 +32,10 @@ export function useAnimatedDate(selectedDate, results) {
       return undefined;
     }
     cards.forEach((card, index) => play(card, [
-      { opacity: 1, transform: 'translateX(0)' },
-      { opacity: 0, transform: 'translateX(-16px)' },
-    ], { duration: 110, delay: Math.min(index * 12, 48), easing: 'cubic-bezier(.4,0,1,1)' }, leaving.current));
-    const timer = window.setTimeout(() => setDisplayedDate(selectedDate), 160);
+      { opacity: 1, transform: 'translate3d(0,0,0)' },
+      { opacity: 0, transform: `translate3d(${-direction.current * 24}px,0,0)` },
+    ], { duration: 150, delay: Math.min(index * 6, 18), easing: 'cubic-bezier(.4,0,1,1)' }, leaving.current));
+    const timer = window.setTimeout(() => setDisplayedDate(selectedDate), 180);
     return () => { window.clearTimeout(timer); cancel(leaving.current); };
     // displayedDate is the committed result of this transition, not a new request.
   }, [selectedKey, enabled, results]);
@@ -44,9 +47,9 @@ export function useAnimatedDate(selectedDate, results) {
     const host = results.current;
     if (!changed || !enabled || document.hidden || host?.closest('[hidden]')) return undefined;
     Array.from(host?.querySelectorAll('.vh-match, .vh-empty') || []).slice(0, 8).forEach((card, index) => play(card, [
-      { opacity: 0, transform: 'translateY(22px) scale(.985)' },
-      { opacity: 1, transform: 'translateY(0) scale(1)' },
-    ], { duration: 360, delay: Math.min(index * 45, 225) }, entering.current));
+      { opacity: 0, transform: `translate3d(${direction.current * 32}px,16px,0)` },
+      { opacity: 1, transform: 'translate3d(0,0,0)' },
+    ], { duration: 460, delay: Math.min(index * 55, 220) }, entering.current));
     return () => cancel(entering.current);
   }, [displayedKey, enabled, results]);
   return displayedDate;

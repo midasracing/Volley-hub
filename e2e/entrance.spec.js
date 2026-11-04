@@ -24,7 +24,7 @@ test('entrance finishes on schedule even if the Rive asset is unavailable', asyn
   const now = new Date('2026-11-04T12:00:00Z');
   await page.clock.install({ time: now });
   await page.clock.pauseAt(now);
-  await page.route('**/motion/entrance.riv', route => route.abort());
+  await page.route('**/motion/entrance.riv*', route => route.abort());
   await page.goto('/');
   await expect(page.locator('.vh-startup-intro')).toHaveCount(1);
   await page.clock.fastForward(3100);

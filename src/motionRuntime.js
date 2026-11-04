@@ -24,12 +24,12 @@ export function createImpact(canvas, onReady, onDone) {
 export function createEntrance(canvas, onReady, onFail) {
   const animation = new Rive({
     canvas,
-    src: import.meta.env.BASE_URL + 'motion/entrance.riv',
+    src: import.meta.env.BASE_URL + 'motion/entrance.riv?v=2',
     artboard: 'Entrance',
     stateMachine: 'Curtain',
     autoplay: false,
     layout: new Layout({ fit: Fit.Fill, alignment: Alignment.Center }),
-    onLoad: () => { animation.resizeDrawingSurfaceToCanvas(); onReady(); },
+    onLoad: () => { animation.resizeDrawingSurfaceToCanvas(1); onReady(); },
     onLoadError: onFail,
   });
   return animation;

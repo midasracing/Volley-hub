@@ -13,12 +13,11 @@
         <AnimationState x="220" y="0" animationId="0:6" id="0:12"/>
       </StateMachineLayer>
     </StateMachine>
-    <LinearAnimation duration="50" name="Curtain" id="0:6">
+    <LinearAnimation duration="60" name="Curtain" id="0:6">
       <KeyedObject objectId="0:20"><KeyedProperty property="y">
         <KeyFrameDouble value="1520" frame="0" interpolationType="cubic" interpolatorId="0:30"/>
         <KeyFrameDouble value="500" frame="21" interpolationType="hold"/>
-        <KeyFrameDouble value="500" frame="27" interpolationType="cubic" interpolatorId="0:30"/>
-        <KeyFrameDouble value="-520" frame="50" interpolationType="linear"/>
+        <KeyFrameDouble value="500" frame="60" interpolationType="linear"/>
       </KeyedProperty></KeyedObject>
     </LinearAnimation>
   </Artboard>

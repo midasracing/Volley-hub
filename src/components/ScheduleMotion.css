@@ -1,0 +1,5 @@
+#ios-matches .im-strip .vh-date-indicator{display:none;position:absolute;left:0;z-index:0;pointer-events:none;border-radius:18px;background:var(--accent,#b30818);box-shadow:0 8px 23px rgba(179,8,24,.18);transition:transform .34s cubic-bezier(.16,1,.3,1);will-change:transform}
+#ios-matches .im-strip.has-date-indicator .vh-date-indicator{display:block}
+#ios-matches .im-strip.has-date-indicator .im-day{z-index:1}
+#ios-matches .im-strip.has-date-indicator .im-day.is-sel{background:transparent!important;box-shadow:none}
+@media(prefers-reduced-motion:reduce){#ios-matches .im-strip .vh-date-indicator{transition:none}}

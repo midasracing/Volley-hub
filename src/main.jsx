@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react';
+import React, { useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createPortal } from 'react-dom';
 import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
@@ -114,26 +114,56 @@ function IconButton({ Icon, label, onClick, active = false }) {
 
 function DateStrip({ selected, onSelect }) {
   const strip = useRef(null);
-  const selectedKey = dateKey(selected);
+  const marker = useRef(null);
+  const enabled = useContext(MotionEnabled);
+  const [anchor, setAnchor] = useState(selected);
+  const selectedKey = dateKey(selected), anchorKey = dateKey(anchor);
   const todayKey = dateKey(NOW());
-  const days = useMemo(() => Array.from({ length: 61 }, (_, index) => addDays(selected, index - 30)), [selectedKey]);
+  const previous = useRef({ selected: null, anchor: null, width: 0 });
+  // Retain the same date nodes while picking nearby days. Rebuilding the range
+  // on each tap shifted every label before the browser could animate anything.
+  const days = useMemo(() => Array.from({ length: 61 }, (_, index) => addDays(anchor, index - 30)), [anchorKey]);
+  useLayoutEffect(() => {
+    if (!days.some(day => dateKey(day) === selectedKey)) setAnchor(selected);
+  }, [selectedKey, days]);
   useEffect(() => {
-    const host = strip.current;
-    if (!host) return undefined;
-    const center = () => {
-      if (!host.clientWidth) return; // A prepared tab may still be hidden.
+    const index = days.findIndex(day => dateKey(day) === selectedKey);
+    if (index < 0 || (index >= 7 && index <= 53)) return undefined;
+    // Extend the window after the native scroll settles, preserving its view.
+    const timer = window.setTimeout(() => setAnchor(selected), 700);
+    return () => window.clearTimeout(timer);
+  }, [selectedKey, days]);
+  useLayoutEffect(() => {
+    const host = strip.current, pill = marker.current;
+    if (!host || !pill) return undefined;
+    const last = previous.current;
+    const animate = enabled && last.selected !== null && last.selected !== selectedKey && last.anchor === anchorKey;
+    const center = smooth => {
+      if (!host.clientWidth) { previous.current.width = 0; return; }
       const active = host.querySelector('[aria-selected="true"]');
       if (!active) return;
-      const left = active.offsetLeft + active.offsetWidth / 2 - host.clientWidth / 2;
-      host.scrollLeft = Math.max(0, left);
+      pill.style.transitionDuration = smooth ? '' : '0s';
+      pill.style.width = active.offsetWidth + 'px';
+      pill.style.height = active.offsetHeight + 'px';
+      pill.style.top = active.offsetTop + 'px';
+      pill.style.transform = `translate3d(${active.offsetLeft}px,0,0)`;
+      host.classList.add('has-date-indicator');
+      const left = Math.max(0, active.offsetLeft + active.offsetWidth / 2 - host.clientWidth / 2);
+      host.scrollTo({ left, behavior: smooth ? 'smooth' : 'auto' });
+      previous.current = { selected: selectedKey, anchor: anchorKey, width: host.clientWidth };
     };
-    center();
-    const observer = new ResizeObserver(center);
+    center(animate);
+    const observer = new ResizeObserver(() => {
+      // Ignore the observer's first unchanged measurement: it otherwise cancels
+      // the smooth scroll immediately after every selection.
+      if (host.clientWidth !== previous.current.width) center(false);
+    });
     observer.observe(host);
     return () => observer.disconnect();
-  }, [selectedKey]);
+  }, [selectedKey, anchorKey, enabled]);
   return <div className="im-strip-wrap vh-date-wrap">
     <div className="im-strip" role="tablist" aria-label="Wybierz dzień" ref={strip}>
+      <span ref={marker} className="vh-date-indicator" aria-hidden="true" />
       {days.map((day, index) => {
         const key = dateKey(day);
         const active = key === selectedKey;
