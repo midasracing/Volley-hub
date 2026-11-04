@@ -1,19 +1,13 @@
-.vh-startup-intro{position:fixed;inset:0;z-index:1000;isolation:isolate;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080808;color:#f5f2ed;pointer-events:none;will-change:transform;transform:translate3d(0,0,0)}
-.vh-startup-intro.is-revealing{animation:vh-startup-open .48s cubic-bezier(.76,0,.24,1) both}
-.vh-startup-copy{position:relative;z-index:2;width:min(100%,440px);padding:0 22px;transform:translateY(-45px)}
-.vh-startup-mask{overflow:hidden}
-.vh-startup-logo-rise{width:min(100%,355px);margin:0 auto;will-change:transform;animation:vh-startup-rise .8s .08s cubic-bezier(.16,1,.3,1) both}
-.vh-startup-logo{display:block;width:100%;height:auto;transform-origin:center}
-.vh-startup-rule{height:5px;margin-top:22px;background:#b30818;transform-origin:left;animation:vh-startup-rule .7s .28s cubic-bezier(.16,1,.3,1) both}
-.vh-startup-curtain{position:absolute;inset:-2px;z-index:3;background:#b30818;transform:translate3d(0,102%,0);will-change:transform}
-.vh-startup-intro.is-cutting .vh-startup-curtain{animation:vh-startup-curtain .35s cubic-bezier(.76,0,.24,1) both}
-.vh-startup-rive{position:absolute;inset:0;z-index:3;width:100%;height:100%;opacity:0;pointer-events:none}
+.vh-startup-intro{position:fixed;inset:0;z-index:1000;isolation:isolate;overflow:hidden;color:#f5f2ed;pointer-events:none}
+.vh-startup-backdrop{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 55% 55%,#25050d,#080808 68%);will-change:opacity}
+.vh-startup-intro.is-revealing .vh-startup-backdrop{animation:vh-startup-background-out .65s cubic-bezier(.16,1,.3,1) both}
+.vh-startup-copy{position:absolute;z-index:2;left:50%;top:50%;width:min(86%,440px);transform:translate3d(-50%,-60%,0);transform-origin:0 0;will-change:transform}
+.vh-startup-logo{display:block;width:100%;height:auto;will-change:transform,opacity;animation:vh-startup-logo-in .8s .1s cubic-bezier(.16,1,.3,1) both}
+.vh-startup-rive{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;transition:opacity .18s}
 .vh-startup-intro.has-rive .vh-startup-rive{opacity:1}
-.vh-startup-intro.has-rive .vh-startup-curtain{opacity:0}
 .vh-startup-skip{position:absolute;z-index:4;top:max(23px,env(safe-area-inset-top));right:23px;min-width:66px;min-height:44px;padding:9px 12px;border:1px solid #54373c;border-radius:30px;background:#080808;color:#c6acae;font:500 12px 'DM Sans',sans-serif;pointer-events:auto}
 .vh-startup-skip:focus-visible{outline:2px solid #ff5268;outline-offset:4px}
-@keyframes vh-startup-rise{from{transform:translate3d(0,115%,0)}to{transform:translate3d(0,0,0)}}
-@keyframes vh-startup-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes vh-startup-curtain{from{transform:translate3d(0,102%,0)}to{transform:translate3d(0,0,0)}}
-@keyframes vh-startup-open{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-102%,0)}}
+.vh-startup-intro.is-revealing .vh-startup-skip{opacity:0;pointer-events:none;transition:opacity .2s}
+@keyframes vh-startup-logo-in{from{opacity:0;transform:translate3d(0,48px,0) rotate(-3deg) scale(1.08)}to{opacity:1;transform:translate3d(0,0,0) rotate(0) scale(1)}}
+@keyframes vh-startup-background-out{from{opacity:1}to{opacity:0}}
 @media(prefers-reduced-motion:reduce){.vh-startup-intro{display:none}}

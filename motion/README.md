@@ -23,14 +23,17 @@ score load or on unchanged polling data; retained hidden panels do not animate.
 
 ## Startup entrance
 
-`entrance/scene.rml` exports the `public/motion/entrance.riv` red curtain.
-Build and inspect it with the same commands above, replacing `impact` with
-`entrance`. The full-screen app entrance uses the unchanged logo asset, without
-a caption below the line. Its logo reveal and card stagger match the approved
-preview. Rive is prepared during the logo reveal and played at 1.02 seconds with a backing canvas capped to CSS pixel resolution;
-a matching CSS curtain takes over when the runtime is unavailable or late.
-The entrance always finishes independently of feed, font and Rive requests.
-It can be skipped, respects reduced motion, and is not replayed by navigation.
+`entrance/scene.rml` exports the 501-byte `public/motion/entrance.riv` background:
+two broad red planes, without scripts or external assets. Build and inspect it
+with the same commands above, replacing `impact` with `entrance`.
+
+The unchanged logo SVG enters at the center, then travels to the measured bounds
+of the real header logo. The header copy remains transparent during that flight
+and is restored on landing, skipping, navigation or interruption. There is no
+line, progress bar or caption. A short backdrop fade reveals the current page and
+on-screen cards. Rive is optional and its canvas is capped to CSS pixel resolution;
+the logo handoff also works offline. Only transforms and opacity are animated.
+The entrance respects reduced motion and never replays on ordinary navigation.
 
 ## Calendar and set results
 
@@ -40,11 +43,6 @@ requests cancel earlier timers. Live feed polling never restarts this motion.
 Set cells enter in sequence and leave in reverse order within the existing grid
 expansion. These use DOM animations for arbitrary result counts and remain
 interruptible; reduced motion removes the delay and stagger.
-
-The intro uses compositor transforms instead of animating a full-screen clipping
-mask or rounded clipping masks on cards. The Rive curtain rises and holds while
-its containing surface exits; it no longer makes a second independent exit.
-Only on-screen match cards join the initial reveal.
 
 The date strip keeps its range stable during nearby selections. A single red
 indicator slides between the retained day nodes while native smooth scrolling

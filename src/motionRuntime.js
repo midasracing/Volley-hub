@@ -20,13 +20,13 @@ export function createImpact(canvas, onReady, onDone) {
   return animation;
 }
 
-// Loaded ahead of the approved intro handoff, then played at the red cut.
+// Broad red shapes frame the logo handoff; the SVG itself stays unchanged.
 export function createEntrance(canvas, onReady, onFail) {
   const animation = new Rive({
     canvas,
-    src: import.meta.env.BASE_URL + 'motion/entrance.riv?v=2',
+    src: import.meta.env.BASE_URL + 'motion/entrance.riv?v=3',
     artboard: 'Entrance',
-    stateMachine: 'Curtain',
+    stateMachine: 'Entrance',
     autoplay: false,
     layout: new Layout({ fit: Fit.Fill, alignment: Alignment.Center }),
     onLoad: () => { animation.resizeDrawingSurfaceToCanvas(1); onReady(); },
