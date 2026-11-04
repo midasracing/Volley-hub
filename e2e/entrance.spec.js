@@ -53,7 +53,7 @@ test('entrance finishes on schedule even if the Rive asset is unavailable', asyn
   await page.clock.fastForward(3100);
   await expect(page.locator('.vh-startup-intro')).toHaveCount(0);
   await expect(page.locator('.vh-brand-signature')).toHaveCSS('opacity', '1');
-  await expect(page.getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   expect(await page.locator('.vh-floating-head').evaluate(element => element.getAnimations().length)).toBe(0);
 });
 

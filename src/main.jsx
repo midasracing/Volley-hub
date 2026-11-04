@@ -216,7 +216,7 @@ const HomePage = React.memo(function HomePage({ feeds, matches, loading, errors,
   const featured = todayMatches.length ? todayMatches : upcoming;
   const savedCount = favorites.teams.length + favorites.leagues.length;
   return <>
-    <SectionTitle eyebrow={todayMatches.length ? 'DZISIAJ NA PARKIECIE' : 'NAJBLIŻSZE SPOTKANIA'} title={todayMatches.length ? 'Mecze dzisiaj' : 'Co przed nami'} action="Zobacz mecze" onAction={() => onNavigate('matches')} />
+    <SectionTitle title={todayMatches.length ? 'Dzisiaj' : 'Najbliższe mecze'} action="Pełny terminarz" onAction={() => onNavigate('matches')} />
     <FeedWarning errors={errors} refresh={refresh} />
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups compact matches={featured} logos={logos} emptyMessage="Nie mamy jeszcze zaplanowanych spotkań w pobranych danych." />}
     <SectionTitle eyebrow="ODKRYWAJ" title="Rozgrywki" action="Wszystkie" onAction={() => onNavigate('competitions')} />

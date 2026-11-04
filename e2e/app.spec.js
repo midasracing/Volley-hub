@@ -21,7 +21,7 @@ test('league entrance uses the local Rive file and keeps title and controls usab
 
 test('renders React navigation and shared match design', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   await nav.getByRole('button', { name: 'Mecze' }).click();
   await expect(page.getByRole('heading', { name: 'Mecze' })).toBeVisible();
@@ -36,11 +36,11 @@ test('home starts with match list, without the marked intro and hero banner', as
   await page.goto('/');
   await expect(page.getByRole('img', { name: 'Kiedy Siatka?' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Szukaj', exact: true })).toBeVisible();
-  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
+  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   await expect(page.locator('.vh-hero')).toHaveCount(0);
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Volley Hub', exact: true })).toHaveCount(0);
   await expect(page.getByText('Twoje centrum siatkówki. Wszystko, co ważne, w jednym miejscu.')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Zobacz mecze' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Pełny terminarz' })).toBeVisible();
 });
 
 test('favorites persist after reload', async ({ page }) => {
@@ -184,7 +184,7 @@ test('switching tabs renders the page immediately without delayed transitions', 
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Ulubione' })).toBeVisible();
   await expect(page.locator('.vh-route-stage')).toHaveClass(/is-forward/);
   await nav.getByRole('button', { name: 'Główna' }).click();
-  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();
+  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   await expect(page.locator('.vh-route-stage')).toHaveClass(/is-backward/);
   await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
 });
