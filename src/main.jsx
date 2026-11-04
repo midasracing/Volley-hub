@@ -208,21 +208,17 @@ const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, e
   </>;
 });
 
-const HomePage = React.memo(function HomePage({ feeds, matches, loading, errors, refresh, logos, favorites, onNavigate, onOpenLeague }) {
+const HomePage = React.memo(function HomePage({ feeds, matches, loading, errors, refresh, logos, onNavigate }) {
   const allMatches = matches;
   const today = dateKey(NOW());
   const todayMatches = allMatches.filter(match => feedDateKey(match.date) === today);
   const upcoming = allMatches.filter(match => feedDateKey(match.date) >= today).slice(0, 3);
   const featured = todayMatches.length ? todayMatches : upcoming;
-  const savedCount = favorites.teams.length + favorites.leagues.length;
   return <>
     <SectionTitle title={todayMatches.length ? 'Dzisiaj' : 'Najbliższe mecze'} action="Pełny terminarz" onAction={() => onNavigate('matches')} />
     <FeedWarning errors={errors} refresh={refresh} />
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups compact matches={featured} logos={logos} emptyMessage="Nie mamy jeszcze zaplanowanych spotkań w pobranych danych." />}
-    <SectionTitle eyebrow="ODKRYWAJ" title="Rozgrywki" action="Wszystkie" onAction={() => onNavigate('competitions')} />
-    <div className="vh-league-stack">{LEAGUES.slice(0, 4).map((league, index) => <button className="vh-league-tile" type="button" key={league.id} onClick={() => onOpenLeague(league.id)}><span className="vh-league-number">{String(index + 1).padStart(2, '0')}</span><span><strong>{league.short}</strong><small>{league.description}</small></span><ChevronRight size={20} /></button>)}</div>
-    <SectionTitle eyebrow="TWOJA STREFA" title="Ulubione" action="Otwórz" onAction={() => onNavigate('favorites')} />
-    <button type="button" className="vh-favorites-teaser" onClick={() => onNavigate('favorites')}><span className="vh-heart-icon"><Heart size={24} /></span><span><strong>{savedCount ? savedCount + ' zapisanych elementów' : 'Twój skład, Twoje ligi'}</strong><small>{savedCount ? 'Przejdź do obserwowanych drużyn i rozgrywek' : 'Dodaj drużyny i ligi, które chcesz śledzić'}</small></span><ChevronRight size={19} /></button>
+
   </>;
 });
 
@@ -451,7 +447,7 @@ function App() {
     });
   }, []);
   function renderPage(id) {
-    if (id === 'home') return <HomePage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />;
+    if (id === 'home') return <HomePage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} onNavigate={navigate} />;
     if (id === 'matches') return <MatchesPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />;
     if (id === 'competitions') return <CompetitionsPage active={page === 'competitions'} feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
     if (id === 'favorites') return <FavoritesPage teams={teams} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;
