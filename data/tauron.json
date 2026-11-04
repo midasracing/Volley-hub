@@ -58,40 +58,22 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-11-04T14:43:55.075195+00:00",
+  "updated_at": "2026-11-04T19:32:13.368186+00:00",
   "matches": [
     {
-      "id": "1104836",
-      "competition": "TAURON Liga",
-      "date": "27.10.2026",
-      "time": "17:30",
+      "id": null,
+      "competition": "AL-KO Superpuchar Polski",
+      "date": "25.10.2026",
+      "time": "15:00",
       "status": "finished",
-      "home": "PGE GiEK Skra Bełchatów",
-      "away": "GKS Katowice",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:18",
-        "25:21",
-        "26:24"
-      ],
-      "current_points": null
-    },
-    {
-      "id": "1104883",
-      "competition": "TAURON Liga",
-      "date": "28.10.2026",
-      "time": "20:30",
-      "status": "finished",
-      "home": "PGE Projekt Warszawa",
-      "away": "Aluron CMC Warta Zawiercie",
-      "home_sets": 1,
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "BOGDANKA LUK Lublin",
+      "home_sets": 0,
       "away_sets": 3,
       "set_scores": [
-        "25:18",
-        "22:25",
-        "17:25",
-        "21:25"
+        "32:34",
+        "20:25",
+        "18:25"
       ],
       "current_points": null
     },
@@ -242,12 +224,17 @@
       "competition": "TAURON Liga",
       "date": "04.11.2026",
       "time": "17:30",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Aluron CMC Warta Zawiercie",
       "away": "Indykpol AZS Olsztyn",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "23:25",
+        "25:20",
+        "25:16",
+        "25:20"
+      ],
       "current_points": null
     },
     {
@@ -255,7 +242,7 @@
       "competition": "TAURON Liga",
       "date": "04.11.2026",
       "time": "20:30",
-      "status": "scheduled",
+      "status": "live",
       "home": "BOGDANKA LUK Lublin",
       "away": "PGE GiEK Skra Bełchatów",
       "home_sets": 0,
@@ -431,6 +418,19 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1104847",
+      "competition": "TAURON Liga",
+      "date": "14.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "Aluron CMC Warta Zawiercie",
+      "away": "Cuprum Stilon Gorzów",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -447,6 +447,18 @@
       "points_against": 187
     },
     {
+      "rank": 1,
+      "team": "Aluron CMC Warta Zawiercie",
+      "points": 12,
+      "played": 5,
+      "wins": 4,
+      "losses": 1,
+      "sets_for": 12,
+      "sets_against": 6,
+      "points_for": 439,
+      "points_against": 389
+    },
+    {
       "rank": 2,
       "team": "Asseco Resovia Rzeszów",
       "points": 7,
@@ -459,7 +471,7 @@
       "points_against": 240
     },
     {
-      "rank": 2,
+      "rank": 3,
       "team": "PGE GiEK Skra Bełchatów",
       "points": 8,
       "played": 4,
@@ -469,18 +481,6 @@
       "sets_against": 6,
       "points_for": 332,
       "points_against": 334
-    },
-    {
-      "rank": 2,
-      "team": "Aluron CMC Warta Zawiercie",
-      "points": 9,
-      "played": 4,
-      "wins": 3,
-      "losses": 1,
-      "sets_for": 9,
-      "sets_against": 5,
-      "points_for": 341,
-      "points_against": 308
     },
     {
       "rank": 4,
@@ -555,18 +555,6 @@
       "points_against": 239
     },
     {
-      "rank": 10,
-      "team": "Indykpol AZS Olsztyn",
-      "points": 3,
-      "played": 3,
-      "wins": 1,
-      "losses": 2,
-      "sets_for": 4,
-      "sets_against": 6,
-      "points_for": 220,
-      "points_against": 236
-    },
-    {
       "rank": 11,
       "team": "ChKS Chełm",
       "points": 3,
@@ -589,6 +577,18 @@
       "sets_against": 8,
       "points_for": 250,
       "points_against": 273
+    },
+    {
+      "rank": 12,
+      "team": "Indykpol AZS Olsztyn",
+      "points": 3,
+      "played": 4,
+      "wins": 1,
+      "losses": 3,
+      "sets_for": 5,
+      "sets_against": 9,
+      "points_for": 301,
+      "points_against": 334
     },
     {
       "rank": 14,

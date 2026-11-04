@@ -66,42 +66,8 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-11-04T14:44:00.343060+00:00",
+  "updated_at": "2026-11-04T19:32:18.760756+00:00",
   "matches": [
-    {
-      "id": "1105170",
-      "competition": "TAURON 1. Liga",
-      "date": "25.10.2026",
-      "time": "17:00",
-      "status": "finished",
-      "home": "Stal Nysa",
-      "away": "MCKiS Jaworzno",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:23",
-        "25:19",
-        "25:22"
-      ],
-      "current_points": null
-    },
-    {
-      "id": "1105172",
-      "competition": "TAURON 1. Liga",
-      "date": "25.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "PZL LEONARDO Avia Świdnik",
-      "away": "KPS Płock",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:20",
-        "25:20",
-        "25:20"
-      ],
-      "current_points": null
-    },
     {
       "id": "1105122",
       "competition": "TAURON 1. Liga",
@@ -251,12 +217,18 @@
       "competition": "TAURON 1. Liga",
       "date": "04.11.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "finished",
       "home": "AVIA Sędziszów Małopolski",
       "away": "ICT PIERROT Czarni Radom",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
+      "home_sets": 3,
+      "away_sets": 2,
+      "set_scores": [
+        "21:25",
+        "15:25",
+        "27:25",
+        "25:22",
+        "15:12"
+      ],
       "current_points": null
     },
     {
@@ -264,12 +236,16 @@
       "competition": "TAURON 1. Liga",
       "date": "04.11.2026",
       "time": "18:00",
-      "status": "scheduled",
+      "status": "finished",
       "home": "BBTS Bielsko-Biała",
       "away": "KKS MICKIEWICZ Kluczbork",
-      "home_sets": 0,
+      "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
+      "set_scores": [
+        "25:18",
+        "25:21",
+        "25:22"
+      ],
       "current_points": null
     },
     {
@@ -440,6 +416,32 @@
       "away_sets": 0,
       "set_scores": [],
       "current_points": null
+    },
+    {
+      "id": "1105197",
+      "competition": "TAURON 1. Liga",
+      "date": "15.11.2026",
+      "time": "16:00",
+      "status": "scheduled",
+      "home": "CUK Anioły Toruń",
+      "away": "Lechia Tomaszów Mazowiecki",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
+      "id": "1105194",
+      "competition": "TAURON 1. Liga",
+      "date": "16.11.2026",
+      "time": null,
+      "status": "scheduled",
+      "home": "MCKiS Jaworzno",
+      "away": "KS Sparta Grodzisk Mazowiecki",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
     }
   ],
   "table": [
@@ -495,16 +497,28 @@
       "rank": 5,
       "team": "KKS MICKIEWICZ Kluczbork",
       "points": 14,
-      "played": 7,
+      "played": 8,
       "wins": 4,
-      "losses": 3,
+      "losses": 4,
       "sets_for": 17,
-      "sets_against": 10,
-      "points_for": 631,
-      "points_against": 584
+      "sets_against": 13,
+      "points_for": 692,
+      "points_against": 659
     },
     {
       "rank": 6,
+      "team": "ICT PIERROT Czarni Radom",
+      "points": 13,
+      "played": 7,
+      "wins": 4,
+      "losses": 3,
+      "sets_for": 16,
+      "sets_against": 13,
+      "points_for": 634,
+      "points_against": 607
+    },
+    {
+      "rank": 7,
       "team": "Stal Nysa",
       "points": 12,
       "played": 5,
@@ -516,19 +530,31 @@
       "points_against": 353
     },
     {
-      "rank": 7,
-      "team": "ICT PIERROT Czarni Radom",
-      "points": 12,
-      "played": 6,
+      "rank": 8,
+      "team": "AVIA Sędziszów Małopolski",
+      "points": 10,
+      "played": 8,
       "wins": 4,
-      "losses": 2,
+      "losses": 4,
       "sets_for": 14,
-      "sets_against": 10,
-      "points_for": 525,
-      "points_against": 504
+      "sets_against": 17,
+      "points_for": 675,
+      "points_against": 722
     },
     {
-      "rank": 8,
+      "rank": 9,
+      "team": "BBTS Bielsko-Biała",
+      "points": 10,
+      "played": 6,
+      "wins": 3,
+      "losses": 3,
+      "sets_for": 11,
+      "sets_against": 9,
+      "points_for": 456,
+      "points_against": 454
+    },
+    {
+      "rank": 10,
       "team": "Lechia Tomaszów Mazowiecki",
       "points": 10,
       "played": 8,
@@ -540,7 +566,7 @@
       "points_against": 726
     },
     {
-      "rank": 9,
+      "rank": 11,
       "team": "BKS Bydgoszcz",
       "points": 9,
       "played": 7,
@@ -552,19 +578,7 @@
       "points_against": 622
     },
     {
-      "rank": 10,
-      "team": "AVIA Sędziszów Małopolski",
-      "points": 8,
-      "played": 7,
-      "wins": 3,
-      "losses": 4,
-      "sets_for": 11,
-      "sets_against": 15,
-      "points_for": 572,
-      "points_against": 613
-    },
-    {
-      "rank": 11,
+      "rank": 12,
       "team": "MCKiS Jaworzno",
       "points": 8,
       "played": 8,
@@ -574,18 +588,6 @@
       "sets_against": 20,
       "points_for": 714,
       "points_against": 746
-    },
-    {
-      "rank": 12,
-      "team": "BBTS Bielsko-Biała",
-      "points": 7,
-      "played": 5,
-      "wins": 2,
-      "losses": 3,
-      "sets_for": 8,
-      "sets_against": 9,
-      "points_for": 381,
-      "points_against": 393
     },
     {
       "rank": 13,
