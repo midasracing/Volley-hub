@@ -66,7 +66,7 @@
       "logo": "https://www.tauron1liga.pl/dl/725008/inline/scalecrop=70x70/129105/stal_nysa.png"
     }
   ],
-  "updated_at": "2026-11-04T00:02:17.268211+00:00",
+  "updated_at": "2026-11-04T14:44:00.343060+00:00",
   "matches": [
     {
       "id": "1105170",
@@ -429,13 +429,13 @@
       "current_points": null
     },
     {
-      "id": "1105197",
+      "id": "1105198",
       "competition": "TAURON 1. Liga",
       "date": "15.11.2026",
       "time": null,
       "status": "scheduled",
-      "home": "CUK Anioły Toruń",
-      "away": "Lechia Tomaszów Mazowiecki",
+      "home": "KPS Płock",
+      "away": "ICT PIERROT Czarni Radom",
       "home_sets": 0,
       "away_sets": 0,
       "set_scores": [],
