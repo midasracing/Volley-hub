@@ -16,9 +16,10 @@ permissions:
   deployments: read
 concurrency:
   group: github-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   verify:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     outputs:
       should_build: ${{ steps.check.outputs.should_build }}
@@ -32,7 +33,15 @@ jobs:
             exit 0
           fi
           CURRENT=$(gh api 'repos/${{ github.repository }}/git/ref/heads/main' --jq '.object.sha')
-          LAST=$(gh api 'repos/${{ github.repository }}/deployments?environment=github-pages&per_page=1' --jq '.[0].sha // empty' || true)
+          # A queued/failed deployment is not proof that CURRENT is published.
+          LAST=''
+          while read -r ID SHA; do
+            STATE=$(gh api "repos/${{ github.repository }}/deployments/$ID/statuses?per_page=1" --jq '.[0].state // empty')
+            if [ "$STATE" = 'success' ]; then
+              LAST="$SHA"
+              break
+            fi
+          done < <(gh api 'repos/${{ github.repository }}/deployments?environment=github-pages&per_page=10' --jq '.[] | "\(.id) \(.sha)"')
           if [ -n "$LAST" ] && [ "$CURRENT" = "$LAST" ]; then
             echo 'should_build=false' >> "$GITHUB_OUTPUT"
             echo 'Published commit is unchanged; skipping rebuild.'
@@ -45,6 +54,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -69,3 +80,4 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+

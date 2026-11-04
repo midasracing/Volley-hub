@@ -2,6 +2,7 @@ name: Update II Liga Mężczyzn
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/update-2liga.yml"
       - "scripts/update_2liga.py"
@@ -49,3 +50,4 @@ jobs:
           git commit -m "Update II Liga Mężczyzn data"
           git pull --rebase origin main
           git push
+

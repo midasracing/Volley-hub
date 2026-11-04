@@ -108,6 +108,11 @@ W interfejsie wykorzystano element **GlassSurface** z biblioteki React Bits. Inf
 
 Aplikacja jest publikowana na **GitHub Pages** z gałęzi `main`.
 
+W **Settings → Pages → Build and deployment → Source** musi być wybrane
+**GitHub Actions**. Opcja **Deploy from a branch** uruchamia Jekylla, który
+publikuje źródłowy `index.html` zamiast buildu Vite i może nadpisać działającą
+aplikację, powodując pusty ekran. Nie uruchamiaj obu metod publikacji równocześnie.
+
 Workflow [`deploy-react.yml`](.github/workflows/deploy-react.yml) uruchamia testy, buduje aplikację i publikuje katalog `dist/`. Oddzielne zadania GitHub Actions aktualizują dane poszczególnych rozgrywek.
 
 ## Współpraca
@@ -117,3 +122,4 @@ Znalazłeś błąd w wynikach, nieaktualny terminarz albo problem z działaniem 
 ---
 
 <sub>Kiedy Siatka? jest projektem niezależnym. Dane i materiały pochodzące z zewnętrznych źródeł pozostają własnością ich odpowiednich właścicieli.</sub>
+

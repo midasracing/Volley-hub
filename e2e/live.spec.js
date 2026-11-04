@@ -35,10 +35,13 @@ test('live polls update changed cards only, retain expanded sets and detect comp
     new MutationObserver(records => { window.__stableMutations += records.length; }).observe(el, { subtree: true, childList: true, characterData: true, attributes: true });
   });
   const otherRequests = state.counts['2liga.json'];
+  // React StrictMode can start and abort an extra initial request in dev.
+  // Measure this polling interval rather than counting requests since mount.
+  const liveRequests = state.counts['tauron.json'];
   state.payload.matches[0].current_points = '21:19';
   await page.clock.fastForward(10000);
   await expect(card(page, 'live-one')).toContainText('21:19');
-  expect(state.counts['tauron.json']).toBe(2);
+  expect(state.counts['tauron.json']).toBe(liveRequests + 1);
   expect(state.counts['2liga.json']).toBe(otherRequests);
   expect(await stable.evaluate(el => el === window.__stableCard && window.__stableMutations === 0)).toBe(true);
   await expect(stable.getByRole('button', { name: 'Ukryj sety' })).toHaveAttribute('aria-expanded', 'true');
@@ -99,3 +102,4 @@ test('slow requests do not overlap and hidden pages pause polling until visible 
   });
   await expect(card(page, 'live-one')).toContainText('23:19');
 });
+

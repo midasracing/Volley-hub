@@ -45,7 +45,10 @@ self.addEventListener('fetch', event => {
 
   if (data) {
     event.respondWith(fetch(request).then(response => {
-      if (response.ok) caches.open(CACHE).then(cache => cache.put(request, response.clone())).catch(() => {});
+      if (response.ok) {
+        const copy = response.clone();
+        event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy)).catch(() => {}));
+      }
       return response;
     }).catch(async () =>
       (await caches.match(request, { ignoreSearch: true })) ||
@@ -57,7 +60,11 @@ self.addEventListener('fetch', event => {
 
   // Versioned Vite JS/CSS assets are immutable and safe to cache-first.
   event.respondWith(caches.match(request).then(cached => cached || fetch(request).then(response => {
-    if (response.ok) caches.open(CACHE).then(cache => cache.put(request, response.clone())).catch(() => {});
+    if (response.ok) {
+      const copy = response.clone();
+      event.waitUntil(caches.open(CACHE).then(cache => cache.put(request, copy)).catch(() => {}));
+    }
     return response;
   })));
 });
+

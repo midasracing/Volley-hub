@@ -82,7 +82,9 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/pomorska3liga.json
             git commit -m "Update Pomorska III Liga data"
+            git pull --rebase origin main
             git push
           else
             echo "No fixture changes."
           fi
+
