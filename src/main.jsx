@@ -192,7 +192,6 @@ const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, e
       {LEAGUES.map(league => <button className={'vh-filter-chip ' + (leagueFilter === league.id ? 'chosen' : '')} type="button" key={league.id} onClick={() => updateLeague(league.id)}>{league.short}</button>)}
     </div>
     {leagueFilter === 'second' && <div className="vh-controls vh-secondary-filters"><button className={'vh-filter-chip ' + (groupFilter === 'all' ? 'chosen' : '')} onClick={() => setGroupFilter('all')}>Wszystkie grupy</button>{groups.map(group => <button key={group} className={'vh-filter-chip ' + (groupFilter === group ? 'chosen' : '')} onClick={() => setGroupFilter(group)}>{group}</button>)}</div>}
-    <div className="vh-calendar-refresh"><button className="vh-refresh" title="Odśwież" aria-label="Odśwież dane" onClick={refresh}><RotateCw size={18} /></button></div>
     <FeedWarning errors={errors} refresh={refresh} />
     <div className="vh-day-results" ref={resultsRef} data-day={dateKey(displayedDate)} aria-busy={dateKey(displayedDate) !== dateKey(selectedDate)}>
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups matches={filtered} logos={logos} emptyMessage="Nie znaleziono meczów na wybrany dzień. Przesuń kalendarz lub wybierz inną ligę." />}
