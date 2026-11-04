@@ -8,14 +8,14 @@
   --bg: #080808;
   --ink: #f5f2ed;
   --muted: #b7b2ac;
-  --line: #373431;
-  --accent: #f10d0d;
-  --accent-text: #ff6860;
-  --accent-ink: #b80a12;
+  --line: #49151c;
+  --accent: #b30818;
+  --accent-text: #ff4055;
+  --accent-ink: #b30818;
   --blue: var(--accent-text);
   --red: var(--accent-text);
-  --surface: #191817;
-  --surface-hover: #252321;
+  --surface: #1d0b0f;
+  --surface-hover: #310d15;
   font-family: var(--font-ui);
   color: var(--ink);
   color-scheme: dark;
@@ -43,7 +43,7 @@ button:focus-visible, a:focus-visible, input:focus-visible,
 
 .vh-text-action, .vh-back, .vh-eyebrow,
 .vh-search-results h3 { color: var(--accent-text); }
-.vh-text-action:hover { color: #ffaaa4; }
+.vh-text-action:hover { color: #ff8793; }
 .vh-button-soft { background: var(--ink); color: #131211; }
 .vh-league-tile { background: var(--surface); border-color: var(--line); }
 button.vh-league-tile:hover, .vh-league-select:hover { background: var(--surface-hover); border-color: #62514e; }
@@ -59,22 +59,31 @@ button.vh-league-tile:hover, .vh-league-select:hover { background: var(--surface
 .vh-match-groups .im-league { color: var(--ink); }
 .vh-count { background: #312d29; color: var(--ink); }
 
-/* Match sheets use the warm white from the reference, with dark readable data. */
-.vh-match.im-card { background: #f5f2ed; color: #131211; border-color: #ded9d2; }
-.vh-match .im-meta, .vh-match-footer { color: #625c55; }
-.vh-match .im-name, .vh-match .im-pts, .vh-match .im-time { color: #171513; }
-.vh-match .im-pts.lose { color: #746c64; }
-.vh-match .im-live { color: var(--accent-ink); }
-.vh-match .im-live::before { background: var(--accent-ink); }
-.vh-match .im-sep, .vh-match-footer { border-color: #d9d2c9; }
-.vh-match .im-sep { background: #d9d2c9; }
-.vh-team-logo .team-mark { background: #e6dfd6; color: #5e2421; }
-.vh-details-button { color: var(--accent-ink); }
-.vh-sets > span { background: #e9e3db; }
-.vh-sets small { color: #625c55; }
+/* Blood-red score sheets: dark wine, ivory data, sharp crimson edge. */
+.vh-match.im-card {
+  background: linear-gradient(115deg, #430b16 0%, #26090f 58%, #17090d 100%);
+  color: #fff3ed;
+  border-color: #6b1424;
+  box-shadow: inset 4px 0 0 #b30818, 0 6px 24px rgba(0,0,0,.24);
+}
+.vh-match.im-card:hover {
+  border-color: #b30818;
+  box-shadow: inset 4px 0 0 #d51028, 0 9px 28px rgba(0,0,0,.35);
+}
+.vh-match .im-meta, .vh-match-footer { color: #d9b4b9; }
+.vh-match .im-name, .vh-match .im-pts, .vh-match .im-time { color: #fff3ed; }
+.vh-match .im-pts.lose { color: #c39da4; }
+.vh-match .im-live { color: #ff7182; }
+.vh-match .im-live::before { background: #ff4055; }
+.vh-match .im-sep, .vh-match-footer { border-color: #68303a; }
+.vh-match .im-sep { background: #68303a; }
+.vh-team-logo .team-mark { background: #5c1522; color: #fff3ed; }
+.vh-details-button { color: #ff8b98; }
+.vh-sets > span { background: #4a101c; color: #fff3ed; }
+.vh-sets small { color: #d9b4b9; }
 
 #ios-matches .im-strip { border-color: var(--line); }
-#ios-matches .im-day.is-sel { background: #e50914 !important; box-shadow: 0 8px 23px rgba(241,13,13,.18); }
+#ios-matches .im-day.is-sel { background: #b30818 !important; box-shadow: 0 8px 23px rgba(179,8,24,.18); }
 #ios-matches .im-day.is-sel b,
 #ios-matches .im-day.is-sel span,
 #ios-matches .im-day.is-sel .im-month { color: #fff9f3; }
@@ -82,10 +91,10 @@ button.vh-league-tile:hover, .vh-league-select:hover { background: var(--surface
 #ios-matches .im-day.is-today:not(.is-sel) span { color: var(--accent-text); }
 #ios-matches .im-day span { color: var(--muted); }
 .vh-icon-button.im-round { background: #272320; color: var(--ink); }
-.vh-icon-button.im-round.is-active { background: #e50914; color: #fff9f3; }
+.vh-icon-button.im-round.is-active { background: #b30818; color: #fff9f3; }
 .vh-filter-chip { background: #201e1c; border-color: #4b443e; color: #cbc4bc; }
 .vh-filter-chip:hover { background: #322b27; }
-.vh-filter-chip.chosen { background: #e50914; border-color: #e50914; color: #fff9f3; }
+.vh-filter-chip.chosen { background: #b30818; border-color: #b30818; color: #fff9f3; }
 .vh-refresh { background: #272320; color: var(--ink); }
 .vh-source-note { color: #aaa39b; }
 .vh-empty { border-color: #51463e; background: #121110; }
@@ -98,7 +107,7 @@ button.vh-league-tile:hover, .vh-league-select:hover { background: var(--surface
 .vh-segmented button.selected { background: var(--ink); color: #211b17; }
 .vh-league-cover { background: #290d0e; border-color: #8b2729; }
 .vh-league-cover p { color: #d4c1bb; }
-.vh-cover-favorite { color: #fff9f3; background: #e50914; border-color: #e50914; }
+.vh-cover-favorite { color: #fff9f3; background: #b30818; border-color: #b30818; }
 .vh-table-scroll { background: #191715; border-color: var(--line); }
 .vh-table th { color: var(--muted); }
 .vh-table td { color: var(--ink); }
@@ -111,13 +120,13 @@ button.vh-league-tile:hover, .vh-league-select:hover { background: var(--surface
 .vh-picker-row > svg:last-child { color: var(--muted); }
 .vh-mini-league { background: #351715; color: var(--accent-text); }
 .vh-picker-check { border-color: #6b5b4e; color: #c0b4a7; }
-.vh-picker-check.selected { background: #e50914; border-color: #e50914; color: #fff9f3; }
+.vh-picker-check.selected { background: #b30818; border-color: #b30818; color: #fff9f3; }
 .vh-search-overlay { background: rgba(0,0,0,.84); }
 .vh-search-sheet { background: #171412; color: var(--ink); border-color: #51453c; }
 .vh-close { background: #352d27; color: var(--ink); }
 .vh-search-bubble { background: #201c19; color: var(--ink); border-color: #6a5c51; }
 .vh-search-bubble:hover { border-color: var(--accent-text); }
-.vh-search-glass { background: linear-gradient(145deg,rgba(245,242,237,.16),rgba(245,242,237,.04) 60%,rgba(241,13,13,.10)); }
+.vh-search-glass { background: linear-gradient(145deg,rgba(245,242,237,.16),rgba(245,242,237,.04) 60%,rgba(179,8,24,.10)); }
 
 /* Preserve the existing single spring and transparent active button. */
 .vh-bottom { background: rgba(20,18,16,.96); border-color: #65564b; color: #c9c0b6; }
@@ -126,7 +135,7 @@ button.vh-league-tile:hover, .vh-league-select:hover { background: var(--surface
 .vh-nav-item.active svg { color: #fff9f3; }
 .vh-nav-lens { background: transparent; }
 .vh-nav-lens .vh-react-glass { box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 5px 16px rgba(0,0,0,.16); }
-.vh-nav-lens .glass-surface--static { background: #e50914; border-color: #ff554e; }
+.vh-nav-lens .glass-surface--static { background: #b30818; border-color: #df2338; }
 
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .vh-bottom, .vh-search-bubble { background: #171412; }
