@@ -1,173 +1,119 @@
-<div align="center">
-
-  <br />
-
-  **Mecze, wyniki i rozgrywki. Cała siatkówka w jednym miejscu.**
-
-  Mobilne centrum polskiej siatkówki — od terminarza po ostatni set.
-
-  <br />
-
-  <a href="https://midasracing.github.io/Volley-hub/">
-    <img src="https://img.shields.io/badge/OTWÓRZ_APLIKACJĘ-8BABFF?style=for-the-badge&amp;logo=githubpages&amp;logoColor=0E1118" alt="Otwórz Kiedy Siatka?" />
+<p align="center">
+  <a href="https://midasracing.github.io/kiedysiatka/">
+    <img src="public/kiedy-siatka-logo.svg" alt="Kiedy Siatka?" width="310" />
   </a>
-  <a href="https://github.com/midasracing/Volley-hub/actions/workflows/deploy-react.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/midasracing/Volley-hub/deploy-react.yml?branch=main&amp;style=for-the-badge&amp;label=GitHub%20Pages&amp;logo=githubactions" alt="Status wdrożenia GitHub Pages" />
-  </a>
-
-  <br />
-  <br />
-
-  <a href="#funkcje">Funkcje</a> ·
-  <a href="#rozgrywki">Rozgrywki</a> ·
-  <a href="#szybki-start">Szybki start</a> ·
-  <a href="#jak-to-działa">Jak to działa</a> ·
-  <a href="#publikacja">Publikacja</a>
-</div>
-
----
-
-## 🏐 Siatkówka ma swoje miejsce
-
-**Kiedy Siatka?** to aplikacja webowa stworzona z myślą o szybkim sprawdzaniu tego, co dzieje się na polskich parkietach. Bez przeskakiwania między stronami: wybierasz ligę, sprawdzasz mecz i wracasz do gry.
-
-Projekt powstał w podejściu **mobile-first**. Działa w przeglądarce i jako **PWA**, które można dodać do ekranu głównego telefonu.
-
-## ✨ Funkcje
-
-| | |
-| :--- | :--- |
-| **🏟️ Mecze i wyniki**<br />Mecze dnia, nadchodzące spotkania, wyniki, sety i status rozgrywanego meczu. | **📅 Terminarze i tabele**<br />Kalendarz meczów, filtry lig i grup oraz widoki rozgrywek i drużyn. |
-| **⭐ Ulubione pod ręką**<br />Zapisuj wybrane drużyny i ligi — pozostają w pamięci przeglądarki dzięki `localStorage`. | **🔎 Szybkie wyszukiwanie**<br />Szukaj drużyn i lig bez przekopywania się przez kolejne zestawienia. |
-| **📱 PWA i mobilny interfejs**<br />Aplikacja z manifestem i service workerem, dostosowana do wygodnej obsługi na telefonie. | **🎨 Dopieszczone detale**<br />Ciemny interfejs, karty wyników, wektorowy logotyp SVG i nawigacja GlassSurface. |
-
-> [!NOTE]
-> Dostępność wyników i ich aktualność zależą od danych pobieranych ze źródeł ligowych. Nie generujemy fikcyjnych wyników.
-
-## 🏆 Rozgrywki
-
-| Liga | Dane |
-| :--- | :--- |
-| **TAURON Liga** | [`data/tauron.json`](data/tauron.json) |
-| **TAURON 1. Liga** | [`data/tauron1liga.json`](data/tauron1liga.json) |
-| **II Liga Mężczyzn** | [`data/2liga.json`](data/2liga.json) |
-| **Pomorska III Liga Mężczyzn** | [`data/pomorska3liga.json`](data/pomorska3liga.json) |
-
-Dane są aktualizowane przez istniejące skrypty i zadania **GitHub Actions**. Dla II ligi wykorzystywane są dane PZPS, a dla Pomorskiej III ligi — VolleyStation.
-
-## 🚀 Szybki start
-
-Potrzebujesz **Node.js 20+** i **npm**.
-
-```bash
-git clone https://github.com/midasracing/Volley-hub.git
-cd Volley-hub
-npm install
-npm run dev
-```
-
-Następnie otwórz lokalny adres wskazany przez Vite.
-
-| Komenda | Działanie |
-| :--- | :--- |
-| `npm run dev` | Start serwera developerskiego |
-| `npm test` | Testy logiki (Node Test Runner) |
-| `npm run test:e2e` | Testy przeglądarkowe (Playwright; wymaga przygotowanego środowiska) |
-| `npm run build` | Produkcyjny build do `dist/` |
-| `npm run preview` | Podgląd lokalnego buildu |
-
-## ⚙️ Jak to działa
-
-```text
-Źródła ligowe
-      │
-      ▼
-GitHub Actions + skrypty aktualizujące dane
-      │
-      ▼
-   data/*.json
-      │
-      │  scripts/sync-data.mjs
-      ▼
- public/data/*.json
-      │
-      ▼
-  React + Vite  →  GitHub Pages  →  Przeglądarka / PWA
-```
-
-Podczas korzystania z aplikacji ligi z meczami oznaczonymi jako live są sprawdzane co 10 sekund. Pełna synchronizacja co minutę wykrywa nowe mecze i zmiany terminarza. Ukrycie aplikacji wstrzymuje odpytywanie; powrót uruchamia synchronizację. Zmiana wyniku aktualizuje kartę danego meczu, zachowując pozostałe karty, filtry i rozwinięte sety. Błąd połączenia pozostawia ostatnie dostępne wyniki.
-
-Częstotliwość pobierania w przeglądarce jest niezależna od aktualizacji źródła: obecne zadania GitHub Actions sprawdzają TAURON co 5 minut w godzinach meczowych, Pomorską III ligę co 15 minut, a II ligę co 30 minut. Publikacja danych dodaje czas wdrożenia. Wyniki punkt po punkcie wymagają źródła/API aktualizowanego częściej.
-
-Przed `npm run dev` i `npm run build` skrypt `scripts/sync-data.mjs` kopiuje bieżące dane z `data/` do `public/data/`. Interfejs następnie pobiera i normalizuje dane na potrzeby widoków meczowych.
-
-### Stack
-
-![React](https://img.shields.io/badge/React-19-149ECA?style=flat-square&logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?style=flat-square&logo=javascript&logoColor=111111)
-![PWA](https://img.shields.io/badge/PWA-Mobile_First-7D8DA8?style=flat-square&logo=pwa&logoColor=white)
-![GitHub Pages](https://img.shields.io/badge/Hosting-GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white)
-
-**Frontend:** React 19, Vite 6, JavaScript, CSS  
-**Doświadczenie:** mobile-first, PWA, `localStorage`, service worker  
-**Testy i automatyzacja:** Node Test Runner, Playwright, GitHub Actions  
-**Interfejs:** Wektorowy logotyp SVG, React Bits GlassSurface (liquid glass)
-
-<details>
-<summary><strong>📂 Struktura projektu</strong></summary>
-
-```text
-Volley-hub/
-├── .github/workflows/   # testy, aktualizacje danych i deploy
-├── data/                # źródłowe pliki JSON rozgrywek
-├── public/              # manifest, service worker, dane dla aplikacji
-├── scripts/             # synchronizacja i skrypty danych
-├── src/                 # aplikacja React, widoki i komponenty
-├── tests/               # testy logiki
-├── e2e/                 # testy przeglądarkowe
-├── vite.config.js       # konfiguracja buildu
-└── package.json
-```
-
-Główne miejsca do poznania kodu:
-- [`src/main.jsx`](src/main.jsx) — główne widoki i nawigacja.
-- [`src/data.js`](src/data.js) — pobieranie i normalizacja danych.
-- [`src/app.css`](src/app.css) — design system i style aplikacji.
-- [`src/components/react-bits/GlassSurface.jsx`](src/components/react-bits/GlassSurface.jsx) — pojedynczy szklany wskaźnik dolnej nawigacji. Wyszukiwarka używa lekkiego statycznego stylu.
-
-</details>
-
-## 🌐 Publikacja
-
-**Hosting: GitHub Pages.** Aplikacja publikowana jest z gałęzi `main` przez workflow [**Deploy React to GitHub Pages**](.github/workflows/deploy-react.yml).
-
-1. GitHub Actions weryfikuje, czy należy wykonać nowy build.
-2. Instalowane są zależności, uruchamiane testy i wykonywany jest `npm run build`.
-3. Zawartość `dist/` jest publikowana na GitHub Pages.
-
-W ustawieniach repozytorium w **Settings → Pages → Build and deployment** jako **Source** powinno być wybrane **GitHub Actions**.
+</p>
 
 <p align="center">
-  <a href="https://midasracing.github.io/Volley-hub/"><strong>↗ Otwórz Kiedy Siatka?</strong></a>
+  Terminarze, wyniki i tabele polskiej siatkówki. Bez szukania ich na kilku stronach.
+</p>
+
+<p align="center">
+  <a href="https://midasracing.github.io/kiedysiatka/"><strong>Otwórz aplikację</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/midasracing/Volley-hub/actions"><strong>Zobacz automatyzacje</strong></a>
+  <a href="#uruchomienie">Uruchom lokalnie</a>
   &nbsp;·&nbsp;
-  <a href="https://github.com/midasracing/Volley-hub/issues"><strong>Zgłoś problem</strong></a>
+  <a href="https://github.com/midasracing/kiedysiatka/issues">Zgłoś problem</a>
 </p>
 
 ---
 
-<div align="center">
+## O projekcie
 
-**Made for the love of volleyball. 🏐**
+**Kiedy Siatka?** to niezależna aplikacja webowa do śledzenia polskich rozgrywek siatkarskich. Została zaprojektowana przede wszystkim z myślą o telefonach, ale działa również na komputerach.
 
-<sub>Kiedy Siatka? jest niezależnym projektem. Materiały i dane zewnętrzne należą do ich właścicieli.</sub>
+Nie wymaga zakładania konta. Dzięki obsłudze PWA można dodać ją do ekranu głównego, a wybrane drużyny i ligi zapisywać lokalnie w przeglądarce.
 
-<sub>Komponent GlassSurface pochodzi z React Bits — [informacje licencyjne i atrybucja](src/components/react-bits/LICENSE.md).</sub>
+## Funkcje
 
-</div>
+- **Mecze i wyniki** — spotkania na dziś, nadchodzące mecze, rezultaty, sety i status spotkania.
+- **Terminarze i tabele** — przeglądanie rozgrywek, grup i drużyn.
+- **Ulubione** — szybki dostęp do obserwowanych drużyn i lig; ustawienia są przechowywane przez `localStorage`.
+- **Wyszukiwanie** — znajdowanie drużyn i lig bez przeklikiwania kolejnych ekranów.
+- **Mobilny interfejs** — widoki dopasowane do małych ekranów, instalowalna aplikacja PWA i obsługa gestów nawigacyjnych.
 
-### Porządek po animacjach
+## Rozgrywki
 
-W interfejsie pozostaje jeden wskaźnik szkła oparty na React Bits GlassSurface. Stary, nieużywany silnik WebGL `src/FluidGlass.jsx` wraz z hookiem i arkuszem stylów został usunięty. Wybór tego komponentu jest celowy: oficjalny React Bits FluidGlass jest pełną sceną 3D wymagającą Three.js i nie nadaje się do małej, szybkiej kapsuły z zachowaniem natywnych ikon. Wskaźnik używa statycznego materiału szkła bez filtrów tła, map SVG i canvas. Sprężyna jest odtwarzana przez Web Animations API bez pętli JavaScript na każdą klatkę. Cztery zakładki są przygotowywane kolejno w czasie bezczynności po pobraniu danych i zachowują DOM oraz filtry; tylko aktywna zajmuje miejsce na stronie. Przełączanie stron nie ma sztucznego opóźnienia ani animacji wejścia. Testy mobilne obejmują Chromium i WebKit.
+| Rozgrywki | Dane w repozytorium |
+| --- | --- |
+| TAURON Liga | [`data/tauron.json`](data/tauron.json) |
+| TAURON 1. Liga | [`data/tauron1liga.json`](data/tauron1liga.json) |
+| II Liga Mężczyzn | [`data/2liga.json`](data/2liga.json) |
+| Pomorska III Liga Mężczyzn | [`data/pomorska3liga.json`](data/pomorska3liga.json) |
+
+Dostępność i aktualność danych zależą od zewnętrznych źródeł ligowych. Wyniki nie są generowane ani uzupełniane fikcyjnymi wartościami.
+
+## Skąd pochodzą dane?
+
+Dane zbierają skrypty aktualizujące rozgrywki, uruchamiane przez **GitHub Actions**. W projekcie wykorzystywane są między innymi dane PZPS (II liga) i VolleyStation (Pomorska III liga).
+
+```text
+Źródła rozgrywek
+        ↓
+Skrypty aktualizujące + GitHub Actions
+        ↓
+     data/*.json
+        ↓
+ scripts/sync-data.mjs
+        ↓
+   public/data/*.json
+        ↓
+    React + Vite
+        ↓
+  GitHub Pages / PWA
+```
+
+Aplikacja regularnie sprawdza dostępność nowych danych, a gdy połączenie się nie powiedzie, zachowuje ostatni pobrany stan. Częstotliwość odświeżania ekranu nie oznacza, że źródło publikuje wyniki z taką samą częstotliwością. Informacje punkt po punkcie wymagają odpowiednio aktualnego zewnętrznego źródła.
+
+## Uruchomienie
+
+Wymagane: **Node.js 20+** i npm.
+
+```bash
+git clone https://github.com/midasracing/kiedysiatka.git
+cd kiedysiatka
+npm install
+npm run dev
+```
+
+Po uruchomieniu Vite wyświetli lokalny adres aplikacji.
+
+| Polecenie | Działanie |
+| --- | --- |
+| `npm run dev` | Serwer developerski |
+| `npm test` | Testy logiki (Node Test Runner) |
+| `npm run test:e2e` | Testy przeglądarkowe (Playwright) |
+| `npm run build` | Build produkcyjny |
+| `npm run preview` | Podgląd buildu |
+
+Przed uruchomieniem serwera i budowaniem aplikacji wykonywany jest `scripts/sync-data.mjs`, który synchronizuje pliki JSON do katalogu `public/data/`.
+
+## Technologia i struktura
+
+**React 19 · Vite 6 · JavaScript · CSS · PWA · GitHub Actions**
+
+| Ścieżka | Zawartość |
+| --- | --- |
+| [`src/main.jsx`](src/main.jsx) | Główne widoki aplikacji |
+| [`src/data.js`](src/data.js) | Pobieranie i normalizacja danych |
+| [`src/app.css`](src/app.css) | Układ i style interfejsu |
+| [`src/components/`](src/components/) | Nawigacja i elementy UI |
+| [`scripts/`](scripts/) | Aktualizowanie danych ligowych |
+| [`tests/`](tests/) i [`e2e/`](e2e/) | Testy jednostkowe i przeglądarkowe |
+| [`.github/workflows/`](.github/workflows/) | Testy, synchronizacja i publikacja |
+
+W interfejsie wykorzystano element **GlassSurface** z biblioteki React Bits. Informacje o jego pochodzeniu i licencji znajdują się w [pliku atrybucji](src/components/react-bits/LICENSE.md).
+
+## Publikacja
+
+Aplikacja jest publikowana na **GitHub Pages** z gałęzi `main`.
+
+Workflow [`deploy-react.yml`](.github/workflows/deploy-react.yml) uruchamia testy, buduje aplikację i publikuje katalog `dist/`. Oddzielne zadania GitHub Actions aktualizują dane poszczególnych rozgrywek.
+
+## Współpraca
+
+Znalazłeś błąd w wynikach, nieaktualny terminarz albo problem z działaniem aplikacji? [Otwórz zgłoszenie](https://github.com/midasracing/kiedysiatka/issues). Pull requesty z poprawkami również są mile widziane.
+
+---
+
+<sub>Kiedy Siatka? jest projektem niezależnym. Dane i materiały pochodzące z zewnętrznych źródeł pozostają własnością ich odpowiednich właścicieli.</sub>
