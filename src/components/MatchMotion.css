@@ -22,3 +22,5 @@
   .vh-score.is-changing .vh-score-window::before{display:none}
   .vh-score.is-changing .vh-score-current,.vh-league-entrance.has-motion,.vh-league-entrance.has-motion h2{animation:none;transform:none;clip-path:none}
 }
+
+.vh-day-results{display:contents}

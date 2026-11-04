@@ -7,6 +7,8 @@ import {
   isLive, isFinished, matchesFromFeeds, teamIndex, normalizeName, readFavorites
 } from './data.js';
 import BrandSignature from './components/BrandSignature.jsx';
+import StartupEntrance from './components/StartupEntrance.jsx';
+import { useAnimatedDate, AnimatedSets } from './components/ScheduleMotion.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import PageStage from './components/PageStage.jsx';
 import useFeeds from './useFeeds.js';
@@ -91,11 +93,7 @@ const MatchCard = React.memo(function MatchCard({ match, logos, compact = false 
       {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded} aria-controls={detailsId}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
       {isLive(match) && match.current_points && <span>Aktualny set: <ScoreValue className="vh-live-points" value={String(match.current_points)} /></span>}
     </div>}
-    {scores.length > 0 && <div className={'vh-sets-wrap' + (expanded ? ' is-expanded' : '')} aria-hidden={!expanded} inert={!expanded}>
-      <div id={detailsId} className="vh-sets" role="region" aria-label="Wyniki setów">
-        {scores.map((set, index) => <span key={index}><small>SET {index + 1}</small><strong>{set}</strong></span>)}
-      </div>
-    </div>}
+    {scores.length > 0 && <AnimatedSets scores={scores} expanded={expanded} detailsId={detailsId} />}
   </article>;
 });
 
@@ -149,12 +147,14 @@ function DateStrip({ selected, onSelect }) {
 }
 
 const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, errors, refresh, logos, selectedDate, setSelectedDate, leagueFilter, setLeagueFilter }) {
+  const resultsRef = useRef(null);
+  const displayedDate = useAnimatedDate(selectedDate, resultsRef);
   const [liveOnly, setLiveOnly] = useState(false);
   const [groupFilter, setGroupFilter] = useState('all');
   const input = useRef(null);
   const all = useMemo(() => leagueFilter ? matches.filter(match => match.leagueId === leagueFilter) : matches, [matches, leagueFilter]);
   const groups = [...new Set(all.filter(match => match.leagueId === 'second').map(match => match.group).filter(Boolean))];
-  const filtered = all.filter(match => (!liveOnly || isLive(match)) && (liveOnly || feedDateKey(match.date) === dateKey(selectedDate)) && (groupFilter === 'all' || match.leagueId !== 'second' || match.group === groupFilter));
+  const filtered = all.filter(match => (!liveOnly || isLive(match)) && (liveOnly || feedDateKey(match.date) === dateKey(displayedDate)) && (groupFilter === 'all' || match.leagueId !== 'second' || match.group === groupFilter));
   const updateLeague = id => { setLeagueFilter(id); setGroupFilter('all'); };
   return <>
     <PageHeader title="Mecze" subtitle="Terminarze i wyniki w jednym miejscu." actions={<>
@@ -171,7 +171,9 @@ const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, e
     {leagueFilter === 'second' && <div className="vh-controls vh-secondary-filters"><button className={'vh-filter-chip ' + (groupFilter === 'all' ? 'chosen' : '')} onClick={() => setGroupFilter('all')}>Wszystkie grupy</button>{groups.map(group => <button key={group} className={'vh-filter-chip ' + (groupFilter === group ? 'chosen' : '')} onClick={() => setGroupFilter(group)}>{group}</button>)}</div>}
     <div className="vh-day-heading"><div><span className="vh-eyebrow">{liveOnly ? 'TRANSMISJA WYNIKÓW' : 'WYBRANY DZIEŃ'}</span><h2>{liveOnly ? 'Teraz na żywo' : DATE_FORMAT.format(selectedDate)}</h2></div><button className="vh-refresh" title="Odśwież" aria-label="Odśwież dane" onClick={refresh}><RotateCw size={18} /></button></div>
     <FeedWarning errors={errors} refresh={refresh} />
+    <div className="vh-day-results" ref={resultsRef} data-day={dateKey(displayedDate)} aria-busy={dateKey(displayedDate) !== dateKey(selectedDate)}>
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups matches={filtered} logos={logos} emptyMessage={liveOnly ? 'Żaden z obserwowanych meczów nie jest obecnie oznaczony jako na żywo.' : 'Nie znaleziono meczów na wybrany dzień. Przesuń kalendarz lub wybierz inną ligę.'} />}
+    </div>
     <p className="vh-source-note">Dane pochodzą z oficjalnych źródeł rozgrywek. Wyniki aktualizują się automatycznie, gdy aplikacja jest aktywna.</p>
   </>;
 });
@@ -317,6 +319,13 @@ function App() {
     const task = window.setTimeout(warm, 1500);
     return () => window.clearTimeout(task);
   }, [reducedMotion]);
+  const startupPage = useRef(page);
+  const [startup, setStartup] = useState(() =>
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches !== true);
+  const finishStartup = useCallback(() => setStartup(false), []);
+  useEffect(() => {
+    if (page !== startupPage.current || reducedMotion) finishStartup();
+  }, [page, reducedMotion, finishStartup]);
   const currentPage = useRef(page);
   const [selectedDate, setSelectedDate] = useState(NOW);
   const [leagueFilter, setLeagueFilter] = useState(null);
@@ -430,6 +439,7 @@ function App() {
         {renderPage(id)}
       </div>)}
     </PageStage>
+    {startup && <StartupEntrance enabled={!reducedMotion && page === startupPage.current} onComplete={finishStartup} />}
     {createPortal(<BottomNav active={page} onNavigate={navigate} />, document.body)}
     {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
   </div></MotionEnabled.Provider>;

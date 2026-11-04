@@ -19,3 +19,18 @@ export function createImpact(canvas, onReady, onDone) {
   });
   return animation;
 }
+
+// Loaded ahead of the approved intro handoff, then played at the red cut.
+export function createEntrance(canvas, onReady, onFail) {
+  const animation = new Rive({
+    canvas,
+    src: import.meta.env.BASE_URL + 'motion/entrance.riv',
+    artboard: 'Entrance',
+    stateMachine: 'Curtain',
+    autoplay: false,
+    layout: new Layout({ fit: Fit.Fill, alignment: Alignment.Center }),
+    onLoad: () => { animation.resizeDrawingSurfaceToCanvas(); onReady(); },
+    onLoadError: onFail,
+  });
+  return animation;
+}

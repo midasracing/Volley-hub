@@ -1,0 +1,25 @@
+<Rive version="1" kind="fragment">
+  <Artboard defaultStateMachineId="0:7" styleId="0:5" width="600" height="1000" name="Entrance" id="0:2">
+    <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+    <CubicEaseInterpolator id="0:30" x1="0.76" y1="0" x2="0.24" y2="1"/>
+    <Shape name="Blood curtain" id="0:20" x="300" y="1520">
+      <Rectangle width="620" height="1040"/>
+      <Fill><SolidColor colorValue="FFB30818"/></Fill>
+    </Shape>
+    <StateMachine name="Curtain" id="0:7">
+      <StateMachineLayer name="Entrance" id="0:8">
+        <AnyState x="0" y="-150"/><ExitState x="400" y="-150"/>
+        <EntryState x="0" y="0"><StateTransition stateToId="0:12"/></EntryState>
+        <AnimationState x="220" y="0" animationId="0:6" id="0:12"/>
+      </StateMachineLayer>
+    </StateMachine>
+    <LinearAnimation duration="50" name="Curtain" id="0:6">
+      <KeyedObject objectId="0:20"><KeyedProperty property="y">
+        <KeyFrameDouble value="1520" frame="0" interpolationType="cubic" interpolatorId="0:30"/>
+        <KeyFrameDouble value="500" frame="21" interpolationType="hold"/>
+        <KeyFrameDouble value="500" frame="27" interpolationType="cubic" interpolatorId="0:30"/>
+        <KeyFrameDouble value="-520" frame="50" interpolationType="linear"/>
+      </KeyedProperty></KeyedObject>
+    </LinearAnimation>
+  </Artboard>
+</Rive>
