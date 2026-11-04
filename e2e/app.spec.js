@@ -23,8 +23,8 @@ test('renders React navigation and shared match design', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Mecze' }).click();
-  await expect(page.getByRole('heading', { name: 'Kalendarz' })).toBeVisible();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
+  await expect(page.locator('.vh-calendar-month')).toBeVisible();
   await expect(page.getByRole('tablist', { name: 'Wybierz dzień' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Wszystkie ligi' })).toBeVisible();
   await nav.getByRole('button', { name: 'Rozgrywki' }).click();
@@ -119,7 +119,7 @@ test('exactly one React Bits glass surface is mounted in the dock, without legac
   await expect(nav.locator('.vh-nav-lens .fluid-glass')).toHaveCount(0);
   await expect(page.locator('.glass-surface')).toHaveCount(1);
   await expect(page.locator('.fluid-glass')).toHaveCount(0);
-  for (const name of ['Główna', 'Mecze', 'Rozgrywki', 'Ulubione']) {
+  for (const name of ['Główna', 'Kalendarz', 'Rozgrywki', 'Ulubione']) {
     await expect(nav.getByRole('button', { name })).toBeVisible();
   }
   await nav.getByRole('button', { name: 'Ulubione' }).click();
@@ -130,7 +130,7 @@ test('rapid switches keep one live screen and menu in sync, without cloning page
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   for (const [name, route] of [
-    ['Mecze','matches'], ['Ulubione','favorites'], ['Rozgrywki','competitions'], ['Główna','home']
+    ['Kalendarz','matches'], ['Ulubione','favorites'], ['Rozgrywki','competitions'], ['Główna','home']
   ]) {
     await nav.getByRole('button', { name }).evaluate(button => button.click());
     await expect(nav.locator('.vh-nav-items')).toHaveAttribute('data-active', route);
@@ -143,10 +143,10 @@ test('rapid switches keep one live screen and menu in sync, without cloning page
 test('switching tabs renders the page immediately without delayed transitions', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Mecze' }).click();
-  await expect(page.locator('#main-content').getByRole('heading', { name: 'Kalendarz' })).toBeVisible();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
+  await expect(page.locator('#main-content').locator('.vh-calendar-month')).toBeVisible();
   await expect(page.locator('#main-content')).toHaveCSS('animation-name', 'none');
-  await expect(nav.getByRole('button', { name: 'Mecze' })).toHaveAttribute('aria-current', 'page');
+  await expect(nav.getByRole('button', { name: 'Kalendarz' })).toHaveAttribute('aria-current', 'page');
   const label = nav.locator('.vh-nav-item.active > span');
   await expect(label).toHaveCSS('display', 'block');
   await expect.poll(() => label.evaluate(el => parseFloat(getComputedStyle(el).maxWidth))).toBeGreaterThan(0);
@@ -173,7 +173,7 @@ test('reduced motion skips page exit transitions', async ({ page }) => {
 test('quick tab changes keep navigation and content synchronized', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
   await nav.getByRole('button', { name: 'Rozgrywki' }).click();
   await nav.getByRole('button', { name: 'Ulubione' }).click();
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Ulubione' })).toBeVisible();
@@ -213,14 +213,14 @@ test('liquid lens moves with one interruptible spring, not a CSS lens transition
 
   // Dispatch immediately: Playwright's standard click waits for moving
   // elements to become stable, which would skip the interruption case.
-  await nav.getByRole('button', { name: 'Mecze' }).evaluate(el => el.click());
+  await nav.getByRole('button', { name: 'Kalendarz' }).evaluate(el => el.click());
   await expect(track).toHaveAttribute('data-active', 'matches');
   await page.waitForTimeout(850);
   const settled = await left();
-  const target = await nav.getByRole('button', { name: 'Mecze' }).evaluate(el =>
+  const target = await nav.getByRole('button', { name: 'Kalendarz' }).evaluate(el =>
     el.getBoundingClientRect().left - el.parentElement.getBoundingClientRect().left);
   expect(Math.abs(settled - target)).toBeLessThan(0.6);
-  await expect(page.locator('#main-content').getByRole('heading', { name: 'Kalendarz' })).toBeVisible();
+  await expect(page.locator('#main-content').locator('.vh-calendar-month')).toBeVisible();
 });
 
 test('reduced motion snaps the liquid lens immediately to its selected tab', async ({ page }) => {
@@ -242,7 +242,7 @@ test('buttons remain separated throughout the transition at 320px and 375px',asy
     await page.setViewportSize({width,height:760});
     await page.goto('/');
     const nav=page.getByRole('navigation',{name:'Główna nawigacja'});
-    for(const name of ['Mecze','Rozgrywki','Ulubione','Główna']){
+    for(const name of ['Kalendarz','Rozgrywki','Ulubione','Główna']){
       await nav.getByRole('button',{name}).click();
       for(const pause of [60,100,130,260]){
         await page.waitForTimeout(pause);
@@ -263,7 +263,7 @@ test('menu remains aligned and readable at narrow mobile widths', async ({ page 
     await page.setViewportSize({ width, height: 720 });
     await page.goto('/');
     const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-    for (const name of ['Mecze', 'Rozgrywki', 'Ulubione', 'Główna']) {
+    for (const name of ['Kalendarz', 'Rozgrywki', 'Ulubione', 'Główna']) {
       await nav.getByRole('button', { name }).click();
       await expect(nav.getByRole('button', { name })).toHaveAttribute('aria-current', 'page');
       const rects = await nav.evaluate(element => {
@@ -282,7 +282,7 @@ test('floating nav is a persistent portal, separate from route content', async (
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   await expect(nav).toBeVisible();
   expect(await nav.evaluate(el => el.parentElement === document.body)).toBe(true);
-  for (const target of ['Mecze', 'Rozgrywki', 'Ulubione', 'Główna']) {
+  for (const target of ['Kalendarz', 'Rozgrywki', 'Ulubione', 'Główna']) {
     await nav.getByRole('button', { name: target }).click();
     await expect(nav.getByRole('button', { name: target })).toHaveAttribute('aria-current', 'page');
     await expect(nav).toBeVisible();
@@ -310,16 +310,16 @@ test('bottom navigation uses just one React glass lens and no CSS pill overlay',
   expect(css.background).toBe('rgba(0, 0, 0, 0)');
   expect(css.image).toBe('none');
   expect(css.shadow).toBe('none');
-  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
   await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
-  await expect(nav.getByRole('button', { name: 'Mecze' })).toHaveAttribute('aria-current', 'page');
+  await expect(nav.getByRole('button', { name: 'Kalendarz' })).toHaveAttribute('aria-current', 'page');
 });
 
 test('mobile navigation, date strip and saved favorites survive the cleanup', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 700 });
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
   await expect(page.getByRole('tablist', { name: 'Wybierz dzień' })).toBeVisible();
   await nav.getByRole('button', { name: 'Rozgrywki' }).click();
   await page.getByRole('button', { name: 'Dodaj do ulubionych: TAURON Liga Mężczyzn' }).click();
@@ -331,7 +331,7 @@ test('mobile navigation, date strip and saved favorites survive the cleanup', as
 test('tabs display a new page without CSS entrance delay or extra icon animations', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  for (const [label, target] of [['Mecze','matches'], ['Ulubione','favorites'], ['Główna','home']]) {
+  for (const [label, target] of [['Kalendarz','matches'], ['Ulubione','favorites'], ['Główna','home']]) {
     await nav.getByRole('button',{name:label}).evaluate(button=>button.click());
     await expect(page.locator('#main-content')).toHaveAttribute('data-page',target);
     await expect(page.locator('#main-content')).toHaveCSS('animation-name','none');
@@ -347,7 +347,7 @@ test('prepared tabs reuse their DOM and keep filters while only one panel is vis
   await page.goto('/');
   await expect(page.locator('.vh-tab-panel')).toHaveCount(4);
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
   await page.getByRole('button', { name: 'TAURON 1. Liga', exact: true }).click();
   const strip = page.getByRole('tablist', { name: 'Wybierz dzień' });
   await expect.poll(() => strip.evaluate(el => {
@@ -359,7 +359,7 @@ test('prepared tabs reuse their DOM and keep filters while only one panel is vis
   const stripHandle = await strip.elementHandle();
   await nav.getByRole('button', { name: 'Ulubione' }).click();
   await expect(page.getByRole('tablist', { name: 'Wybierz dzień' })).toHaveCount(0);
-  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
   expect(await panel.evaluate(el => el === document.querySelector('[data-route="matches"]'))).toBe(true);
   expect(await stripHandle.evaluate(el => el === document.querySelector('.im-strip'))).toBe(true);
   await expect(page.getByRole('button', { name: 'TAURON 1. Liga', exact: true })).toHaveClass(/chosen/);
@@ -373,7 +373,7 @@ test('prepared tabs reuse their DOM and keep filters while only one panel is vis
       for (const record of records) count += record.addedNodes.length;
     });
     observer.observe(document.querySelector('#main-content'), { childList: true, subtree: true });
-    for (const label of ['Rozgrywki', 'Ulubione', 'Główna', 'Mecze']) {
+    for (const label of ['Rozgrywki', 'Ulubione', 'Główna', 'Kalendarz']) {
       document.querySelector(`.vh-nav-item[aria-label="${label}"]`).click();
       await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     }
@@ -438,7 +438,7 @@ test('cached inactive tabs stay out of focus, accessibility and document scrolli
   expect(metrics).toMatchObject({ activeInert: false, hiddenInert: true, focusPreserved: true, top: 0, cachedLayout: true });
   expect(metrics.excessHeight).toBeLessThanOrEqual(2);
   // Returning to the cached calendar must still center the selected day.
-  await nav.getByRole('button', { name: 'Mecze' }).click();
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
   const strip = page.getByRole('tablist', { name: 'Wybierz dzień' });
   await expect(strip).toBeVisible();
   await expect.poll(() => strip.evaluate(el => {

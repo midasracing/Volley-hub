@@ -36,7 +36,7 @@ test('home entrance uses the original logo, has no skip button and never replays
   await expect(intro).toHaveCount(0);
   await expect(page.locator('.vh-brand-signature')).toHaveCSS('opacity', '1');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Mecze', exact: true }).evaluate(button => button.click());
+  await nav.getByRole('button', { name: 'Kalendarz', exact: true }).evaluate(button => button.click());
   await expect(page.locator('#main-content')).toHaveAttribute('data-page', 'matches');
   await nav.getByRole('button', { name: 'Główna', exact: true }).evaluate(button => button.click());
   await expect(page.locator('#main-content')).toHaveAttribute('data-page', 'home');
@@ -72,5 +72,5 @@ test('reduced motion bypasses the entrance and direct links retain their destina
   await page.clock.fastForward(3100);
   await expect(page.locator('.vh-startup-intro')).toHaveCount(0);
   await expect(page).toHaveURL(/#matches$/);
-  await expect(page.getByRole('heading', { name: 'Kalendarz', exact: true })).toBeVisible();
+  await expect(page.locator('.vh-calendar-month')).toBeVisible();
 });

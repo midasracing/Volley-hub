@@ -22,7 +22,7 @@ const DATE_FORMAT = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'l
 const NOW = () => { const today = new Date(); today.setHours(12, 0, 0, 0); return today; };
 const leagueByName = name => LEAGUES.find(item => item.name === name);
 const sameName = (a, b) => normalizeName(a) === normalizeName(b);
-const MONTH_FORMAT = new Intl.DateTimeFormat('pl-PL', { month: 'short' });
+const MONTH_FORMAT = new Intl.DateTimeFormat('pl-PL', { month: 'long' });
 
 
 function TeamLogo({ name, logo, className = '' }) {
@@ -162,13 +162,13 @@ function DateStrip({ selected, onSelect }) {
     return () => observer.disconnect();
   }, [selectedKey, anchorKey, enabled]);
   return <div className="im-strip-wrap vh-date-wrap">
+    <h1 className="vh-calendar-month">{MONTH_FORMAT.format(selected)}</h1>
     <div className="im-strip" role="tablist" aria-label="Wybierz dzień" ref={strip}>
       <span ref={marker} className="vh-date-indicator" aria-hidden="true" />
-      {days.map((day, index) => {
+      {days.map(day => {
         const key = dateKey(day);
         const active = key === selectedKey;
         return <button className={'im-day ' + (active ? 'is-sel ' : '') + (key === todayKey ? 'is-today' : '')} role="tab" aria-selected={active} aria-label={DATE_FORMAT.format(day)} onClick={() => onSelect(day)} key={key} type="button">
-          <small className={'im-month ' + (day.getDate() === 1 || index === 0 ? '' : 'is-empty')}>{MONTH_FORMAT.format(day).replace('.', '').toUpperCase()}</small>
           <b>{day.getDate()}</b><span>{WEEKDAYS[day.getDay()]}</span>
         </button>;
       })}
@@ -185,7 +185,6 @@ const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, e
   const filtered = all.filter(match => feedDateKey(match.date) === dateKey(displayedDate) && (groupFilter === 'all' || match.leagueId !== 'second' || match.group === groupFilter));
   const updateLeague = id => { setLeagueFilter(id); setGroupFilter('all'); };
   return <>
-    <PageHeader title="Kalendarz" />
     <DateStrip selected={selectedDate} onSelect={setSelectedDate} />
     <div className="vh-controls">
       <button type="button" className={'vh-filter-chip ' + (!leagueFilter ? 'chosen' : '')} onClick={() => updateLeague(null)}>Wszystkie ligi</button>

@@ -210,15 +210,13 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 /* Compact calendar: keep the existing labels and bring filters into the strip. */
 #ios-matches[data-page="matches"] .vh-floating-head{min-height:96px;padding-bottom:0}
 #ios-matches[data-page="matches"] .vh-brand-signature{width:156px;max-width:156px}
-[data-route="matches"] .vh-page-head{padding-top:12px}
-[data-route="matches"] .vh-page-head h1{font-size:30px;margin:0;line-height:1.1}
-[data-route="matches"] .vh-date-wrap{margin:14px 0 0}
+[data-route="matches"] .vh-date-wrap{margin:22px 0 0}
+[data-route="matches"] .vh-calendar-month{margin:0 0 12px;font-family:var(--font-ui);font-size:18px;line-height:1.2;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
 #ios-matches [data-route="matches"] .im-strip{gap:0;padding:0 0 8px;scroll-padding:0}
 #ios-matches [data-route="matches"] .im-strip::before,#ios-matches [data-route="matches"] .im-strip::after{content:"";flex:0 0 calc(300%/7)}
-#ios-matches [data-route="matches"] .im-day{flex-basis:calc(100%/7);min-height:72px;padding:5px 0 7px;gap:4px;border-radius:13px}
+#ios-matches [data-route="matches"] .im-day{flex-basis:calc(100%/7);min-height:64px;padding:10px 0;gap:6px;border-radius:13px}
 #ios-matches [data-route="matches"] .im-day b{font-size:24px}
 #ios-matches [data-route="matches"] .im-day span{font-size:11px;line-height:14px}
-#ios-matches [data-route="matches"] .im-month{font-size:9px;line-height:12px;height:12px}
 #ios-matches [data-route="matches"] .vh-date-indicator{border-radius:13px}
 [data-route="matches"] .vh-controls{padding:8px 0 6px;margin:0;gap:6px}
 [data-route="matches"] .vh-filter-chip{font-size:12px;padding:8px 12px;min-height:36px}
