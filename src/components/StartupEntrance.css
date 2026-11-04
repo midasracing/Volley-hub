@@ -5,9 +5,6 @@
 .vh-startup-logo{display:block;width:100%;height:auto;will-change:transform,opacity;animation:vh-startup-logo-in .8s .1s cubic-bezier(.16,1,.3,1) both}
 .vh-startup-rive{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;transition:opacity .18s}
 .vh-startup-intro.has-rive .vh-startup-rive{opacity:1}
-.vh-startup-skip{position:absolute;z-index:4;top:max(23px,env(safe-area-inset-top));right:23px;min-width:66px;min-height:44px;padding:9px 12px;border:1px solid #54373c;border-radius:30px;background:#080808;color:#c6acae;font:500 12px 'DM Sans',sans-serif;pointer-events:auto}
-.vh-startup-skip:focus-visible{outline:2px solid #ff5268;outline-offset:4px}
-.vh-startup-intro.is-revealing .vh-startup-skip{opacity:0;pointer-events:none;transition:opacity .2s}
 @keyframes vh-startup-logo-in{from{opacity:0;transform:translate3d(0,48px,0) rotate(-3deg) scale(1.08)}to{opacity:1;transform:translate3d(0,0,0) rotate(0) scale(1)}}
 @keyframes vh-startup-background-out{from{opacity:1}to{opacity:0}}
 @media(prefers-reduced-motion:reduce){.vh-startup-intro{display:none}}

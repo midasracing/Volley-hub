@@ -20,7 +20,7 @@ test('the opening logo lands on the real header without changing its shape', asy
   await expect(page.locator('.vh-brand-signature')).toHaveCSS('opacity', '1');
 });
 
-test('home entrance uses the original logo, can be skipped and never replays on tab changes', async ({ page }) => {
+test('home entrance uses the original logo, has no skip button and never replays on tab changes', async ({ page }) => {
   const now = new Date('2026-11-04T12:00:00Z');
   await page.clock.install({ time: now });
   await page.clock.pauseAt(now);
@@ -31,7 +31,8 @@ test('home entrance uses the original logo, can be skipped and never replays on 
   await expect(intro.locator('img')).toHaveAttribute('alt', '');
   await expect(intro).not.toContainText('WCHODZIMY DO GRY');
   await expect(intro.locator('.vh-startup-rule')).toHaveCount(0);
-  await intro.getByRole('button', { name: 'Pomiń animację wejścia' }).click();
+  await expect(intro.getByRole('button')).toHaveCount(0);
+  await page.clock.fastForward(3100);
   await expect(intro).toHaveCount(0);
   await expect(page.locator('.vh-brand-signature')).toHaveCSS('opacity', '1');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
@@ -68,7 +69,7 @@ test('reduced motion bypasses the entrance and direct links retain their destina
   await page.goto('/#matches');
   await page.reload();
   await expect(page.locator('.vh-startup-intro')).toHaveCount(1);
-  await page.getByRole('button', { name: 'Pomiń animację wejścia' }).click();
+  await page.clock.fastForward(3100);
   await expect(page.locator('.vh-startup-intro')).toHaveCount(0);
   await expect(page).toHaveURL(/#matches$/);
   await expect(page.getByRole('heading', { name: 'Mecze', exact: true })).toBeVisible();

@@ -102,6 +102,5 @@ export default function StartupEntrance({ enabled, onComplete }) {
     <div ref={copy} className="vh-startup-copy" aria-hidden="true">
       <img className="vh-startup-logo" src={LOGO} width="1180" height="655" alt="" draggable={false} fetchPriority="high" />
     </div>
-    <button type="button" className="vh-startup-skip" onClick={onComplete} aria-label="Pomiń animację wejścia">Pomiń ↗</button>
   </div>, document.body);
 }
