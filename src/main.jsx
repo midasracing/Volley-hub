@@ -402,7 +402,7 @@ function App() {
     if (id === 'favorites') return <FavoritesPage teams={teams} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;
     return null;
   }
-  return <MotionEnabled.Provider value={!reducedMotion}><div className="vh-app" id="ios-matches">
+  return <MotionEnabled.Provider value={!reducedMotion}><div className="vh-app" id="ios-matches" data-page={page}>
     <div className="vh-floating-head" aria-label="Nagłówek Kiedy Siatka?">
       <BrandSignature />
     </div>
