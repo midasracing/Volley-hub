@@ -1,9 +1,9 @@
 import React, { useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createPortal } from 'react-dom';
-import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, X, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, CalendarCheck2, SlidersHorizontal, WifiOff, Check } from 'lucide-react';
+import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, WifiOff, Check } from 'lucide-react';
 import {
-  LEAGUES, CATEGORIES, WEEKDAYS, dateKey, fromKey, addDays, feedDateKey,
+  LEAGUES, CATEGORIES, WEEKDAYS, dateKey, addDays, feedDateKey,
   isLive, isFinished, matchesFromFeeds, teamIndex, normalizeName, readFavorites
 } from './data.js';
 import BrandSignature from './components/BrandSignature.jsx';
@@ -179,30 +179,23 @@ function DateStrip({ selected, onSelect }) {
 const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, errors, refresh, logos, selectedDate, setSelectedDate, leagueFilter, setLeagueFilter }) {
   const resultsRef = useRef(null);
   const displayedDate = useAnimatedDate(selectedDate, resultsRef);
-  const [liveOnly, setLiveOnly] = useState(false);
   const [groupFilter, setGroupFilter] = useState('all');
-  const input = useRef(null);
   const all = useMemo(() => leagueFilter ? matches.filter(match => match.leagueId === leagueFilter) : matches, [matches, leagueFilter]);
   const groups = [...new Set(all.filter(match => match.leagueId === 'second').map(match => match.group).filter(Boolean))];
-  const filtered = all.filter(match => (!liveOnly || isLive(match)) && (liveOnly || feedDateKey(match.date) === dateKey(displayedDate)) && (groupFilter === 'all' || match.leagueId !== 'second' || match.group === groupFilter));
+  const filtered = all.filter(match => feedDateKey(match.date) === dateKey(displayedDate) && (groupFilter === 'all' || match.leagueId !== 'second' || match.group === groupFilter));
   const updateLeague = id => { setLeagueFilter(id); setGroupFilter('all'); };
   return <>
-    <PageHeader title="Mecze" subtitle="Terminarze i wyniki w jednym miejscu." actions={<>
-      <IconButton Icon={SlidersHorizontal} label={liveOnly ? 'Pokaż wszystkie mecze' : 'Tylko mecze na żywo'} active={liveOnly} onClick={() => setLiveOnly(current => !current)} />
-      <IconButton Icon={CalendarDays} label="Wybierz datę" onClick={() => { const picker = input.current; if (!picker) return; if (typeof picker.showPicker === 'function') picker.showPicker(); else picker.click(); }} />
-      <IconButton Icon={CalendarCheck2} label="Przejdź do dzisiaj" onClick={() => { setLiveOnly(false); setSelectedDate(NOW()); }} />
-    </>} />
-    <input className="vh-visually-hidden-date" type="date" aria-label="Wybierz datę" ref={input} value={dateKey(selectedDate)} onChange={event => { const next = fromKey(event.target.value); if (next) { setLiveOnly(false); setSelectedDate(next); } }} />
-    <DateStrip selected={selectedDate} onSelect={value => { setLiveOnly(false); setSelectedDate(value); }} />
+    <PageHeader title="Kalendarz" />
+    <DateStrip selected={selectedDate} onSelect={setSelectedDate} />
     <div className="vh-controls">
       <button type="button" className={'vh-filter-chip ' + (!leagueFilter ? 'chosen' : '')} onClick={() => updateLeague(null)}>Wszystkie ligi</button>
       {LEAGUES.map(league => <button className={'vh-filter-chip ' + (leagueFilter === league.id ? 'chosen' : '')} type="button" key={league.id} onClick={() => updateLeague(league.id)}>{league.short}</button>)}
     </div>
     {leagueFilter === 'second' && <div className="vh-controls vh-secondary-filters"><button className={'vh-filter-chip ' + (groupFilter === 'all' ? 'chosen' : '')} onClick={() => setGroupFilter('all')}>Wszystkie grupy</button>{groups.map(group => <button key={group} className={'vh-filter-chip ' + (groupFilter === group ? 'chosen' : '')} onClick={() => setGroupFilter(group)}>{group}</button>)}</div>}
-    <div className="vh-day-heading"><div><span className="vh-eyebrow">{liveOnly ? 'TRANSMISJA WYNIKÓW' : 'WYBRANY DZIEŃ'}</span><h2>{liveOnly ? 'Teraz na żywo' : DATE_FORMAT.format(selectedDate)}</h2></div><button className="vh-refresh" title="Odśwież" aria-label="Odśwież dane" onClick={refresh}><RotateCw size={18} /></button></div>
+    <div className="vh-calendar-refresh"><button className="vh-refresh" title="Odśwież" aria-label="Odśwież dane" onClick={refresh}><RotateCw size={18} /></button></div>
     <FeedWarning errors={errors} refresh={refresh} />
     <div className="vh-day-results" ref={resultsRef} data-day={dateKey(displayedDate)} aria-busy={dateKey(displayedDate) !== dateKey(selectedDate)}>
-    {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups matches={filtered} logos={logos} emptyMessage={liveOnly ? 'Żaden z obserwowanych meczów nie jest obecnie oznaczony jako na żywo.' : 'Nie znaleziono meczów na wybrany dzień. Przesuń kalendarz lub wybierz inną ligę.'} />}
+    {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups matches={filtered} logos={logos} emptyMessage="Nie znaleziono meczów na wybrany dzień. Przesuń kalendarz lub wybierz inną ligę." />}
     </div>
     <p className="vh-source-note">Dane pochodzą z oficjalnych źródeł rozgrywek. Wyniki aktualizują się automatycznie, gdy aplikacja jest aktywna.</p>
   </>;
@@ -290,43 +283,6 @@ const FavoritesPage = React.memo(function FavoritesPage({ teams, logos, favorite
   </>;
 });
 
-function SearchSheet({ feeds, logos, onClose, onOpenLeague, onMatches, favorites, toggleFavorite }) {
-  const [query, setQuery] = useState('');
-  const input = useRef(null);
-  const searchableTeams = useMemo(() => teamIndex(feeds), [feeds]);
-  useEffect(() => { input.current?.focus(); const onEscape = event => { if (event.key === 'Escape') onClose(); }; window.addEventListener('keydown', onEscape); return () => { window.removeEventListener('keydown', onEscape); document.querySelector('.vh-search-bubble')?.focus(); }; }, []);
-  const results = useMemo(() => {
-    const term = normalizeName(query);
-    if (!term) return { leagues: LEAGUES, teams: [] };
-    return { leagues: LEAGUES.filter(item => normalizeName(item.name).includes(term)), teams: searchableTeams.filter(team => normalizeName(team.name).includes(term)).slice(0, 24) };
-  }, [query, searchableTeams]);
-  return <div className="vh-search-overlay" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }}>
-    <section className="vh-search-sheet" role="dialog" aria-modal="true" aria-label="Wyszukiwarka" onKeyDown={event => {
-      if (event.key !== 'Tab') return;
-      const elements = Array.from(event.currentTarget.querySelectorAll('button:not([disabled]), input:not([disabled])'));
-      if (!elements.length) return;
-      const first = elements[0], last = elements[elements.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-    }}>
-      <div className="vh-sheet-header"><h2>Szukaj</h2><button className="vh-close" type="button" aria-label="Zamknij wyszukiwarkę" onClick={onClose}><X size={22} /></button></div>
-      <label className="vh-search-input"><Search size={20} /><input ref={input} type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Drużyna lub rozgrywki…" /></label>
-      <div className="vh-search-results">
-        {!!results.leagues.length && <><h3>Rozgrywki</h3>{results.leagues.map(league => <button className="vh-picker-row" type="button" key={league.id} onClick={() => { onOpenLeague(league.id); onClose(); }}><span className="vh-mini-league"><Trophy size={18} /></span><span>{league.name}</span><ChevronRight size={18} /></button>)}</>}
-        {!!results.teams.length && <><h3>Drużyny</h3>{results.teams.map(team => <button className="vh-picker-row" type="button" key={team.name} onClick={() => { toggleFavorite('teams', team.name); }}><TeamLogo name={team.name} logo={team.logo || logos.get(normalizeName(team.name))} /><span>{team.name}</span><Star size={18} fill={favorites.teams.some(x => sameName(x, team.name)) ? 'currentColor' : 'none'} className={favorites.teams.some(x => sameName(x, team.name)) ? 'vh-favorite-color' : ''} /></button>)}</>}
-        {query && !results.leagues.length && !results.teams.length && <EmptyState Icon={Search} title="Brak wyników" message="Sprawdź pisownię lub wpisz inny fragment nazwy." />}
-        {!query && <p className="vh-source-note">Wpisz nazwę drużyny, aby dodać ją do ulubionych, albo otwórz rozgrywki.</p>}
-      </div>
-    </section>
-  </div>;
-}
-
-function SearchBubble({ onClick }) {
-  return <button type="button" className="vh-search-bubble" aria-label="Szukaj" title="Szukaj w Kiedy Siatka?" onClick={onClick}>
-    <span className="vh-search-glass" aria-hidden="true" />
-    <Search size={23} strokeWidth={2.1} aria-hidden="true" />
-  </button>;
-}
 function App() {
   const route = () => { const hash = window.location.hash.replace(/^#\/?/, ''); return ROUTES.includes(hash) ? hash : 'home'; };
   const [page, setPage] = useState(route);
@@ -357,7 +313,6 @@ function App() {
   const [leagueFilter, setLeagueFilter] = useState(null);
   const [selectedLeague, setSelectedLeague] = useState(null);
   const [favorites, setFavorites] = useState(readFavorites);
-  const [searchOpen, setSearchOpen] = useState(false);
   const { feeds, errors, loading, refresh } = useFeeds();
   // A single normalized/sorted feed shared by all tabs. Avoid expensive
   // duplicate sorting on every page mount, especially on older iPhones.
@@ -394,7 +349,6 @@ function App() {
   }, [loading, visitedPages]);
   const navigate = useCallback(id => {
     if (!ROUTES.includes(id)) return;
-    setSearchOpen(false);
     if (currentPage.current === id) window.scrollTo({ top: 0, behavior: 'instant' });
     switchPage(id);
     if (window.location.hash !== '#' + id) window.history.pushState(null, '', '#' + id);
@@ -422,10 +376,6 @@ function App() {
   useEffect(() => {
     try { localStorage.setItem('vh-favs', JSON.stringify(favorites)); } catch { /* storage may be blocked */ }
   }, [favorites]);
-  useEffect(() => {
-    if (searchOpen) document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, [searchOpen]);
   useEffect(() => {
     if ('serviceWorker' in navigator && import.meta.env.PROD && location.protocol.startsWith('http')) {
       navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js').catch(() => {});
@@ -456,9 +406,6 @@ function App() {
   return <MotionEnabled.Provider value={!reducedMotion}><div className="vh-app" id="ios-matches">
     <div className="vh-floating-head" aria-label="Nagłówek Kiedy Siatka?">
       <BrandSignature />
-      <div className="vh-floating-actions">
-        <SearchBubble onClick={() => setSearchOpen(true)} />
-      </div>
     </div>
     <PageStage page={page} direction={direction} reducedMotion={reducedMotion}>
       {visitedPages.map(id => <div key={id} className="vh-tab-panel" data-route={id} hidden={page !== id} inert={page !== id}>
@@ -467,7 +414,6 @@ function App() {
     </PageStage>
     {startup && <StartupEntrance enabled={!reducedMotion && page === startupPage.current} onComplete={finishStartup} />}
     {createPortal(<BottomNav active={page} onNavigate={navigate} />, document.body)}
-    {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
   </div></MotionEnabled.Provider>;
 }
 

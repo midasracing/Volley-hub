@@ -24,7 +24,7 @@ test('renders React navigation and shared match design', async ({ page }) => {
   await expect(page.getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   await nav.getByRole('button', { name: 'Mecze' }).click();
-  await expect(page.getByRole('heading', { name: 'Mecze' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Kalendarz' })).toBeVisible();
   await expect(page.getByRole('tablist', { name: 'Wybierz dzień' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Wszystkie ligi' })).toBeVisible();
   await nav.getByRole('button', { name: 'Rozgrywki' }).click();
@@ -35,7 +35,7 @@ test('renders React navigation and shared match design', async ({ page }) => {
 test('home starts with match list, without the marked intro and hero banner', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('img', { name: 'Kiedy Siatka?' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Szukaj', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Szukaj', exact: true })).toHaveCount(0);
   await expect(page.locator('#main-content').getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   await expect(page.locator('.vh-hero')).toHaveCount(0);
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Volley Hub', exact: true })).toHaveCount(0);
@@ -51,18 +51,6 @@ test('favorites persist after reload', async ({ page }) => {
   await page.getByRole('tab', { name: /Rozgrywki/ }).click();
   await expect(page.locator('.vh-tab-panel:not([hidden]) .vh-league-stack').getByText('TAURON Liga Mężczyzn')).toBeVisible();
 });
-
-test('search overlay finds an existing league and opens its details', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('button', { name: 'Szukaj', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: 'Wyszukiwarka' });
-  await expect(dialog).toBeVisible();
-  await dialog.getByRole('searchbox').fill('pomorska');
-  await dialog.getByRole('button', { name: /Pomorska III Liga Męska/ }).click();
-  await expect(page.getByRole('heading', { name: 'Pomorska III Liga Męska' })).toBeVisible();
-  await expect(dialog).toHaveCount(0);
-});
-
 
 test('Kiedy Siatka SVG loads without an animated or hidden logo', async ({ page }) => {
   await page.goto('/');
@@ -83,8 +71,6 @@ test('Kiedy Siatka SVG loads without an animated or hidden logo', async ({ page 
   await expect(page.locator('.vh-brand-tech, .vh-brand-tech-fallback, .tech-text, .vh-rive-layer, .vh-wordmark-icon')).toHaveCount(0);
   await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
   await expect(page.locator('.vh-floating-head img')).toHaveCount(1);
-  await page.getByRole('button', { name: 'Szukaj', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Wyszukiwarka' })).toBeVisible();
 });
 
 test('Kiedy Siatka wordmark stays static in reduced motion', async ({ page }) => {
@@ -96,24 +82,11 @@ test('Kiedy Siatka wordmark stays static in reduced motion', async ({ page }) =>
   await expect(page.locator('.vh-brand-signature canvas')).toHaveCount(0);
 });
 
-test('floating logo and search bubble never overlap at 320px and 375px', async ({ page }) => {
-  for (const width of [320, 375]) {
-    await page.setViewportSize({ width, height: 700 });
-    await page.goto('/');
-    const logo = await page.locator('.vh-brand-signature').boundingBox();
-    const bubble = await page.getByRole('button', { name: 'Szukaj', exact: true }).boundingBox();
-    expect(logo).toBeTruthy();
-    expect(bubble).toBeTruthy();
-    expect(logo.x + logo.width).toBeLessThanOrEqual(bubble.x - 2);
-    expect(bubble.x + bubble.width).toBeLessThanOrEqual(width);
-  }
-});
-
-test('stacked SVG wordmark stays proportional to the search control and page title', async ({ page }) => {
+test('stacked SVG wordmark stays proportional to the page title', async ({ page }) => {
   for (const width of [320, 375, 430, 768]) {
     await page.setViewportSize({ width, height: 780 });
     await page.goto('/#favorites');
-    const { brand, image, bubble, heading, header } = await page.evaluate(() => {
+    const { brand, image, heading, header } = await page.evaluate(() => {
       const box = element => {
         const { x, y, width, height } = element.getBoundingClientRect();
         return { x, y, width, height };
@@ -121,15 +94,13 @@ test('stacked SVG wordmark stays proportional to the search control and page tit
       return {
         brand: box(document.querySelector('.vh-brand-signature')),
         image: box(document.querySelector('.vh-brand-signature img')),
-        bubble: box(document.querySelector('.vh-search-bubble')),
         heading: box(document.querySelector('#main-content h1')),
         header: box(document.querySelector('.vh-floating-head'))
       };
     });
     expect(brand.width).toBeLessThanOrEqual(197);
     expect(image.height).toBeLessThanOrEqual(110);
-    expect(Math.abs((image.y + image.height / 2) - (bubble.y + bubble.height / 2))).toBeLessThan(10);
-    expect(image.x + image.width + 10).toBeLessThanOrEqual(bubble.x);
+    expect(image.x + image.width).toBeLessThanOrEqual(width);
     expect(heading.y - (header.y + header.height)).toBeLessThan(35);
   }
 });
@@ -173,7 +144,7 @@ test('switching tabs renders the page immediately without delayed transitions', 
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   await nav.getByRole('button', { name: 'Mecze' }).click();
-  await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Kalendarz' })).toBeVisible();
   await expect(page.locator('#main-content')).toHaveCSS('animation-name', 'none');
   await expect(nav.getByRole('button', { name: 'Mecze' })).toHaveAttribute('aria-current', 'page');
   const label = nav.locator('.vh-nav-item.active > span');
@@ -249,7 +220,7 @@ test('liquid lens moves with one interruptible spring, not a CSS lens transition
   const target = await nav.getByRole('button', { name: 'Mecze' }).evaluate(el =>
     el.getBoundingClientRect().left - el.parentElement.getBoundingClientRect().left);
   expect(Math.abs(settled - target)).toBeLessThan(0.6);
-  await expect(page.locator('#main-content').getByRole('heading', { name: 'Mecze' })).toBeVisible();
+  await expect(page.locator('#main-content').getByRole('heading', { name: 'Kalendarz' })).toBeVisible();
 });
 
 test('reduced motion snaps the liquid lens immediately to its selected tab', async ({ page }) => {
@@ -342,19 +313,6 @@ test('bottom navigation uses just one React glass lens and no CSS pill overlay',
   await nav.getByRole('button', { name: 'Mecze' }).click();
   await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
   await expect(nav.getByRole('button', { name: 'Mecze' })).toHaveAttribute('aria-current', 'page');
-});
-
-test('search bubble is glass powered by React or a readable static fallback', async ({ page }) => {
-  await page.goto('/');
-  const bubble = page.getByRole('button', { name: 'Szukaj', exact: true });
-  await expect(bubble).toBeVisible();
-  expect(await bubble.evaluate(el => getComputedStyle(el).backdropFilter)).toBe('none');
-  await bubble.click();
-  const search = page.getByRole('dialog', { name: 'Wyszukiwarka' });
-  await expect(search).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(search).toHaveCount(0);
-  await expect(bubble).toBeFocused();
 });
 
 test('mobile navigation, date strip and saved favorites survive the cleanup', async ({ page }) => {

@@ -72,5 +72,5 @@ test('reduced motion bypasses the entrance and direct links retain their destina
   await page.clock.fastForward(3100);
   await expect(page.locator('.vh-startup-intro')).toHaveCount(0);
   await expect(page).toHaveURL(/#matches$/);
-  await expect(page.getByRole('heading', { name: 'Mecze', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Kalendarz', exact: true })).toBeVisible();
 });
