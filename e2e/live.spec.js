@@ -24,6 +24,36 @@ async function setup(page) {
 }
 const card = (page, id) => page.locator(`[data-route="matches"] [data-match-id="${id}"]`);
 
+test('score motion only marks changed values, handles consecutive updates and settles', async ({ page }) => {
+  const state = await setup(page);
+  const target = card(page, 'live-one');
+  await expect(target.locator('.is-changing')).toHaveCount(0);
+  state.payload.matches[0].home_sets = 2;
+  state.payload.matches[0].current_points = '21:19';
+  await page.clock.fastForward(10000);
+  await expect(target.locator('.im-pts').first()).toHaveAttribute('data-previous', '1');
+  await expect(target.locator('.im-pts').last()).not.toHaveClass(/is-changing/);
+  await expect(card(page, 'live-two').locator('.is-changing')).toHaveCount(0);
+  await expect(target.locator('.vh-live-points')).toHaveAttribute('data-previous', '20:19');
+  state.payload.matches[0].current_points = '22:19';
+  await page.getByRole('button', { name: 'Odśwież dane' }).click();
+  await expect(target.locator('.vh-live-points')).toHaveText('22:19');
+  await expect(target.locator('.vh-live-points')).toHaveAttribute('data-previous', '21:19');
+  await page.clock.runFor(900);
+  await expect(target.locator('.is-changing')).toHaveCount(0);
+});
+
+test('reduced motion keeps live scores immediate without animation canvases', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const state = await setup(page);
+  state.payload.matches[0].home_sets = 2;
+  state.payload.matches[0].current_points = '22:19';
+  await page.clock.fastForward(10000);
+  await expect(card(page, 'live-one').locator('.im-pts').first()).toHaveText('2');
+  await expect(card(page, 'live-one').locator('.vh-live-points')).toHaveText('22:19');
+  await expect(page.locator('.vh-rive-impact, .is-changing')).toHaveCount(0);
+});
+
 test('live polls update changed cards only, retain expanded sets and detect completed/new matches', async ({ page }) => {
   const state = await setup(page);
   const stable = card(page, 'live-two');

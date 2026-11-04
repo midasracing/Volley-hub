@@ -1,5 +1,24 @@
 import { test, expect } from '@playwright/test';
 
+test('league entrance uses the local Rive file and keeps title and controls usable', async ({ page }) => {
+  const failures = [];
+  page.on('pageerror', error => failures.push(error.message));
+  await page.goto('/#competitions');
+  const open = () => page.getByRole('button', { name: /01 TAURON Liga Mężczyzn/ }).click();
+  await open();
+  const cover = page.locator('.vh-league-entrance');
+  await expect(cover.getByRole('heading', { name: 'TAURON Liga Mężczyzn' })).toBeVisible();
+  await expect(cover.getByRole('button', { name: 'Dodaj do ulubionych', exact: true })).toBeEnabled();
+  // Allow a cold first load to fall back; the next interaction uses a warm runtime.
+  await expect.poll(() => page.evaluate(() => performance.getEntriesByType('resource')
+    .some(entry => entry.name.endsWith('.wasm') && entry.responseEnd > 0))).toBe(true);
+  await page.getByRole('button', { name: 'Wszystkie rozgrywki', exact: true }).click();
+  await open();
+  await expect(cover.locator('canvas.is-ready')).toHaveCount(1);
+  await expect(cover.locator('canvas')).toHaveCount(0, { timeout: 2500 });
+  expect(failures).toEqual([]);
+});
+
 test('renders React navigation and shared match design', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { name: /^(Mecze dzisiaj|Co przed nami)$/ })).toBeVisible();

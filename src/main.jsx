@@ -10,6 +10,7 @@ import BrandSignature from './components/BrandSignature.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import PageStage from './components/PageStage.jsx';
 import useFeeds from './useFeeds.js';
+import { MotionEnabled, ScoreValue, LeagueEntrance } from './components/MatchMotion.jsx';
 import { ROUTES } from './navigation.js';
 import '../matches-ios.css';
 import './app.css';
@@ -75,20 +76,20 @@ const MatchCard = React.memo(function MatchCard({ match, logos, compact = false 
       <div className="im-row">
         <TeamLogo name={match.home} logo={logos.get(normalizeName(match.home))} className="im-logo" />
         <span className={'im-name ' + (homeWins ? 'win' : '')}>{match.home}</span>
-        {score && <span className={'im-pts ' + (awayWins ? 'lose' : '')}>{match.home_sets ?? '–'}</span>}
+        {score && <ScoreValue className={'im-pts ' + (awayWins ? 'lose' : '')} value={match.home_sets ?? '–'} />}
       </div>
       <div className="im-sep" />
       <div className="im-row">
         <TeamLogo name={match.away} logo={logos.get(normalizeName(match.away))} className="im-logo" />
         <span className={'im-name ' + (awayWins ? 'win' : '')}>{match.away}</span>
-        {score && <span className={'im-pts ' + (homeWins ? 'lose' : '')}>{match.away_sets ?? '–'}</span>}
+        {score && <ScoreValue className={'im-pts ' + (homeWins ? 'lose' : '')} value={match.away_sets ?? '–'} />}
       </div>
       {!score && <span className="im-time">{match.time || '–:–'}</span>}
     </div>
     {(score || match.time) && <div className="vh-match-footer">
       <span><Clock3 size={14} /> {match.time || 'Godzina nieustalona'}</span>
       {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded} aria-controls={detailsId}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
-      {isLive(match) && match.current_points && <span>Aktualny set: {String(match.current_points)}</span>}
+      {isLive(match) && match.current_points && <span>Aktualny set: <ScoreValue className="vh-live-points" value={String(match.current_points)} /></span>}
     </div>}
     {scores.length > 0 && <div className={'vh-sets-wrap' + (expanded ? ' is-expanded' : '')} aria-hidden={!expanded} inert={!expanded}>
       <div id={detailsId} className="vh-sets" role="region" aria-label="Wyniki setów">
@@ -204,7 +205,7 @@ function TeamsGrid({ teams = [], logos, favorites, toggleFavorite }) {
   if (!teams.length) return <EmptyState title="Brak listy drużyn" message="Lista zespołów nie jest jeszcze dostępna w oficjalnym źródle." />;
   return <div className="vh-team-grid">{teams.map((team, index) => <article className="vh-team-tile" key={team.name + index}><TeamLogo name={team.name} logo={team.logo || logos.get(normalizeName(team.name))} /><strong>{team.name}</strong><button type="button" aria-label={(favorites.teams.some(x => sameName(x, team.name)) ? 'Usuń z' : 'Dodaj do') + ' ulubionych: ' + team.name} onClick={() => toggleFavorite('teams', team.name)} className={favorites.teams.some(x => sameName(x, team.name)) ? 'is-favorite' : ''}><Star size={19} fill={favorites.teams.some(x => sameName(x, team.name)) ? 'currentColor' : 'none'} /></button></article>)}</div>;
 }
-const CompetitionsPage = React.memo(function CompetitionsPage({ feeds, matches, loading, errors, refresh, logos, favorites, toggleFavorite, selectedLeague, setSelectedLeague, onMatches }) {
+const CompetitionsPage = React.memo(function CompetitionsPage({ active, feeds, matches, loading, errors, refresh, logos, favorites, toggleFavorite, selectedLeague, setSelectedLeague, onMatches }) {
   const [category, setCategory] = useState('Polska');
   const [view, setView] = useState('matches');
   const [group, setGroup] = useState('all');
@@ -220,7 +221,7 @@ const CompetitionsPage = React.memo(function CompetitionsPage({ feeds, matches, 
     <PageHeader title="Rozgrywki" subtitle="Wybierz ligę. Poznaj drużyny, wyniki i aktualną tabelę." actions={league ? <IconButton Icon={ArrowLeft} label="Wszystkie ligi" onClick={() => setSelectedLeague(null)} /> : null} />
     {league ? <>
       <button className="vh-back" onClick={() => setSelectedLeague(null)}><ChevronLeft size={18} /> Wszystkie rozgrywki</button>
-      <div className="vh-league-cover"><span className="vh-eyebrow">🇵🇱 POLSKA · MĘŻCZYŹNI</span><h2>{league.name}</h2><p>{league.description}</p><button className="vh-cover-favorite" type="button" onClick={() => toggleFavorite('leagues', league.name)}><Star size={17} fill={favorites.leagues.includes(league.name) ? 'currentColor' : 'none'} /> {favorites.leagues.includes(league.name) ? 'W ulubionych' : 'Dodaj do ulubionych'}</button></div>
+      <LeagueEntrance key={league.id} league={league} active={active}><span className="vh-eyebrow">🇵🇱 POLSKA · MĘŻCZYŹNI</span><h2>{league.name}</h2><p>{league.description}</p><button className="vh-cover-favorite" type="button" onClick={() => toggleFavorite('leagues', league.name)}><Star size={17} fill={favorites.leagues.includes(league.name) ? 'currentColor' : 'none'} /> {favorites.leagues.includes(league.name) ? 'W ulubionych' : 'Dodaj do ulubionych'}</button></LeagueEntrance>
       <div className="vh-segmented" role="tablist" aria-label="Widok rozgrywek">{[['matches','Mecze'], ['results','Wyniki'], ['table','Tabela'], ['teams','Drużyny']].map(([id,label]) => <button key={id} role="tab" aria-selected={view === id} className={view === id ? 'selected' : ''} onClick={() => setView(id)}>{label}</button>)}</div>
       {grouped.length > 0 && <div className="vh-controls"><button type="button" className={'vh-filter-chip ' + (group === 'all' ? 'chosen' : '')} onClick={() => setGroup('all')}>Wszystkie grupy</button>{grouped.map(item => <button key={item.name} type="button" className={'vh-filter-chip ' + (group === item.name ? 'chosen' : '')} onClick={() => setGroup(item.name)}>{item.name}</button>)}</div>}
       <FeedWarning errors={league && errors[league.id] ? { [league.id]: errors[league.id] } : {}} refresh={refresh} />
@@ -306,6 +307,16 @@ function App() {
   const [reducedMotion, setReducedMotion] = useState(() =>
     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
   );
+  useEffect(() => {
+    if (reducedMotion) return undefined;
+    const warm = () => import('./motionRuntime.js').catch(() => {});
+    if (window.requestIdleCallback) {
+      const task = window.requestIdleCallback(warm, { timeout: 2500 });
+      return () => window.cancelIdleCallback(task);
+    }
+    const task = window.setTimeout(warm, 1500);
+    return () => window.clearTimeout(task);
+  }, [reducedMotion]);
   const currentPage = useRef(page);
   const [selectedDate, setSelectedDate] = useState(NOW);
   const [leagueFilter, setLeagueFilter] = useState(null);
@@ -403,11 +414,11 @@ function App() {
   function renderPage(id) {
     if (id === 'home') return <HomePage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} onNavigate={navigate} onOpenLeague={openLeague} />;
     if (id === 'matches') return <MatchesPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />;
-    if (id === 'competitions') return <CompetitionsPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
+    if (id === 'competitions') return <CompetitionsPage active={page === 'competitions'} feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
     if (id === 'favorites') return <FavoritesPage teams={teams} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;
     return null;
   }
-  return <div className="vh-app" id="ios-matches">
+  return <MotionEnabled.Provider value={!reducedMotion}><div className="vh-app" id="ios-matches">
     <div className="vh-floating-head" aria-label="Nagłówek Kiedy Siatka?">
       <BrandSignature />
       <div className="vh-floating-actions">
@@ -421,7 +432,7 @@ function App() {
     </PageStage>
     {createPortal(<BottomNav active={page} onNavigate={navigate} />, document.body)}
     {searchOpen && <SearchSheet feeds={feeds} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onClose={() => setSearchOpen(false)} onOpenLeague={openLeague} onMatches={goToMatches} />}
-  </div>;
+  </div></MotionEnabled.Provider>;
 }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);

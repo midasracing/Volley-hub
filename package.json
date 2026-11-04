@@ -16,13 +16,14 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@rive-app/canvas": "^2.49.3",
+    "lucide-react": "^0.468.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "lucide-react": "^0.468.0"
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.7.0",
     "@playwright/test": "^1.56.0",
+    "@vitejs/plugin-react": "^4.7.0",
     "vite": "^6.3.6"
   }
 }

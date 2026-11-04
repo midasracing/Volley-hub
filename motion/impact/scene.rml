@@ -1,0 +1,62 @@
+<Rive version="1" kind="fragment">
+  <Artboard defaultStateMachineId="0:7" styleId="0:5" width="600" height="240" name="Impact" id="0:2">
+    <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+    <Shape name="Blood slash 1" id="0:20" x="-450" y="120" rotation="-0.16" opacity="0">
+      <Rectangle width="520" height="420"/>
+      <Fill><SolidColor colorValue="FF650918"/></Fill>
+    </Shape>
+    <Shape name="Blood slash 2" id="0:21" x="-450" y="120" rotation="-0.16" opacity="0">
+      <Rectangle width="520" height="420"/>
+      <Fill><SolidColor colorValue="FFB30818"/></Fill>
+    </Shape>
+    <Shape name="Blood slash 3" id="0:22" x="-450" y="120" rotation="-0.16" opacity="0">
+      <Rectangle width="520" height="420"/>
+      <Fill><SolidColor colorValue="FFE02038"/></Fill>
+    </Shape>
+    <StateMachine name="Impact" id="0:7"><StateMachineLayer name="Sweep" id="0:8">
+      <AnyState x="0" y="-150"/><ExitState x="400" y="-150"/><EntryState x="0" y="0"><StateTransition stateToId="0:12"/></EntryState>
+      <AnimationState x="220" y="0" animationId="0:6" id="0:12"/>
+    </StateMachineLayer></StateMachine>
+    <LinearAnimation duration="42" name="Strike" id="0:6">
+      <KeyedObject objectId="0:20">
+        <KeyedProperty property="x">
+          <KeyFrameDouble value="-450" frame="0" interpolationType="linear"/>
+          <KeyFrameDouble value="240" frame="12" interpolationType="linear"/>
+          <KeyFrameDouble value="1100" frame="34" interpolationType="linear"/>
+        </KeyedProperty>
+        <KeyedProperty property="opacity">
+          <KeyFrameDouble value="0" frame="0" interpolationType="linear"/>
+          <KeyFrameDouble value="0.72" frame="8" interpolationType="linear"/>
+          <KeyFrameDouble value="0.45" frame="24" interpolationType="linear"/>
+          <KeyFrameDouble value="0" frame="42" interpolationType="linear"/>
+        </KeyedProperty>
+      </KeyedObject>
+      <KeyedObject objectId="0:21">
+        <KeyedProperty property="x">
+          <KeyFrameDouble value="-450" frame="3" interpolationType="linear"/>
+          <KeyFrameDouble value="240" frame="15" interpolationType="linear"/>
+          <KeyFrameDouble value="1100" frame="37" interpolationType="linear"/>
+        </KeyedProperty>
+        <KeyedProperty property="opacity">
+          <KeyFrameDouble value="0" frame="0" interpolationType="linear"/>
+          <KeyFrameDouble value="0.72" frame="11" interpolationType="linear"/>
+          <KeyFrameDouble value="0.45" frame="27" interpolationType="linear"/>
+          <KeyFrameDouble value="0" frame="42" interpolationType="linear"/>
+        </KeyedProperty>
+      </KeyedObject>
+      <KeyedObject objectId="0:22">
+        <KeyedProperty property="x">
+          <KeyFrameDouble value="-450" frame="5" interpolationType="linear"/>
+          <KeyFrameDouble value="240" frame="17" interpolationType="linear"/>
+          <KeyFrameDouble value="1100" frame="39" interpolationType="linear"/>
+        </KeyedProperty>
+        <KeyedProperty property="opacity">
+          <KeyFrameDouble value="0" frame="0" interpolationType="linear"/>
+          <KeyFrameDouble value="0.72" frame="13" interpolationType="linear"/>
+          <KeyFrameDouble value="0.45" frame="29" interpolationType="linear"/>
+          <KeyFrameDouble value="0" frame="42" interpolationType="linear"/>
+        </KeyedProperty>
+      </KeyedObject>
+    </LinearAnimation>
+  </Artboard>
+</Rive>
