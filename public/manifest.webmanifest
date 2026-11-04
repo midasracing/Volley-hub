@@ -5,7 +5,7 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0e1118",
-  "theme_color": "#0e1118",
+  "background_color": "#080808",
+  "theme_color": "#080808",
   "description": "Siatkówka w jednym miejscu — terminarze, wyniki i rozgrywki."
 }

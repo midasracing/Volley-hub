@@ -13,6 +13,7 @@ import useFeeds from './useFeeds.js';
 import { ROUTES } from './navigation.js';
 import '../matches-ios.css';
 import './app.css';
+import './theme.css';
 
 const DATE_FORMAT = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
 const NOW = () => { const today = new Date(); today.setHours(12, 0, 0, 0); return today; };

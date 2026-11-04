@@ -1,5 +1,5 @@
 /* The app shell must be built by Vite, not GitHub Pages' Jekyll branch build. */
-const CACHE = 'kiedy-siatka-vite-shell-v2';
+const CACHE = 'kiedy-siatka-type-color-v3';
 const SHELL = ['./manifest.webmanifest'];
 const isBuiltApp = html =>
   html.includes('assets/index-') &&
