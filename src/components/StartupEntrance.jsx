@@ -9,6 +9,8 @@ const LOGO = import.meta.env.BASE_URL + 'kiedy-siatka-logo.svg?v=4';
 export default function StartupEntrance({ enabled, onComplete }) {
   const canvas = useRef(null);
   const [rivePlaying, setRivePlaying] = useState(false);
+  const [cutting, setCutting] = useState(false);
+  const [revealing, setRevealing] = useState(false);
   useEffect(() => {
     if (!enabled || document.hidden) { onComplete(); return undefined; }
     let disposed = false, rive, ready = false;
@@ -25,9 +27,12 @@ export default function StartupEntrance({ enabled, onComplete }) {
       rive = createEntrance(canvas.current, () => { ready = !disposed && performance.now() - started < 1000; }, () => { ready = false; });
     }).catch(() => { /* The matching CSS curtain remains available offline. */ });
     later(() => {
-      if (disposed || !ready || !rive) return;
+      if (disposed) return;
+      setCutting(true);
+      if (!ready || !rive) return;
       try { rive.play(); setRivePlaying(true); } catch { /* Keep the CSS curtain. */ }
     }, 1020);
+    later(() => { if (!disposed) setRevealing(true); }, 1370);
     later(() => {
       if (disposed) return;
       const home = document.querySelector('.vh-tab-panel:not([hidden])');
@@ -63,7 +68,7 @@ export default function StartupEntrance({ enabled, onComplete }) {
     };
   }, [enabled, onComplete]);
   if (!enabled) return null;
-  return createPortal(<div className={'vh-startup-intro' + (rivePlaying ? ' has-rive' : '')}>
+  return createPortal(<div className={'vh-startup-intro' + (rivePlaying ? ' has-rive' : '') + (cutting ? ' is-cutting' : '') + (revealing ? ' is-revealing' : '')}>
     <div className="vh-startup-copy" aria-hidden="true">
       <div className="vh-startup-mask"><div className="vh-startup-logo-rise">
         <img className="vh-startup-logo" src={LOGO} width="1180" height="655" alt="" draggable={false} fetchPriority="high" />

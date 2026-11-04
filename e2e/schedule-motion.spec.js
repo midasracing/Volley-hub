@@ -47,7 +47,8 @@ test('sets remain readable after interrupting a close with another expansion', a
   const region = card.getByRole('region', { name: 'Wyniki setów' });
   await expect(region).toBeVisible();
   await expect(region.locator('strong')).toHaveText(['25:22', '25:18', '20:25', '25:19']);
-  expect(await region.locator('span').evaluateAll(cells => cells.every(cell => getComputedStyle(cell).opacity === '1'))).toBe(true);
+  // WAAPI uses the native rendering timeline, independently of page.clock.
+  await expect.poll(() => region.locator('span').evaluateAll(cells => cells.every(cell => getComputedStyle(cell).opacity === '1'))).toBe(true);
   await card.getByRole('button', { name: 'Ukryj sety' }).click();
   await page.clock.runFor(400);
   await expect(card.locator('.vh-sets-wrap')).toHaveAttribute('aria-hidden', 'true');
