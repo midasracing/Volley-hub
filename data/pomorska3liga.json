@@ -4,7 +4,7 @@
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
   "results_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
   "standings_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
-  "updated_at": "2026-11-03T19:59:10.318533+00:00",
+  "updated_at": "2026-11-04T15:05:25.143343+00:00",
   "teams": [
     {
       "name": "Energa Trefl Gdańsk III",
@@ -110,19 +110,13 @@
       "id": "04.10.2026-1-4",
       "competition": "Pomorska III Liga Męska",
       "date": "04.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "Energa Trefl Gdańsk III",
       "away": "UKS Skarszewy",
       "home_sets": 3,
       "away_sets": 2,
-      "set_scores": [
-        "25:23",
-        "25:21",
-        "20:25",
-        "23:25",
-        "15:12"
-      ],
+      "set_scores": [],
       "current_points": null,
       "round": 1,
       "match_number": 4,
