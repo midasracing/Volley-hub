@@ -39,6 +39,10 @@ test('score motion only marks changed values, handles consecutive updates and se
   await page.getByRole('button', { name: 'Odśwież dane' }).click();
   await expect(target.locator('.vh-live-points')).toHaveText('22:19');
   await expect(target.locator('.vh-live-points')).toHaveAttribute('data-previous', '21:19');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(target.locator('.is-changing')).toHaveCount(0);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await expect(target.locator('.is-changing')).toHaveCount(0);
   await page.clock.runFor(900);
   await expect(target.locator('.is-changing')).toHaveCount(0);
 });

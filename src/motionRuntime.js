@@ -10,7 +10,7 @@ export function createImpact(canvas, onReady, onDone) {
     canvas,
     src: import.meta.env.BASE_URL + 'motion/impact.riv',
     artboard: 'Impact',
-    animations: 'Strike',
+    stateMachine: 'Impact',
     autoplay: true,
     layout: new Layout({ fit: Fit.Fill, alignment: Alignment.Center }),
     onLoad: () => { animation.resizeDrawingSurfaceToCanvas(); onReady(); },

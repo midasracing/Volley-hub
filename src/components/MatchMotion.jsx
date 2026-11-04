@@ -40,8 +40,9 @@ export function ScoreValue({ value, className = '' }) {
   useLayoutEffect(() => {
     const from = previous.current;
     previous.current = value;
-    if (Object.is(from, value)) return undefined;
-    if (!enabled || document.hidden || host.current?.closest('[hidden]')) {
+    if (!enabled) { setChange(null); return undefined; }
+    if (String(from) === String(value)) return undefined;
+    if (document.hidden || host.current?.closest('[hidden]')) {
       setChange(null);
       return undefined;
     }
