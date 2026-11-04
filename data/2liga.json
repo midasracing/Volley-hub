@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-11-04T08:48:39.332299+00:00",
+  "updated_at": "2026-11-04T15:12:05.714278+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -400,6 +400,18 @@
         {
           "date": "07.11.2026",
           "time": "17:00",
+          "home": "SPS Cargill Słupca",
+          "away": "LOMS Joker Piła",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 1",
+          "group": "Grupa 1"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "17:00",
           "home": "KRISHOME Września",
           "away": "Polipack UKS 1 Reda",
           "home_sets": 0,
@@ -426,18 +438,6 @@
           "time": "18:00",
           "home": "Fort Tarnowo Podgórne",
           "away": "Enea Energetyk Poznań",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 1",
-          "group": "Grupa 1"
-        },
-        {
-          "date": "07.11.2026",
-          "time": "18:00",
-          "home": "SPS Cargill Słupca",
-          "away": "LOMS Joker Piła",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
@@ -6933,18 +6933,6 @@
         },
         {
           "date": "07.11.2026",
-          "time": "",
-          "home": "Feniks Heron Przeworsk",
-          "away": "Karpaty - PANS Krosno",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
-          "competition": "II Liga Mężczyzn · Grupa 5",
-          "group": "Grupa 5"
-        },
-        {
-          "date": "07.11.2026",
           "time": "15:00",
           "home": "KS Hutnik Kraków",
           "away": "KS Jastrzębie-Borynia",
@@ -6960,6 +6948,18 @@
           "time": "16:00",
           "home": "MKS Andrychów",
           "away": "Volley Dąbrowa Górnicza",
+          "home_sets": 0,
+          "away_sets": 0,
+          "set_scores": [],
+          "status": "scheduled",
+          "competition": "II Liga Mężczyzn · Grupa 5",
+          "group": "Grupa 5"
+        },
+        {
+          "date": "07.11.2026",
+          "time": "17:00",
+          "home": "Feniks Heron Przeworsk",
+          "away": "Karpaty - PANS Krosno",
           "home_sets": 0,
           "away_sets": 0,
           "set_scores": [],
