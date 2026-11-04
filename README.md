@@ -30,7 +30,7 @@ Nie wymaga zakładania konta. Dzięki obsłudze PWA można dodać ją do ekranu 
 - **Terminarze i tabele** — przeglądanie rozgrywek, grup i drużyn.
 - **Ulubione** — szybki dostęp do obserwowanych drużyn i lig; ustawienia są przechowywane przez `localStorage`.
 - **Wyszukiwanie** — znajdowanie drużyn i lig bez przeklikiwania kolejnych ekranów.
-- **Mobilny interfejs** — widoki dopasowane do małych ekranów, instalowalna aplikacja PWA i obsługa gestów nawigacyjnych.
+- **Mobilny interfejs** — widoki dopasowane do małych ekranów, czytelna nawigacja i instalowalna aplikacja PWA.
 
 ## Rozgrywki
 
