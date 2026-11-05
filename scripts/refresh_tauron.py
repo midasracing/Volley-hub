@@ -189,12 +189,13 @@ def extract_team_logos(base, aliases, previous, *soups):
             team = team_in(label, aliases)
             if not team:
                 continue
+            row = current.setdefault(team, {"name": team, "id": team_id, "logo": ""})
+            row["id"] = team_id
             image = link.find("img")
-            if image is None:
-                continue
-            url = norm(image.get("src", "") or image.get("data-src", "") or image.get("data-lazy-src", ""))
-            if url and not url.startswith("data:"):
-                current[team] = {"name": team, "id": team_id, "logo": urljoin(base, url)}
+            if image is not None:
+                url = norm(image.get("src", "") or image.get("data-src", "") or image.get("data-lazy-src", ""))
+                if url and not url.startswith("data:"):
+                    row["logo"] = urljoin(base, url)
 
         # Other official layouts show club images outside the team link.
         for img in soup.find_all("img"):
@@ -205,7 +206,9 @@ def extract_team_logos(base, aliases, previous, *soups):
             url = norm(img.get("src", "") or img.get("data-src", "") or img.get("data-lazy-src", ""))
             if not url or url.startswith("data:"):
                 continue
-            current.setdefault(team, {"name": team, "logo": urljoin(base, url)})
+            row = current.setdefault(team, {"name": team, "logo": ""})
+            if not row.get("logo"):
+                row["logo"] = urljoin(base, url)
 
     old_by_id = {str(row["id"]): row for row in previous.get("teams", [])
                  if isinstance(row, dict) and row.get("id")}
