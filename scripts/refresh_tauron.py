@@ -524,6 +524,123 @@ def detail_metadata(soup):
     return data
 
 
+def build_official_fixture_teams(matches, previous):
+    old_by_id = {str(t["id"]): t for t in previous.get("teams", [])
+                 if isinstance(t, dict) and t.get("id")}
+    teams = {}
+    for match in matches:
+        for side in ("home", "away"):
+            name = match[side]
+            team_id = match.get(side + "_team_id")
+            logo = match.get(side + "_logo", "")
+            old = old_by_id.get(str(team_id), {})
+            if not logo:
+                logo = old.get("logo", "")
+            item = teams.setdefault(name, {"name": name, "logo": "", "id": team_id})
+            if logo:
+                item["logo"] = logo
+            if team_id:
+                item["id"] = team_id
+    return sorted(teams.values(), key=lambda x: x["name"])
+
+
+def parse_full_season(soup, key, base, previous=None):
+    """Read all official round-grouped fixture cards, including future games.
+
+    The featured match carousel is not the season schedule: using its team
+    images alone yields only about 25 matches. Every fixture has an official
+    data-game-id under a data-round container in the complete list.
+    """
+    previous = previous or {}
+    old_by_id = {
+        str(x["id"]): x for x in previous.get("matches", [])
+        if isinstance(x, dict) and x.get("id")
+    }
+    parsed = {}
+    for card in soup.select("section[data-game-id]"):
+        round_section = card.find_parent("section", attrs={"data-round": True})
+        if round_section is None:
+            continue
+        game_id = str(card.get("data-game-id", "")).strip()
+        if not game_id:
+            continue
+        home_node = card.select_one(".game-team.left")
+        away_node = card.select_one(".game-team.right")
+        if not home_node or not away_node:
+            continue
+        home = norm(home_node.get_text(" ", strip=True))
+        away = norm(away_node.get_text(" ", strip=True))
+        if not home or not away:
+            continue
+        date_node = card.select_one(".game-date")
+        date, time = parse_date(norm(date_node.get_text(" ", strip=True))) if date_node else (None, None)
+        score_nodes = card.select(".game-result .game-score")
+        score_values = [norm(el.get_text(" ", strip=True)) for el in score_nodes[:2]]
+        valid_score = len(score_values) == 2 and all(re.fullmatch(r"[0-3]", v) for v in score_values)
+        hs, ass = (int(score_values[0]), int(score_values[1])) if valid_score else (0, 0)
+        class_names = " ".join(card.select_one(".game-box").get("class", [])) if card.select_one(".game-box") else ""
+        status = "finished" if max(hs, ass) == 3 else "live" if "live" in class_names or hs + ass > 0 else "scheduled"
+
+        phase_node = card.select_one(".game-stage")
+        phase = norm(phase_node.get_text(" ", strip=True)) if phase_node else "Faza Zasadnicza"
+        channel_img = card.select_one(".game-tv img")
+        channel = norm(channel_img.get("title", "") or channel_img.get("alt", "")) if channel_img else ""
+        team_ids = [x.strip() for x in (card.get("data-team") or "").split(",") if x.strip()]
+        logos = []
+        for side in ("left", "right"):
+            image = card.select_one(".game-logo." + side + " img")
+            image_url = image.get("src") or image.get("data-src") if image else ""
+            logos.append(urljoin(base, image_url) if image_url and not image_url.startswith("data:") else "")
+
+        round_value = round_section.get("data-round", "")
+        try:
+            round_number = int(round_value)
+        except (ValueError, TypeError):
+            round_number = None
+        previous_game = old_by_id.get(game_id, {})
+        set_scores = previous_game.get("set_scores", []) if (
+            previous_game.get("home") == home and previous_game.get("away") == away
+            and previous_game.get("home_sets") == hs and previous_game.get("away_sets") == ass
+        ) else []
+        # Historic points are only reused when the result and teams match.
+        # A live game's points may change; never freeze them from an old poll.
+        if status != "finished":
+            set_scores = []
+        game = {
+            "id": game_id,
+            "league": key,
+            "competition": "TAURON 1. Liga" if key == "first" else "TAURON Liga",
+            "date": date or "Termin do potwierdzenia",
+            "time": time,
+            "date_iso": datetime.datetime.strptime(date, "%d.%m.%Y").date().isoformat() if date else None,
+            "round": round_number,
+            "round_source_label": "Kolejka",
+            "phase": phase,
+            "status": status,
+            "home": home,
+            "away": away,
+            "home_sets": hs,
+            "away_sets": ass,
+            "set_scores": list(set_scores),
+            "set_points": [{"home": int(x.split(":")[0]), "away": int(x.split(":")[1])} for x in set_scores],
+            "home_points": sum(int(x.split(":")[0]) for x in set_scores),
+            "away_points": sum(int(x.split(":")[1]) for x in set_scores),
+            "current_points": None,
+            "source_url": f"{base}/games/action/show/id/{game_id}/nocookies/1.html",
+            "home_team_id": team_ids[0] if len(team_ids) >= 1 else None,
+            "away_team_id": team_ids[1] if len(team_ids) >= 2 else None,
+            "home_logo": logos[0],
+            "away_logo": logos[1],
+        }
+        if channel:
+            game["broadcast"] = [channel]
+        for field in ("venue", "match_number"):
+            if field in previous_game:
+                game[field] = previous_game[field]
+        parsed[game_id] = game
+    return list(parsed.values())
+
+
 def parse_table(soup, aliases):
     """Standings. The page lists rows for many rounds, so keep each team's LATEST row."""
     latest = {}
@@ -581,9 +698,25 @@ def run_league(key, cfg):
 
     aliases = build_aliases(cfg, games, table_soup)
 
-    matches = parse_matches(games, aliases, cfg["competition"])
-    if not matches:
-        raise RuntimeError("No matches parsed; refusing to overwrite the feed.")
+    matches = parse_full_season(games, key, base, previous)
+    # The carousel has detailed point-by-point summaries for recent games.
+    # Enrich fixture cards by match ID without losing future fixtures.
+    carousel = parse_matches(games, aliases, cfg["competition"])
+    carousel_by_id = {str(m["id"]): m for m in carousel if m.get("id")}
+    for match in matches:
+        detail = carousel_by_id.get(match["id"])
+        if detail and detail.get("home_sets") == match["home_sets"] and detail.get("away_sets") == match["away_sets"]:
+            for field in ("set_scores", "set_points", "home_points", "away_points", "current_points"):
+                match[field] = detail.get(field)
+            if detail.get("status") == "live" and match["status"] != "finished":
+                match["status"] = "live"
+    # Complete regular-season round counts: 14*13 and 16*15 matches.
+    expected = 182 if key == "men" else 240
+    if len(matches) < expected:
+        raise RuntimeError(
+            f"Incomplete 2026/27 regular-season schedule: got {len(matches)} / {expected} "
+            f"matches for {key}; refusing to overwrite the feed."
+        )
 
     # Some match cards lag behind the dedicated match page. For today's fixtures
     # whose kickoff has passed, try the official per-match URL as a second source.
@@ -681,7 +814,7 @@ def run_league(key, cfg):
 
     payload = {
         "league": key,
-        "teams": extract_team_logos(base, aliases, previous, games, table_soup),
+        "teams": build_official_fixture_teams(matches, previous),
         "updated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "matches": matches,
         "table": standings,
