@@ -4,3 +4,21 @@
 .vh-page{position:relative;min-width:0}
 .vh-page-enter{animation:none;transition:none;transform:none;opacity:1}
 
+
+
+/* Keep the four prepared React tabs mounted without rendering hidden content.
+   The HTML hidden attribute alone causes display:none, which prevents the
+   browser from retaining the panel's cached layout. Override that UA rule,
+   then remove the inactive panel from flow and painting. React supplies both
+   hidden and inert, so the panel also stays out of focus and accessibility. */
+.vh-tab-panel[hidden] {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  content-visibility: hidden;
+  contain-intrinsic-size: 0 0;
+}
