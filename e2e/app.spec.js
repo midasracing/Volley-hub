@@ -455,28 +455,55 @@ test('cached inactive tabs stay out of focus, accessibility and document scrolli
 });
 
 
-test('route motion follows navigation direction, interrupts cleanly and respects reduced motion', async ({ page }) => {
+test('dense serpentine typography cuts reveal immediately and finish under 300ms', async ({ page }) => {
   await page.goto('/');
   const main = page.locator('#main-content');
-  for (const [label, target, sign] of [['Kalendarz','matches',1], ['Ulubione','favorites',1], ['Główna','home',-1]]) {
+  const cut = page.locator('.vh-type-serpent');
+
+  for (const [label, target, sign, title] of [
+    ['Kalendarz', 'matches', -1, 'KALENDARZ'],
+    ['Ulubione', 'favorites', -1, 'ULUBIONE'],
+    ['Główna', 'home', 1, 'DZISIAJ']
+  ]) {
     const motion = await page.evaluate(async ({ label }) => {
-      document.querySelector(`.vh-nav-item[aria-label="${label}"]`).click();
+      document.querySelector('.vh-nav-item[aria-label="' + label + '"]').click();
       await new Promise(requestAnimationFrame);
       const host = document.querySelector('#main-content');
-      const animations = host.getAnimations().filter(a => a.id === 'vh-route-transition');
-      return { page: host.dataset.page, count: animations.length, frames: animations[0]?.effect.getKeyframes() };
+      const cover = document.querySelector('.vh-type-serpent');
+      const rows = Array.from(cover.children);
+      const first = rows[0].getAnimations().find(animation => animation.id === 'vh-type-serpent');
+      const second = rows[1].getAnimations()[0];
+      const letters = rows[0].firstElementChild.getAnimations()[0];
+      return {
+        page: host.dataset.page,
+        visibility: getComputedStyle(cover).visibility,
+        rowCount: rows.length,
+        first: first?.effect.getKeyframes().at(-1).transform,
+        second: second?.effect.getKeyframes().at(-1).transform,
+        text: rows[0].textContent,
+        typeFrames: letters?.effect.getKeyframes().map(frame => frame.transform),
+        totalMs: first?.effect.getTiming().duration + (rows.length - 1) * 3
+      };
     }, { label });
+
     expect(motion.page).toBe(target);
-    expect(motion.count).toBe(1);
-    expect(motion.frames[0].transform).toMatch(sign > 0 ? /^translate3d\(12px/ : /^translate3d\(-12px/);
+    expect(motion.visibility).toBe('visible');
+    expect(motion.rowCount).toBe(30);
+    expect(motion.totalMs).toBeLessThanOrEqual(300);
+    expect(motion.text).toContain(title);
+    expect(motion.first).toContain(sign * 107 + '%');
+    expect(motion.second).toContain(sign * -107 + '%');
+    expect(motion.typeFrames.some(frame => frame.includes('scaleY(.20)'))).toBe(true);
+    expect(motion.typeFrames.some(frame => frame.includes('scaleY(1.62)'))).toBe(true);
   }
-  await expect.poll(() => main.evaluate(el => el.getAnimations().length)).toBe(0);
+
+  await expect.poll(() => cut.evaluate(el => getComputedStyle(el).visibility)).toBe('hidden');
   await expect(main).toHaveCSS('opacity', '1');
   await expect(main).toHaveCSS('transform', 'none');
   await page.getByRole('button', { name: 'Kalendarz', exact: true }).click();
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect.poll(() => main.evaluate(el => el.getAnimations().length)).toBe(0);
-  await expect(main).toHaveCSS('opacity', '1');
+  await expect(cut).toHaveCSS('display', 'none');
+  await expect.poll(() => cut.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(0);
   await page.getByRole('button', { name: 'Główna', exact: true }).click();
   expect(await main.evaluate(el => el.getAnimations().length)).toBe(0);
 });
