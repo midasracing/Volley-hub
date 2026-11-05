@@ -317,10 +317,12 @@ function App() {
   const teams = useMemo(() => teamIndex(feeds), [feeds.men?.teams, feeds.first?.teams, feeds.second?.teams, feeds.pomorska?.teams]);
   const logos = useMemo(() => new Map(teams.filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [teams]);
   const viewTransition = useRef(null);
+  const routeSequence = useRef(0);
   const switchPage = useCallback(id => {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
     const oldPage = currentPage.current;
     currentPage.current = id;
+    const sequence = ++routeSequence.current;
     const newDirection = ROUTES.indexOf(id) < ROUTES.indexOf(oldPage) ? 'backward' : 'forward';
     const change = () => {
       setDirection(newDirection);
@@ -338,7 +340,9 @@ function App() {
     viewTransition.current?.skipTransition();
     document.documentElement.classList.add('vh-native-route');
     try {
-      const transition = document.startViewTransition(() => flushSync(change));
+      const transition = document.startViewTransition(() => {
+        if (sequence === routeSequence.current) flushSync(change);
+      });
       viewTransition.current = transition;
       transition.finished.catch(() => {}).finally(() => {
         if (viewTransition.current !== transition) return;

@@ -156,7 +156,16 @@ function BottomNav({ active, onNavigate }) {
         const slot = layout?.items[index];
         return <button key={id} type="button" aria-label={label}
           aria-current={selected ? 'page' : undefined}
-          onClick={() => onNavigate(id)}
+          onClick={() => {
+            // Sample the visual (already animated) positions before React
+            // moves the flex slots. Rapid taps then never jump backwards.
+            const icons = trackRef.current?.querySelectorAll('.vh-nav-item svg');
+            if (icons?.length) lastIconCenters.current = Array.from(icons, icon => {
+              const rect = icon.getBoundingClientRect();
+              return rect.left + rect.width / 2;
+            });
+            onNavigate(id);
+          }}
           className={'vh-nav-item' + (selected ? ' active' : '')}
           style={slot ? { flexGrow: selected ? 2.5 : 1 } : { visibility: 'hidden' }}>
           <Icon size={23} strokeWidth={selected ? 2.3 : 1.8}

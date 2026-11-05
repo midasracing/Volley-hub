@@ -513,7 +513,13 @@ test('native panel crossfade and dock icon FLIP avoid the hard jump', async ({ p
   }
   const moved = await page.evaluate(async () => {
     document.querySelector('.vh-nav-item[aria-label="Ulubione"]').click();
-    await new Promise(requestAnimationFrame);
+    await new Promise(resolve => {
+      const check = () => {
+        if (document.querySelector('.vh-nav-items').dataset.active === 'favorites') resolve();
+        else requestAnimationFrame(check);
+      };
+      check();
+    });
     const nav = document.querySelector('.vh-bottom');
     return {
       active: nav.querySelector('.vh-nav-items').dataset.active,
