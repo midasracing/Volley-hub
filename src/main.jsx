@@ -96,7 +96,7 @@ const MatchCard = React.memo(function MatchCard({ match, logos, compact = false 
     {(score || match.time || hasInfo) && <div className="vh-match-footer">
       <span><Clock3 size={14} /> {match.time || 'Godzina nieustalona'}</span>
       {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded} aria-controls={detailsId}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
-      {hasInfo && <button className="vh-details-button" onClick={() => setInfoOpen(value => !value)} type="button" aria-expanded={infoOpen} aria-controls={infoId}>{infoOpen ? 'Ukryj informacje' : 'Informacje o meczu'}<ChevronRight size={15} className={infoOpen ? 'vh-rotate' : ''} /></button>}}
+      {hasInfo && <button className="vh-details-button" onClick={() => setInfoOpen(value => !value)} type="button" aria-expanded={infoOpen} aria-controls={infoId}>{infoOpen ? 'Ukryj informacje' : 'Informacje o meczu'}<ChevronRight size={15} className={infoOpen ? 'vh-rotate' : ''} /></button>}
       {isLive(match) && match.current_points && <span>Aktualny set: <ScoreValue className="vh-live-points" value={String(match.current_points)} /></span>}
     </div>}
     {scores.length > 0 && <AnimatedSets scores={scores} expanded={expanded} detailsId={detailsId} />}
