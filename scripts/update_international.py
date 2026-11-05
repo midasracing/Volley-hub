@@ -249,9 +249,9 @@ def parse_japan_detail_kickoff(html):
     if not date_node:
         return None
     values = [clean(em.get_text(" ", strip=True)) for em in date_node.select("em")]
-    if len(values) < 2 or not re.fullmatch(r"20\\d{2}\\.\\d{2}\\.\\d{2}", values[0]):
+    if len(values) < 2 or not re.fullmatch(r"20\d{2}\.\d{2}\.\d{2}", values[0]):
         return None
-    if not re.fullmatch(r"\\d{1,2}:\\d{2}", values[1]):
+    if not re.fullmatch(r"\d{1,2}:\d{2}", values[1]):
         return None
     date = datetime.strptime(values[0], "%Y.%m.%d")
     return japanese_time(date, values[1])
