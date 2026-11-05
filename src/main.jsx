@@ -171,7 +171,12 @@ function DateStrip({ selected, onSelect }) {
     }
     const updateMarker = smooth => {
       const active = host.querySelector('[aria-selected="true"]');
-      if (!active) return null;
+      if (!active) {
+        // The selected day may be far outside the recycled window.
+        // Do not leave its red indicator drawn over an unrelated date.
+        host.classList.remove('has-date-indicator');
+        return null;
+      }
       pill.style.transitionDuration = smooth ? '' : '0s';
       pill.style.width = active.offsetWidth + 'px';
       pill.style.height = active.offsetHeight + 'px';
