@@ -58,7 +58,7 @@
       "logo": "https://www.tauronliga.pl/dl/724992/inline/scalecrop=70x70/3b0613/slepsk_malow.png"
     }
   ],
-  "updated_at": "2026-11-05T00:31:28.605396+00:00",
+  "updated_at": "2026-11-05T14:48:31.999374+00:00",
   "matches": [
     {
       "id": "1104824",
@@ -395,10 +395,23 @@
       "current_points": null
     },
     {
+      "id": "1104849",
+      "competition": "TAURON Liga",
+      "date": "14.11.2026",
+      "time": "15:00",
+      "status": "scheduled",
+      "home": "PGE GiEK Skra Bełchatów",
+      "away": "Indykpol AZS Olsztyn",
+      "home_sets": 0,
+      "away_sets": 0,
+      "set_scores": [],
+      "current_points": null
+    },
+    {
       "id": "1104846",
       "competition": "TAURON Liga",
       "date": "14.11.2026",
-      "time": null,
+      "time": "18:00",
       "status": "scheduled",
       "home": "Ślepsk Malow Suwałki",
       "away": "ZAKSA Kędzierzyn-Koźle",
@@ -411,23 +424,10 @@
       "id": "1104847",
       "competition": "TAURON Liga",
       "date": "14.11.2026",
-      "time": null,
+      "time": "20:30",
       "status": "scheduled",
       "home": "Aluron CMC Warta Zawiercie",
       "away": "Cuprum Stilon Gorzów",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
-    },
-    {
-      "id": "1104849",
-      "competition": "TAURON Liga",
-      "date": "14.11.2026",
-      "time": null,
-      "status": "scheduled",
-      "home": "PGE GiEK Skra Bełchatów",
-      "away": "Indykpol AZS Olsztyn",
       "home_sets": 0,
       "away_sets": 0,
       "set_scores": [],
