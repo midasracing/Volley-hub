@@ -103,10 +103,11 @@ do `data/italy.json` i `data/japan.json`. Godziny japońskich spotkań
 są przeliczane z Asia/Tokyo na **Europe/Warsaw**. Jeśli strona pomija godzinę
 zakończonego meczu, pozostaje ona pusta, chyba że zachowaliśmy ją
 z poprzedniego odczytu. **LIVE dla Włoch i Japonii nie pochodzi z Betclic**:
-LegaVolley udostępnia sekcję aktualizacji na żywo (`https://ww2.legavolley.it/lvc/`),
-a SV.League stronę `https://www.svleague.jp/match/detail/{id}/?tab=live`
-z historią akcji punkt po punkcie. Są to źródła do osobnej, nadal niezweryfikowanej
-integracji LIVE; import terminarzy **nie odświeża punktów w trakcie meczu**.
+LegaVolley używa publicznego endpointu
+`https://live-cya6b4dqare7anh8.z01.azurefd.net/` (odświeżanie co 30 s w oficjalnym skrypcie strony `https://ww2.legavolley.it/lvc/`). Endpoint zwraca fragment HTML; podczas braku spotkań LIVE zawiera komunikat o nieaktywnym serwisie.
+SV.League udostępnia `https://www.svleague.jp/match/detail/{id}/?tab=live`, z historią
+akcji i punktów. Oba źródła wymagają testów w trakcie spotkań; importer terminarzy
+**nie odświeża punktów w trakcie meczu** i nie udostępnia kursów.
 
 ```bash
 python -m pip install requests beautifulsoup4
