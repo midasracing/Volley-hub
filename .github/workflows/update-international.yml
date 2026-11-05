@@ -46,16 +46,20 @@ jobs:
           retention-days: 7
       - name: Push updates to main
         run: |
-          if [ -z "$(git status --porcelain -- data/italy.json data/japan.json)" ]; then
-            echo "No calendar changes."
-            exit 0
-          fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Other workflows or users may have updated main during long fetches.
+          # Reset only the staging index to current remote without overwriting
+          # generated data files or staging unrelated old checkout content.
+          git fetch origin main
+          git reset --mixed FETCH_HEAD
           git add data/italy.json data/japan.json
+          if git diff --cached --quiet -- data/italy.json data/japan.json; then
+            echo "No new calendar data."
+            exit 0
+          fi
           git commit -m 'chore: refresh Italy and Japan volleyball calendars'
-          git pull --rebase origin main
-          git push origin main
+          git push origin HEAD:main
       - name: Report unavailable upstream
         if: steps.fetch.outputs.failed == '1'
         run: |
