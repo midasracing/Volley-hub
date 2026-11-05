@@ -12,9 +12,9 @@ class PLSParserTests(unittest.TestCase):
     def test_official_names_and_set_points(self):
         soup = BeautifulSoup("""
         <article><span>5 listopada 2026, 18:00</span>
-        <a href="/teams/id/24.html"><img src="/a.png" alt="Energa Indykpol AZS Olsztyn"></a>
+        <a href="/teams/id/24.html"><img src="/a.png" alt="Energa Indykpol AZS Olsztyn">Energa Indykpol AZS Olsztyn</a>
         3 1 25 18 25 19 18 25 25 22 0 0
-        <a href="/teams/id/78.html"><img src="/b.png" alt="Energa Trefl Gdańsk"></a>
+        <a href="/teams/id/78.html"><img src="/b.png" alt="Energa Trefl Gdańsk">Energa Trefl Gdańsk</a>
         <a href="/games/action/show/id/123.html">Więcej</a></article>
         """, "html.parser")
         aliases = mod.build_aliases(mod.LEAGUES["men"], soup)
