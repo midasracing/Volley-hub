@@ -42,7 +42,7 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
     previous.current = page;
     const host = main.current;
     const light = overlay.current;
-    if (!changed || reducedMotion || document.hidden || !host?.animate) return undefined;
+    if (!changed || reducedMotion || document.hidden || !host?.animate ||\n        document.documentElement.classList.contains('vh-native-route')) return undefined;
 
     const now = performance.now();
     const rapid = now - lastTapAt.current < RECENT_TAP_MS;

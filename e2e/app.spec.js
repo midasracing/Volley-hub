@@ -500,3 +500,28 @@ test('ultra-smooth transitions settle without flashes, even with rapid taps', as
   expect(await main.evaluate(el => el.getAnimations().length)).toBe(0);
   await expect(rive).toHaveCSS('display', 'none');
 });
+
+
+test('native panel crossfade and dock icon FLIP avoid the hard jump', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
+  await expect(page.locator('#main-content')).toHaveAttribute('data-page', 'matches');
+  if (await page.evaluate(() => typeof document.startViewTransition === 'function')) {
+    await expect(page.locator('#main-content .vh-tab-panel:not([hidden])'))
+      .toHaveCSS('view-transition-name', 'route-panel');
+  }
+  const moved = await page.evaluate(async () => {
+    document.querySelector('.vh-nav-item[aria-label="Ulubione"]').click();
+    await new Promise(requestAnimationFrame);
+    const nav = document.querySelector('.vh-bottom');
+    return {
+      active: nav.querySelector('.vh-nav-items').dataset.active,
+      movingIcons: Array.from(nav.querySelectorAll('.vh-nav-item svg'))
+        .filter(icon => icon.getAnimations().length > 0).length
+    };
+  });
+  expect(moved.active).toBe('favorites');
+  expect(moved.movingIcons).toBeGreaterThan(0);
+  await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
+});

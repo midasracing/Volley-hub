@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createPortal } from 'react-dom';
+import { createPortal, flushSync } from 'react-dom';
 import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, WifiOff, Check } from 'lucide-react';
 import {
   LEAGUES, CATEGORIES, WEEKDAYS, dateKey, addDays, feedDateKey,
@@ -316,17 +316,40 @@ function App() {
   const matches = useMemo(() => matchesFromFeeds(feeds), [feeds.men?.matches, feeds.first?.matches, feeds.second?.matches, feeds.pomorska?.matches]);
   const teams = useMemo(() => teamIndex(feeds), [feeds.men?.teams, feeds.first?.teams, feeds.second?.teams, feeds.pomorska?.teams]);
   const logos = useMemo(() => new Map(teams.filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [teams]);
+  const viewTransition = useRef(null);
   const switchPage = useCallback(id => {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
-    const previous = currentPage.current;
+    const oldPage = currentPage.current;
     currentPage.current = id;
-    // Render the page and the selected tab in the SAME React update.
-    // Deferring the page made the bar jump ahead of the content on Safari.
-    const nextDirection = ROUTES.indexOf(id) < ROUTES.indexOf(previous) ? 'backward' : 'forward';
-    setDirection(nextDirection);
-    setVisitedPages(previous => previous.includes(id) ? previous : [...previous, id]);
-    setPage(id);
-  }, []);
+    const newDirection = ROUTES.indexOf(id) < ROUTES.indexOf(oldPage) ? 'backward' : 'forward';
+    const change = () => {
+      setDirection(newDirection);
+      setVisitedPages(seen => seen.includes(id) ? seen : [...seen, id]);
+      setPage(id);
+    };
+    // Keep both snapshots for one short, compositor-driven crossfade.
+    // No waiting for the exit animation before mounting the destination.
+    if (reducedMotion || startup || document.hidden ||
+        typeof document.startViewTransition !== 'function') {
+      viewTransition.current?.skipTransition();
+      change();
+      return;
+    }
+    viewTransition.current?.skipTransition();
+    document.documentElement.classList.add('vh-native-route');
+    try {
+      const transition = document.startViewTransition(() => flushSync(change));
+      viewTransition.current = transition;
+      transition.finished.catch(() => {}).finally(() => {
+        if (viewTransition.current !== transition) return;
+        viewTransition.current = null;
+        document.documentElement.classList.remove('vh-native-route');
+      });
+    } catch {
+      document.documentElement.classList.remove('vh-native-route');
+      change();
+    }
+  }, [reducedMotion, startup]);
   // Only four bounded tabs: prepare one hidden panel at a time after data
   // arrives. Low-priority renders can yield to a tap; subsequent navigation
   // only toggles visibility, including the first visit after the app settles.

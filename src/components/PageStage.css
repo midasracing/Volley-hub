@@ -20,3 +20,32 @@
     overflow:clip;content-visibility:hidden;
   }
 }
+
+/* The old and new active tabs are captured separately by Safari/Chromium.
+   The browser crossfades real screenshots on the compositor; no DOM clones. */
+@supports (view-transition-name: route-panel) {
+  #main-content .vh-tab-panel:not([hidden]) { view-transition-name: route-panel; }
+  .vh-floating-head { view-transition-name: route-header; }
+  ::view-transition { pointer-events:none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration:0.001ms; }
+  ::view-transition-old(route-panel) {
+    animation:280ms cubic-bezier(.4,0,.2,1) both vh-route-out;
+  }
+  ::view-transition-new(route-panel) {
+    animation:280ms cubic-bezier(.22,.75,.2,1) both vh-route-in;
+  }
+  ::view-transition-old(route-header) {
+    animation:220ms ease-in both vh-route-header-out;
+  }
+  ::view-transition-new(route-header) {
+    animation:260ms ease-out both vh-route-header-in;
+  }
+}
+@keyframes vh-route-out { from {opacity:1;transform:translate3d(0,0,0)} to {opacity:0;transform:translate3d(-8px,0,0)} }
+@keyframes vh-route-in { from {opacity:0;transform:translate3d(9px,0,0)} to {opacity:1;transform:translate3d(0,0,0)} }
+@keyframes vh-route-header-out { from {opacity:1} to {opacity:0} }
+@keyframes vh-route-header-in { from {opacity:0} to {opacity:1} }
+@media(prefers-reduced-motion:reduce) {
+  ::view-transition-old(route-panel),::view-transition-new(route-panel),
+  ::view-transition-old(route-header),::view-transition-new(route-header) {animation-duration:0.001ms!important}
+}
