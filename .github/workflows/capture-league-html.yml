@@ -34,6 +34,7 @@ jobs:
               "japan-next-live": "https://www.svleague.jp/match/detail/37994/?tab=live",
               "italy-live-hub": "https://ww2.legavolley.it/lvc/",
               "italy-live-js": "https://ww2.legavolley.it/lvc/assets/js/table.js?v=2",
+              "italy-live-cdn": "https://live-cya6b4dqare7anh8.z01.azurefd.net",
               "japan-finished-detail": "https://www.svleague.jp/match/detail/37976/",
               "japan-ajax-nov6": "https://www.svleague.jp/match/sv/men/?s=2026&y=2026&m=11&d=6&mode=ajax",
               "japan-ajax-nov7": "https://www.svleague.jp/match/sv/men/?s=2026&y=2026&m=11&d=7&mode=ajax",
