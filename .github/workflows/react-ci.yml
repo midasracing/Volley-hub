@@ -44,6 +44,39 @@ jobs:
                     'with_round=', sum(g.get('round') is not None for g in games),
                     'with_broadcast=', sum(bool(g.get('broadcast')) for g in games))
           PY
+      - name: Audit PLS match accuracy against source HTML
+        run: |
+          python - <<'PY'
+          from urllib.request import urlopen
+          from bs4 import BeautifulSoup
+          import json, collections
+          for key,host,file in [
+              ('men','https://www.tauronliga.pl','data/tauron.json'),
+              ('first','https://www.tauron1liga.pl','data/tauron1liga.json')]:
+              d=json.load(open(file,encoding='utf8'))
+              ms=d['matches']
+              ids=[m['id'] for m in ms]
+              finish=[m for m in ms if m['status']=='finished']
+              missing=[m for m in finish if len(m['set_scores']) != m['home_sets'] + m['away_sets']]
+              print(key,'total',len(ms),'unique ids',len(set(ids)),'finished',len(finish),
+                    'finished missing points',len(missing),'empty logos',len([t for t in d['teams'] if not t['logo']]),
+                    'date range',min(m['date_iso'] for m in ms),max(m['date_iso'] for m in ms),flush=True)
+              print('missing points examples',[(m['id'],m['home'],m['away'],m['home_sets'],m['away_sets']) for m in missing[:5]],flush=True)
+              soup=BeautifulSoup(urlopen(host+'/games/nocookies/1.html',timeout=30).read(),'html.parser')
+              cards=soup.select('section[data-game-id]')
+              print('HTML cards',len(cards),'distinct IDs',len(set(x.get('data-game-id') for x in cards)),flush=True)
+              for el in cards:
+                  scores=el.select('.game-score')
+                  if len(scores)>=2 and any(x.get_text(' ',strip=True)=='3' for x in scores[:2]):
+                      print('finished card html excerpt',str(el)[:6200],flush=True)
+                      break
+              if missing:
+                  match=missing[0]
+                  url=host+'/games/action/show/id/'+match['id']+'/nocookies/1.html'
+                  ds=BeautifulSoup(urlopen(url,timeout=30).read(),'html.parser')
+                  print('match detail URL',url,'sets score snippets',[(x.get('class'),x.get_text(' ',strip=True)[:120]) for x in ds.select('[class*=set], [class*=result]')[:20]],flush=True)
+                  print('detail text excerpt',ds.get_text(' ',strip=True)[-4200:],flush=True)
+          PY
       - run: npm run build
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run test:e2e
