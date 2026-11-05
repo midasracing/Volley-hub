@@ -1,0 +1,4 @@
+.venv-betclic/
+.venv-diagnostics/
+__pycache__/
+*.py[cod]

@@ -1,0 +1,2 @@
+# Optional read-only client; pin the reviewed upstream source.
+betclic-api @ git+https://github.com/TapsHTS/betclic-api.git@5989c0936e17c98fff392dc20f5d2e8e4048c04e

@@ -1,0 +1,35 @@
+name: Betclic client tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/betclic_odds.py'
+      - 'tests/test_betclic_odds.py'
+      - 'requirements-betclic.txt'
+      - '.github/workflows/betclic-client.yml'
+  pull_request:
+    paths:
+      - 'scripts/betclic_odds.py'
+      - 'tests/test_betclic_odds.py'
+      - 'requirements-betclic.txt'
+      - '.github/workflows/betclic-client.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements-betclic.txt
+      - run: python -m pip install -r requirements-betclic.txt
+      - run: python -m unittest discover -s tests -p 'test_betclic_odds.py' -v

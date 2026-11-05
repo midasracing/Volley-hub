@@ -88,6 +88,20 @@ Po uruchomieniu Vite wyświetli lokalny adres aplikacji.
 
 Przed uruchomieniem serwera i budowaniem aplikacji wykonywany jest `scripts/sync-data.mjs`, który synchronizuje pliki JSON do katalogu `public/data/`.
 
+## Opcjonalny klient kursów Betclic
+
+[`scripts/betclic_odds.py`](scripts/betclic_odds.py) pobiera kursy na zwycięzcę całego
+meczu siatkówki z Polski, Włoch i Japonii i eksportuje JSON. Domyślnie pobiera te trzy
+kraje, a opcja `--country` zawęża wybór. Instalacja i ograniczenia źródła są opisane w
+[`docs/betclic.md`](docs/betclic.md). Klient jest niezależny od frontendu i wymaga Pythona 3.10+.
+
+## Diagnostyka scraperów
+
+[`diagnostics/`](diagnostics/) zawiera osobne kopie scraperów II i Pomorskiej III ligi,
+test odczytu przez zwykły HTTP i [wyniki porównania źródeł](diagnostics/RESULTS.md).
+Sprawdzone zapytania do publicznego endpointu PZPS opisano w
+[`diagnostics/PZPS_API.md`](diagnostics/PZPS_API.md).
+
 ## Technologia i struktura
 
 **React 19 · Vite 6 · JavaScript · CSS · PWA · GitHub Actions**
