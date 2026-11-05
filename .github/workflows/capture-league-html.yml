@@ -26,6 +26,12 @@ jobs:
           from bs4 import BeautifulSoup
           urls = {
               "italy-legacy": "https://ww2.legavolley.it/Calendario.asp",
+              "italy-match-finished": "https://ww2.legavolley.it/Tabellino.asp?IdGara=40285",
+              "italy-match-other": "https://ww2.legavolley.it/Tabellino.asp?IdGara=40286",
+              "italy-team": "https://ww2.legavolley.it/DettaglioSquadra.asp?IdSquadra=6864",
+              "italy-table": "https://ww2.legavolley.it/Classifiche.asp?IdCampionato=999&Anno=2026",
+              "italy-results": "https://ww2.legavolley.it/Risultati.asp?Anno=2026&IdCampionato=999",
+              "japan-standings": "https://www.svleague.jp/ja/sv_men/standings/",
               "italy-return": "https://ww2.legavolley.it/Calendario.asp?Anno=2026&IdCampionato=999&IdFase=2",
               "italy-legacy-a": "https://ww2.legavolley.it/Calendario.asp?IdCampionato=1019",
               "japan-schedule": "https://www.svleague.jp/match/sv/men/",
