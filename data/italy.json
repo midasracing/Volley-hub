@@ -2,66 +2,66 @@
   "league": "italy",
   "competition": "SuperLega Credem Banca",
   "source": "https://ww2.legavolley.it/Calendario.asp",
-  "updated_at": "2026-11-05T16:36:59.323519+00:00",
+  "updated_at": "2026-11-05T16:38:09.305059+00:00",
   "teams": [
     {
       "name": "Acqua Sant'Anna Cuneo",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "id": "6863"
     },
     {
       "name": "Allianz Milano",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "id": "6858"
     },
     {
       "name": "Cisterna Volley",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "id": "6859"
     },
     {
       "name": "Cucine Lube Civitanova",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "id": "6860"
     },
     {
       "name": "Gas Sales Bluenergy Piacenza",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "id": "6861"
     },
     {
       "name": "Itas Trentino",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "id": "6862"
     },
     {
       "name": "Pallavolo Padova",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "id": "6866"
     },
     {
       "name": "Rana Verona",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "id": "6864"
     },
     {
       "name": "Sir Susa Scai Perugia",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "id": "6865"
     },
     {
       "name": "Tinet Prata di Pordenone",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "id": "6897"
     },
     {
       "name": "Valsa Group Modena",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "id": "6867"
     },
     {
       "name": "Vero Volley Monza",
-      "logo": "",
+      "logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "id": "6868"
     }
   ],
@@ -261,8 +261,8 @@
       ],
       "home_points": 65,
       "away_points": 78,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": []
     },
     {
@@ -313,8 +313,8 @@
       ],
       "home_points": 56,
       "away_points": 75,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": []
     },
     {
@@ -365,8 +365,8 @@
       ],
       "home_points": 79,
       "away_points": 56,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": []
     },
     {
@@ -427,8 +427,8 @@
       ],
       "home_points": 95,
       "away_points": 114,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": []
     },
     {
@@ -484,8 +484,8 @@
       ],
       "home_points": 94,
       "away_points": 91,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": []
     },
     {
@@ -536,8 +536,8 @@
       ],
       "home_points": 61,
       "away_points": 75,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": []
     },
     {
@@ -588,8 +588,8 @@
       ],
       "home_points": 75,
       "away_points": 68,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": []
     },
     {
@@ -640,8 +640,8 @@
       ],
       "home_points": 75,
       "away_points": 56,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": []
     },
     {
@@ -692,8 +692,8 @@
       ],
       "home_points": 75,
       "away_points": 66,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": []
     },
     {
@@ -744,8 +744,8 @@
       ],
       "home_points": 75,
       "away_points": 57,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": []
     },
     {
@@ -801,8 +801,8 @@
       ],
       "home_points": 84,
       "away_points": 100,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": []
     },
     {
@@ -863,8 +863,8 @@
       ],
       "home_points": 114,
       "away_points": 110,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": []
     },
     {
@@ -915,8 +915,8 @@
       ],
       "home_points": 79,
       "away_points": 67,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": []
     },
     {
@@ -967,8 +967,8 @@
       ],
       "home_points": 55,
       "away_points": 75,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": []
     },
     {
@@ -1024,8 +1024,8 @@
       ],
       "home_points": 100,
       "away_points": 83,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": []
     },
     {
@@ -1076,8 +1076,8 @@
       ],
       "home_points": 75,
       "away_points": 54,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": []
     },
     {
@@ -1133,8 +1133,8 @@
       ],
       "home_points": 87,
       "away_points": 98,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": []
     },
     {
@@ -1190,8 +1190,8 @@
       ],
       "home_points": 89,
       "away_points": 96,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": []
     },
     {
@@ -1242,8 +1242,8 @@
       ],
       "home_points": 60,
       "away_points": 75,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": []
     },
     {
@@ -1294,8 +1294,8 @@
       ],
       "home_points": 75,
       "away_points": 54,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": []
     },
     {
@@ -1356,8 +1356,8 @@
       ],
       "home_points": 109,
       "away_points": 101,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": []
     },
     {
@@ -1418,8 +1418,8 @@
       ],
       "home_points": 106,
       "away_points": 94,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": []
     },
     {
@@ -1475,8 +1475,8 @@
       ],
       "home_points": 112,
       "away_points": 106,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": []
     },
     {
@@ -1537,8 +1537,8 @@
       ],
       "home_points": 110,
       "away_points": 114,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": []
     },
     {
@@ -1571,8 +1571,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1606,8 +1606,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1641,8 +1641,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1676,8 +1676,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1711,8 +1711,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1746,8 +1746,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1781,8 +1781,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1816,8 +1816,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1851,8 +1851,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1886,8 +1886,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1921,8 +1921,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1956,8 +1956,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -1991,8 +1991,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2026,8 +2026,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2061,8 +2061,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2096,8 +2096,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2131,8 +2131,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2166,8 +2166,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2201,8 +2201,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2236,8 +2236,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2271,8 +2271,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2306,8 +2306,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2341,8 +2341,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2376,8 +2376,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2411,8 +2411,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2446,8 +2446,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2481,8 +2481,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2516,8 +2516,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2551,8 +2551,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2586,8 +2586,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2621,8 +2621,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2656,8 +2656,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2691,8 +2691,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2726,8 +2726,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2761,8 +2761,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2796,8 +2796,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2831,8 +2831,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2866,8 +2866,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2901,8 +2901,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2936,8 +2936,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -2971,8 +2971,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3006,8 +3006,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3041,8 +3041,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3076,8 +3076,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3111,8 +3111,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3146,8 +3146,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3181,8 +3181,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3216,8 +3216,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3251,8 +3251,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3286,8 +3286,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3321,8 +3321,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3356,8 +3356,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3391,8 +3391,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3426,8 +3426,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3461,8 +3461,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3496,8 +3496,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3531,8 +3531,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3566,8 +3566,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3601,8 +3601,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3636,8 +3636,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3671,8 +3671,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3706,8 +3706,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3741,8 +3741,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3776,8 +3776,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3811,8 +3811,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3846,8 +3846,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3881,8 +3881,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3916,8 +3916,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3951,8 +3951,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -3986,8 +3986,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4021,8 +4021,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4056,8 +4056,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4091,8 +4091,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4126,8 +4126,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4161,8 +4161,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4196,8 +4196,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4231,8 +4231,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4266,8 +4266,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4301,8 +4301,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4336,8 +4336,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4371,8 +4371,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4406,8 +4406,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4441,8 +4441,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4476,8 +4476,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4511,8 +4511,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4546,8 +4546,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4581,8 +4581,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4616,8 +4616,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4651,8 +4651,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4686,8 +4686,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4721,8 +4721,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4756,8 +4756,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4791,8 +4791,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4826,8 +4826,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4861,8 +4861,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4896,8 +4896,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4931,8 +4931,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -4966,8 +4966,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5001,8 +5001,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5036,8 +5036,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5071,8 +5071,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5106,8 +5106,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5141,8 +5141,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PGA",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MZA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5176,8 +5176,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_VER",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PIA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5211,8 +5211,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_TRE",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CVA",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5246,8 +5246,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MOD",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PAD",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5281,8 +5281,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_MIL",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_PDP",
       "broadcast": [],
       "details_checked_at": null
     },
@@ -5316,8 +5316,8 @@
       "set_points": [],
       "home_points": 0,
       "away_points": 0,
-      "home_logo": "",
-      "away_logo": "",
+      "home_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CUN",
+      "away_logo": "https://images.volleyballworld.com/image/upload/f_auto/t_clublogo/assets/club-logos/MITA2026/logo_CIS",
       "broadcast": [],
       "details_checked_at": null
     }
