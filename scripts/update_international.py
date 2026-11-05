@@ -18,6 +18,11 @@ from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
 
+try:
+    from scripts.international_names import romanize_team
+except ModuleNotFoundError:  # python scripts/update_international.py
+    from international_names import romanize_team
+
 ITALY_URL = "https://ww2.legavolley.it/Calendario.asp"
 JAPAN_URL = "https://www.svleague.jp/match/sv/men/"
 ITALIAN_MONTHS = {
@@ -63,6 +68,57 @@ def parse_italian_heading(value):
     return date, hour, int(round_num), phase.casefold()
 
 
+def parse_italian_scorecard(html, expected=None):
+    """Read final-set points from LegaVolley's public TabellinoGara match sheet.
+
+    The legacy markup closes the set table before its five <tr> rows;
+    inspect table-row cells rather than assuming a well-formed tbody.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    scores = []
+    for row in soup.select("tr"):
+        cells = row.find_all("td", recursive=False)
+        if len(cells) != 6 or cells[0].get("id") != "DarkCol":
+            continue
+        number = clean(cells[0].get_text(" ", strip=True))
+        value = clean(cells[-1].get_text(" ", strip=True))
+        if not re.fullmatch(r"[1-5]", number):
+            continue
+        parsed = re.fullmatch(r"(\\d{1,2})-(\\d{1,2})", value)
+        if not parsed:
+            continue
+        a, b = map(int, parsed.groups())
+        if (a, b) == (0, 0):
+            continue
+        if a == b or max(a, b) < 15 or max(a, b) > 40:
+            raise RuntimeError(f"Invalid official Italian set score {value!r}")
+        scores.append(f"{a}:{b}")
+    if expected:
+        won = sum(int(x.split(":")[0]) > int(x.split(":")[1]) for x in scores)
+        lost = len(scores) - won
+        if (won, lost) != tuple(expected):
+            raise RuntimeError(f"Inconsistent Italian scorecard: expected={expected}, sets={scores}")
+    return scores
+
+
+def parse_italian_detail(html, expected=None):
+    soup = BeautifulSoup(html, "html.parser")
+    scores = parse_italian_scorecard(html, expected)
+    venue = {}
+    for table in soup.select("table#Tabellino"):
+        for row in table.find_all("tr", recursive=False):
+            cells = row.find_all(["td", "th"], recursive=False)
+            if len(cells) < 2:
+                continue
+            label = clean(cells[0].get_text(" ", strip=True)).casefold()
+            value = clean(cells[1].get_text(" ", strip=True))
+            if label == "impianto" and value:
+                venue["name"] = value
+            elif label == "città" and value:
+                venue["city"] = value
+    return scores, venue
+
+
 def parse_italy(html):
     soup = BeautifulSoup(html, "html.parser")
     matches = []
@@ -105,6 +161,12 @@ def parse_italy(html):
             game_link = cells[2].get("onclick", "")
             game = re.search(r"IdGara=(\d+)", game_link, re.I)
             match_id = f"it-{game.group(1)}" if game else f"it-{kickoff.year}-{phase}-{number}"
+            team_refs = [
+                re.search(r"IdSquadra=(\\d+)", cells[index].get("onclick", ""), re.I)
+                for index in (1, 3)
+            ]
+            venue = clean(cells[5].get_text(" ", strip=True))
+            venue_parts = [clean(x) for x in cells[5].stripped_strings]
             matches.append({
                 "id": match_id,
                 "competition": "SuperLega Credem Banca",
@@ -113,6 +175,11 @@ def parse_italy(html):
                 "time": hour,
                 "home": home,
                 "away": away,
+                "home_team_id": team_refs[0].group(1) if team_refs[0] else None,
+                "away_team_id": team_refs[1].group(1) if team_refs[1] else None,
+                "source_url": f"https://ww2.legavolley.it/TabellinoGara.asp?IdGara={game.group(1)}" if game else ITALY_URL,
+                "venue": {"name": venue_parts[0], "city": venue_parts[1] if len(venue_parts) > 1 else ""} if venue else None,
+                "match_number": number,
                 "status": status,
                 "home_sets": home_sets,
                 "away_sets": away_sets,
