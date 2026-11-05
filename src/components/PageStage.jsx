@@ -3,8 +3,8 @@ import { createPortal } from 'react-dom';
 import './PageStage.css';
 
 const ROW_COUNT = 36;
-const ROW_DURATION = 195;
-const ROW_STAGGER = 2.7;
+const ROW_DURATION = 330;
+const ROW_STAGGER = 4.7;
 const LABELS = {
   home: 'DZISIAJ',
   matches: 'KALENDARZ',
@@ -47,7 +47,8 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
 
       animations.push(row.animate([
         { transform: 'translate3d(0,0,0)', offset: 0 },
-        { transform: 'translate3d(' + sign * 12 + '%,0,0)', offset: .3 },
+        { transform: 'translate3d(0,0,0)', offset: .42 },
+        { transform: 'translate3d(' + sign * 5 + '%,0,0)', offset: .62 },
         { transform: 'translate3d(' + sign * 107 + '%,0,0)', offset: 1 }
       ], {
         id: index === 0 ? 'vh-type-serpent' : undefined,
@@ -60,8 +61,8 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
       const text = row.firstElementChild;
       animations.push(text.animate([
         { transform: 'translate3d(0,0,0) scaleX(' + smallX + ') scaleY(.95)', offset: 0 },
-        { transform: 'translate3d(' + sign * 9 + 'px,0,0) scaleX(' + smearX + ') scaleY(.20)', offset: .34 },
-        { transform: 'translate3d(' + sign * 16 + 'px,0,0) scaleX(' + flareX + ') scaleY(1.62)', offset: .72 },
+        { transform: 'translate3d(' + sign * 9 + 'px,0,0) scaleX(' + smearX + ') scaleY(.20)', offset: .38 },
+        { transform: 'translate3d(' + sign * 16 + 'px,0,0) scaleX(' + flareX + ') scaleY(1.62)', offset: .64 },
         { transform: 'translate3d(' + sign * 22 + 'px,0,0) scaleX(1.15) scaleY(.82)', offset: 1 }
       ], {
         duration: ROW_DURATION,
@@ -74,7 +75,7 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
     animations.push(host.animate([
       { opacity: .76, transform: 'translate3d(0,7px,0) scale(.988)' },
       { opacity: 1, transform: 'translate3d(0,0,0) scale(1)' }
-    ], { id: 'vh-route-transition', duration: 260, easing: 'cubic-bezier(.2,1,.22,1)', fill: 'both' }));
+    ], { id: 'vh-route-transition', duration: 385, easing: 'cubic-bezier(.2,1,.22,1)', fill: 'both' }));
 
     const clear = () => {
       cover.style.visibility = 'hidden';

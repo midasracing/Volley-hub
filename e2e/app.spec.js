@@ -455,7 +455,7 @@ test('cached inactive tabs stay out of focus, accessibility and document scrolli
 });
 
 
-test('dense serpentine typography cuts reveal immediately and finish under 300ms', async ({ page }) => {
+test('dense serpentine typography holds its glyph deformation and finishes in about 500ms', async ({ page }) => {
   await page.goto('/');
   const main = page.locator('#main-content');
   const cut = page.locator('.vh-type-serpent');
@@ -482,14 +482,15 @@ test('dense serpentine typography cuts reveal immediately and finish under 300ms
         second: second?.effect.getKeyframes().at(-1).transform,
         text: rows[0].textContent,
         typeFrames: letters?.effect.getKeyframes().map(frame => frame.transform),
-        totalMs: first?.effect.getTiming().duration + (rows.length - 1) * 2.7
+        totalMs: first?.effect.getTiming().duration + (rows.length - 1) * 4.7
       };
     }, { label });
 
     expect(motion.page).toBe(target);
     expect(motion.visibility).toBe('visible');
     expect(motion.rowCount).toBe(36);
-    expect(motion.totalMs).toBeLessThanOrEqual(300);
+    expect(motion.totalMs).toBeGreaterThanOrEqual(470);
+    expect(motion.totalMs).toBeLessThanOrEqual(510);
     expect(motion.text).toContain(title);
     expect(motion.first).toContain(sign * 107 + '%');
     expect(motion.second).toContain(sign * -107 + '%');
