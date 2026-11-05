@@ -227,3 +227,21 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 #ios-matches[data-page="home"] .vh-brand-signature{width:clamp(148px,44vw,176px);max-width:176px;flex:0 0 auto}
 .vh-home-heading{flex:1;min-width:0;max-width:160px;margin:0 0 2px;text-align:right;font-family:var(--font-editorial);font-size:clamp(28px,7.6vw,32px);font-style:italic;font-weight:400;line-height:1.12;letter-spacing:-.025em;color:var(--ink)}
 [data-route="home"] .vh-match-groups>section:first-child .im-league{margin-top:28px}
+
+/* Optional, source-verified match details shown on demand. */
+.vh-match-information {
+  padding: 12px 16px 16px;
+  border-top: 1px solid rgba(128, 128, 128, .22);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.vh-match-information dl {
+  display: grid;
+  grid-template-columns: minmax(75px, 110px) minmax(0, 1fr);
+  gap: 6px 12px;
+  margin: 0 0 10px;
+}
+.vh-match-information dt { opacity: .7; }
+.vh-match-information dd { margin: 0; overflow-wrap: anywhere; }
+.vh-match-information a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.vh-match-information a:hover { text-decoration-thickness: 2px; }
