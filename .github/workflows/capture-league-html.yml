@@ -29,6 +29,9 @@ jobs:
               "italy-legacy-a": "https://ww2.legavolley.it/Calendario.asp?IdCampionato=1019",
               "japan-schedule": "https://www.svleague.jp/match/sv/men/",
               "japan-match": "https://www.svleague.jp/match/detail/37994/",
+              "japan-ajax-nov6": "https://www.svleague.jp/match/sv/men/?s=2026&y=2026&m=11&d=6&mode=ajax",
+              "japan-ajax-nov7": "https://www.svleague.jp/match/sv/men/?s=2026&y=2026&m=11&d=7&mode=ajax",
+              "japan-oct": "https://www.svleague.jp/match/sv/men/?s=2026&y=2026&m=10&d=24",
           }
           out = pathlib.Path("diagnostics/artifacts/html")
           out.mkdir(parents=True, exist_ok=True)
