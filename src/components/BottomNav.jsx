@@ -20,7 +20,9 @@ function BottomNav({ active, onNavigate }) {
   const animationRef = useRef(null);
   const motionRef = useRef(null);
   const reducedMotionRef = useRef(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true);
-  const lastIconCenters = useRef(null);\n  const iconTweens = useRef([]);\n  const springRef = useRef({
+  const lastIconCenters = useRef(null);
+  const iconTweens = useRef([]);
+  const springRef = useRef({
     position: NaN, velocity: 0, target: 0, width: 0
   });
   const [dimensions, setDimensions] = useState(null);

@@ -26,6 +26,11 @@
 @supports (view-transition-name: route-panel) {
   #main-content .vh-tab-panel:not([hidden]) { view-transition-name: route-panel; }
   .vh-floating-head { view-transition-name: route-header; }
+  /* Let the actual dock stay live while the content snapshots transition. */
+  .vh-bottom { view-transition-name: route-dock; }
+  ::view-transition-old(route-dock),::view-transition-new(route-dock) {
+    opacity:0!important;animation:none!important;
+  }
   ::view-transition { pointer-events:none; }
   ::view-transition-old(root), ::view-transition-new(root) { animation-duration:0.001ms; }
   ::view-transition-old(route-panel) {
