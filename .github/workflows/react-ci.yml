@@ -34,6 +34,7 @@ jobs:
               assert all(g.get('date_iso') for g in games), key
               assert all('set_points' in g and 'home_points' in g for g in games), key
               assert all(len(g['set_points']) == len(g['set_scores']) for g in games), key
+              assert all(len(g['set_scores']) == g['home_sets'] + g['away_sets'] for g in games if g['status'] == 'finished'), key
               assert all(g.get('competition') for g in games), key
               assert all(g.get('source_url') for g in games), key
               teams = data.get('teams', [])
