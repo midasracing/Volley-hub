@@ -392,6 +392,39 @@ def parse_japan_detail_kickoff(html):
     return japanese_time(date, values[1])
 
 
+JAPAN_STANDINGS_URL = "https://www.svleague.jp/match/sv/men/standings/"
+
+
+def parse_japan_standings(html):
+    soup = BeautifulSoup(html, "html.parser")
+    table = soup.select_one("table.striped")
+    if table is None:
+        raise RuntimeError("Official SV.League standings table absent")
+    results = []
+    for row in table.select("tr"):
+        cells = row.find_all(["td", "th"], recursive=False)
+        if len(cells) < 10:
+            continue
+        values = [clean(cell.get_text(" ", strip=True)) for cell in cells]
+        if not values[0].isdigit():
+            continue
+        name = romanize_team(values[1])
+        rank, played, wins, losses, points, sets_for, sets_against = (
+            int(values[0]), int(values[2]), int(values[3]), int(values[4]),
+            int(values[5]), int(values[7]), int(values[8])
+        )
+        if played != wins + losses or rank < 1 or rank > 12:
+            raise RuntimeError(f"Invalid official Japanese standings row: {values}")
+        results.append({
+            "rank": rank, "team": name, "played": played,
+            "wins": wins, "losses": losses, "points": points,
+            "sets_for": sets_for, "sets_against": sets_against,
+        })
+    if len(results) != 12 or {row["rank"] for row in results} != set(range(1, 13)):
+        raise RuntimeError(f"Incomplete SV.League standings: {len(results)} rows")
+    return sorted(results, key=lambda row: row["rank"])
+
+
 def japan_feed(session, max_days=MAX_DAY_REQUESTS, pause=0.4, known_times=None):
     index_html = get_html(session, JAPAN_URL)
     season, months = japan_months(index_html)
@@ -432,7 +465,38 @@ def japan_feed(session, max_days=MAX_DAY_REQUESTS, pause=0.4, known_times=None):
             print(f"Could not recover kickoff for {match['id']}: {error}", file=__import__("sys").stderr)
         if pause:
             time.sleep(pause)
-    return build_feed("japan", "SV.League Men", JAPAN_URL, matches)
+    feed = build_feed("japan", "SV.League Men", JAPAN_URL, matches)
+    try:
+        official = parse_japan_standings(get_html(
+            session, JAPAN_STANDINGS_URL, {"s": season}
+        ))
+        calculated = {row["team"]: row for row in feed["table"]}
+        names = {team["name"] for team in feed["teams"]}
+        if names != {row["team"] for row in official}:
+            raise RuntimeError("Official standings list differs from fetched teams")
+        combined = []
+        for row in official:
+            prior = calculated[row["team"]]
+            # Include point totals derived from already retrieved set scores.
+            combined.append({
+                **row,
+                "points_for": prior["points_for"],
+                "points_against": prior["points_against"],
+            })
+        feed["table"] = combined
+        feed["table_source"] = JAPAN_STANDINGS_URL
+        if any(
+            row["played"] != calculated[row["team"]]["played"]
+            or row["wins"] != calculated[row["team"]]["wins"]
+            or row["losses"] != calculated[row["team"]]["losses"]
+            or row["sets_for"] != calculated[row["team"]]["sets_for"]
+            or row["sets_against"] != calculated[row["team"]]["sets_against"]
+            for row in official
+        ):
+            feed["table_consistency_warning"] = "Official standings and fixture snapshots differ"
+    except (requests.RequestException, RuntimeError, ValueError) as error:
+        print(f"Official SV.League standings unavailable; using confirmed results: {error}", file=__import__("sys").stderr)
+    return feed
 
 
 def parse_set_points(scores):
