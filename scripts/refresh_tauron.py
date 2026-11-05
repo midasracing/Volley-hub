@@ -840,10 +840,26 @@ def run_league(key, cfg):
                 except Exception as exc:
                     print(f"WARNING [{key}]: points for {match['id']} unavailable: {exc}",
                           file=sys.stderr)
-    still_missing = [
-        m["id"] for m in matches if m["status"] == "finished"
-        and len(m.get("set_scores", [])) != m["home_sets"] + m["away_sets"]
-    ]
+    still_missing = []
+    for m in matches:
+        if m["status"] != "finished":
+            continue
+        scores = m.get("set_scores", [])
+        expected_sets = m["home_sets"] + m["away_sets"]
+        try:
+            pairs = [tuple(int(x) for x in score.split(":")) for score in scores]
+            valid = (
+                len(pairs) == expected_sets
+                and all(len(pair) == 2 and pair[0] != pair[1] for pair in pairs)
+                and sum(a > b for a, b in pairs) == m["home_sets"]
+                and sum(b > a for a, b in pairs) == m["away_sets"]
+                and sum(a for a, _ in pairs) == m.get("home_points")
+                and sum(b for _, b in pairs) == m.get("away_points")
+            )
+        except (ValueError, TypeError):
+            valid = False
+        if not valid:
+            still_missing.append(m["id"])
     if still_missing:
         raise RuntimeError(
             f"Incomplete official set points for {len(still_missing)} finished "
