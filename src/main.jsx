@@ -199,14 +199,14 @@ const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, e
   </>;
 });
 
-const HomePage = React.memo(function HomePage({ feeds, matches, loading, errors, refresh, logos, onNavigate }) {
+const HomePage = React.memo(function HomePage({ feeds, matches, loading, errors, refresh, logos }) {
   const allMatches = matches;
   const today = dateKey(NOW());
   const todayMatches = allMatches.filter(match => feedDateKey(match.date) === today);
   const upcoming = allMatches.filter(match => feedDateKey(match.date) >= today).slice(0, 3);
   const featured = todayMatches.length ? todayMatches : upcoming;
   return <>
-    <SectionTitle title={todayMatches.length ? 'Dzisiaj' : 'Najbliższe mecze'} action="Pełny terminarz" onAction={() => onNavigate('matches')} />
+    <SectionTitle title={todayMatches.length ? 'Dzisiaj' : 'Najbliższe mecze'} />
     <FeedWarning errors={errors} refresh={refresh} />
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups compact matches={featured} logos={logos} emptyMessage="Nie mamy jeszcze zaplanowanych spotkań w pobranych danych." />}
 
@@ -395,7 +395,7 @@ function App() {
     });
   }, []);
   function renderPage(id) {
-    if (id === 'home') return <HomePage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} onNavigate={navigate} />;
+    if (id === 'home') return <HomePage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} />;
     if (id === 'matches') return <MatchesPage feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} leagueFilter={leagueFilter} setLeagueFilter={setLeagueFilter} />;
     if (id === 'competitions') return <CompetitionsPage active={page === 'competitions'} feeds={feeds} matches={matches} loading={loading} errors={errors} refresh={refresh} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} selectedLeague={selectedLeague} setSelectedLeague={setSelectedLeague} onMatches={goToMatches} />;
     if (id === 'favorites') return <FavoritesPage teams={teams} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} onOpenLeague={openLeague} />;

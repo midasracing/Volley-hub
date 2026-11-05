@@ -40,7 +40,7 @@ test('home starts with match list, without the marked intro and hero banner', as
   await expect(page.locator('.vh-hero')).toHaveCount(0);
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Volley Hub', exact: true })).toHaveCount(0);
   await expect(page.getByText('Twoje centrum siatkówki. Wszystko, co ważne, w jednym miejscu.')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Pełny terminarz' })).toBeVisible();
+  await expect(page.locator('[data-route="home"]').getByRole('button', { name: 'Pełny terminarz' })).toHaveCount(0);
 });
 
 test('favorites persist after reload', async ({ page }) => {
