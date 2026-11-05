@@ -6,6 +6,7 @@ Exit nonzero on any mismatch; never writes to data/*.json.
 """
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import Counter, defaultdict
+import argparse
 from datetime import datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -40,27 +41,73 @@ def clean(node):
     return " ".join(node.get_text(" ", strip=True).split()) if node else ""
 
 
+def independent_page_metadata(soup):
+    """Extract official detail labels for comparison independently of importer."""
+    meta = {}
+    sections = ("szczegóły", "informacje o hali", "transmisje")
+    for heading in soup.find_all(re.compile(r"^h[1-6]$", re.I)):
+        label = clean(heading).casefold()
+        if label not in sections:
+            continue
+        entries = {}
+        channels = []
+        for node in heading.next_elements:
+            node_name = getattr(node, "name", None)
+            if node_name and re.fullmatch(r"h[1-6]", node_name, re.I):
+                break
+            if node_name == "tr":
+                cells = node.find_all(["th", "td"], recursive=False)
+                if len(cells) >= 2:
+                    entries[clean(cells[0]).casefold().rstrip(":")] = clean(cells[1])
+            elif node_name == "img" and label == "transmisje":
+                channel = (node.get("alt") or node.get("title") or "").strip()
+                if channel and ("polsat" in channel.casefold() or "tv" in channel.casefold()):
+                    if channel not in channels:
+                        channels.append(channel)
+        if label == "informacje o hali" and entries.get("nazwa"):
+            meta["venue"] = {
+                "name": entries["nazwa"],
+                "address": entries.get("adres", ""),
+                "city": entries.get("miasto", ""),
+            }
+        if label == "szczegóły":
+            if entries.get("termin", "").isdigit():
+                meta["term_number"] = int(entries["termin"])
+            if entries.get("numer meczu"):
+                meta["match_number"] = entries["numer meczu"]
+            if entries.get("faza"):
+                meta["phase"] = entries["faza"]
+        if label == "transmisje" and channels:
+            meta["broadcast"] = channels
+    return meta
+
+
 def read_details(url, match):
     soup = fetch(url)
+    title = clean(soup.title).casefold()
+    if not all(n.casefold() in title for n in (match["home"], match["away"])):
+        raise RuntimeError(f"Wrong match detail page for {match['id']}: {title[:100]}")
     expected_wins = (int(match["home_sets"]), int(match["away_sets"]))
     total = sum(expected_wins)
-    for box in soup.select(".game-result-box"):
-        score = [clean(e) for e in box.select(".game-result .game-score")[:2]]
-        if score != [str(x) for x in expected_wins]:
-            continue
-        text = clean(box)
-        points = re.search(r"Małe punkty\s*:\s*(.*?)(?:Złoty set\s*:|$)", text, re.I)
-        if not points:
-            continue
-        values = [int(x) for x in re.findall(r"(?<!\d)\d{1,3}(?!\d)", points.group(1))]
-        if len(values) < 10:
-            continue
-        official = [f"{values[i]}:{values[i+1]}" for i in range(0, 2 * total, 2)]
-        return match["id"], official
-    return match["id"], None
+    official_points = None
+    if match["status"] == "finished":
+        for box in soup.select(".game-result-box"):
+            score = [clean(e) for e in box.select(".game-result .game-score")[:2]]
+            if score != [str(x) for x in expected_wins]:
+                continue
+            text = clean(box)
+            points = re.search(r"Małe punkty\s*:\s*(.*?)(?:Złoty set\s*:|$)", text, re.I)
+            if not points:
+                continue
+            values = [int(x) for x in re.findall(r"(?<!\d)\d{1,3}(?!\d)", points.group(1))]
+            if len(values) < 10:
+                continue
+            official_points = [f"{values[i]}:{values[i+1]}" for i in range(0, 2 * total, 2)]
+            break
+    return match["id"], official_points, independent_page_metadata(soup)
 
 
-def audit(key, base, filename, team_count, round_count):
+def audit(key, base, filename, team_count, round_count, check_details=False):
     data = json.loads(Path(filename).read_text(encoding="utf8"))
     matches = data["matches"]
     expected = team_count * (team_count - 1)
@@ -188,20 +235,54 @@ def audit(key, base, filename, team_count, round_count):
             check(label in match.get("broadcast", []),
                   f"{key}:{mid}: channel absent or different: {label!r}")
 
-    # Independently fetch *every* completed game's official match page.
+    # Each completed game is independently cross-checked with PLS. For a
+    # full details audit, also check two matches per round including future
+    # games to catch missing hall/TV metadata across the entire season.
+    sample = {str(m["id"]): m for m in finished}
+    if check_details:
+        for m in matches:
+            raw = m.get("details_checked_at", "")
+            try:
+                verified = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+                check(verified.tzinfo is not None,
+                      f"{key}:{m['id']}: details timestamp without timezone")
+            except (ValueError, AttributeError, TypeError):
+                check(False, f"{key}:{m['id']}: official detail page was never checked")
+        for r in range(1, round_count + 1):
+            in_round = [m for m in matches if m.get("round") == r]
+            for m in (in_round[:1] + in_round[-1:]):
+                sample[str(m["id"])] = m
+
     with ThreadPoolExecutor(max_workers=4) as pool:
         futures = {
             pool.submit(read_details, f"{base}/games/action/show/id/{m['id']}/nocookies/1.html", m): m
-            for m in finished
+            for m in sample.values()
         }
         for future in as_completed(futures):
             m = futures[future]
             try:
-                mid, official = future.result()
-                check(official is not None, f"{key}:{mid}: could not read official detail points")
-                if official is not None:
-                    check(official == by_id[mid]["set_scores"],
-                          f"{key}:{mid}: official detail set points differ {official} != {by_id[mid]['set_scores']}")
+                mid, official, metadata = future.result()
+                record = by_id[mid]
+                if m["status"] == "finished":
+                    check(official is not None, f"{key}:{mid}: could not read official detail points")
+                    if official is not None:
+                        check(official == record["set_scores"],
+                              f"{key}:{mid}: official set points differ {official} != {record['set_scores']}")
+                if check_details:
+                    for field in ("term_number", "match_number", "phase"):
+                        if field in metadata:
+                            check(record.get(field) == metadata[field],
+                                  f"{key}:{mid}: {field} mismatch {record.get(field)!r} vs {metadata[field]!r}")
+                    if "venue" in metadata:
+                        venue = record.get("venue") or {}
+                        for field, value in metadata["venue"].items():
+                            if value:
+                                check(venue.get(field) == value,
+                                      f"{key}:{mid}: wrong venue {field}: {venue.get(field)!r} vs {value!r}")
+                    if "broadcast" in metadata:
+                        check(all(channel in record.get("broadcast", [])
+                                  for channel in metadata["broadcast"]),
+                              f"{key}:{mid}: incorrect official TV channels")
             except Exception as exc:
                 check(False, f"{key}:{m['id']}: detail request error {exc}")
 
@@ -211,21 +292,28 @@ def audit(key, base, filename, team_count, round_count):
         "logos": sum(bool(x.get("logo")) for x in teams),
         "venue_coverage": sum(bool(x.get("venue")) for x in matches),
         "broadcast_coverage": sum(bool(x.get("broadcast")) for x in matches),
+        "details_checked": sum(bool(x.get("details_checked_at")) for x in matches),
+        "details_independently_sampled": len(sample),
+        "term_number_coverage": sum(m.get("term_number") is not None for m in matches),
+        "match_number_coverage": sum(bool(m.get("match_number")) for m in matches),
         "errors_so_far": len(errors),
     }, ensure_ascii=False), flush=True)
 
 
 def main():
-    for args in LEAGUES:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--check-details", action="store_true")
+    args = parser.parse_args()
+    for league in LEAGUES:
         try:
-            audit(*args)
+            audit(*league, check_details=args.check_details)
         except Exception as exc:
             check(False, f"{args[0]}: audit crashed: {type(exc).__name__}: {exc}")
     for issue in errors:
         print("ERROR:", issue, file=sys.stderr, flush=True)
     if errors:
         raise SystemExit(f"Deep audit FAILED: {len(errors)} discrepancies")
-    print("Deep audit PASSED: 422 fixtures and all available finished-match details verified.", flush=True)
+    print("Deep audit PASSED: 422 fixtures, all finished set scores, and requested detail checks verified.", flush=True)
 
 
 if __name__ == "__main__":
