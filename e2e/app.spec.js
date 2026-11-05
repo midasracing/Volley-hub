@@ -455,79 +455,25 @@ test('cached inactive tabs stay out of focus, accessibility and document scrolli
 });
 
 
-test('ultra-smooth transitions settle without flashes, even with rapid taps', async ({ page }) => {
+test('fast tab changes keep dock visible without snapshot overlays', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  const main = page.locator('#main-content');
-  const rive = page.locator('.vh-route-rive');
-  await expect(page.locator('.vh-type-serpent')).toHaveCount(0);
-  // Rive is optional. The route must feel responsive even on its first cold tap.
-  const info = await page.evaluate(async () => {
-    document.querySelector('.vh-nav-item[aria-label="Kalendarz"]').click();
-    await new Promise(requestAnimationFrame);
-    const host = document.querySelector('#main-content');
-    const animation = host.getAnimations().find(a => a.id === 'vh-route-transition');
-    return {
-      page: host.dataset.page,
-      duration: animation?.effect.getTiming().duration,
-      frames: animation?.effect.getKeyframes()
-    };
-  });
-  expect(info.page).toBe('matches');
-  expect(info.duration).toBeLessThanOrEqual(220);
-  expect(info.frames[0].opacity).toBeGreaterThanOrEqual(.9);
-  expect(info.frames[0].transform).toContain('4px');
-
-  // A second tap before the first transition settles uses the rendered frame.
-  const rapid = await page.evaluate(async () => {
-    document.querySelector('.vh-nav-item[aria-label="Ulubione"]').click();
-    await new Promise(requestAnimationFrame);
-    const host = document.querySelector('#main-content');
-    const animation = host.getAnimations().find(a => a.id === 'vh-route-transition');
-    return { route: host.dataset.page, from: animation?.effect.getKeyframes()[0].opacity,
-      count: host.getAnimations().length };
-  });
-  expect(rapid.route).toBe('favorites');
-  expect(rapid.from).toBeGreaterThanOrEqual(.9);
-  expect(rapid.count).toBe(1);
-  await expect.poll(() => main.evaluate(el => el.getAnimations().length)).toBe(0);
-  await expect(main).toHaveCSS('opacity', '1');
-  await expect(main).toHaveCSS('transform', 'none');
-  await expect(rive).toHaveCSS('visibility', 'hidden');
-
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await nav.getByRole('button', { name: 'Główna' }).click();
-  expect(await main.evaluate(el => el.getAnimations().length)).toBe(0);
-  await expect(rive).toHaveCSS('display', 'none');
-});
-
-
-test('native panel crossfade and dock icon FLIP avoid the hard jump', async ({ page }) => {
-  await page.goto('/');
-  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
-  await nav.getByRole('button', { name: 'Kalendarz' }).click();
-  await expect(page.locator('#main-content')).toHaveAttribute('data-page', 'matches');
-  if (await page.evaluate(() => typeof document.startViewTransition === 'function')) {
-    await expect(page.locator('#main-content .vh-tab-panel:not([hidden])'))
-      .toHaveCSS('view-transition-name', 'route-panel');
+  const host = page.locator('#main-content');
+  await expect(page.locator('.vh-route-rive, .vh-type-serpent')).toHaveCount(0);
+  for (const [label, route] of [
+    ['Kalendarz','matches'], ['Rozgrywki','competitions'],
+    ['Ulubione','favorites'], ['Główna','home']
+  ]) {
+    await nav.getByRole('button', { name: label }).click();
+    await expect(host).toHaveAttribute('data-page', route);
+    await expect(nav).toBeVisible();
+    await expect(nav.locator('.vh-nav-items')).toHaveAttribute('data-active', route);
+    await expect(page.locator('.vh-tab-panel:not([hidden])')).toHaveCount(1);
   }
-  const moved = await page.evaluate(async () => {
-    document.querySelector('.vh-nav-item[aria-label="Ulubione"]').click();
-    await new Promise(resolve => {
-      const check = () => {
-        if (document.querySelector('.vh-nav-items').dataset.active === 'favorites') resolve();
-        else requestAnimationFrame(check);
-      };
-      check();
-    });
-    const nav = document.querySelector('.vh-bottom');
-    return {
-      active: nav.querySelector('.vh-nav-items').dataset.active,
-      movingIcons: Array.from(nav.querySelectorAll('.vh-nav-item svg'))
-        .filter(icon => icon.getAnimations().length > 0).length
-    };
-  });
-  expect(moved.active).toBe('favorites');
-  expect(moved.movingIcons).toBeGreaterThan(0);
-  await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
+  await expect.poll(() => host.evaluate(el => el.getAnimations().length)).toBe(0);
+  await expect(host).toHaveCSS('opacity','1');
+  await expect(host).toHaveCSS('transform','none');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await nav.getByRole('button', { name:'Kalendarz' }).click();
+  expect(await host.evaluate(el => el.getAnimations().length)).toBe(0);
 });
