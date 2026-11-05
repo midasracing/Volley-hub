@@ -20,6 +20,7 @@ jobs:
           python -m pip install --quiet fonttools
           curl -fsSL https://releases.rive.app/cli/install.sh | sh
           export PATH="$HOME/.rive/bin:$PATH"
+          rive switch 1.8.0
           python scripts/build_route_rml.py
           mkdir -p public/motion
           for route in home matches competitions favorites; do
