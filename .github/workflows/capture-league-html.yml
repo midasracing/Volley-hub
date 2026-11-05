@@ -1,0 +1,55 @@
+name: Capture official league schedule HTML for parser development
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/capture-league-html.yml
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Capture bounded public calendar HTML
+        run: |
+          python - <<'PY'
+          import requests, pathlib
+          from bs4 import BeautifulSoup
+          urls = {
+              "italy-legacy": "https://ww2.legavolley.it/Calendario.asp",
+              "italy-legacy-a": "https://ww2.legavolley.it/Calendario.asp?IdCampionato=1019",
+              "japan-schedule": "https://www.svleague.jp/match/sv/men/",
+              "japan-match": "https://www.svleague.jp/match/detail/37994/",
+          }
+          out = pathlib.Path("diagnostics/artifacts/html")
+          out.mkdir(parents=True, exist_ok=True)
+          for label, url in urls.items():
+              try:
+                  response = requests.get(url, timeout=(5, 20))
+                  print(label, response.status_code, len(response.content),response.url,flush=True)
+                  if response.ok and len(response.content) < 400000:
+                      text = response.text
+                      (out / (label + ".html")).write_text(text, encoding="utf-8")
+                      soup = BeautifulSoup(text, "html.parser")
+                      anchors = [(a.get_text(" ",strip=True)[:30],a.get("href")) for a in soup.select("a[href]")]
+                      print("  LINKS",anchors[:15],flush=True)
+                      print("  TABLES",[(len(t.select("tr")),t.get("class"),t.get("id")) for t in soup.select("table")][:10],flush=True)
+              except Exception as exc:
+                  print(label,type(exc).__name__,str(exc)[:140],flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: html-schedules-parser-fixtures
+          path: diagnostics/artifacts/html/*.html
+          retention-days: 2
+          if-no-files-found: warn
