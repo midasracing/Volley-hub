@@ -26,6 +26,7 @@ jobs:
           from bs4 import BeautifulSoup
           urls = {
               "italy-legacy": "https://ww2.legavolley.it/Calendario.asp",
+              "italy-return": "https://ww2.legavolley.it/Calendario.asp?Anno=2026&IdCampionato=999&IdFase=2",
               "italy-legacy-a": "https://ww2.legavolley.it/Calendario.asp?IdCampionato=1019",
               "japan-schedule": "https://www.svleague.jp/match/sv/men/",
               "japan-match": "https://www.svleague.jp/match/detail/37994/",
