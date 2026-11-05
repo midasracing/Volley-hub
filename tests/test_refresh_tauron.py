@@ -44,9 +44,26 @@ class PLSParserTests(unittest.TestCase):
         <h2>POWIĄZANE WIADOMOŚCI</h2>
         """, "html.parser")
         data = mod.detail_metadata(soup)
-        self.assertEqual(data["round"], 3)
+        self.assertEqual(data["term_number"], 3)
         self.assertEqual(data["venue"]["name"], "Hala Urania")
         self.assertEqual(data["broadcast"], ["TV Polsat Sport 1"])
+
+    def test_detail_set_points_match_validated_result(self):
+        soup = BeautifulSoup("""
+        <div class="game-result-box">
+        <div class="game-result"><span class="game-score">3</span> :
+        <span class="game-score">1</span></div>
+        <div>04.11.2026, 20:30</div>
+        <p>Małe punkty: 25 27 25 20 26 24 26 24 0 0</p>
+        <p>Złoty set:</p></div>
+        """, "html.parser")
+        match = {"home_sets": 3, "away_sets": 1, "status": "finished"}
+        points, active = mod.read_match_detail(soup, match)
+        self.assertEqual(points, ["25:27", "25:20", "26:24", "26:24"])
+        self.assertIsNone(active)
+        bad = {**match, "home_sets": 0, "away_sets": 3}
+        points, _ = mod.read_match_detail(soup, bad)
+        self.assertIsNone(points)
 
 if __name__ == "__main__":
     unittest.main()
