@@ -116,6 +116,11 @@ python scripts/update_international.py --league japan
 python -m unittest discover -s tests -p 'test_international.py' -v
 ```
 
+[Pełny raport deep testów](diagnostics/INTERNATIONAL_AUDIT.md) potwierdza zgodność schematu
+meczów z TAURON Ligą, komplet 50 wyników rozegranych spotkań i 24 logotypów.
+W Japonii nazwy drużyn są w alfabecie łacińskim, a oficjalna tabela pochodzi z SV.League.
+Osiem przyszłych japońskich meczów nadal nie ma opublikowanych godzin rozpoczęcia.
+
 [Workflow](.github/workflows/update-international.yml) sprawdza źródła dwa razy dziennie,
 weryfikuje parsery i aktualizuje `main` tylko gdy zmieniły się dane.
 Błąd HTTP, blokada dostępu, niepełny kalendarz lub przekroczenie limitu pobrań
