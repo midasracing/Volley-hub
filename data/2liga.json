@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-11-05T17:18:59.924356+00:00",
+  "updated_at": "2026-11-05T22:46:06.854238+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -1953,10 +1953,15 @@
           "time": "19:00",
           "home": "GKS Orlęta Raszyn",
           "away": "KS Metro Family Warszawa",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 3,
+          "away_sets": 1,
+          "set_scores": [
+            "25:14",
+            "25:13",
+            "21:25",
+            "25:19"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 2",
           "group": "Grupa 2"
         },
@@ -2936,6 +2941,18 @@
         },
         {
           "rank": 6,
+          "team": "GKS Orlęta Raszyn",
+          "played": 7,
+          "wins": 10,
+          "losses": 3,
+          "sets_for": 0,
+          "sets_against": 0,
+          "points_for": 0,
+          "points_against": 0,
+          "points": 538
+        },
+        {
+          "rank": 7,
           "team": "Elektromet Huragan Błonie",
           "played": 6,
           "wins": 9,
@@ -2945,18 +2962,6 @@
           "points_for": 0,
           "points_against": 0,
           "points": 482
-        },
-        {
-          "rank": 7,
-          "team": "GKS Orlęta Raszyn",
-          "played": 6,
-          "wins": 7,
-          "losses": 2,
-          "sets_for": 0,
-          "sets_against": 0,
-          "points_for": 0,
-          "points_against": 0,
-          "points": 467
         },
         {
           "rank": 8,
@@ -2985,14 +2990,14 @@
         {
           "rank": 10,
           "team": "KS Metro Family Warszawa",
-          "played": 4,
+          "played": 5,
           "wins": 1,
           "losses": 0,
           "sets_for": 0,
           "sets_against": 0,
           "points_for": 0,
           "points_against": 0,
-          "points": 376
+          "points": 472
         },
         {
           "rank": 11,
