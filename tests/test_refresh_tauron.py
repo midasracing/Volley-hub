@@ -65,5 +65,27 @@ class PLSParserTests(unittest.TestCase):
         points, _ = mod.read_match_detail(soup, bad)
         self.assertIsNone(points)
 
+    def test_rounds_when_source_html_has_nested_sections(self):
+        # The outer data-round=1 wrapper is sometimes a parent of ALL cards.
+        # Match round must come from the nearest visible Kolejka heading.
+        html = '<section data-round="1"><h4>Kolejka: 1</h4>'
+        for round_number in (1, 2):
+            if round_number == 2:
+                html += '<h4>Kolejka: 2</h4>'
+            html += (
+                '<section data-game-id="%s" data-team="1,2">'
+                '<div class="game-date"><span>10.10.2026, 18:00</span></div>'
+                '<div class="game-team left">Drużyna A</div>'
+                '<div class="game-team right">Drużyna B</div>'
+                '<div class="game-result"><span class="game-score">···</span>'
+                '<span class="game-score">···</span></div>'
+                '</section>' % round_number
+            )
+        html += '</section>'
+        games = mod.parse_full_season(
+            BeautifulSoup(html, "html.parser"), "men", "https://www.tauronliga.pl"
+        )
+        self.assertEqual([g["round"] for g in games], [1, 2])
+
 if __name__ == "__main__":
     unittest.main()
