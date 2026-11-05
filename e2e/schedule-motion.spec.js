@@ -13,7 +13,9 @@ async function setup(page) {
     })),
   } : { teams: [], matches: [], groups: [] } }));
   await page.goto('/#matches');
-  // The opening no longer has a skip control. The cached calendar is ready immediately.\n  await expect(page.locator('[data-route="matches"] [data-match-id="day-4"]')).toBeVisible();
+  // No skip button. Advance the frozen clock through the intro handoff.
+  await page.clock.runFor(2350);
+  await expect(page.locator('[data-route="matches"] [data-match-id="day-4"]')).toBeVisible();
 }
 
 test('calendar selection responds immediately and rapid taps settle on the latest day', async ({ page }) => {
