@@ -1,7 +1,6 @@
 # Klient kursów Betclic
 
-Opcjonalny klient Pythona do **odczytu kursów na zwycięzcę całego meczu siatkówki
-z Polski, Włoch i Japonii**. Domyślnie pobiera wszystkie trzy kraje.
+Opcjonalny klient Pythona do **odczytu kursów na zwycięzcę całego meczu siatkówki**, jeśli spotkania są dostępne w Betclic. Filtr obejmuje Polskę, Włochy i Japonię, ale **ostatni rzeczywisty odczyt wykazał tylko polskie mecze**. Nie stanowi to integracji LIVE dla SuperLegi i SV.League; ich oficjalne serwisy udostępniają własne strony LIVE.
 Eksportuje JSON; nie dodaje kursów do interfejsu aplikacji ani nie uruchamia cyklicznego pobierania.
 Nie pobiera wyników, setów ani rynków na dokładny rezultat.
 
@@ -24,13 +23,13 @@ działanie i format zewnętrznego źródła mogą się zmienić.
 ## Pobranie danych
 
 ```bash
-# Polska, Włochy i Japonia; JSON na standardowym wyjściu
+# Przegląd oferty Betclic w trzech krajach, jeśli mecze są oferowane
 python scripts/betclic_odds.py
 
 # Tylko Polska; zapis do pliku
 python scripts/betclic_odds.py --country pl --output /tmp/betclic-poland.json
 
-# Wybrane kraje: Włochy i Japonia
+# Filtr Włoch/Japonii — obecnie może zwrócić pustą listę
 python scripts/betclic_odds.py --country it --country jp
 ```
 
@@ -91,3 +90,13 @@ oraz zachowanie poprzedniego eksportu po błędzie. CI nie odpytuje oferty Betcl
 Pełny test sieciowy 5 listopada 2026 r. o 15:12 UTC zwrócił 7 polskich meczów
 z kursami, w tym mecz męskiej ligi, z `truncated: false`. W tej odpowiedzi nie było
 meczów włoskich ani japońskich, więc ich rzeczywistej oferty kursów nie potwierdzono.
+
+## LIVE we Włoszech i Japonii
+
+W aktualnie sprawdzonej ofercie Betclic brak meczów SuperLegi i SV.League.
+Nie łączymy ich z niepotwierdzonymi ID ani nie wyświetlamy fikcyjnych kursów.
+Oficjalna liga włoska publikuje aktualizacje na żywo przez
+[sekcję LVC](https://ww2.legavolley.it/lvc/), a japońska strona meczu posiada
+zakładkę `?tab=live` z historią akcji punkt po punkcie.
+Transport i opóźnienie tych źródeł podczas aktywnego meczu wymagają weryfikacji;
+na razie importery ligowe aktualizują tylko terminarze i wyniki zakończonych meczów.
