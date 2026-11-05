@@ -191,6 +191,26 @@ def parse_italy(html):
     return matches
 
 
+ITALY_CLUBS_URL = "https://en.volleyballworld.com/volleyball/competitions/superlega/teams/"
+
+
+def parse_italy_club_logos(html):
+    """Official 2026/27 Volleyball World team logos; no guessing asset URLs."""
+    soup = BeautifulSoup(html, "html.parser")
+    logos = {}
+    for img in soup.select("img[src][alt]"):
+        found = re.fullmatch(r"Volleyball team (.+) logo", img["alt"])
+        src = img["src"]
+        if found and src.startswith("https://images.volleyballworld.com/"):
+            name = clean(found.group(1))
+            if name in logos and logos[name] != src:
+                raise RuntimeError(f"Conflicting Italian badge for {name}")
+            logos[name] = src
+    if len(logos) != 12:
+        raise RuntimeError(f"Incomplete official SuperLega badge list: {len(logos)}")
+    return logos
+
+
 def italy_feed(session, season, known_details=None, pause=0.25):
     matches = []
     for phase in (1, 2):
@@ -202,6 +222,18 @@ def italy_feed(session, season, known_details=None, pause=0.25):
             raise RuntimeError(f"Incomplete SuperLega schedule, phase {phase}: {len(part)} games")
         matches.extend(part)
     known_details = known_details or {}
+    logos = {}
+    try:
+        logos = parse_italy_club_logos(get_html(session, ITALY_CLUBS_URL))
+    except (requests.RequestException, RuntimeError) as error:
+        print(f"Could not refresh Italian team logos: {error}", file=__import__("sys").stderr)
+        for old in known_details.values():
+            for name, badge in ((old.get("home"), old.get("home_logo")),
+                                (old.get("away"), old.get("away_logo"))):
+                if name and badge:
+                    logos[name] = badge
+    for match in matches:
+        match["team_logos"] = [logos.get(match["home"], ""), logos.get(match["away"], "")]
     # Read only completed score sheets lacking saved set points.
     detail_reads = 0
     for match in matches:
