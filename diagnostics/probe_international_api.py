@@ -34,11 +34,11 @@ def http_probe(name, url):
                                   for s in soup.select("script[type*=json],script#__NEXT_DATA__")][:10]
         result["forms"] = [safe_url(urljoin(url, f.get("action", ""))) for f in soup.select("form")][:10]
         result["feed_links"] = [safe_url(urljoin(url, a["href"])) for a in soup.select("a[href]")
-                                if re.search(r"\\.(ics|json|csv)([?#]|$)|/api/",a["href"],re.I)][:20]
+                                if re.search(r"\.(ics|json|csv)([?#]|$)|/api/",a["href"],re.I)][:20]
         result["markers"] = {m:(m.lower() in r.text.lower()) for m in
                              ["__NEXT_DATA__", "__NUXT__", "graphql", "admin-ajax.php", "wp-json", "fetch(", "XMLHttpRequest"]}
         if name == "italy_ical":
-            feeds = re.findall(r"https?://calendar\\.google\\.com/calendar/ical/[^\\s\\\"'<>]+",r.text)
+            feeds = re.findall(r"https?://calendar\.google\.com/calendar/ical/[^\s\"'<>]+",r.text)
             result["google_ical_feeds"] = len(feeds)
             result["first_feed_url"] = safe_url(feeds[0]) if feeds else None
     except Exception as exc:
