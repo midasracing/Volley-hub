@@ -459,6 +459,71 @@ def parse_matches(soup, aliases, default_competition="TAURON Liga"):
     return [entry[1] for entry in grouped.values()]
 
 
+def detail_metadata(soup):
+    """Extract optional PLS game details without guessing missing information.
+
+    PLS labels the fixture ordinal as 'Termin', which is kept alongside
+    the round field for transparency. Channel names come from TV image alt.
+    """
+    data = {}
+    headings = soup.find_all(re.compile(r"^h[1-6]$", re.I))
+    for heading in headings:
+        label = norm(heading.get_text(" ", strip=True)).casefold()
+        if label not in ("szczegóły", "informacje o hali", "transmisje"):
+            continue
+        elements = []
+        for element in heading.next_elements:
+            if element is heading:
+                continue
+            if getattr(element, "name", None) and re.fullmatch(r"h[1-6]", element.name, re.I):
+                break
+            if getattr(element, "name", None) in ("td", "th", "img", "tr"):
+                elements.append(element)
+        if label == "szczegóły":
+            rows = []
+            for el in elements:
+                if el.name == "tr":
+                    cells = [norm(c.get_text(" ", strip=True)) for c in el.find_all(["th", "td"], recursive=False)]
+                    if len(cells) >= 2:
+                        rows.append((cells[0].rstrip(":"), cells[1]))
+            for key, val in rows:
+                if key.casefold() == "termin" and val.isdigit():
+                    data["round"] = int(val)
+                    data["round_source_label"] = "Termin"
+                elif key.casefold() == "faza":
+                    data["phase"] = val
+                elif key.casefold() == "numer meczu":
+                    data["match_number"] = val
+        elif label == "informacje o hali":
+            venue = {}
+            for el in elements:
+                if el.name != "tr":
+                    continue
+                cells = [norm(c.get_text(" ", strip=True)) for c in el.find_all(["th", "td"], recursive=False)]
+                if len(cells) < 2:
+                    continue
+                key, value = cells[0].rstrip(":").casefold(), cells[1]
+                if key == "nazwa":
+                    venue["name"] = value
+                elif key == "adres":
+                    venue["address"] = value
+                elif key == "miasto":
+                    venue["city"] = value
+            if venue.get("name"):
+                data["venue"] = venue
+        elif label == "transmisje":
+            names = []
+            for el in elements:
+                if el.name != "img":
+                    continue
+                value = norm(el.get("alt", "") or el.get("title", ""))
+                if value and ("tv" in value.casefold() or "polsat" in value.casefold()) and value not in names:
+                    names.append(value)
+            if names:
+                data["broadcast"] = names
+    return data
+
+
 def parse_table(soup, aliases):
     """Standings. The page lists rows for many rounds, so keep each team's LATEST row."""
     latest = {}
@@ -575,6 +640,30 @@ def run_league(key, cfg):
             ).date().isoformat()
         except (ValueError, TypeError):
             match["date_iso"] = None
+
+    # Detailed pages also contain the venue, TV broadcaster and the official
+    # fixture 'Termin' number. Reuse verified metadata from previous snapshots.
+    previous_by_id = {
+        str(row["id"]): row for row in previous.get("matches", [])
+        if isinstance(row, dict) and row.get("id")
+    }
+    detail_budget = 4  # avoid hammering official sites every five minutes
+    for match in matches:
+        old = previous_by_id.get(str(match.get("id")), {})
+        for field in ("round", "round_source_label", "phase", "match_number",
+                      "venue", "broadcast"):
+            if field in old:
+                match[field] = old[field]
+        if not match.get("id") or detail_budget <= 0:
+            continue
+        if match.get("round") is not None and match.get("venue"):
+            continue
+        detail_budget -= 1
+        try:
+            detail_soup = BeautifulSoup(get(match["source_url"], base), "html.parser")
+            match.update(detail_metadata(detail_soup))
+        except Exception as exc:
+            print(f"INFO [{key}]: metadata unavailable for match {match['id']}: {exc}")
 
     if len(matches) < 4:
         print(f"WARNING [{key}]: only {len(matches)} matches parsed (end of season or a layout change?).")
