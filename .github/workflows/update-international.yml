@@ -8,6 +8,8 @@ on:
     paths:
       - 'scripts/update_international.py'
       - 'tests/test_international.py'
+      - 'scripts/international_names.py'
+      - 'scripts/audit_international.py'
       - '.github/workflows/update-international.yml'
 permissions:
   contents: write
@@ -32,6 +34,16 @@ jobs:
           python scripts/update_international.py --league italy || failed=1
           python scripts/update_international.py --league japan || failed=1
           echo "failed=$failed" >> "$GITHUB_OUTPUT"
+      - name: Deep audit both feeds against TAURON schema
+        run: python scripts/audit_international.py
+      - name: Upload deep audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: italy-japan-deep-audit
+          path: diagnostics/artifacts/international-deep-audit.json
+          if-no-files-found: warn
+          retention-days: 7
       - name: Push updates to main
         run: |
           if [ -z "$(git status --porcelain -- data/italy.json data/japan.json)" ]; then
