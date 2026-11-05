@@ -687,6 +687,18 @@ def parse_table(soup, aliases):
     return sorted(latest.values(), key=lambda row: row["rank"])
 
 
+def verify_detail_identity(soup, match):
+    """Reject error pages/redirects instead of copying an unrelated arena."""
+    title = norm(soup.title.get_text(" ", strip=True)) if soup.title else ""
+    if not title:
+        raise RuntimeError(f"No page title for official match {match['id']}")
+    names = (match["home"].casefold(), match["away"].casefold())
+    if not all(name in title.casefold() for name in names):
+        raise RuntimeError(
+            f"Wrong PLS match-detail page for {match['id']}: {title[:160]!r}"
+        )
+
+
 def read_match_detail(soup, match):
     """Return confirmed point scores only when the detail agrees with fixture.
 
@@ -839,6 +851,7 @@ def run_league(key, cfg, full_details=False):
     def fetch_missing_points(match):
         url = f"{base}/games/action/show/id/{match['id']}/nocookies/1.html"
         detail = BeautifulSoup(get(url, base), "html.parser")
+        verify_detail_identity(detail, match)
         scores, active = read_match_detail(detail, match)
         return match["id"], scores, active, detail_metadata(detail)
 
@@ -974,6 +987,7 @@ def run_league(key, cfg, full_details=False):
 
     def fetch_metadata(match):
         detail = BeautifulSoup(get(match["source_url"], base), "html.parser")
+        verify_detail_identity(detail, match)
         return match["id"], detail_metadata(detail)
 
     failed_details = []
