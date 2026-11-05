@@ -455,56 +455,46 @@ test('cached inactive tabs stay out of focus, accessibility and document scrolli
 });
 
 
-test('dense serpentine typography holds its glyph deformation and finishes in about 500ms', async ({ page }) => {
+test('simple Rive-accented tab transition is immediate, short and interruptible', async ({ page }) => {
   await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   const main = page.locator('#main-content');
-  const cut = page.locator('.vh-type-serpent');
+  const rive = page.locator('.vh-route-rive');
 
-  for (const [label, target, sign, title] of [
-    ['Kalendarz', 'matches', -1, 'KALENDARZ'],
-    ['Ulubione', 'favorites', -1, 'ULUBIONE'],
-    ['Główna', 'home', 1, 'DZISIAJ']
+  // The animation file is prepared before interaction, not fetched after each tap.
+  await expect(rive).toHaveAttribute('data-rive-ready', 'true', { timeout: 5000 });
+  await expect(page.locator('.vh-type-serpent')).toHaveCount(0);
+
+  for (const [label, route, sign] of [
+    ['Kalendarz','matches',1], ['Ulubione','favorites',1], ['Główna','home',-1]
   ]) {
-    const motion = await page.evaluate(async ({ label }) => {
+    const state = await page.evaluate(async ({ label }) => {
       document.querySelector('.vh-nav-item[aria-label="' + label + '"]').click();
       await new Promise(requestAnimationFrame);
       const host = document.querySelector('#main-content');
-      const cover = document.querySelector('.vh-type-serpent');
-      const rows = Array.from(cover.children);
-      const first = rows[0].getAnimations().find(animation => animation.id === 'vh-type-serpent');
-      const second = rows[1].getAnimations()[0];
-      const letters = rows[0].firstElementChild.getAnimations()[0];
+      const light = document.querySelector('.vh-route-rive');
+      const tween = host.getAnimations().find(a => a.id === 'vh-route-transition');
+      const accent = light.getAnimations().find(a => a.id === 'vh-rive-route-flash');
       return {
-        page: host.dataset.page,
-        visibility: getComputedStyle(cover).visibility,
-        rowCount: rows.length,
-        first: first?.effect.getKeyframes().at(-1).transform,
-        second: second?.effect.getKeyframes().at(-1).transform,
-        text: rows[0].textContent,
-        typeFrames: letters?.effect.getKeyframes().map(frame => frame.transform),
-        totalMs: first?.effect.getTiming().duration + (rows.length - 1) * 4.7
+        route: host.dataset.page,
+        duration: tween?.effect.getTiming().duration,
+        start: tween?.effect.getKeyframes()[0]?.transform,
+        riveVisible: getComputedStyle(light).visibility,
+        riveDuration: accent?.effect.getTiming().duration
       };
     }, { label });
-
-    expect(motion.page).toBe(target);
-    expect(motion.visibility).toBe('visible');
-    expect(motion.rowCount).toBe(36);
-    expect(motion.totalMs).toBeGreaterThanOrEqual(470);
-    expect(motion.totalMs).toBeLessThanOrEqual(510);
-    expect(motion.text).toContain(title);
-    expect(motion.first).toContain(sign * 107 + '%');
-    expect(motion.second).toContain(sign * -107 + '%');
-    expect(motion.typeFrames.some(frame => frame.includes('scaleY(.20)'))).toBe(true);
-    expect(motion.typeFrames.some(frame => frame.includes('scaleY(1.62)'))).toBe(true);
+    expect(state.route).toBe(route);
+    expect(state.duration).toBeLessThanOrEqual(200);
+    expect(state.start).toContain((sign * 7) + 'px');
+    expect(state.riveVisible).toBe('visible');
+    expect(state.riveDuration).toBeLessThanOrEqual(210);
   }
 
-  await expect.poll(() => cut.evaluate(el => getComputedStyle(el).visibility)).toBe('hidden');
+  await expect.poll(() => rive.evaluate(el => getComputedStyle(el).visibility)).toBe('hidden');
   await expect(main).toHaveCSS('opacity', '1');
   await expect(main).toHaveCSS('transform', 'none');
-  await page.getByRole('button', { name: 'Kalendarz', exact: true }).click();
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect(cut).toHaveCSS('display', 'none');
-  await expect.poll(() => cut.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(0);
-  await page.getByRole('button', { name: 'Główna', exact: true }).click();
+  await expect(rive).toHaveCSS('display', 'none');
+  await nav.getByRole('button', { name: 'Kalendarz' }).click();
   expect(await main.evaluate(el => el.getAnimations().length)).toBe(0);
 });

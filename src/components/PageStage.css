@@ -1,34 +1,18 @@
-/* Routes stay mounted and interactive: the decorative cut never delays them. */
+/* The destination is immediately interactive. The Rive accent is only a
+   low-opacity streak below the content, never a full-screen interstitial. */
 .vh-route-stage{position:relative;isolation:isolate}
 .vh-page{position:relative;min-width:0}
 .vh-page-enter{animation:none;transition:none;transform:none;opacity:1}
+.vh-route-rive{
+  position:fixed;left:0;right:0;bottom:calc(91px + env(safe-area-inset-bottom));
+  height:clamp(88px,16vh,138px);z-index:80;pointer-events:none;
+  visibility:hidden;opacity:0;overflow:hidden;contain:layout paint style;
+}
+.vh-route-rive-canvas{display:block;width:100%;height:100%;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.vh-route-rive{display:none!important}}
 
-/* Dense Hot Type-inspired letter compression + 30-row serpentine reveal.
-   Both text and red slices use transform-only compositor animations (WAAPI).
-   The floating dock sits above this non-interactive portal (z-index:100). */
-.vh-type-serpent{
-  position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;
-  overflow:hidden;visibility:hidden;pointer-events:none;user-select:none;
-  -webkit-user-select:none;isolation:isolate;contain:layout paint style;
-}
-.vh-type-serpent-row{
-  display:flex;align-items:center;justify-content:center;
-  flex:1 1 0;min-height:0;width:calc(100% + 2px);margin-left:-1px;
-  overflow:hidden;background:#fc0001;transform:translate3d(0,0,0);
-}
-.vh-type-serpent-text{
-  flex:none;display:block;white-space:nowrap;line-height:1;
-  font-family:var(--font-ui,'DM Sans',sans-serif);
-  font-size:clamp(14px,4.1vw,21px);font-weight:800;
-  letter-spacing:-.065em;text-transform:uppercase;color:#080808;
-  transform-origin:50% 50%;text-align:center;
-}
-@media(prefers-reduced-motion:reduce){.vh-type-serpent{display:none!important}}
-
-/* Fallback for browsers without content-visibility. */
+/* Hidden tabs retain their layout without extending the document height. */
 .vh-tab-panel[hidden]{display:none!important}
-
-/* Cache inactive list layout without extending the document scroll area. */
 @supports(content-visibility:hidden){
   .vh-tab-panel{contain:layout style}
   .vh-tab-panel[hidden]{

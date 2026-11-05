@@ -34,3 +34,20 @@ export function createEntrance(canvas, onReady, onFail) {
   });
   return animation;
 }
+
+// A preloaded, paused copy of the existing Rive impact provides a brief
+// understated accent when the route changes; navigation never waits for it.
+export function createRoutePulse(canvas, onReady, onFail) {
+  let animation;
+  animation = new Rive({
+    canvas,
+    src: import.meta.env.BASE_URL + 'motion/impact.riv?v=2',
+    artboard: 'Impact',
+    animations: 'Strike',
+    autoplay: false,
+    layout: new Layout({ fit: Fit.Fill, alignment: Alignment.Center }),
+    onLoad: () => { animation.resizeDrawingSurfaceToCanvas(1); onReady(); },
+    onLoadError: onFail
+  });
+  return animation;
+}
