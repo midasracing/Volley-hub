@@ -166,7 +166,12 @@ function DateStrip({ selected, onSelect }) {
     const shift = pendingRebase.current;
     if (shift) {
       const reference = host.querySelector('.im-day[data-day="' + shift.key + '"]');
-      if (reference) host.scrollLeft += reference.offsetLeft - shift.offsetLeft;
+      if (reference) {
+        // Chrome and Safari may already scroll-anchor when we recycle dates.
+        // Correct only the residual pixel movement, never a full chunk twice.
+        const movedBy = (reference.offsetLeft - host.scrollLeft) - shift.viewportLeft;
+        if (Math.abs(movedBy) > 0.5) host.scrollLeft += movedBy;
+      }
       pendingRebase.current = null;
     }
     const updateMarker = smooth => {
@@ -229,7 +234,9 @@ function DateStrip({ selected, onSelect }) {
     if (!delta) return;
     const reference = host.querySelector('.im-day[data-day="' + anchorKey + '"]');
     if (!reference) return;
-    pendingRebase.current = { key: anchorKey, offsetLeft: reference.offsetLeft };
+    pendingRebase.current = {
+      key: anchorKey, viewportLeft: reference.offsetLeft - host.scrollLeft
+    };
     setAnchor(current => addDays(current, delta));
   };
   return <div className="im-strip-wrap vh-date-wrap">
