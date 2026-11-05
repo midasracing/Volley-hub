@@ -242,7 +242,22 @@ def parse_japan_day(html, year, month, day):
     return results
 
 
-def japan_feed(session, max_days=MAX_DAY_REQUESTS, pause=0.4):
+def parse_japan_detail_kickoff(html):
+    """A finished match page contains both JST kickoff date and clock time."""
+    soup = BeautifulSoup(html, "html.parser")
+    date_node = soup.select_one(".match .date")
+    if not date_node:
+        return None
+    values = [clean(em.get_text(" ", strip=True)) for em in date_node.select("em")]
+    if len(values) < 2 or not re.fullmatch(r"20\\d{2}\\.\\d{2}\\.\\d{2}", values[0]):
+        return None
+    if not re.fullmatch(r"\\d{1,2}:\\d{2}", values[1]):
+        return None
+    date = datetime.strptime(values[0], "%Y.%m.%d")
+    return japanese_time(date, values[1])
+
+
+def japan_feed(session, max_days=MAX_DAY_REQUESTS, pause=0.4, known_times=None):
     index_html = get_html(session, JAPAN_URL)
     season, months = japan_months(index_html)
     matches = []
@@ -262,6 +277,26 @@ def japan_feed(session, max_days=MAX_DAY_REQUESTS, pause=0.4):
                 time.sleep(pause)
     if len(matches) < 60:
         raise RuntimeError(f"Suspiciously incomplete SV.League calendar: {len(matches)} games")
+    # Result-day AJAX fragments omit kickoff clocks. Recover them from the
+    # public match detail once and reuse saved times on subsequent refreshes.
+    known_times = known_times or set()
+    detail_reads = 0
+    for match in matches:
+        if match["time"] or match["status"] != "finished" or match["id"] in known_times:
+            continue
+        if detail_reads >= 40:
+            break
+        detail_reads += 1
+        try:
+            detail_id = match["id"].removeprefix("jp-")
+            body = get_html(session, urljoin(JAPAN_URL, f"/match/detail/{detail_id}/"))
+            kickoff = parse_japan_detail_kickoff(body)
+            if kickoff:
+                match["date"], match["time"] = kickoff
+        except (requests.RequestException, RuntimeError, ValueError) as error:
+            print(f"Could not recover kickoff for {match['id']}: {error}", file=__import__("sys").stderr)
+        if pause:
+            time.sleep(pause)
     return build_feed("japan", "SV.League Men", JAPAN_URL, matches)
 
 
@@ -352,7 +387,13 @@ def main(argv=None):
             if args.league == "italy":
                 feed = italy_feed(session, args.season)
             else:
-                feed = japan_feed(session, args.max_days, args.pause)
+                known_times = set()
+                try:
+                    previous = json.loads(output.read_text(encoding="utf-8"))
+                    known_times = {match["id"] for match in previous.get("matches", []) if match.get("time")}
+                except (OSError, ValueError):
+                    pass
+                feed = japan_feed(session, args.max_days, args.pause, known_times)
         write_feed(output, feed)
     except (requests.RequestException, RuntimeError, ValueError, OSError) as error:
         print(f"Official league import failed: {error}", file=__import__("sys").stderr)
