@@ -67,8 +67,8 @@ async def browser_probe(browser, name, url):
     p.on("response",lambda r: tasks.append(asyncio.create_task(response(r))))
     p.on("websocket",lambda w: result["websockets"].append(safe_url(w.url)))
     try:
-        response = await p.goto(url,wait_until="domcontentloaded",timeout=28000)
-        result["status"] = response.status if response else None
+        navigation_response = await p.goto(url,wait_until="domcontentloaded",timeout=28000)
+        result["status"] = navigation_response.status if navigation_response else None
         result["title"] = (await p.title())[:120]
         await p.wait_for_timeout(4500)
         if name == "japan_schedule" and result["status"] == 200:
