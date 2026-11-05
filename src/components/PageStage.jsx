@@ -2,8 +2,12 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import './PageStage.css';
 
-// A quiet route handoff: the page responds immediately, while a small Rive
-// streak underlines the change. The old typographic full-screen wipe is gone.
+const ROUTE_MS = 210;
+const ACCENT_MS = 165;
+const RECENT_TAP_MS = 260;
+
+// The active panel is visible immediately. A tiny compositor-only motion
+// gives navigation continuity; Rive is a decorative optional accent.
 export default function PageStage({ page, direction, reducedMotion, children }) {
   const main = useRef(null);
   const overlay = useRef(null);
@@ -11,9 +15,9 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
   const rive = useRef(null);
   const ready = useRef(false);
   const previous = useRef(page);
+  const lastTapAt = useRef(0);
+  const interrupted = useRef(null);
 
-  // Warm the shared, self-hosted Rive asset once instead of waiting for a tap.
-  // If WASM loads late or fails, navigation still uses the native fade.
   useEffect(() => {
     if (reducedMotion) return undefined;
     let disposed = false;
@@ -23,9 +27,7 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
         if (disposed) return;
         ready.current = true;
         if (overlay.current) overlay.current.dataset.riveReady = 'true';
-      }, () => {
-        ready.current = false;
-      });
+      }, () => { ready.current = false; });
     }).catch(() => {});
     return () => {
       disposed = true;
@@ -42,46 +44,68 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
     const light = overlay.current;
     if (!changed || reducedMotion || document.hidden || !host?.animate) return undefined;
 
-    const sign = direction === 'backward' ? -1 : 1;
-    const animations = [];
-    let disposed = false;
+    const now = performance.now();
+    const rapid = now - lastTapAt.current < RECENT_TAP_MS;
+    lastTapAt.current = now;
 
-    // Avoid any holding state: destination content is already rendered.
-    animations.push(host.animate([
-      { opacity: .73, transform: 'translate3d(' + (sign * 7) + 'px,4px,0)' },
+    // An interrupted transition continues from its *actual rendered frame*,
+    // instead of restarting at low opacity and producing a visible flash.
+    const carry = interrupted.current;
+    interrupted.current = null;
+    const from = carry && now - carry.time < ROUTE_MS
+      ? Math.max(.9, Math.min(1, carry.opacity)) : .94;
+    const offset = carry && now - carry.time < ROUTE_MS ? carry.y : 4;
+    const animation = host.animate([
+      { opacity: from, transform: 'translate3d(0,' + offset + 'px,0)' },
       { opacity: 1, transform: 'translate3d(0,0,0)' }
-    ], { id: 'vh-route-transition', duration: 185, easing: 'cubic-bezier(.2,.8,.2,1)' }));
+    ], { id: 'vh-route-transition', duration: ROUTE_MS,
+      easing: 'cubic-bezier(.22,1,.36,1)' });
 
-    if (ready.current && light && rive.current) {
-      light.style.visibility = 'visible';
+    let accent = null;
+    // Repeated taps never restart a decoding canvas on each interaction.
+    if (!rapid && ready.current && light && rive.current?.loaded) {
       try {
         rive.current.stop('Strike');
         rive.current.play('Strike');
-        animations.push(light.animate([
-          { opacity: .21 },
-          { opacity: .13, offset: .38 },
+        light.style.visibility = 'visible';
+        accent = light.animate([
+          { opacity: .085 },
+          { opacity: .055, offset: .35 },
           { opacity: 0 }
-        ], { id: 'vh-rive-route-flash', duration: 200, easing: 'ease-out', fill: 'both' }));
+        ], { id: 'vh-rive-route-flash', duration: ACCENT_MS,
+          easing: 'cubic-bezier(.22,1,.36,1)', fill: 'both' });
       } catch {
         light.style.visibility = 'hidden';
       }
+    } else if (light) {
+      light.style.visibility = 'hidden';
+      rive.current?.pause();
     }
 
-    const finish = () => {
-      animations.forEach(animation => animation.cancel());
+    let disposed = false;
+    const clear = () => {
+      // Capture the current composite before canceling animations; the next
+      // page can then resume the easing instead of snapping back.
+      if (animation.playState === 'running') {
+        const style = getComputedStyle(host);
+        const matrix = new DOMMatrixReadOnly(style.transform === 'none' ? undefined : style.transform);
+        interrupted.current = { opacity: parseFloat(style.opacity) || 1,
+          y: matrix.m42, time: performance.now() };
+      }
+      animation.cancel();
+      accent?.cancel();
       if (light) light.style.visibility = 'hidden';
       rive.current?.pause();
     };
-    Promise.all(animations.map(animation => animation.finished))
-      .then(() => { if (!disposed) finish(); })
+    Promise.all([animation.finished, ...(accent ? [accent.finished] : [])])
+      .then(() => { if (!disposed) clear(); })
       .catch(() => {});
-
-    const onVisibility = () => { if (document.hidden) finish(); };
+    const onVisibility = () => { if (document.hidden) clear(); };
     document.addEventListener('visibilitychange', onVisibility);
     return () => {
       disposed = true;
       document.removeEventListener('visibilitychange', onVisibility);
-      finish();
+      clear();
     };
   }, [page, direction, reducedMotion]);
 

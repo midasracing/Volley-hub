@@ -13,8 +13,7 @@ async function setup(page) {
     })),
   } : { teams: [], matches: [], groups: [] } }));
   await page.goto('/#matches');
-  await page.getByRole('button', { name: 'Pomiń animację wejścia' }).click();
-  await expect(page.locator('[data-route="matches"] [data-match-id="day-4"]')).toBeVisible();
+  // The opening no longer has a skip control. The cached calendar is ready immediately.\n  await expect(page.locator('[data-route="matches"] [data-match-id="day-4"]')).toBeVisible();
 }
 
 test('calendar selection responds immediately and rapid taps settle on the latest day', async ({ page }) => {

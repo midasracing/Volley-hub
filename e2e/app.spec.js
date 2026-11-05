@@ -455,46 +455,48 @@ test('cached inactive tabs stay out of focus, accessibility and document scrolli
 });
 
 
-test('simple Rive-accented tab transition is immediate, short and interruptible', async ({ page }) => {
+test('ultra-smooth transitions settle without flashes, even with rapid taps', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   const main = page.locator('#main-content');
   const rive = page.locator('.vh-route-rive');
-
-  // The animation file is prepared before interaction, not fetched after each tap.
-  await expect(rive).toHaveAttribute('data-rive-ready', 'true', { timeout: 5000 });
   await expect(page.locator('.vh-type-serpent')).toHaveCount(0);
+  // Rive is optional. The route must feel responsive even on its first cold tap.
+  const info = await page.evaluate(async () => {
+    document.querySelector('.vh-nav-item[aria-label="Kalendarz"]').click();
+    await new Promise(requestAnimationFrame);
+    const host = document.querySelector('#main-content');
+    const animation = host.getAnimations().find(a => a.id === 'vh-route-transition');
+    return {
+      page: host.dataset.page,
+      duration: animation?.effect.getTiming().duration,
+      frames: animation?.effect.getKeyframes()
+    };
+  });
+  expect(info.page).toBe('matches');
+  expect(info.duration).toBeLessThanOrEqual(220);
+  expect(info.frames[0].opacity).toBeGreaterThanOrEqual(.9);
+  expect(info.frames[0].transform).toContain('4px');
 
-  for (const [label, route, sign] of [
-    ['Kalendarz','matches',1], ['Ulubione','favorites',1], ['Główna','home',-1]
-  ]) {
-    const state = await page.evaluate(async ({ label }) => {
-      document.querySelector('.vh-nav-item[aria-label="' + label + '"]').click();
-      await new Promise(requestAnimationFrame);
-      const host = document.querySelector('#main-content');
-      const light = document.querySelector('.vh-route-rive');
-      const tween = host.getAnimations().find(a => a.id === 'vh-route-transition');
-      const accent = light.getAnimations().find(a => a.id === 'vh-rive-route-flash');
-      return {
-        route: host.dataset.page,
-        duration: tween?.effect.getTiming().duration,
-        start: tween?.effect.getKeyframes()[0]?.transform,
-        riveVisible: getComputedStyle(light).visibility,
-        riveDuration: accent?.effect.getTiming().duration
-      };
-    }, { label });
-    expect(state.route).toBe(route);
-    expect(state.duration).toBeLessThanOrEqual(200);
-    expect(state.start).toContain((sign * 7) + 'px');
-    expect(state.riveVisible).toBe('visible');
-    expect(state.riveDuration).toBeLessThanOrEqual(210);
-  }
-
-  await expect.poll(() => rive.evaluate(el => getComputedStyle(el).visibility)).toBe('hidden');
+  // A second tap before the first transition settles uses the rendered frame.
+  const rapid = await page.evaluate(async () => {
+    document.querySelector('.vh-nav-item[aria-label="Ulubione"]').click();
+    await new Promise(requestAnimationFrame);
+    const host = document.querySelector('#main-content');
+    const animation = host.getAnimations().find(a => a.id === 'vh-route-transition');
+    return { route: host.dataset.page, from: animation?.effect.getKeyframes()[0].opacity,
+      count: host.getAnimations().length };
+  });
+  expect(rapid.route).toBe('favorites');
+  expect(rapid.from).toBeGreaterThanOrEqual(.9);
+  expect(rapid.count).toBe(1);
+  await expect.poll(() => main.evaluate(el => el.getAnimations().length)).toBe(0);
   await expect(main).toHaveCSS('opacity', '1');
   await expect(main).toHaveCSS('transform', 'none');
+  await expect(rive).toHaveCSS('visibility', 'hidden');
+
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect(rive).toHaveCSS('display', 'none');
-  await nav.getByRole('button', { name: 'Kalendarz' }).click();
+  await nav.getByRole('button', { name: 'Główna' }).click();
   expect(await main.evaluate(el => el.getAnimations().length)).toBe(0);
+  await expect(rive).toHaveCSS('display', 'none');
 });
