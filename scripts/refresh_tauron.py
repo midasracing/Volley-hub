@@ -558,8 +558,13 @@ def parse_full_season(soup, key, base, previous=None):
     }
     parsed = {}
     for card in soup.select("section[data-game-id]"):
-        round_section = card.find_parent("section", attrs={"data-round": True})
-        if round_section is None:
+        # A PLS round wrapper can contain later rounds in the parsed DOM.
+        # The nearest preceding heading determines the actual fixture round.
+        heading = card.find_previous(
+            lambda tag: getattr(tag, "name", None) in ("h2", "h3", "h4", "h5", "h6")
+            and re.search(r"^Kolejka\\s*:\\s*\\d+", norm(tag.get_text(" ", strip=True)), re.I)
+        )
+        if heading is None:
             continue
         game_id = str(card.get("data-game-id", "")).strip()
         if not game_id:
@@ -592,7 +597,7 @@ def parse_full_season(soup, key, base, previous=None):
             image_url = image.get("src") or image.get("data-src") if image else ""
             logos.append(urljoin(base, image_url) if image_url and not image_url.startswith("data:") else "")
 
-        round_value = round_section.get("data-round", "")
+        round_value = re.search(r"Kolejka\\s*:\\s*(\\d+)", heading.get_text(" ", strip=True), re.I).group(1)
         try:
             round_number = int(round_value)
         except (ValueError, TypeError):
@@ -762,6 +767,17 @@ def run_league(key, cfg):
                 match["status"] = "live"
     # Complete regular-season round counts: 14*13 and 16*15 matches.
     expected = 182 if key == "men" else 240
+    expected_rounds = 26 if key == "men" else 30
+    games_per_round = 7 if key == "men" else 8
+    actual_rounds = {}
+    for match in matches:
+        rnd = match.get("round")
+        actual_rounds[rnd] = actual_rounds.get(rnd, 0) + 1
+    if any(actual_rounds.get(r) != games_per_round for r in range(1, expected_rounds + 1)):
+        raise RuntimeError(
+            f"Invalid rounds for {key}: {actual_rounds}; expected "
+            f"{games_per_round} games in each of {expected_rounds} rounds."
+        )
     if len(matches) < expected:
         raise RuntimeError(
             f"Incomplete 2026/27 regular-season schedule: got {len(matches)} / {expected} "
