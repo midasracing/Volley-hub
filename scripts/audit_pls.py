@@ -140,6 +140,11 @@ def audit(key, base, filename, team_count, round_count):
     for team in teams:
         check(bool(team.get("logo")), f"{key}: missing logo for {team.get('name')}")
         check(bool(team.get("id")), f"{key}: missing team ID for {team.get('name')}")
+        club_id = str(team.get("id"))
+        check(team.get("name") in id_names.get(club_id, set()),
+              f"{key}: wrong team name for club ID {club_id}")
+        check(team.get("logo") in id_logos.get(club_id, set()),
+              f"{key}: logo URL does not match official fixture for club {club_id}")
 
     soup = fetch(base + "/games/nocookies/1.html")
     cards = soup.select("section[data-game-id]")
@@ -163,6 +168,12 @@ def audit(key, base, filename, team_count, round_count):
         for side, cl in (("home", "left"), ("away", "right")):
             name = clean(card.select_one(".game-team." + cl))
             check(name == match[side], f"{key}:{mid}: {side} name mismatch: {name} vs {match[side]}")
+            picture = card.select_one(".game-logo." + cl + " img")
+            if picture:
+                src = picture.get("src") or picture.get("data-src")
+                if src:
+                    check(match.get(side + "_logo") == urljoin(base, src),
+                          f"{key}:{mid}: incorrect official {side} logo")
         game_date = clean(card.select_one(".game-date span"))
         if game_date:
             expected_date = match["date"] + (", " + match["time"] if match.get("time") else "")
