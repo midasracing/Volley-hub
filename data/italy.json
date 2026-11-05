@@ -2,58 +2,216 @@
   "league": "italy",
   "competition": "SuperLega Credem Banca",
   "source": "https://ww2.legavolley.it/Calendario.asp",
-  "updated_at": "2026-11-05T16:34:38.867393+00:00",
+  "updated_at": "2026-11-05T16:36:59.323519+00:00",
   "teams": [
     {
       "name": "Acqua Sant'Anna Cuneo",
-      "logo": ""
+      "logo": "",
+      "id": "6863"
     },
     {
       "name": "Allianz Milano",
-      "logo": ""
+      "logo": "",
+      "id": "6858"
     },
     {
       "name": "Cisterna Volley",
-      "logo": ""
+      "logo": "",
+      "id": "6859"
     },
     {
       "name": "Cucine Lube Civitanova",
-      "logo": ""
+      "logo": "",
+      "id": "6860"
     },
     {
       "name": "Gas Sales Bluenergy Piacenza",
-      "logo": ""
+      "logo": "",
+      "id": "6861"
     },
     {
       "name": "Itas Trentino",
-      "logo": ""
+      "logo": "",
+      "id": "6862"
     },
     {
       "name": "Pallavolo Padova",
-      "logo": ""
+      "logo": "",
+      "id": "6866"
     },
     {
       "name": "Rana Verona",
-      "logo": ""
+      "logo": "",
+      "id": "6864"
     },
     {
       "name": "Sir Susa Scai Perugia",
-      "logo": ""
+      "logo": "",
+      "id": "6865"
     },
     {
       "name": "Tinet Prata di Pordenone",
-      "logo": ""
+      "logo": "",
+      "id": "6897"
     },
     {
       "name": "Valsa Group Modena",
-      "logo": ""
+      "logo": "",
+      "id": "6867"
     },
     {
       "name": "Vero Volley Monza",
-      "logo": ""
+      "logo": "",
+      "id": "6868"
     }
   ],
-  "table": [],
+  "table": [
+    {
+      "team": "Sir Susa Scai Perugia",
+      "played": 5,
+      "wins": 5,
+      "losses": 0,
+      "points": 14,
+      "sets_for": 15,
+      "sets_against": 2,
+      "points_for": 418,
+      "points_against": 327,
+      "rank": 1
+    },
+    {
+      "team": "Cucine Lube Civitanova",
+      "played": 4,
+      "wins": 4,
+      "losses": 0,
+      "points": 12,
+      "sets_for": 12,
+      "sets_against": 2,
+      "points_for": 361,
+      "points_against": 317,
+      "rank": 2
+    },
+    {
+      "team": "Itas Trentino",
+      "played": 4,
+      "wins": 4,
+      "losses": 0,
+      "points": 11,
+      "sets_for": 12,
+      "sets_against": 2,
+      "points_for": 331,
+      "points_against": 283,
+      "rank": 3
+    },
+    {
+      "team": "Gas Sales Bluenergy Piacenza",
+      "played": 4,
+      "wins": 3,
+      "losses": 1,
+      "points": 10,
+      "sets_for": 11,
+      "sets_against": 4,
+      "points_for": 342,
+      "points_against": 315,
+      "rank": 4
+    },
+    {
+      "team": "Allianz Milano",
+      "played": 4,
+      "wins": 2,
+      "losses": 2,
+      "points": 6,
+      "sets_for": 8,
+      "sets_against": 8,
+      "points_for": 346,
+      "points_against": 352,
+      "rank": 5
+    },
+    {
+      "team": "Rana Verona",
+      "played": 4,
+      "wins": 2,
+      "losses": 2,
+      "points": 5,
+      "sets_for": 7,
+      "sets_against": 9,
+      "points_for": 357,
+      "points_against": 363,
+      "rank": 6
+    },
+    {
+      "team": "Cisterna Volley",
+      "played": 4,
+      "wins": 1,
+      "losses": 3,
+      "points": 3,
+      "sets_for": 4,
+      "sets_against": 9,
+      "points_for": 288,
+      "points_against": 304,
+      "rank": 7
+    },
+    {
+      "team": "Tinet Prata di Pordenone",
+      "played": 3,
+      "wins": 1,
+      "losses": 2,
+      "points": 3,
+      "sets_for": 3,
+      "sets_against": 7,
+      "points_for": 210,
+      "points_against": 241,
+      "rank": 8
+    },
+    {
+      "team": "Valsa Group Modena",
+      "played": 4,
+      "wins": 1,
+      "losses": 3,
+      "points": 3,
+      "sets_for": 4,
+      "sets_against": 10,
+      "points_for": 333,
+      "points_against": 345,
+      "rank": 9
+    },
+    {
+      "team": "Acqua Sant'Anna Cuneo",
+      "played": 4,
+      "wins": 0,
+      "losses": 4,
+      "points": 3,
+      "sets_for": 7,
+      "sets_against": 12,
+      "points_for": 404,
+      "points_against": 438,
+      "rank": 10
+    },
+    {
+      "team": "Vero Volley Monza",
+      "played": 4,
+      "wins": 1,
+      "losses": 3,
+      "points": 2,
+      "sets_for": 5,
+      "sets_against": 11,
+      "points_for": 344,
+      "points_against": 379,
+      "rank": 11
+    },
+    {
+      "team": "Pallavolo Padova",
+      "played": 4,
+      "wins": 0,
+      "losses": 4,
+      "points": 0,
+      "sets_for": 0,
+      "sets_against": 12,
+      "points_for": 234,
+      "points_against": 304,
+      "rank": 12
+    }
+  ],
+  "table_source": "calculated_from_confirmed_match_results",
   "matches": [
     {
       "id": "it-40285",
@@ -63,19 +221,49 @@
       "time": "18:00",
       "home": "Rana Verona",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40285",
       "venue": {
         "name": "Pala MAGIS",
-        "city": "Verona (VR)"
+        "city": "Verona"
       },
       "match_number": "1",
       "status": "finished",
       "home_sets": 0,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "20:25",
+        "19:25",
+        "26:28"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:45.202328+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-17",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 20,
+          "away": 25
+        },
+        {
+          "home": 19,
+          "away": 25
+        },
+        {
+          "home": 26,
+          "away": 28
+        }
+      ],
+      "home_points": 65,
+      "away_points": 78,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40287",
@@ -85,19 +273,49 @@
       "time": "17:00",
       "home": "Pallavolo Padova",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40287",
       "venue": {
         "name": "Kioene Arena",
-        "city": "Padova (PD)"
+        "city": "Padova"
       },
       "match_number": "3",
       "status": "finished",
       "home_sets": 0,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "19:25",
+        "21:25",
+        "16:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:47.442055+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-18",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 19,
+          "away": 25
+        },
+        {
+          "home": 21,
+          "away": 25
+        },
+        {
+          "home": 16,
+          "away": 25
+        }
+      ],
+      "home_points": 56,
+      "away_points": 75,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40288",
@@ -107,19 +325,49 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40288",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
-        "city": "Cisterna di Latina (LT)"
+        "city": "Cisterna di Latina"
       },
       "match_number": "4",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "29:27",
+        "25:14",
+        "25:15"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:47.989611+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-18",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 29,
+          "away": 27
+        },
+        {
+          "home": 25,
+          "away": 14
+        },
+        {
+          "home": 25,
+          "away": 15
+        }
+      ],
+      "home_points": 79,
+      "away_points": 56,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40289",
@@ -129,19 +377,59 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40289",
       "venue": {
         "name": "Palasport di Cuneo",
-        "city": "Cuneo (CN)"
+        "city": "Cuneo"
       },
       "match_number": "5",
       "status": "finished",
       "home_sets": 2,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:18",
+        "7:25",
+        "15:25",
+        "25:21",
+        "23:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:48.541237+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-18",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 18
+        },
+        {
+          "home": 7,
+          "away": 25
+        },
+        {
+          "home": 15,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 23,
+          "away": 25
+        }
+      ],
+      "home_points": 95,
+      "away_points": 114,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40290",
@@ -151,19 +439,54 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40290",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
-        "city": "Pordenone (PN)"
+        "city": "Pordenone"
       },
       "match_number": "6",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:22",
+        "19:25",
+        "25:21",
+        "25:23"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:49.124785+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-18",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 22
+        },
+        {
+          "home": 19,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 25,
+          "away": 23
+        }
+      ],
+      "home_points": 94,
+      "away_points": 91,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40286",
@@ -173,19 +496,49 @@
       "time": "19:00",
       "home": "Valsa Group Modena",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40286",
       "venue": {
         "name": "PalaSport G.Panini",
-        "city": "Modena (MO)"
+        "city": "Modena"
       },
       "match_number": "2",
       "status": "finished",
       "home_sets": 0,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "21:25",
+        "23:25",
+        "17:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:45.868433+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-18",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 21,
+          "away": 25
+        },
+        {
+          "home": 23,
+          "away": 25
+        },
+        {
+          "home": 17,
+          "away": 25
+        }
+      ],
+      "home_points": 61,
+      "away_points": 75,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40292",
@@ -195,19 +548,49 @@
       "time": "17:00",
       "home": "Itas Trentino",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40292",
       "venue": {
         "name": "BTS Arena",
-        "city": "Trento (TN)"
+        "city": "Trento"
       },
       "match_number": "8",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:23",
+        "25:23",
+        "25:22"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:50.214650+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-25",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 23
+        },
+        {
+          "home": 25,
+          "away": 23
+        },
+        {
+          "home": 25,
+          "away": 22
+        }
+      ],
+      "home_points": 75,
+      "away_points": 68,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40291",
@@ -217,19 +600,49 @@
       "time": "18:00",
       "home": "Sir Susa Scai Perugia",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40291",
       "venue": {
         "name": "Pala Barton Energy",
-        "city": "Perugia (PG)"
+        "city": "Perugia"
       },
       "match_number": "7",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:18",
+        "25:15",
+        "25:23"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:49.669511+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-25",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 18
+        },
+        {
+          "home": 25,
+          "away": 15
+        },
+        {
+          "home": 25,
+          "away": 23
+        }
+      ],
+      "home_points": 75,
+      "away_points": 56,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40293",
@@ -239,19 +652,49 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40293",
       "venue": {
         "name": "PalaBancaSport",
-        "city": "Piacenza (PC)"
+        "city": "Piacenza"
       },
       "match_number": "9",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:21",
+        "25:22",
+        "25:23"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:50.756996+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-25",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 25,
+          "away": 22
+        },
+        {
+          "home": 25,
+          "away": 23
+        }
+      ],
+      "home_points": 75,
+      "away_points": 66,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40294",
@@ -261,19 +704,49 @@
       "time": "18:00",
       "home": "Cucine Lube Civitanova",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40294",
       "venue": {
         "name": "Eurosuole Forum",
-        "city": "Civitanova Marche (MC)"
+        "city": "Civitanova Marche"
       },
       "match_number": "10",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:21",
+        "25:15",
+        "25:21"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:51.327541+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-25",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 25,
+          "away": 15
+        },
+        {
+          "home": 25,
+          "away": 21
+        }
+      ],
+      "home_points": 75,
+      "away_points": 57,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40296",
@@ -283,19 +756,54 @@
       "time": "18:00",
       "home": "Vero Volley Monza",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40296",
       "venue": {
         "name": "OpiquadArena",
-        "city": "Monza (MB)"
+        "city": "Monza"
       },
       "match_number": "12",
       "status": "finished",
       "home_sets": 1,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:23",
+        "25:27",
+        "19:25",
+        "15:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:52.421535+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-25",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 23
+        },
+        {
+          "home": 25,
+          "away": 27
+        },
+        {
+          "home": 19,
+          "away": 25
+        },
+        {
+          "home": 15,
+          "away": 25
+        }
+      ],
+      "home_points": 84,
+      "away_points": 100,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40295",
@@ -305,19 +813,59 @@
       "time": "19:00",
       "home": "Allianz Milano",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40295",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
-        "city": "Milano (MI)"
+        "city": "Milano"
       },
       "match_number": "11",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 2,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:21",
+        "25:27",
+        "25:20",
+        "20:25",
+        "19:17"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:51.876500+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-25",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 25,
+          "away": 27
+        },
+        {
+          "home": 25,
+          "away": 20
+        },
+        {
+          "home": 20,
+          "away": 25
+        },
+        {
+          "home": 19,
+          "away": 17
+        }
+      ],
+      "home_points": 114,
+      "away_points": 110,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40345",
@@ -327,19 +875,49 @@
       "time": "20:30",
       "home": "Sir Susa Scai Perugia",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40345",
       "venue": {
         "name": "Pala Barton Energy",
-        "city": "Perugia (PG)"
+        "city": "Perugia"
       },
       "match_number": "61",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:21",
+        "29:27",
+        "25:19"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:59.068575+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-28",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 29,
+          "away": 27
+        },
+        {
+          "home": 25,
+          "away": 19
+        }
+      ],
+      "home_points": 79,
+      "away_points": 67,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40299",
@@ -349,19 +927,49 @@
       "time": "18:00",
       "home": "Vero Volley Monza",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40299",
       "venue": {
         "name": "OpiquadArena",
-        "city": "Monza (MB)"
+        "city": "Monza"
       },
       "match_number": "15",
       "status": "finished",
       "home_sets": 0,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "16:25",
+        "17:25",
+        "22:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:54.081978+00:00",
+      "league": "italy",
+      "date_iso": "2026-10-31",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 16,
+          "away": 25
+        },
+        {
+          "home": 17,
+          "away": 25
+        },
+        {
+          "home": 22,
+          "away": 25
+        }
+      ],
+      "home_points": 55,
+      "away_points": 75,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40297",
@@ -371,19 +979,54 @@
       "time": "17:00",
       "home": "Valsa Group Modena",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40297",
       "venue": {
         "name": "PalaSport G.Panini",
-        "city": "Modena (MO)"
+        "city": "Modena"
       },
       "match_number": "13",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "22:25",
+        "25:16",
+        "25:16",
+        "28:26"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:52.966059+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-01",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 22,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 16
+        },
+        {
+          "home": 25,
+          "away": 16
+        },
+        {
+          "home": 28,
+          "away": 26
+        }
+      ],
+      "home_points": 100,
+      "away_points": 83,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40298",
@@ -393,19 +1036,49 @@
       "time": "18:00",
       "home": "Allianz Milano",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40298",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
-        "city": "Milano (MI)"
+        "city": "Milano"
       },
       "match_number": "14",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:15",
+        "25:21",
+        "25:18"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:53.537603+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-01",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 15
+        },
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 25,
+          "away": 18
+        }
+      ],
+      "home_points": 75,
+      "away_points": 54,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40300",
@@ -415,19 +1088,54 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40300",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
-        "city": "Cisterna di Latina (LT)"
+        "city": "Cisterna di Latina"
       },
       "match_number": "16",
       "status": "finished",
       "home_sets": 1,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "17:25",
+        "25:23",
+        "22:25",
+        "23:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:54.629337+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-01",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 17,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 23
+        },
+        {
+          "home": 22,
+          "away": 25
+        },
+        {
+          "home": 23,
+          "away": 25
+        }
+      ],
+      "home_points": 87,
+      "away_points": 98,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40301",
@@ -437,19 +1145,54 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40301",
       "venue": {
         "name": "Palasport di Cuneo",
-        "city": "Cuneo (CN)"
+        "city": "Cuneo"
       },
       "match_number": "17",
       "status": "finished",
       "home_sets": 1,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "21:25",
+        "25:21",
+        "21:25",
+        "22:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:55.174679+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-01",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 21,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 21,
+          "away": 25
+        },
+        {
+          "home": 22,
+          "away": 25
+        }
+      ],
+      "home_points": 89,
+      "away_points": 96,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40302",
@@ -459,19 +1202,49 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40302",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
-        "city": "Pordenone (PN)"
+        "city": "Pordenone"
       },
       "match_number": "18",
       "status": "finished",
       "home_sets": 0,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "22:25",
+        "20:25",
+        "18:25"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:55.750416+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-01",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 22,
+          "away": 25
+        },
+        {
+          "home": 20,
+          "away": 25
+        },
+        {
+          "home": 18,
+          "away": 25
+        }
+      ],
+      "home_points": 60,
+      "away_points": 75,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40303",
@@ -481,19 +1254,49 @@
       "time": "20:30",
       "home": "Sir Susa Scai Perugia",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40303",
       "venue": {
         "name": "Pala Barton Energy",
-        "city": "Perugia (PG)"
+        "city": "Perugia"
       },
       "match_number": "19",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:22",
+        "25:17",
+        "25:15"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:56.294864+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-04",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 22
+        },
+        {
+          "home": 25,
+          "away": 17
+        },
+        {
+          "home": 25,
+          "away": 15
+        }
+      ],
+      "home_points": 75,
+      "away_points": 54,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40304",
@@ -503,19 +1306,59 @@
       "time": "20:30",
       "home": "Rana Verona",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40304",
       "venue": {
         "name": "Pala MAGIS",
-        "city": "Verona (VR)"
+        "city": "Verona"
       },
       "match_number": "20",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 2,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "22:25",
+        "22:25",
+        "25:23",
+        "25:18",
+        "15:10"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:56.842589+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-04",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 22,
+          "away": 25
+        },
+        {
+          "home": 22,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 23
+        },
+        {
+          "home": 25,
+          "away": 18
+        },
+        {
+          "home": 15,
+          "away": 10
+        }
+      ],
+      "home_points": 109,
+      "away_points": 101,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40305",
@@ -525,19 +1368,59 @@
       "time": "20:30",
       "home": "Itas Trentino",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40305",
       "venue": {
         "name": "BTS Arena",
-        "city": "Trento (TN)"
+        "city": "Trento"
       },
       "match_number": "21",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 2,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:16",
+        "25:20",
+        "23:25",
+        "18:25",
+        "15:8"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:57.390428+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-04",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 16
+        },
+        {
+          "home": 25,
+          "away": 20
+        },
+        {
+          "home": 23,
+          "away": 25
+        },
+        {
+          "home": 18,
+          "away": 25
+        },
+        {
+          "home": 15,
+          "away": 8
+        }
+      ],
+      "home_points": 106,
+      "away_points": 94,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40306",
@@ -547,19 +1430,54 @@
       "time": "20:30",
       "home": "Cucine Lube Civitanova",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40306",
       "venue": {
         "name": "Eurosuole Forum",
-        "city": "Civitanova Marche (MC)"
+        "city": "Civitanova Marche"
       },
       "match_number": "22",
       "status": "finished",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "25:23",
+        "29:31",
+        "33:31",
+        "25:21"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:57.937497+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-04",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 25,
+          "away": 23
+        },
+        {
+          "home": 29,
+          "away": 31
+        },
+        {
+          "home": 33,
+          "away": 31
+        },
+        {
+          "home": 25,
+          "away": 21
+        }
+      ],
+      "home_points": 112,
+      "away_points": 106,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-40308",
@@ -569,19 +1487,59 @@
       "time": "20:30",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/TabellinoGara.asp?IdGara=40308",
       "venue": {
         "name": "Palasport di Cuneo",
-        "city": "Cuneo (CN)"
+        "city": "Cuneo"
       },
       "match_number": "24",
       "status": "finished",
       "home_sets": 2,
       "away_sets": 3,
-      "set_scores": [],
-      "current_points": null
+      "set_scores": [
+        "21:25",
+        "23:25",
+        "25:23",
+        "28:26",
+        "13:15"
+      ],
+      "current_points": null,
+      "details_checked_at": "2026-11-05T16:36:58.521841+00:00",
+      "league": "italy",
+      "date_iso": "2026-11-04",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [
+        {
+          "home": 21,
+          "away": 25
+        },
+        {
+          "home": 23,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 23
+        },
+        {
+          "home": 28,
+          "away": 26
+        },
+        {
+          "home": 13,
+          "away": 15
+        }
+      ],
+      "home_points": 110,
+      "away_points": 114,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": []
     },
     {
       "id": "it-2026-andata-27",
@@ -591,8 +1549,8 @@
       "time": "16:00",
       "home": "Allianz Milano",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -600,10 +1558,23 @@
       },
       "match_number": "27",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-08",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-25",
@@ -613,8 +1584,8 @@
       "time": "18:00",
       "home": "Itas Trentino",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -622,10 +1593,23 @@
       },
       "match_number": "25",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-08",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-26",
@@ -635,8 +1619,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -644,10 +1628,23 @@
       },
       "match_number": "26",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-08",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-29",
@@ -657,8 +1654,8 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -666,10 +1663,23 @@
       },
       "match_number": "29",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-08",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-30",
@@ -679,8 +1689,8 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -688,10 +1698,23 @@
       },
       "match_number": "30",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-08",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-28",
@@ -701,8 +1724,8 @@
       "time": "20:30",
       "home": "Vero Volley Monza",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -710,10 +1733,23 @@
       },
       "match_number": "28",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-08",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-23",
@@ -723,8 +1759,8 @@
       "time": "20:30",
       "home": "Pallavolo Padova",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -732,10 +1768,23 @@
       },
       "match_number": "23",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-16",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-36",
@@ -745,8 +1794,8 @@
       "time": "20:45",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -754,10 +1803,23 @@
       },
       "match_number": "36",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-20",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-34",
@@ -767,8 +1829,8 @@
       "time": "17:00",
       "home": "Allianz Milano",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -776,10 +1838,23 @@
       },
       "match_number": "34",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-22",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-32",
@@ -789,8 +1864,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -798,10 +1873,23 @@
       },
       "match_number": "32",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-22",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-33",
@@ -811,8 +1899,8 @@
       "time": "18:00",
       "home": "Cucine Lube Civitanova",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -820,10 +1908,23 @@
       },
       "match_number": "33",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-22",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-35",
@@ -833,8 +1934,8 @@
       "time": "18:00",
       "home": "Pallavolo Padova",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -842,10 +1943,23 @@
       },
       "match_number": "35",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-22",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-31",
@@ -855,8 +1969,8 @@
       "time": "19:00",
       "home": "Valsa Group Modena",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -864,10 +1978,23 @@
       },
       "match_number": "31",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-22",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-55",
@@ -877,8 +2004,8 @@
       "time": "20:30",
       "home": "Sir Susa Scai Perugia",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -886,10 +2013,23 @@
       },
       "match_number": "55",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-26",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-38",
@@ -899,8 +2039,8 @@
       "time": "15:00",
       "home": "Rana Verona",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -908,10 +2048,23 @@
       },
       "match_number": "38",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-29",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-39",
@@ -921,8 +2074,8 @@
       "time": "17:00",
       "home": "Cucine Lube Civitanova",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -930,10 +2083,23 @@
       },
       "match_number": "39",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-29",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-40",
@@ -943,8 +2109,8 @@
       "time": "17:00",
       "home": "Vero Volley Monza",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -952,10 +2118,23 @@
       },
       "match_number": "40",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-29",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-41",
@@ -965,8 +2144,8 @@
       "time": "17:00",
       "home": "Pallavolo Padova",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -974,10 +2153,23 @@
       },
       "match_number": "41",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-29",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-42",
@@ -987,8 +2179,8 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -996,10 +2188,23 @@
       },
       "match_number": "42",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-29",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-37",
@@ -1009,8 +2214,8 @@
       "time": "19:00",
       "home": "Sir Susa Scai Perugia",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -1018,10 +2223,23 @@
       },
       "match_number": "37",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-11-29",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-43",
@@ -1031,8 +2249,8 @@
       "time": "20:00",
       "home": "Rana Verona",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -1040,10 +2258,23 @@
       },
       "match_number": "43",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-02",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-45",
@@ -1053,8 +2284,8 @@
       "time": "20:00",
       "home": "Valsa Group Modena",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -1062,10 +2293,23 @@
       },
       "match_number": "45",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-02",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-47",
@@ -1075,8 +2319,8 @@
       "time": "20:00",
       "home": "Allianz Milano",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -1084,10 +2328,23 @@
       },
       "match_number": "47",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-02",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-44",
@@ -1097,8 +2354,8 @@
       "time": "20:30",
       "home": "Itas Trentino",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -1106,10 +2363,23 @@
       },
       "match_number": "44",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-02",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-48",
@@ -1119,8 +2389,8 @@
       "time": "20:30",
       "home": "Cisterna Volley",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -1128,10 +2398,23 @@
       },
       "match_number": "48",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-02",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-46",
@@ -1141,8 +2424,8 @@
       "time": "20:45",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -1150,10 +2433,23 @@
       },
       "match_number": "46",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-03",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-50",
@@ -1163,8 +2459,8 @@
       "time": "15:00",
       "home": "Cucine Lube Civitanova",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -1172,10 +2468,23 @@
       },
       "match_number": "50",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-06",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-49",
@@ -1185,8 +2494,8 @@
       "time": "17:00",
       "home": "Sir Susa Scai Perugia",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -1194,10 +2503,23 @@
       },
       "match_number": "49",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-06",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-52",
@@ -1207,8 +2529,8 @@
       "time": "17:00",
       "home": "Pallavolo Padova",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -1216,10 +2538,23 @@
       },
       "match_number": "52",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-06",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-53",
@@ -1229,8 +2564,8 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -1238,10 +2573,23 @@
       },
       "match_number": "53",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-06",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-51",
@@ -1251,8 +2599,8 @@
       "time": "18:00",
       "home": "Vero Volley Monza",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -1260,10 +2608,23 @@
       },
       "match_number": "51",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-08",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-54",
@@ -1273,8 +2634,8 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -1282,10 +2643,23 @@
       },
       "match_number": "54",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-08",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-56",
@@ -1295,8 +2669,8 @@
       "time": "16:00",
       "home": "Rana Verona",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -1304,10 +2678,23 @@
       },
       "match_number": "56",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-13",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-58",
@@ -1317,8 +2704,8 @@
       "time": "18:00",
       "home": "Valsa Group Modena",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -1326,10 +2713,23 @@
       },
       "match_number": "58",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-13",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-59",
@@ -1339,8 +2739,8 @@
       "time": "18:00",
       "home": "Allianz Milano",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -1348,10 +2748,23 @@
       },
       "match_number": "59",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-13",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-60",
@@ -1361,8 +2774,8 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -1370,10 +2783,23 @@
       },
       "match_number": "60",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-13",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-57",
@@ -1383,8 +2809,8 @@
       "time": "19:00",
       "home": "Itas Trentino",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -1392,10 +2818,23 @@
       },
       "match_number": "57",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-13",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-62",
@@ -1405,8 +2844,8 @@
       "time": "18:00",
       "home": "Rana Verona",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -1414,10 +2853,23 @@
       },
       "match_number": "62",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-20",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-63",
@@ -1427,8 +2879,8 @@
       "time": "18:00",
       "home": "Itas Trentino",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -1436,10 +2888,23 @@
       },
       "match_number": "63",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-20",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-64",
@@ -1449,8 +2914,8 @@
       "time": "18:00",
       "home": "Valsa Group Modena",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -1458,10 +2923,23 @@
       },
       "match_number": "64",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-20",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-65",
@@ -1471,8 +2949,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -1480,10 +2958,23 @@
       },
       "match_number": "65",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-20",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-andata-66",
@@ -1493,8 +2984,8 @@
       "time": "18:00",
       "home": "Vero Volley Monza",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -1502,10 +2993,23 @@
       },
       "match_number": "66",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-20",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-ritorno-67",
@@ -1515,8 +3019,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -1524,10 +3028,23 @@
       },
       "match_number": "67",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-26",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-ritorno-68",
@@ -1537,8 +3054,8 @@
       "time": "18:00",
       "home": "Cucine Lube Civitanova",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -1546,10 +3063,23 @@
       },
       "match_number": "68",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-26",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-ritorno-69",
@@ -1559,8 +3089,8 @@
       "time": "18:00",
       "home": "Allianz Milano",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -1568,10 +3098,23 @@
       },
       "match_number": "69",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-26",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-ritorno-70",
@@ -1581,8 +3124,8 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -1590,10 +3133,23 @@
       },
       "match_number": "70",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-26",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-ritorno-71",
@@ -1603,8 +3159,8 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -1612,10 +3168,23 @@
       },
       "match_number": "71",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-26",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2026-ritorno-72",
@@ -1625,8 +3194,8 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -1634,10 +3203,23 @@
       },
       "match_number": "72",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2026-12-26",
+      "phase": "Zasadnicza",
+      "round": 1,
+      "term_number": 1,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-73",
@@ -1647,8 +3229,8 @@
       "time": "18:00",
       "home": "Sir Susa Scai Perugia",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -1656,10 +3238,23 @@
       },
       "match_number": "73",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-03",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-74",
@@ -1669,8 +3264,8 @@
       "time": "18:00",
       "home": "Itas Trentino",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -1678,10 +3273,23 @@
       },
       "match_number": "74",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-03",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-75",
@@ -1691,8 +3299,8 @@
       "time": "18:00",
       "home": "Valsa Group Modena",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -1700,10 +3308,23 @@
       },
       "match_number": "75",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-03",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-76",
@@ -1713,8 +3334,8 @@
       "time": "18:00",
       "home": "Cucine Lube Civitanova",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -1722,10 +3343,23 @@
       },
       "match_number": "76",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-03",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-77",
@@ -1735,8 +3369,8 @@
       "time": "18:00",
       "home": "Vero Volley Monza",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -1744,10 +3378,23 @@
       },
       "match_number": "77",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-03",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-78",
@@ -1757,8 +3404,8 @@
       "time": "18:00",
       "home": "Pallavolo Padova",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -1766,10 +3413,23 @@
       },
       "match_number": "78",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-03",
+      "phase": "Zasadnicza",
+      "round": 2,
+      "term_number": 2,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-79",
@@ -1779,8 +3439,8 @@
       "time": "18:00",
       "home": "Rana Verona",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -1788,10 +3448,23 @@
       },
       "match_number": "79",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-10",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-80",
@@ -1801,8 +3474,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -1810,10 +3483,23 @@
       },
       "match_number": "80",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-10",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-81",
@@ -1823,8 +3509,8 @@
       "time": "18:00",
       "home": "Pallavolo Padova",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -1832,10 +3518,23 @@
       },
       "match_number": "81",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-10",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-82",
@@ -1845,8 +3544,8 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -1854,10 +3553,23 @@
       },
       "match_number": "82",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-10",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-83",
@@ -1867,8 +3579,8 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -1876,10 +3588,23 @@
       },
       "match_number": "83",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-10",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-84",
@@ -1889,8 +3614,8 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -1898,10 +3623,23 @@
       },
       "match_number": "84",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-10",
+      "phase": "Zasadnicza",
+      "round": 3,
+      "term_number": 3,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-85",
@@ -1911,8 +3649,8 @@
       "time": "20:30",
       "home": "Sir Susa Scai Perugia",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -1920,10 +3658,23 @@
       },
       "match_number": "85",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-13",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-86",
@@ -1933,8 +3684,8 @@
       "time": "20:30",
       "home": "Valsa Group Modena",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -1942,10 +3693,23 @@
       },
       "match_number": "86",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-13",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-87",
@@ -1955,8 +3719,8 @@
       "time": "20:30",
       "home": "Allianz Milano",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -1964,10 +3728,23 @@
       },
       "match_number": "87",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-13",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-88",
@@ -1977,8 +3754,8 @@
       "time": "20:30",
       "home": "Vero Volley Monza",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -1986,10 +3763,23 @@
       },
       "match_number": "88",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-13",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-89",
@@ -1999,8 +3789,8 @@
       "time": "20:30",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -2008,10 +3798,23 @@
       },
       "match_number": "89",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-13",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-90",
@@ -2021,8 +3824,8 @@
       "time": "20:30",
       "home": "Tinet Prata di Pordenone",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -2030,10 +3833,23 @@
       },
       "match_number": "90",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-13",
+      "phase": "Zasadnicza",
+      "round": 4,
+      "term_number": 4,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-91",
@@ -2043,8 +3859,8 @@
       "time": "18:00",
       "home": "Rana Verona",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -2052,10 +3868,23 @@
       },
       "match_number": "91",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-17",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-92",
@@ -2065,8 +3894,8 @@
       "time": "18:00",
       "home": "Itas Trentino",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -2074,10 +3903,23 @@
       },
       "match_number": "92",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-17",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-93",
@@ -2087,8 +3929,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -2096,10 +3938,23 @@
       },
       "match_number": "93",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-17",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-94",
@@ -2109,8 +3964,8 @@
       "time": "18:00",
       "home": "Cucine Lube Civitanova",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -2118,10 +3973,23 @@
       },
       "match_number": "94",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-17",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-95",
@@ -2131,8 +3999,8 @@
       "time": "18:00",
       "home": "Pallavolo Padova",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -2140,10 +4008,23 @@
       },
       "match_number": "95",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-17",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-96",
@@ -2153,8 +4034,8 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -2162,10 +4043,23 @@
       },
       "match_number": "96",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-17",
+      "phase": "Zasadnicza",
+      "round": 5,
+      "term_number": 5,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-100",
@@ -2175,8 +4069,8 @@
       "time": "18:00",
       "home": "Pallavolo Padova",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -2184,10 +4078,23 @@
       },
       "match_number": "100",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-24",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-101",
@@ -2197,8 +4104,8 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -2206,10 +4113,23 @@
       },
       "match_number": "101",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-24",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-102",
@@ -2219,8 +4139,8 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -2228,10 +4148,23 @@
       },
       "match_number": "102",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-24",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-97",
@@ -2241,8 +4174,8 @@
       "time": "18:00",
       "home": "Sir Susa Scai Perugia",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -2250,10 +4183,23 @@
       },
       "match_number": "97",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-24",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-98",
@@ -2263,8 +4209,8 @@
       "time": "18:00",
       "home": "Allianz Milano",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -2272,10 +4218,23 @@
       },
       "match_number": "98",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-24",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-99",
@@ -2285,8 +4244,8 @@
       "time": "18:00",
       "home": "Vero Volley Monza",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -2294,10 +4253,23 @@
       },
       "match_number": "99",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-24",
+      "phase": "Zasadnicza",
+      "round": 6,
+      "term_number": 6,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-103",
@@ -2307,8 +4279,8 @@
       "time": "18:00",
       "home": "Rana Verona",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -2316,10 +4288,23 @@
       },
       "match_number": "103",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-31",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-104",
@@ -2329,8 +4314,8 @@
       "time": "18:00",
       "home": "Itas Trentino",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -2338,10 +4323,23 @@
       },
       "match_number": "104",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-31",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-105",
@@ -2351,8 +4349,8 @@
       "time": "18:00",
       "home": "Valsa Group Modena",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -2360,10 +4358,23 @@
       },
       "match_number": "105",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-31",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-106",
@@ -2373,8 +4384,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -2382,10 +4393,23 @@
       },
       "match_number": "106",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-31",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-107",
@@ -2395,8 +4419,8 @@
       "time": "18:00",
       "home": "Cucine Lube Civitanova",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -2404,10 +4428,23 @@
       },
       "match_number": "107",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-31",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-108",
@@ -2417,8 +4454,8 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -2426,10 +4463,23 @@
       },
       "match_number": "108",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-01-31",
+      "phase": "Zasadnicza",
+      "round": 7,
+      "term_number": 7,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-109",
@@ -2439,8 +4489,8 @@
       "time": "18:00",
       "home": "Sir Susa Scai Perugia",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -2448,10 +4498,23 @@
       },
       "match_number": "109",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-14",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-110",
@@ -2461,8 +4524,8 @@
       "time": "18:00",
       "home": "Allianz Milano",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -2470,10 +4533,23 @@
       },
       "match_number": "110",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-14",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-111",
@@ -2483,8 +4559,8 @@
       "time": "18:00",
       "home": "Vero Volley Monza",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -2492,10 +4568,23 @@
       },
       "match_number": "111",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-14",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-112",
@@ -2505,8 +4594,8 @@
       "time": "18:00",
       "home": "Pallavolo Padova",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -2514,10 +4603,23 @@
       },
       "match_number": "112",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-14",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-113",
@@ -2527,8 +4629,8 @@
       "time": "18:00",
       "home": "Cisterna Volley",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -2536,10 +4638,23 @@
       },
       "match_number": "113",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-14",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-114",
@@ -2549,8 +4664,8 @@
       "time": "18:00",
       "home": "Tinet Prata di Pordenone",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -2558,10 +4673,23 @@
       },
       "match_number": "114",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-14",
+      "phase": "Zasadnicza",
+      "round": 8,
+      "term_number": 8,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-115",
@@ -2571,8 +4699,8 @@
       "time": "18:00",
       "home": "Rana Verona",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -2580,10 +4708,23 @@
       },
       "match_number": "115",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-21",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-116",
@@ -2593,8 +4734,8 @@
       "time": "18:00",
       "home": "Itas Trentino",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -2602,10 +4743,23 @@
       },
       "match_number": "116",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-21",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-117",
@@ -2615,8 +4769,8 @@
       "time": "18:00",
       "home": "Valsa Group Modena",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -2624,10 +4778,23 @@
       },
       "match_number": "117",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-21",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-118",
@@ -2637,8 +4804,8 @@
       "time": "18:00",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -2646,10 +4813,23 @@
       },
       "match_number": "118",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-21",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-119",
@@ -2659,8 +4839,8 @@
       "time": "18:00",
       "home": "Cucine Lube Civitanova",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -2668,10 +4848,23 @@
       },
       "match_number": "119",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-21",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-120",
@@ -2681,8 +4874,8 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -2690,10 +4883,23 @@
       },
       "match_number": "120",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-21",
+      "phase": "Zasadnicza",
+      "round": 9,
+      "term_number": 9,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-121",
@@ -2703,8 +4909,8 @@
       "time": "20:30",
       "home": "Gas Sales Bluenergy Piacenza",
       "away": "Acqua Sant'Anna Cuneo",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6861",
+      "away_team_id": "6863",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaBancaSport",
@@ -2712,10 +4918,23 @@
       },
       "match_number": "121",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-24",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-122",
@@ -2725,8 +4944,8 @@
       "time": "20:30",
       "home": "Cucine Lube Civitanova",
       "away": "Sir Susa Scai Perugia",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6860",
+      "away_team_id": "6865",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Eurosuole Forum",
@@ -2734,10 +4953,23 @@
       },
       "match_number": "122",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-24",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-123",
@@ -2747,8 +4979,8 @@
       "time": "20:30",
       "home": "Vero Volley Monza",
       "away": "Itas Trentino",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6868",
+      "away_team_id": "6862",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "OpiquadArena",
@@ -2756,10 +4988,23 @@
       },
       "match_number": "123",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-24",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-124",
@@ -2769,8 +5014,8 @@
       "time": "20:30",
       "home": "Pallavolo Padova",
       "away": "Allianz Milano",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6866",
+      "away_team_id": "6858",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Kioene Arena",
@@ -2778,10 +5023,23 @@
       },
       "match_number": "124",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-24",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-125",
@@ -2791,8 +5049,8 @@
       "time": "20:30",
       "home": "Cisterna Volley",
       "away": "Rana Verona",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6859",
+      "away_team_id": "6864",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cisterna di Latina",
@@ -2800,10 +5058,23 @@
       },
       "match_number": "125",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-24",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-126",
@@ -2813,8 +5084,8 @@
       "time": "20:30",
       "home": "Tinet Prata di Pordenone",
       "away": "Valsa Group Modena",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6897",
+      "away_team_id": "6867",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport \"Crisafulli\"",
@@ -2822,10 +5093,23 @@
       },
       "match_number": "126",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-24",
+      "phase": "Zasadnicza",
+      "round": 10,
+      "term_number": 10,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-127",
@@ -2835,8 +5119,8 @@
       "time": "18:00",
       "home": "Sir Susa Scai Perugia",
       "away": "Vero Volley Monza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6865",
+      "away_team_id": "6868",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala Barton Energy",
@@ -2844,10 +5128,23 @@
       },
       "match_number": "127",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-28",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-128",
@@ -2857,8 +5154,8 @@
       "time": "18:00",
       "home": "Rana Verona",
       "away": "Gas Sales Bluenergy Piacenza",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6864",
+      "away_team_id": "6861",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Pala MAGIS",
@@ -2866,10 +5163,23 @@
       },
       "match_number": "128",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-28",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-129",
@@ -2879,8 +5189,8 @@
       "time": "18:00",
       "home": "Itas Trentino",
       "away": "Cucine Lube Civitanova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6862",
+      "away_team_id": "6860",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "BTS Arena",
@@ -2888,10 +5198,23 @@
       },
       "match_number": "129",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-28",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-130",
@@ -2901,8 +5224,8 @@
       "time": "18:00",
       "home": "Valsa Group Modena",
       "away": "Pallavolo Padova",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6867",
+      "away_team_id": "6866",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "PalaSport G.Panini",
@@ -2910,10 +5233,23 @@
       },
       "match_number": "130",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-28",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-131",
@@ -2923,8 +5259,8 @@
       "time": "18:00",
       "home": "Allianz Milano",
       "away": "Tinet Prata di Pordenone",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6858",
+      "away_team_id": "6897",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Allianz Cloud (Palalido)",
@@ -2932,10 +5268,23 @@
       },
       "match_number": "131",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-28",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     },
     {
       "id": "it-2027-ritorno-132",
@@ -2945,8 +5294,8 @@
       "time": "18:00",
       "home": "Acqua Sant'Anna Cuneo",
       "away": "Cisterna Volley",
-      "home_team_id": null,
-      "away_team_id": null,
+      "home_team_id": "6863",
+      "away_team_id": "6859",
       "source_url": "https://ww2.legavolley.it/Calendario.asp",
       "venue": {
         "name": "Palasport di Cuneo",
@@ -2954,10 +5303,23 @@
       },
       "match_number": "132",
       "status": "scheduled",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 0,
+      "away_sets": 0,
       "set_scores": [],
-      "current_points": null
+      "current_points": null,
+      "league": "italy",
+      "date_iso": "2027-02-28",
+      "phase": "Zasadnicza",
+      "round": 11,
+      "term_number": 11,
+      "round_source_label": "Kolejka",
+      "set_points": [],
+      "home_points": 0,
+      "away_points": 0,
+      "home_logo": "",
+      "away_logo": "",
+      "broadcast": [],
+      "details_checked_at": null
     }
   ]
 }
