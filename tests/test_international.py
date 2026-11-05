@@ -6,7 +6,7 @@ import unittest
 
 from scripts.update_international import (
     build_feed, japan_months, japanese_time, parse_italian_heading,
-    parse_italy, parse_japan_day, parse_japan_month_days, write_feed,
+    parse_italy, parse_japan_day, parse_japan_month_days, parse_japan_detail_kickoff, write_feed,
 )
 
 ITALY = """
@@ -84,6 +84,11 @@ class InternationalParserTests(unittest.TestCase):
         from datetime import datetime
         self.assertEqual(japanese_time(datetime(2026, 11, 6), "18:35"), ("06.11.2026", "10:35"))
         self.assertEqual(japanese_time(datetime(2026, 10, 24), ""), ("24.10.2026", ""))
+
+    def test_finished_japanese_match_detail_restores_kickoff(self):
+        page = '<div class="match pre"><div class="col"><div class="date"><em>2026.10.24</em> (土) <em>13:05</em></div></div></div>'
+        self.assertEqual(parse_japan_detail_kickoff(page), ("24.10.2026", "06:05"))
+        self.assertIsNone(parse_japan_detail_kickoff("<div>No match details</div>"))
 
     def test_bad_ajax_fragment_fails_not_overwrites(self):
         with self.assertRaises(RuntimeError):
