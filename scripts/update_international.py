@@ -403,31 +403,128 @@ def japan_feed(session, max_days=MAX_DAY_REQUESTS, pause=0.4, known_times=None):
     return build_feed("japan", "SV.League Men", JAPAN_URL, matches)
 
 
+def parse_set_points(scores):
+    """Convert canonical 25:22 style scores to TAURON's home/away point pairs."""
+    points = []
+    for value in scores or []:
+        found = re.fullmatch(r"(\\d{1,2}):(\\d{1,2})", str(value))
+        if not found:
+            raise RuntimeError(f"Malformed official set score: {value!r}")
+        home, away = map(int, found.groups())
+        if home == away or max(home, away) < 15 or max(home, away) > 40:
+            raise RuntimeError(f"Invalid set points: {value!r}")
+        points.append({"home": home, "away": away})
+    return points
+
+
+def make_standings(teams, matches, league):
+    """Derive standings from confirmed games; never invent official rankings."""
+    rows = {team: {
+        "team": team, "played": 0, "wins": 0, "losses": 0, "points": 0,
+        "sets_for": 0, "sets_against": 0, "points_for": 0, "points_against": 0
+    } for team in teams}
+    for match in matches:
+        if match["status"] != "finished":
+            continue
+        hs, vs = match["home_sets"], match["away_sets"]
+        if hs is None or vs is None or max(hs, vs) != 3:
+            continue
+        home, away = rows[match["home"]], rows[match["away"]]
+        home["played"] += 1
+        away["played"] += 1
+        home["wins"] += int(hs > vs)
+        home["losses"] += int(hs < vs)
+        away["wins"] += int(vs > hs)
+        away["losses"] += int(vs < hs)
+        home["sets_for"] += hs
+        home["sets_against"] += vs
+        away["sets_for"] += vs
+        away["sets_against"] += hs
+        home["points"] += 3 if (hs, vs) in ((3, 0), (3, 1)) else 2 if hs == 3 else 1 if hs == 2 else 0
+        away["points"] += 3 if (vs, hs) in ((3, 0), (3, 1)) else 2 if vs == 3 else 1 if vs == 2 else 0
+        home["points_for"] += match["home_points"]
+        home["points_against"] += match["away_points"]
+        away["points_for"] += match["away_points"]
+        away["points_against"] += match["home_points"]
+    values = list(rows.values())
+    # Japan's official standings rank win percentage first; Italy ranks league points.
+    def ratio(won, lost):
+        return won / lost if lost else float("inf") if won else 0
+    def order(row):
+        wins_rate = row["wins"] / row["played"] if row["played"] else 0
+        sets_ratio = ratio(row["sets_for"], row["sets_against"])
+        point_ratio = ratio(row["points_for"], row["points_against"])
+        if league == "japan":
+            return (-wins_rate, -row["points"], -sets_ratio, -point_ratio, row["team"])
+        return (-row["points"], -row["wins"], -sets_ratio, -point_ratio, row["team"])
+    values.sort(key=order)
+    for index, row in enumerate(values, 1):
+        row["rank"] = index
+    return values
+
+
 def build_feed(league, competition, url, matches):
     unique = {}
     logo_by_name = {}
-    for match in matches:
+    id_by_name = {}
+    for raw in matches:
+        match = dict(raw)
         logos = match.pop("team_logos", ["", ""])
-        for name, logo in zip((match["home"], match["away"]), logos):
-            if logo and name not in logo_by_name:
+        for name, logo, team_id in zip(
+            (match["home"], match["away"]), logos,
+            (match.get("home_team_id"), match.get("away_team_id"))
+        ):
+            if logo:
                 logo_by_name[name] = logo
+            if team_id:
+                id_by_name[name] = str(team_id)
+        match["league"] = league
+        date = datetime.strptime(match["date"], "%d.%m.%Y")
+        match["date_iso"] = date.strftime("%Y-%m-%d")
+        match["phase"] = "Zasadnicza"
+        round_match = re.search(r"Kolejka\\s*(\\d+)", match.get("group", ""))
+        match["round"] = int(round_match.group(1)) if round_match else None
+        match["term_number"] = match["round"]
+        match["round_source_label"] = "Kolejka"
+        match["source_url"] = match.get("source_url") or url
+        match["home_sets"] = match.get("home_sets") if match["status"] == "finished" else 0
+        match["away_sets"] = match.get("away_sets") if match["status"] == "finished" else 0
+        points = parse_set_points(match.get("set_scores", []))
+        if match["status"] == "finished" and points and len(points) != match["home_sets"] + match["away_sets"]:
+            raise RuntimeError(f"Set count mismatch for {match['id']}")
+        match["set_points"] = points
+        match["home_points"] = sum(point["home"] for point in points)
+        match["away_points"] = sum(point["away"] for point in points)
+        match["current_points"] = None
+        match["home_logo"] = logos[0] if logos else ""
+        match["away_logo"] = logos[1] if len(logos) > 1 else ""
+        match["broadcast"] = match.get("broadcast", [])
+        match["details_checked_at"] = match.get("details_checked_at")
+        match["venue"] = match.get("venue")
         previous = unique.get(match["id"])
         if previous and previous != match:
             raise RuntimeError("Duplicate match ID with inconsistent data")
         unique[match["id"]] = match
     matches = list(unique.values())
-    matches.sort(key=lambda m: (datetime.strptime(m["date"], "%d.%m.%Y"), m["time"], m["id"]))
+    matches.sort(key=lambda m: (datetime.strptime(m["date"], "%d.%m.%Y"), m["time"] or "99:99", m["id"]))
     if not matches:
         raise RuntimeError("Empty calendar")
-    teams = [{"name":name, "logo":logo_by_name.get(name, "")}
-             for name in sorted({name for m in matches for name in (m["home"], m["away"])})]
+    for match in matches:
+        if not match["home_logo"]:
+            match["home_logo"] = logo_by_name.get(match["home"], "")
+        if not match["away_logo"]:
+            match["away_logo"] = logo_by_name.get(match["away"], "")
+    names = sorted({name for m in matches for name in (m["home"], m["away"])})
+    teams = [{"name": name, "logo": logo_by_name.get(name, ""), "id": id_by_name.get(name)}
+             for name in names]
     return {
         "league": league,
         "competition": competition,
         "source": url,
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "teams": teams,
-        "table": [],
+        "table": make_standings(names, matches, league),
+        "table_source": "calculated_from_confirmed_match_results",
         "matches": matches,
     }
 
