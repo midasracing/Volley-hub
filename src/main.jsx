@@ -142,6 +142,7 @@ function DateStrip({ selected, onSelect }) {
   const [visibleMonth, setVisibleMonth] = useState(() => MONTH_FORMAT.format(selected));
   const pendingRebase = useRef(null);
   const selectedKey = dateKey(selected), anchorKey = dateKey(anchor);
+  const lastExternallySelected = useRef(selectedKey);
   const todayKey = dateKey(NOW());
   const previous = useRef({ selected: null, anchor: null, width: 0 });
   // Keep a bounded window of 181 days. When the user approaches either edge,
@@ -149,6 +150,10 @@ function DateStrip({ selected, onSelect }) {
   const days = useMemo(() => Array.from({ length: CALENDAR_RADIUS * 2 + 1 },
     (_, index) => addDays(anchor, index - CALENDAR_RADIUS)), [anchorKey]);
   useLayoutEffect(() => {
+    // Swiping may move far beyond the selected day. Do not pull the strip
+    // back to that day when it leaves the recycled window.
+    if (lastExternallySelected.current === selectedKey) return;
+    lastExternallySelected.current = selectedKey;
     if (days.some(day => dateKey(day) === selectedKey)) return;
     pendingRebase.current = null;
     setAnchor(selected);
