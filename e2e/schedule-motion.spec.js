@@ -119,6 +119,8 @@ test('swiping past month boundaries does not create blank days or reset to selec
   await expect(dayButtons.first()).not.toHaveAttribute('data-day', startingDay);
   const secondPast = await swipeTowardEdge('past');
   expect(secondPast).toBeLessThan(firstPast);
+  const thirdPast = await swipeTowardEdge('past');
+  expect(thirdPast).toBeLessThan(secondPast);
   await expect(page.locator('.vh-calendar-month')).not.toHaveText('listopad');
 
   // Going forward also extends seamlessly and still permits selection.
