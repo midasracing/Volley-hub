@@ -20,25 +20,6 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install beautifulsoup4
       - run: python -m unittest discover -s tests -p 'test_*.py'
-      - name: Diagnose complete season fixture markup
-        run: |
-          python - <<'PY'
-          from bs4 import BeautifulSoup
-          from urllib.request import urlopen
-          for league, url in [('men', 'https://www.tauronliga.pl/games/nocookies/1.html'), ('first', 'https://www.tauron1liga.pl/games/nocookies/1.html')]:
-              soup = BeautifulSoup(urlopen(url, timeout=30).read(), 'html.parser')
-              headings = [x for x in soup.find_all(['h2','h3','h4','h5','h6']) if 'Kolejka:' in x.get_text(' ', strip=True)]
-              print(league, 'rounds:', len(headings), 'first headings', [h.get_text(' ', strip=True) for h in headings[:3]], flush=True)
-              if headings:
-                  h = headings[0]
-                  print('round node:', str(h)[:1000], flush=True)
-                  for parent in [h.parent, h.parent.parent]:
-                      print('parent:', parent.name, parent.get('class'), 'text', parent.get_text(' ', strip=True)[:600], 'html', str(parent)[:1800], flush=True)
-                  node=h
-                  for _ in range(5):
-                      node=node.next_element
-                      print('next',getattr(node,'name',None),getattr(node,'get',lambda x:None)('class'),str(node)[:400],flush=True)
-          PY
       - name: Live PLS importer smoke test (both leagues)
         run: |
           python scripts/refresh_tauron.py
@@ -47,7 +28,7 @@ jobs:
           for key, file in [('men', 'data/tauron.json'), ('first', 'data/tauron1liga.json')]:
               data = json.load(open(file, encoding='utf-8'))
               games = data['matches']
-              assert len(games) >= 4, (key, len(games))
+              assert len(games) >= {'men': 182, 'first': 240}[key], (key, len(games))
               assert all(g.get('league') == key for g in games), key
               assert all(g.get('home') and g.get('away') for g in games), key
               assert all(g.get('date_iso') for g in games), key
