@@ -27,21 +27,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Build actual Rive route animation assets
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y fonts-dejavu-core libegl1 libgles2 libx11-6
-          python -m pip install --quiet fonttools
-          curl -fsSL https://releases.rive.app/cli/install.sh | sh
-          export PATH="$HOME/.rive/bin:$PATH"
-          rive switch 1.8.0
-          python scripts/build_route_rml.py
-          mkdir -p public/motion
-          for route in home matches competitions favorites; do
-            rive "motion/route/$route" --verify
-            rive "motion/route/$route" --once
-            cp "motion/route/$route/build/$route.riv" "public/motion/route-$route.riv"
-          done
       - run: npm install --no-audit --no-fund
       - run: npm test
       - run: npm run build
