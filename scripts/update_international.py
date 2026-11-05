@@ -84,7 +84,7 @@ def parse_italian_scorecard(html, expected=None):
         value = clean(cells[-1].get_text(" ", strip=True))
         if not re.fullmatch(r"[1-5]", number):
             continue
-        parsed = re.fullmatch(r"(\\d{1,2})-(\\d{1,2})", value)
+        parsed = re.fullmatch(r"(\d{1,2})-(\d{1,2})", value)
         if not parsed:
             continue
         a, b = map(int, parsed.groups())
@@ -162,7 +162,7 @@ def parse_italy(html):
             game = re.search(r"IdGara=(\d+)", game_link, re.I)
             match_id = f"it-{game.group(1)}" if game else f"it-{kickoff.year}-{phase}-{number}"
             team_refs = [
-                re.search(r"IdSquadra=(\\d+)", cells[index].get("onclick", ""), re.I)
+                re.search(r"IdSquadra=(\d+)", cells[index].get("onclick", ""), re.I)
                 for index in (1, 3)
             ]
             venue = clean(cells[5].get_text(" ", strip=True))
@@ -319,7 +319,7 @@ def parse_japan_day(html, year, month, day):
         if game_num:
             group += f" · mecz {game_num.group(1)}"
         logos = [urljoin(JAPAN_URL, team.select_one("img")["src"]) if team.select_one("img[src]") else "" for team in teams]
-        slugs = [re.search(r"/team/([^/]+)/emblem\\.", url).group(1) if re.search(r"/team/([^/]+)/emblem\\.", url) else None for url in logos]
+        slugs = [re.search(r"/team/([^/]+)/emblem\.", url).group(1) if re.search(r"/team/([^/]+)/emblem\.", url) else None for url in logos]
         venue_node = heading.select_one("p.reset a")
         venue_name = clean(venue_node.get_text(" ", strip=True)) if venue_node else ""
         results.append({
@@ -407,7 +407,7 @@ def parse_set_points(scores):
     """Convert canonical 25:22 style scores to TAURON's home/away point pairs."""
     points = []
     for value in scores or []:
-        found = re.fullmatch(r"(\\d{1,2}):(\\d{1,2})", str(value))
+        found = re.fullmatch(r"(\d{1,2}):(\d{1,2})", str(value))
         if not found:
             raise RuntimeError(f"Malformed official set score: {value!r}")
         home, away = map(int, found.groups())
@@ -482,7 +482,7 @@ def build_feed(league, competition, url, matches):
         date = datetime.strptime(match["date"], "%d.%m.%Y")
         match["date_iso"] = date.strftime("%Y-%m-%d")
         match["phase"] = "Zasadnicza"
-        round_match = re.search(r"Kolejka\\s*(\\d+)", match.get("group", ""))
+        round_match = re.search(r"Kolejka\s*(\d+)", match.get("group", ""))
         match["round"] = int(round_match.group(1)) if round_match else None
         match["term_number"] = match["round"]
         match["round_source_label"] = "Kolejka"
@@ -585,7 +585,12 @@ def main(argv=None):
         with requests.Session() as session:
             session.headers.update(HEADERS)
             if args.league == "italy":
-                feed = italy_feed(session, args.season)
+                try:
+                    old = json.loads(output.read_text(encoding="utf-8"))
+                    known_details = {m["id"]: m for m in old.get("matches", [])}
+                except (OSError, ValueError):
+                    known_details = {}
+                feed = italy_feed(session, args.season, known_details)
             else:
                 known_times = set()
                 try:
