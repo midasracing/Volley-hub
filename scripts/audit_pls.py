@@ -151,9 +151,15 @@ def audit(key, base, filename, team_count, round_count):
         if mid not in by_id:
             continue
         match = by_id[mid]
-        group = card.find_parent("section", attrs={"data-round": True})
-        check(group is not None and str(match.get("round")) == str(group.get("data-round")),
-              f"{key}:{mid}: wrong round")
+        # Independently derive round from the official visible heading,
+        # not from a potentially over-nested HTML section wrapper.
+        h = card.find_previous(
+            lambda tag: getattr(tag, "name", None) in ("h2", "h3", "h4", "h5", "h6")
+            and re.match(r"^Kolejka\s*:\s*\d+", clean(tag), re.I)
+        )
+        num = re.search(r"\d+", clean(h)).group() if h else None
+        check(h is not None and str(match.get("round")) == num,
+              f"{key}:{mid}: wrong round: JSON={match.get('round')}, official={num}")
         for side, cl in (("home", "left"), ("away", "right")):
             name = clean(card.select_one(".game-team." + cl))
             check(name == match[side], f"{key}:{mid}: {side} name mismatch: {name} vs {match[side]}")
