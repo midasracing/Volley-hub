@@ -28,11 +28,11 @@
   transition:color .09s ease}
 .vh-nav-item>span{display:block;max-width:0;opacity:0;overflow:hidden;min-width:0;
   font-size:14px;font-weight:750;transform:translate3d(-4px,0,0);
-  transition:opacity .22s cubic-bezier(.22,.8,.22,1)}
+  transition:opacity .09s ease}
 .vh-nav-item svg{flex:none;transition:color .09s ease}
 .vh-nav-item.active{gap:7px;background:transparent;color:white;box-shadow:none}
 .vh-nav-item.active>span{max-width:110px;opacity:1;transform:translate3d(0,0,0);
-  transition:opacity .22s cubic-bezier(.22,.8,.22,1)}
+  transition:opacity .09s ease}
 .vh-nav-item.active svg{color:#b4caff;transform:translateY(-1px) scale(1.05)}
 .vh-nav-item:active svg{transform:scale(.94)}
 .vh-nav-items:not(.is-ready) .vh-nav-item,
