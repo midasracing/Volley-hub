@@ -102,8 +102,11 @@ Importer zapisuje mecze, drużyny, daty, godziny i oficjalne wyniki zakończonyc
 do `data/italy.json` i `data/japan.json`. Godziny japońskich spotkań
 są przeliczane z Asia/Tokyo na **Europe/Warsaw**. Jeśli strona pomija godzinę
 zakończonego meczu, pozostaje ona pusta, chyba że zachowaliśmy ją
-z poprzedniego odczytu. Dane LIVE punkt po punkcie i kursy są osobną integracją
-Betclic (na razie klient Betclic jest opcjonalnym eksportem JSON, a nie strumieniem w UI).
+z poprzedniego odczytu. **LIVE dla Włoch i Japonii nie pochodzi z Betclic**:
+LegaVolley udostępnia sekcję aktualizacji na żywo (`https://ww2.legavolley.it/lvc/`),
+a SV.League stronę `https://www.svleague.jp/match/detail/{id}/?tab=live`
+z historią akcji punkt po punkcie. Są to źródła do osobnej, nadal niezweryfikowanej
+integracji LIVE; import terminarzy **nie odświeża punktów w trakcie meczu**.
 
 ```bash
 python -m pip install requests beautifulsoup4
@@ -121,9 +124,10 @@ i oszczędnie; frontend czyta statyczne pliki JSON, nie serwery ligowe.
 
 ## Opcjonalny klient kursów Betclic
 
-[`scripts/betclic_odds.py`](scripts/betclic_odds.py) pobiera kursy na zwycięzcę całego
-meczu siatkówki z Polski, Włoch i Japonii i eksportuje JSON. Domyślnie pobiera te trzy
-kraje, a opcja `--country` zawęża wybór. Instalacja i ograniczenia źródła są opisane w
+[`scripts/betclic_odds.py`](scripts/betclic_odds.py) eksportuje JSON z kursami na
+zwycięzcę całego meczu, **jeżeli** Betclic oferuje takie spotkanie. Opcje `--country`
+obsługują trzy kraje, ale ostatni rzeczywisty test zwrócił mecze **tylko z Polski**;
+nie należy traktować tego klienta jako źródła LIVE ani kursów włoskiej i japońskiej ligi. Instalacja i ograniczenia źródła są opisane w
 [`docs/betclic.md`](docs/betclic.md). Klient jest niezależny od frontendu i wymaga Pythona 3.10+.
 
 ## Diagnostyka scraperów
