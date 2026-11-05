@@ -6,7 +6,13 @@ on:
     - cron: "*/5 12-22 * * *"
     # Rest of the day: once, to pick up schedule and table changes.
     - cron: "20 6 * * *"
-  workflow_dispatch: # manual "Run workflow" button in the Actions tab
+  workflow_dispatch:
+    inputs:
+      full_details:
+        description: "Jednorazowo pobierz szczegóły wszystkich 422 meczów"
+        type: boolean
+        required: false
+        default: false
 
 # Allows the job to push the updated JSON back to the repo.
 permissions:
@@ -20,7 +26,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -32,7 +38,12 @@ jobs:
         run: pip install beautifulsoup4
 
       - name: Refresh data (TAURON Liga + TAURON 1. Liga, men)
-        run: python scripts/refresh_tauron.py
+        run: |
+          if [ "${{ inputs.full_details }}" = "true" ]; then
+            python scripts/refresh_tauron.py --full-details
+          else
+            python scripts/refresh_tauron.py
+          fi
 
       - name: Commit changes
         run: |
