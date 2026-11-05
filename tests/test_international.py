@@ -4,9 +4,13 @@ from pathlib import Path
 import tempfile
 import unittest
 
+from scripts.international_names import JAPANESE_TEAM_NAMES, romanize_team
+
 from scripts.update_international import (
     build_feed, japan_months, japanese_time, parse_italian_heading,
     parse_italy, parse_japan_day, parse_japan_month_days, parse_japan_detail_kickoff, write_feed,
+    parse_italian_scorecard, parse_italian_detail, parse_italy_club_logos,
+    parse_japan_standings, parse_set_points,
 )
 
 ITALY = """
@@ -119,6 +123,76 @@ class InternationalParserTests(unittest.TestCase):
             write_feed(path, new)
             stored = json.loads(path.read_text())
             self.assertEqual(stored["matches"][0]["time"], "05:35")
+
+
+class DeepInternationalTests(unittest.TestCase):
+    def test_all_twelve_teams_have_verified_latin_display_names(self):
+        self.assertEqual(len(JAPANESE_TEAM_NAMES), 12)
+        self.assertEqual(len(set(JAPANESE_TEAM_NAMES.values())), 12)
+        for short, display in JAPANESE_TEAM_NAMES.items():
+            self.assertEqual(romanize_team(short), display)
+            self.assertTrue(all(ord(ch) < 128 for ch in display))
+        with self.assertRaises(ValueError):
+            romanize_team("NEW UNKNOWN TEAM")
+
+    def test_italian_malformed_legacy_score_table_yields_valid_set_points(self):
+        html = """<table id="Tabellino"><tr><th>Set..</th><th>Punteggio</th></tr></table>
+        <tr><td id="DarkCol">1</td><td>25'</td><td>5-8</td><td>12-16</td><td>18-21</td><td id="DarkCol">20-25</td></tr>
+        <tr><td id="DarkCol">2</td><td>27'</td><td>4-8</td><td>10-16</td><td>16-21</td><td id="DarkCol">19-25</td></tr>
+        <tr><td id="DarkCol">3</td><td>32'</td><td>7-8</td><td>15-16</td><td>20-21</td><td id="DarkCol">26-28</td></tr>
+        <tr><td id="DarkCol">4</td><td></td><td></td><td></td><td></td><td id="DarkCol">0-0</td></tr>
+        <tr><td id="DarkCol">5</td><td></td><td></td><td></td><td></td><td id="DarkCol">0-0</td></tr>
+        <table id="Tabellino"><tr><td>Impianto</td><td>Pala MAGIS</td></tr>
+        <tr><td>Città</td><td>Verona</td></tr></table>
+        """
+        scores, venue = parse_italian_detail(html, (0, 3))
+        self.assertEqual(scores, ["20:25", "19:25", "26:28"])
+        self.assertEqual(venue["name"], "Pala MAGIS")
+        self.assertEqual(venue["city"], "Verona")
+        with self.assertRaises(RuntimeError):
+            parse_italian_scorecard(html, (3, 0))
+
+    def test_official_italian_badge_mapping(self):
+        page = '<img alt="Volleyball team Rana Verona logo" src="https://images.volleyballworld.com/image/logo_VER">'
+        page += ''.join(
+            f'<img alt="Volleyball team Club {number} logo" src="https://images.volleyballworld.com/logo/{number}">'
+            for number in range(11)
+        )
+        logos = parse_italy_club_logos(page)
+        self.assertEqual(len(logos), 12)
+        self.assertTrue(logos["Rana Verona"].startswith("https://images.volleyballworld.com/"))
+
+    def test_japanese_standings_are_represented_in_roman_letters(self):
+        rows = '<tr><th>順位</th></tr>'
+        for i, (source, display) in enumerate(JAPANESE_TEAM_NAMES.items(), 1):
+            rows += f'<tr><td>{i}</td><th>{source}</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>'
+        standings = parse_japan_standings('<table class="striped">' + rows + '</table>')
+        self.assertEqual({row["team"] for row in standings}, set(JAPANESE_TEAM_NAMES.values()))
+        self.assertEqual([row["rank"] for row in standings], list(range(1, 13)))
+
+    def test_all_tauron_base_fields_present(self):
+        it = build_feed("italy", "SuperLega", "https://source.example/", parse_italy(ITALY))
+        jp = build_feed("japan", "SV.League", "https://source.example/",
+                        parse_japan_day(JAPAN, 2026, 11, 7))
+        essential = {
+            "id", "league", "competition", "date", "time", "date_iso",
+            "round", "round_source_label", "phase", "status", "home", "away",
+            "home_sets", "away_sets", "set_scores", "set_points", "home_points",
+            "away_points", "current_points", "source_url", "home_team_id",
+            "away_team_id", "home_logo", "away_logo", "match_number",
+            "term_number", "venue", "details_checked_at", "broadcast",
+        }
+        for feed in (it, jp):
+            self.assertTrue(all(essential <= match.keys() for match in feed["matches"]))
+            self.assertEqual(len(feed["table"]), len(feed["teams"]))
+            self.assertTrue(all(row["played"] == row["wins"] + row["losses"]
+                                for row in feed["table"]))
+        self.assertEqual(jp["matches"][0]["home"], "Suntory Sunbirds Osaka" if jp["matches"][0]["id"] == "jp-37976" else "Voreas Hokkaido")
+
+    def test_finished_point_sums_match_set_breakdown(self):
+        points = parse_set_points(["20:25", "19:25", "26:28"])
+        self.assertEqual(sum(p["home"] for p in points), 65)
+        self.assertEqual(sum(p["away"] for p in points), 78)
 
 
 if __name__ == "__main__":
