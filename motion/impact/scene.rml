@@ -3,15 +3,15 @@
     <LayoutComponentStyle name="Artboard Style" id="0:5"/>
     <Shape name="Blood slash 1" id="0:20" x="-450" y="120" rotation="-0.16" opacity="0">
       <Rectangle width="520" height="420"/>
-      <Fill><SolidColor colorValue="FF650918"/></Fill>
+      <Fill><SolidColor colorValue="FF750001"/></Fill>
     </Shape>
     <Shape name="Blood slash 2" id="0:21" x="-450" y="120" rotation="-0.16" opacity="0">
       <Rectangle width="520" height="420"/>
-      <Fill><SolidColor colorValue="FFB30818"/></Fill>
+      <Fill><SolidColor colorValue="FFFC0001"/></Fill>
     </Shape>
     <Shape name="Blood slash 3" id="0:22" x="-450" y="120" rotation="-0.16" opacity="0">
       <Rectangle width="520" height="420"/>
-      <Fill><SolidColor colorValue="FFE02038"/></Fill>
+      <Fill><SolidColor colorValue="FFFF3031"/></Fill>
     </Shape>
     <StateMachine name="Impact" id="0:7"><StateMachineLayer name="Sweep" id="0:8">
       <AnyState x="0" y="-150"/><ExitState x="400" y="-150"/><EntryState x="0" y="0"><StateTransition stateToId="0:12"/></EntryState>

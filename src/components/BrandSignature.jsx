@@ -3,7 +3,7 @@
 export default function BrandSignature() {
   return <div className="vh-brand-signature">
     <img
-      src={import.meta.env.BASE_URL + 'kiedy-siatka-logo.svg?v=4'}
+      src={import.meta.env.BASE_URL + 'kiedy-siatka-logo.svg?v=5'}
       alt="Kiedy Siatka?"
       width="1180"
       height="655"

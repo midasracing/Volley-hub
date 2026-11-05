@@ -8,7 +8,7 @@ RuntimeLoader.getInstance(() => {}, () => {});
 export function createImpact(canvas, onReady, onDone) {
   const animation = new Rive({
     canvas,
-    src: import.meta.env.BASE_URL + 'motion/impact.riv',
+    src: import.meta.env.BASE_URL + 'motion/impact.riv?v=2',
     artboard: 'Impact',
     stateMachine: 'Impact',
     autoplay: true,
@@ -24,7 +24,7 @@ export function createImpact(canvas, onReady, onDone) {
 export function createEntrance(canvas, onReady, onFail) {
   const animation = new Rive({
     canvas,
-    src: import.meta.env.BASE_URL + 'motion/entrance.riv?v=3',
+    src: import.meta.env.BASE_URL + 'motion/entrance.riv?v=4',
     artboard: 'Entrance',
     stateMachine: 'Entrance',
     autoplay: false,

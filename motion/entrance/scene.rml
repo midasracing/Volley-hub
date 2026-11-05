@@ -4,11 +4,11 @@
     <CubicEaseInterpolator id="0:30" x1="0.16" y1="1" x2="0.3" y2="1"/>
     <Shape name="Deep red plane" id="0:20" x="-600" y="500" rotation="-0.24" opacity="0">
       <Rectangle width="520" height="1500"/>
-      <Fill><SolidColor colorValue="FF650B1C"/></Fill>
+      <Fill><SolidColor colorValue="FF750001"/></Fill>
     </Shape>
     <Shape name="Blood red plane" id="0:21" x="-800" y="500" rotation="-0.24" opacity="0">
       <Rectangle width="380" height="1500"/>
-      <Fill><SolidColor colorValue="FFB30818"/></Fill>
+      <Fill><SolidColor colorValue="FFFC0001"/></Fill>
     </Shape>
     <StateMachine name="Entrance" id="0:7"><StateMachineLayer name="Background" id="0:8">
       <AnyState x="0" y="-150"/><ExitState x="400" y="-150"/>

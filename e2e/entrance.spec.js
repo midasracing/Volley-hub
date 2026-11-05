@@ -27,7 +27,7 @@ test('home entrance uses the original logo, has no skip button and never replays
   await page.goto('/');
   const intro = page.locator('.vh-startup-intro');
   await expect(intro).toBeVisible();
-  await expect(intro.locator('img')).toHaveAttribute('src', /kiedy-siatka-logo\.svg\?v=4$/);
+  await expect(intro.locator('img')).toHaveAttribute('src', /kiedy-siatka-logo\.svg\?v=5$/);
   await expect(intro.locator('img')).toHaveAttribute('alt', '');
   await expect(intro).not.toContainText('WCHODZIMY DO GRY');
   await expect(intro.locator('.vh-startup-rule')).toHaveCount(0);

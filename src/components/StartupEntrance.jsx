@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './StartupEntrance.css';
 
-const LOGO = import.meta.env.BASE_URL + 'kiedy-siatka-logo.svg?v=4';
+const LOGO = import.meta.env.BASE_URL + 'kiedy-siatka-logo.svg?v=5';
 
 // One unchanged SVG travels from the opening composition into the real header.
 // Only transforms and opacity animate; feed loading never gates the entrance.
