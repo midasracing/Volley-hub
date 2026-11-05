@@ -1,5 +1,5 @@
-/* A single immediately visible route; no artificial entrance delay.
-   The independent spring below remains responsive during content switches. */
+/* Route motion runs through Web Animations on transform and opacity only.
+   Base styles always show the destination, even after an interrupted switch. */
 .vh-route-stage{position:relative;isolation:isolate}
 .vh-page{position:relative;min-width:0}
 .vh-page-enter{animation:none;transition:none;transform:none;opacity:1}

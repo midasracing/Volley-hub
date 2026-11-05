@@ -173,6 +173,7 @@ test('reduced motion skips page exit transitions', async ({ page }) => {
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Rozgrywki' })).toBeVisible();
   await expect(page.locator('.vh-page-exit')).toHaveCount(0);
   await expect(page.locator('.vh-page-enter')).toHaveCount(0);
+  expect(await page.locator('#main-content').evaluate(el => el.getAnimations().length)).toBe(0);
 });
 
 test('quick tab changes keep navigation and content synchronized', async ({ page }) => {
@@ -333,7 +334,7 @@ test('mobile navigation, date strip and saved favorites survive the cleanup', as
   await expect(page.locator('.vh-tab-panel:not([hidden])').getByText('TAURON Liga Mężczyzn').first()).toBeVisible();
 });
 
-test('tabs display a new page without CSS entrance delay or extra icon animations', async ({ page }) => {
+test('tabs reveal immediately with native motion and no extra icon animations', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Główna nawigacja' });
   for (const [label, target] of [['Kalendarz','matches'], ['Ulubione','favorites'], ['Główna','home']]) {
@@ -451,4 +452,31 @@ test('cached inactive tabs stay out of focus, accessibility and document scrolli
     const host = el.getBoundingClientRect();
     return Math.abs(day.left + day.width / 2 - host.left - host.width / 2);
   })).toBeLessThan(3);
+});
+
+
+test('route motion follows navigation direction, interrupts cleanly and respects reduced motion', async ({ page }) => {
+  await page.goto('/');
+  const main = page.locator('#main-content');
+  for (const [label, target, sign] of [['Kalendarz','matches',1], ['Ulubione','favorites',1], ['Główna','home',-1]]) {
+    const motion = await page.evaluate(async ({ label }) => {
+      document.querySelector(`.vh-nav-item[aria-label="${label}"]`).click();
+      await new Promise(requestAnimationFrame);
+      const host = document.querySelector('#main-content');
+      const animations = host.getAnimations().filter(a => a.id === 'vh-route-transition');
+      return { page: host.dataset.page, count: animations.length, frames: animations[0]?.effect.getKeyframes() };
+    }, { label });
+    expect(motion.page).toBe(target);
+    expect(motion.count).toBe(1);
+    expect(motion.frames[0].transform).toMatch(sign > 0 ? /^translate3d\(12px/ : /^translate3d\(-12px/);
+  }
+  await expect.poll(() => main.evaluate(el => el.getAnimations().length)).toBe(0);
+  await expect(main).toHaveCSS('opacity', '1');
+  await expect(main).toHaveCSS('transform', 'none');
+  await page.getByRole('button', { name: 'Kalendarz', exact: true }).click();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect.poll(() => main.evaluate(el => el.getAnimations().length)).toBe(0);
+  await expect(main).toHaveCSS('opacity', '1');
+  await page.getByRole('button', { name: 'Główna', exact: true }).click();
+  expect(await main.evaluate(el => el.getAnimations().length)).toBe(0);
 });
