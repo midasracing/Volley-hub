@@ -191,7 +191,7 @@ def parse_italy(html):
     return matches
 
 
-def italy_feed(session, season):
+def italy_feed(session, season, known_details=None, pause=0.25):
     matches = []
     for phase in (1, 2):
         html = get_html(session, ITALY_URL, {
@@ -201,6 +201,33 @@ def italy_feed(session, season):
         if len(part) < 40:
             raise RuntimeError(f"Incomplete SuperLega schedule, phase {phase}: {len(part)} games")
         matches.extend(part)
+    known_details = known_details or {}
+    # Read only completed score sheets lacking saved set points.
+    detail_reads = 0
+    for match in matches:
+        if match["status"] != "finished":
+            continue
+        previous = known_details.get(match["id"], {})
+        if previous.get("set_scores") and len(previous["set_scores"]) == match["home_sets"] + match["away_sets"]:
+            for key in ("set_scores", "venue", "details_checked_at"):
+                if previous.get(key):
+                    match[key] = previous[key]
+            continue
+        if detail_reads >= 45 or "IdGara=" not in match["source_url"]:
+            continue
+        detail_reads += 1
+        try:
+            body = get_html(session, match["source_url"])
+            scores, detail_venue = parse_italian_detail(body, (match["home_sets"], match["away_sets"]))
+            if scores:
+                match["set_scores"] = scores
+                match["details_checked_at"] = datetime.now(timezone.utc).isoformat()
+            if detail_venue:
+                match["venue"] = {**(match.get("venue") or {}), **detail_venue}
+        except (requests.RequestException, RuntimeError, ValueError) as error:
+            print(f"Cannot read Italian game sheet {match['id']}: {error}", file=__import__("sys").stderr)
+        if pause:
+            time.sleep(pause)
     return build_feed("italy", "SuperLega Credem Banca", ITALY_URL, matches)
 
 
@@ -260,9 +287,10 @@ def parse_japan_day(html, year, month, day):
         teams = detail.select("ul.reset > li")
         if len(teams) != 2:
             raise RuntimeError("Unrecognized SV.League home/away layout")
-        names = [clean(team.select_one("b").get_text(" ", strip=True)) if team.select_one("b") else "" for team in teams]
-        if not all(names):
+        japanese_names = [clean(team.select_one("b").get_text(" ", strip=True)) if team.select_one("b") else "" for team in teams]
+        if not all(japanese_names):
             raise RuntimeError("SV.League game without both team names")
+        names = [romanize_team(value) for value in japanese_names]
         link = detail.select_one('a[href*="/match/detail/"]')
         found = re.search(r"/match/detail/(\d+)/?", link.get("href", "")) if link else None
         if not found:
@@ -291,6 +319,9 @@ def parse_japan_day(html, year, month, day):
         if game_num:
             group += f" · mecz {game_num.group(1)}"
         logos = [urljoin(JAPAN_URL, team.select_one("img")["src"]) if team.select_one("img[src]") else "" for team in teams]
+        slugs = [re.search(r"/team/([^/]+)/emblem\\.", url).group(1) if re.search(r"/team/([^/]+)/emblem\\.", url) else None for url in logos]
+        venue_node = heading.select_one("p.reset a")
+        venue_name = clean(venue_node.get_text(" ", strip=True)) if venue_node else ""
         results.append({
             "id": "jp-" + found.group(1),
             "competition": "SV.League Men",
@@ -299,6 +330,11 @@ def parse_japan_day(html, year, month, day):
             "time": hour,
             "home": names[0],
             "away": names[1],
+            "home_team_id": slugs[0],
+            "away_team_id": slugs[1],
+            "source_url": f"https://www.svleague.jp/match/detail/{found.group(1)}/",
+            "venue": {"name": venue_name, "city": "", "address": ""} if venue_name else None,
+            "match_number": game_num.group(1) if game_num else None,
             "home_sets": home_sets,
             "away_sets": away_sets,
             "set_scores": scores,
