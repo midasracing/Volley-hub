@@ -562,7 +562,7 @@ def parse_full_season(soup, key, base, previous=None):
         # The nearest preceding heading determines the actual fixture round.
         heading = card.find_previous(
             lambda tag: getattr(tag, "name", None) in ("h2", "h3", "h4", "h5", "h6")
-            and re.search(r"^Kolejka\\s*:\\s*\\d+", norm(tag.get_text(" ", strip=True)), re.I)
+            and re.search(r"^Kolejka\s*:\s*\d+", norm(tag.get_text(" ", strip=True)), re.I)
         )
         if heading is None:
             continue
@@ -597,7 +597,7 @@ def parse_full_season(soup, key, base, previous=None):
             image_url = image.get("src") or image.get("data-src") if image else ""
             logos.append(urljoin(base, image_url) if image_url and not image_url.startswith("data:") else "")
 
-        round_value = re.search(r"Kolejka\\s*:\\s*(\\d+)", heading.get_text(" ", strip=True), re.I).group(1)
+        round_value = re.search(r"Kolejka\s*:\s*(\d+)", heading.get_text(" ", strip=True), re.I).group(1)
         try:
             round_number = int(round_value)
         except (ValueError, TypeError):
