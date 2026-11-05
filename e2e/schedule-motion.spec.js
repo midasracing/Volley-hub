@@ -73,3 +73,63 @@ test('reduced motion changes the day immediately and expands sets without stagge
   await expect(results.getByRole('region', { name: 'Wyniki setów' })).toBeVisible();
   expect(await results.locator('.vh-sets > span').evaluateAll(cells => cells.every(cell => cell.getAnimations().length === 0))).toBe(true);
 });
+
+
+test('swiping past month boundaries does not create blank days or reset to selected month', async ({ page }) => {
+  await setup(page);
+  const strip = page.getByRole('tablist', { name: 'Wybierz dzień' });
+  const dayButtons = strip.locator('.im-day');
+  await expect(dayButtons).toHaveCount(181);
+  const startingDay = await dayButtons.first().getAttribute('data-day');
+
+  const swipeTowardEdge = async (side) => {
+    const target = await strip.evaluate((host, direction) => {
+      const nodes = [...host.querySelectorAll('.im-day')];
+      const item = nodes[direction === 'past' ? 16 : nodes.length - 17];
+      const day = item.dataset.day;
+      host.scrollLeft = item.offsetLeft + item.offsetWidth / 2 - host.clientWidth / 2;
+      host.dispatchEvent(new Event('scroll', { bubbles: true }));
+      return day;
+    }, side);
+    // React must rebase the off-screen window without moving the day in view.
+    await expect.poll(() => strip.evaluate(host => {
+      const rect = host.getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+      const active = [...host.querySelectorAll('.im-day')].find(day => {
+        const box = day.getBoundingClientRect();
+        return box.left <= center && box.right >= center;
+      });
+      return active?.dataset.day;
+    })).toBe(target);
+    await expect(dayButtons).toHaveCount(181);
+    await expect.poll(() => strip.evaluate(host => {
+      const box = host.getBoundingClientRect();
+      const dates = [...host.querySelectorAll('.im-day')];
+      return dates.some(day => {
+        const rect = day.getBoundingClientRect();
+        return rect.left < box.left + box.width / 2 && rect.right > box.left + box.width / 2;
+      });
+    })).toBe(true);
+    return target;
+  };
+
+  // Continue beyond the original 90-day edge twice; the selected day can
+  // leave the DOM without yanking the user back to November.
+  const firstPast = await swipeTowardEdge('past');
+  await expect(dayButtons.first()).not.toHaveAttribute('data-day', startingDay);
+  const secondPast = await swipeTowardEdge('past');
+  expect(secondPast).toBeLessThan(firstPast);
+  await expect(page.locator('.vh-calendar-month')).not.toHaveText('listopad');
+
+  // Going forward also extends seamlessly and still permits selection.
+  await swipeTowardEdge('future');
+  const visible = await strip.evaluate(host => {
+    const center = host.getBoundingClientRect().left + host.clientWidth / 2;
+    return [...host.querySelectorAll('.im-day')].find(day => {
+      const rect = day.getBoundingClientRect();
+      return rect.left <= center && rect.right >= center;
+    })?.dataset.day;
+  });
+  await strip.locator('.im-day[data-day="' + visible + '"]').click();
+  await expect(strip.locator('.im-day[data-day="' + visible + '"]')).toHaveAttribute('aria-selected', 'true');
+});
