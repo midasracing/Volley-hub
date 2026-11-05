@@ -737,7 +737,7 @@ def apply_point_scores(match, scores, active=None):
     match["current_points"] = active
 
 
-def run_league(key, cfg):
+def run_league(key, cfg, full_details=False):
     base = cfg["base"]
     out = Path(cfg["out"])
     previous = load_previous(out)
@@ -853,6 +853,11 @@ def run_league(key, cfg):
                     if scores is not None:
                         apply_point_scores(by_id[mid], scores, active)
                     by_id[mid].update(metadata)
+                    # The detailed page has been examined; persist that fact
+                    # even when PLS has not yet announced arena or broadcast.
+                    by_id[mid]["details_checked_at"] = datetime.datetime.now(
+                        datetime.timezone.utc
+                    ).isoformat()
                 except Exception as exc:
                     print(f"WARNING [{key}]: points for {match['id']} unavailable: {exc}",
                           file=sys.stderr)
@@ -896,29 +901,110 @@ def run_league(key, cfg):
         except (ValueError, TypeError):
             match["date_iso"] = None
 
-    # Detailed pages also contain the venue, TV broadcaster and the official
-    # fixture 'Termin' number. Reuse verified metadata from previous snapshots.
+    # Preserve confirmed details by match ID, not by club name. Current fixture
+    # TV labels take priority over old announcements (broadcasters may change).
     previous_by_id = {
         str(row["id"]): row for row in previous.get("matches", [])
         if isinstance(row, dict) and row.get("id")
     }
-    detail_budget = 4  # avoid hammering official sites every five minutes
     for match in matches:
-        old = previous_by_id.get(str(match.get("id")), {})
-        for field in ("term_number", "phase", "match_number",
-                      "venue", "broadcast"):
-            if field in old:
+        old = previous_by_id.get(str(match["id"]), {})
+        for field in ("venue", "match_number", "term_number", "details_checked_at"):
+            if field in old and field not in match:
                 match[field] = old[field]
-        if not match.get("id") or detail_budget <= 0:
-            continue
-        if match.get("round") is not None and match.get("venue"):
-            continue
-        detail_budget -= 1
+
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    today = now_utc.astimezone(TZ).date()
+
+    def details_age_days(match):
+        raw = match.get("details_checked_at")
+        if not raw:
+            return float("inf")
         try:
-            detail_soup = BeautifulSoup(get(match["source_url"], base), "html.parser")
-            match.update(detail_metadata(detail_soup))
-        except Exception as exc:
-            print(f"INFO [{key}]: metadata unavailable for match {match['id']}: {exc}")
+            checked = datetime.datetime.fromisoformat(raw.replace("Z", "+00:00"))
+            if checked.tzinfo is None:
+                return float("inf")
+            return max(0, (now_utc - checked).total_seconds() / 86400)
+        except (TypeError, ValueError):
+            return float("inf")
+
+    def details_priority(match):
+        try:
+            days = (datetime.date.fromisoformat(match["date_iso"]) - today).days
+        except (TypeError, ValueError):
+            days = 365
+        # Prioritize today's matches and the coming 30 days (TV and venues
+        # are likeliest to be announced shortly before kickoff).
+        if -2 <= days <= 30:
+            return (0, abs(days), match["id"])
+        if days > 30:
+            return (1, days, match["id"])
+        return (2, -days, match["id"])
+
+    def due_for_details(match):
+        age = details_age_days(match)
+        if age < 1 / 48:  # already fetched in this very refresh (points pass)
+            return False
+        if full_details:
+            return True
+        if age == float("inf"):
+            return True
+        try:
+            days = (datetime.date.fromisoformat(match["date_iso"]) - today).days
+        except (TypeError, ValueError):
+            days = 365
+        if -2 <= days <= 30:
+            return age >= 3
+        if days > 30:
+            return age >= 28
+        return age >= 90  # completed games rarely change their venue
+
+    candidates = sorted(
+        (m for m in matches if m.get("id") and due_for_details(m)),
+        key=details_priority,
+    )
+    # Regular frequent updates are bounded. An explicit --full-details run
+    # backfills all 422 matches, then later runs reuse the checked timestamp.
+    detail_batch = candidates if full_details else candidates[:24]
+    if detail_batch:
+        print(
+            f"INFO [{key}]: refreshing details for {len(detail_batch)} / "
+            f"{len(candidates)} due matches (full={full_details})", flush=True
+        )
+
+    def fetch_metadata(match):
+        detail = BeautifulSoup(get(match["source_url"], base), "html.parser")
+        return match["id"], detail_metadata(detail)
+
+    failed_details = []
+    if detail_batch:
+        by_id = {m["id"]: m for m in matches}
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            futures = {pool.submit(fetch_metadata, m): m for m in detail_batch}
+            for future in as_completed(futures):
+                match = futures[future]
+                try:
+                    mid, metadata = future.result()
+                    by_id[mid].update(metadata)
+                    by_id[mid]["details_checked_at"] = now_utc.isoformat()
+                except Exception as exc:
+                    failed_details.append(match["id"])
+                    print(f"WARNING [{key}]: metadata unavailable for "
+                          f"{match['id']}: {exc}", file=sys.stderr)
+    if full_details:
+        unchecked = [m["id"] for m in matches if not m.get("details_checked_at")]
+        if unchecked or failed_details:
+            raise RuntimeError(
+                f"Full details audit incomplete for {key}: "
+                f"{len(unchecked)} unchecked and {len(failed_details)} failed "
+                f"(examples: {(unchecked + failed_details)[:5]})"
+            )
+
+    checked = sum(bool(m.get("details_checked_at")) for m in matches)
+    halls = sum(bool(m.get("venue", {}).get("name")) for m in matches)
+    tv = sum(bool(m.get("broadcast")) for m in matches)
+    print(f"INFO [{key}]: details checked={checked}/{len(matches)}, "
+          f"venues={halls}, broadcasts={tv}", flush=True)
 
     if len(matches) < 4:
         print(f"WARNING [{key}]: only {len(matches)} matches parsed (end of season or a layout change?).")
@@ -952,13 +1038,17 @@ def run_league(key, cfg):
 def main():
     parser = argparse.ArgumentParser(description="Refresh TAURON Liga data for Volley Hub.")
     parser.add_argument("--league", choices=[*LEAGUES, "all"], default="all")
+    parser.add_argument(
+        "--full-details", action="store_true",
+        help="Check official detailed pages for every match (one-time backfill/audit).",
+    )
     args = parser.parse_args()
 
     keys = list(LEAGUES) if args.league == "all" else [args.league]
     updated = 0
     for key in keys:
         try:
-            run_league(key, LEAGUES[key])
+            run_league(key, LEAGUES[key], full_details=args.full_details)
             updated += 1
         except Exception as exc:  # one broken league must not block the others
             print(f"WARNING [{key}]: not updated: {exc}", file=sys.stderr)
