@@ -2,7 +2,7 @@
   "league": "japan",
   "competition": "SV.League Men",
   "source": "https://www.svleague.jp/match/sv/men/",
-  "updated_at": "2026-11-05T16:09:57.665882+00:00",
+  "updated_at": "2026-11-05T16:17:58.259851+00:00",
   "teams": [
     {
       "name": "F鹿児島",
@@ -60,7 +60,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 3 · mecz 1",
       "date": "17.10.2026",
-      "time": "",
+      "time": "07:05",
       "home": "東京GB",
       "away": "北海道YS",
       "home_sets": 3,
@@ -80,7 +80,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 3 · mecz 2",
       "date": "18.10.2026",
-      "time": "",
+      "time": "07:05",
       "home": "東京GB",
       "away": "北海道YS",
       "home_sets": 3,
@@ -94,11 +94,30 @@
       "current_points": null
     },
     {
+      "id": "jp-37976",
+      "competition": "SV.League Men",
+      "group": "Kolejka 1 · mecz 1",
+      "date": "24.10.2026",
+      "time": "06:05",
+      "home": "サントリー",
+      "away": "ヴォレアス",
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "25:23",
+        "17:25",
+        "26:24",
+        "25:23"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
       "id": "jp-37968",
       "competition": "SV.League Men",
       "group": "Kolejka 1 · mecz 1",
       "date": "24.10.2026",
-      "time": "",
+      "time": "07:05",
       "home": "北海道YS",
       "away": "大阪Ｂ",
       "home_sets": 0,
@@ -112,11 +131,66 @@
       "current_points": null
     },
     {
+      "id": "jp-37972",
+      "competition": "SV.League Men",
+      "group": "Kolejka 1 · mecz 1",
+      "date": "24.10.2026",
+      "time": "07:05",
+      "home": "STINGS愛知",
+      "away": "東レ静岡",
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "22:25",
+        "25:20",
+        "25:21",
+        "27:25"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
+      "id": "jp-37978",
+      "competition": "SV.League Men",
+      "group": "Kolejka 1 · mecz 1",
+      "date": "24.10.2026",
+      "time": "08:05",
+      "home": "日鉄堺BZ",
+      "away": "F鹿児島",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": [
+        "25:17",
+        "25:17",
+        "25:22"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
+      "id": "jp-37974",
+      "competition": "SV.League Men",
+      "group": "Kolejka 1 · mecz 1",
+      "date": "24.10.2026",
+      "time": "09:35",
+      "home": "WD名古屋",
+      "away": "東京GB",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": [
+        "25:18",
+        "25:21",
+        "25:19"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
       "id": "jp-37970",
       "competition": "SV.League Men",
       "group": "Kolejka 1 · mecz 1",
       "date": "24.10.2026",
-      "time": "",
+      "time": "10:05",
       "home": "松本TD",
       "away": "広島TH",
       "home_sets": 3,
@@ -132,85 +206,11 @@
       "current_points": null
     },
     {
-      "id": "jp-37972",
-      "competition": "SV.League Men",
-      "group": "Kolejka 1 · mecz 1",
-      "date": "24.10.2026",
-      "time": "",
-      "home": "STINGS愛知",
-      "away": "東レ静岡",
-      "home_sets": 3,
-      "away_sets": 1,
-      "set_scores": [
-        "22:25",
-        "25:20",
-        "25:21",
-        "27:25"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
-      "id": "jp-37974",
-      "competition": "SV.League Men",
-      "group": "Kolejka 1 · mecz 1",
-      "date": "24.10.2026",
-      "time": "",
-      "home": "WD名古屋",
-      "away": "東京GB",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:18",
-        "25:21",
-        "25:19"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
-      "id": "jp-37976",
-      "competition": "SV.League Men",
-      "group": "Kolejka 1 · mecz 1",
-      "date": "24.10.2026",
-      "time": "",
-      "home": "サントリー",
-      "away": "ヴォレアス",
-      "home_sets": 3,
-      "away_sets": 1,
-      "set_scores": [
-        "25:23",
-        "17:25",
-        "26:24",
-        "25:23"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
-      "id": "jp-37978",
-      "competition": "SV.League Men",
-      "group": "Kolejka 1 · mecz 1",
-      "date": "24.10.2026",
-      "time": "",
-      "home": "日鉄堺BZ",
-      "away": "F鹿児島",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:17",
-        "25:17",
-        "25:22"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
       "id": "jp-37969",
       "competition": "SV.League Men",
       "group": "Kolejka 1 · mecz 2",
       "date": "25.10.2026",
-      "time": "",
+      "time": "05:05",
       "home": "北海道YS",
       "away": "大阪Ｂ",
       "home_sets": 1,
@@ -225,67 +225,11 @@
       "current_points": null
     },
     {
-      "id": "jp-37971",
-      "competition": "SV.League Men",
-      "group": "Kolejka 1 · mecz 2",
-      "date": "25.10.2026",
-      "time": "",
-      "home": "松本TD",
-      "away": "広島TH",
-      "home_sets": 3,
-      "away_sets": 2,
-      "set_scores": [
-        "25:23",
-        "25:23",
-        "23:25",
-        "21:25",
-        "21:19"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
-      "id": "jp-37973",
-      "competition": "SV.League Men",
-      "group": "Kolejka 1 · mecz 2",
-      "date": "25.10.2026",
-      "time": "",
-      "home": "STINGS愛知",
-      "away": "東レ静岡",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:23",
-        "25:14",
-        "25:18"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
-      "id": "jp-37975",
-      "competition": "SV.League Men",
-      "group": "Kolejka 1 · mecz 2",
-      "date": "25.10.2026",
-      "time": "",
-      "home": "WD名古屋",
-      "away": "東京GB",
-      "home_sets": 3,
-      "away_sets": 0,
-      "set_scores": [
-        "25:21",
-        "25:19",
-        "25:16"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
       "id": "jp-37977",
       "competition": "SV.League Men",
       "group": "Kolejka 1 · mecz 2",
       "date": "25.10.2026",
-      "time": "",
+      "time": "05:05",
       "home": "サントリー",
       "away": "ヴォレアス",
       "home_sets": 2,
@@ -305,7 +249,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 1 · mecz 2",
       "date": "25.10.2026",
-      "time": "",
+      "time": "05:05",
       "home": "日鉄堺BZ",
       "away": "F鹿児島",
       "home_sets": 2,
@@ -321,39 +265,57 @@
       "current_points": null
     },
     {
-      "id": "jp-37980",
+      "id": "jp-37971",
       "competition": "SV.League Men",
-      "group": "Kolejka 2 · mecz 1",
-      "date": "31.10.2026",
-      "time": "",
-      "home": "ヴォレアス",
-      "away": "STINGS愛知",
-      "home_sets": 1,
-      "away_sets": 3,
+      "group": "Kolejka 1 · mecz 2",
+      "date": "25.10.2026",
+      "time": "05:35",
+      "home": "松本TD",
+      "away": "広島TH",
+      "home_sets": 3,
+      "away_sets": 2,
       "set_scores": [
+        "25:23",
+        "25:23",
         "23:25",
-        "25:16",
-        "24:26",
-        "12:25"
+        "21:25",
+        "21:19"
       ],
       "status": "finished",
       "current_points": null
     },
     {
-      "id": "jp-37982",
+      "id": "jp-37973",
       "competition": "SV.League Men",
-      "group": "Kolejka 2 · mecz 1",
-      "date": "31.10.2026",
-      "time": "",
-      "home": "東レ静岡",
-      "away": "松本TD",
+      "group": "Kolejka 1 · mecz 2",
+      "date": "25.10.2026",
+      "time": "06:05",
+      "home": "STINGS愛知",
+      "away": "東レ静岡",
       "home_sets": 3,
-      "away_sets": 1,
+      "away_sets": 0,
       "set_scores": [
-        "19:25",
+        "25:23",
+        "25:14",
+        "25:18"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
+      "id": "jp-37975",
+      "competition": "SV.League Men",
+      "group": "Kolejka 1 · mecz 2",
+      "date": "25.10.2026",
+      "time": "07:35",
+      "home": "WD名古屋",
+      "away": "東京GB",
+      "home_sets": 3,
+      "away_sets": 0,
+      "set_scores": [
         "25:21",
-        "25:21",
-        "25:22"
+        "25:19",
+        "25:16"
       ],
       "status": "finished",
       "current_points": null
@@ -363,7 +325,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 1",
       "date": "31.10.2026",
-      "time": "",
+      "time": "04:05",
       "home": "大阪Ｂ",
       "away": "WD名古屋",
       "home_sets": 2,
@@ -379,11 +341,30 @@
       "current_points": null
     },
     {
+      "id": "jp-37980",
+      "competition": "SV.League Men",
+      "group": "Kolejka 2 · mecz 1",
+      "date": "31.10.2026",
+      "time": "05:05",
+      "home": "ヴォレアス",
+      "away": "STINGS愛知",
+      "home_sets": 1,
+      "away_sets": 3,
+      "set_scores": [
+        "23:25",
+        "25:16",
+        "24:26",
+        "12:25"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
       "id": "jp-37986",
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 1",
       "date": "31.10.2026",
-      "time": "",
+      "time": "05:05",
       "home": "サントリー",
       "away": "日鉄堺BZ",
       "home_sets": 1,
@@ -398,11 +379,30 @@
       "current_points": null
     },
     {
+      "id": "jp-37982",
+      "competition": "SV.League Men",
+      "group": "Kolejka 2 · mecz 1",
+      "date": "31.10.2026",
+      "time": "06:05",
+      "home": "東レ静岡",
+      "away": "松本TD",
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "19:25",
+        "25:21",
+        "25:21",
+        "25:22"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
       "id": "jp-37988",
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 1",
       "date": "31.10.2026",
-      "time": "",
+      "time": "06:05",
       "home": "広島TH",
       "away": "東京GB",
       "home_sets": 1,
@@ -421,7 +421,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 1",
       "date": "31.10.2026",
-      "time": "",
+      "time": "06:05",
       "home": "F鹿児島",
       "away": "北海道YS",
       "home_sets": 0,
@@ -439,7 +439,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 2",
       "date": "01.11.2026",
-      "time": "",
+      "time": "05:05",
       "home": "ヴォレアス",
       "away": "STINGS愛知",
       "home_sets": 1,
@@ -454,50 +454,11 @@
       "current_points": null
     },
     {
-      "id": "jp-37983",
-      "competition": "SV.League Men",
-      "group": "Kolejka 2 · mecz 2",
-      "date": "01.11.2026",
-      "time": "",
-      "home": "東レ静岡",
-      "away": "松本TD",
-      "home_sets": 3,
-      "away_sets": 2,
-      "set_scores": [
-        "25:20",
-        "17:25",
-        "25:21",
-        "21:25",
-        "15:10"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
-      "id": "jp-37985",
-      "competition": "SV.League Men",
-      "group": "Kolejka 2 · mecz 2",
-      "date": "01.11.2026",
-      "time": "",
-      "home": "大阪Ｂ",
-      "away": "WD名古屋",
-      "home_sets": 3,
-      "away_sets": 1,
-      "set_scores": [
-        "20:25",
-        "25:20",
-        "25:13",
-        "25:16"
-      ],
-      "status": "finished",
-      "current_points": null
-    },
-    {
       "id": "jp-37987",
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 2",
       "date": "01.11.2026",
-      "time": "",
+      "time": "05:05",
       "home": "サントリー",
       "away": "日鉄堺BZ",
       "home_sets": 1,
@@ -516,7 +477,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 2",
       "date": "01.11.2026",
-      "time": "",
+      "time": "05:05",
       "home": "広島TH",
       "away": "東京GB",
       "home_sets": 3,
@@ -536,7 +497,7 @@
       "competition": "SV.League Men",
       "group": "Kolejka 2 · mecz 2",
       "date": "01.11.2026",
-      "time": "",
+      "time": "05:05",
       "home": "F鹿児島",
       "away": "北海道YS",
       "home_sets": 1,
@@ -546,6 +507,45 @@
         "20:25",
         "25:23",
         "20:25"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
+      "id": "jp-37983",
+      "competition": "SV.League Men",
+      "group": "Kolejka 2 · mecz 2",
+      "date": "01.11.2026",
+      "time": "06:05",
+      "home": "東レ静岡",
+      "away": "松本TD",
+      "home_sets": 3,
+      "away_sets": 2,
+      "set_scores": [
+        "25:20",
+        "17:25",
+        "25:21",
+        "21:25",
+        "15:10"
+      ],
+      "status": "finished",
+      "current_points": null
+    },
+    {
+      "id": "jp-37985",
+      "competition": "SV.League Men",
+      "group": "Kolejka 2 · mecz 2",
+      "date": "01.11.2026",
+      "time": "07:05",
+      "home": "大阪Ｂ",
+      "away": "WD名古屋",
+      "home_sets": 3,
+      "away_sets": 1,
+      "set_scores": [
+        "20:25",
+        "25:20",
+        "25:13",
+        "25:16"
       ],
       "status": "finished",
       "current_points": null
