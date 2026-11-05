@@ -222,12 +222,8 @@ button.vh-league-tile:hover,.vh-league-select:hover{background:#272f3e;border-co
 [data-route="matches"] .vh-filter-chip{font-size:12px;padding:8px 12px;min-height:36px}
 [data-route="matches"] .vh-secondary-filters{padding-top:0}
 
-/* Home: one editorial heading, then straight into the match feed. */
-#ios-matches[data-page="home"] .vh-floating-head{min-height:0;padding-bottom:0}
-#ios-matches[data-page="home"] .vh-brand-signature{width:clamp(184px,55vw,220px);max-width:220px}
-[data-route="home"] .vh-section-heading{align-items:center;gap:12px;margin:18px 0 0}
-[data-route="home"] .vh-section-heading>div{flex:1;min-width:0}
-[data-route="home"] .vh-section-heading h2{font-size:clamp(26px,7vw,30px);line-height:1.1;margin:0}
-[data-route="home"] .vh-text-action{font-family:var(--font-ui);font-size:12px;font-weight:700;min-height:44px;padding:8px 0;gap:5px;white-space:nowrap}
-[data-route="home"] .vh-text-action>svg{width:15px;height:15px;transform:rotate(-45deg)}
-[data-route="home"] .vh-match-groups>section:first-child .im-league{margin-top:12px}
+/* Home: logo and day heading share one calm row above the feed. */
+#ios-matches[data-page="home"] .vh-floating-head{min-height:0;align-items:flex-end;gap:20px;padding-bottom:0}
+#ios-matches[data-page="home"] .vh-brand-signature{width:clamp(148px,44vw,176px);max-width:176px;flex:0 0 auto}
+.vh-home-heading{flex:1;min-width:0;max-width:160px;margin:0 0 2px;text-align:right;font-family:var(--font-editorial);font-size:24px;font-style:italic;font-weight:400;line-height:1.12;letter-spacing:-.025em;color:var(--ink)}
+[data-route="home"] .vh-match-groups>section:first-child .im-league{margin-top:28px}

@@ -206,7 +206,6 @@ const HomePage = React.memo(function HomePage({ feeds, matches, loading, errors,
   const upcoming = allMatches.filter(match => feedDateKey(match.date) >= today).slice(0, 3);
   const featured = todayMatches.length ? todayMatches : upcoming;
   return <>
-    <SectionTitle title={todayMatches.length ? 'Dzisiaj' : 'Najbliższe mecze'} />
     <FeedWarning errors={errors} refresh={refresh} />
     {loading && !Object.keys(feeds).length ? <LoadingCards /> : <MatchGroups compact matches={featured} logos={logos} emptyMessage="Nie mamy jeszcze zaplanowanych spotkań w pobranych danych." />}
 
@@ -404,6 +403,7 @@ function App() {
   return <MotionEnabled.Provider value={!reducedMotion}><div className="vh-app" id="ios-matches" data-page={page}>
     <div className="vh-floating-head" aria-label="Nagłówek Kiedy Siatka?">
       <BrandSignature />
+      {page === 'home' && <h2 className="vh-home-heading">{matches.some(match => feedDateKey(match.date) === dateKey(NOW())) ? 'Dzisiaj' : 'Najbliższe mecze'}</h2>}
     </div>
     <PageStage page={page} direction={direction} reducedMotion={reducedMotion}>
       {visitedPages.map(id => <div key={id} className="vh-tab-panel" data-route={id} hidden={page !== id} inert={page !== id}>

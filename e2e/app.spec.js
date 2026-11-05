@@ -36,11 +36,16 @@ test('home starts with match list, without the marked intro and hero banner', as
   await page.goto('/');
   await expect(page.getByRole('img', { name: 'Kiedy Siatka?' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Szukaj', exact: true })).toHaveCount(0);
-  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   await expect(page.locator('.vh-hero')).toHaveCount(0);
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Volley Hub', exact: true })).toHaveCount(0);
   await expect(page.getByText('Twoje centrum siatkówki. Wszystko, co ważne, w jednym miejscu.')).toHaveCount(0);
   await expect(page.locator('[data-route="home"]').getByRole('button', { name: 'Pełny terminarz' })).toHaveCount(0);
+  const logoBox = await page.locator('.vh-brand-signature').boundingBox();
+  const titleBox = await page.locator('.vh-home-heading').boundingBox();
+  expect(logoBox.x + logoBox.width + 16).toBeLessThanOrEqual(titleBox.x);
+  expect(Math.abs(logoBox.y + logoBox.height - titleBox.y - titleBox.height)).toBeLessThan(4);
+
 });
 
 test('favorites persist after reload', async ({ page }) => {
@@ -155,7 +160,7 @@ test('switching tabs renders the page immediately without delayed transitions', 
   await expect(page.locator('#main-content').getByRole('heading', { name: 'Ulubione' })).toBeVisible();
   await expect(page.locator('.vh-route-stage')).toHaveClass(/is-forward/);
   await nav.getByRole('button', { name: 'Główna' }).click();
-  await expect(page.locator('#main-content').getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^(Dzisiaj|Najbliższe mecze)$/ })).toBeVisible();
   await expect(page.locator('.vh-route-stage')).toHaveClass(/is-backward/);
   await expect(nav.locator('.vh-nav-item.active')).toHaveCount(1);
 });
