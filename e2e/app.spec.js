@@ -482,13 +482,13 @@ test('dense serpentine typography cuts reveal immediately and finish under 300ms
         second: second?.effect.getKeyframes().at(-1).transform,
         text: rows[0].textContent,
         typeFrames: letters?.effect.getKeyframes().map(frame => frame.transform),
-        totalMs: first?.effect.getTiming().duration + (rows.length - 1) * 3
+        totalMs: first?.effect.getTiming().duration + (rows.length - 1) * 2.7
       };
     }, { label });
 
     expect(motion.page).toBe(target);
     expect(motion.visibility).toBe('visible');
-    expect(motion.rowCount).toBe(30);
+    expect(motion.rowCount).toBe(36);
     expect(motion.totalMs).toBeLessThanOrEqual(300);
     expect(motion.text).toContain(title);
     expect(motion.first).toContain(sign * 107 + '%');

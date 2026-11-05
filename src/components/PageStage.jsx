@@ -2,9 +2,9 @@ import { useLayoutEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import './PageStage.css';
 
-const ROW_COUNT = 30;
-const ROW_DURATION = 202;
-const ROW_STAGGER = 3;
+const ROW_COUNT = 36;
+const ROW_DURATION = 195;
+const ROW_STAGGER = 2.7;
 const LABELS = {
   home: 'DZISIAJ',
   matches: 'KALENDARZ',
@@ -41,8 +41,8 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
       const sign = (index % 2 === 0 ? -1 : 1) * sense;
       const delay = index * ROW_STAGGER;
       const pressure = 1 - Math.pow(Math.abs((index - (ROW_COUNT - 1) / 2) / ((ROW_COUNT - 1) / 2)), 1.6);
-      const smearX = (1.6 + pressure * 2.4).toFixed(2);
-      const flareX = (1.35 + pressure * 1.4).toFixed(2);
+      const smearX = (2.2 + pressure * 4).toFixed(2);
+      const flareX = (1.6 + pressure * 2.4).toFixed(2);
       const smallX = (.82 + pressure * .18).toFixed(2);
 
       animations.push(row.animate([
@@ -94,7 +94,7 @@ export default function PageStage({ page, direction, reducedMotion, children }) 
   }, [page, direction, reducedMotion]);
 
   const title = LABELS[page] || 'DZISIAJ';
-  const repeat = Array(9).fill(title).join('   ');
+  const repeat = title;
 
   return <div className={'vh-route-stage is-' + direction}>
     <main ref={main} id="main-content" data-page={page}
