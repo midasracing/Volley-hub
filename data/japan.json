@@ -2,7 +2,7 @@
   "league": "japan",
   "competition": "SV.League Men",
   "source": "https://www.svleague.jp/match/sv/men/",
-  "updated_at": "2026-11-05T16:37:37.933839+00:00",
+  "updated_at": "2026-11-05T16:41:22.909355+00:00",
   "teams": [
     {
       "name": "Fragolad Kagoshima",
@@ -67,6 +67,7 @@
   ],
   "table": [
     {
+      "rank": 1,
       "team": "JTEKT Stings Aichi",
       "played": 4,
       "wins": 4,
@@ -75,10 +76,10 @@
       "sets_for": 12,
       "sets_against": 3,
       "points_for": 365,
-      "points_against": 323,
-      "rank": 1
+      "points_against": 323
     },
     {
+      "rank": 2,
       "team": "Osaka Bluteon",
       "played": 4,
       "wins": 3,
@@ -87,10 +88,10 @@
       "sets_for": 11,
       "sets_against": 5,
       "points_for": 371,
-      "points_against": 338,
-      "rank": 2
+      "points_against": 338
     },
     {
+      "rank": 3,
       "team": "Nippon Steel Sakai Blazers",
       "played": 4,
       "wins": 3,
@@ -99,10 +100,10 @@
       "sets_for": 11,
       "sets_against": 5,
       "points_for": 383,
-      "points_against": 351,
-      "rank": 3
+      "points_against": 351
     },
     {
+      "rank": 4,
       "team": "Wolfdogs Nagoya",
       "played": 4,
       "wins": 3,
@@ -111,10 +112,10 @@
       "sets_for": 10,
       "sets_against": 5,
       "points_for": 335,
-      "points_against": 309,
-      "rank": 4
+      "points_against": 309
     },
     {
+      "rank": 5,
       "team": "Tokyo Great Bears",
       "played": 6,
       "wins": 3,
@@ -123,10 +124,10 @@
       "sets_for": 11,
       "sets_against": 12,
       "points_for": 495,
-      "points_against": 514,
-      "rank": 5
+      "points_against": 514
     },
     {
+      "rank": 6,
       "team": "Shinshu Matsumoto Tridents",
       "played": 4,
       "wins": 2,
@@ -135,10 +136,10 @@
       "sets_for": 9,
       "sets_against": 10,
       "points_for": 413,
-      "points_against": 416,
-      "rank": 6
+      "points_against": 416
     },
     {
+      "rank": 7,
       "team": "Toray Arrows Shizuoka",
       "played": 4,
       "wins": 2,
@@ -147,10 +148,10 @@
       "sets_for": 7,
       "sets_against": 9,
       "points_for": 343,
-      "points_against": 364,
-      "rank": 7
+      "points_against": 364
     },
     {
+      "rank": 8,
       "team": "Hokkaido Yellow Stars",
       "played": 6,
       "wins": 2,
@@ -159,10 +160,10 @@
       "sets_for": 9,
       "sets_against": 13,
       "points_for": 489,
-      "points_against": 503,
-      "rank": 8
+      "points_against": 503
     },
     {
+      "rank": 9,
       "team": "Hiroshima Thunders",
       "played": 4,
       "wins": 1,
@@ -171,10 +172,10 @@
       "sets_for": 8,
       "sets_against": 11,
       "points_for": 423,
-      "points_against": 423,
-      "rank": 9
+      "points_against": 423
     },
     {
+      "rank": 10,
       "team": "Suntory Sunbirds Osaka",
       "played": 4,
       "wins": 1,
@@ -183,10 +184,10 @@
       "sets_for": 7,
       "sets_against": 10,
       "points_for": 384,
-      "points_against": 403,
-      "rank": 10
+      "points_against": 403
     },
     {
+      "rank": 11,
       "team": "Voreas Hokkaido",
       "played": 4,
       "wins": 1,
@@ -195,10 +196,10 @@
       "sets_for": 6,
       "sets_against": 11,
       "points_for": 390,
-      "points_against": 398,
-      "rank": 11
+      "points_against": 398
     },
     {
+      "rank": 12,
       "team": "Fragolad Kagoshima",
       "played": 4,
       "wins": 1,
@@ -207,11 +208,10 @@
       "sets_for": 4,
       "sets_against": 11,
       "points_for": 320,
-      "points_against": 369,
-      "rank": 12
+      "points_against": 369
     }
   ],
-  "table_source": "calculated_from_confirmed_match_results",
+  "table_source": "https://www.svleague.jp/match/sv/men/standings/",
   "matches": [
     {
       "id": "jp-37992",
