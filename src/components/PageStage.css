@@ -1,56 +1,6 @@
-/* One composited page entrance and a barely perceptible Rive accent.
-   No full-screen mask, filter, repaint-heavy blur, or navigation delay. */
+/* The destination is immediately interactive. The Rive accent is only a
+   low-opacity streak below the content, never a full-screen interstitial. */
 .vh-route-stage{position:relative;isolation:isolate}
 .vh-page{position:relative;min-width:0}
 .vh-page-enter{animation:none;transition:none;transform:none;opacity:1}
-.vh-route-rive{
-  position:fixed;left:0;right:0;bottom:calc(91px + env(safe-area-inset-bottom));
-  height:clamp(58px,9vh,80px);z-index:80;pointer-events:none;
-  visibility:hidden;opacity:0;overflow:hidden;contain:layout paint style;
-}
-.vh-route-rive-canvas{display:block;width:100%;height:100%;pointer-events:none}
-@media(prefers-reduced-motion:reduce){.vh-route-rive{display:none!important}}
 
-/* Hidden panels remain cached, inert and out of document flow. */
-.vh-tab-panel[hidden]{display:none!important}
-@supports(content-visibility:hidden){
-  .vh-tab-panel{contain:layout style}
-  .vh-tab-panel[hidden]{
-    display:block!important;position:absolute;left:0;top:0;width:100%;height:0;
-    overflow:clip;content-visibility:hidden;
-  }
-}
-
-/* The old and new active tabs are captured separately by Safari/Chromium.
-   The browser crossfades real screenshots on the compositor; no DOM clones. */
-@supports (view-transition-name: route-panel) {
-  #main-content .vh-tab-panel:not([hidden]) { view-transition-name: route-panel; }
-  .vh-floating-head { view-transition-name: route-header; }
-  /* Let the actual dock stay live while the content snapshots transition. */
-  .vh-bottom { view-transition-name: route-dock; }
-  ::view-transition-old(route-dock),::view-transition-new(route-dock) {
-    opacity:0!important;animation:none!important;
-  }
-  ::view-transition { pointer-events:none; }
-  ::view-transition-old(root), ::view-transition-new(root) { animation-duration:0.001ms; }
-  ::view-transition-old(route-panel) {
-    animation:280ms cubic-bezier(.4,0,.2,1) both vh-route-out;
-  }
-  ::view-transition-new(route-panel) {
-    animation:280ms cubic-bezier(.22,.75,.2,1) both vh-route-in;
-  }
-  ::view-transition-old(route-header) {
-    animation:220ms ease-in both vh-route-header-out;
-  }
-  ::view-transition-new(route-header) {
-    animation:260ms ease-out both vh-route-header-in;
-  }
-}
-@keyframes vh-route-out { from {opacity:1;transform:translate3d(0,0,0)} to {opacity:0;transform:translate3d(-8px,0,0)} }
-@keyframes vh-route-in { from {opacity:0;transform:translate3d(9px,0,0)} to {opacity:1;transform:translate3d(0,0,0)} }
-@keyframes vh-route-header-out { from {opacity:1} to {opacity:0} }
-@keyframes vh-route-header-in { from {opacity:0} to {opacity:1} }
-@media(prefers-reduced-motion:reduce) {
-  ::view-transition-old(route-panel),::view-transition-new(route-panel),
-  ::view-transition-old(route-header),::view-transition-new(route-header) {animation-duration:0.001ms!important}
-}
