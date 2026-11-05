@@ -13,6 +13,7 @@ Usage:
 
 import argparse
 import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import html
 import json
 import re
@@ -488,8 +489,7 @@ def detail_metadata(soup):
                         rows.append((cells[0].rstrip(":"), cells[1]))
             for key, val in rows:
                 if key.casefold() == "termin" and val.isdigit():
-                    data["round"] = int(val)
-                    data["round_source_label"] = "Termin"
+                    data["term_number"] = int(val)
                 elif key.casefold() == "faza":
                     data["phase"] = val
                 elif key.casefold() == "numer meczu":
@@ -682,6 +682,56 @@ def parse_table(soup, aliases):
     return sorted(latest.values(), key=lambda row: row["rank"])
 
 
+def read_match_detail(soup, match):
+    """Return confirmed point scores only when the detail agrees with fixture.
+
+    A detail page can contain multiple match widgets and previous head-to-head
+    scorelines. Never use an unrelated match's point pairs.
+    """
+    played = match["home_sets"] + match["away_sets"]
+    for box in soup.select(".game-result-box"):
+        score_elements = box.select(".game-result .game-score")
+        result = [norm(x.get_text(" ", strip=True)) for x in score_elements[:2]]
+        if result != [str(match["home_sets"]), str(match["away_sets"])]:
+            continue
+        text = norm(box.get_text(" ", strip=True))
+        found = re.search(r"Małe punkty\s*:\s*(.*?)(?:Złoty set\s*:|$)", text, re.I)
+        if not found:
+            continue
+        values = [int(n) for n in re.findall(r"(?<!\d)\d{1,3}(?!\d)", found.group(1))]
+        if len(values) < 10:
+            continue
+        pairs = [(values[i], values[i + 1]) for i in range(0, 10, 2)]
+        if match["status"] == "finished":
+            complete = pairs[:played]
+            if len(complete) != played or any(a == b or not a or not b for a,b in complete):
+                continue
+            if sum(a > b for a,b in complete) != match["home_sets"]:
+                continue
+            if sum(b > a for a,b in complete) != match["away_sets"]:
+                continue
+            return [f"{a}:{b}" for a,b in complete], None
+        # A non-finished fixture may have a partial current set.
+        completed = pairs[:played]
+        if any(a == b or not a or not b for a,b in completed):
+            continue
+        next_pair = pairs[played] if played < len(pairs) else (0, 0)
+        active = f"{next_pair[0]}:{next_pair[1]}" if any(next_pair) else None
+        return [f"{a}:{b}" for a,b in completed], active
+    return None, None
+
+
+def apply_point_scores(match, scores, active=None):
+    match["set_scores"] = scores
+    match["set_points"] = [
+        {"home": int(x.split(":")[0]), "away": int(x.split(":")[1])}
+        for x in scores
+    ]
+    match["home_points"] = sum(x["home"] for x in match["set_points"])
+    match["away_points"] = sum(x["away"] for x in match["set_points"])
+    match["current_points"] = active
+
+
 def run_league(key, cfg):
     base = cfg["base"]
     out = Path(cfg["out"])
@@ -760,6 +810,46 @@ def run_league(key, cfg):
             match.update(better)
             match["id"] = match.get("id") or better.get("id")
 
+    # Complete missing historical point scores from each OFFICIAL match page.
+    # Fetch only missing finished games; previous valid scores remain cached.
+    missing_points = [
+        m for m in matches if m["status"] == "finished"
+        and len(m.get("set_scores", [])) != m["home_sets"] + m["away_sets"]
+    ]
+    if missing_points:
+        print(f"INFO [{key}]: fetching points for {len(missing_points)} finished matches",
+              flush=True)
+
+    def fetch_missing_points(match):
+        url = f"{base}/games/action/show/id/{match['id']}/nocookies/1.html"
+        detail = BeautifulSoup(get(url, base), "html.parser")
+        scores, active = read_match_detail(detail, match)
+        return match["id"], scores, active, detail_metadata(detail)
+
+    if missing_points:
+        by_id = {m["id"]: m for m in matches}
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            futures = {pool.submit(fetch_missing_points, m): m for m in missing_points}
+            for future in as_completed(futures):
+                match = futures[future]
+                try:
+                    mid, scores, active, metadata = future.result()
+                    if scores is not None:
+                        apply_point_scores(by_id[mid], scores, active)
+                    by_id[mid].update(metadata)
+                except Exception as exc:
+                    print(f"WARNING [{key}]: points for {match['id']} unavailable: {exc}",
+                          file=sys.stderr)
+    still_missing = [
+        m["id"] for m in matches if m["status"] == "finished"
+        and len(m.get("set_scores", [])) != m["home_sets"] + m["away_sets"]
+    ]
+    if still_missing:
+        raise RuntimeError(
+            f"Incomplete official set points for {len(still_missing)} finished "
+            f"games in {key}, examples: {still_missing[:5]}; refusing to overwrite."
+        )
+
     # Keep the old app fields, and add explicit league identity and ISO dates.
     for match in matches:
         match["league"] = key
@@ -783,7 +873,7 @@ def run_league(key, cfg):
     detail_budget = 4  # avoid hammering official sites every five minutes
     for match in matches:
         old = previous_by_id.get(str(match.get("id")), {})
-        for field in ("round", "round_source_label", "phase", "match_number",
+        for field in ("term_number", "phase", "match_number",
                       "venue", "broadcast"):
             if field in old:
                 match[field] = old[field]
