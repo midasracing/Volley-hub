@@ -40,6 +40,8 @@ Nie wymaga zakładania konta. Dzięki obsłudze PWA można dodać ją do ekranu 
 | TAURON 1. Liga | [`data/tauron1liga.json`](data/tauron1liga.json) |
 | II Liga Mężczyzn | [`data/2liga.json`](data/2liga.json) |
 | Pomorska III Liga Mężczyzn | [`data/pomorska3liga.json`](data/pomorska3liga.json) |
+| SuperLega Credem Banca (Włochy, mężczyźni) | [`data/italy.json`](data/italy.json) |
+| SV.League Men (Japonia, mężczyźni) | [`data/japan.json`](data/japan.json) |
 
 Dostępność i aktualność danych zależą od zewnętrznych źródeł ligowych. Wyniki nie są generowane ani uzupełniane fikcyjnymi wartościami.
 
@@ -87,6 +89,35 @@ Po uruchomieniu Vite wyświetli lokalny adres aplikacji.
 | `npm run preview` | Podgląd buildu |
 
 Przed uruchomieniem serwera i budowaniem aplikacji wykonywany jest `scripts/sync-data.mjs`, który synchronizuje pliki JSON do katalogu `public/data/`.
+
+## Włochy i Japonia: oficjalne terminarze bez płatnego API
+
+[Importer ligi włoskiej i japońskiej](scripts/update_international.py) pobiera publiczne terminarze
+męskich rozgrywek. Dla SuperLegi czyta dwie części kalendarza `ww2.legavolley.it`
+(Andata i Ritorno); dla SV.League używa opublikowanego na stronie terminarza
+endpointu `?s=...&y=...&m=...&d=...&mode=ajax`, zwracającego fragmenty HTML.
+Nie wymaga przeglądarki, stealth ani płatnego klucza.
+
+Importer zapisuje mecze, drużyny, daty, godziny i oficjalne wyniki zakończonych spotkań
+do `data/italy.json` i `data/japan.json`. Godziny japońskich spotkań
+są przeliczane z Asia/Tokyo na **Europe/Warsaw**. Jeśli strona pomija godzinę
+zakończonego meczu, pozostaje ona pusta, chyba że zachowaliśmy ją
+z poprzedniego odczytu. Dane LIVE punkt po punkcie i kursy są osobną integracją
+Betclic (na razie klient Betclic jest opcjonalnym eksportem JSON, a nie strumieniem w UI).
+
+```bash
+python -m pip install requests beautifulsoup4
+python scripts/update_international.py --league italy
+python scripts/update_international.py --league japan
+python -m unittest discover -s tests -p 'test_international.py' -v
+```
+
+[Workflow](.github/workflows/update-international.yml) sprawdza źródła dwa razy dziennie,
+weryfikuje parsery i aktualizuje `main` tylko gdy zmieniły się dane.
+Błąd HTTP, blokada dostępu, niepełny kalendarz lub przekroczenie limitu pobrań
+nie nadpisuje poprawnego pliku. Odczyt publiczny jest bezpłatny, ale dostawcy
+**nie gwarantują nieograniczonej liczby żądań**. Źródła są odpytywane centralnie
+i oszczędnie; frontend czyta statyczne pliki JSON, nie serwery ligowe.
 
 ## Opcjonalny klient kursów Betclic
 
