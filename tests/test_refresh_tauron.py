@@ -30,5 +30,23 @@ class PLSParserTests(unittest.TestCase):
         logos = mod.extract_team_logos("https://www.tauronliga.pl", aliases, {}, soup)
         self.assertIn("24", [t.get("id") for t in logos])
 
+    def test_game_details(self):
+        soup = BeautifulSoup("""
+        <h2>Transmisje</h2><div><img alt="TV Polsat Sport 1" src="/tv.png"></div>
+        <h2>SZCZEGÓŁY</h2>
+        <table><tr><td>Faza:</td><td>Zasadnicza</td></tr>
+        <tr><td>Termin:</td><td>3</td></tr>
+        <tr><td>Numer meczu:</td><td>017</td></tr></table>
+        <h2>Informacje o hali</h2>
+        <table><tr><td>Nazwa:</td><td>Hala Urania</td></tr>
+        <tr><td>Adres:</td><td>Piłsudskiego 44</td></tr>
+        <tr><td>Miasto:</td><td>Olsztyn</td></tr></table>
+        <h2>POWIĄZANE WIADOMOŚCI</h2>
+        """, "html.parser")
+        data = mod.detail_metadata(soup)
+        self.assertEqual(data["round"], 3)
+        self.assertEqual(data["venue"]["name"], "Hala Urania")
+        self.assertEqual(data["broadcast"], ["TV Polsat Sport 1"])
+
 if __name__ == "__main__":
     unittest.main()
