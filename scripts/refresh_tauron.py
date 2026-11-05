@@ -75,8 +75,10 @@ LEAGUES = {
         "base": "https://www.tauronliga.pl",
         "out": "data/tauron.json",
         "competition": "TAURON Liga (mężczyźni)",
-        "team_ids": MEN_TEAM_IDS,
-        "aliases": MEN_ALIASES,
+        # Read the actual names printed by PLS this season. A historical
+        # sponsor-name map must never override the official display name.
+        "team_ids": {},
+        "aliases": {},
     },
     # 1. Liga: team names are read straight from the site (no fixed list needed).
     "first": {
@@ -165,22 +167,56 @@ def team_names_in_node(node, aliases):
     return names
 
 
-def extract_team_logos(base, aliases, *soups):
-    """Collect official team logo URLs from team images on official league pages."""
-    logos = {}
+def extract_team_logos(base, aliases, previous, *soups):
+    """Official team logos and IDs, with a safe last-known-good fallback.
+
+    The PLS /teams/id/<id> link is the stable identity. Never infer a logo
+    by fuzzy team-name matching; sponsorship names can change each season.
+    """
+    current = {}
     for soup in soups:
         if soup is None:
             continue
+        for link in soup.find_all("a", href=True):
+            found = re.search(r"/teams/id/(\d+)", link["href"])
+            if not found:
+                continue
+            team_id = found.group(1)
+            label = norm(link.get_text(" ", strip=True))
+            if not label:
+                img = link.find("img")
+                label = norm((img.get("alt") or img.get("title") or "")) if img else ""
+            team = team_in(label, aliases)
+            if not team:
+                continue
+            image = link.find("img")
+            if image is None:
+                continue
+            url = norm(image.get("src", "") or image.get("data-src", "") or image.get("data-lazy-src", ""))
+            if url and not url.startswith("data:"):
+                current[team] = {"name": team, "id": team_id, "logo": urljoin(base, url)}
+
+        # Other official layouts show club images outside the team link.
         for img in soup.find_all("img"):
             label = norm(img.get("alt", "")) + " " + norm(img.get("title", ""))
             team = team_in(label, aliases)
             if not team:
                 continue
-            src = norm(img.get("src", "") or img.get("data-src", "") or img.get("data-lazy-src", ""))
-            if not src or src.startswith("data:"):
+            url = norm(img.get("src", "") or img.get("data-src", "") or img.get("data-lazy-src", ""))
+            if not url or url.startswith("data:"):
                 continue
-            logos.setdefault(team, urljoin(base, src))
-    return [{"name": name, "logo": logo} for name, logo in sorted(logos.items())]
+            current.setdefault(team, {"name": team, "logo": urljoin(base, url)})
+
+    old_by_id = {str(row["id"]): row for row in previous.get("teams", [])
+                 if isinstance(row, dict) and row.get("id")}
+    old_by_name = {row["name"].casefold(): row for row in previous.get("teams", [])
+                   if isinstance(row, dict) and row.get("name")}
+    for team, row in current.items():
+        if row.get("logo"):
+            continue
+        old = old_by_id.get(str(row.get("id"))) or old_by_name.get(team.casefold(), {})
+        row["logo"] = old.get("logo", "")
+    return sorted(current.values(), key=lambda row: row["name"])
 
 
 def season_year(month):
@@ -378,19 +414,8 @@ def parse_matches(soup, aliases, default_competition="TAURON Liga"):
                         date, time = candidate_date, candidate_time
                         break
 
-            # On match day, once the scheduled kickoff time has passed, treat the
-            # fixture as live until one side has won three sets. The official list
-            # may still expose placeholder points during a live match.
-            if status != "finished" and date and time:
-                try:
-                    kickoff = datetime.datetime.strptime(
-                        f"{date} {time}", "%d.%m.%Y %H:%M"
-                    ).replace(tzinfo=TZ)
-                    now = datetime.datetime.now(TZ)
-                    if kickoff.date() == now.date() and now >= kickoff:
-                        status = "live"
-                except ValueError:
-                    pass
+            # Kickoff time alone is NOT evidence of a live match.
+            # A delayed/postponed fixture can keep its original start time.
 
             key = (date or "", time or "", home, away, home_sets, away_sets, tuple(set_scores))
             found[key] = {
@@ -404,6 +429,12 @@ def parse_matches(soup, aliases, default_competition="TAURON Liga"):
                 "home_sets": home_sets,
                 "away_sets": away_sets,
                 "set_scores": set_scores,
+                "set_points": [
+                    {"home": int(pair.split(":")[0]), "away": int(pair.split(":")[1])}
+                    for pair in set_scores
+                ],
+                "home_points": sum(int(pair.split(":")[0]) for pair in set_scores),
+                "away_points": sum(int(pair.split(":")[1]) for pair in set_scores),
                 "current_points": current_points,
             }
             break
@@ -528,6 +559,20 @@ def run_league(key, cfg):
             match.update(better)
             match["id"] = match.get("id") or better.get("id")
 
+    # Keep the old app fields, and add explicit league identity and ISO dates.
+    for match in matches:
+        match["league"] = key
+        match["source_url"] = (
+            f"{base}/games/action/show/id/{match['id']}/nocookies/1.html"
+            if match.get("id") else base + "/games/nocookies/1.html"
+        )
+        try:
+            match["date_iso"] = datetime.datetime.strptime(
+                match["date"], "%d.%m.%Y"
+            ).date().isoformat()
+        except (ValueError, TypeError):
+            match["date_iso"] = None
+
     if len(matches) < 4:
         print(f"WARNING [{key}]: only {len(matches)} matches parsed (end of season or a layout change?).")
 
@@ -544,7 +589,7 @@ def run_league(key, cfg):
 
     payload = {
         "league": key,
-        "teams": extract_team_logos(base, aliases, games, table_soup),
+        "teams": extract_team_logos(base, aliases, previous, games, table_soup),
         "updated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "matches": matches,
         "table": standings,
