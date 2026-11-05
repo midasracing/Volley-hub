@@ -31,7 +31,7 @@ export function feedDateKey(value) {
   return match ? match[3] + '-' + match[2] + '-' + match[1] : '';
 }
 export function normalizeName(value) {
-  return String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pl-PL').replace(/[^a-z0-9]/g, '');
+  return String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pl-PL').replace(/[^\p{L}\p{M}\p{N}]/gu, '');
 }
 export function isLive(match) {
   return match?.status === 'live' || (match?.status !== 'finished' && match?.status !== 'scheduled' && match?.current_points != null);
