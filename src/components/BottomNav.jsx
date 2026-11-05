@@ -20,8 +20,6 @@ function BottomNav({ active, onNavigate }) {
   const animationRef = useRef(null);
   const motionRef = useRef(null);
   const reducedMotionRef = useRef(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true);
-  const lastIconCenters = useRef(null);
-  const iconTweens = useRef([]);
   const springRef = useRef({
     position: NaN, velocity: 0, target: 0, width: 0
   });
@@ -98,35 +96,6 @@ function BottomNav({ active, onNavigate }) {
     };
   }, [layout, snapLens]);
 
-  // FLIP the icon centers after the four button slots change widths.
-  // The slot reflow is immediate; the icons glide without layout every frame.
-  useLayoutEffect(() => {
-    const track = trackRef.current;
-    if (!track || !layout) return;
-    const icons = Array.from(track.querySelectorAll('.vh-nav-item svg'));
-    const previous = lastIconCenters.current;
-    iconTweens.current.forEach(a => a.cancel());
-    iconTweens.current = [];
-    const next = icons.map(icon => {
-      const box = icon.getBoundingClientRect();
-      return box.left + box.width / 2;
-    });
-    if (previous && !reducedMotionRef.current && !document.hidden) {
-      icons.forEach((icon, index) => {
-        const offset = previous[index] - next[index];
-        if (!Number.isFinite(offset) || Math.abs(offset) < .5) return;
-        const target = getComputedStyle(icon).transform;
-        const animation = icon.animate([
-          { transform: 'translate3d(' + offset.toFixed(2) + 'px,0,0)' },
-          { transform: target === 'none' ? 'translate3d(0,0,0)' : target }
-        ], { duration: 260, easing: 'cubic-bezier(.22,.8,.22,1)' });
-        iconTweens.current.push(animation);
-        animation.finished.catch(() => {}).finally(() => animation.cancel());
-      });
-    }
-    lastIconCenters.current = next;
-  }, [layout]);
-
   useEffect(() => {
     const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
     const onMotionChange = () => {
@@ -156,16 +125,7 @@ function BottomNav({ active, onNavigate }) {
         const slot = layout?.items[index];
         return <button key={id} type="button" aria-label={label}
           aria-current={selected ? 'page' : undefined}
-          onClick={() => {
-            // Sample the visual (already animated) positions before React
-            // moves the flex slots. Rapid taps then never jump backwards.
-            const icons = trackRef.current?.querySelectorAll('.vh-nav-item svg');
-            if (icons?.length) lastIconCenters.current = Array.from(icons, icon => {
-              const rect = icon.getBoundingClientRect();
-              return rect.left + rect.width / 2;
-            });
-            onNavigate(id);
-          }}
+          onClick={() => onNavigate(id)}
           className={'vh-nav-item' + (selected ? ' active' : '')}
           style={slot ? { flexGrow: selected ? 2.5 : 1 } : { visibility: 'hidden' }}>
           <Icon size={23} strokeWidth={selected ? 2.3 : 1.8}
