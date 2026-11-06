@@ -1,0 +1,9 @@
+{
+  "source": "scripts/update_pomorska3liga.py",
+  "sha256": "fc23828da506d3f1f52067342cad36ec9e8dd7034ca9bc448a5f6020d89c6dcb",
+  "base_commit": "d1625faa2dfb5fc5aaa9a7d283b3bc6309c8f148",
+  "changes": [
+    "output redirected to experiment/outputs",
+    "imports resolved against repository root"
+  ]
+}

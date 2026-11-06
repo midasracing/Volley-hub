@@ -1,0 +1,57 @@
+name: Experiment VolleyStation transports
+
+on:
+  push:
+    branches: [experiment/volleystation-20261106]
+    paths:
+      - experiments/volleystation/**
+      - .github/workflows/experiment-volleystation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: experiment-volleystation
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      LAB_BROWSER: /usr/bin/google-chrome
+      LAB_NO_SANDBOX: "true"
+      PUPPETEER_SKIP_DOWNLOAD: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install isolated experiment dependencies
+        run: |
+          python -m pip install -r experiments/volleystation/requirements.txt
+          npm ci --prefix experiments/volleystation
+          google-chrome --version
+          command -v xvfb-run
+      - name: Headless comparison including profile reuse after browser restart
+        run: |
+          python experiments/volleystation/run.py --rounds 2 --interval 3 --restart-between-rounds --output experiments/volleystation/github-headless.jsonl
+          python experiments/volleystation/report.py experiments/volleystation/github-headless.jsonl
+      - name: Headful comparison with warm sessions
+        if: always()
+        run: |
+          LAB_HEADFUL=true xvfb-run -a python experiments/volleystation/run.py --rounds 2 --interval 3 --output experiments/volleystation/github-headful.jsonl
+          python experiments/volleystation/report.py experiments/volleystation/github-headful.jsonl
+      - name: Upload measurements without cookies or browser profiles
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: volleystation-github-comparison
+          path: |
+            experiments/volleystation/github-*.jsonl
+            experiments/volleystation/github-*.meta.json
+            experiments/volleystation/github-*.md
