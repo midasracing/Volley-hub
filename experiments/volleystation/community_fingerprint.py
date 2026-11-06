@@ -20,8 +20,8 @@ from run import HERE
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         present='volley_restart=1' in self.headers.get('Cookie','')
-        body=('<!doctype html><title>Local restart probe</title><script>'
-              'window.__serverSawCookie='+json.dumps(present)+'</script>').encode()
+        body=('<!doctype html><html data-probe-cookie="'+str(present).lower()+
+              '"><title>Local restart probe</title><body>Offline probe</body></html>').encode()
         self.send_response(200);self.send_header('Content-Type','text/html; charset=utf-8')
         self.send_header('Cache-Control','no-store')
         self.send_header('Set-Cookie','volley_restart=1; Path=/; Max-Age=3600; SameSite=Lax')
@@ -58,7 +58,7 @@ def main():
                             item['browser_version']=context.browser.version
                         finally:
                             context.close();manager.__exit__(None,None,None)
-                    keys=['core_sha256','canvas_pixels_sha256','canvas_png_sha256','webgl_pixels_sha256']
+                    keys=['core_sha256','identity_sha256','canvas_pixels_sha256','canvas_png_sha256','webgl_pixels_sha256']
                     item['stable_across_restarts']={k:len({e['first'][k] for e in entries})==1 for k in keys}
                     item['stable_within_process']={k:all(e['first'][k]==e['second'][k] for e in entries) for k in keys}
                     item['cookie_continuity']=all(e['first']['server_saw_persistent_cookie'] for e in entries[1:])

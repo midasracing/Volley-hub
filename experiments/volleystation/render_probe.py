@@ -34,7 +34,8 @@ PROBE_JS = r'''(() => {
       colorDepth:screen.colorDepth,pixelDepth:screen.pixelDepth},
     window:{outerWidth,outerHeight,innerWidth,innerHeight,devicePixelRatio},fontWidths:fonts,webgl:gl},
     canvasRGBA:Array.from(x.getImageData(0,0,c.width,c.height).data),canvasPNG:c.toDataURL(),webglPixels:pixels,
-    serverSawCookie:window.__serverSawCookie??null};
+    serverSawCookie:document.documentElement.dataset.probeCookie==='true'?true:
+      document.documentElement.dataset.probeCookie==='false'?false:null};
 })()'''
 
 
@@ -43,7 +44,9 @@ def snapshot(evaluate):
     if isinstance(data, str):
         data = json.loads(data)
     core = data['core']
+    identity = {k:v for k,v in core.items() if k!='window'}
     return {'core':core,'core_sha256':hashlib.sha256(json.dumps(core,sort_keys=True).encode()).hexdigest(),
+            'identity_sha256':hashlib.sha256(json.dumps(identity,sort_keys=True).encode()).hexdigest(),
             'canvas_pixels_sha256':hashlib.sha256(bytes(data['canvasRGBA'])).hexdigest(),
             'canvas_png_sha256':hashlib.sha256(data['canvasPNG'].encode()).hexdigest(),
             'webgl_pixels_sha256':hashlib.sha256(bytes(data['webglPixels'])).hexdigest() if data['webglPixels'] else None,
