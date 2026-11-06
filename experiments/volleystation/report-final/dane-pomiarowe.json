@@ -1,0 +1,1358 @@
+{
+  "generated_at": "2026-11-06T18:11:08.527758+00:00",
+  "scenarios": 17,
+  "source_navigations": 39,
+  "valid_navigations": 23,
+  "status_counts": {
+    "200": 23,
+    "403": 16
+  },
+  "http_controls": 17,
+  "http_controls_blocked": 17,
+  "executed_import_cycles": 12,
+  "complete_import_cycles": 3,
+  "production_hash_checks": 11,
+  "production_unchanged": true,
+  "cases": [
+    {
+      "run_id": "42217490055",
+      "case": "cam-cache",
+      "summary": {
+        "case": "cam-cache",
+        "started_at": "2026-11-06T12:27:14.481129+00:00",
+        "run_id": "42217490055",
+        "job": "scenario",
+        "versions": {
+          "camoufox": "0.5.9"
+        },
+        "planned_cycles": 3,
+        "interval_seconds": 8,
+        "pause_between_cycles_seconds": 20,
+        "browser_navigation_budget": 14,
+        "cycles": [
+          {
+            "cycle": 1,
+            "quality_passed": false,
+            "navigations": 2,
+            "error": "RuntimeError: Scenario stopped after first unsuccessful navigation"
+          }
+        ],
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a56417581e7cf701-SEA",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "158.0.1-beta.41",
+        "completed_cycles": 1,
+        "passed_cycles": 0,
+        "navigations": 2,
+        "identity_config_digests": [
+          "77a84a07fbf7c26494fbec0bb5ca3712d763a0891dd7075d76ee072d25baff45"
+        ],
+        "production_unchanged": true
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a56417a30c223a10-SEA",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 3.336
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a56417d3cd9a3a10-SEA",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.214
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "cam-fresh",
+      "summary": {
+        "case": "cam-fresh",
+        "started_at": "2026-11-06T12:27:39.097538+00:00",
+        "run_id": "42217490055",
+        "job": "scenario",
+        "versions": {
+          "camoufox": "0.5.9"
+        },
+        "planned_cycles": 3,
+        "interval_seconds": 8,
+        "pause_between_cycles_seconds": 20,
+        "browser_navigation_budget": 14,
+        "cycles": [
+          {
+            "cycle": 1,
+            "quality_passed": false,
+            "navigations": 1,
+            "error": "RuntimeError: Scenario stopped after first unsuccessful navigation"
+          }
+        ],
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a56417f1a848bae3-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "158.0.1-beta.41",
+        "completed_cycles": 1,
+        "passed_cycles": 0,
+        "navigations": 1,
+        "identity_config_digests": [
+          "2f946307ba808b9e298d60e8be37292f4a87efee6c35e4f2c00931984328d6a5"
+        ],
+        "production_unchanged": true
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a564180d5c60c5b2-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "clearance_cookie_present": false,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.42
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "cam-handoff",
+      "summary": {
+        "case": "cam-handoff",
+        "started_at": "2026-11-06T12:30:52.585852+00:00",
+        "run_id": "42217490055",
+        "job": "scenario",
+        "versions": {
+          "camoufox": "0.5.9"
+        },
+        "planned_cycles": 3,
+        "interval_seconds": 8,
+        "pause_between_cycles_seconds": 20,
+        "browser_navigation_budget": 14,
+        "cycles": [
+          {
+            "matches": 72,
+            "finished": 17,
+            "matches_with_time": 71,
+            "finished_with_full_sets": 16,
+            "teams": 9,
+            "table_rows": 9,
+            "teams_with_logos": 9,
+            "quality_passed": false,
+            "cycle": 1,
+            "navigations": 5
+          }
+        ],
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641caafc36db00-ATL",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "158.0.1-beta.41",
+        "completed_cycles": 1,
+        "passed_cycles": 0,
+        "navigations": 5,
+        "identity_config_digests": [
+          "c3c97bff786da06a02db475451ca999b1bda337f1c7d962737f5c0fdb991e562"
+        ],
+        "production_unchanged": true
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641cc6eb46b261-ATL",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 3.271
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641cf75fdbb261-ATL",
+          "parsed_count": 17,
+          "valid": true,
+          "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.651
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579670/",
+          "page": "detail-or-profile",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "UKS Skarszewy vs. KS AZS AWFiS Gdańsk - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641d29489fb261-ATL",
+          "valid": true,
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.546
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579659/",
+          "page": "detail-or-profile",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "LZS Gminy Dragacz vs. PTPS TELMAX Człuchów - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641d5b4d6cb261-ATL",
+          "valid": true,
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.548
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579653/",
+          "page": "detail-or-profile",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a5641d8d4848b261-ATL",
+          "valid": true,
+          "ok": false,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.21
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "cam-linux",
+      "summary": {
+        "case": "cam-linux",
+        "started_at": "2026-11-06T12:25:45.398268+00:00",
+        "run_id": "42217490055",
+        "job": "scenario",
+        "versions": {
+          "camoufox": "0.5.9"
+        },
+        "planned_cycles": 3,
+        "interval_seconds": 8,
+        "pause_between_cycles_seconds": 20,
+        "browser_navigation_budget": 14,
+        "cycles": [
+          {
+            "matches": 72,
+            "finished": 17,
+            "matches_with_time": 70,
+            "finished_with_full_sets": 15,
+            "teams": 9,
+            "table_rows": 9,
+            "teams_with_logos": 9,
+            "quality_passed": false,
+            "cycle": 1,
+            "navigations": 4
+          }
+        ],
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a564152b6d28f061-DFW",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "158.0.1-beta.41",
+        "completed_cycles": 1,
+        "passed_cycles": 0,
+        "navigations": 4,
+        "identity_config_digests": [
+          "01e2a5d5172c43318ef071c2bbcdf714347a779453935b850bb5bc1a2424054b"
+        ],
+        "production_unchanged": true
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a564154cf94c671d-DFW",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "clearance_cookie_present": false,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 4.739
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a564157b599f671d-DFW",
+          "parsed_count": 17,
+          "valid": true,
+          "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.528
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579670/",
+          "page": "detail-or-profile",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "UKS Skarszewy vs. KS AZS AWFiS Gdańsk - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a56415ad5837671d-DFW",
+          "valid": true,
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.454
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579659/",
+          "page": "detail-or-profile",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a56415df5b36671d-DFW",
+          "valid": true,
+          "ok": false,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.146
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "cam-live",
+      "summary": {
+        "case": "cam-live",
+        "started_at": "2026-11-06T12:25:35.335958+00:00",
+        "run_id": "42217490055",
+        "job": "scenario",
+        "versions": {
+          "camoufox": "0.5.9"
+        },
+        "planned_cycles": 3,
+        "interval_seconds": 8,
+        "pause_between_cycles_seconds": 20,
+        "browser_navigation_budget": 14,
+        "cycles": [
+          {
+            "cycle": 1,
+            "quality_passed": false,
+            "navigations": 1,
+            "error": "RuntimeError: Scenario stopped after first unsuccessful navigation"
+          }
+        ],
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a56414ec7b3311f1-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "158.0.1-beta.41",
+        "completed_cycles": 1,
+        "passed_cycles": 0,
+        "navigations": 1,
+        "identity_config_digests": [
+          "d37265fbace797cd7be6186e153d2be9f3cd1d0edab9355cc21eae7e9c4caf6b"
+        ],
+        "production_unchanged": true
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a564150fa8ed1d0a-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "clearance_cookie_present": false,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 46.811
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "cam-recorded",
+      "summary": {
+        "case": "cam-recorded",
+        "started_at": "2026-11-06T12:29:15.539397+00:00",
+        "run_id": "42217490055",
+        "job": "scenario",
+        "versions": {
+          "camoufox": "0.5.9"
+        },
+        "planned_cycles": 3,
+        "interval_seconds": 8,
+        "pause_between_cycles_seconds": 20,
+        "browser_navigation_budget": 14,
+        "cycles": [
+          {
+            "cycle": 1,
+            "quality_passed": false,
+            "navigations": 1,
+            "error": "RuntimeError: Scenario stopped after first unsuccessful navigation"
+          }
+        ],
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641a4cb9561ccd-MSP",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "158.0.1-beta.41",
+        "completed_cycles": 1,
+        "passed_cycles": 0,
+        "navigations": 1,
+        "identity_config_digests": [
+          "b8bc08530102ea68ee986306ea7429d97bc584eb5f51d3edb1a92216560d9141"
+        ],
+        "production_unchanged": true
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a5641a7edae01ccd-MSP",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "clearance_cookie_present": false,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.49
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "cam-restart",
+      "summary": {
+        "case": "cam-restart",
+        "started_at": "2026-11-06T12:29:05.390895+00:00",
+        "run_id": "42217490055",
+        "job": "scenario",
+        "versions": {
+          "camoufox": "0.5.9"
+        },
+        "planned_cycles": 3,
+        "interval_seconds": 8,
+        "pause_between_cycles_seconds": 20,
+        "browser_navigation_budget": 14,
+        "cycles": [
+          {
+            "matches": 72,
+            "finished": 17,
+            "matches_with_time": 69,
+            "finished_with_full_sets": 14,
+            "teams": 9,
+            "table_rows": 9,
+            "teams_with_logos": 9,
+            "quality_passed": false,
+            "cycle": 1,
+            "navigations": 3
+          }
+        ],
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641a0d4b06169a-SJC",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "158.0.1-beta.41",
+        "recovery_passed": true,
+        "completed_cycles": 1,
+        "passed_cycles": 0,
+        "navigations": 4,
+        "identity_config_digests": [
+          "ddc15c9d7bf44ee133378fa66b49b2069cb1d8ca36790b1020d7f88d0b1edb9e"
+        ],
+        "production_unchanged": true
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641a457f29169a-SJC",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 4.345
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641a764d78169a-SJC",
+          "parsed_count": 17,
+          "valid": true,
+          "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.656
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579670/",
+          "page": "detail-or-profile",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a5641aa85b4b169a-SJC",
+          "valid": true,
+          "ok": false,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.213
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641d39fa45169a-SJC",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "clearance_cookie_present": true,
+          "cycle": 1,
+          "phase": "recovery_after_60_seconds",
+          "elapsed_seconds": 1.09
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "curl-profiles",
+      "summary": {
+        "case": "curl-profiles",
+        "started_at": "2026-11-06T12:32:36.328441+00:00",
+        "run_id": "42217490055",
+        "navigation_budget": 3,
+        "wait_for_challenge_seconds": 45,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641f338fdc9312-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "navigations": 3,
+        "passed_navigations": 0
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641f664a28c942-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "profile": "chrome",
+          "elapsed_seconds": 0.092
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641f988b1bc942-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "profile": "firefox",
+          "elapsed_seconds": 0.034
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641fcacd14c942-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "profile": "safari",
+          "elapsed_seconds": 0.042
+        }
+      ]
+    },
+    {
+      "run_id": "42217490055",
+      "case": "nodriver-headful",
+      "summary": {
+        "case": "nodriver-headful",
+        "started_at": "2026-11-06T12:32:03.363155+00:00",
+        "run_id": "42217490055",
+        "navigation_budget": 3,
+        "wait_for_challenge_seconds": 45,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641e658a1eefaa-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "setup_or_runtime_error": "Exception: \n                ---------------------\n                Failed to connect to browser\n                ---------------------\n                One of the causes could be when you are running as root.\n                In that case you need to pass no_sandbox=True \n                ",
+        "navigations": 0,
+        "passed_navigations": 0
+      },
+      "requests": []
+    },
+    {
+      "run_id": "42217490055",
+      "case": "nodriver-headless",
+      "summary": {
+        "case": "nodriver-headless",
+        "started_at": "2026-11-06T12:31:40.389939+00:00",
+        "run_id": "42217490055",
+        "navigation_budget": 3,
+        "wait_for_challenge_seconds": 45,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641dd5eaba599d-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "setup_or_runtime_error": "Exception: \n                ---------------------\n                Failed to connect to browser\n                ---------------------\n                One of the causes could be when you are running as root.\n                In that case you need to pass no_sandbox=True \n                ",
+        "navigations": 0,
+        "passed_navigations": 0
+      },
+      "requests": []
+    },
+    {
+      "run_id": "42217490055",
+      "case": "stock-firefox",
+      "summary": {
+        "case": "stock-firefox",
+        "started_at": "2026-11-06T12:32:31.351632+00:00",
+        "run_id": "42217490055",
+        "navigation_budget": 3,
+        "wait_for_challenge_seconds": 45,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a5641f14ad452f4a-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "browser_version": "153.0",
+        "navigations": 3,
+        "passed_navigations": 2
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641f67a9e5498b-LAX",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "elapsed_seconds": 1.447
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a5641fa28b81498b-LAX",
+          "parsed_count": 17,
+          "valid": true,
+          "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+          "ok": true,
+          "elapsed_seconds": 0.479
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+          "page": "standings",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a5641fd77851498b-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "elapsed_seconds": 45.14
+        }
+      ]
+    },
+    {
+      "run_id": "42266370764",
+      "case": "cam-fresh-3",
+      "summary": {
+        "case": "cam-fresh-3",
+        "run_id": "42266370764",
+        "navigation_budget": 11,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a565fe7a2fcaf8d7-ORD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "seed_sha256": "08c5c05cb4b9b3fc0bee2684b4cb726a03dec4b1e15343199b311f7686beadfe",
+        "seed_provenance_run": "42214482012",
+        "interval_seconds": 15,
+        "browser_version": "158.0.1-beta.41",
+        "cycles": [
+          {
+            "matches": 72,
+            "finished": 17,
+            "matches_with_time": 72,
+            "finished_with_full_sets": 17,
+            "teams": 9,
+            "table_rows": 9,
+            "teams_with_logos": 9,
+            "quality_passed": true,
+            "cycle": 1,
+            "navigations": 3
+          },
+          {
+            "matches": 72,
+            "finished": 17,
+            "matches_with_time": 72,
+            "finished_with_full_sets": 17,
+            "teams": 9,
+            "table_rows": 9,
+            "teams_with_logos": 9,
+            "quality_passed": true,
+            "cycle": 2,
+            "navigations": 3
+          },
+          {
+            "matches": 72,
+            "finished": 17,
+            "matches_with_time": 72,
+            "finished_with_full_sets": 17,
+            "teams": 9,
+            "table_rows": 9,
+            "teams_with_logos": 9,
+            "quality_passed": true,
+            "cycle": 3,
+            "navigations": 3
+          }
+        ],
+        "passed_cycles": 3,
+        "identity_config_digests": [
+          "ad27a0ea4c9ca98a9d83c53b986bfb38840c4879e7105991751f2caa729ed3d5",
+          "77d28df98e7174aacb07287660d66ece8d554f456028d44048650754c2639661",
+          "df50234198045b7d105127ca50f2a546caa9383e3de177bfe22d17aa006e8422"
+        ],
+        "production_unchanged": true,
+        "navigations": 9,
+        "passed_navigations": 9
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a565fe98f988125f-ORD",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 3.212
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a565fef58fe1125f-ORD",
+          "parsed_count": 17,
+          "valid": true,
+          "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+          "ok": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.711
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+          "page": "standings",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a565ff534c4d125f-ORD",
+          "parsed_count": 9,
+          "valid": true,
+          "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+          "ok": true,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 0.452
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a56600262f74bcc6-ATL",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "cycle": 2,
+          "phase": "import",
+          "elapsed_seconds": 3.299
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a56600827fb3bcc6-ATL",
+          "parsed_count": 17,
+          "valid": true,
+          "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+          "ok": true,
+          "cycle": 2,
+          "phase": "import",
+          "elapsed_seconds": 0.634
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+          "page": "standings",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a56600e02dc3bcc6-ATL",
+          "parsed_count": 9,
+          "valid": true,
+          "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+          "ok": true,
+          "cycle": 2,
+          "phase": "import",
+          "elapsed_seconds": 0.46
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a56601b25e85bcc6-ATL",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "cycle": 3,
+          "phase": "import",
+          "elapsed_seconds": 3.162
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "page": "results",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a566020ee8dfbcc6-ATL",
+          "parsed_count": 17,
+          "valid": true,
+          "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+          "ok": true,
+          "cycle": 3,
+          "phase": "import",
+          "elapsed_seconds": 0.653
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+          "page": "standings",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a566026ca82bbcc6-ATL",
+          "parsed_count": 9,
+          "valid": true,
+          "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+          "ok": true,
+          "cycle": 3,
+          "phase": "import",
+          "elapsed_seconds": 0.452
+        }
+      ]
+    },
+    {
+      "run_id": "42266370764",
+      "case": "cam-handoff",
+      "summary": {
+        "case": "cam-handoff",
+        "run_id": "42266370764",
+        "navigation_budget": 11,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a565ff978a1ca425-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "seed_sha256": "08c5c05cb4b9b3fc0bee2684b4cb726a03dec4b1e15343199b311f7686beadfe",
+        "seed_provenance_run": "42214482012",
+        "interval_seconds": 15,
+        "cycles": [],
+        "passed_cycles": 0,
+        "identity_config_digests": [
+          "54dc440039bb75bac0a9ec6effe2e3d3954c44d5c9b2000c21115f328c9b6bff"
+        ],
+        "production_unchanged": true,
+        "setup_or_runtime_error": "RuntimeError: Source refusal or invalid data",
+        "navigations": 1,
+        "passed_navigations": 0
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a565ffb14a39dbe1-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.374
+        }
+      ]
+    },
+    {
+      "run_id": "42266370764",
+      "case": "cam-recover",
+      "summary": {
+        "case": "cam-recover",
+        "run_id": "42266370764",
+        "navigation_budget": 11,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a56601d48b79dbe5-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "seed_sha256": "08c5c05cb4b9b3fc0bee2684b4cb726a03dec4b1e15343199b311f7686beadfe",
+        "seed_provenance_run": "42214482012",
+        "interval_seconds": 15,
+        "browser_version": "158.0.1-beta.41",
+        "recovery_target_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "same_url_recovery_passed": true,
+        "cycles": [
+          {
+            "cycle": 1,
+            "quality_passed": false,
+            "navigations": 1,
+            "error": "Source refusal or invalid data"
+          }
+        ],
+        "passed_cycles": 0,
+        "identity_config_digests": [
+          "c30f953f55f5bc49d59db72603bf55d5d2ea6c14a26b6c26a8de3a41c58c4704"
+        ],
+        "production_unchanged": true,
+        "navigations": 2,
+        "passed_navigations": 1
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a56601ec5b4adb67-LAX",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.446
+        },
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 200,
+          "challenge": false,
+          "challenge_seen_initially": false,
+          "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+          "cf_ray": "a566047e4a26db67-LAX",
+          "parsed_count": 55,
+          "valid": true,
+          "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+          "ok": true,
+          "cycle": 1,
+          "phase": "same_url_recovery_after_60_seconds",
+          "elapsed_seconds": 1.643
+        }
+      ]
+    },
+    {
+      "run_id": "42266370764",
+      "case": "cam-slow",
+      "summary": {
+        "case": "cam-slow",
+        "run_id": "42266370764",
+        "navigation_budget": 11,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a565fd5ecd271736-SJC",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "seed_sha256": "08c5c05cb4b9b3fc0bee2684b4cb726a03dec4b1e15343199b311f7686beadfe",
+        "seed_provenance_run": "42214482012",
+        "interval_seconds": 15,
+        "browser_version": "158.0.1-beta.41",
+        "cycles": [
+          {
+            "cycle": 1,
+            "quality_passed": false,
+            "navigations": 1,
+            "error": "Source refusal or invalid data"
+          }
+        ],
+        "passed_cycles": 0,
+        "identity_config_digests": [
+          "451a732d0ea90a844044cb75f52fec8974cddc67362c4d31118b23671562e6e0"
+        ],
+        "production_unchanged": true,
+        "navigations": 1,
+        "passed_navigations": 0
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a565fd925ec91736-SJC",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "cycle": 1,
+          "phase": "import",
+          "elapsed_seconds": 45.465
+        }
+      ]
+    },
+    {
+      "run_id": "42266370764",
+      "case": "nodriver-headful",
+      "summary": {
+        "case": "nodriver-headful",
+        "run_id": "42266370764",
+        "navigation_budget": 11,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a565fc0b39849c84-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "manual_chrome_attach": true,
+        "browser_version": "Chrome/156.0.8078.79",
+        "navigations": 1,
+        "passed_navigations": 0
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Just a moment...",
+          "cf_ray": "a565fc492bf67abe-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "elapsed_seconds": 48.302
+        }
+      ]
+    },
+    {
+      "run_id": "42266370764",
+      "case": "nodriver-headless",
+      "summary": {
+        "case": "nodriver-headless",
+        "run_id": "42266370764",
+        "navigation_budget": 11,
+        "plain_http_control": {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": null,
+          "title": "Just a moment...",
+          "cf_ray": "a565fc007c35d634-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false
+        },
+        "manual_chrome_attach": true,
+        "browser_version": "Chrome/156.0.8078.79",
+        "navigations": 1,
+        "passed_navigations": 0
+      },
+      "requests": [
+        {
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "page": "schedule",
+          "status": 403,
+          "challenge": true,
+          "challenge_seen_initially": true,
+          "title": "Attention Required! | Cloudflare",
+          "cf_ray": "a565fc3cbeaeb7be-IAD",
+          "parsed_count": 0,
+          "valid": false,
+          "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "ok": false,
+          "elapsed_seconds": 2.077
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Próby transportu VolleyStation
 
+[Raport końcowy](report-final/RAPORT_KONCOWY.md) · [Tabela pomiarów CSV](report-final/wyniki.csv)
+
 Izolowana kopia scrapera Pomorskiej III ligi: `scraper_copy.py`. Metadane źródła
 znajdują się w `snapshot.json`. Kopia zapisuje wyłącznie do `outputs/`, nigdy do
 produkcyjnego `data/`. Pozostałe scrapery i workflow nie są przełączane na te próby.

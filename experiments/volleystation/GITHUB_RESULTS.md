@@ -1,5 +1,8 @@
 # Próby VolleyStation na GitHub Actions — 6 listopada 2026
 
+To raport wstępny. Wyniki rozszerzonych testów, powtarzalności i końcowa rekomendacja:
+[RAPORT_KONCOWY.md](report-final/RAPORT_KONCOWY.md).
+
 **Camoufox z interfejsem i import przyrostowy pozwoliły raz odświeżyć kompletny
 feed w sześciu odczytach stron. Nie uzyskano rozwiązania bulletproof: ponowny
 start przeglądarki z zachowanym profilem i konfiguracją fingerprintu zakończył się 403.**

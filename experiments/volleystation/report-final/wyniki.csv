@@ -1,0 +1,18 @@
+﻿run_id;scenario;valid_documents;attempted_documents;complete_imports;executed_imports;outcome
+42217490055;cam-cache;1;2;0;1;Pełne eksporty: 0/1 wykonanych prób
+42217490055;cam-fresh;0;1;0;1;Pełne eksporty: 0/1 wykonanych prób
+42217490055;cam-handoff;4;5;0;1;Nie osiągnięto przekazania sesji: wcześniejsza blokada lub niepełny import
+42217490055;cam-linux;3;4;0;1;Pełne eksporty: 0/1 wykonanych prób
+42217490055;cam-live;0;1;0;1;Pełne eksporty: 0/1 wykonanych prób
+42217490055;cam-recorded;0;1;0;1;Pełne eksporty: 0/1 wykonanych prób
+42217490055;cam-restart;3;4;0;1;"Po 60 s odczytano inną stronę; nie dowodzi odzyskania zablokowanej"
+42217490055;curl-profiles;0;3;0;0;Poprawne dokumenty: 0/3
+42217490055;nodriver-headful;0;0;0;0;"Błąd uruchomienia; Cloudflare nieprzetestowany"
+42217490055;nodriver-headless;0;0;0;0;"Błąd uruchomienia; Cloudflare nieprzetestowany"
+42217490055;stock-firefox;2;3;0;0;Poprawne dokumenty: 2/3
+42266370764;cam-fresh-3;9;9;3;3;Pełne eksporty: 3/3 wykonanych prób
+42266370764;cam-handoff;0;1;0;0;Nie osiągnięto przekazania sesji: wcześniejsza blokada lub niepełny import
+42266370764;cam-recover;1;2;0;1;Ta sama strona po 60 s: poprawny pojedynczy odczyt
+42266370764;cam-slow;0;1;0;1;Pełne eksporty: 0/1 wykonanych prób
+42266370764;nodriver-headful;0;1;0;0;Poprawne dokumenty: 0/1
+42266370764;nodriver-headless;0;1;0;0;Poprawne dokumenty: 0/1

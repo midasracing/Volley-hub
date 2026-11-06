@@ -1,0 +1,23 @@
+[
+  {
+    "file": "cycle-1.json",
+    "matches": 72,
+    "finished": 17,
+    "errors": [],
+    "passed": true
+  },
+  {
+    "file": "cycle-2.json",
+    "matches": 72,
+    "finished": 17,
+    "errors": [],
+    "passed": true
+  },
+  {
+    "file": "cycle-3.json",
+    "matches": 72,
+    "finished": 17,
+    "errors": [],
+    "passed": true
+  }
+]

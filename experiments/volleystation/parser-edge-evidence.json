@@ -1,0 +1,14 @@
+{
+  "case": "legal_deuce_score_41_39",
+  "expected_set_scores": [
+    "41:39",
+    "25:22",
+    "25:20"
+  ],
+  "actual_set_scores": [
+    "25:22",
+    "25:20"
+  ],
+  "passed": false,
+  "finding": "Parser rejects legal scores above 40 points."
+}
