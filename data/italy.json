@@ -2,7 +2,7 @@
   "league": "italy",
   "competition": "SuperLega Credem Banca",
   "source": "https://ww2.legavolley.it/Calendario.asp",
-  "updated_at": "2026-11-05T16:38:09.305059+00:00",
+  "updated_at": "2026-11-06T12:03:50.811120+00:00",
   "teams": [
     {
       "name": "Acqua Sant'Anna Cuneo",
@@ -2701,7 +2701,7 @@
       "competition": "SuperLega Credem Banca",
       "group": "Kolejka 10",
       "date": "13.12.2026",
-      "time": "18:00",
+      "time": "17:00",
       "home": "Valsa Group Modena",
       "away": "Tinet Prata di Pordenone",
       "home_team_id": "6867",
