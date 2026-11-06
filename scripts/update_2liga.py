@@ -218,35 +218,50 @@ def parse_pzps_results(matches):
             team_group[norm(match["away"])] = match["group"]
     for table in soup.find_all("table"):
         rows = table.find_all("tr")
-        header_text = " ".join(clean(c.get_text(" ", strip=True)).lower()
-                                for row in rows[:2] for c in row.find_all(["th", "td"]))
-        # Only parse a table that looks like a league standings table.
-        if not any(word in header_text for word in ("mecze", "mecz", "zwyci", "poraż", "poraz", "punkty", "pkt", "stosunek")):
+        column_map = {}
+        for row in rows[:3]:
+            headers = [clean(cell.get_text(" ", strip=True)).casefold()
+                       for cell in row.find_all(["th", "td"], recursive=False)]
+            mandatory = {
+                "lp.", "zespół", "mecze", "pkt", "zw.",
+                "sety +", "sety -", "pkt +", "pkt -",
+            }
+            if mandatory.issubset(headers):
+                column_map = {label: index for index, label in enumerate(headers)}
+                break
+        if not column_map:
+            # Never infer "wins" or "points" from arbitrary numeric columns.
             continue
         for row in rows:
-            cells = [clean(c.get_text(" ", strip=True)) for c in row.find_all(["th", "td"])]
-            if len(cells) < 5:
+            cells = [clean(cell.get_text(" ", strip=True))
+                     for cell in row.find_all(["th", "td"], recursive=False)]
+            if len(cells) <= max(column_map.values()):
                 continue
-            team_cell = next((c for c in cells if norm(c) in team_group), None)
-            if not team_cell:
+            team_name = cells[column_map["zespół"]]
+            group = team_group.get(norm(team_name))
+            if not group:
                 continue
-            group = team_group[norm(team_cell)]
-            nums = [int(c) for c in cells if re.fullmatch(r"\d+", c)]
-            ratios = [tuple(map(int, match.groups())) for c in cells
-                      for match in [re.fullmatch(r"(\d+)\s*:\s*(\d+)", c)] if match]
-            if len(nums) < 3:
-                continue
+
+            def integer(label):
+                value = cells[column_map[label]]
+                if not re.fullmatch(r"\d+", value):
+                    raise ValueError(f"Invalid PZPS standings {label} for {team_name}: {value!r}")
+                return int(value)
+
+            played, wins = integer("mecze"), integer("zw.")
+            if wins > played:
+                raise RuntimeError(f"PZPS standings wins exceed played for {team_name}")
             tables_by_group[group].append({
-                "rank": nums[0] if nums[0] <= 20 else len(tables_by_group[group]) + 1,
-                "team": team_cell,
-                "played": nums[1] if len(nums) > 1 else 0,
-                "wins": nums[2] if len(nums) > 2 else 0,
-                "losses": nums[3] if len(nums) > 3 else 0,
-                "sets_for": ratios[0][0] if ratios else 0,
-                "sets_against": ratios[0][1] if ratios else 0,
-                "points_for": ratios[1][0] if len(ratios) > 1 else 0,
-                "points_against": ratios[1][1] if len(ratios) > 1 else 0,
-                "points": nums[-1] if nums else 0,
+                "rank": integer("lp."),
+                "team": team_name,
+                "played": played,
+                "wins": wins,
+                "losses": played - wins,
+                "points": integer("pkt"),
+                "sets_for": integer("sety +"),
+                "sets_against": integer("sety -"),
+                "points_for": integer("pkt +"),
+                "points_against": integer("pkt -"),
             })
     for group in tables_by_group:
         seen = set()
