@@ -1,0 +1,2 @@
+-r requirements-alternatives.txt
+nodriver==0.50.99
