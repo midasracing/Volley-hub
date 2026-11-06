@@ -46,10 +46,13 @@ def render(path):
             lines.append(f"- {row['engine']}, seria {row['round']}, {row['page']}: "
                          f"HTTP {row.get('status')}; {row.get('error', 'blokada lub niepoprawne dane')}")
     observed = any(r.get('challenge') for r in records)
+    on_github = meta.get('environment') == 'github-actions'
     lines += ['', '## Ograniczenia', '',
-              'Krótki test w jednym środowisku, ze wspólną trasą proxy. Nie potwierdzono stałości wyjściowego IP.',
+              ('Test na jednym runnerze GitHub Actions.' if on_github else
+               'Krótki test w jednym środowisku. Nie potwierdzono stałości wyjściowego IP.'),
               'Pierwszy odczyt przeglądarki obejmuje uruchomienie procesu. Czasy pozostałych odczytów obejmują transport i parser.',
-              'Nie testowano runnerów GitHub Actions ani trwałości sesji między osobnymi zadaniami.',
+              ('Próby po restarcie procesów używały tego samego profilu w obrębie zadania.' if meta.get('restart_between_rounds')
+               else 'Nie testowano trwałości profilu po restarcie procesu.'),
               ('Wystąpił challenge; wynik dotyczy wyłącznie zapisanych prób.' if observed else
                '**Nie zaobserwowano challenge Cloudflare: brak podstaw do rankingu skuteczności obejścia.**'), '',
               'Wersje: `' + json.dumps(meta['versions'], ensure_ascii=False) + '`',

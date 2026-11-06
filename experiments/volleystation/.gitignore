@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 outputs/
 profiles/
 __pycache__/

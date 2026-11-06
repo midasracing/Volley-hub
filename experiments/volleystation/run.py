@@ -163,6 +163,8 @@ def main():
         if package_path.exists():
             versions[package] = json.loads(package_path.read_text())['version']
     metadata = {'started_at': started, 'engines': args.engines, 'rounds': args.rounds,
+                'environment': 'github-actions' if os.getenv('GITHUB_ACTIONS') == 'true' else 'local-managed',
+                'github_run_id': os.getenv('GITHUB_RUN_ID'),
                 'restart_between_rounds': args.restart_between_rounds,
                 'interval_seconds': args.interval, 'headful': os.getenv('LAB_HEADFUL') == 'true',
                 'proxy_used': bool(os.getenv('LAB_PROXY')), 'versions': versions,

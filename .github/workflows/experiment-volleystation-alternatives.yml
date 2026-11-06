@@ -1,0 +1,48 @@
+name: Experiment VolleyStation Firefox and TLS
+
+on:
+  push:
+    branches: [experiment/volleystation-20261106]
+    paths:
+      - .github/workflows/experiment-volleystation-alternatives.yml
+      - experiments/volleystation/alternatives.py
+      - experiments/volleystation/requirements-alternatives.txt
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare-alternatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install alternative engines
+        run: |
+          python -m pip install -r experiments/volleystation/requirements-alternatives.txt
+          python -m camoufox fetch
+          python -m camoufox version
+      - name: Test HTTP TLS impersonation and Firefox headless
+        run: |
+          python experiments/volleystation/alternatives.py --output experiments/volleystation/alternatives-headless.jsonl
+          python experiments/volleystation/report.py experiments/volleystation/alternatives-headless.jsonl
+      - name: Test Firefox with a display
+        if: always()
+        run: |
+          xvfb-run -a python experiments/volleystation/alternatives.py --engines camoufox --headful --output experiments/volleystation/alternatives-headful.jsonl
+          python experiments/volleystation/report.py experiments/volleystation/alternatives-headful.jsonl
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: volleystation-alternatives
+          path: |
+            experiments/volleystation/alternatives-*.jsonl
+            experiments/volleystation/alternatives-*.meta.json
+            experiments/volleystation/alternatives-*.md
