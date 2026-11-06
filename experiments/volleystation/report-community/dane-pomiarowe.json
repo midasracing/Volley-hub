@@ -1,0 +1,3507 @@
+[
+  {
+    "run_id": 42297682083,
+    "case": "cam-render-clean",
+    "summary": {
+      "case": "cam-render-clean",
+      "run_id": "42297682083",
+      "versions": {
+        "camoufox": "0.5.9"
+      },
+      "display": null,
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "cycle": 1,
+          "quality_passed": false,
+          "error": "Document blocked or invalid",
+          "navigations": 1
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1366,
+              "outerHeight": 768,
+              "innerWidth": 1366,
+              "innerHeight": 683,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.43333435058594,
+              "Liberation Sans": 164.43333435058594,
+              "DejaVu Sans": 190.31666564941406,
+              "monospace": 163.76666259765625
+            },
+            "webgl": {
+              "available": true,
+              "vendor": "Mozilla",
+              "renderer": "NVIDIA GeForce GTX 980, or similar",
+              "unmaskedVendor": "NVIDIA Corporation",
+              "unmaskedRenderer": "NVIDIA GeForce GTX 980, or similar",
+              "maxTextureSize": 32768,
+              "version": "WebGL 1.0"
+            }
+          },
+          "core_sha256": "6d88dfe2a7c36a1dab3591ba44afdae38076fd0084d307791547fb0617f92d01",
+          "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+          "canvas_png_sha256": "f9a206984f141ed015e8c325c2a65331168f8247e3ce5b57a0a320785595bc97",
+          "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a5673cd0e8911980-IAD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 1,
+      "passed_navigations": 0,
+      "passed_cycles": 0,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": true,
+        "title": "Just a moment...",
+        "cf_ray": "a5673d116ce812c9-IAD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 1,
+        "elapsed_seconds": 45.204
+      }
+    ]
+  },
+  {
+    "run_id": 42297682083,
+    "case": "cam-render-default",
+    "summary": {
+      "case": "cam-render-default",
+      "run_id": "42297682083",
+      "versions": {
+        "camoufox": "0.5.9"
+      },
+      "display": null,
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 1,
+          "navigations": 3
+        },
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 2,
+          "navigations": 3
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1366,
+              "outerHeight": 768,
+              "innerWidth": 1366,
+              "innerHeight": 683,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.43333435058594,
+              "Liberation Sans": 164.43333435058594,
+              "DejaVu Sans": 190.31666564941406,
+              "monospace": 163.76666259765625
+            },
+            "webgl": {
+              "available": true,
+              "vendor": "Mozilla",
+              "renderer": "Intel(R) HD Graphics 400, or similar",
+              "unmaskedVendor": "Intel",
+              "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+              "maxTextureSize": 8192,
+              "version": "WebGL 1.0"
+            }
+          },
+          "core_sha256": "22d309c9307f6dd0f570b1eb8282283729517c896cd5bbb54338893275eec175",
+          "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+          "canvas_png_sha256": "f9a206984f141ed015e8c325c2a65331168f8247e3ce5b57a0a320785595bc97",
+          "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+          "server_saw_persistent_cookie": null
+        },
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1366,
+              "outerHeight": 768,
+              "innerWidth": 1366,
+              "innerHeight": 683,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.43333435058594,
+              "Liberation Sans": 164.43333435058594,
+              "DejaVu Sans": 190.31666564941406,
+              "monospace": 163.76666259765625
+            },
+            "webgl": {
+              "available": true,
+              "vendor": "Mozilla",
+              "renderer": "Radeon R9 200 Series, or similar",
+              "unmaskedVendor": "AMD",
+              "unmaskedRenderer": "Radeon R9 200 Series, or similar",
+              "maxTextureSize": 16384,
+              "version": "WebGL 1.0"
+            }
+          },
+          "core_sha256": "0bc9760c635f00bc326dadf614346c65f55284758f883494cd1ea0fc2ef1dac3",
+          "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+          "canvas_png_sha256": "f9a206984f141ed015e8c325c2a65331168f8247e3ce5b57a0a320785595bc97",
+          "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a5673a6f4932c984-IAD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 6,
+      "passed_navigations": 6,
+      "passed_cycles": 2,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673ab588b0d962-IAD",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 1,
+        "elapsed_seconds": 2.101
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673b0ebf1dd962-IAD",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 1,
+        "elapsed_seconds": 0.488
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673b6c7f3bd962-IAD",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 1,
+        "elapsed_seconds": 0.984
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673c487d8d311a-IAD",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 2,
+        "elapsed_seconds": 2.39
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673c9ecf00311a-IAD",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 2,
+        "elapsed_seconds": 0.509
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673cfc7984311a-IAD",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 2,
+        "elapsed_seconds": 0.43
+      }
+    ]
+  },
+  {
+    "run_id": 42297682083,
+    "case": "cam-render-software",
+    "summary": {
+      "case": "cam-render-software",
+      "run_id": "42297682083",
+      "versions": {
+        "camoufox": "0.5.9"
+      },
+      "display": null,
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "cycle": 1,
+          "quality_passed": false,
+          "error": "Document blocked or invalid",
+          "navigations": 1
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1366,
+              "outerHeight": 768,
+              "innerWidth": 1366,
+              "innerHeight": 683,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.43333435058594,
+              "Liberation Sans": 164.43333435058594,
+              "DejaVu Sans": 190.31666564941406,
+              "monospace": 163.76666259765625
+            },
+            "webgl": {
+              "available": true,
+              "vendor": "Mozilla",
+              "renderer": "Intel(R) HD Graphics 400, or similar",
+              "unmaskedVendor": "Intel",
+              "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+              "maxTextureSize": 8192,
+              "version": "WebGL 1.0"
+            }
+          },
+          "core_sha256": "22d309c9307f6dd0f570b1eb8282283729517c896cd5bbb54338893275eec175",
+          "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+          "canvas_png_sha256": "f9a206984f141ed015e8c325c2a65331168f8247e3ce5b57a0a320785595bc97",
+          "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a5673dfa28e4320f-ORD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 1,
+      "passed_navigations": 0,
+      "passed_cycles": 0,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": true,
+        "title": "Just a moment...",
+        "cf_ray": "a5673e35ce6f320f-ORD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": null,
+        "cycle": 1,
+        "elapsed_seconds": 45.305
+      }
+    ]
+  },
+  {
+    "run_id": 42297682083,
+    "case": "fingerprint-restarts",
+    "summary": {
+      "run_id": "42297682083",
+      "display": null,
+      "source_requests": 0,
+      "modes": {
+        "frozen-options": {
+          "starts": [
+            {
+              "start": 1,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "c56eb125d9e73735d123a5695a8b0ff401480d18c8d47bbea010b0faaaa090de",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "77f10ccb54be206d6e92a9b54d3dd3b87436814661e58ff90cad222d54979a68",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "c56eb125d9e73735d123a5695a8b0ff401480d18c8d47bbea010b0faaaa090de",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "77f10ccb54be206d6e92a9b54d3dd3b87436814661e58ff90cad222d54979a68",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              }
+            },
+            {
+              "start": 2,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "b70fdc1fa3d7a3223d837cb44fa9ea99adfd0e85b861da0b8979781a1dba3165",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "b1692f221677a4a37cb502fd9e1929b831869a5d4726b3b049279afc2edbd19d",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "b70fdc1fa3d7a3223d837cb44fa9ea99adfd0e85b861da0b8979781a1dba3165",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "b1692f221677a4a37cb502fd9e1929b831869a5d4726b3b049279afc2edbd19d",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              }
+            },
+            {
+              "start": 3,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "c56eb125d9e73735d123a5695a8b0ff401480d18c8d47bbea010b0faaaa090de",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "fe000f4effb31719d13b0081686d997808bc96586520d23f5a85c99756ae047d",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "c56eb125d9e73735d123a5695a8b0ff401480d18c8d47bbea010b0faaaa090de",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "fe000f4effb31719d13b0081686d997808bc96586520d23f5a85c99756ae047d",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              }
+            }
+          ],
+          "browser_version": "158.0.1-beta.41",
+          "stable_across_restarts": {
+            "core_sha256": false,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": false,
+            "webgl_pixels_sha256": true
+          },
+          "stable_within_process": {
+            "core_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": true,
+            "webgl_pixels_sha256": true
+          },
+          "cookie_continuity": false
+        },
+        "saved-fingerprint": {
+          "starts": [
+            {
+              "start": 1,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon R9 200 Series, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon R9 200 Series, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "0bc9760c635f00bc326dadf614346c65f55284758f883494cd1ea0fc2ef1dac3",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "980d09dc7e3f4274871d717b7dfe8054af60e24f69debceb4fafeda16fc0fa4e",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon R9 200 Series, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon R9 200 Series, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "0bc9760c635f00bc326dadf614346c65f55284758f883494cd1ea0fc2ef1dac3",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "980d09dc7e3f4274871d717b7dfe8054af60e24f69debceb4fafeda16fc0fa4e",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              }
+            },
+            {
+              "start": 2,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon R9 200 Series, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon R9 200 Series, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "cb75ebdd452d8fea260595cc88efb53de5276722f35d2cf081d8e5d56b095dd9",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "6eae4bc3df48e00be861faa3e6efb977034f0e91a782a83e9efccd58c04327a3",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon R9 200 Series, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon R9 200 Series, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "cb75ebdd452d8fea260595cc88efb53de5276722f35d2cf081d8e5d56b095dd9",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "6eae4bc3df48e00be861faa3e6efb977034f0e91a782a83e9efccd58c04327a3",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              }
+            },
+            {
+              "start": 3,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon R9 200 Series, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon R9 200 Series, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "0bc9760c635f00bc326dadf614346c65f55284758f883494cd1ea0fc2ef1dac3",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "01ac66428ba0bc6473f7cf1720f8d4b9cef4b197b12e4e566d89f7993c309a33",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon R9 200 Series, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon R9 200 Series, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "0bc9760c635f00bc326dadf614346c65f55284758f883494cd1ea0fc2ef1dac3",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "01ac66428ba0bc6473f7cf1720f8d4b9cef4b197b12e4e566d89f7993c309a33",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": null
+              }
+            }
+          ],
+          "browser_version": "158.0.1-beta.41",
+          "stable_across_restarts": {
+            "core_sha256": false,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": false,
+            "webgl_pixels_sha256": true
+          },
+          "stable_within_process": {
+            "core_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": true,
+            "webgl_pixels_sha256": true
+          },
+          "cookie_continuity": false
+        },
+        "stock-firefox": {
+          "starts": [
+            {
+              "start": 1,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "96b4b7dc2d2fc8313a3b457e653c43c81abb668988033d6690ce970c927d41c0",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "96b4b7dc2d2fc8313a3b457e653c43c81abb668988033d6690ce970c927d41c0",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              }
+            },
+            {
+              "start": 2,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "42d0f408e31023114bf5d7cbc5c60acc388e1caceb98dca76395e6847306a870",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "42d0f408e31023114bf5d7cbc5c60acc388e1caceb98dca76395e6847306a870",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            },
+            {
+              "start": 3,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "ca11a72f028640c524181a2f3ca0d1cd6b7a636d432cf114b4a572622532c7a0",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "ca11a72f028640c524181a2f3ca0d1cd6b7a636d432cf114b4a572622532c7a0",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            }
+          ],
+          "browser_version": "153.0",
+          "stable_across_restarts": {
+            "core_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": false,
+            "webgl_pixels_sha256": true
+          },
+          "stable_within_process": {
+            "core_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": true,
+            "webgl_pixels_sha256": true
+          },
+          "cookie_continuity": true
+        }
+      }
+    },
+    "requests": []
+  },
+  {
+    "run_id": 42297682083,
+    "case": "sb-cdp-solve",
+    "summary": {
+      "case": "sb-cdp-solve",
+      "run_id": "42297682083",
+      "versions": {
+        "seleniumbase": "4.57.1",
+        "selenium": "4.52.0"
+      },
+      "display": null,
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [],
+      "browser_probes": [],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a567381f6d6a66d7-DFW",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "setup_or_runtime_error": "Exception: \n                --------------------------------\n                Failed to connect to the browser\n                --------------------------------\n                ",
+      "navigations": 0,
+      "passed_navigations": 0,
+      "passed_cycles": 0,
+      "production_unchanged": true
+    },
+    "requests": []
+  },
+  {
+    "run_id": 42297682083,
+    "case": "sb-cdp-wait",
+    "summary": {
+      "case": "sb-cdp-wait",
+      "run_id": "42297682083",
+      "versions": {
+        "seleniumbase": "4.57.1",
+        "selenium": "4.52.0"
+      },
+      "display": null,
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "cycle": 1,
+          "quality_passed": false,
+          "error": "Document blocked or invalid",
+          "navigations": 1
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1366,
+              "height": 768,
+              "availWidth": 1366,
+              "availHeight": 768,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "f0d8c92bc0b2d11f801f025ab4501e2d5f86c2a41897c5b92de34c4afa9ffe77",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a56737e97fc1b837-ORD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 1,
+      "passed_navigations": 0,
+      "passed_cycles": 0,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": true,
+        "title": "Just a moment...",
+        "cf_ray": "a567382018eab837-ORD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 51.841
+      }
+    ]
+  },
+  {
+    "run_id": 42297682083,
+    "case": "sb-uc-cdp-solve",
+    "summary": {
+      "case": "sb-uc-cdp-solve",
+      "run_id": "42297682083",
+      "versions": {
+        "seleniumbase": "4.57.1",
+        "selenium": "4.52.0"
+      },
+      "display": null,
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 1,
+          "navigations": 3
+        },
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 2,
+          "navigations": 3
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "911aac9cb1a83477c17965c67c283aacc17a98e41096b94da0b871b2914dc48e",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        },
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "911aac9cb1a83477c17965c67c283aacc17a98e41096b94da0b871b2914dc48e",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a567394a6f8a0a82-LAX",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 6,
+      "passed_navigations": 6,
+      "passed_cycles": 2,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": true,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673996fe96a5f0-LAX",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": true,
+        "helper_error": null,
+        "document_responses": 2,
+        "cycle": 1,
+        "elapsed_seconds": 10.621
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a56739bd0c53a5f0-LAX",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 6.346
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673a1abd8ca5f0-LAX",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 6.283
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": true,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673b3f2c2d2ab6-LAX",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": true,
+        "helper_error": null,
+        "document_responses": 2,
+        "cycle": 2,
+        "elapsed_seconds": 10.396
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673b6609e92ab6-LAX",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 2,
+        "elapsed_seconds": 6.273
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673bc3ce652ab6-LAX",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 2,
+        "elapsed_seconds": 6.28
+      }
+    ]
+  },
+  {
+    "run_id": 42298090306,
+    "case": "sb-cdp-solve",
+    "summary": {
+      "case": "sb-cdp-solve",
+      "run_id": "42298090306",
+      "versions": {
+        "seleniumbase": "4.57.1",
+        "selenium": "4.52.0"
+      },
+      "display": {
+        "width": 1920,
+        "height": 1080
+      },
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 1,
+          "navigations": 3
+        },
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 2,
+          "navigations": 3
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "911aac9cb1a83477c17965c67c283aacc17a98e41096b94da0b871b2914dc48e",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        },
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "911aac9cb1a83477c17965c67c283aacc17a98e41096b94da0b871b2914dc48e",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a5673c27c8fd27a7-SEA",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 6,
+      "passed_navigations": 6,
+      "passed_cycles": 2,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673c537fc47bf2-SEA",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 6.655
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673cb0de347bf2-SEA",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 6.349
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": true,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673d454aa77bf2-SEA",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": true,
+        "helper_error": null,
+        "document_responses": 2,
+        "cycle": 1,
+        "elapsed_seconds": 10.254
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": true,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673e48594427a7-SEA",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": true,
+        "helper_error": null,
+        "document_responses": 2,
+        "cycle": 2,
+        "elapsed_seconds": 10.311
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673e6fffac27a7-SEA",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 2,
+        "elapsed_seconds": 6.318
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673ecdb80f27a7-SEA",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 2,
+        "elapsed_seconds": 6.206
+      }
+    ]
+  },
+  {
+    "run_id": 42298090306,
+    "case": "sb-cdp-wait",
+    "summary": {
+      "case": "sb-cdp-wait",
+      "run_id": "42298090306",
+      "versions": {
+        "seleniumbase": "4.57.1",
+        "selenium": "4.52.0"
+      },
+      "display": {
+        "width": 1920,
+        "height": 1080
+      },
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "cycle": 1,
+          "quality_passed": false,
+          "error": "Document blocked or invalid",
+          "navigations": 2
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "911aac9cb1a83477c17965c67c283aacc17a98e41096b94da0b871b2914dc48e",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a5673c59af945d21-IAD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 2,
+      "passed_navigations": 1,
+      "passed_cycles": 0,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673c94bbd044a6-IAD",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 7.358
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": true,
+        "title": "Just a moment...",
+        "cf_ray": "a5673cf1a8ee44a6-IAD",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 51.4
+      }
+    ]
+  },
+  {
+    "run_id": 42298090306,
+    "case": "sb-uc-cdp-solve",
+    "summary": {
+      "case": "sb-uc-cdp-solve",
+      "run_id": "42298090306",
+      "versions": {
+        "seleniumbase": "4.57.1",
+        "selenium": "4.52.0"
+      },
+      "display": {
+        "width": 1920,
+        "height": 1080
+      },
+      "navigation_budget": 12,
+      "interval_seconds": 15,
+      "cycles": [
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 1,
+          "navigations": 3
+        },
+        {
+          "matches": 72,
+          "finished": 17,
+          "matches_with_time": 72,
+          "finished_with_full_sets": 17,
+          "teams": 9,
+          "table_rows": 9,
+          "teams_with_logos": 9,
+          "quality_passed": true,
+          "cycle": 2,
+          "navigations": 3
+        }
+      ],
+      "browser_probes": [
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "911aac9cb1a83477c17965c67c283aacc17a98e41096b94da0b871b2914dc48e",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        },
+        {
+          "core": {
+            "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+            "platform": "Linux x86_64",
+            "languages": [
+              "en-US",
+              "en"
+            ],
+            "hardwareConcurrency": 4,
+            "deviceMemory": null,
+            "webdriver": false,
+            "timezone": "UTC",
+            "screen": {
+              "width": 1920,
+              "height": 1080,
+              "availWidth": 1920,
+              "availHeight": 1080,
+              "colorDepth": 24,
+              "pixelDepth": 24
+            },
+            "window": {
+              "outerWidth": 1280,
+              "outerHeight": 840,
+              "innerWidth": 1280,
+              "innerHeight": 753,
+              "devicePixelRatio": 1
+            },
+            "fontWidths": {
+              "Arial": 164.4140625,
+              "Liberation Sans": 164.4140625,
+              "DejaVu Sans": 190.3203125,
+              "monospace": 163.7578125
+            },
+            "webgl": {
+              "available": false
+            }
+          },
+          "core_sha256": "911aac9cb1a83477c17965c67c283aacc17a98e41096b94da0b871b2914dc48e",
+          "canvas_pixels_sha256": "3bac0ea7e0b67fc3fcf50fc6441afc203ef685a989acdb9661cb4bf308e9f9b1",
+          "canvas_png_sha256": "b4196ce3c511f4ab4b42396fcebc4c0ab40b0edf9a0f39bdaf8e8d3935daa556",
+          "webgl_pixels_sha256": null,
+          "server_saw_persistent_cookie": null
+        }
+      ],
+      "plain_http_control": {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 403,
+        "challenge": true,
+        "challenge_seen_initially": null,
+        "title": "Just a moment...",
+        "cf_ray": "a5673edf1ed0fc10-LAX",
+        "parsed_count": 0,
+        "valid": false,
+        "data_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "ok": false
+      },
+      "navigations": 6,
+      "passed_navigations": 6,
+      "passed_cycles": 2,
+      "production_unchanged": true
+    },
+    "requests": [
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": true,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673f4c1f766a29-LAX",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": true,
+        "helper_error": null,
+        "document_responses": 2,
+        "cycle": 1,
+        "elapsed_seconds": 10.487
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673f72d86d6a29-LAX",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 6.364
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a5673fd09e716a29-LAX",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 1,
+        "elapsed_seconds": 6.274
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+        "page": "schedule",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": true,
+        "title": "Terminarz - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a56740f528affc10-LAX",
+        "parsed_count": 55,
+        "valid": true,
+        "data_sha256": "4871349bb600d46fe13319af0447c212b8333eaa75f01f13fed729007f2bed05",
+        "ok": true,
+        "helper_attempted": true,
+        "helper_error": null,
+        "document_responses": 2,
+        "cycle": 2,
+        "elapsed_seconds": 10.445
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+        "page": "results",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Wyniki - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a567411bc9ebfc10-LAX",
+        "parsed_count": 17,
+        "valid": true,
+        "data_sha256": "b696d833d636401e3b409f0267ccae8222481c9f0e13043bb0501abf7dda8bcf",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 2,
+        "elapsed_seconds": 6.358
+      },
+      {
+        "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+        "page": "standings",
+        "status": 200,
+        "challenge": false,
+        "challenge_seen_initially": false,
+        "title": "Tabela - Sezon 2026/2027\n - Liga PomWZPS",
+        "cf_ray": "a56741798b9efc10-LAX",
+        "parsed_count": 9,
+        "valid": true,
+        "data_sha256": "31d98a1f41144d4a47f8c7206e296e050947a6fa113e7473d6d333216518910c",
+        "ok": true,
+        "helper_attempted": false,
+        "helper_error": null,
+        "document_responses": 1,
+        "cycle": 2,
+        "elapsed_seconds": 6.299
+      }
+    ]
+  },
+  {
+    "run_id": 42298531363,
+    "case": "fingerprint-restarts",
+    "summary": {
+      "run_id": "42298531363",
+      "display": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_requests": 0,
+      "modes": {
+        "frozen-options": {
+          "starts": [
+            {
+              "start": 1,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "22d309c9307f6dd0f570b1eb8282283729517c896cd5bbb54338893275eec175",
+                "identity_sha256": "36af393a4d60f06d9819934364967ad345e75afef24b0e1483deba667f4f2146",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "6ab93502e52ad9645bec906004eecfe799281b91644e30839303ef9ffd7964a6",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "22d309c9307f6dd0f570b1eb8282283729517c896cd5bbb54338893275eec175",
+                "identity_sha256": "36af393a4d60f06d9819934364967ad345e75afef24b0e1483deba667f4f2146",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "6ab93502e52ad9645bec906004eecfe799281b91644e30839303ef9ffd7964a6",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              }
+            },
+            {
+              "start": 2,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "ae7f81001f8a0208cf0170e37efea7135ef507274c2f97c7c8b74c6e4a4dda1d",
+                "identity_sha256": "36af393a4d60f06d9819934364967ad345e75afef24b0e1483deba667f4f2146",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "c87e5ffde26884cbec251a4b24a46a56eba95a7d041c4e263c1383d9984757a1",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "ae7f81001f8a0208cf0170e37efea7135ef507274c2f97c7c8b74c6e4a4dda1d",
+                "identity_sha256": "36af393a4d60f06d9819934364967ad345e75afef24b0e1483deba667f4f2146",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "c87e5ffde26884cbec251a4b24a46a56eba95a7d041c4e263c1383d9984757a1",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            },
+            {
+              "start": 3,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "22d309c9307f6dd0f570b1eb8282283729517c896cd5bbb54338893275eec175",
+                "identity_sha256": "36af393a4d60f06d9819934364967ad345e75afef24b0e1483deba667f4f2146",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "70d418d217cefee17a835a3645e49fc94293298cc635d3b767f4c21c20fc8d80",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Intel(R) HD Graphics 400, or similar",
+                    "unmaskedVendor": "Intel",
+                    "unmaskedRenderer": "Intel(R) HD Graphics 400, or similar",
+                    "maxTextureSize": 8192,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "22d309c9307f6dd0f570b1eb8282283729517c896cd5bbb54338893275eec175",
+                "identity_sha256": "36af393a4d60f06d9819934364967ad345e75afef24b0e1483deba667f4f2146",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "70d418d217cefee17a835a3645e49fc94293298cc635d3b767f4c21c20fc8d80",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            }
+          ],
+          "browser_version": "158.0.1-beta.41",
+          "stable_across_restarts": {
+            "core_sha256": false,
+            "identity_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": false,
+            "webgl_pixels_sha256": true
+          },
+          "stable_within_process": {
+            "core_sha256": true,
+            "identity_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": true,
+            "webgl_pixels_sha256": true
+          },
+          "cookie_continuity": true
+        },
+        "saved-fingerprint": {
+          "starts": [
+            {
+              "start": 1,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon HD 3200 Graphics, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon HD 3200 Graphics, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "a7655faf4fa6bf85906fe5a8822f761817e049f326bae32245f479bce11f22d8",
+                "identity_sha256": "2addf1b40c2838b3c214c6fb125392a019c9cd97d0dca2be8166ad2ae1f1755c",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "c24026a3a5f891364bb076226c60c37bf8df5f99645407a5bd57bfd3a2830417",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon HD 3200 Graphics, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon HD 3200 Graphics, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "a7655faf4fa6bf85906fe5a8822f761817e049f326bae32245f479bce11f22d8",
+                "identity_sha256": "2addf1b40c2838b3c214c6fb125392a019c9cd97d0dca2be8166ad2ae1f1755c",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "c24026a3a5f891364bb076226c60c37bf8df5f99645407a5bd57bfd3a2830417",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              }
+            },
+            {
+              "start": 2,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon HD 3200 Graphics, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon HD 3200 Graphics, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "e2b7110bcf16a8bbf0aa89f1fd6797e624a6d4d097ca9a1bd2038ae7259a14da",
+                "identity_sha256": "2addf1b40c2838b3c214c6fb125392a019c9cd97d0dca2be8166ad2ae1f1755c",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "3c9ce641f940f206f18869408ea85798725711720ba8f746180beea898cf0710",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 635,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon HD 3200 Graphics, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon HD 3200 Graphics, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "e2b7110bcf16a8bbf0aa89f1fd6797e624a6d4d097ca9a1bd2038ae7259a14da",
+                "identity_sha256": "2addf1b40c2838b3c214c6fb125392a019c9cd97d0dca2be8166ad2ae1f1755c",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "3c9ce641f940f206f18869408ea85798725711720ba8f746180beea898cf0710",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            },
+            {
+              "start": 3,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon HD 3200 Graphics, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon HD 3200 Graphics, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "a7655faf4fa6bf85906fe5a8822f761817e049f326bae32245f479bce11f22d8",
+                "identity_sha256": "2addf1b40c2838b3c214c6fb125392a019c9cd97d0dca2be8166ad2ae1f1755c",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "ce1cb595a3629dfcb3a1c43d016f497dacb0867941be607aed0283922ac5ec97",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:158.0) Gecko/20100101 Firefox/158.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": false,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1366,
+                    "outerHeight": 768,
+                    "innerWidth": 1366,
+                    "innerHeight": 683,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "Radeon HD 3200 Graphics, or similar",
+                    "unmaskedVendor": "AMD",
+                    "unmaskedRenderer": "Radeon HD 3200 Graphics, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "a7655faf4fa6bf85906fe5a8822f761817e049f326bae32245f479bce11f22d8",
+                "identity_sha256": "2addf1b40c2838b3c214c6fb125392a019c9cd97d0dca2be8166ad2ae1f1755c",
+                "canvas_pixels_sha256": "2af3dc711b6ffd1d07ba47373f6ddd4149250442bd5172ef104ae24bc02af1d3",
+                "canvas_png_sha256": "ce1cb595a3629dfcb3a1c43d016f497dacb0867941be607aed0283922ac5ec97",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            }
+          ],
+          "browser_version": "158.0.1-beta.41",
+          "stable_across_restarts": {
+            "core_sha256": false,
+            "identity_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": false,
+            "webgl_pixels_sha256": true
+          },
+          "stable_within_process": {
+            "core_sha256": true,
+            "identity_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": true,
+            "webgl_pixels_sha256": true
+          },
+          "cookie_continuity": true
+        },
+        "stock-firefox": {
+          "starts": [
+            {
+              "start": 1,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "identity_sha256": "a206ed77c212342957c8fff65a69f22249d7b7095cb958b2f54f4527103ae04c",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "8c77f3bf7ed7e2bc0c4c3857d23bd3dac270a2fb9421bfbbe510477ab17cc289",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "identity_sha256": "a206ed77c212342957c8fff65a69f22249d7b7095cb958b2f54f4527103ae04c",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "8c77f3bf7ed7e2bc0c4c3857d23bd3dac270a2fb9421bfbbe510477ab17cc289",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": false
+              }
+            },
+            {
+              "start": 2,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "identity_sha256": "a206ed77c212342957c8fff65a69f22249d7b7095cb958b2f54f4527103ae04c",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "3bc9af90869e48e2b0f3af9a58f1c11e644d0218358c99c778fdeee990ce6675",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "identity_sha256": "a206ed77c212342957c8fff65a69f22249d7b7095cb958b2f54f4527103ae04c",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "3bc9af90869e48e2b0f3af9a58f1c11e644d0218358c99c778fdeee990ce6675",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            },
+            {
+              "start": 3,
+              "first": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "identity_sha256": "a206ed77c212342957c8fff65a69f22249d7b7095cb958b2f54f4527103ae04c",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "a60a266173065a57e088d93a28c1605623becf121843f214ed4a0d43e3f952e7",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              },
+              "second": {
+                "core": {
+                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "platform": "Linux x86_64",
+                  "languages": [
+                    "en-US",
+                    "en"
+                  ],
+                  "hardwareConcurrency": 4,
+                  "deviceMemory": null,
+                  "webdriver": true,
+                  "timezone": "UTC",
+                  "screen": {
+                    "width": 1920,
+                    "height": 1080,
+                    "availWidth": 1920,
+                    "availHeight": 1080,
+                    "colorDepth": 24,
+                    "pixelDepth": 24
+                  },
+                  "window": {
+                    "outerWidth": 1280,
+                    "outerHeight": 805,
+                    "innerWidth": 1280,
+                    "innerHeight": 720,
+                    "devicePixelRatio": 1
+                  },
+                  "fontWidths": {
+                    "Arial": 164.43333435058594,
+                    "Liberation Sans": 164.43333435058594,
+                    "DejaVu Sans": 190.31666564941406,
+                    "monospace": 163.76666259765625
+                  },
+                  "webgl": {
+                    "available": true,
+                    "vendor": "Mozilla",
+                    "renderer": "llvmpipe, or similar",
+                    "unmaskedVendor": "Mesa",
+                    "unmaskedRenderer": "llvmpipe, or similar",
+                    "maxTextureSize": 16384,
+                    "version": "WebGL 1.0"
+                  }
+                },
+                "core_sha256": "eaf40a58998affad44392f76303f2db0c6f5d7cf9f6df216b8906ae6ebd10efe",
+                "identity_sha256": "a206ed77c212342957c8fff65a69f22249d7b7095cb958b2f54f4527103ae04c",
+                "canvas_pixels_sha256": "b0a8ee99704fed5983b1a127868b5debcfb1fd753d0dc113a56b3039cdacaa21",
+                "canvas_png_sha256": "a60a266173065a57e088d93a28c1605623becf121843f214ed4a0d43e3f952e7",
+                "webgl_pixels_sha256": "91b9935f0338c16fa5c7bd28ca5b8551df0fb98c6161fdc7d5db566e6bcd57a8",
+                "server_saw_persistent_cookie": true
+              }
+            }
+          ],
+          "browser_version": "153.0",
+          "stable_across_restarts": {
+            "core_sha256": true,
+            "identity_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": false,
+            "webgl_pixels_sha256": true
+          },
+          "stable_within_process": {
+            "core_sha256": true,
+            "identity_sha256": true,
+            "canvas_pixels_sha256": true,
+            "canvas_png_sha256": true,
+            "webgl_pixels_sha256": true
+          },
+          "cookie_continuity": true
+        }
+      }
+    },
+    "requests": []
+  }
+]

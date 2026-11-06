@@ -1,5 +1,7 @@
 # Próby transportu VolleyStation
 
+[Najnowszy raport: SeleniumBase CDP i fingerprint](report-community/RAPORT.md) — UC + CDP: 4/4 kompletne odświeżenia w dwóch zadaniach GitHub Actions.
+
 [Raport końcowy](report-final/RAPORT_KONCOWY.md) · [Tabela pomiarów CSV](report-final/wyniki.csv)
 
 Izolowana kopia scrapera Pomorskiej III ligi: `scraper_copy.py`. Metadane źródła

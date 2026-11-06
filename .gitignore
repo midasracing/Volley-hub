@@ -2,3 +2,6 @@
 .venv-diagnostics/
 __pycache__/
 *.py[cod]
+
+# Temporary lock created by SeleniumBase experiments
+downloaded_files/

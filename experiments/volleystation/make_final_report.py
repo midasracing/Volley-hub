@@ -102,6 +102,12 @@ def main():
                   'Tak mała próbka nie potwierdza bezobsługowej niezawodności; wyniki szczegółowe poniżej.')
     text = f'''# Raport końcowy: scraper VolleyStation
 
+**Aktualizacja po próbach rekomendacji społeczności:** SeleniumBase UC + CDP
+wykonał **4/4 kompletne odświeżenia i 12/12 poprawnych odczytów w dwóch zadaniach
+GitHub Actions**. Pure CDP z obsługą challenge: 2/2 odświeżenia i 6/6 odczytów.
+[Nowy raport, wyniki i diagnostyka fingerprintu](../report-community/RAPORT.md).
+Poniższe tabele i liczby opisują wcześniejsze serie; nowy raport uzupełnia ich wnioski.
+
 **{conclusion}**
 
 Pojedynczy wcześniejszy import przyrostowy przez Camoufox z interfejsem był kompletny,
@@ -217,7 +223,7 @@ potwierdziły brak zmian. Workflow miały uprawnienia tylko do odczytu
 repozytorium. Prywatnych profili i wartości cookies nie umieszczano w artefaktach.
 Zielony status zadania oznacza zakończenie pomiarów, nie poprawny import.
 
-## Najlepsza sprawdzona konfiguracja
+## Najlepsza konfiguracja we wcześniejszej serii
 
 W próbie `cam-fresh-3` uzyskano trzy kolejne kompletne eksporty: każdy zawierał 72
 mecze z godzinami, 17 zakończonych z punktami wszystkich setów, 9 drużyn z logotypami
