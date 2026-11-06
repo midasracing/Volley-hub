@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-11-06T18:13:50.882084+00:00",
+  "updated_at": "2026-11-06T23:23:40.772019+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -390,10 +390,14 @@
           "time": "20:00",
           "home": "Energa Trefl Gdańsk II",
           "away": "BKS Chemik Bydgoszcz Siatkówka Młodzieżowa",
-          "home_sets": 0,
+          "home_sets": 3,
           "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "set_scores": [
+            "25:16",
+            "25:23",
+            "25:17"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 1",
           "group": "Grupa 1"
         },
@@ -1265,6 +1269,18 @@
         },
         {
           "rank": 4,
+          "team": "Energa Trefl Gdańsk II",
+          "played": 5,
+          "wins": 3,
+          "losses": 2,
+          "points": 9,
+          "sets_for": 11,
+          "sets_against": 7,
+          "points_for": 411,
+          "points_against": 393
+        },
+        {
+          "rank": 5,
           "team": "LOMS Joker Piła",
           "played": 4,
           "wins": 3,
@@ -1276,28 +1292,16 @@
           "points_against": 379
         },
         {
-          "rank": 5,
-          "team": "Energa Trefl Gdańsk II",
-          "played": 4,
-          "wins": 2,
-          "losses": 2,
-          "points": 6,
-          "sets_for": 8,
-          "sets_against": 7,
-          "points_for": 336,
-          "points_against": 337
-        },
-        {
           "rank": 6,
           "team": "BKS Chemik Bydgoszcz Siatkówka Młodzieżowa",
-          "played": 4,
+          "played": 5,
           "wins": 2,
-          "losses": 2,
+          "losses": 3,
           "points": 5,
           "sets_for": 7,
-          "sets_against": 9,
-          "points_for": 341,
-          "points_against": 377
+          "sets_against": 12,
+          "points_for": 397,
+          "points_against": 452
         },
         {
           "rank": 7,
