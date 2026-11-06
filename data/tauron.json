@@ -72,7 +72,7 @@
       "id": "56"
     }
   ],
-  "updated_at": "2026-11-05T19:42:02.183178+00:00",
+  "updated_at": "2026-11-06T00:34:39.181296+00:00",
   "matches": [
     {
       "id": "1104808",
@@ -1485,15 +1485,42 @@
       "round": 4,
       "round_source_label": "Kolejka",
       "phase": "Faza Zasadnicza",
-      "status": "scheduled",
+      "status": "finished",
       "home": "PGE Projekt Warszawa",
       "away": "Ślepsk Malow Suwałki",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
-      "set_points": [],
-      "home_points": 0,
-      "away_points": 0,
+      "home_sets": 3,
+      "away_sets": 2,
+      "set_scores": [
+        "20:25",
+        "25:20",
+        "25:21",
+        "18:25",
+        "15:7"
+      ],
+      "set_points": [
+        {
+          "home": 20,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 20
+        },
+        {
+          "home": 25,
+          "away": 21
+        },
+        {
+          "home": 18,
+          "away": 25
+        },
+        {
+          "home": 15,
+          "away": 7
+        }
+      ],
+      "home_points": 103,
+      "away_points": 98,
       "current_points": null,
       "source_url": "https://www.tauronliga.pl/games/action/show/id/1104831/nocookies/1.html",
       "home_team_id": "62",
@@ -7007,15 +7034,15 @@
     },
     {
       "rank": 3,
-      "team": "PGE GiEK SKRA Bełchatów",
-      "points": 8,
+      "team": "PGE Projekt Warszawa",
+      "points": 9,
       "played": 5,
       "wins": 3,
       "losses": 2,
-      "sets_for": 10,
+      "sets_for": 12,
       "sets_against": 9,
-      "points_for": 427,
-      "points_against": 436
+      "points_for": 468,
+      "points_against": 445
     },
     {
       "rank": 4,
@@ -7030,19 +7057,31 @@
       "points_against": 261
     },
     {
-      "rank": 5,
-      "team": "PGE Projekt Warszawa",
-      "points": 7,
-      "played": 4,
-      "wins": 2,
+      "rank": 4,
+      "team": "PGE GiEK SKRA Bełchatów",
+      "points": 8,
+      "played": 5,
+      "wins": 3,
       "losses": 2,
-      "sets_for": 9,
-      "sets_against": 7,
-      "points_for": 365,
-      "points_against": 347
+      "sets_for": 10,
+      "sets_against": 9,
+      "points_for": 427,
+      "points_against": 436
     },
     {
-      "rank": 7,
+      "rank": 6,
+      "team": "Ślepsk Malow Suwałki",
+      "points": 6,
+      "played": 4,
+      "wins": 1,
+      "losses": 3,
+      "sets_for": 9,
+      "sets_against": 10,
+      "points_for": 400,
+      "points_against": 390
+    },
+    {
+      "rank": 8,
       "team": "GKS Katowice",
       "points": 5,
       "played": 4,
@@ -7052,18 +7091,6 @@
       "sets_against": 8,
       "points_for": 298,
       "points_against": 326
-    },
-    {
-      "rank": 8,
-      "team": "Ślepsk Malow Suwałki",
-      "points": 5,
-      "played": 3,
-      "wins": 1,
-      "losses": 2,
-      "sets_for": 7,
-      "sets_against": 7,
-      "points_for": 302,
-      "points_against": 287
     },
     {
       "rank": 9,
