@@ -901,9 +901,10 @@ def run_league(key, cfg, full_details=False):
             if detail.get("status") == "live" and match["status"] != "finished":
                 match["status"] = "live"
     # Complete regular-season round counts: 14*13 and 16*15 matches.
-    expected = 182 if key == "men" else 240
-    expected_rounds = 26 if key == "men" else 30
-    games_per_round = 7 if key == "men" else 8
+    team_count = 14 if key == "men" else 16
+    expected = team_count * (team_count - 1)
+    expected_rounds = 2 * (team_count - 1)
+    games_per_round = team_count // 2
     actual_rounds = {}
     for match in matches:
         rnd = match.get("round")
@@ -1150,7 +1151,7 @@ def run_league(key, cfg, full_details=False):
     if table_soup is not None:
         try:
             standings = parse_table(table_soup, aliases, matches)
-            validate_standings(standings, matches, expected // (expected_rounds // 2))
+            validate_standings(standings, matches, team_count)
         except (RuntimeError, KeyError, TypeError, ValueError) as exc:
             table_error = exc
             standings = []
@@ -1158,7 +1159,7 @@ def run_league(key, cfg, full_details=False):
         # A stale previous table is safe only when its totals still match the
         # newly parsed games. Correct its historical ranks as well.
         standings = rank_standings(previous.get("table", []), matches)
-        validate_standings(standings, matches, expected // (expected_rounds // 2))
+        validate_standings(standings, matches, team_count)
         print(f"WARNING [{key}]: official table unavailable; using verified previous totals: {table_error}",
               file=sys.stderr)
     print(f"INFO [{key}]: standings verified: {len(standings)} clubs, "
