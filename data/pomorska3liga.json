@@ -4,7 +4,7 @@
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
   "results_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
   "standings_source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
-  "updated_at": "2026-11-04T15:05:25.143343+00:00",
+  "updated_at": "2026-11-06T22:27:07.765444+00:00",
   "teams": [
     {
       "name": "Energa Trefl Gdańsk III",
@@ -48,17 +48,13 @@
       "id": "03.10.2026-1-5",
       "competition": "Pomorska III Liga Męska",
       "date": "03.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "UKS Olimpijczyk Pruszcz Gdański",
       "away": "GKS Stoczniowiec Gdańsk",
       "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [
-        "25:17",
-        "25:15",
-        "25:21"
-      ],
+      "set_scores": [],
       "current_points": null,
       "round": 1,
       "match_number": 5,
@@ -110,36 +106,22 @@
       "id": "04.10.2026-1-4",
       "competition": "Pomorska III Liga Męska",
       "date": "04.10.2026",
-      "time": null,
+      "time": "18:00",
       "status": "finished",
       "home": "Energa Trefl Gdańsk III",
       "away": "UKS Skarszewy",
       "home_sets": 3,
       "away_sets": 2,
-      "set_scores": [],
+      "set_scores": [
+        "25:23",
+        "25:21",
+        "20:25",
+        "23:25",
+        "15:12"
+      ],
       "current_points": null,
       "round": 1,
       "match_number": 4,
-      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
-    },
-    {
-      "id": "10.10.2026-2-7",
-      "competition": "Pomorska III Liga Męska",
-      "date": "10.10.2026",
-      "time": "18:00",
-      "status": "finished",
-      "home": "UKS Skarszewy",
-      "away": "UKS Olimpijczyk Pruszcz Gdański",
-      "home_sets": 0,
-      "away_sets": 3,
-      "set_scores": [
-        "23:25",
-        "20:25",
-        "23:25"
-      ],
-      "current_points": null,
-      "round": 2,
-      "match_number": 7,
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
@@ -163,21 +145,32 @@
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
+      "id": "10.10.2026-2-7",
+      "competition": "Pomorska III Liga Męska",
+      "date": "10.10.2026",
+      "time": null,
+      "status": "finished",
+      "home": "UKS Skarszewy",
+      "away": "UKS Olimpijczyk Pruszcz Gdański",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": [],
+      "current_points": null,
+      "round": 2,
+      "match_number": 7,
+      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
+    },
+    {
       "id": "10.10.2026-2-10",
       "competition": "Pomorska III Liga Męska",
       "date": "10.10.2026",
-      "time": "18:00",
+      "time": null,
       "status": "finished",
       "home": "PTPS TELMAX Człuchów",
       "away": "LZS GNIEWKO Gniewkowo",
       "home_sets": 3,
       "away_sets": 1,
-      "set_scores": [
-        "25:21",
-        "25:19",
-        "18:25",
-        "25:22"
-      ],
+      "set_scores": [],
       "current_points": null,
       "round": 2,
       "match_number": 10,
@@ -350,17 +343,37 @@
       "id": "04.11.2026-3-12",
       "competition": "Pomorska III Liga Męska",
       "date": "04.11.2026",
-      "time": "18:00",
-      "status": "scheduled",
+      "time": null,
+      "status": "finished",
       "home": "LZS Gminy Dragacz",
       "away": "PTPS TELMAX Człuchów",
-      "home_sets": null,
-      "away_sets": null,
+      "home_sets": 2,
+      "away_sets": 3,
       "set_scores": [],
       "current_points": null,
       "round": 3,
       "match_number": 12,
-      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/"
+      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
+    },
+    {
+      "id": "05.11.2026-5-25",
+      "competition": "Pomorska III Liga Męska",
+      "date": "05.11.2026",
+      "time": "19:00",
+      "status": "finished",
+      "home": "UKS Skarszewy",
+      "away": "KS AZS AWFiS Gdańsk",
+      "home_sets": 0,
+      "away_sets": 3,
+      "set_scores": [
+        "11:25",
+        "19:25",
+        "24:26"
+      ],
+      "current_points": null,
+      "round": 5,
+      "match_number": 25,
+      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/"
     },
     {
       "id": "07.11.2026-5-23",
@@ -392,22 +405,6 @@
       "current_points": null,
       "round": 5,
       "match_number": 24,
-      "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/"
-    },
-    {
-      "id": "07.11.2026-5-25",
-      "competition": "Pomorska III Liga Męska",
-      "date": "07.11.2026",
-      "time": "18:00",
-      "status": "scheduled",
-      "home": "UKS Skarszewy",
-      "away": "KS AZS AWFiS Gdańsk",
-      "home_sets": null,
-      "away_sets": null,
-      "set_scores": [],
-      "current_points": null,
-      "round": 5,
-      "match_number": 25,
       "source_url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/"
     },
     {
@@ -1275,17 +1272,29 @@
     {
       "rank": 2,
       "team": "PTPS TELMAX Człuchów",
-      "played": 2,
-      "points": 6,
-      "wins": 2,
+      "played": 3,
+      "points": 8,
+      "wins": 3,
       "losses": 0,
-      "sets_for": 6,
-      "sets_against": 2,
-      "points_for": 192,
-      "points_against": 173
+      "sets_for": 9,
+      "sets_against": 4,
+      "points_for": 307,
+      "points_against": 277
     },
     {
       "rank": 3,
+      "team": "KS AZS AWFiS Gdańsk",
+      "played": 5,
+      "points": 8,
+      "wins": 3,
+      "losses": 2,
+      "sets_for": 9,
+      "sets_against": 8,
+      "points_for": 373,
+      "points_against": 368
+    },
+    {
+      "rank": 4,
       "team": "LZS GNIEWKO Gniewkowo",
       "played": 3,
       "points": 6,
@@ -1297,7 +1306,7 @@
       "points_against": 188
     },
     {
-      "rank": 4,
+      "rank": 5,
       "team": "GKS Stoczniowiec Gdańsk",
       "played": 3,
       "points": 6,
@@ -1309,7 +1318,7 @@
       "points_against": 211
     },
     {
-      "rank": 5,
+      "rank": 6,
       "team": "Energa Trefl Gdańsk III",
       "played": 4,
       "points": 5,
@@ -1321,40 +1330,28 @@
       "points_against": 325
     },
     {
-      "rank": 6,
-      "team": "KS AZS AWFiS Gdańsk",
-      "played": 4,
-      "points": 5,
-      "wins": 2,
-      "losses": 2,
-      "sets_for": 6,
-      "sets_against": 8,
-      "points_for": 297,
-      "points_against": 314
-    },
-    {
       "rank": 7,
       "team": "LZS Gminy Dragacz",
-      "played": 3,
-      "points": 4,
+      "played": 4,
+      "points": 5,
       "wins": 1,
-      "losses": 2,
-      "sets_for": 5,
-      "sets_against": 6,
-      "points_for": 232,
-      "points_against": 253
+      "losses": 3,
+      "sets_for": 7,
+      "sets_against": 9,
+      "points_for": 336,
+      "points_against": 368
     },
     {
       "rank": 8,
       "team": "UKS Skarszewy",
-      "played": 3,
+      "played": 4,
       "points": 1,
       "wins": 0,
-      "losses": 3,
+      "losses": 4,
       "sets_for": 3,
-      "sets_against": 9,
-      "points_for": 250,
-      "points_against": 284
+      "sets_against": 12,
+      "points_for": 304,
+      "points_against": 360
     },
     {
       "rank": 9,
