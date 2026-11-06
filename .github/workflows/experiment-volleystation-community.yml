@@ -1,0 +1,61 @@
+name: VolleyStation community comparisons
+
+on:
+  push:
+    branches: [experiment/volleystation-20261106]
+    paths:
+      - .github/workflows/experiment-volleystation-community.yml
+      - experiments/volleystation/community_*.py
+      - experiments/volleystation/render_probe.py
+      - experiments/volleystation/requirements-seleniumbase.txt
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scenario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        case: [sb-cdp-wait, sb-cdp-solve, sb-uc-cdp-solve, cam-render-default, cam-render-clean, cam-render-software, fingerprint-restarts]
+    env:
+      LAB_BROWSER: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install engines
+        shell: bash
+        run: |
+          if [[ "${{ matrix.case }}" == sb-* ]]; then
+            python -m pip install -r experiments/volleystation/requirements-seleniumbase.txt
+          else
+            python -m pip install -r experiments/volleystation/requirements-alternatives.txt
+            python -m camoufox fetch
+          fi
+          if [[ "${{ matrix.case }}" == fingerprint-restarts ]]; then
+            python -m playwright install firefox
+          fi
+      - name: Measure source and browser behavior
+        shell: bash
+        run: |
+          case "${{ matrix.case }}" in
+            sb-*) script=community_selenium.py ;;
+            cam-*) script=community_cam.py ;;
+            *) script=community_fingerprint.py ;;
+          esac
+          if [[ "${{ matrix.case }}" == fingerprint-restarts ]]; then
+            xvfb-run -a --server-args="-screen 0 1920x1080x24" python experiments/volleystation/$script
+          else
+            xvfb-run -a --server-args="-screen 0 1920x1080x24" python experiments/volleystation/$script --case "${{ matrix.case }}"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: community-${{ matrix.case }}
+          path: experiments/volleystation/outputs/community/${{ matrix.case }}/
