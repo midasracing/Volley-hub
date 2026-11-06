@@ -1,0 +1,37 @@
+name: Validate official PLS standings (TAURON Liga and 1. Liga)
+on:
+  pull_request:
+    paths:
+      - "scripts/refresh_tauron.py"
+      - "tests/test_refresh_tauron_table.py"
+      - ".github/workflows/pls-standings-audit.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  standings:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install HTML parser
+        run: python -m pip install beautifulsoup4
+      - name: Historical snapshot and match-integrity regression tests
+        run: python -m unittest discover -s tests -p 'test_refresh_tauron_table.py' -v
+      - name: Test both complete official PLS feeds, without publishing
+        run: python -u scripts/refresh_tauron.py
+      - name: Assert official tables have correct unique ranks and results
+        run: |
+          python - <<'PY'
+          import json
+          from scripts.refresh_tauron import validate_standings
+          for name, count in (("tauron", 14), ("tauron1liga", 16)):
+              with open(f"data/{name}.json", encoding="utf-8") as stream:
+                  feed = json.load(stream)
+              assert validate_standings(feed["table"], feed["matches"], count)
+              assert len({r["rank"] for r in feed["table"]}) == count
+              print(name, [(r["rank"], r["team"], r["points"]) for r in feed["table"]])
+          PY
