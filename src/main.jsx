@@ -391,8 +391,8 @@ function App() {
   const { feeds, errors, loading, refresh } = useFeeds();
   // A single normalized/sorted feed shared by all tabs. Avoid expensive
   // duplicate sorting on every page mount, especially on older iPhones.
-  const matches = useMemo(() => matchesFromFeeds(feeds), [feeds.men?.matches, feeds.first?.matches, feeds.second?.matches, feeds.pomorska?.matches]);
-  const teams = useMemo(() => teamIndex(feeds), [feeds.men?.teams, feeds.first?.teams, feeds.second?.teams, feeds.pomorska?.teams]);
+  const matches = useMemo(() => matchesFromFeeds(feeds), [feeds.men?.matches, feeds.first?.matches, feeds.second?.matches, feeds.pomorska?.matches, feeds.italy?.matches, feeds.japan?.matches]);
+  const teams = useMemo(() => teamIndex(feeds), [feeds.men?.teams, feeds.first?.teams, feeds.second?.teams, feeds.pomorska?.teams, feeds.italy?.teams, feeds.japan?.teams]);
   const logos = useMemo(() => new Map(teams.filter(team => team.logo).map(team => [normalizeName(team.name), team.logo])), [teams]);
   const switchPage = useCallback(id => {
     if (!ROUTES.includes(id) || currentPage.current === id) return;
