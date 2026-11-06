@@ -1,0 +1,42 @@
+name: VolleyStation targeted follow-up
+
+on:
+  push:
+    branches: [experiment/volleystation-20261106]
+    paths:
+      - .github/workflows/experiment-volleystation-followup.yml
+      - experiments/volleystation/followup.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scenario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        case: [nodriver-headless, nodriver-headful, cam-slow, cam-fresh-3, cam-handoff, cam-recover]
+    env:
+      LAB_BROWSER: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install experiment engines
+        run: |
+          python -m pip install -r experiments/volleystation/requirements-battery.txt
+          if [[ "${{ matrix.case }}" == cam-* ]]; then
+            python -m camoufox fetch
+          fi
+      - name: Run one targeted follow-up
+        run: xvfb-run -a python experiments/volleystation/followup.py --case "${{ matrix.case }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: followup-${{ matrix.case }}
+          path: experiments/volleystation/outputs/followup/${{ matrix.case }}/
