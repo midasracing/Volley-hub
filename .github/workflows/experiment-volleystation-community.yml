@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        case: [sb-cdp-wait, sb-cdp-solve, sb-uc-cdp-solve, cam-render-default, cam-render-clean, cam-render-software, fingerprint-restarts]
+        case: ${{ fromJSON(contains(github.event.head_commit.message, '[community-sb]') && '["sb-cdp-wait","sb-cdp-solve","sb-uc-cdp-solve"]' || '["sb-cdp-wait","sb-cdp-solve","sb-uc-cdp-solve","cam-render-default","cam-render-clean","cam-render-software","fingerprint-restarts"]') }}
     env:
       LAB_BROWSER: /usr/bin/google-chrome
     steps:

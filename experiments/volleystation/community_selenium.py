@@ -30,7 +30,7 @@ class Browser:
             self.owner.activate_cdp_mode('about:blank')
             self.cdp=self.owner.cdp
         else:
-            self.cdp=sb_cdp.Chrome(browser_executable_path=binary,headless=False,sandbox=False)
+            self.cdp=sb_cdp.Chrome(browser_executable_path=binary,headless=False,headed=True,sandbox=False)
         async def capture(event,*args):
             if event.type_==mycdp.network.ResourceType.DOCUMENT and event.response.url.startswith('https://pomorskie.volleystation.com/'):
                 self.responses.append(event.response)

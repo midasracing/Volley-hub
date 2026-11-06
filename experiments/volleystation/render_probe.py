@@ -1,5 +1,6 @@
 """Measure browser-visible properties; never infer identity from launch options alone."""
 import hashlib
+import ctypes
 import json
 import re
 import subprocess
@@ -55,4 +56,17 @@ def host_display():
         match=re.search(r'dimensions:\s+(\d+)x(\d+) pixels',out)
         return {'width':int(match[1]),'height':int(match[2])} if match else None
     except Exception:
-        return None
+        try:
+            lib=ctypes.CDLL('libX11.so.6')
+            lib.XOpenDisplay.argtypes=[ctypes.c_char_p];lib.XOpenDisplay.restype=ctypes.c_void_p
+            display=lib.XOpenDisplay(None)
+            if not display:return None
+            try:
+                lib.XDefaultScreen.argtypes=[ctypes.c_void_p]
+                screen=lib.XDefaultScreen(display)
+                for name in ['XDisplayWidth','XDisplayHeight']:
+                    getattr(lib,name).argtypes=[ctypes.c_void_p,ctypes.c_int]
+                return {'width':lib.XDisplayWidth(display,screen),'height':lib.XDisplayHeight(display,screen)}
+            finally:
+                lib.XCloseDisplay.argtypes=[ctypes.c_void_p];lib.XCloseDisplay(display)
+        except Exception:return None
