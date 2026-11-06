@@ -8,6 +8,8 @@ on:
       - .github/workflows/audit-lower-leagues.yml
       - tests/test_lower_leagues.py
       - scripts/update_2liga.py
+      - data/2liga.json
+      - data/pomorska3liga.json
   schedule:
     - cron: '27 7 * * *'
 permissions:
