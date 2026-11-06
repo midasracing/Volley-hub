@@ -82,7 +82,7 @@
       "id": "90"
     }
   ],
-  "updated_at": "2026-11-06T14:26:33.027850+00:00",
+  "updated_at": "2026-11-06T19:04:53.443362+00:00",
   "matches": [
     {
       "id": "1105124",
@@ -3515,15 +3515,32 @@
       "round": 9,
       "round_source_label": "Kolejka",
       "phase": "Faza Zasadnicza",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Nowak-Mosty MKS Będzin",
       "away": "MCKiS Jaworzno",
-      "home_sets": 0,
+      "home_sets": 3,
       "away_sets": 0,
-      "set_scores": [],
-      "set_points": [],
-      "home_points": 0,
-      "away_points": 0,
+      "set_scores": [
+        "34:32",
+        "25:15",
+        "25:18"
+      ],
+      "set_points": [
+        {
+          "home": 34,
+          "away": 32
+        },
+        {
+          "home": 25,
+          "away": 15
+        },
+        {
+          "home": 25,
+          "away": 18
+        }
+      ],
+      "home_points": 84,
+      "away_points": 65,
       "current_points": null,
       "source_url": "https://www.tauron1liga.pl/games/action/show/id/1105186/nocookies/1.html",
       "home_team_id": "53",
@@ -3549,15 +3566,27 @@
       "round": 9,
       "round_source_label": "Kolejka",
       "phase": "Faza Zasadnicza",
-      "status": "scheduled",
+      "status": "live",
       "home": "BKS Bydgoszcz",
       "away": "KS Sparta Grodzisk Mazowiecki",
       "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
-      "set_points": [],
-      "home_points": 0,
-      "away_points": 0,
+      "away_sets": 2,
+      "set_scores": [
+        "21:25",
+        "20:25"
+      ],
+      "set_points": [
+        {
+          "home": 21,
+          "away": 25
+        },
+        {
+          "home": 20,
+          "away": 25
+        }
+      ],
+      "home_points": 41,
+      "away_points": 50,
       "current_points": null,
       "source_url": "https://www.tauron1liga.pl/games/action/show/id/1105193/nocookies/1.html",
       "home_team_id": "16",
@@ -9508,6 +9537,18 @@
   "table": [
     {
       "rank": 1,
+      "team": "Nowak-Mosty MKS Będzin",
+      "points": 20,
+      "played": 9,
+      "wins": 7,
+      "losses": 2,
+      "sets_for": 21,
+      "sets_against": 10,
+      "points_for": 732,
+      "points_against": 644
+    },
+    {
+      "rank": 2,
       "team": "PZL LEONARDO Avia Świdnik",
       "points": 18,
       "played": 8,
@@ -9519,7 +9560,7 @@
       "points_against": 693
     },
     {
-      "rank": 2,
+      "rank": 3,
       "team": "CUK Anioły Toruń",
       "points": 18,
       "played": 7,
@@ -9529,18 +9570,6 @@
       "sets_against": 7,
       "points_for": 619,
       "points_against": 572
-    },
-    {
-      "rank": 3,
-      "team": "Nowak-Mosty MKS Będzin",
-      "points": 17,
-      "played": 8,
-      "wins": 6,
-      "losses": 2,
-      "sets_for": 18,
-      "sets_against": 10,
-      "points_for": 648,
-      "points_against": 579
     },
     {
       "rank": 4,
@@ -9642,13 +9671,13 @@
       "rank": 12,
       "team": "MCKiS Jaworzno",
       "points": 8,
-      "played": 8,
+      "played": 9,
       "wins": 3,
-      "losses": 5,
+      "losses": 6,
       "sets_for": 13,
-      "sets_against": 20,
-      "points_for": 714,
-      "points_against": 746
+      "sets_against": 23,
+      "points_for": 779,
+      "points_against": 830
     },
     {
       "rank": 13,
