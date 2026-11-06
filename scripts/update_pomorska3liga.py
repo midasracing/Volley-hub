@@ -36,16 +36,7 @@ def fetch(url):
           args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
-        // Controlled test: browser-like UA + varied viewport. Keep headless mode for CI.
-        const chromeVersion = (await browser.version()).match(/Chrome\/(\d+\.\d+\.\d+\.\d+)/)?.[1] || '120.0.0.0';
-        await page.setUserAgent(
-          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' +
-          chromeVersion + ' Safari/537.36'
-        );
-        await page.setViewport({
-          width: Math.floor(1024 + Math.random() * 100),
-          height: Math.floor(768 + Math.random() * 100)
-        });
+        // Use the original Puppeteer + Stealth browser defaults (2026-10-25).
         await page.setExtraHTTPHeaders({
           'Accept-Language': 'pl-PL,pl;q=0.9,en;q=0.8'
         });
@@ -56,7 +47,7 @@ def fetch(url):
         try {
           await page.waitForNetworkIdle({ timeout: 20000 });
         } catch (_) {}
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         const result = {
           status: response ? response.status() : null,
           title: await page.title(),
