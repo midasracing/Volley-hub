@@ -51,7 +51,10 @@ def render(path):
               ('Test na jednym runnerze GitHub Actions.' if on_github else
                'Krótki test w jednym środowisku. Nie potwierdzono stałości wyjściowego IP.'),
               'Pierwszy odczyt przeglądarki obejmuje uruchomienie procesu. Czasy pozostałych odczytów obejmują transport i parser.',
-              ('Próby po restarcie procesów używały tego samego profilu w obrębie zadania.' if meta.get('restart_between_rounds')
+              ('Próby po restarcie procesów używały tego samego profilu w obrębie zadania.'
+               if meta.get('restart_between_rounds') and max((r['round'] for r in records), default=0) > 1
+               else 'Seria po restarcie nie została wykonana: silniki zatrzymano po odmowie dostępu.'
+               if meta.get('restart_between_rounds')
                else 'Nie testowano trwałości profilu po restarcie procesu.'),
               ('Wystąpił challenge; wynik dotyczy wyłącznie zapisanych prób.' if observed else
                '**Nie zaobserwowano challenge Cloudflare: brak podstaw do rankingu skuteczności obejścia.**'), '',
