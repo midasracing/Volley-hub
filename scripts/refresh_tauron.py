@@ -646,45 +646,168 @@ def parse_full_season(soup, key, base, previous=None):
     return list(parsed.values())
 
 
-def parse_table(soup, aliases):
-    """Standings. The page lists rows for many rounds, so keep each team's LATEST row."""
+def _standing_ratio(won, lost):
+    """PLS tie-break ratio, treating an unbeaten record as the highest ratio."""
+    return won / lost if lost else float("inf") if won else 0.0
+
+
+def _standings_sort_key(row):
+    # PLS: league points, wins, set ratio, small-point ratio.
+    return (
+        -row["points"], -row["wins"],
+        -_standing_ratio(row["sets_for"], row["sets_against"]),
+        -_standing_ratio(row["points_for"], row["points_against"]),
+    )
+
+
+def _mini_table(tied, matches):
+    """Head-to-head mini-table, used only after every normal PLS tie-break."""
+    names = {row["team"] for row in tied}
+    mini = {name: {
+        "team": name, "points": 0, "wins": 0,
+        "sets_for": 0, "sets_against": 0,
+        "points_for": 0, "points_against": 0,
+    } for name in names}
+    played = False
+    for match in matches:
+        if match.get("status") != "finished":
+            continue
+        home, away = match.get("home"), match.get("away")
+        if home not in names or away not in names:
+            continue
+        hs, ass = int(match["home_sets"]), int(match["away_sets"])
+        if max(hs, ass) != 3:
+            continue
+        played = True
+        for name, won, lost, points_for, points_against in (
+            (home, hs, ass, match.get("home_points", 0), match.get("away_points", 0)),
+            (away, ass, hs, match.get("away_points", 0), match.get("home_points", 0)),
+        ):
+            r = mini[name]
+            r["wins"] += int(won > lost)
+            r["points"] += 3 if won == 3 and lost <= 1 else 2 if won == 3 else 1 if won == 2 else 0
+            r["sets_for"] += won
+            r["sets_against"] += lost
+            r["points_for"] += points_for
+            r["points_against"] += points_against
+    return mini if played else None
+
+
+def rank_standings(rows, matches=()):
+    """Re-rank latest official statistics, never reuse a historical round rank.
+
+    The PLS /table page includes snapshots from *multiple* earlier rounds. A
+    club's newest row is authoritative for its statistics but its rank column
+    refers to that snapshot, not necessarily the newest league-wide ranking.
+    """
+    ordered = sorted((dict(row) for row in rows),
+                     key=lambda row: (_standings_sort_key(row), row["team"].casefold()))
+    result = []
+    i = 0
+    while i < len(ordered):
+        j = i + 1
+        while j < len(ordered) and _standings_sort_key(ordered[j]) == _standings_sort_key(ordered[i]):
+            j += 1
+        tied = ordered[i:j]
+        if len(tied) > 1:
+            mini = _mini_table(tied, matches)
+            if mini:
+                tied.sort(key=lambda row: (_standings_sort_key(mini[row["team"]]),
+                                            row["rank"], row["team"].casefold()))
+            else:
+                # Before the clubs meet, retain source tie ordering where
+                # available. Do not confuse that historic rank with our output.
+                tied.sort(key=lambda row: (row["rank"], row["team"].casefold()))
+        result.extend(tied)
+        i = j
+    for pos, row in enumerate(result, 1):
+        row["rank"] = pos
+    return result
+
+
+def parse_table(soup, aliases, matches=()):
+    """Read each club's latest official totals and build a single current table."""
     latest = {}
+    alias_names = {alias.casefold(): canonical for alias, canonical in aliases}
     for tr in soup.select("tr"):
-        cells = [norm(c.get_text(" ", strip=True)) for c in tr.find_all(["td", "th"], recursive=False)]
-        if not cells:
+        nodes = tr.find_all(["td", "th"], recursive=False)
+        if len(nodes) < 10:
             continue
-        team = next(
-            (canonical for alias, canonical in aliases
-             if any(alias.casefold() in c.casefold() for c in cells)),
-            None,
-        )
-        if not team:
+        cells = [norm(node.get_text(" ", strip=True)) for node in nodes]
+        # Only the second table cell is a club name; searching all cells
+        # accidentally includes historical and unrelated HTML tables.
+        team = alias_names.get(cells[1].casefold())
+        if not team or not re.fullmatch(r"\d+", cells[0]):
             continue
-        nums = []
+        values = []
         for cell in cells:
-            value = cell.replace(" ", "")
-            if re.fullmatch(r"\d+", value):
-                nums.append(int(value))
-        # Official table order: rank, league points, played, wins, losses,
-        # sets won/lost and points won/lost, followed by scoreline counts.
-        if len(nums) < 9:
+            stripped = cell.replace(" ", "")
+            if re.fullmatch(r"\d+", stripped):
+                values.append(int(stripped))
+        # rank, league points, played, won, lost, sets for/against,
+        # small points for/against (ratios and scoreline totals follow).
+        if len(values) < 9:
             continue
         row = {
-            "rank": nums[0],
+            "rank": values[0],
             "team": team,
-            "points": nums[1],
-            "played": nums[2],
-            "wins": nums[3],
-            "losses": nums[4],
-            "sets_for": nums[5],
-            "sets_against": nums[6],
-            "points_for": nums[7],
-            "points_against": nums[8],
+            "points": values[1],
+            "played": values[2],
+            "wins": values[3],
+            "losses": values[4],
+            "sets_for": values[5],
+            "sets_against": values[6],
+            "points_for": values[7],
+            "points_against": values[8],
         }
         current = latest.get(team)
-        if current is None or row["played"] > current["played"]:
+        # Use the *last* occurrence when a team has equal games played.
+        # The official site can update points/corrections without a new game.
+        if current is None or row["played"] >= current["played"]:
             latest[team] = row
-    return sorted(latest.values(), key=lambda row: row["rank"])
+    return rank_standings(list(latest.values()), matches)
+
+
+def validate_standings(table, matches, team_count):
+    """Fail closed on incomplete, inconsistent or mixed-round standings."""
+    if len(table) != team_count:
+        raise RuntimeError(f"PLS table has {len(table)} of {team_count} clubs")
+    names = {match[side] for match in matches for side in ("home", "away")}
+    if {row["team"] for row in table} != names or len(names) != team_count:
+        raise RuntimeError("Standings teams do not match the official fixture list")
+    if [row["rank"] for row in table] != list(range(1, team_count + 1)):
+        raise RuntimeError("Standings have repeated or missing ranks")
+    totals = {name: {
+        "points": 0, "played": 0, "wins": 0, "losses": 0,
+        "sets_for": 0, "sets_against": 0,
+        "points_for": 0, "points_against": 0,
+    } for name in names}
+    for match in matches:
+        if match["status"] != "finished":
+            continue
+        hs, ass = match["home_sets"], match["away_sets"]
+        if max(hs, ass) != 3:
+            raise RuntimeError(f"Unfinished final score: {match['id']}")
+        for name, won, lost, scored, conceded in (
+            (match["home"], hs, ass, match["home_points"], match["away_points"]),
+            (match["away"], ass, hs, match["away_points"], match["home_points"]),
+        ):
+            row = totals[name]
+            row["played"] += 1
+            row["wins"] += int(won > lost)
+            row["losses"] += int(won < lost)
+            row["points"] += 3 if won == 3 and lost <= 1 else 2 if won == 3 else 1 if won == 2 else 0
+            row["sets_for"] += won
+            row["sets_against"] += lost
+            row["points_for"] += scored
+            row["points_against"] += conceded
+    for row in table:
+        expected = totals[row["team"]]
+        wrong = {field: (row[field], expected[field]) for field in expected
+                 if row[field] != expected[field]}
+        if wrong:
+            raise RuntimeError(f"PLS table and finished results differ for {row['team']}: {wrong}")
+    return True
 
 
 def verify_detail_identity(soup, match):
@@ -1025,14 +1148,21 @@ def run_league(key, cfg, full_details=False):
 
     standings = []
     if table_soup is not None:
-        standings = parse_table(table_soup, aliases)
-        if len(standings) < 8:
-            table_error = table_error or RuntimeError(f"only {len(standings)} standings rows parsed")
+        try:
+            standings = parse_table(table_soup, aliases, matches)
+            validate_standings(standings, matches, expected // (expected_rounds // 2))
+        except (RuntimeError, KeyError, TypeError, ValueError) as exc:
+            table_error = exc
             standings = []
     if not standings:
-        # Keep the last good table instead of publishing an empty one.
-        standings = previous.get("table", [])
-        print(f"WARNING [{key}]: could not refresh standings, keeping previous table: {table_error}")
+        # A stale previous table is safe only when its totals still match the
+        # newly parsed games. Correct its historical ranks as well.
+        standings = rank_standings(previous.get("table", []), matches)
+        validate_standings(standings, matches, expected // (expected_rounds // 2))
+        print(f"WARNING [{key}]: official table unavailable; using verified previous totals: {table_error}",
+              file=sys.stderr)
+    print(f"INFO [{key}]: standings verified: {len(standings)} clubs, "
+          f"ranks 1–{len(standings)}, totals agree with completed matches", flush=True)
 
     payload = {
         "league": key,
