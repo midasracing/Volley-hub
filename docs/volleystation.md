@@ -32,21 +32,20 @@ Na Linuksie bez pulpitu zainstaluj `xvfb` i `xauth`, a polecenia poprzedź
 Jednorazowy import obu lig, kolejno:
 
 ```bash
-python scripts/update_2liga.py
-python scripts/update_pomorska3liga.py
+python scripts/update_volleystation.py --league second
+python scripts/update_volleystation.py --league pomorska3liga
 ```
 
-Są to krótkie wejścia do tego samego importera produkcyjnego. Równoważne komendy
-to `python -m local_scraper --league second` oraz `python -m local_scraper`.
-Parsery znajdują się w `local_scraper/parsing.py`; oba silniki używają tych
-samych parserów i walidacji. Nie ma osobnego transportu Stealth ani starego
-importera PZPS.
+Obie ligi obsługuje jeden plik `scripts/update_volleystation.py`, obok pozostałych
+scraperów projektu. Opcja `--league` wybiera ligę; domyślnie jest to Pomorska III liga.
+Parsery, walidacja, oba silniki i obsługa procesów są w tym samym skrypcie.
+Proces przeglądarki uruchamia odizolowaną kopię tego samego pliku.
 
 Praca ciągła — uruchom każde polecenie w osobnym terminalu:
 
 ```bash
-python scripts/update_2liga.py --watch --public-output public/data/2liga.json
-python scripts/update_pomorska3liga.py --watch --public-output public/data/pomorska3liga.json
+python scripts/update_volleystation.py --league second --watch --public-output public/data/2liga.json
+python scripts/update_volleystation.py --league pomorska3liga --watch --public-output public/data/pomorska3liga.json
 ```
 
 Pliki główne to `data/2liga.json` i `data/pomorska3liga.json`. Kopie
@@ -82,8 +81,8 @@ zakończonych meczów. Dane LIVE odświeżają się zgodnie z cyklami importera.
 ## Stan i konfiguracja sieci
 
 ```bash
-python scripts/update_2liga.py --status
-python scripts/update_pomorska3liga.py --status
+python scripts/update_volleystation.py --league second --status
+python scripts/update_volleystation.py --league pomorska3liga --status
 ```
 
 Stan i zdarzenia znajdują się w ignorowanym przez Git `.local-scraper/`.

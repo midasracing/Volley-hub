@@ -3,9 +3,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/volleystation-importer.yml
-      - local_scraper/**
-      - scripts/update_2liga.py
-      - scripts/update_pomorska3liga.py
+      - scripts/update_volleystation.py
       - requirements-local-scraper.txt
       - data/2liga.json
       - data/pomorska3liga.json
@@ -13,9 +11,7 @@ on:
     branches: [main]
     paths:
       - .github/workflows/volleystation-importer.yml
-      - local_scraper/**
-      - scripts/update_2liga.py
-      - scripts/update_pomorska3liga.py
+      - scripts/update_volleystation.py
       - requirements-local-scraper.txt
       - data/2liga.json
       - data/pomorska3liga.json
@@ -31,18 +27,17 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install beautifulsoup4 filelock psutil
-      - name: Validate production modules and entry points
+      - name: Validate the production scraper
         run: |
-          python -m compileall -q local_scraper scripts/update_2liga.py scripts/update_pomorska3liga.py
-          python -m local_scraper --help
-          python scripts/update_2liga.py --help
-          python scripts/update_pomorska3liga.py --help
+          python -m py_compile scripts/update_volleystation.py
+          python scripts/update_volleystation.py --league second --help
+          python scripts/update_volleystation.py --league pomorska3liga --help
       - name: Validate published VolleyStation feeds
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          from local_scraper.feed import validate_output
+          from scripts.update_volleystation import validate_output
           for name in ('2liga.json', 'pomorska3liga.json'):
               data = json.loads((Path('data') / name).read_text())
               print(name, validate_output(data))

@@ -47,6 +47,10 @@ npm run dev
 
 Pozostałe polecenia: `npm test` (testy) oraz `npm run build` (wersja produkcyjna).
 
+Dane II i Pomorskiej III ligi aktualizuje jeden skrypt
+[`scripts/update_volleystation.py`](scripts/update_volleystation.py).
+[Instalacja i uruchomienie scrapera](docs/volleystation.md).
+
 ## Technologia
 
 React · Vite · JavaScript · CSS · Rive · PWA · GitHub Pages

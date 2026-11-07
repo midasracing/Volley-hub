@@ -47,6 +47,10 @@ npm run dev
 
 Other commands: `npm test` (tests) and `npm run build` (production build).
 
+One script updates II liga and Pomorska III liga:
+[`scripts/update_volleystation.py`](scripts/update_volleystation.py).
+[Scraper setup and options (Polish)](docs/volleystation.md).
+
 ## Built with
 
 React · Vite · JavaScript · CSS · Rive · PWA · GitHub Pages

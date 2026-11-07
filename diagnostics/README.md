@@ -9,4 +9,5 @@ python diagnostics/probe_international_api.py
 ```
 
 Produkcyjny importer II i Pomorskiej III ligi oraz jego instrukcja znajdują się
-w [`local_scraper/`](../local_scraper/).
+w [`scripts/update_volleystation.py`](../scripts/update_volleystation.py) i
+[instrukcji](../docs/volleystation.md).
