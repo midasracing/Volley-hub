@@ -3,7 +3,7 @@ import { shareFeedValue } from './feedUpdates.js';
 export const LEAGUES = [
   { id: 'men', name: 'TAURON Liga Mężczyzn', short: 'TAURON Liga', category: 'Polska', description: 'Najwyższa klasa rozgrywkowa mężczyzn', file: 'tauron.json' },
   { id: 'first', name: 'TAURON 1. Liga Mężczyzn', short: 'TAURON 1. Liga', category: 'Polska', description: 'Pierwsza liga mężczyzn', file: 'tauron1liga.json' },
-  { id: 'second', name: 'II Liga Mężczyzn', short: 'II Liga Mężczyzn', category: 'Polska', description: 'Rozgrywki grupowe PZPS', file: '2liga.json' },
+  { id: 'second', name: 'II Liga Mężczyzn', short: 'II Liga Mężczyzn', category: 'Polska', description: 'Pięć grup · dane z VolleyStation', file: '2liga.json' },
   { id: 'pomorska', name: 'Pomorska III Liga Męska', short: 'Pomorska III Liga', category: 'Polska', description: 'Dane oficjalne z VolleyStation', file: 'pomorska3liga.json' },
   { id: 'italy', name: 'SuperLega Credem Banca', short: 'SuperLega', category: 'Europa', flag: '🇮🇹', description: 'Włoska liga siatkówki mężczyzn · oficjalny terminarz', file: 'italy.json' },
   { id: 'japan', name: 'SV.League Men', short: 'SV.League', category: 'Świat', flag: '🇯🇵', description: 'Japońska liga siatkówki mężczyzn · oficjalny terminarz', file: 'japan.json' }

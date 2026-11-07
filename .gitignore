@@ -2,3 +2,12 @@
 .venv-diagnostics/
 __pycache__/
 *.py[cod]
+
+# Local importer state and development artifacts
+.venv-local-scraper/
+.local-scraper/
+*.local-scraper.lock
+downloaded_files/
+/node_modules
+dist/
+public/data/

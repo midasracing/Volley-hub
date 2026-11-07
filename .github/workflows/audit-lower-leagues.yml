@@ -1,13 +1,33 @@
 name: Audit Polish II and Pomorska III Liga data
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/audit-lower-leagues.yml
+      - local_scraper/**
+      - requirements-local-scraper.txt
+      - scripts/audit_lower_leagues.py
+      - scripts/update_2liga.py
+      - scripts/update_pomorska3liga.py
+      - tests/test_local_scraper.py
+      - tests/test_volley_parity.py
+      - tests/test_lower_leagues.py
+      - tests/fixtures/**
+      - data/2liga.json
+      - data/pomorska3liga.json
   push:
     branches: [main]
     paths:
       - scripts/audit_lower_leagues.py
       - .github/workflows/audit-lower-leagues.yml
       - tests/test_lower_leagues.py
+      - tests/test_local_scraper.py
+      - tests/test_volley_parity.py
+      - tests/fixtures/**
       - scripts/update_2liga.py
+      - scripts/update_pomorska3liga.py
+      - local_scraper/**
+      - requirements-local-scraper.txt
       - data/2liga.json
       - data/pomorska3liga.json
   schedule:
@@ -23,9 +43,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install requests beautifulsoup4
+      - run: python -m pip install requests beautifulsoup4 filelock psutil
       - name: Check II Liga standings regression and audit rules
         run: python -m unittest discover -s tests -p 'test_lower_leagues.py' -v
+      - name: Check default local importer and source policy
+        run: |
+          python -m unittest discover -s tests -p 'test_local_scraper.py' -v
+          python -m unittest discover -s tests -p 'test_volley_parity.py' -v
       - name: Audit published snapshots against TAURON schema and real scores
         run: python scripts/audit_lower_leagues.py
       - name: Upload full diagnostic

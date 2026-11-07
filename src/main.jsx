@@ -12,6 +12,7 @@ import { useAnimatedDate, AnimatedSets } from './components/ScheduleMotion.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import PageStage from './components/PageStage.jsx';
 import useFeeds from './useFeeds.js';
+import { broadcastLinks } from './broadcasts.js';
 import { MotionEnabled, ScoreValue, LeagueEntrance } from './components/MatchMotion.jsx';
 import { ROUTES } from './navigation.js';
 import '../matches-ios.css';
@@ -75,6 +76,7 @@ const MatchCard = React.memo(function MatchCard({ match, logos, compact = false 
   const awayWins = score && Number(match.away_sets) > Number(match.home_sets);
   const scores = Array.isArray(match.set_scores) ? match.set_scores : [];
   const channels = Array.isArray(match.broadcast) ? match.broadcast : match.broadcast ? [match.broadcast] : [];
+  const streams = broadcastLinks(match);
   const hasInfo = Boolean(match.round != null || match.venue || channels.length || match.phase || match.match_number || match.term_number || match.source_url);
   const verifiedPlsUrl = /^(https:\/\/www\.tauron(?:1)?liga\.pl\/games\/action\/show\/id\/\d+\/)/.test(match.source_url || '') ? match.source_url : null;
   return <article data-match-id={match.id || [match.leagueId, match.date, match.home, match.away].join(':')} className={'im-card vh-match ' + (compact ? 'vh-match-compact' : '')}>
@@ -95,6 +97,7 @@ const MatchCard = React.memo(function MatchCard({ match, logos, compact = false 
     </div>
     {(score || match.time || hasInfo) && <div className="vh-match-footer">
       <span><Clock3 size={14} /> {match.time || 'Godzina nieustalona'}</span>
+      {streams.map(url => <a key={url} className="vh-details-button" href={url} target="_blank" rel="noopener noreferrer">{finished ? 'Nagranie' : 'Transmisja'} · YouTube<ArrowRight size={15} /></a>)}
       {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded} aria-controls={detailsId}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
       {hasInfo && <button className="vh-details-button" onClick={() => setInfoOpen(value => !value)} type="button" aria-expanded={infoOpen} aria-controls={infoId}>{infoOpen ? 'Ukryj informacje' : 'Informacje o meczu'}<ChevronRight size={15} className={infoOpen ? 'vh-rotate' : ''} /></button>}
       {isLive(match) && match.current_points && <span>Aktualny set: <ScoreValue className="vh-live-points" value={String(match.current_points)} /></span>}
@@ -328,6 +331,7 @@ const CompetitionsPage = React.memo(function CompetitionsPage({ active, feeds, m
         {view === 'teams' && <TeamsGrid teams={league.id === 'second' ? groupChoices.flatMap(item => item.teams || []) : data.teams} logos={logos} favorites={favorites} toggleFavorite={toggleFavorite} />}
       </>}
       {data?.updated_at && <p className="vh-source-note">Aktualizacja źródła: {new Date(data.updated_at).toLocaleString('pl-PL')}</p>}
+      {view === 'table' && (league.id === 'second' ? groupChoices : [data]).some(item => Object.keys(item?.source_table_discrepancies || {}).length > 0) && <p className="vh-source-note" role="status">Wyniki i tabela VolleyStation są publikowane osobno. Pokazujemy tabelę dokładnie według źródła.</p>}
     </> : <>
       <div className="vh-segmented" role="tablist" aria-label="Region rozgrywek">{CATEGORIES.map(item => <button role="tab" aria-selected={category === item} className={category === item ? 'selected' : ''} key={item} onClick={() => setCategory(item)}>{item}</button>)}</div>
       {LEAGUES.some(item => item.category === category) ? <><SectionTitle eyebrow={(category === 'Polska' ? 'POLSKA' : category === 'Europa' ? 'EUROPA' : 'ŚWIAT') + ' · MĘŻCZYŹNI'} title="Dostępne ligi" /><div className="vh-league-stack">{LEAGUES.filter(item => item.category === category).map((item, index) => <article className="vh-league-tile vh-league-select" key={item.id}><button className="vh-league-main" onClick={() => openLeague(item.id)}><span className="vh-league-number">{String(index + 1).padStart(2, '0')}</span><span><strong>{item.name}</strong><small>{item.description}</small></span><ChevronRight size={20} /></button><button type="button" className={'vh-star-button ' + (favorites.leagues.includes(item.name) ? 'is-favorite' : '')} aria-label={(favorites.leagues.includes(item.name) ? 'Usuń z' : 'Dodaj do') + ' ulubionych: ' + item.name} onClick={() => toggleFavorite('leagues', item.name)}><Star size={20} fill={favorites.leagues.includes(item.name) ? 'currentColor' : 'none'} /></button></article>)}</div></> : <EmptyState Icon={Trophy} title="Wkrótce" message="Nowe rozgrywki dodamy dopiero po weryfikacji oficjalnych źródeł danych. Nie pokazujemy fikcyjnych wyników." />}

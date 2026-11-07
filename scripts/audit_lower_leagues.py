@@ -5,11 +5,11 @@ The audit compares official-source snapshots with the TAURON match schema,
 but never fabricates missing source data or silently repairs inconsistent tables.
 """
 import argparse
+import json
+import re
 from collections import Counter
 from datetime import datetime, timezone
-import json
 from pathlib import Path
-import re
 
 BASE_MATCH_FIELDS = {
     "id", "league", "competition", "date", "time", "date_iso",
@@ -70,7 +70,7 @@ def audit_group(group):
         if match["home"] not in names or match["away"] not in names:
             issues.append(f"Unregistered team in fixture {key}")
         try:
-            date = datetime.strptime(match["date"], "%d.%m.%Y")
+            datetime.strptime(match["date"], "%d.%m.%Y")
         except (ValueError, KeyError):
             issues.append(f"Invalid date in fixture {key}")
             continue
@@ -87,13 +87,15 @@ def audit_group(group):
                 issues.append(f"Invalid final sets {key}")
                 continue
             points = []
-            for score in sets:
-                found = re.fullmatch(r"(\d{1,2}):(\d{1,2})", score)
+            for index,score in enumerate(sets):
+                found = re.fullmatch(r"(\d+):(\d+)", score)
                 if not found:
                     issues.append(f"Malformed set score in {key}: {score}")
                     continue
                 h, a = map(int, found.groups())
-                if h == a or max(h, a) < 15 or max(h, a) > 40:
+                target=15 if index==4 else 25
+                high,low=max(h,a),min(h,a)
+                if not (high>=target and high-low>=2 and (high==target or high-low==2)):
                     issues.append(f"Implausible set score {score} in {key}")
                 points.append((h, a))
             if len(points) != hs + vs:
@@ -105,6 +107,9 @@ def audit_group(group):
         elif match.get("status") == "scheduled":
             if match.get("set_scores") or match.get("current_points") is not None:
                 issues.append(f"Scheduled fixture contains fabricated points: {key}")
+        elif match.get('status')=='live':
+            if max(match.get('home_sets',0),match.get('away_sets',0))>=3:
+                issues.append(f'LIVE fixture already has a final result: {key}')
         else:
             issues.append(f"Unknown match status in {key}")
     if match_key_collisions:
@@ -136,11 +141,13 @@ def audit_group(group):
         "logos": sum(bool(team.get("logo")) for team in teams),
         "finished": status["finished"],
         "scheduled": status["scheduled"],
+        "live":status['live'],
         "finished_with_full_set_scores": complete_results,
         "missing_kickoff": missing_kickoff,
         "matches_missing_tauron_schema_fields": incomplete_schema,
         "table_rows": len(table),
         "table_discrepancies": len(mismatches),
+        "source_table_discrepancies": group.get("source_table_discrepancies", {}),
         "table_examples": mismatches[:3],
         "finished_without_full_set_scores": [
             {"date": date, "home": home, "away": away}
@@ -161,6 +168,7 @@ def audit_feeds(second, third):
         "matches": third.get("matches", []),
         "teams": third.get("teams", []),
         "table": third.get("table", []),
+        "source_table_discrepancies": third.get("source_table_discrepancies", {}),
     })
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

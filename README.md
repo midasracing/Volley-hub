@@ -47,29 +47,45 @@ Dostępność i aktualność danych zależą od zewnętrznych źródeł ligowych
 
 ## Skąd pochodzą dane?
 
-Dane zbierają skrypty aktualizujące rozgrywki, uruchamiane przez **GitHub Actions**. W projekcie wykorzystywane są między innymi dane PZPS (II liga) i VolleyStation (Pomorska III liga).
+Dla **II ligi i Pomorskiej III ligi domyślny jest lokalny importer VolleyStation**:
+SeleniumBase UC + CDP, a po niepowodzeniu Camoufox. Godziny, wyniki, punkty setów,
+tabele i linki transmisji pochodzą wyłącznie z VolleyStation. Nie uzupełniamy ich
+z PZPS ani PWZPS. Brakujące hale pozostają puste. Tabele są kopiowane
+bezpośrednio ze stron lig, z zachowaniem ich klasyfikacji i wartości; nie przeliczamy ich z wyników.
+[Weryfikacja domyślnego importera](local_scraper/DOMYSLNY.md).
+
+Pozostałe ligi mają własne zadania GitHub Actions. Dawne zadania zapisujące II
+i Pomorską III ligę zostały wyłączone; lokalny importer aktualizuje `data/*.json`
+i opcjonalnie `public/data/*.json`. Komputer i proces `--watch` muszą działać,
+żeby te dwie ligi otrzymywały kolejne aktualizacje. Publikacja nowych plików
+na GitHub Pages następuje po zatwierdzeniu i wypchnięciu zmian w `data/` do repozytorium.
 
 ```text
-Źródła rozgrywek
-        ↓
-Skrypty aktualizujące + GitHub Actions
-        ↓
-     data/*.json
-        ↓
- scripts/sync-data.mjs
-        ↓
-   public/data/*.json
-        ↓
-    React + Vite
-        ↓
-  GitHub Pages / PWA
+VolleyStation → lokalny importer II i Pomorskiej III ligi
+Pozostałe źródła → istniejące skrypty i GitHub Actions
+                         ↓
+                    data/*.json
+                         ↓
+                scripts/sync-data.mjs
+                         ↓
+                 public/data/*.json
+                         ↓
+                  React + Vite / PWA
 ```
 
 Aplikacja regularnie sprawdza dostępność nowych danych, a gdy połączenie się nie powiedzie, zachowuje ostatni pobrany stan. Częstotliwość odświeżania ekranu nie oznacza, że źródło publikuje wyniki z taką samą częstotliwością. Informacje punkt po punkcie wymagają odpowiednio aktualnego zewnętrznego źródła.
 
 ## Uruchomienie
 
-Wymagane: **Node.js 20+** i npm.
+Domyślne komendy po [instalacji zależności Python i przeglądarki](local_scraper/README.md#instalacja):
+
+```bash
+python scripts/update_2liga.py --watch --public-output public/data/2liga.json
+python scripts/update_pomorska3liga.py --watch --public-output public/data/pomorska3liga.json
+```
+
+Uruchom je w osobnych terminalach z aktywnym środowiskiem Python. Obie korzystają
+z tego samego importera. Dla samego frontendu wymagane są **Node.js 20+** i npm.
 
 ```bash
 git clone https://github.com/midasracing/kiedysiatka.git
