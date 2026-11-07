@@ -8,7 +8,20 @@ Wspólny format obejmuje 29 pól, w tym wszystkie 28 pól występujących we wsz
 meczach zapisanych feedów TAURON Ligi i TAURON 1. Ligi oraz opcjonalne `broadcast`.
 **To zgodność struktury i podstawowych danych, nie pełna równość pokrycia metadanych.**
 Hala i numer terminu pozostają `null`, gdy sprawdzone źródło ich nie potwierdza.
-Znacznik „TV” nie dostarcza nazwy kanału. Nie uzupełniono nieznanych informacji fikcyjnymi wartościami.
+Sam znacznik „TV” nie dostarcza nazwy kanału. Strony sześciu oznaczonych meczów
+zawierają jednak konkretne odtwarzacze YouTube; ich URL trafia teraz do `broadcast_urls`.
+
+**Uzupełnienie audytu transmisji, 07.11.2026, 12:31–12:32 UTC:** wcześniejsza
+wersja audytu sprawdziła znaczniki TV, ale pominęła osadzone odtwarzacze. Ponowny
+odczyt wszystkich sześciu stron przez UC + CDP potwierdził sześć adresów YouTube:
+dwa dla spotkań zaplanowanych i cztery dla zakończonych. Poprawiono importer,
+snapshot II ligi i aplikację. [Dowody i czasy odczytów](broadcasts.json).
+Linki są potwierdzone na stronie ligi; nie testowano odtwarzania na YouTube.
+
+| Data i godzina ze źródła | Mecz zaplanowany | Link opublikowany przez ligę |
+| --- | --- | --- |
+| 07.11.2026, 17:00 | Volley Team Żychlin – ProNutiva SKK Belsk Duży | [YouTube](https://www.youtube.com/watch?v=nDOImTNf7_o) |
+| 07.11.2026, 18:00 | Instytut Mechaniki Rekord Volley Jelcz-Laskowice – KS Bielawianka-Bester | [YouTube](https://www.youtube.com/watch?v=38BPqJpf0HU) |
 
 ## Zakres i wyniki
 
@@ -47,7 +60,11 @@ Nie przeliczano tabel w celu ukrycia braków: nowy odczyt opiera się na opublik
    od zakończonych setów. W tym przechwyceniu bieżących punktów nie było, więc pole ma `null`.
 3. **Ukryte „TV” nie oznacza transmisji.** HTML zawiera taki napis przy każdym
    meczu, lecz CSS ukrywa go poza `.stage.live`. Uznawane są widoczne znaczniki:
-   sześć w II lidze, zero w Pomorskiej. Nazwy kanałów pozostają nieznane.
+   sześć w II lidze, zero w Pomorskiej. Dla tych sześciu meczów odczyt strony
+   szczegółów potwierdził filmy YouTube. Linki odświeżają się w każdym cyklu,
+   także gdy punkty zakończonego meczu pochodzą z PZPS lub cache. Usunięty
+   odtwarzacz usuwa poprzedni URL. Karta pokazuje „Transmisja · YouTube” albo
+   „Nagranie · YouTube”; samo „TV” nie tworzy linku.
 4. **ID logotypu nie jest ID drużyny.** Przykładowo profil Stoczniowca ma ID
    `2103916`, a plik logotypu `2122546`. `home_team_id`, `away_team_id` i `teams[].id`
    pochodzą teraz z odnośników profili; numer pliku jest osobnym `badge_id`.
@@ -65,17 +82,22 @@ Nie przeliczano tabel w celu ukrycia braków: nowy odczyt opiera się na opublik
 
 ## Sposób sprawdzenia
 
-Zarejestrowano **69 dokumentów przez rzeczywiste przeglądarki**: po 22 strony
+Zarejestrowano **75 dokumentów przez rzeczywiste przeglądarki**: po 22 strony
 główne dla UC + CDP i Camoufox, sześć stron szczegółów II ligi przez UC + CDP
 oraz 19 stron meczów Pomorskiej przez Camoufox — wszystkie 17 zakończonych
-i dwie z terminarza, w tym mecz LIVE. Szczegóły są współdzielonym materiałem
+i dwie z terminarza, w tym mecz LIVE, oraz sześć stron z transmisjami przez UC + CDP.
+Szczegóły są współdzielonym materiałem
 kontrolnym; nie wykonano podwójnego odczytu każdego szczegółu przez oba silniki.
 
 Audyt czyta karty meczów niezależnym czytnikiem DOM, porównuje daty, godziny,
 kierunek drużyn, wynik, status, rundę, numer meczu, oficjalne ID, obrazy i widoczne
 znaczniki TV z emisją importera. Oddzielnie odczytuje wiersze tabel i punkty
 setów ze stron meczów lub wierszy PZPS. Sprawdza pochodne pola punktowe
-i kompletność pól referencyjnych. Samo porównanie dwóch uruchomień tego samego
+i kompletność pól referencyjnych. Osobny odczyt DOM odtwarzaczy sprawdza także
+adresy transmisji. Po uzupełnieniu przechwyceń ponownie odtworzono oba importy:
+604 mecze bez różnic w sprawdzanych polach, w tym sześć zgodnych URL filmów.
+Nie wykonywano ponownie odczytu wszystkich stron głównych ani nowych prób Camoufox.
+Samo porównanie dwóch uruchomień tego samego
 parsera nie stanowiło całego audytu.
 
 Porównano też rzeczywiste HTML stron terminarzy TAURON Ligi i 1. Ligi, a kontrakt
@@ -98,8 +120,11 @@ snapshotach odnoszą się do przechwycenia źródła, nie do późniejszego odtw
   Nie sprawdzano osobno wszystkich 604 stron meczów w celu poszukiwania hali.
 - **Numer terminu:** TAURON publikuje tę informację; nie zastąpiono jej zgadywaną
   kopią numeru rundy. `term_number=null`.
-- **Transmisje:** widoczny znacznik TV zachowano dosłownie jako `['TV']`.
-  To nie nazwa kanału Polsat ani potwierdzony adres streamu.
+- **Transmisje:** widoczny znacznik TV zachowano jako `['TV']`; sześć potwierdzonych
+  odtwarzaczy ma dodatkowo `broadcast_urls`, `broadcast_source_url` i
+  `broadcast_checked_at`. Nie skanowano stron wszystkich nieoznaczonych spotkań
+  ani kanałów klubowych w poszukiwaniu dodatkowych emisji. Nie badano dostępności
+  nagrań, ograniczeń regionalnych ani rozpoczęcia transmisji na YouTube.
 - **LIVE:** potwierdzono odczyt aktualnego stanu meczu i regresję dla punktów
   trwającego seta. Nie potwierdzono ciągłego strumienia punkt po punkcie;
   domyślny harmonogram importera nadal ma 15 minut przerwy między cyklami.
@@ -114,11 +139,14 @@ Nie potwierdzają wielodniowej dostępności z dowolnego IP.
 - [Kontrakt referencyjny TAURON](reference.json)
 - [Lista 604 meczów CSV](matches.csv)
 - [Sprawdzenie 63 logotypów](logos.json)
+- [Sześć transmisji/nagrań i manifest dodatkowych stron](broadcasts.json)
 - Zaktualizowane snapshoty: [II liga](../../data/2liga.json), [Pomorska III liga](../../data/pomorska3liga.json).
 
-Kontrole: **37 testów Python** (21 dotychczasowych lokalnego importera,
-8 nowych regresji audytu, 8 istniejących regresji ligowych) i **11 testów
-frontendu/danych** zakończyło się poprawnie.
+Kontrole: **39 testów Python** (22 lokalnego importera, 9 regresji audytu,
+8 istniejących regresji ligowych) i **23 testy frontendu/danych** zakończyło
+się poprawnie. Build produkcyjny aplikacji również przeszedł. W Chromium sprawdzono
+wszystkie dwa linki transmisji i cztery linki nagrań w widokach 390 i 1280 px:
+bez błędów JavaScript i poziomego przewijania.
 
 Przechwycenie źródeł bez płatnych usług, osobno dla każdego silnika:
 

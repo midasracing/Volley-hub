@@ -6,12 +6,36 @@ from bs4 import BeautifulSoup
 
 from local_scraper.feed import live_sets
 from local_scraper.runner import arguments
-from local_scraper.schema import MATCH_FIELDS, card_metadata, normalize, team_metadata
+from local_scraper.schema import (
+    MATCH_FIELDS,
+    broadcast_urls,
+    card_metadata,
+    normalize,
+    team_metadata,
+)
 from local_scraper.second import pzps_supplement
 from scripts import update_pomorska3liga as source
 
 
 class ParityTests(unittest.TestCase):
+    def test_broadcast_uses_match_player_and_discards_embed_tracking(self):
+        soup = BeautifulSoup(
+            '<a href="https://www.youtube.com/watch?v=38BPqJpf0HU">Klub</a>'
+            '<iframe src="https://www.youtube.com/embed/38BPqJpf0HU"></iframe>'
+            '<div class="video-container">'
+            '<iframe src="https://www.youtube.com/embed/nDOImTNf7_o?si=tracking"></iframe>'
+            '<iframe src="//www.youtube-nocookie.com/embed/nDOImTNf7_o"></iframe>'
+            '<iframe src="https://www.youtube.com.evil.test/embed/38BPqJpf0HU"></iframe>'
+            '<iframe src="javascript:alert(1)"></iframe>'
+            '<iframe src="/embed/38BPqJpf0HU"></iframe>'
+            '<iframe src="https://www.youtube.com/embed/too-short"></iframe>'
+            "</div>",
+            "html.parser",
+        )
+        self.assertEqual(
+            broadcast_urls(soup), ["https://www.youtube.com/watch?v=nDOImTNf7_o"]
+        )
+
     def test_nonfinal_score_is_live_not_finished(self):
         soup = BeautifulSoup(
             '<h2>7 listopada 2026</h2><a href="/matches/123/">Runda: 5 Nr 24 Gospodarz 1:1 Gość</a>',

@@ -1,0 +1,178 @@
+{
+  "checked_at": "2026-11-07T12:33:53.311381+00:00",
+  "scope": "Six II liga fixtures with a visible TV marker in the original core capture. Match players checked with SeleniumBase UC + CDP; YouTube playback not tested. Core feed updated_at preserved.",
+  "matches": [
+    {
+      "id": "2560280",
+      "date": "14.10.2026",
+      "time": "18:00",
+      "home": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
+      "away": "KPS Chełmiec ANS AS Wałbrzych",
+      "status": "finished",
+      "broadcast": [
+        "TV"
+      ],
+      "broadcast_urls": [
+        "https://www.youtube.com/watch?v=6kojeqIg22w"
+      ],
+      "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560280/",
+      "broadcast_checked_at": "2026-11-07T12:31:21.199284+00:00",
+      "capture": {
+        "name": "broadcast-2560280",
+        "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560280/",
+        "status": 200,
+        "challenge": false,
+        "sha256": "e1fdd6e96c52a06169be92404569cf09798a8d9dd93de13229e560c9e800fbc7",
+        "captured_at": "2026-11-07T12:31:21.199284+00:00",
+        "engine": "seleniumbase"
+      }
+    },
+    {
+      "id": "2560291",
+      "date": "24.10.2026",
+      "time": "18:00",
+      "home": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
+      "away": "MLKS Volley Gubin",
+      "status": "finished",
+      "broadcast": [
+        "TV"
+      ],
+      "broadcast_urls": [
+        "https://www.youtube.com/watch?v=nsOIia8dmpc"
+      ],
+      "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560291/",
+      "broadcast_checked_at": "2026-11-07T12:31:35.557083+00:00",
+      "capture": {
+        "name": "broadcast-2560291",
+        "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560291/",
+        "status": 200,
+        "challenge": false,
+        "sha256": "fb1b4e55fbf508949af36a01f0afb2087add07b873edf47e4fe396472187850a",
+        "captured_at": "2026-11-07T12:31:35.557083+00:00",
+        "engine": "seleniumbase"
+      }
+    },
+    {
+      "id": "2560302",
+      "date": "07.11.2026",
+      "time": "18:00",
+      "home": "Instytut Mechaniki Rekord Volley Jelcz-Laskowice",
+      "away": "KS Bielawianka-Bester",
+      "status": "scheduled",
+      "broadcast": [
+        "TV"
+      ],
+      "broadcast_urls": [
+        "https://www.youtube.com/watch?v=38BPqJpf0HU"
+      ],
+      "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560302/",
+      "broadcast_checked_at": "2026-11-07T12:31:50.381934+00:00",
+      "capture": {
+        "name": "broadcast-2560302",
+        "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560302/",
+        "status": 200,
+        "challenge": false,
+        "sha256": "cf0afdc6e0246f25c80e47ea1cbbe23866003948c3272df7985ce32b6de42716",
+        "captured_at": "2026-11-07T12:31:50.381934+00:00",
+        "engine": "seleniumbase"
+      }
+    },
+    {
+      "id": "2562007",
+      "date": "17.10.2026",
+      "time": "17:00",
+      "home": "Boat.Systems Resursa Łódź",
+      "away": "Aluron CMC Wybicki Kielce",
+      "status": "finished",
+      "broadcast": [
+        "TV"
+      ],
+      "broadcast_urls": [
+        "https://www.youtube.com/watch?v=nMclxHPcDM8"
+      ],
+      "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562007/",
+      "broadcast_checked_at": "2026-11-07T12:32:05.185052+00:00",
+      "capture": {
+        "name": "broadcast-2562007",
+        "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562007/",
+        "status": 200,
+        "challenge": false,
+        "sha256": "3c6da7d46bed27e6203e0193d03e92f860ffb4eb9cc0a70c4d59fc3c1f4ab1f8",
+        "captured_at": "2026-11-07T12:32:05.185052+00:00",
+        "engine": "seleniumbase"
+      }
+    },
+    {
+      "id": "2561989",
+      "date": "24.10.2026",
+      "time": "16:00",
+      "home": "AZS Częstochowa",
+      "away": "Volley Team Żychlin",
+      "status": "finished",
+      "broadcast": [
+        "TV"
+      ],
+      "broadcast_urls": [
+        "https://www.youtube.com/watch?v=-_sJ8sJ93jY"
+      ],
+      "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561989/",
+      "broadcast_checked_at": "2026-11-07T12:32:20.944976+00:00",
+      "capture": {
+        "name": "broadcast-2561989",
+        "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561989/",
+        "status": 200,
+        "challenge": false,
+        "sha256": "e6950fb4ef91f691af76d6e34623c1872b0e6c6b95a4efbe267a0fa10c98ba94",
+        "captured_at": "2026-11-07T12:32:20.944976+00:00",
+        "engine": "seleniumbase"
+      }
+    },
+    {
+      "id": "2561987",
+      "date": "07.11.2026",
+      "time": "17:00",
+      "home": "Volley Team Żychlin",
+      "away": "ProNutiva SKK Belsk Duży",
+      "status": "scheduled",
+      "broadcast": [
+        "TV"
+      ],
+      "broadcast_urls": [
+        "https://www.youtube.com/watch?v=nDOImTNf7_o"
+      ],
+      "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561987/",
+      "broadcast_checked_at": "2026-11-07T12:32:35.313710+00:00",
+      "capture": {
+        "name": "broadcast-2561987",
+        "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561987/",
+        "status": 200,
+        "challenge": false,
+        "sha256": "42603b43b62b4d943fca317f88cc474adc1d6abe0299fb3c938c46c435314e7f",
+        "captured_at": "2026-11-07T12:32:35.313710+00:00",
+        "engine": "seleniumbase"
+      }
+    }
+  ],
+  "validation": {
+    "matches": 532,
+    "finished": 152,
+    "teams": 54
+  },
+  "verification": {
+    "python_tests": 39,
+    "node_tests": 23,
+    "production_build": "passed",
+    "browser": {
+      "engine": "Chromium 156",
+      "viewport_widths": [
+        390,
+        1280
+      ],
+      "upcoming_links_checked_per_viewport": 2,
+      "archive_links_checked_per_viewport": 4,
+      "page_errors": [],
+      "horizontal_overflow": false
+    },
+    "youtube_playback_tested": false
+  }
+}

@@ -9924,7 +9924,12 @@
           "broadcast": [
             "TV"
           ],
-          "group": "Grupa 3"
+          "group": "Grupa 3",
+          "broadcast_urls": [
+            "https://www.youtube.com/watch?v=6kojeqIg22w"
+          ],
+          "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560280/",
+          "broadcast_checked_at": "2026-11-07T12:31:21.199284+00:00"
         },
         {
           "id": "2560281",
@@ -10733,7 +10738,12 @@
           "broadcast": [
             "TV"
           ],
-          "group": "Grupa 3"
+          "group": "Grupa 3",
+          "broadcast_urls": [
+            "https://www.youtube.com/watch?v=nsOIia8dmpc"
+          ],
+          "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560291/",
+          "broadcast_checked_at": "2026-11-07T12:31:35.557083+00:00"
         },
         {
           "id": "2560293",
@@ -11286,7 +11296,12 @@
           "broadcast": [
             "TV"
           ],
-          "group": "Grupa 3"
+          "group": "Grupa 3",
+          "broadcast_urls": [
+            "https://www.youtube.com/watch?v=38BPqJpf0HU"
+          ],
+          "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560302/",
+          "broadcast_checked_at": "2026-11-07T12:31:50.381934+00:00"
         },
         {
           "id": "2560304",
@@ -15322,7 +15337,12 @@
           "broadcast": [
             "TV"
           ],
-          "group": "Grupa 4"
+          "group": "Grupa 4",
+          "broadcast_urls": [
+            "https://www.youtube.com/watch?v=nMclxHPcDM8"
+          ],
+          "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562007/",
+          "broadcast_checked_at": "2026-11-07T12:32:05.185052+00:00"
         },
         {
           "id": "2561993",
@@ -15589,7 +15609,12 @@
           "broadcast": [
             "TV"
           ],
-          "group": "Grupa 4"
+          "group": "Grupa 4",
+          "broadcast_urls": [
+            "https://www.youtube.com/watch?v=-_sJ8sJ93jY"
+          ],
+          "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561989/",
+          "broadcast_checked_at": "2026-11-07T12:32:20.944976+00:00"
         },
         {
           "id": "2561991",
@@ -15772,7 +15797,12 @@
           "broadcast": [
             "TV"
           ],
-          "group": "Grupa 4"
+          "group": "Grupa 4",
+          "broadcast_urls": [
+            "https://www.youtube.com/watch?v=nDOImTNf7_o"
+          ],
+          "broadcast_source_url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561987/",
+          "broadcast_checked_at": "2026-11-07T12:32:35.313710+00:00"
         },
         {
           "id": "2562076",

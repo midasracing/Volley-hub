@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-07T12:17:26.021022+00:00",
+  "checked_at": "2026-11-07T12:33:25.664998+00:00",
   "engines": {
     "seleniumbase": {
       "groups": [
@@ -15,6 +15,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -30,6 +31,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -45,6 +47,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 3,
+          "with_broadcast_urls": 3,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -60,6 +63,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 3,
+          "with_broadcast_urls": 3,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -75,6 +79,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -90,6 +95,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": [
             {
@@ -107,6 +113,60 @@
         }
       ],
       "captures": [
+        {
+          "name": "broadcast-2560280",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560280/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "e1fdd6e96c52a06169be92404569cf09798a8d9dd93de13229e560c9e800fbc7",
+          "captured_at": "2026-11-07T12:31:21.199531+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2560291",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560291/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "fb1b4e55fbf508949af36a01f0afb2087add07b873edf47e4fe396472187850a",
+          "captured_at": "2026-11-07T12:31:35.557308+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2560302",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560302/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "cf0afdc6e0246f25c80e47ea1cbbe23866003948c3272df7985ce32b6de42716",
+          "captured_at": "2026-11-07T12:31:50.382123+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2562007",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562007/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "3c6da7d46bed27e6203e0193d03e92f860ffb4eb9cc0a70c4d59fc3c1f4ab1f8",
+          "captured_at": "2026-11-07T12:32:05.185233+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2561989",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561989/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "e6950fb4ef91f691af76d6e34623c1872b0e6c6b95a4efbe267a0fa10c98ba94",
+          "captured_at": "2026-11-07T12:32:20.945189+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2561987",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561987/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "42603b43b62b4d943fca317f88cc474adc1d6abe0299fb3c938c46c435314e7f",
+          "captured_at": "2026-11-07T12:32:35.313960+00:00",
+          "engine": "details-broadcast"
+        },
         {
           "name": "detail-1",
           "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/matches/2560079/",
@@ -547,6 +607,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -562,6 +623,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -577,6 +639,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 3,
+          "with_broadcast_urls": 3,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -592,6 +655,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 3,
+          "with_broadcast_urls": 3,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -607,6 +671,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": []
         },
@@ -622,6 +687,7 @@
           "venues": 0,
           "term_numbers": 0,
           "broadcast_markers": 0,
+          "with_broadcast_urls": 0,
           "differences": [],
           "live_changes_between_captures": [
             {
@@ -639,6 +705,60 @@
         }
       ],
       "captures": [
+        {
+          "name": "broadcast-2560280",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560280/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "e1fdd6e96c52a06169be92404569cf09798a8d9dd93de13229e560c9e800fbc7",
+          "captured_at": "2026-11-07T12:31:21.199531+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2560291",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560291/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "fb1b4e55fbf508949af36a01f0afb2087add07b873edf47e4fe396472187850a",
+          "captured_at": "2026-11-07T12:31:35.557308+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2560302",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560302/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "cf0afdc6e0246f25c80e47ea1cbbe23866003948c3272df7985ce32b6de42716",
+          "captured_at": "2026-11-07T12:31:50.382123+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2562007",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562007/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "3c6da7d46bed27e6203e0193d03e92f860ffb4eb9cc0a70c4d59fc3c1f4ab1f8",
+          "captured_at": "2026-11-07T12:32:05.185233+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2561989",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561989/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "e6950fb4ef91f691af76d6e34623c1872b0e6c6b95a4efbe267a0fa10c98ba94",
+          "captured_at": "2026-11-07T12:32:20.945189+00:00",
+          "engine": "details-broadcast"
+        },
+        {
+          "name": "broadcast-2561987",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561987/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "42603b43b62b4d943fca317f88cc474adc1d6abe0299fb3c938c46c435314e7f",
+          "captured_at": "2026-11-07T12:32:35.313960+00:00",
+          "engine": "details-broadcast"
+        },
         {
           "name": "detail-1",
           "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/matches/2560079/",
@@ -1070,5 +1190,7 @@
     "2liga": true,
     "pomorska3liga": true
   },
-  "passed": true
+  "passed": true,
+  "replay_note": "Replayed original core captures with six new SeleniumBase UC + CDP match-player captures. Shared details used for both parser replays; not a second live Camoufox capture of video pages.",
+  "broadcast_audit": "broadcasts.json"
 }

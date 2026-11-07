@@ -3,7 +3,7 @@
 import re
 import unicodedata
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 MATCH_FIELDS = {
     "id",
@@ -85,6 +85,30 @@ def card_metadata(soup, url):
             "broadcast": ["TV"] if tv and tv.get_text(strip=True) == "TV" else [],
         }
     return result
+
+
+def broadcast_urls(soup):
+    """Only a match's embedded player proves a video association, not footer links."""
+    urls = []
+    for player in soup.select(".video-container iframe[src]"):
+        src = player["src"]
+        try:
+            parsed = urlsplit("https:" + src if src.startswith("//") else src)
+        except ValueError:
+            continue
+        if parsed.scheme != "https" or parsed.netloc.casefold() not in {
+            "www.youtube.com",
+            "youtube.com",
+            "www.youtube-nocookie.com",
+            "youtube-nocookie.com",
+        }:
+            continue
+        video = re.fullmatch(r"/embed/([A-Za-z0-9_-]{11})/?", parsed.path)
+        if video:
+            url = "https://www.youtube.com/watch?v=" + video[1]
+            if url not in urls:
+                urls.append(url)
+    return urls
 
 
 def normalize(data, teams=None, cards=None):

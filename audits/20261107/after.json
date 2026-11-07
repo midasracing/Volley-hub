@@ -19,7 +19,8 @@
         "table_examples": [],
         "finished_without_full_set_scores": [],
         "issues": [],
-        "warnings": []
+        "warnings": [],
+        "with_broadcast_urls": 0
       },
       {
         "group": "Grupa 2",
@@ -37,7 +38,8 @@
         "table_examples": [],
         "finished_without_full_set_scores": [],
         "issues": [],
-        "warnings": []
+        "warnings": [],
+        "with_broadcast_urls": 0
       },
       {
         "group": "Grupa 3",
@@ -55,7 +57,8 @@
         "table_examples": [],
         "finished_without_full_set_scores": [],
         "issues": [],
-        "warnings": []
+        "warnings": [],
+        "with_broadcast_urls": 3
       },
       {
         "group": "Grupa 4",
@@ -73,7 +76,8 @@
         "table_examples": [],
         "finished_without_full_set_scores": [],
         "issues": [],
-        "warnings": []
+        "warnings": [],
+        "with_broadcast_urls": 3
       },
       {
         "group": "Grupa 5",
@@ -91,7 +95,8 @@
         "table_examples": [],
         "finished_without_full_set_scores": [],
         "issues": [],
-        "warnings": []
+        "warnings": [],
+        "with_broadcast_urls": 0
       }
     ]
   },
@@ -122,5 +127,6 @@
     "Snapshot data only; live points unavailable.",
     "Table differences are not auto-corrected because fixture/result snapshots can lag.",
     "All league snapshots are preserved until an authorized upstream update succeeds."
-  ]
+  ],
+  "broadcast_enrichment_at": "2026-11-07T12:33:53.311381+00:00"
 }

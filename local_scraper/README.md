@@ -51,6 +51,14 @@ sumy punktów i statusy `scheduled`/`live`/`finished`. Hala i numer terminu są 
 jeśli źródło ich nie potwierdza. Kanały transmisji nie są zgadywane na podstawie
 ukrytego znacznika TV. [Raport audytu zgodności](../audits/20261107/RAPORT.md).
 
+Dla widocznego „TV” importer odczytuje stronę konkretnego meczu i zapisuje
+osadzony film YouTube jako `broadcast_urls` (kanoniczny URL `watch?v=...`),
+z `broadcast_source_url` i `broadcast_checked_at`. Odświeża te linki przy każdym
+cyklu, także dla meczów zaplanowanych oraz wyników uzupełnionych z PZPS.
+Sam znacznik bez odtwarzacza pozostaje `broadcast: ["TV"]`, bez zgadywanego URL.
+Aplikacja pokazuje link „Transmisja · YouTube” lub „Nagranie · YouTube”.
+Publikacja odtwarzacza na stronie ligi nie potwierdza dostępności filmu ani rozpoczęcia emisji.
+
 Praca ciągła, z 15 minutami przerwy po zakończeniu każdej aktualizacji, oraz
 automatyczna kopia dla lokalnej aplikacji Vite:
 

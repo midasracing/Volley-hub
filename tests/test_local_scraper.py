@@ -122,6 +122,63 @@ def pages(data):
 
 
 class FeedTests(unittest.TestCase):
+    def test_tv_links_refresh_for_scheduled_and_cached_finished_matches(self):
+        current = seed()
+        docs = pages(current)
+        chosen = [
+            next(m for m in current["matches"] if m["status"] == status)
+            for status in ("scheduled", "finished")
+        ]
+        for index, match in enumerate(chosen, 100):
+            old_url = match_url(match)
+            url = source.BASE + f"/matches/{index}/"
+            for page in (source.SCHEDULE_URL, source.RESULTS_URL):
+                soup = BeautifulSoup(docs[page], "html.parser")
+                card = soup.find("a", href=old_url)
+                if card:
+                    card["href"] = url
+                    card.insert(
+                        0,
+                        BeautifulSoup(
+                            '<div class="stage live"><span class="live-text">TV</span></div>',
+                            "html.parser",
+                        )
+                    )
+                    docs[page] = str(soup)
+            docs[url] = (
+                '<div class="video-container"><iframe src="https://www.youtube.com/embed/38BPqJpf0HU?si=tracking"></iframe></div>'
+            )
+
+        def fetch(url):
+            return BeautifulSoup(docs[url], "html.parser")
+
+        first, metrics = feed.build_feed(fetch, current)
+        self.assertEqual(metrics["broadcast_requests"], 2)
+        self.assertEqual(metrics["detail_requests"], 0)
+        self.assertEqual(
+            sum(bool(m.get("broadcast_urls")) for m in first["matches"]), 2
+        )
+        for index in (100, 101):
+            docs[source.BASE + f"/matches/{index}/"] = (
+                '<div class="video-container"><iframe src="https://www.youtube.com/embed/nDOImTNf7_o"></iframe></div>'
+            )
+        refreshed, _ = feed.build_feed(fetch, first)
+        for match in refreshed["matches"]:
+            if match["id"] in ("100", "101"):
+                self.assertEqual(
+                    match["broadcast_urls"],
+                    ["https://www.youtube.com/watch?v=nDOImTNf7_o"],
+                )
+                self.assertEqual(match["broadcast_source_url"], match["source_url"])
+                self.assertTrue(match["broadcast_checked_at"])
+        # Removing the embedded player must retract the previous URL, even
+        # though a visible TV marker and a finished result still exist.
+        docs[source.BASE + "/matches/101/"] = "<h2>Transmisja</h2>"
+        removed, _ = feed.build_feed(fetch, refreshed)
+        match = next(m for m in removed["matches"] if m["id"] == "101")
+        self.assertEqual(match["broadcast"], ["TV"])
+        self.assertEqual(match["broadcast_urls"], [])
+
     def build(self, current, previous):
         docs = pages(current)
         self.calls = []

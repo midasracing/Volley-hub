@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 
 from scripts import update_pomorska3liga as source
 
-from .schema import card_metadata, name_key, normalize, team_metadata
+from .schema import broadcast_urls, card_metadata, name_key, normalize, team_metadata
 from .storage import now
 
 
@@ -378,6 +378,16 @@ def build_feed(
         if match["home"] in discrepancies or match["away"] in discrepancies:
             detail(match)
             repaired += 1
+    # Visible TV markers may occur on scheduled fixtures and PZPS-backed results,
+    # neither of which otherwise requires a detail request. Refresh links every
+    # cycle, including archived videos; a marker alone never invents a URL.
+    broadcast_requests = 0
+    for match in matches:
+        if observed_cards.get(match["match_url"], {}).get("broadcast"):
+            match["broadcast_urls"] = broadcast_urls(fetch(match["match_url"]))
+            match["broadcast_source_url"] = match["match_url"]
+            match["broadcast_checked_at"] = now()
+            broadcast_requests += 1
     known = {
         t["name"]: t["logo"]
         for t in previous.get("teams", [])
@@ -421,6 +431,7 @@ def build_feed(
         reused_details=len(reused),
         refetched_cached_details=repaired,
         detail_requests=detail_requests,
+        broadcast_requests=broadcast_requests,
     )
     return data, metrics
 

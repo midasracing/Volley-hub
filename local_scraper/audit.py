@@ -221,6 +221,20 @@ def compare_group(group, store):
                 ] = stamp[4].zfill(5)
     live_changes = []
     for identifier, row in expected.items():
+        if row["broadcast"]:
+            # Independent DOM check, deliberately not the importer's helper.
+            links = []
+            for iframe in store.fetch(row["source_url"]).select(
+                ".video-container iframe[src]"
+            ):
+                video = re.fullmatch(
+                    r"https://www\.youtube\.com/embed/([\w-]{11})(?:\?[^\s]*)?",
+                    iframe["src"],
+                    flags=re.ASCII,
+                )
+                if video:
+                    links.append("https://www.youtube.com/watch?v=" + video[1])
+            row["broadcast_urls"] = list(dict.fromkeys(links))
         if row["status"] != "live" or row["source_url"] not in store.pages:
             continue
         detail = store.fetch(row["source_url"])
@@ -378,6 +392,9 @@ def compare_group(group, store):
         "venues": sum(bool(m.get("venue")) for m in actual.values()),
         "term_numbers": sum(m.get("term_number") is not None for m in actual.values()),
         "broadcast_markers": sum(bool(m.get("broadcast")) for m in actual.values()),
+        "with_broadcast_urls": sum(
+            bool(m.get("broadcast_urls")) for m in actual.values()
+        ),
         "differences": differences,
         "live_changes_between_captures": live_changes,
     }
@@ -449,6 +466,7 @@ def run(root, output):
                     "away_team_id",
                     "home_logo",
                     "away_logo",
+                    "broadcast_urls",
                 )
             }
             for g in groups
