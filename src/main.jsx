@@ -1,261 +1,30 @@
-import React, { useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, startTransition } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createPortal } from 'react-dom';
-import { CalendarDays, Trophy, Heart, Search, ArrowRight, ArrowLeft, Star, Clock3, RotateCw, ChevronRight, ChevronLeft, WifiOff, Check } from 'lucide-react';
+import { Trophy, Heart, Search, ArrowRight, ArrowLeft, Star, ChevronRight, ChevronLeft, WifiOff, Check } from 'lucide-react';
 import {
-  LEAGUES, CATEGORIES, WEEKDAYS, dateKey, addDays, feedDateKey,
-  isLive, isFinished, matchesFromFeeds, teamIndex, normalizeName, readFavorites
+  LEAGUES, CATEGORIES, dateKey, feedDateKey,
+  isFinished, matchesFromFeeds, teamIndex, normalizeName, readFavorites
 } from './data.js';
 import BrandSignature from './components/BrandSignature.jsx';
 import StartupEntrance from './components/StartupEntrance.jsx';
-import { useAnimatedDate, AnimatedSets } from './components/ScheduleMotion.jsx';
+import { useAnimatedDate } from './components/ScheduleMotion.jsx';
 import BottomNav from './components/BottomNav.jsx';
 import PageStage from './components/PageStage.jsx';
 import useFeeds from './useFeeds.js';
-import { broadcastLinks } from './broadcasts.js';
-import { MotionEnabled, ScoreValue, LeagueEntrance } from './components/MatchMotion.jsx';
+import { MotionEnabled, LeagueEntrance } from './components/MatchMotion.jsx';
 import { ROUTES } from './navigation.js';
+import { NOW } from './dateUtils.js';
+import DateStrip from './components/DateStrip.jsx';
+import TeamLogo from './components/TeamLogo.jsx';
+import { SectionTitle, EmptyState, FeedWarning, LoadingCards, PageHeader, IconButton } from './components/UiPrimitives.jsx';
+import { MatchGroups } from './components/MatchCards.jsx';
 import '../matches-ios.css';
 import './app.css';
 import './theme.css';
 
-const DATE_FORMAT = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
-const NOW = () => { const today = new Date(); today.setHours(12, 0, 0, 0); return today; };
 const leagueByName = name => LEAGUES.find(item => item.name === name);
 const sameName = (a, b) => normalizeName(a) === normalizeName(b);
-const MONTH_FORMAT = new Intl.DateTimeFormat('pl-PL', { month: 'long' });
-
-
-function TeamLogo({ name, logo, className = '' }) {
-  const [broken, setBroken] = useState(false);
-  const initials = String(name || '?').split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join('').toUpperCase();
-  useEffect(() => setBroken(false), [logo, name]);
-  return <span className={'vh-team-logo ' + className}>
-    {logo && !broken ? <img src={logo} alt="" loading="lazy" onError={() => setBroken(true)} /> : <span className="team-mark" aria-hidden="true">{initials || '?'}</span>}
-  </span>;
-}
-
-function SectionTitle({ eyebrow, title, action, onAction }) {
-  return <div className="vh-section-heading">
-    <div>{eyebrow && <span className="vh-eyebrow">{eyebrow}</span>}<h2>{title}</h2></div>
-    {action && <button className="vh-text-action" type="button" onClick={onAction}>{action}<ArrowRight size={17} /></button>}
-  </div>;
-}
-
-function EmptyState({ icon: Icon = CalendarDays, title, message, action, onAction }) {
-  return <div className="vh-empty" role="status">
-    <div className="vh-empty-icon"><Icon size={25} strokeWidth={1.8} /></div>
-    <h3>{title}</h3><p>{message}</p>
-    {action && <button type="button" className="vh-button vh-button-soft" onClick={onAction}>{action}</button>}
-  </div>;
-}
-function FeedWarning({ errors, refresh }) {
-  const count = Object.keys(errors).length;
-  if (!count) return null;
-  return <div className="vh-warning" role="alert">
-    <WifiOff size={18} /><span>Nie udało się odświeżyć {count === 1 ? 'jednej ligi' : count + ' lig'}. Pokazujemy ostatnio dostępne dane, jeśli zostały wczytane.</span>
-    <button type="button" aria-label="Spróbuj ponownie" onClick={refresh}><RotateCw size={17} /></button>
-  </div>;
-}
-function LoadingCards() {
-  return <div aria-label="Ładowanie meczów" role="status"><div className="im-skel" /><div className="im-skel" /><div className="im-skel" /></div>;
-}
-function Status({ match }) {
-  if (isLive(match)) return <span className="im-live">NA ŻYWO</span>;
-  if (isFinished(match)) return <span>Zakończony</span>;
-  return <span>Zaplanowany</span>;
-}
-const MatchCard = React.memo(function MatchCard({ match, logos, compact = false }) {
-  const [expanded, setExpanded] = useState(false);
-  const [infoOpen, setInfoOpen] = useState(false);
-  const detailsId = useId();
-  const infoId = useId();
-  const finished = isFinished(match);
-  const score = finished || isLive(match);
-  const homeWins = score && Number(match.home_sets) > Number(match.away_sets);
-  const awayWins = score && Number(match.away_sets) > Number(match.home_sets);
-  const scores = Array.isArray(match.set_scores) ? match.set_scores : [];
-  const channels = Array.isArray(match.broadcast) ? match.broadcast : match.broadcast ? [match.broadcast] : [];
-  const streams = broadcastLinks(match);
-  const hasInfo = Boolean(match.round != null || match.venue || channels.length || match.phase || match.match_number || match.term_number || match.source_url);
-  const verifiedPlsUrl = /^(https:\/\/www\.tauron(?:1)?liga\.pl\/games\/action\/show\/id\/\d+\/)/.test(match.source_url || '') ? match.source_url : null;
-  return <article data-match-id={match.id || [match.leagueId, match.date, match.home, match.away].join(':')} className={'im-card vh-match ' + (compact ? 'vh-match-compact' : '')}>
-    <div className="im-meta"><span>{match.group ? match.group + ' · ' : ''}{match.leagueName || match.competition || 'Siatkówka'}</span><Status match={match} /></div>
-    <div className={'im-body ' + (score ? 'has-score' : '')}>
-      <div className="im-row">
-        <TeamLogo name={match.home} logo={logos.get(normalizeName(match.home))} className="im-logo" />
-        <span className={'im-name ' + (homeWins ? 'win' : '')}>{match.home}</span>
-        {score && <ScoreValue className={'im-pts ' + (awayWins ? 'lose' : '')} value={match.home_sets ?? '–'} />}
-      </div>
-      <div className="im-sep" />
-      <div className="im-row">
-        <TeamLogo name={match.away} logo={logos.get(normalizeName(match.away))} className="im-logo" />
-        <span className={'im-name ' + (awayWins ? 'win' : '')}>{match.away}</span>
-        {score && <ScoreValue className={'im-pts ' + (homeWins ? 'lose' : '')} value={match.away_sets ?? '–'} />}
-      </div>
-      {!score && <span className="im-time">{match.time || '–:–'}</span>}
-    </div>
-    {(score || match.time || hasInfo) && <div className="vh-match-footer">
-      <span><Clock3 size={14} /> {match.time || 'Godzina nieustalona'}</span>
-      {streams.map(url => <a key={url} className="vh-details-button" href={url} target="_blank" rel="noopener noreferrer">{finished ? 'Nagranie' : 'Transmisja'} · YouTube<ArrowRight size={15} /></a>)}
-      {scores.length > 0 && <button className="vh-details-button" onClick={() => setExpanded(current => !current)} type="button" aria-expanded={expanded} aria-controls={detailsId}>{expanded ? 'Ukryj sety' : 'Pokaż sety'}<ChevronRight size={15} className={expanded ? 'vh-rotate' : ''} /></button>}
-      {hasInfo && <button className="vh-details-button" onClick={() => setInfoOpen(value => !value)} type="button" aria-expanded={infoOpen} aria-controls={infoId}>{infoOpen ? 'Ukryj informacje' : 'Informacje o meczu'}<ChevronRight size={15} className={infoOpen ? 'vh-rotate' : ''} /></button>}
-      {isLive(match) && match.current_points && <span>Aktualny set: <ScoreValue className="vh-live-points" value={String(match.current_points)} /></span>}
-    </div>}
-    {scores.length > 0 && <AnimatedSets scores={scores} expanded={expanded} detailsId={detailsId} />}
-    {hasInfo && infoOpen && <div id={infoId} className="vh-match-information" role="region" aria-label="Informacje o meczu">
-      <dl>
-        {match.round != null && <><dt>Kolejka</dt><dd>{match.round}</dd></>}
-        {match.phase && <><dt>Faza</dt><dd>{match.phase}</dd></>}
-        {match.venue?.name && <><dt>Hala</dt><dd>{match.venue.name}</dd></>}
-        {(match.venue?.address || match.venue?.city) && <><dt>Lokalizacja</dt><dd>{[match.venue.address, match.venue.city].filter(Boolean).join(', ')}</dd></>}
-        {channels.length > 0 && <><dt>Transmisja</dt><dd>{channels.join(', ')}</dd></>}
-        {match.match_number && <><dt>Numer meczu</dt><dd>{match.match_number}</dd></>}
-        {match.term_number != null && <><dt>Termin PLS</dt><dd>{match.term_number}</dd></>}
-      </dl>
-      {verifiedPlsUrl && <a href={verifiedPlsUrl} target="_blank" rel="noopener noreferrer">Oficjalna karta meczu w PLS</a>}
-    </div>}
-  </article>;
-});
-
-function MatchGroups({ matches, logos, emptyMessage, compact = false }) {
-  if (!matches.length) return <EmptyState title="Brak meczów" message={emptyMessage || 'Na razie nie ma spotkań spełniających te kryteria.'} />;
-  const groups = LEAGUES.map(league => ({ league, matches: matches.filter(match => match.leagueId === league.id) })).filter(group => group.matches.length);
-  return <div className="vh-match-groups">{groups.map(group => <section key={group.league.id}>
-    <h3 className="im-league"><span className="im-flag">{group.league.flag || '🇵🇱'}</span>{group.league.short}<span className="vh-count">{group.matches.length}</span></h3>
-    {group.matches.map(match => <MatchCard key={group.league.id + ':' + (match.id ?? [match.date, match.time || '', match.home, match.away].join('|'))} match={match} logos={logos} compact={compact} />)}
-  </section>)}</div>;
-}
-function PageHeader({ title, subtitle, actions }) {
-  return <div className="vh-page-head im-top"><div className="vh-header-actions">{actions}</div><h1>{title}</h1>{subtitle && <p>{subtitle}</p>}</div>;
-}
-function IconButton({ Icon, label, onClick, active = false }) {
-  return <button type="button" className={'im-round vh-icon-button ' + (active ? 'is-active' : '')} aria-label={label} title={label} onClick={onClick}><Icon size={21} strokeWidth={1.9} /></button>;
-}
-
-const CALENDAR_RADIUS = 90;
-const CALENDAR_EDGE_DAYS = 20;
-const CALENDAR_SHIFT_DAYS = 42;
-
-function DateStrip({ selected, onSelect }) {
-  const strip = useRef(null);
-  const marker = useRef(null);
-  const enabled = useContext(MotionEnabled);
-  const [anchor, setAnchor] = useState(selected);
-  const [visibleMonth, setVisibleMonth] = useState(() => MONTH_FORMAT.format(selected));
-  const pendingRebase = useRef(null);
-  const selectedKey = dateKey(selected), anchorKey = dateKey(anchor);
-  const lastExternallySelected = useRef(selectedKey);
-  const todayKey = dateKey(NOW());
-  const previous = useRef({ selected: null, anchor: null, width: 0 });
-  // Keep a bounded window of 181 days. When the user approaches either edge,
-  // recycle off-screen dates instead of exposing the blank spacer at its end.
-  const days = useMemo(() => Array.from({ length: CALENDAR_RADIUS * 2 + 1 },
-    (_, index) => addDays(anchor, index - CALENDAR_RADIUS)), [anchorKey]);
-  useLayoutEffect(() => {
-    // Swiping may move far beyond the selected day. Do not pull the strip
-    // back to that day when it leaves the recycled window.
-    if (lastExternallySelected.current === selectedKey) return;
-    lastExternallySelected.current = selectedKey;
-    if (days.some(day => dateKey(day) === selectedKey)) return;
-    pendingRebase.current = null;
-    setAnchor(selected);
-  }, [selectedKey, days]);
-
-  useLayoutEffect(() => {
-    const host = strip.current, pill = marker.current;
-    if (!host || !pill) return undefined;
-    const last = previous.current;
-    const shift = pendingRebase.current;
-    if (shift) {
-      const reference = host.querySelector('.im-day[data-day="' + shift.key + '"]');
-      if (reference) {
-        // Chrome and Safari may already scroll-anchor when we recycle dates.
-        // Correct only the residual pixel movement, never a full chunk twice.
-        const movedBy = (reference.offsetLeft - host.scrollLeft) - shift.viewportLeft;
-        if (Math.abs(movedBy) > 0.5) host.scrollLeft += movedBy;
-      }
-      pendingRebase.current = null;
-    }
-    const updateMarker = smooth => {
-      const active = host.querySelector('[aria-selected="true"]');
-      if (!active) {
-        // The selected day may be far outside the recycled window.
-        // Do not leave its red indicator drawn over an unrelated date.
-        host.classList.remove('has-date-indicator');
-        return null;
-      }
-      pill.style.transitionDuration = smooth ? '' : '0s';
-      pill.style.width = active.offsetWidth + 'px';
-      pill.style.height = active.offsetHeight + 'px';
-      pill.style.top = active.offsetTop + 'px';
-      pill.style.transform = 'translate3d(' + active.offsetLeft + 'px,0,0)';
-      host.classList.add('has-date-indicator');
-      return active;
-    };
-    const center = smooth => {
-      if (!host.clientWidth) { previous.current.width = 0; return; }
-      const active = updateMarker(smooth);
-      if (!active) return;
-      const left = Math.max(0, active.offsetLeft + active.offsetWidth / 2 - host.clientWidth / 2);
-      host.scrollTo({ left, behavior: smooth ? 'smooth' : 'auto' });
-      setVisibleMonth(MONTH_FORMAT.format(selected));
-      previous.current = { selected: selectedKey, anchor: anchorKey, width: host.clientWidth };
-    };
-    const selectionChanged = last.selected !== selectedKey;
-    if (selectionChanged || (!shift && host.clientWidth !== last.width)) {
-      center(enabled && last.selected !== null && last.anchor === anchorKey && selectionChanged);
-    } else {
-      // A scroll-triggered window shift must NOT jump back to the selected day.
-      updateMarker(false);
-      previous.current = { selected: selectedKey, anchor: anchorKey, width: host.clientWidth };
-    }
-    const observer = new ResizeObserver(() => {
-      if (host.clientWidth !== previous.current.width) center(false);
-    });
-    observer.observe(host);
-    return () => observer.disconnect();
-  }, [selectedKey, anchorKey, enabled]);
-
-  const onStripScroll = () => {
-    const host = strip.current;
-    if (!host) return;
-    const first = host.querySelector('.im-day');
-    const last = host.querySelector('.im-day:last-child');
-    if (!first || !last || !first.offsetWidth) return;
-    const center = host.scrollLeft + host.clientWidth / 2;
-    const dayWidth = first.offsetWidth;
-    const index = Math.max(0, Math.min(days.length - 1,
-      Math.round((center - first.offsetLeft - dayWidth / 2) / dayWidth)));
-    const month = MONTH_FORMAT.format(days[index]);
-    setVisibleMonth(previousMonth => previousMonth === month ? previousMonth : month);
-    if (pendingRebase.current) return;
-    const distanceToLeft = center - first.offsetLeft;
-    const distanceToRight = last.offsetLeft + last.offsetWidth - center;
-    const delta = distanceToLeft < dayWidth * CALENDAR_EDGE_DAYS ? -CALENDAR_SHIFT_DAYS
-      : distanceToRight < dayWidth * CALENDAR_EDGE_DAYS ? CALENDAR_SHIFT_DAYS : 0;
-    if (!delta) return;
-    const reference = host.querySelector('.im-day[data-day="' + anchorKey + '"]');
-    if (!reference) return;
-    pendingRebase.current = {
-      key: anchorKey, viewportLeft: reference.offsetLeft - host.scrollLeft
-    };
-    setAnchor(current => addDays(current, delta));
-  };
-  return <div className="im-strip-wrap vh-date-wrap">
-    <h1 className="vh-calendar-month">{visibleMonth}</h1>
-    <div className="im-strip" role="tablist" aria-label="Wybierz dzień" ref={strip} onScroll={onStripScroll}>
-      <span ref={marker} className="vh-date-indicator" aria-hidden="true" />
-      {days.map(day => {
-        const key = dateKey(day);
-        const active = key === selectedKey;
-        return <button className={'im-day ' + (active ? 'is-sel ' : '') + (key === todayKey ? 'is-today' : '')} role="tab" data-day={key} aria-selected={active} aria-label={DATE_FORMAT.format(day)} onClick={() => onSelect(day)} key={key} type="button">
-          <b>{day.getDate()}</b><span>{WEEKDAYS[day.getDay()]}</span>
-        </button>;
-      })}
-    </div>
-  </div>;
-}
 
 const MatchesPage = React.memo(function MatchesPage({ feeds, matches, loading, errors, refresh, logos, selectedDate, setSelectedDate, leagueFilter, setLeagueFilter }) {
   const resultsRef = useRef(null);
