@@ -1,71 +1,15 @@
-"""All five II liga groups from VolleyStation, with exact PZPS supplementation."""
+"""All five II liga groups, sourced exclusively from VolleyStation."""
 
 import re
 from urllib.parse import urljoin
 
-from scripts.update_2liga import PZPS_RESULTS_URL, PZPS_URL, VOLLEYSTATION_TEAMS_URL
-
 from .feed import InvalidFeed, build_feed, validate_feed
-from .schema import name_key, team_metadata
+from .schema import team_metadata
 from .storage import now
 
+VOLLEYSTATION_TEAMS_URL = "https://2ligamezczyzn.volleystation.com/pl/teams/"
+
 COUNTS = {1: 10, 2: 11, 3: 12, 4: 10, 5: 11}
-
-
-def pzps_supplement(fixtures, results):
-    rows = {}
-
-    def parse_row(row):
-        cells = [
-            c.get_text(" ", strip=True) for c in row.find_all("td", recursive=False)
-        ]
-        if len(cells) < 5:
-            return None
-        index = next(
-            (i for i, c in enumerate(cells) if re.match(r"^20\d{2}-\d{2}-\d{2}", c)),
-            None,
-        )
-        if (
-            index is None
-            or index + 3 >= len(cells)
-            or cells[index + 2] not in ("-", "–", "—")
-        ):
-            return None
-        y, m, d = cells[index][:10].split("-")
-        home, away = cells[index + 1], cells[index + 3]
-        return (f"{d}.{m}.{y}", name_key(home), name_key(away)), cells, index
-
-    for row in fixtures.select("tr"):
-        parsed = parse_row(row)
-        if not parsed:
-            continue
-        key, cells, index = parsed
-        clock = re.search(r"\b(?:[01]?\d|2[0-3]):[0-5]\d\b", cells[index])
-        if clock:
-            rows.setdefault(key, {}).update(
-                time=clock[0].zfill(5), time_source=PZPS_URL
-            )
-    for row in results.select("tr"):
-        parsed = parse_row(row)
-        if not parsed:
-            continue
-        key, cells, index = parsed
-        pairs = re.findall(
-            r"(?<!\d)(\d+)\s*:\s*(\d+)(?!\d)", " ".join(cells[index + 4 :])
-        )
-        if not pairs:
-            continue
-        a, b = map(int, pairs[0])
-        if max(a, b) != 3:
-            continue
-        rows.setdefault(key, {}).update(
-            home_sets=a,
-            away_sets=b,
-            set_scores=[f"{h}:{v}" for h, v in pairs[1:]],
-            set_scores_source=PZPS_RESULTS_URL,
-            details_checked_at=now(),
-        )
-    return rows
 
 
 def group_configs(soup):
@@ -94,6 +38,8 @@ def group_configs(soup):
 def validate_second(data, previous=None):
     if data.get("league") != "second" or data.get("source") != VOLLEYSTATION_TEAMS_URL:
         raise InvalidFeed("Nieprawidłowe źródło II ligi")
+    if data.get("source_policy") != "volleystation_only":
+        raise InvalidFeed("II liga musi pochodzić wyłącznie z VolleyStation")
     groups = data.get("groups", [])
     if len(groups) != 5 or {g["name"] for g in groups} != {
         f"Grupa {n}" for n in COUNTS
@@ -132,7 +78,6 @@ def build_second(
     teams_page = fetch(VOLLEYSTATION_TEAMS_URL)
     configs = group_configs(teams_page)
     teams = team_metadata(teams_page, VOLLEYSTATION_TEAMS_URL)
-    supplement = pzps_supplement(fetch(PZPS_URL), fetch(PZPS_RESULTS_URL))
     groups = []
     extra = {"detail_requests": 0, "reused_details": 0, "refetched_cached_details": 0}
     for number, cfg in sorted(configs.items()):
@@ -152,7 +97,6 @@ def build_second(
             detail_cache,
             on_detail,
             config=cfg,
-            supplemental=supplement,
             known_teams=teams,
         )
         data["name"] = cfg["group"]
@@ -166,7 +110,7 @@ def build_second(
         "competition": "II Liga Mężczyzn",
         "source": VOLLEYSTATION_TEAMS_URL,
         "results_source": VOLLEYSTATION_TEAMS_URL,
-        "supplemental_source": PZPS_URL,
+        "source_policy": "volleystation_only",
         "updated_at": now(),
         "groups": groups,
     }

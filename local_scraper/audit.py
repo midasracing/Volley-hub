@@ -6,7 +6,7 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 from bs4 import BeautifulSoup
 
@@ -136,6 +136,11 @@ class Captures:
             if not path.exists():
                 continue
             for item in json.loads(path.read_text()):
+                if urlsplit(item["url"]).hostname not in {
+                    "2ligamezczyzn.volleystation.com",
+                    "pomorskie.volleystation.com",
+                }:
+                    continue
                 if item.get("status") not in (200, 304) or item.get("challenge"):
                     raise ValueError("Niepoprawny dokument w audycie")
                 p = folder / (item["name"] + ".html")
@@ -146,7 +151,8 @@ class Captures:
                 self.manifest.append(
                     {
                         **item,
-                        "engine": folder.name,
+                        "engine": item.get("engine", folder.name),
+                        "capture_set": folder.name,
                         "captured_at": datetime.fromtimestamp(
                             p.stat().st_mtime, timezone.utc
                         ).isoformat(),
@@ -159,23 +165,6 @@ class Captures:
         if url not in self.soups:
             self.soups[url] = BeautifulSoup(self.pages[url], "html.parser")
         return self.soups[url]
-
-
-def read_pzps_scores(soup):
-    scores = {}
-    for tr in soup.select("tr"):
-        cells = [
-            td.get_text(" ", strip=True) for td in tr.find_all("td", recursive=False)
-        ]
-        if len(cells) < 6 or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", cells[1]):
-            continue
-        y, m, d = cells[1].split("-")
-        tokens = re.findall(r"\d+\s*:\s*\d+", " ".join(cells[5:]))
-        if tokens:
-            scores[(f"{d}.{m}.{y}", name_key(cells[2]), name_key(cells[4]))] = [
-                re.sub(r"\s", "", v) for v in tokens[1:]
-            ]
-    return scores
 
 
 def compare_group(group, store):
@@ -198,27 +187,6 @@ def compare_group(group, store):
         for side in ("home", "away"):
             row[side + "_team_id"] = identities.get(name_key(row[side]))
     differences = []
-    pzps_times = {}
-    pzps_url = "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/"
-    if pzps_url in store.pages:
-        for tr in store.fetch(pzps_url).select("tr"):
-            cells = [
-                td.get_text(" ", strip=True)
-                for td in tr.find_all("td", recursive=False)
-            ]
-            if len(cells) < 5:
-                continue
-            stamp = re.fullmatch(
-                r"(20\d{2})-(\d{2})-(\d{2})\s+(\d{1,2}:\d{2})", cells[1]
-            )
-            if stamp:
-                pzps_times[
-                    (
-                        f"{stamp[3]}.{stamp[2]}.{stamp[1]}",
-                        name_key(cells[2]),
-                        name_key(cells[4]),
-                    )
-                ] = stamp[4].zfill(5)
     live_changes = []
     for identifier, row in expected.items():
         if row["broadcast"]:
@@ -284,20 +252,7 @@ def compare_group(group, store):
                 )
     for match in group["matches"]:
         time_url = match.get("time_source", "") or ""
-        if "sedziowie.pzps.pl" in time_url:
-            expected_time = pzps_times.get(
-                (match["date"], name_key(match["home"]), name_key(match["away"]))
-            )
-            if expected_time != match["time"]:
-                differences.append(
-                    {
-                        "id": match["id"],
-                        "field": "pzps_time",
-                        "source": expected_time,
-                        "emitted": match["time"],
-                    }
-                )
-        elif "/matches/" in time_url:
+        if "/matches/" in time_url:
             expected_times = []
             for span in store.fetch(time_url).select("span"):
                 stamp = re.fullmatch(
@@ -353,19 +308,6 @@ def compare_group(group, store):
                     {
                         "id": match["id"],
                         "field": "set_scores",
-                        "source": values,
-                        "emitted": match["set_scores"],
-                    }
-                )
-        elif detail_url and "sedziowie.pzps.pl" in detail_url:
-            values = read_pzps_scores(store.fetch(detail_url)).get(
-                (match["date"], name_key(match["home"]), name_key(match["away"]))
-            )
-            if values != match["set_scores"]:
-                differences.append(
-                    {
-                        "id": match["id"],
-                        "field": "pzps_set_scores",
                         "source": values,
                         "emitted": match["set_scores"],
                     }

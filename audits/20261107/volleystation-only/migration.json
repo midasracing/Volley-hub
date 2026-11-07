@@ -1,0 +1,66 @@
+{
+  "checked_at": "2026-11-07T17:12:14.554147+00:00",
+  "source_policy": "volleystation_only",
+  "scope": "Existing core source snapshots plus directly captured VolleyStation match details; preserves original core updated_at. No PZPS/PWZPS supplementation.",
+  "leagues": {
+    "2liga": {
+      "matches": 532,
+      "statuses": {
+        "finished": 152,
+        "scheduled": 380
+      },
+      "changed_kickoffs": [],
+      "finished_with_vs_set_points": 152,
+      "updated_at_preserved": "2026-11-07T11:58:08.898335+00:00",
+      "with_broadcast_urls": 6
+    },
+    "pomorska3liga": {
+      "matches": 72,
+      "statuses": {
+        "finished": 17,
+        "scheduled": 54,
+        "live": 1
+      },
+      "changed_kickoffs": [],
+      "finished_with_vs_set_points": 17,
+      "updated_at_preserved": "2026-11-07T12:01:25.165245+00:00",
+      "with_broadcast_urls": 0
+    }
+  },
+  "warm_cache_check": {
+    "second": {
+      "metrics": {
+        "matches": 532,
+        "finished": 152,
+        "teams": 54,
+        "detail_requests": 0,
+        "reused_details": 152,
+        "refetched_cached_details": 0
+      },
+      "documents_requested": 22,
+      "source_hosts": [
+        "2ligamezczyzn.volleystation.com"
+      ]
+    },
+    "third": {
+      "metrics": {
+        "matches": 72,
+        "finished": 17,
+        "teams": 9,
+        "reused_details": 17,
+        "refetched_cached_details": 0,
+        "detail_requests": 1,
+        "broadcast_requests": 0
+      },
+      "documents_requested": 4,
+      "source_hosts": [
+        "pomorskie.volleystation.com"
+      ]
+    }
+  },
+  "verification": {
+    "python_tests": 42,
+    "node_tests": 23,
+    "production_build": "passed"
+  }
+}

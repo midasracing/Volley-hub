@@ -29,6 +29,11 @@ SEED = (
 def seed():
     data = json.loads(SEED.read_text())
     data["updated_at"] = now()
+    data["source_policy"] = "volleystation_only"
+    for match in data["matches"]:
+        match["time_source"] = source.SCHEDULE_URL
+        if match["status"] == "finished":
+            match["set_scores_source"] = match_url(match)
     return data
 
 
@@ -122,6 +127,56 @@ def pages(data):
 
 
 class FeedTests(unittest.TestCase):
+    def test_foreign_cached_set_points_are_refetched_from_volleystation(self):
+        current = seed()
+        previous = copy.deepcopy(current)
+        affected = next(m for m in previous["matches"] if m["status"] == "finished")
+        affected["set_scores_source"] = "https://sedziowie.pzps.pl/system/results/"
+        data, metrics = self.build(current, previous)
+        self.assertEqual(metrics["detail_requests"], 1)
+        restored = next(
+            m
+            for m in data["matches"]
+            if feed.detail_identity(m) == feed.detail_identity(affected)
+        )
+        self.assertTrue(
+            feed.source_is_current(
+                restored["set_scores_source"], {"base": source.BASE}, detail=True
+            )
+        )
+        self.assertEqual(data["source_policy"], "volleystation_only")
+
+    def test_foreign_cached_kickoff_is_refetched_even_with_valid_set_cache(self):
+        current = seed()
+        previous = copy.deepcopy(current)
+        affected = next(m for m in previous["matches"] if m["status"] == "finished")
+        affected["time_source"] = "https://sedziowie.pzps.pl/system/mecz/1/"
+        data, metrics = self.build(current, previous)
+        self.assertEqual(metrics["detail_requests"], 1)
+        restored = next(
+            m
+            for m in data["matches"]
+            if feed.detail_identity(m) == feed.detail_identity(affected)
+        )
+        self.assertTrue(
+            feed.source_is_current(restored["time_source"], {"base": source.BASE})
+        )
+
+    def test_parent_validation_rejects_non_volleystation_provenance(self):
+        current = seed()
+        current["matches"][0]["time_source"] = (
+            "https://pwzps.arbitergo.pl/delegation/List.jsf"
+        )
+        with self.assertRaises(feed.InvalidFeed):
+            feed.validate_feed(current)
+
+    def test_transport_refuses_other_sources_without_opening_a_browser(self):
+        browser = SimpleNamespace(get=lambda url: self.fail("Unexpected navigation"))
+        session = Session(browser, lambda event: None)
+        with self.assertRaises(AccessError):
+            session.fetch("https://sedziowie.pzps.pl/system/mecz/1/")
+        self.assertEqual(session.requests, 0)
+
     def test_tv_links_refresh_for_scheduled_and_cached_finished_matches(self):
         current = seed()
         docs = pages(current)
@@ -142,7 +197,7 @@ class FeedTests(unittest.TestCase):
                         BeautifulSoup(
                             '<div class="stage live"><span class="live-text">TV</span></div>',
                             "html.parser",
-                        )
+                        ),
                     )
                     docs[page] = str(soup)
             docs[url] = (

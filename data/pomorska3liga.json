@@ -1,5 +1,6 @@
 {
   "league": "pomorska3liga",
+  "source_policy": "volleystation_only",
   "competition": "Pomorska III Liga Męska",
   "phase": "Pomorska III Liga Męska",
   "source": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",

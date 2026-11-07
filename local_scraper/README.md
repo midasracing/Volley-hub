@@ -4,6 +4,22 @@ Pomorska III Liga Męska oraz wszystkie pięć grup II ligi, sezon 2026/2027. Pi
 SeleniumBase UC + CDP; po niepowodzeniu całej aktualizacji uruchamia się Camoufox.
 Oba działają na własnym komputerze. Nie potrzeba kont API ani płatnych proxy.
 
+## Źródło danych
+
+Dla obu lig obowiązuje `source_policy: "volleystation_only"`. Godziny, wyniki,
+punkty setów, tabele, drużyny i linki transmisji pochodzą z VolleyStation.
+Nie korzystamy z PZPS ani PWZPS jako uzupełnienia.
+[Raport przejścia na jedno źródło](../audits/20261107/volleystation-only/RAPORT.md). Hala pozostaje `null`, jeżeli
+VolleyStation jej nie podaje. Linki YouTube są odczytywane z odtwarzacza na stronie meczu.
+
+Cache ze starszej wersji jest sprawdzany osobno dla godzin i punktów setów:
+wartości z innych źródeł są pobierane ponownie z VolleyStation. Sam poprawny
+wynik 3:0 ani znacznik polityki źródła nie legalizują starego uzupełnienia.
+
+`python scripts/update_2liga.py` kieruje teraz do tego samego lokalnego importera.
+Dawny workflow zapisujący II ligę z PZPS nie ma harmonogramu i służy wyłącznie do
+ręcznych testów offline. Działanie ciągłe wymaga lokalnego `--watch`.
+
 ## Instalacja
 
 Sprawdzono Python 3.12 na Linuksie. Zainstaluj Chrome lub Chromium. Następnie
@@ -36,8 +52,7 @@ Jedna aktualizacja repozytoryjnego pliku `data/pomorska3liga.json`:
 python -m local_scraper
 ```
 
-Wszystkie grupy II ligi, z terminarzami i wynikami VolleyStation oraz dokładnie
-dopasowanym uzupełnieniem z PZPS:
+Wszystkie grupy II ligi, wyłącznie z terminarzami, wynikami i tabelami VolleyStation:
 
 ```bash
 python -m local_scraper --league second
@@ -54,7 +69,7 @@ ukrytego znacznika TV. [Raport audytu zgodności](../audits/20261107/RAPORT.md).
 Dla widocznego „TV” importer odczytuje stronę konkretnego meczu i zapisuje
 osadzony film YouTube jako `broadcast_urls` (kanoniczny URL `watch?v=...`),
 z `broadcast_source_url` i `broadcast_checked_at`. Odświeża te linki przy każdym
-cyklu, także dla meczów zaplanowanych oraz wyników uzupełnionych z PZPS.
+cyklu, także dla meczów zaplanowanych oraz wyników odczytanych wcześniej.
 Sam znacznik bez odtwarzacza pozostaje `broadcast: ["TV"]`, bez zgadywanego URL.
 Aplikacja pokazuje link „Transmisja · YouTube” lub „Nagranie · YouTube”.
 Publikacja odtwarzacza na stronie ligi nie potwierdza dostępności filmu ani rozpoczęcia emisji.
@@ -181,11 +196,8 @@ Wynik trwającego meczu jest odczytywany ze szczegółów podczas cyklu aktualiz
 nie jest przechowywany w cache wyników zakończonych. Nie oznacza to stałego strumienia
 punkt po punkcie — kolejne odczyty zależą od wybranego harmonogramu.
 
-## Osobny test hal
+## Archiwum testu hal
 
-Publiczne szczegóły PZPS udostępniają lokalizacje II ligi, a publiczne obsady
-PWZPS — wybrane bieżące mecze Pomorskiej III ligi.
-[Wynik testu 532 stron II ligi i trzech meczów III ligi](../audits/20261107/venues/RAPORT.md).
-Narzędzia `python -m local_scraper.capture_venues` i `python -m local_scraper.venue_audit`
-służą do oddzielnego audytu; nie zmieniają głównych feedów ani nie rozwiązują
-automatycznie konfliktów godzin między źródłami.
+[Historyczny test PZPS/PWZPS](../audits/20261107/venues/RAPORT.md) pozostaje
+materiałem porównawczym. Nie jest źródłem bieżących feedów. Po decyzji o używaniu
+wyłącznie VolleyStation zrezygnowano z uzupełniania hal i godzin tymi danymi.

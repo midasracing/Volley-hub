@@ -13,7 +13,6 @@ from local_scraper.schema import (
     normalize,
     team_metadata,
 )
-from local_scraper.second import pzps_supplement
 from scripts import update_pomorska3liga as source
 
 
@@ -89,19 +88,6 @@ class ParityTests(unittest.TestCase):
         team = next(iter(team_metadata(soup, source.BASE).values()))
         self.assertEqual(team["id"], "2103916")
         self.assertEqual(team["badge_id"], "2122546")
-
-    def test_pzps_reverse_fixture_and_other_date_are_distinct(self):
-        fixture = BeautifulSoup(
-            "<table><tr><td>1</td><td>2026-11-07 18:00</td><td>A</td><td>-</td><td>B</td></tr></table>",
-            "html.parser",
-        )
-        results = BeautifulSoup(
-            "<table><tr><td>1</td><td>2026-11-08</td><td>B</td><td>-</td><td>A</td><td>3:0 (25:20,25:20,25:20)</td></tr></table>",
-            "html.parser",
-        )
-        values = pzps_supplement(fixture, results)
-        self.assertNotIn("home_sets", values[("07.11.2026", "a", "b")])
-        self.assertNotIn("time", values[("08.11.2026", "b", "a")])
 
     def test_normalized_fields_match_the_tauron_contract_without_inventing_venue(self):
         data = {

@@ -1,5 +1,11 @@
 # Audyt II ligi i Pomorskiej III ligi względem oficjalnych stron i feedów TAURON
 
+> **Aktualna polityka: wyłącznie VolleyStation.**
+> [Raport migracji i obecnego importera](volleystation-only/RAPORT.md).
+> Poniższy raport dokumentuje wcześniejsze porównania i historyczne użycie PZPS;
+> nie opisuje już listy źródeł aktywnego importera.
+
+
 **Po poprawkach: 604/604 mecze zgodne w sprawdzanych polach, 604 godziny,
 169 kompletnych wyników zakończonych spotkań, jeden mecz LIVE, 63 wiersze tabel
 i 63 działające logotypy. UC + CDP i Camoufox zwróciły zgodne dane.**

@@ -271,7 +271,6 @@ class Session:
         if parsed.scheme != "https" or parsed.hostname not in {
             "pomorskie.volleystation.com",
             "2ligamezczyzn.volleystation.com",
-            "sedziowie.pzps.pl",
         }:
             raise AccessError("Nieoczekiwany adres źródłowy")
         if self.requests >= self.budget:

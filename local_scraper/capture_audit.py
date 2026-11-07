@@ -8,8 +8,6 @@ from pathlib import Path
 from .engines import CamoufoxBrowser, SeleniumBrowser, Session
 from .feed import build_feed, source
 from .second import (
-    PZPS_RESULTS_URL,
-    PZPS_URL,
     VOLLEYSTATION_TEAMS_URL,
     build_second,
     group_configs,
@@ -38,7 +36,7 @@ def main():
         browser = (
             SeleniumBrowser if args.engine == "seleniumbase" else CamoufoxBrowser
         )(args.browser, args.headless, **options)
-        session = Session(browser, lambda e: events.update({e["url"]: e}), budget=120)
+        session = Session(browser, lambda e: events.update({e["url"]: e}), budget=240)
 
         def fetch(url):
             existing = url in session.cache
@@ -69,8 +67,6 @@ def main():
                     fetch(cfg["base"] + "/" + kind + "/")
             for kind in ["schedule", "results", "standings", "teams"]:
                 fetch(source.BASE + "/" + kind + "/")
-            fetch(PZPS_URL)
-            fetch(PZPS_RESULTS_URL)
             build_second(fetch)
             build_feed(fetch, refresh_details=True)
         finally:

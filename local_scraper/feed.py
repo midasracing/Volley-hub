@@ -27,6 +27,20 @@ def detail_identity(match):
     )
 
 
+def source_is_current(value, cfg, detail=False):
+    if not isinstance(value, str):
+        return False
+    parsed = urlparse(value)
+    expected_host = urlparse(cfg["base"]).hostname
+    return (
+        parsed.scheme == "https"
+        and expected_host
+        in {"pomorskie.volleystation.com", "2ligamezczyzn.volleystation.com"}
+        and parsed.hostname == expected_host
+        and (not detail or "/matches/" in parsed.path)
+    )
+
+
 def completed_sets(match):
     """Legal best-of-five set sequence; deuce has no arbitrary points ceiling."""
     home, away = match.get("home_sets"), match.get("away_sets")
@@ -138,6 +152,8 @@ def validate_feed(
 ):
     if data.get("league") != expected_league or data.get("source") != expected_source:
         raise InvalidFeed("Inna liga lub faza rozgrywek")
+    if data.get("source_policy") != "volleystation_only":
+        raise InvalidFeed("Feed nie potwierdza wyłącznego źródła VolleyStation")
     matches, teams, table = (
         data.get("matches", []),
         data.get("teams", []),
@@ -159,6 +175,25 @@ def validate_feed(
     ids = set()
     keys = set()
     for match in matches:
+        source_cfg = {"base": expected_source}
+        if not source_is_current(match.get("source_url"), source_cfg):
+            raise InvalidFeed("Mecz pochodzi spoza VolleyStation")
+        if match.get("venue") is not None and not source_is_current(
+            match.get("venue_source_url"), source_cfg
+        ):
+            raise InvalidFeed("Hala nie ma potwierdzenia VolleyStation")
+        if match.get("broadcast_urls") and not source_is_current(
+            match.get("broadcast_source_url"), source_cfg, detail=True
+        ):
+            raise InvalidFeed(
+                "Transmisja nie ma potwierdzenia na stronie meczu VolleyStation"
+            )
+        if not source_is_current(match.get("time_source"), source_cfg):
+            raise InvalidFeed("Godzina spoza VolleyStation lub bez pochodzenia")
+        if match["status"] == "finished" and not source_is_current(
+            match.get("set_scores_source"), source_cfg, detail=True
+        ):
+            raise InvalidFeed("Punkty setów spoza strony meczu VolleyStation")
         if match["id"] in ids or fixture_key(match) in keys:
             raise InvalidFeed("Powtórzony mecz")
         ids.add(match["id"])
@@ -210,7 +245,6 @@ def build_feed(
     detail_cache=None,
     on_detail=None,
     config=None,
-    supplemental=None,
     known_teams=None,
 ):
     cfg = {
@@ -280,34 +314,18 @@ def build_feed(
             result["time"] = fixture["time"]
         by_key[fixture_key(result)] = result
     matches = list(by_key.values())
-    for match in matches:
-        extra = (supplemental or {}).get(
-            (match["date"], name_key(match["home"]), name_key(match["away"])), {}
-        )
-        if not match.get("time") and extra.get("time"):
-            match["time"] = extra["time"]
-            match["time_source"] = extra.get("time_source")
-        if match["status"] == "finished" and (
-            extra.get("home_sets"),
-            extra.get("away_sets"),
-        ) == (match["home_sets"], match["away_sets"]):
-            try:
-                completed_sets(extra)
-                match["set_scores"] = list(extra["set_scores"])
-                match["set_scores_source"] = extra.get("set_scores_source")
-                match["details_checked_at"] = extra.get("details_checked_at")
-            except (InvalidFeed, ValueError, TypeError):
-                pass
     cached = {
         detail_identity(m): m
         for m in previous.get("matches", [])
         if m.get("status") == "finished"
+        and source_is_current(m.get("set_scores_source"), cfg, detail=True)
     }
     cached.update(
         {
             detail_identity(m): m
             for m in (detail_cache or [])
             if m.get("status") == "finished"
+            and source_is_current(m.get("set_scores_source"), cfg, detail=True)
         }
     )
     reused = []
@@ -361,9 +379,13 @@ def build_feed(
             try:
                 completed_sets(old)
                 match["set_scores"] = copy.deepcopy(old["set_scores"])
+                match["set_scores_source"] = old["set_scores_source"]
                 match["details_checked_at"] = old.get("details_checked_at")
-                if not match.get("time"):
+                if not match.get("time") and source_is_current(
+                    old.get("time_source"), cfg
+                ):
                     match["time"] = old.get("time")
+                    match["time_source"] = old["time_source"]
                 if re.fullmatch(r"(?:[01]\d|2[0-3]):[0-5]\d", match.get("time") or ""):
                     reused.append(match)
                     continue
@@ -378,7 +400,7 @@ def build_feed(
         if match["home"] in discrepancies or match["away"] in discrepancies:
             detail(match)
             repaired += 1
-    # Visible TV markers may occur on scheduled fixtures and PZPS-backed results,
+    # Visible TV markers may occur on scheduled fixtures and cached results,
     # neither of which otherwise requires a detail request. Refresh links every
     # cycle, including archived videos; a marker alone never invents a URL.
     broadcast_requests = 0
@@ -408,6 +430,7 @@ def build_feed(
     names = sorted({m[k] for m in matches for k in ("home", "away")}, key=str.casefold)
     data = {
         "league": cfg["league"],
+        "source_policy": "volleystation_only",
         "competition": cfg["competition"],
         "phase": cfg["phase"],
         "source": schedule_url,
