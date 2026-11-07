@@ -23,6 +23,25 @@ Linki są potwierdzone na stronie ligi; nie testowano odtwarzania na YouTube.
 | 07.11.2026, 17:00 | Volley Team Żychlin – ProNutiva SKK Belsk Duży | [YouTube](https://www.youtube.com/watch?v=nDOImTNf7_o) |
 | 07.11.2026, 18:00 | Instytut Mechaniki Rekord Volley Jelcz-Laskowice – KS Bielawianka-Bester | [YouTube](https://www.youtube.com/watch?v=38BPqJpf0HU) |
 
+## Dodatkowa kontrola transmisji bez znacznika TV
+
+Po pytaniu o kompletność sprawdzono **wszystkie 24 strony meczów II ligi
+z weekendu 7–8 listopada 2026** (21 w sobotę i 3 w niedzielę), także 22 spotkania
+bez oznaczenia TV. Każda strona zwróciła HTTP 200 bez challenge. Dwa odtwarzacze
+odpowiadają już znalezionym meczom Jelcz–Bielawianka oraz Żychlin–Belsk Duży.
+**Nie znaleziono dodatkowego filmu przy żadnym z 22 nieoznaczonych spotkań.**
+Sprawdzono także pozostałe iframe i odnośniki w dokumentach, nie tylko selektor importera.
+
+To ograniczone potwierdzenie stanu oficjalnej strony w chwili odczytu. Nie jest
+dowodem, że transmisji poza VolleyStation nie ma, ani audytem wszystkich 532
+stron meczów sezonu. Wyszukiwanie internetowe i wybrane strony klubów nie dały
+podstaw do przypisania kolejnego aktualnego streamu; materiały z poprzednich
+sezonów nie zostały dopisane do bieżącego feedu. Link może też pojawić się później.
+
+[Lista 24 sprawdzonych adresów, czasy odczytów i skróty HTML](broadcasts-weekend.json).
+Dodatkowe odczyty wykonano zwykłym HTTPS, sekwencyjnie, z odstępem co najmniej
+5 s zgodnym z robots.txt źródła. Są osobne od wcześniejszych 75 dokumentów przeglądarek.
+
 ## Zakres i wyniki
 
 | Zakres | Mecze / ze źródła | Z godziną | Zakończone z pełnymi setami | LIVE | Drużyny / tabela |
