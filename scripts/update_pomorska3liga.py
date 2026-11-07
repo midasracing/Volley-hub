@@ -226,7 +226,7 @@ def parse_match_detail(soup):
         for home_value, away_value in zip(home_points, away_points):
             if home_value.isdigit() and away_value.isdigit():
                 a, b = int(home_value), int(away_value)
-                if 0 <= a <= 40 and 0 <= b <= 40 and a != b:
+                if a != b:
                     set_scores.append(f"{a}:{b}")
 
 
@@ -269,9 +269,10 @@ def parse_table(soup):
         print(f"Warning: expected 9 standings rows, parsed {len(rows)}", file=sys.stderr)
     return rows
 
-def parse_team_logos(soup, page_url):
+def parse_team_logos(soup, page_url, known_logos=None, fetch_page=None):
     """Extract team logos from standings and team profile links."""
-    logos = {}
+    logos = dict(known_logos or {})
+    fetch_page = fetch_page or fetch
 
     def extract_url(node):
         for attr in ("src", "data-src", "data-lazy-src", "data-original", "data-image", "href"):
@@ -309,6 +310,8 @@ def parse_team_logos(soup, page_url):
     # exposed there even when the standings table itself contains no image node.
     for anchor in soup.select('a[href*="/teams/"]'):
         href = urljoin(page_url, anchor.get("href", ""))
+        if href.rstrip("/").endswith("/teams"):
+            continue
         name = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
         # Some layouts wrap the badge in a link and keep the team name elsewhere
         # in the same standings row; use that row's team cell as a fallback.
@@ -320,7 +323,7 @@ def parse_team_logos(soup, page_url):
         if not name or not href or name in logos:
             continue
         try:
-            team_soup = fetch(href)
+            team_soup = fetch_page(href)
         except Exception as exc:
             print(f"Warning: couldn't inspect team profile for logo {name!r}: {exc}", file=sys.stderr)
             continue
@@ -391,11 +394,11 @@ def main():
     # official individual match page, so inspect each completed match directly.
     # Remove bogus scores saved by older parser versions (e.g. "18:0" from 18:00).
     def valid_saved_set_score(value):
-        parsed = re.fullmatch(r"(\d{1,2}):(\d{1,2})", str(value).strip())
+        parsed = re.fullmatch(r"(\d+):(\d+)", str(value).strip())
         if not parsed:
             return False
         a, b = map(int, parsed.groups())
-        if a > 40 or b > 40 or a == b:
+        if a == b:
             return False
         winner, loser = max(a, b), min(a, b)
         return (winner >= 25 and winner - loser >= 2) or (

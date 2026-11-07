@@ -5,3 +5,6 @@ __pycache__/
 
 # Temporary lock created by SeleniumBase experiments
 downloaded_files/
+.venv-local-scraper/
+.local-scraper/
+*.local-scraper.lock

@@ -69,6 +69,8 @@ Aplikacja regularnie sprawdza dostępność nowych danych, a gdy połączenie si
 
 ## Uruchomienie
 
+Lokalny importer VolleyStation bez płatnych usług: [instalacja i obsługa UC + CDP → Camoufox](local_scraper/README.md).
+
 Wymagane: **Node.js 20+** i npm.
 
 ```bash
