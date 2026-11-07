@@ -180,3 +180,12 @@ ich rzeczywisty wiek pozostaje widoczny w stanie i przez `updated_at` w aplikacj
 Wynik trwającego meczu jest odczytywany ze szczegółów podczas cyklu aktualizacji;
 nie jest przechowywany w cache wyników zakończonych. Nie oznacza to stałego strumienia
 punkt po punkcie — kolejne odczyty zależą od wybranego harmonogramu.
+
+## Osobny test hal
+
+Publiczne szczegóły PZPS udostępniają lokalizacje II ligi, a publiczne obsady
+PWZPS — wybrane bieżące mecze Pomorskiej III ligi.
+[Wynik testu 532 stron II ligi i trzech meczów III ligi](../audits/20261107/venues/RAPORT.md).
+Narzędzia `python -m local_scraper.capture_venues` i `python -m local_scraper.venue_audit`
+służą do oddzielnego audytu; nie zmieniają głównych feedów ani nie rozwiązują
+automatycznie konfliktów godzin między źródłami.

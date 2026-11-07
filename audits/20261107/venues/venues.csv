@@ -1,0 +1,900 @@
+league,match_id,date,home,away,hall_name,address,city,alternatives_published,source_text,feed_time,source_time,time_conflict,source_url,captured_at
+second,2560063,03.10.2026,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,GKS Stoczniowiec,,,Bydgoszcz,False,Bydgoszcz,14:00,14:00,False,https://sedziowie.pzps.pl/system/mecz/554/,2026-11-07T13:05:11.576686+00:00
+second,2560064,03.10.2026,Enea Energetyk Poznań,LOMS Joker Piła,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/555/,2026-11-07T13:05:12.558718+00:00
+second,2560065,03.10.2026,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,Polipack UKS 1 Reda,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/556/,2026-11-07T13:05:13.528839+00:00
+second,2560066,03.10.2026,Fort Tarnowo Podgórne,KRISHOME Września,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",14:00,14:00,False,https://sedziowie.pzps.pl/system/mecz/557/,2026-11-07T13:05:14.687697+00:00
+second,2560067,03.10.2026,Energa Trefl Gdańsk II,SPS Cargill Słupca,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",15:30,15:30,False,https://sedziowie.pzps.pl/system/mecz/558/,2026-11-07T13:05:15.534997+00:00
+second,2560068,04.10.2026,GKS Stoczniowiec,SPS Cargill Słupca,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/559/,2026-11-07T13:05:16.555327+00:00
+second,2560069,10.10.2026,KRISHOME Września,Energa Trefl Gdańsk II,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/560/,2026-11-07T13:05:17.493274+00:00
+second,2560070,10.10.2026,Polipack UKS 1 Reda,Fort Tarnowo Podgórne,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/561/,2026-11-07T13:05:18.529376+00:00
+second,2560071,10.10.2026,LOMS Joker Piła,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/562/,2026-11-07T13:05:19.528242+00:00
+second,2560072,10.10.2026,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Enea Energetyk Poznań,,,Bydgoszcz,False,Bydgoszcz,17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/563/,2026-11-07T13:05:20.542887+00:00
+second,2560073,17.10.2026,Enea Energetyk Poznań,GKS Stoczniowiec,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",14:00,14:00,False,https://sedziowie.pzps.pl/system/mecz/564/,2026-11-07T13:05:21.494117+00:00
+second,2560074,17.10.2026,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/565/,2026-11-07T13:05:22.502556+00:00
+second,2560075,17.10.2026,Fort Tarnowo Podgórne,LOMS Joker Piła,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/566/,2026-11-07T13:05:23.486941+00:00
+second,2560076,17.10.2026,Polipack UKS 1 Reda,Energa Trefl Gdańsk II,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/567/,2026-11-07T13:05:24.530024+00:00
+second,2560077,17.10.2026,SPS Cargill Słupca,KRISHOME Września,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/568/,2026-11-07T13:05:25.499177+00:00
+second,2560078,24.10.2026,GKS Stoczniowiec,KRISHOME Września,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/569/,2026-11-07T13:05:26.495718+00:00
+second,2560079,24.10.2026,Polipack UKS 1 Reda,SPS Cargill Słupca,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/570/,2026-11-07T13:05:27.527413+00:00
+second,2560080,24.10.2026,LOMS Joker Piła,Energa Trefl Gdańsk II,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/571/,2026-11-07T13:05:28.490589+00:00
+second,2560081,24.10.2026,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Fort Tarnowo Podgórne,,,Bydgoszcz,False,Bydgoszcz,17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/572/,2026-11-07T13:05:29.505851+00:00
+second,2560082,24.10.2026,Enea Energetyk Poznań,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/573/,2026-11-07T13:05:30.517360+00:00
+second,2560083,07.11.2026,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,GKS Stoczniowiec,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/574/,2026-11-07T13:05:31.496961+00:00
+second,2560084,07.11.2026,Fort Tarnowo Podgórne,Enea Energetyk Poznań,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/575/,2026-11-07T13:05:32.498332+00:00
+second,2560085,06.11.2026,Energa Trefl Gdańsk II,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/576/,2026-11-07T13:05:33.502184+00:00
+second,2560086,07.11.2026,SPS Cargill Słupca,LOMS Joker Piła,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/577/,2026-11-07T13:05:34.501116+00:00
+second,2560087,07.11.2026,KRISHOME Września,Polipack UKS 1 Reda,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/578/,2026-11-07T13:05:35.511626+00:00
+second,2560088,14.11.2026,GKS Stoczniowiec,Polipack UKS 1 Reda,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/579/,2026-11-07T13:05:36.491140+00:00
+second,2560089,14.11.2026,LOMS Joker Piła,KRISHOME Września,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",17:01,,False,https://sedziowie.pzps.pl/system/mecz/580/,2026-11-07T13:05:37.496058+00:00
+second,2560090,14.11.2026,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,SPS Cargill Słupca,,,Bydgoszcz,False,Bydgoszcz,17:01,,False,https://sedziowie.pzps.pl/system/mecz/581/,2026-11-07T13:05:38.504964+00:00
+second,2560091,14.11.2026,Enea Energetyk Poznań,Energa Trefl Gdańsk II,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/582/,2026-11-07T13:05:39.519198+00:00
+second,2560092,14.11.2026,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,Fort Tarnowo Podgórne,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/583/,2026-11-07T13:05:40.483780+00:00
+second,2560093,21.11.2026,Fort Tarnowo Podgórne,GKS Stoczniowiec,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/584/,2026-11-07T13:05:41.492272+00:00
+second,2560094,21.11.2026,Energa Trefl Gdańsk II,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/585/,2026-11-07T13:05:42.484552+00:00
+second,2560095,21.11.2026,SPS Cargill Słupca,Enea Energetyk Poznań,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/586/,2026-11-07T13:05:43.485764+00:00
+second,2560096,21.11.2026,KRISHOME Września,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/587/,2026-11-07T13:05:44.494861+00:00
+second,2560097,21.11.2026,Polipack UKS 1 Reda,LOMS Joker Piła,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:01,,False,https://sedziowie.pzps.pl/system/mecz/588/,2026-11-07T13:05:45.488256+00:00
+second,2560098,28.11.2026,GKS Stoczniowiec,LOMS Joker Piła,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/589/,2026-11-07T13:05:46.505725+00:00
+second,2560099,28.11.2026,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Polipack UKS 1 Reda,,,Bydgoszcz,False,Bydgoszcz,17:01,,False,https://sedziowie.pzps.pl/system/mecz/590/,2026-11-07T13:05:47.498057+00:00
+second,2560100,28.11.2026,Enea Energetyk Poznań,KRISHOME Września,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/591/,2026-11-07T13:05:48.496920+00:00
+second,2560101,28.11.2026,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,SPS Cargill Słupca,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/592/,2026-11-07T13:05:49.490334+00:00
+second,2560102,28.11.2026,Fort Tarnowo Podgórne,Energa Trefl Gdańsk II,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/593/,2026-11-07T13:05:50.501652+00:00
+second,2560103,05.12.2026,Energa Trefl Gdańsk II,GKS Stoczniowiec,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/594/,2026-11-07T13:05:51.490365+00:00
+second,2560104,05.12.2026,SPS Cargill Słupca,Fort Tarnowo Podgórne,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/595/,2026-11-07T13:05:52.489489+00:00
+second,2560105,05.12.2026,KRISHOME Września,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/596/,2026-11-07T13:05:53.499450+00:00
+second,2560106,05.12.2026,Polipack UKS 1 Reda,Enea Energetyk Poznań,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:01,,False,https://sedziowie.pzps.pl/system/mecz/597/,2026-11-07T13:05:54.508647+00:00
+second,2560107,05.12.2026,LOMS Joker Piła,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",17:01,,False,https://sedziowie.pzps.pl/system/mecz/598/,2026-11-07T13:05:55.497336+00:00
+second,2560108,12.12.2026,GKS Stoczniowiec,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/599/,2026-11-07T13:05:56.505912+00:00
+second,2560109,12.12.2026,LOMS Joker Piła,Enea Energetyk Poznań,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",17:01,,False,https://sedziowie.pzps.pl/system/mecz/600/,2026-11-07T13:05:57.487840+00:00
+second,2560110,12.12.2026,Polipack UKS 1 Reda,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:01,,False,https://sedziowie.pzps.pl/system/mecz/601/,2026-11-07T13:05:58.490530+00:00
+second,2560111,12.12.2026,KRISHOME Września,Fort Tarnowo Podgórne,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/602/,2026-11-07T13:05:59.494435+00:00
+second,2560112,12.12.2026,SPS Cargill Słupca,Energa Trefl Gdańsk II,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/603/,2026-11-07T13:06:00.491921+00:00
+second,2560113,19.12.2026,SPS Cargill Słupca,GKS Stoczniowiec,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/604/,2026-11-07T13:06:01.502803+00:00
+second,2560114,19.12.2026,Energa Trefl Gdańsk II,KRISHOME Września,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/605/,2026-11-07T13:06:02.505310+00:00
+second,2560115,19.12.2026,Fort Tarnowo Podgórne,Polipack UKS 1 Reda,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/606/,2026-11-07T13:06:03.494083+00:00
+second,2560116,19.12.2026,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,LOMS Joker Piła,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/607/,2026-11-07T13:06:04.583173+00:00
+second,2560117,19.12.2026,Enea Energetyk Poznań,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/608/,2026-11-07T13:06:05.667577+00:00
+second,2560118,09.01.2027,GKS Stoczniowiec,Enea Energetyk Poznań,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/609/,2026-11-07T13:06:06.488770+00:00
+second,2560119,09.01.2027,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,,,Bydgoszcz,False,Bydgoszcz,17:01,,False,https://sedziowie.pzps.pl/system/mecz/610/,2026-11-07T13:06:07.562684+00:00
+second,2560120,09.01.2027,LOMS Joker Piła,Fort Tarnowo Podgórne,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",17:01,,False,https://sedziowie.pzps.pl/system/mecz/611/,2026-11-07T13:06:08.582868+00:00
+second,2560121,09.01.2027,Energa Trefl Gdańsk II,Polipack UKS 1 Reda,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/612/,2026-11-07T13:06:09.489778+00:00
+second,2560122,09.01.2027,KRISHOME Września,SPS Cargill Słupca,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/613/,2026-11-07T13:06:10.497664+00:00
+second,2560123,16.01.2027,KRISHOME Września,GKS Stoczniowiec,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/614/,2026-11-07T13:06:11.546502+00:00
+second,2560124,16.01.2027,SPS Cargill Słupca,Polipack UKS 1 Reda,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/615/,2026-11-07T13:06:12.489308+00:00
+second,2560125,16.01.2027,Energa Trefl Gdańsk II,LOMS Joker Piła,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/616/,2026-11-07T13:06:13.497538+00:00
+second,2560126,16.01.2027,Fort Tarnowo Podgórne,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/617/,2026-11-07T13:06:14.526849+00:00
+second,2560127,16.01.2027,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,Enea Energetyk Poznań,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/618/,2026-11-07T13:06:15.501880+00:00
+second,2560128,30.01.2027,GKS Stoczniowiec,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/619/,2026-11-07T13:06:16.558619+00:00
+second,2560129,30.01.2027,Enea Energetyk Poznań,Fort Tarnowo Podgórne,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/620/,2026-11-07T13:06:17.562748+00:00
+second,2560130,30.01.2027,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Energa Trefl Gdańsk II,,,Bydgoszcz,False,Bydgoszcz,17:01,,False,https://sedziowie.pzps.pl/system/mecz/621/,2026-11-07T13:06:18.500875+00:00
+second,2560131,30.01.2027,LOMS Joker Piła,SPS Cargill Słupca,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",17:01,,False,https://sedziowie.pzps.pl/system/mecz/622/,2026-11-07T13:06:19.508992+00:00
+second,2560132,30.01.2027,Polipack UKS 1 Reda,KRISHOME Września,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:01,,False,https://sedziowie.pzps.pl/system/mecz/623/,2026-11-07T13:06:20.500752+00:00
+second,2560133,06.02.2027,Polipack UKS 1 Reda,GKS Stoczniowiec,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:01,,False,https://sedziowie.pzps.pl/system/mecz/624/,2026-11-07T13:06:21.533379+00:00
+second,2560134,06.02.2027,KRISHOME Września,LOMS Joker Piła,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/625/,2026-11-07T13:06:22.501579+00:00
+second,2560135,06.02.2027,SPS Cargill Słupca,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/626/,2026-11-07T13:06:23.554154+00:00
+second,2560136,06.02.2027,Energa Trefl Gdańsk II,Enea Energetyk Poznań,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/627/,2026-11-07T13:06:24.531745+00:00
+second,2560137,06.02.2027,Fort Tarnowo Podgórne,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/628/,2026-11-07T13:06:25.534066+00:00
+second,2560138,13.02.2027,GKS Stoczniowiec,Fort Tarnowo Podgórne,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/629/,2026-11-07T13:06:26.508902+00:00
+second,2560139,13.02.2027,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,Energa Trefl Gdańsk II,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/630/,2026-11-07T13:06:27.519113+00:00
+second,2560140,13.02.2027,Enea Energetyk Poznań,SPS Cargill Słupca,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/631/,2026-11-07T13:06:28.506406+00:00
+second,2560141,13.02.2027,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,KRISHOME Września,,,Bydgoszcz,False,Bydgoszcz,17:01,,False,https://sedziowie.pzps.pl/system/mecz/632/,2026-11-07T13:06:29.511060+00:00
+second,2560142,13.02.2027,LOMS Joker Piła,Polipack UKS 1 Reda,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",17:01,,False,https://sedziowie.pzps.pl/system/mecz/633/,2026-11-07T13:06:30.512151+00:00
+second,2560143,27.02.2027,LOMS Joker Piła,GKS Stoczniowiec,,"ul. Wincentego Pola 11, Piła",,False,"ul. Wincentego Pola 11, Piła",17:01,,False,https://sedziowie.pzps.pl/system/mecz/634/,2026-11-07T13:06:31.500825+00:00
+second,2560144,27.02.2027,Polipack UKS 1 Reda,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,,"ul. Brzozowa 30, 84-240 Reda",,False,"ul. Brzozowa 30, 84-240 Reda",17:01,,False,https://sedziowie.pzps.pl/system/mecz/635/,2026-11-07T13:06:32.735798+00:00
+second,2560145,27.02.2027,KRISHOME Września,Enea Energetyk Poznań,HS ZSP we Wrześni,"Wojska Polskiego 1, 62-300 Września",,True,"Wojska Polskiego 1, 62-300 Września
+HS ZSP we Wrześni
+; Hala dodatkowa: HS przy SSP nr 3 ul. Kosynierów 32, Września",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/636/,2026-11-07T13:06:33.505238+00:00
+second,2560146,27.02.2027,SPS Cargill Słupca,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,Hala MOSIR,"ul. Kopernika 13, 62-400 Słupca",,False,"ul. Kopernika 13, 62-400 Słupca
+Hala MOSIR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/637/,2026-11-07T13:06:34.500632+00:00
+second,2560147,27.02.2027,Energa Trefl Gdańsk II,Fort Tarnowo Podgórne,,"ul. Kołobrzeska 61, Gdańsk",,False,"ul. Kołobrzeska 61, Gdańsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/638/,2026-11-07T13:06:35.507933+00:00
+second,2560148,06.03.2027,GKS Stoczniowiec,Energa Trefl Gdańsk II,Zespół Szkół Energetycznych w Gdańsku,Gdańsk ul. Reja 25,,False,"Gdańsk ul. Reja 25
+Zespół Szkół Energetycznych w Gdańsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/639/,2026-11-07T13:06:36.504281+00:00
+second,2560149,06.03.2027,Fort Tarnowo Podgórne,SPS Cargill Słupca,Hala OSiR,"ul. Szkolna 7, 62-080 Lusówko",,False,"ul. Szkolna 7, 62-080 Lusówko
+Hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/640/,2026-11-07T13:06:37.567739+00:00
+second,2560150,06.03.2027,Ogrobet Bejenka Budownictwo LUKS Wilki Wilczyn,KRISHOME Września,Hala Sportowa SP Wilczyn,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn",,False,"Wilczogóra ul.700-lecia 14, 62-550 Wilczyn
+Hala Sportowa SP Wilczyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/641/,2026-11-07T13:06:38.721824+00:00
+second,2560151,06.03.2027,Enea Energetyk Poznań,Polipack UKS 1 Reda,,"ul. Droga Dębińska 10 C, Poznań",,False,"ul. Droga Dębińska 10 C, Poznań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/642/,2026-11-07T13:06:39.501894+00:00
+second,2560152,06.03.2027,BKS Chemik Bydgoszcz Siatkówka Młodzieżowa,LOMS Joker Piła,,,Bydgoszcz,False,Bydgoszcz,17:01,,False,https://sedziowie.pzps.pl/system/mecz/643/,2026-11-07T13:06:40.513194+00:00
+second,2560220,26.09.2026,AZS UWM Olsztyn,MOS Wola Tramwaje Warszawskie,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1174/,2026-11-07T13:06:41.505344+00:00
+second,2560257,26.09.2026,NECKO Augustów,GKS Orlęta Raszyn,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1175/,2026-11-07T13:06:42.529959+00:00
+second,2560256,26.09.2026,KS Camper Wyszków,REA CIRRO BAS Białystok,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1176/,2026-11-07T13:06:43.550593+00:00
+second,2560255,27.09.2026,SwK KARTPOL Kobyłka,KS Metro Family Warszawa,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/1177/,2026-11-07T13:06:44.519726+00:00
+second,2560254,26.09.2026,MTS Międzyrzec Podlaski,Elektromet Huragan Błonie,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1178/,2026-11-07T13:06:45.509518+00:00
+second,2560253,03.10.2026,KS Metro Family Warszawa,MTS Międzyrzec Podlaski,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1180/,2026-11-07T13:06:46.525680+00:00
+second,2560252,03.10.2026,REA CIRRO BAS Białystok,SwK KARTPOL Kobyłka,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1181/,2026-11-07T13:06:47.523711+00:00
+second,2560219,03.10.2026,GKS Orlęta Raszyn,KS Camper Wyszków,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",18:30,18:30,False,https://sedziowie.pzps.pl/system/mecz/1182/,2026-11-07T13:06:48.504665+00:00
+second,2560251,03.10.2026,MOS Wola Tramwaje Warszawskie,NECKO Augustów,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:30,17:30,False,https://sedziowie.pzps.pl/system/mecz/1183/,2026-11-07T13:06:49.515744+00:00
+second,2560250,03.10.2026,Integracyjny Klub Sportowy Atak Elbląg,AZS UWM Olsztyn,,,Elbląg,False,Elbląg,12:00,12:00,False,https://sedziowie.pzps.pl/system/mecz/1184/,2026-11-07T13:06:50.509197+00:00
+second,2560218,10.10.2026,NECKO Augustów,Integracyjny Klub Sportowy Atak Elbląg,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1186/,2026-11-07T13:06:51.529230+00:00
+second,2560249,10.10.2026,KS Camper Wyszków,MOS Wola Tramwaje Warszawskie,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1187/,2026-11-07T13:06:52.511756+00:00
+second,2560217,10.10.2026,SwK KARTPOL Kobyłka,GKS Orlęta Raszyn,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1188/,2026-11-07T13:06:53.506001+00:00
+second,2560216,10.10.2026,MTS Międzyrzec Podlaski,REA CIRRO BAS Białystok,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1189/,2026-11-07T13:06:54.506743+00:00
+second,2560248,10.10.2026,Elektromet Huragan Błonie,KS Metro Family Warszawa,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1190/,2026-11-07T13:06:55.505926+00:00
+second,2560247,14.10.2026,REA CIRRO BAS Białystok,Elektromet Huragan Błonie,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1192/,2026-11-07T13:06:56.510051+00:00
+second,2560215,14.10.2026,GKS Orlęta Raszyn,MTS Międzyrzec Podlaski,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/1193/,2026-11-07T13:06:57.508828+00:00
+second,2560214,14.10.2026,MOS Wola Tramwaje Warszawskie,SwK KARTPOL Kobyłka,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1194/,2026-11-07T13:06:58.518427+00:00
+second,2560246,14.10.2026,KS Camper Wyszków,Integracyjny Klub Sportowy Atak Elbląg,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/1195/,2026-11-07T13:06:59.509297+00:00
+second,2560213,14.10.2026,AZS UWM Olsztyn,NECKO Augustów,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1196/,2026-11-07T13:07:00.516902+00:00
+second,2560245,17.10.2026,KS Camper Wyszków,AZS UWM Olsztyn,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1198/,2026-11-07T13:07:01.514418+00:00
+second,2560212,18.10.2026,Integracyjny Klub Sportowy Atak Elbląg,SwK KARTPOL Kobyłka,,,Elbląg,False,Elbląg,16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/1199/,2026-11-07T13:07:02.503085+00:00
+second,2560244,18.10.2026,MTS Międzyrzec Podlaski,MOS Wola Tramwaje Warszawskie,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1200/,2026-11-07T13:07:03.526853+00:00
+second,2560211,18.10.2026,Elektromet Huragan Błonie,GKS Orlęta Raszyn,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:30,17:30,False,https://sedziowie.pzps.pl/system/mecz/1201/,2026-11-07T13:07:04.513296+00:00
+second,2560210,18.10.2026,KS Metro Family Warszawa,REA CIRRO BAS Białystok,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1202/,2026-11-07T13:07:05.524180+00:00
+second,2560209,05.11.2026,GKS Orlęta Raszyn,KS Metro Family Warszawa,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1204/,2026-11-07T13:07:06.516417+00:00
+second,2560243,24.10.2026,MOS Wola Tramwaje Warszawskie,Elektromet Huragan Błonie,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",16:30,16:30,False,https://sedziowie.pzps.pl/system/mecz/1205/,2026-11-07T13:07:07.510806+00:00
+second,2560208,24.10.2026,MTS Międzyrzec Podlaski,Integracyjny Klub Sportowy Atak Elbląg,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1206/,2026-11-07T13:07:08.527870+00:00
+second,2560207,24.10.2026,AZS UWM Olsztyn,SwK KARTPOL Kobyłka,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1207/,2026-11-07T13:07:09.519252+00:00
+second,2560206,24.10.2026,NECKO Augustów,KS Camper Wyszków,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1208/,2026-11-07T13:07:10.517526+00:00
+second,2560242,28.10.2026,SwK KARTPOL Kobyłka,NECKO Augustów,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/1210/,2026-11-07T13:07:11.509318+00:00
+second,2560205,28.10.2026,MTS Międzyrzec Podlaski,AZS UWM Olsztyn,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1211/,2026-11-07T13:07:12.517764+00:00
+second,2560204,28.10.2026,Elektromet Huragan Błonie,Integracyjny Klub Sportowy Atak Elbląg,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",19:30,19:30,False,https://sedziowie.pzps.pl/system/mecz/1212/,2026-11-07T13:07:13.504885+00:00
+second,2560203,22.11.2026,KS Metro Family Warszawa,MOS Wola Tramwaje Warszawskie,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1213/,2026-11-07T13:07:14.516525+00:00
+second,2560202,28.10.2026,REA CIRRO BAS Białystok,GKS Orlęta Raszyn,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1214/,2026-11-07T13:07:15.520816+00:00
+second,2560241,07.11.2026,MOS Wola Tramwaje Warszawskie,REA CIRRO BAS Białystok,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1216/,2026-11-07T13:07:16.503866+00:00
+second,2560201,07.11.2026,Integracyjny Klub Sportowy Atak Elbląg,KS Metro Family Warszawa,,,Elbląg,False,Elbląg,15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1217/,2026-11-07T13:07:17.508702+00:00
+second,2560200,07.11.2026,AZS UWM Olsztyn,Elektromet Huragan Błonie,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",14:30,14:30,False,https://sedziowie.pzps.pl/system/mecz/1218/,2026-11-07T13:07:18.505486+00:00
+second,2560199,07.11.2026,NECKO Augustów,MTS Międzyrzec Podlaski,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1219/,2026-11-07T13:07:19.517915+00:00
+second,2560198,07.11.2026,KS Camper Wyszków,SwK KARTPOL Kobyłka,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1220/,2026-11-07T13:07:20.525096+00:00
+second,2560240,14.11.2026,MTS Międzyrzec Podlaski,KS Camper Wyszków,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1222/,2026-11-07T13:07:21.507311+00:00
+second,2560197,14.11.2026,Elektromet Huragan Błonie,NECKO Augustów,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1223/,2026-11-07T13:07:22.508136+00:00
+second,2560196,14.11.2026,KS Metro Family Warszawa,AZS UWM Olsztyn,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1224/,2026-11-07T13:07:23.515413+00:00
+second,2560195,14.11.2026,REA CIRRO BAS Białystok,Integracyjny Klub Sportowy Atak Elbląg,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",17:01,18:00,True,https://sedziowie.pzps.pl/system/mecz/1225/,2026-11-07T13:07:24.511880+00:00
+second,2560194,14.11.2026,GKS Orlęta Raszyn,MOS Wola Tramwaje Warszawskie,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1226/,2026-11-07T13:07:25.547419+00:00
+second,2560193,21.11.2026,Integracyjny Klub Sportowy Atak Elbląg,GKS Orlęta Raszyn,,,Elbląg,False,Elbląg,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1228/,2026-11-07T13:07:26.511125+00:00
+second,2560192,21.11.2026,AZS UWM Olsztyn,REA CIRRO BAS Białystok,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1229/,2026-11-07T13:07:27.520620+00:00
+second,2560191,21.11.2026,NECKO Augustów,KS Metro Family Warszawa,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1230/,2026-11-07T13:07:28.504857+00:00
+second,2560190,21.11.2026,KS Camper Wyszków,Elektromet Huragan Błonie,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1231/,2026-11-07T13:07:29.514675+00:00
+second,2560239,11.11.2026,SwK KARTPOL Kobyłka,MTS Międzyrzec Podlaski,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1232/,2026-11-07T13:07:30.520036+00:00
+second,2560189,25.11.2026,Elektromet Huragan Błonie,SwK KARTPOL Kobyłka,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1234/,2026-11-07T13:07:31.517815+00:00
+second,2560238,25.11.2026,KS Metro Family Warszawa,KS Camper Wyszków,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1235/,2026-11-07T13:07:32.523795+00:00
+second,2560188,25.11.2026,REA CIRRO BAS Białystok,NECKO Augustów,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1236/,2026-11-07T13:07:33.518256+00:00
+second,2560187,25.11.2026,GKS Orlęta Raszyn,AZS UWM Olsztyn,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1237/,2026-11-07T13:07:34.552208+00:00
+second,2560186,25.11.2026,MOS Wola Tramwaje Warszawskie,Integracyjny Klub Sportowy Atak Elbląg,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1238/,2026-11-07T13:07:35.509094+00:00
+second,2560185,28.11.2026,MOS Wola Tramwaje Warszawskie,AZS UWM Olsztyn,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1240/,2026-11-07T13:07:36.528324+00:00
+second,2560184,28.11.2026,GKS Orlęta Raszyn,NECKO Augustów,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1241/,2026-11-07T13:07:37.512000+00:00
+second,2560183,28.11.2026,REA CIRRO BAS Białystok,KS Camper Wyszków,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1242/,2026-11-07T13:07:38.514117+00:00
+second,2560237,28.11.2026,KS Metro Family Warszawa,SwK KARTPOL Kobyłka,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1243/,2026-11-07T13:07:39.515364+00:00
+second,2560182,28.11.2026,Elektromet Huragan Błonie,MTS Międzyrzec Podlaski,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1244/,2026-11-07T13:07:40.520984+00:00
+second,2560181,05.12.2026,MTS Międzyrzec Podlaski,KS Metro Family Warszawa,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1246/,2026-11-07T13:07:41.514946+00:00
+second,2560180,05.12.2026,SwK KARTPOL Kobyłka,REA CIRRO BAS Białystok,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1247/,2026-11-07T13:07:42.528497+00:00
+second,2560236,05.12.2026,KS Camper Wyszków,GKS Orlęta Raszyn,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1248/,2026-11-07T13:07:43.515729+00:00
+second,2560179,05.12.2026,NECKO Augustów,MOS Wola Tramwaje Warszawskie,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1249/,2026-11-07T13:07:44.515537+00:00
+second,2560178,03.12.2026,AZS UWM Olsztyn,Integracyjny Klub Sportowy Atak Elbląg,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1250/,2026-11-07T13:07:45.517379+00:00
+second,2560177,12.12.2026,Integracyjny Klub Sportowy Atak Elbląg,NECKO Augustów,,,Elbląg,False,Elbląg,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1252/,2026-11-07T13:07:46.528632+00:00
+second,2560176,12.12.2026,MOS Wola Tramwaje Warszawskie,KS Camper Wyszków,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1253/,2026-11-07T13:07:47.508062+00:00
+second,2560235,12.12.2026,GKS Orlęta Raszyn,SwK KARTPOL Kobyłka,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1254/,2026-11-07T13:07:48.511569+00:00
+second,2560175,12.12.2026,REA CIRRO BAS Białystok,MTS Międzyrzec Podlaski,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1255/,2026-11-07T13:07:49.520438+00:00
+second,2560174,12.12.2026,KS Metro Family Warszawa,Elektromet Huragan Błonie,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1256/,2026-11-07T13:07:50.521876+00:00
+second,2560173,19.12.2026,Elektromet Huragan Błonie,REA CIRRO BAS Białystok,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1258/,2026-11-07T13:07:51.569282+00:00
+second,2560172,19.12.2026,MTS Międzyrzec Podlaski,GKS Orlęta Raszyn,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1259/,2026-11-07T13:07:52.537969+00:00
+second,2560171,19.12.2026,SwK KARTPOL Kobyłka,MOS Wola Tramwaje Warszawskie,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1260/,2026-11-07T13:07:53.518690+00:00
+second,2560234,19.12.2026,Integracyjny Klub Sportowy Atak Elbląg,KS Camper Wyszków,,,Elbląg,False,Elbląg,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1261/,2026-11-07T13:07:54.520290+00:00
+second,2560170,19.12.2026,NECKO Augustów,AZS UWM Olsztyn,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1262/,2026-11-07T13:07:55.524845+00:00
+second,2560169,09.01.2027,AZS UWM Olsztyn,KS Camper Wyszków,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1264/,2026-11-07T13:07:56.527765+00:00
+second,2560233,10.01.2027,SwK KARTPOL Kobyłka,Integracyjny Klub Sportowy Atak Elbląg,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1265/,2026-11-07T13:07:57.531555+00:00
+second,2560168,09.01.2027,MOS Wola Tramwaje Warszawskie,MTS Międzyrzec Podlaski,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1266/,2026-11-07T13:07:58.512477+00:00
+second,2560167,09.01.2027,GKS Orlęta Raszyn,Elektromet Huragan Błonie,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1267/,2026-11-07T13:07:59.534441+00:00
+second,2560166,09.01.2027,REA CIRRO BAS Białystok,KS Metro Family Warszawa,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1268/,2026-11-07T13:08:00.534624+00:00
+second,2560165,16.01.2027,KS Metro Family Warszawa,GKS Orlęta Raszyn,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1270/,2026-11-07T13:08:01.530630+00:00
+second,2560164,16.01.2027,Elektromet Huragan Błonie,MOS Wola Tramwaje Warszawskie,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1271/,2026-11-07T13:08:02.530410+00:00
+second,2560163,16.01.2027,Integracyjny Klub Sportowy Atak Elbląg,MTS Międzyrzec Podlaski,,,Elbląg,False,Elbląg,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1272/,2026-11-07T13:08:03.529721+00:00
+second,2560162,16.01.2027,SwK KARTPOL Kobyłka,AZS UWM Olsztyn,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1273/,2026-11-07T13:08:04.534908+00:00
+second,2560232,16.01.2027,KS Camper Wyszków,NECKO Augustów,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1274/,2026-11-07T13:08:05.527925+00:00
+second,2560231,30.01.2027,NECKO Augustów,SwK KARTPOL Kobyłka,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1276/,2026-11-07T13:08:06.565502+00:00
+second,2560161,30.01.2027,AZS UWM Olsztyn,MTS Międzyrzec Podlaski,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1277/,2026-11-07T13:08:07.569661+00:00
+second,2560160,30.01.2027,Integracyjny Klub Sportowy Atak Elbląg,Elektromet Huragan Błonie,,,Elbląg,False,Elbląg,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1278/,2026-11-07T13:08:08.534682+00:00
+second,2560159,30.01.2027,MOS Wola Tramwaje Warszawskie,KS Metro Family Warszawa,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1279/,2026-11-07T13:08:09.541721+00:00
+second,2560158,30.01.2027,GKS Orlęta Raszyn,REA CIRRO BAS Białystok,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1280/,2026-11-07T13:08:10.537441+00:00
+second,2560157,06.02.2027,REA CIRRO BAS Białystok,MOS Wola Tramwaje Warszawskie,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1282/,2026-11-07T13:08:11.532681+00:00
+second,2560156,06.02.2027,KS Metro Family Warszawa,Integracyjny Klub Sportowy Atak Elbląg,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1283/,2026-11-07T13:08:12.576205+00:00
+second,2560155,06.02.2027,Elektromet Huragan Błonie,AZS UWM Olsztyn,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1284/,2026-11-07T13:08:13.540195+00:00
+second,2560154,06.02.2027,MTS Międzyrzec Podlaski,NECKO Augustów,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1285/,2026-11-07T13:08:14.534677+00:00
+second,2560153,06.02.2027,SwK KARTPOL Kobyłka,KS Camper Wyszków,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1286/,2026-11-07T13:08:15.536947+00:00
+second,2560230,13.02.2027,KS Camper Wyszków,MTS Międzyrzec Podlaski,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1288/,2026-11-07T13:08:16.532424+00:00
+second,2560229,13.02.2027,NECKO Augustów,Elektromet Huragan Błonie,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1289/,2026-11-07T13:08:17.537078+00:00
+second,2560228,13.02.2027,AZS UWM Olsztyn,KS Metro Family Warszawa,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1290/,2026-11-07T13:08:18.523728+00:00
+second,2560227,13.02.2027,Integracyjny Klub Sportowy Atak Elbląg,REA CIRRO BAS Białystok,,,Elbląg,False,Elbląg,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1291/,2026-11-07T13:08:19.532138+00:00
+second,2560226,13.02.2027,MOS Wola Tramwaje Warszawskie,GKS Orlęta Raszyn,hala MOS Wola,Warszawa ul. Rogalińska 2,,False,"Warszawa ul. Rogalińska 2
+hala MOS Wola",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1292/,2026-11-07T13:08:20.531946+00:00
+second,2560225,27.02.2027,GKS Orlęta Raszyn,Integracyjny Klub Sportowy Atak Elbląg,,"ul. Sportowa 30, 05-090 Raszyn",,False,"ul. Sportowa 30, 05-090 Raszyn",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1294/,2026-11-07T13:08:21.533390+00:00
+second,2560224,27.02.2027,REA CIRRO BAS Białystok,AZS UWM Olsztyn,Hala Szkoły Podstawowej nr 50 w Białymstoku,"Pułaskiego 96, 15-566 Białystok",,False,"Pułaskiego 96, 15-566 Białystok
+Hala Szkoły Podstawowej nr 50 w Białymstoku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1295/,2026-11-07T13:08:22.535035+00:00
+second,2560223,27.02.2027,KS Metro Family Warszawa,NECKO Augustów,ZOS Hawajska,"ul. Dereniowa 48, Warszawa",,False,"ul. Dereniowa 48, Warszawa
+ZOS Hawajska",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1296/,2026-11-07T13:08:23.538826+00:00
+second,2560222,27.02.2027,Elektromet Huragan Błonie,KS Camper Wyszków,,"ul. Grodziska 1, 05-870 Błonie",,False,"ul. Grodziska 1, 05-870 Błonie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1297/,2026-11-07T13:08:24.539932+00:00
+second,2560221,27.02.2027,MTS Międzyrzec Podlaski,SwK KARTPOL Kobyłka,Zespół Placówek Oświatowych nr 3,"ul. Warszawska 40, Międzyrzec Podlaski",,False,"ul. Warszawska 40, Międzyrzec Podlaski
+Zespół Placówek Oświatowych nr 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1298/,2026-11-07T13:08:25.558221+00:00
+second,2560610,06.03.2027,SwK KARTPOL Kobyłka,Elektromet Huragan Błonie,Hala Sportowa przy PSP nr 3 w Kobyłce,"ul. ks. Marcina Załuskiego 57, Kobyłka",,False,"ul. ks. Marcina Załuskiego 57, Kobyłka
+Hala Sportowa przy PSP nr 3 w Kobyłce",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1300/,2026-11-07T13:08:26.539443+00:00
+second,2560611,06.03.2027,KS Camper Wyszków,KS Metro Family Warszawa,Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie,"ul. Geodetów 45, 07-200 Wyszków",,False,"ul. Geodetów 45, 07-200 Wyszków
+Wyszkowski Ośrodek Sportu i Rekreacji w Wyszkowie",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1301/,2026-11-07T13:08:27.540217+00:00
+second,2560612,06.03.2027,NECKO Augustów,REA CIRRO BAS Białystok,SP nr 2,"ul. Rajgrodzka 1, 16-300 Augustów",,False,"ul. Rajgrodzka 1, 16-300 Augustów
+SP nr 2",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1302/,2026-11-07T13:08:28.534246+00:00
+second,2560613,06.03.2027,AZS UWM Olsztyn,GKS Orlęta Raszyn,hala UWM,ul. Prawocheńskiego 7 Olsztyn,,False,"ul. Prawocheńskiego 7 Olsztyn
+hala UWM",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1303/,2026-11-07T13:08:29.526903+00:00
+second,2560614,06.03.2027,Integracyjny Klub Sportowy Atak Elbląg,MOS Wola Tramwaje Warszawskie,,,Elbląg,False,Elbląg,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1304/,2026-11-07T13:08:30.529447+00:00
+second,2560258,26.09.2026,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,KS AS Słubice,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/776/,2026-11-07T13:08:31.530413+00:00
+second,2560259,26.09.2026,STS Olimpia Sulęcin,Astra Nowa Sól,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/777/,2026-11-07T13:08:32.539266+00:00
+second,2560260,26.09.2026,Gwardia Wrocław,BTS Willowa Bolesławiec,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/778/,2026-11-07T13:08:33.543208+00:00
+second,2560261,26.09.2026,KPS Chełmiec ANS AS Wałbrzych,Ikar Legnica,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/779/,2026-11-07T13:08:34.536877+00:00
+second,2560262,26.09.2026,KS Bielawianka-Bester,PGE Akademia Siatkówki Stilon,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/780/,2026-11-07T13:08:35.533185+00:00
+second,2560263,26.09.2026,MLKS Volley Gubin,BS ŻAGAŃ WKS Sobieski Żagań,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/781/,2026-11-07T13:08:36.538887+00:00
+second,2560264,03.10.2026,KS AS Słubice,BS ŻAGAŃ WKS Sobieski Żagań,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/782/,2026-11-07T13:08:37.528233+00:00
+second,2560265,03.10.2026,KS Bielawianka-Bester,MLKS Volley Gubin,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/783/,2026-11-07T13:08:38.543066+00:00
+second,2560266,03.10.2026,Ikar Legnica,PGE Akademia Siatkówki Stilon,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/784/,2026-11-07T13:08:39.537822+00:00
+second,2560267,03.10.2026,BTS Willowa Bolesławiec,KPS Chełmiec ANS AS Wałbrzych,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/785/,2026-11-07T13:08:40.544688+00:00
+second,2560268,03.10.2026,Gwardia Wrocław,Astra Nowa Sól,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/786/,2026-11-07T13:08:41.528647+00:00
+second,2560269,03.10.2026,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,STS Olimpia Sulęcin,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/787/,2026-11-07T13:08:42.541114+00:00
+second,2560270,10.10.2026,KS AS Słubice,STS Olimpia Sulęcin,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/788/,2026-11-07T13:08:43.528508+00:00
+second,2560271,10.10.2026,Gwardia Wrocław,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/789/,2026-11-07T13:08:44.579435+00:00
+second,2560272,09.10.2026,KPS Chełmiec ANS AS Wałbrzych,Astra Nowa Sól,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",19:30,19:30,False,https://sedziowie.pzps.pl/system/mecz/790/,2026-11-07T13:08:45.536637+00:00
+second,2560273,10.10.2026,PGE Akademia Siatkówki Stilon,BTS Willowa Bolesławiec,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/791/,2026-11-07T13:08:46.522646+00:00
+second,2560274,10.10.2026,MLKS Volley Gubin,Ikar Legnica,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/792/,2026-11-07T13:08:47.545401+00:00
+second,2560275,10.10.2026,BS ŻAGAŃ WKS Sobieski Żagań,KS Bielawianka-Bester,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/793/,2026-11-07T13:08:48.536212+00:00
+second,2560276,14.10.2026,KS AS Słubice,KS Bielawianka-Bester,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/794/,2026-11-07T13:08:49.534708+00:00
+second,2560277,14.10.2026,Ikar Legnica,BS ŻAGAŃ WKS Sobieski Żagań,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",18:30,18:30,False,https://sedziowie.pzps.pl/system/mecz/795/,2026-11-07T13:08:50.548274+00:00
+second,2560278,14.10.2026,BTS Willowa Bolesławiec,MLKS Volley Gubin,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/796/,2026-11-07T13:08:51.533972+00:00
+second,2560279,14.10.2026,PGE Akademia Siatkówki Stilon,Astra Nowa Sól,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",19:30,19:30,False,https://sedziowie.pzps.pl/system/mecz/797/,2026-11-07T13:08:52.549009+00:00
+second,2560280,14.10.2026,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,KPS Chełmiec ANS AS Wałbrzych,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/798/,2026-11-07T13:08:53.545660+00:00
+second,2560281,14.10.2026,STS Olimpia Sulęcin,Gwardia Wrocław,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/799/,2026-11-07T13:08:54.548958+00:00
+second,2560282,17.10.2026,Gwardia Wrocław,KS AS Słubice,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/800/,2026-11-07T13:08:55.532545+00:00
+second,2560283,17.10.2026,KPS Chełmiec ANS AS Wałbrzych,STS Olimpia Sulęcin,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/801/,2026-11-07T13:08:56.551439+00:00
+second,2560284,17.10.2026,PGE Akademia Siatkówki Stilon,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/802/,2026-11-07T13:08:57.543564+00:00
+second,2560285,17.10.2026,MLKS Volley Gubin,Astra Nowa Sól,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/803/,2026-11-07T13:08:58.543526+00:00
+second,2560286,17.10.2026,BS ŻAGAŃ WKS Sobieski Żagań,BTS Willowa Bolesławiec,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/804/,2026-11-07T13:08:59.544364+00:00
+second,2560287,17.10.2026,KS Bielawianka-Bester,Ikar Legnica,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/805/,2026-11-07T13:09:00.566103+00:00
+second,2560288,24.10.2026,KS AS Słubice,Ikar Legnica,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/806/,2026-11-07T13:09:01.528954+00:00
+second,2560289,24.10.2026,BTS Willowa Bolesławiec,KS Bielawianka-Bester,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/807/,2026-11-07T13:09:02.561851+00:00
+second,2560290,24.10.2026,Astra Nowa Sól,BS ŻAGAŃ WKS Sobieski Żagań,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:30,17:30,False,https://sedziowie.pzps.pl/system/mecz/808/,2026-11-07T13:09:03.544884+00:00
+second,2560291,24.10.2026,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,MLKS Volley Gubin,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/809/,2026-11-07T13:09:04.549133+00:00
+second,2560292,24.10.2026,STS Olimpia Sulęcin,PGE Akademia Siatkówki Stilon,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/810/,2026-11-07T13:09:05.534325+00:00
+second,2560293,24.10.2026,Gwardia Wrocław,KPS Chełmiec ANS AS Wałbrzych,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/811/,2026-11-07T13:09:06.543622+00:00
+second,2560294,28.10.2026,KPS Chełmiec ANS AS Wałbrzych,KS AS Słubice,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/812/,2026-11-07T13:09:07.556887+00:00
+second,2560295,28.10.2026,PGE Akademia Siatkówki Stilon,Gwardia Wrocław,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/813/,2026-11-07T13:09:08.551190+00:00
+second,2560296,28.10.2026,MLKS Volley Gubin,STS Olimpia Sulęcin,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/814/,2026-11-07T13:09:09.537383+00:00
+second,2560297,28.10.2026,BS ŻAGAŃ WKS Sobieski Żagań,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/815/,2026-11-07T13:09:10.532175+00:00
+second,2560298,28.10.2026,KS Bielawianka-Bester,Astra Nowa Sól,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/816/,2026-11-07T13:09:11.547331+00:00
+second,2560299,28.10.2026,Ikar Legnica,BTS Willowa Bolesławiec,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/817/,2026-11-07T13:09:12.539293+00:00
+second,2560300,07.11.2026,KS AS Słubice,BTS Willowa Bolesławiec,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/818/,2026-11-07T13:09:13.548756+00:00
+second,2560301,07.11.2026,Astra Nowa Sól,Ikar Legnica,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/819/,2026-11-07T13:09:14.621485+00:00
+second,2560302,07.11.2026,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,KS Bielawianka-Bester,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/820/,2026-11-07T13:09:15.557242+00:00
+second,2560303,08.11.2026,STS Olimpia Sulęcin,BS ŻAGAŃ WKS Sobieski Żagań,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/821/,2026-11-07T13:09:16.543097+00:00
+second,2560304,07.11.2026,Gwardia Wrocław,MLKS Volley Gubin,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/822/,2026-11-07T13:09:17.550158+00:00
+second,2560305,07.11.2026,KPS Chełmiec ANS AS Wałbrzych,PGE Akademia Siatkówki Stilon,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:30,17:30,False,https://sedziowie.pzps.pl/system/mecz/823/,2026-11-07T13:09:18.535924+00:00
+second,2560306,14.11.2026,PGE Akademia Siatkówki Stilon,KS AS Słubice,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",17:01,,False,https://sedziowie.pzps.pl/system/mecz/824/,2026-11-07T13:09:19.545672+00:00
+second,2560307,14.11.2026,MLKS Volley Gubin,KPS Chełmiec ANS AS Wałbrzych,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/825/,2026-11-07T13:09:20.544065+00:00
+second,2560308,14.11.2026,Gwardia Wrocław,BS ŻAGAŃ WKS Sobieski Żagań,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",17:01,,False,https://sedziowie.pzps.pl/system/mecz/826/,2026-11-07T13:09:21.559230+00:00
+second,2560309,14.11.2026,KS Bielawianka-Bester,STS Olimpia Sulęcin,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/827/,2026-11-07T13:09:22.554451+00:00
+second,2560310,14.11.2026,Ikar Legnica,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/828/,2026-11-07T13:09:23.549501+00:00
+second,2560311,14.11.2026,BTS Willowa Bolesławiec,Astra Nowa Sól,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/829/,2026-11-07T13:09:24.552429+00:00
+second,2560312,21.11.2026,KS AS Słubice,Astra Nowa Sól,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:01,,False,https://sedziowie.pzps.pl/system/mecz/830/,2026-11-07T13:09:25.556286+00:00
+second,2560313,21.11.2026,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,BTS Willowa Bolesławiec,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/831/,2026-11-07T13:09:26.539709+00:00
+second,2560314,21.11.2026,STS Olimpia Sulęcin,Ikar Legnica,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:01,,False,https://sedziowie.pzps.pl/system/mecz/832/,2026-11-07T13:09:27.539655+00:00
+second,2560315,21.11.2026,Gwardia Wrocław,KS Bielawianka-Bester,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",17:01,,False,https://sedziowie.pzps.pl/system/mecz/833/,2026-11-07T13:09:28.564333+00:00
+second,2560316,21.11.2026,KPS Chełmiec ANS AS Wałbrzych,BS ŻAGAŃ WKS Sobieski Żagań,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/834/,2026-11-07T13:09:29.531686+00:00
+second,2560317,21.11.2026,PGE Akademia Siatkówki Stilon,MLKS Volley Gubin,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",17:01,,False,https://sedziowie.pzps.pl/system/mecz/835/,2026-11-07T13:09:30.579836+00:00
+second,2560318,25.11.2026,MLKS Volley Gubin,KS AS Słubice,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/836/,2026-11-07T13:09:31.537535+00:00
+second,2560319,25.11.2026,BS ŻAGAŃ WKS Sobieski Żagań,PGE Akademia Siatkówki Stilon,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/837/,2026-11-07T13:09:32.541499+00:00
+second,2560320,25.11.2026,KS Bielawianka-Bester,KPS Chełmiec ANS AS Wałbrzych,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/838/,2026-11-07T13:09:33.543548+00:00
+second,2560321,25.11.2026,Ikar Legnica,Gwardia Wrocław,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/839/,2026-11-07T13:09:34.542285+00:00
+second,2560322,25.11.2026,BTS Willowa Bolesławiec,STS Olimpia Sulęcin,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/840/,2026-11-07T13:09:35.554269+00:00
+second,2560323,25.11.2026,Astra Nowa Sól,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/841/,2026-11-07T13:09:36.560245+00:00
+second,2560324,28.11.2026,KS AS Słubice,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:01,,False,https://sedziowie.pzps.pl/system/mecz/842/,2026-11-07T13:09:37.588871+00:00
+second,2560325,28.11.2026,Astra Nowa Sól,STS Olimpia Sulęcin,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/843/,2026-11-07T13:09:38.548671+00:00
+second,2560326,28.11.2026,BTS Willowa Bolesławiec,Gwardia Wrocław,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/844/,2026-11-07T13:09:39.551430+00:00
+second,2560327,28.11.2026,Ikar Legnica,KPS Chełmiec ANS AS Wałbrzych,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/845/,2026-11-07T13:09:40.542392+00:00
+second,2560328,28.11.2026,PGE Akademia Siatkówki Stilon,KS Bielawianka-Bester,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",17:01,,False,https://sedziowie.pzps.pl/system/mecz/846/,2026-11-07T13:09:41.543758+00:00
+second,2560329,28.11.2026,BS ŻAGAŃ WKS Sobieski Żagań,MLKS Volley Gubin,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/847/,2026-11-07T13:09:42.551916+00:00
+second,2560330,05.12.2026,BS ŻAGAŃ WKS Sobieski Żagań,KS AS Słubice,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/848/,2026-11-07T13:09:43.552406+00:00
+second,2560331,05.12.2026,MLKS Volley Gubin,KS Bielawianka-Bester,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/849/,2026-11-07T13:09:44.551929+00:00
+second,2560332,05.12.2026,PGE Akademia Siatkówki Stilon,Ikar Legnica,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",17:01,,False,https://sedziowie.pzps.pl/system/mecz/850/,2026-11-07T13:09:45.542646+00:00
+second,2560333,05.12.2026,KPS Chełmiec ANS AS Wałbrzych,BTS Willowa Bolesławiec,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/851/,2026-11-07T13:09:46.543919+00:00
+second,2560334,05.12.2026,Astra Nowa Sól,Gwardia Wrocław,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/852/,2026-11-07T13:09:47.542814+00:00
+second,2560335,05.12.2026,STS Olimpia Sulęcin,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:01,,False,https://sedziowie.pzps.pl/system/mecz/853/,2026-11-07T13:09:48.544864+00:00
+second,2560336,12.12.2026,STS Olimpia Sulęcin,KS AS Słubice,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:01,,False,https://sedziowie.pzps.pl/system/mecz/854/,2026-11-07T13:09:49.567315+00:00
+second,2560337,12.12.2026,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,Gwardia Wrocław,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/855/,2026-11-07T13:09:50.552318+00:00
+second,2560338,12.12.2026,Astra Nowa Sól,KPS Chełmiec ANS AS Wałbrzych,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/856/,2026-11-07T13:09:51.537895+00:00
+second,2560339,12.12.2026,BTS Willowa Bolesławiec,PGE Akademia Siatkówki Stilon,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/857/,2026-11-07T13:09:52.551892+00:00
+second,2560340,12.12.2026,Ikar Legnica,MLKS Volley Gubin,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/858/,2026-11-07T13:09:53.550497+00:00
+second,2560341,12.12.2026,KS Bielawianka-Bester,BS ŻAGAŃ WKS Sobieski Żagań,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",17:01,,False,https://sedziowie.pzps.pl/system/mecz/859/,2026-11-07T13:09:54.545778+00:00
+second,2560342,19.12.2026,KS Bielawianka-Bester,KS AS Słubice,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",17:01,,False,https://sedziowie.pzps.pl/system/mecz/860/,2026-11-07T13:09:55.549389+00:00
+second,2560343,19.12.2026,BS ŻAGAŃ WKS Sobieski Żagań,Ikar Legnica,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/861/,2026-11-07T13:09:56.546339+00:00
+second,2560344,19.12.2026,MLKS Volley Gubin,BTS Willowa Bolesławiec,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/862/,2026-11-07T13:09:57.571900+00:00
+second,2560345,19.12.2026,Astra Nowa Sól,PGE Akademia Siatkówki Stilon,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/863/,2026-11-07T13:09:58.560976+00:00
+second,2560346,19.12.2026,KPS Chełmiec ANS AS Wałbrzych,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/864/,2026-11-07T13:09:59.550206+00:00
+second,2560347,19.12.2026,Gwardia Wrocław,STS Olimpia Sulęcin,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",17:01,,False,https://sedziowie.pzps.pl/system/mecz/865/,2026-11-07T13:10:00.616232+00:00
+second,2560348,09.01.2027,KS AS Słubice,Gwardia Wrocław,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:01,,False,https://sedziowie.pzps.pl/system/mecz/866/,2026-11-07T13:10:01.558613+00:00
+second,2560349,09.01.2027,STS Olimpia Sulęcin,KPS Chełmiec ANS AS Wałbrzych,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:01,,False,https://sedziowie.pzps.pl/system/mecz/867/,2026-11-07T13:10:02.548077+00:00
+second,2560350,09.01.2027,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,PGE Akademia Siatkówki Stilon,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/868/,2026-11-07T13:10:03.556080+00:00
+second,2560351,09.01.2027,Astra Nowa Sól,MLKS Volley Gubin,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/869/,2026-11-07T13:10:04.546139+00:00
+second,2560352,09.01.2027,BTS Willowa Bolesławiec,BS ŻAGAŃ WKS Sobieski Żagań,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/870/,2026-11-07T13:10:05.777240+00:00
+second,2560353,09.01.2027,Ikar Legnica,KS Bielawianka-Bester,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/871/,2026-11-07T13:10:06.754160+00:00
+second,2560354,16.01.2027,Ikar Legnica,KS AS Słubice,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/872/,2026-11-07T13:10:07.753148+00:00
+second,2560355,16.01.2027,KS Bielawianka-Bester,BTS Willowa Bolesławiec,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",17:01,,False,https://sedziowie.pzps.pl/system/mecz/873/,2026-11-07T13:10:08.784355+00:00
+second,2560356,16.01.2027,BS ŻAGAŃ WKS Sobieski Żagań,Astra Nowa Sól,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/874/,2026-11-07T13:10:09.838441+00:00
+second,2560357,16.01.2027,MLKS Volley Gubin,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/875/,2026-11-07T13:10:10.562779+00:00
+second,2560358,16.01.2027,PGE Akademia Siatkówki Stilon,STS Olimpia Sulęcin,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",17:01,,False,https://sedziowie.pzps.pl/system/mecz/876/,2026-11-07T13:10:11.546216+00:00
+second,2560359,16.01.2027,KPS Chełmiec ANS AS Wałbrzych,Gwardia Wrocław,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/877/,2026-11-07T13:10:12.658402+00:00
+second,2560360,30.01.2027,KS AS Słubice,KPS Chełmiec ANS AS Wałbrzych,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:01,,False,https://sedziowie.pzps.pl/system/mecz/878/,2026-11-07T13:10:13.590248+00:00
+second,2560361,30.01.2027,Gwardia Wrocław,PGE Akademia Siatkówki Stilon,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",17:01,,False,https://sedziowie.pzps.pl/system/mecz/879/,2026-11-07T13:10:14.553065+00:00
+second,2560362,30.01.2027,STS Olimpia Sulęcin,MLKS Volley Gubin,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:01,,False,https://sedziowie.pzps.pl/system/mecz/880/,2026-11-07T13:10:15.597099+00:00
+second,2560363,30.01.2027,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,BS ŻAGAŃ WKS Sobieski Żagań,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/881/,2026-11-07T13:10:17.098650+00:00
+second,2560364,30.01.2027,Astra Nowa Sól,KS Bielawianka-Bester,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/882/,2026-11-07T13:10:17.548074+00:00
+second,2560365,30.01.2027,BTS Willowa Bolesławiec,Ikar Legnica,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/883/,2026-11-07T13:10:18.552219+00:00
+second,2560366,06.02.2027,BTS Willowa Bolesławiec,KS AS Słubice,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/884/,2026-11-07T13:10:19.590985+00:00
+second,2560367,06.02.2027,Ikar Legnica,Astra Nowa Sól,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/885/,2026-11-07T13:10:20.594765+00:00
+second,2560368,06.02.2027,KS Bielawianka-Bester,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",17:01,,False,https://sedziowie.pzps.pl/system/mecz/886/,2026-11-07T13:10:21.577962+00:00
+second,2560369,06.02.2027,BS ŻAGAŃ WKS Sobieski Żagań,STS Olimpia Sulęcin,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/887/,2026-11-07T13:10:22.559733+00:00
+second,2560370,06.02.2027,MLKS Volley Gubin,Gwardia Wrocław,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/888/,2026-11-07T13:10:23.551306+00:00
+second,2560371,06.02.2027,PGE Akademia Siatkówki Stilon,KPS Chełmiec ANS AS Wałbrzych,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",17:01,,False,https://sedziowie.pzps.pl/system/mecz/889/,2026-11-07T13:10:24.557946+00:00
+second,2560372,13.02.2027,KS AS Słubice,PGE Akademia Siatkówki Stilon,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:01,,False,https://sedziowie.pzps.pl/system/mecz/890/,2026-11-07T13:10:25.572643+00:00
+second,2560373,13.02.2027,KPS Chełmiec ANS AS Wałbrzych,MLKS Volley Gubin,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/891/,2026-11-07T13:10:26.580735+00:00
+second,2560374,13.02.2027,BS ŻAGAŃ WKS Sobieski Żagań,Gwardia Wrocław,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/892/,2026-11-07T13:10:27.559963+00:00
+second,2560375,13.02.2027,STS Olimpia Sulęcin,KS Bielawianka-Bester,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:01,,False,https://sedziowie.pzps.pl/system/mecz/893/,2026-11-07T13:10:28.550134+00:00
+second,2560376,13.02.2027,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,Ikar Legnica,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/894/,2026-11-07T13:10:29.589123+00:00
+second,2560377,13.02.2027,Astra Nowa Sól,BTS Willowa Bolesławiec,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/895/,2026-11-07T13:10:30.594786+00:00
+second,2560378,27.02.2027,Astra Nowa Sól,KS AS Słubice,,"ul. Zjednoczenia 21, 67-100 Nowa Sól",,False,"ul. Zjednoczenia 21, 67-100 Nowa Sól",17:01,,False,https://sedziowie.pzps.pl/system/mecz/896/,2026-11-07T13:10:31.552514+00:00
+second,2560379,27.02.2027,BTS Willowa Bolesławiec,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",,False,"ul. Jana Pawła II 38c, 59-700 Bolesławiec",17:01,,False,https://sedziowie.pzps.pl/system/mecz/897/,2026-11-07T13:10:32.557855+00:00
+second,2560380,27.02.2027,Ikar Legnica,STS Olimpia Sulęcin,Hala przy Zespole Szkół Integracyjnych,"ul. Wierzyńskiego 1, 59-200 Legnica",,False,"ul. Wierzyńskiego 1, 59-200 Legnica
+Hala przy Zespole Szkół Integracyjnych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/898/,2026-11-07T13:10:33.557379+00:00
+second,2560381,27.02.2027,KS Bielawianka-Bester,Gwardia Wrocław,SP 10,"ul. Grota-Roweckiego 6, 58-260 Bielawa",,False,"ul. Grota-Roweckiego 6, 58-260 Bielawa
+SP 10",17:01,,False,https://sedziowie.pzps.pl/system/mecz/899/,2026-11-07T13:10:34.549926+00:00
+second,2560382,27.02.2027,BS ŻAGAŃ WKS Sobieski Żagań,KPS Chełmiec ANS AS Wałbrzych,Arena Żagań,"ul. Kochanowskiego 6, 68-100 Żagań",,False,"ul. Kochanowskiego 6, 68-100 Żagań
+Arena Żagań",17:01,,False,https://sedziowie.pzps.pl/system/mecz/900/,2026-11-07T13:10:35.552672+00:00
+second,2560383,27.02.2027,MLKS Volley Gubin,PGE Akademia Siatkówki Stilon,SP 3,"ul. Kresowa 48, Gubin",,False,"ul. Kresowa 48, Gubin
+SP 3",17:01,,False,https://sedziowie.pzps.pl/system/mecz/901/,2026-11-07T13:10:36.560746+00:00
+second,2560384,06.03.2027,KS AS Słubice,MLKS Volley Gubin,,"ul. Wojska Polskiego 38, 69-100 Słubice",,False,"ul. Wojska Polskiego 38, 69-100 Słubice",17:01,,False,https://sedziowie.pzps.pl/system/mecz/902/,2026-11-07T13:10:37.572278+00:00
+second,2560385,06.03.2027,PGE Akademia Siatkówki Stilon,BS ŻAGAŃ WKS Sobieski Żagań,Centrum Edukacji Zawodowej i Biznesu,"ul. Warszawska 48, Gorzów Wielkopolski",,False,"ul. Warszawska 48, Gorzów Wielkopolski
+Centrum Edukacji Zawodowej i Biznesu",17:01,,False,https://sedziowie.pzps.pl/system/mecz/903/,2026-11-07T13:10:38.558253+00:00
+second,2560386,06.03.2027,KPS Chełmiec ANS AS Wałbrzych,KS Bielawianka-Bester,,"ul. Wysockiego 11a, Wałbrzych",,False,"ul. Wysockiego 11a, Wałbrzych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/904/,2026-11-07T13:10:39.550182+00:00
+second,2560387,06.03.2027,Gwardia Wrocław,Ikar Legnica,KGHM Ślęza Arena,"ul. Kłokoczycka 5, 51-376 Wrocław",,False,"ul. Kłokoczycka 5, 51-376 Wrocław
+KGHM Ślęza Arena",17:01,,False,https://sedziowie.pzps.pl/system/mecz/905/,2026-11-07T13:10:40.553982+00:00
+second,2560388,06.03.2027,STS Olimpia Sulęcin,BTS Willowa Bolesławiec,Hala sportowa 1 LO,69-200 Sulęcin ul. Emilii Plater 1,,False,"69-200 Sulęcin ul. Emilii Plater 1
+Hala sportowa 1 LO",17:01,,False,https://sedziowie.pzps.pl/system/mecz/906/,2026-11-07T13:10:41.556028+00:00
+second,2560389,06.03.2027,Instytut Mechaniki Rekord Volley Jelcz-Laskowice,Astra Nowa Sól,CSiR,"ul. Oławska 46, 55-220 Jelcz-Laskowice",,False,"ul. Oławska 46, 55-220 Jelcz-Laskowice
+CSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/907/,2026-11-07T13:10:42.554165+00:00
+second,2562004,03.10.2026,AZS Częstochowa,KS Norwid Politechnika Częstochowa,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/1991/,2026-11-07T13:10:43.559521+00:00
+second,2562003,03.10.2026,ProNutiva SKK Belsk Duży,SMS PZPS Spała II,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1992/,2026-11-07T13:10:44.558869+00:00
+second,2562002,03.10.2026,Bugaj Volley Radomsko,MKS Bzura Ozorków,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1993/,2026-11-07T13:10:45.567083+00:00
+second,2562001,03.10.2026,Volley Team Żychlin,Aluron CMC Wybicki Kielce,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:30,17:30,False,https://sedziowie.pzps.pl/system/mecz/1994/,2026-11-07T13:10:46.579484+00:00
+second,2562000,03.10.2026,WKS Wieluń,Boat.Systems Resursa Łódź,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1995/,2026-11-07T13:10:47.565615+00:00
+second,2561999,10.10.2026,KS Norwid Politechnika Częstochowa,Boat.Systems Resursa Łódź,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1996/,2026-11-07T13:10:48.572281+00:00
+second,2561998,10.10.2026,Aluron CMC Wybicki Kielce,WKS Wieluń,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1997/,2026-11-07T13:10:49.570734+00:00
+second,2561997,10.10.2026,MKS Bzura Ozorków,Volley Team Żychlin,,,Ozorków,False,Ozorków,17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1998/,2026-11-07T13:10:50.577051+00:00
+second,2562008,10.10.2026,SMS PZPS Spała II,Bugaj Volley Radomsko,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1999/,2026-11-07T13:10:51.559396+00:00
+second,2561996,10.10.2026,AZS Częstochowa,ProNutiva SKK Belsk Duży,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",14:00,14:00,False,https://sedziowie.pzps.pl/system/mecz/2000/,2026-11-07T13:10:52.575470+00:00
+second,2561995,16.10.2026,ProNutiva SKK Belsk Duży,KS Norwid Politechnika Częstochowa,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/2001/,2026-11-07T13:10:53.558329+00:00
+second,2561994,17.10.2026,Bugaj Volley Radomsko,AZS Częstochowa,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2002/,2026-11-07T13:10:54.562221+00:00
+second,2561993,17.10.2026,Volley Team Żychlin,SMS PZPS Spała II,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:30,17:30,False,https://sedziowie.pzps.pl/system/mecz/2003/,2026-11-07T13:10:55.552707+00:00
+second,2561992,17.10.2026,MKS Bzura Ozorków,WKS Wieluń,,,Ozorków,False,Ozorków,17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2004/,2026-11-07T13:10:56.566512+00:00
+second,2562007,17.10.2026,Boat.Systems Resursa Łódź,Aluron CMC Wybicki Kielce,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2005/,2026-11-07T13:10:57.564590+00:00
+second,2562006,23.10.2026,KS Norwid Politechnika Częstochowa,Aluron CMC Wybicki Kielce,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/2006/,2026-11-07T13:10:58.561459+00:00
+second,2561991,24.10.2026,MKS Bzura Ozorków,Boat.Systems Resursa Łódź,,,Ozorków,False,Ozorków,17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2007/,2026-11-07T13:10:59.559484+00:00
+second,2561990,24.10.2026,SMS PZPS Spała II,WKS Wieluń,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/2008/,2026-11-07T13:11:00.552877+00:00
+second,2561989,24.10.2026,AZS Częstochowa,Volley Team Żychlin,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/2009/,2026-11-07T13:11:01.573377+00:00
+second,2561988,24.10.2026,ProNutiva SKK Belsk Duży,Bugaj Volley Radomsko,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/2010/,2026-11-07T13:11:02.560199+00:00
+second,2562005,07.11.2026,Bugaj Volley Radomsko,KS Norwid Politechnika Częstochowa,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2011/,2026-11-07T13:11:03.566347+00:00
+second,2561987,07.11.2026,Volley Team Żychlin,ProNutiva SKK Belsk Duży,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2012/,2026-11-07T13:11:04.566411+00:00
+second,2562076,07.11.2026,WKS Wieluń,AZS Częstochowa,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/2013/,2026-11-07T13:11:05.575854+00:00
+second,2562075,18.10.2026,Boat.Systems Resursa Łódź,SMS PZPS Spała II,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2014/,2026-11-07T13:11:06.565202+00:00
+second,2562074,08.11.2026,Aluron CMC Wybicki Kielce,MKS Bzura Ozorków,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/2015/,2026-11-07T13:11:07.567545+00:00
+second,2562073,14.11.2026,KS Norwid Politechnika Częstochowa,MKS Bzura Ozorków,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2016/,2026-11-07T13:11:08.578514+00:00
+second,2562072,14.11.2026,SMS PZPS Spała II,Aluron CMC Wybicki Kielce,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2017/,2026-11-07T13:11:09.571646+00:00
+second,2562071,14.11.2026,AZS Częstochowa,Boat.Systems Resursa Łódź,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2018/,2026-11-07T13:11:10.562800+00:00
+second,2562070,14.11.2026,ProNutiva SKK Belsk Duży,WKS Wieluń,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2019/,2026-11-07T13:11:11.578275+00:00
+second,2562069,14.11.2026,Bugaj Volley Radomsko,Volley Team Żychlin,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/2020/,2026-11-07T13:11:12.582481+00:00
+second,2562068,21.11.2026,Volley Team Żychlin,KS Norwid Politechnika Częstochowa,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2021/,2026-11-07T13:11:13.560906+00:00
+second,2562067,21.11.2026,WKS Wieluń,Bugaj Volley Radomsko,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2022/,2026-11-07T13:11:14.579187+00:00
+second,2562066,21.11.2026,Boat.Systems Resursa Łódź,ProNutiva SKK Belsk Duży,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2023/,2026-11-07T13:11:15.569764+00:00
+second,2562065,21.11.2026,Aluron CMC Wybicki Kielce,AZS Częstochowa,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2024/,2026-11-07T13:11:16.565603+00:00
+second,2562064,21.11.2026,MKS Bzura Ozorków,SMS PZPS Spała II,,,Ozorków,False,Ozorków,17:01,,False,https://sedziowie.pzps.pl/system/mecz/2025/,2026-11-07T13:11:17.572958+00:00
+second,2562063,28.11.2026,KS Norwid Politechnika Częstochowa,SMS PZPS Spała II,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2026/,2026-11-07T13:11:18.567443+00:00
+second,2562062,28.11.2026,AZS Częstochowa,MKS Bzura Ozorków,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2027/,2026-11-07T13:11:19.565493+00:00
+second,2562061,28.11.2026,ProNutiva SKK Belsk Duży,Aluron CMC Wybicki Kielce,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2028/,2026-11-07T13:11:20.587582+00:00
+second,2562060,28.11.2026,Bugaj Volley Radomsko,Boat.Systems Resursa Łódź,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2029/,2026-11-07T13:11:21.561598+00:00
+second,2562059,28.11.2026,Volley Team Żychlin,WKS Wieluń,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2030/,2026-11-07T13:11:22.574934+00:00
+second,2562058,05.12.2026,WKS Wieluń,KS Norwid Politechnika Częstochowa,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2031/,2026-11-07T13:11:23.562167+00:00
+second,2562057,05.12.2026,Boat.Systems Resursa Łódź,Volley Team Żychlin,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2032/,2026-11-07T13:11:24.564912+00:00
+second,2562056,05.12.2026,Aluron CMC Wybicki Kielce,Bugaj Volley Radomsko,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2033/,2026-11-07T13:11:25.571875+00:00
+second,2562055,05.12.2026,MKS Bzura Ozorków,ProNutiva SKK Belsk Duży,,,Ozorków,False,Ozorków,17:01,,False,https://sedziowie.pzps.pl/system/mecz/2034/,2026-11-07T13:11:26.570755+00:00
+second,2562054,05.12.2026,SMS PZPS Spała II,AZS Częstochowa,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2035/,2026-11-07T13:11:27.585409+00:00
+second,2562053,12.12.2026,KS Norwid Politechnika Częstochowa,AZS Częstochowa,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2036/,2026-11-07T13:11:28.564136+00:00
+second,2562052,12.12.2026,SMS PZPS Spała II,ProNutiva SKK Belsk Duży,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2037/,2026-11-07T13:11:29.566610+00:00
+second,2562051,12.12.2026,MKS Bzura Ozorków,Bugaj Volley Radomsko,,,Ozorków,False,Ozorków,17:01,,False,https://sedziowie.pzps.pl/system/mecz/2038/,2026-11-07T13:11:30.585614+00:00
+second,2562050,12.12.2026,Aluron CMC Wybicki Kielce,Volley Team Żychlin,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2039/,2026-11-07T13:11:31.571048+00:00
+second,2562049,12.12.2026,Boat.Systems Resursa Łódź,WKS Wieluń,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2040/,2026-11-07T13:11:32.580160+00:00
+second,2562048,19.12.2026,Boat.Systems Resursa Łódź,KS Norwid Politechnika Częstochowa,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2041/,2026-11-07T13:11:33.566608+00:00
+second,2562047,19.12.2026,WKS Wieluń,Aluron CMC Wybicki Kielce,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2042/,2026-11-07T13:11:34.566934+00:00
+second,2562046,19.12.2026,Volley Team Żychlin,MKS Bzura Ozorków,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2043/,2026-11-07T13:11:35.575344+00:00
+second,2562045,19.12.2026,Bugaj Volley Radomsko,SMS PZPS Spała II,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2044/,2026-11-07T13:11:36.575244+00:00
+second,2562044,19.12.2026,ProNutiva SKK Belsk Duży,AZS Częstochowa,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2045/,2026-11-07T13:11:37.571925+00:00
+second,2562043,09.01.2027,KS Norwid Politechnika Częstochowa,ProNutiva SKK Belsk Duży,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2046/,2026-11-07T13:11:38.580856+00:00
+second,2562042,09.01.2027,AZS Częstochowa,Bugaj Volley Radomsko,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2047/,2026-11-07T13:11:39.576799+00:00
+second,2562041,09.01.2027,SMS PZPS Spała II,Volley Team Żychlin,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2048/,2026-11-07T13:11:40.571598+00:00
+second,2562040,09.01.2027,WKS Wieluń,MKS Bzura Ozorków,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2049/,2026-11-07T13:11:41.581985+00:00
+second,2562039,09.01.2027,Aluron CMC Wybicki Kielce,Boat.Systems Resursa Łódź,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2050/,2026-11-07T13:11:42.582842+00:00
+second,2562038,15.01.2027,Aluron CMC Wybicki Kielce,KS Norwid Politechnika Częstochowa,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/2051/,2026-11-07T13:11:43.580297+00:00
+second,2562037,16.01.2027,Boat.Systems Resursa Łódź,MKS Bzura Ozorków,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2052/,2026-11-07T13:11:44.578537+00:00
+second,2562036,16.01.2027,WKS Wieluń,SMS PZPS Spała II,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2053/,2026-11-07T13:11:45.568336+00:00
+second,2562035,16.01.2027,Volley Team Żychlin,AZS Częstochowa,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2054/,2026-11-07T13:11:46.580561+00:00
+second,2562034,16.01.2027,Bugaj Volley Radomsko,ProNutiva SKK Belsk Duży,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2055/,2026-11-07T13:11:47.573403+00:00
+second,2562033,30.01.2027,KS Norwid Politechnika Częstochowa,Bugaj Volley Radomsko,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2056/,2026-11-07T13:11:48.569178+00:00
+second,2562032,30.01.2027,ProNutiva SKK Belsk Duży,Volley Team Żychlin,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2057/,2026-11-07T13:11:49.600066+00:00
+second,2562031,30.01.2027,AZS Częstochowa,WKS Wieluń,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2058/,2026-11-07T13:11:50.572144+00:00
+second,2562030,30.01.2027,SMS PZPS Spała II,Boat.Systems Resursa Łódź,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2059/,2026-11-07T13:11:51.579898+00:00
+second,2562029,30.01.2027,MKS Bzura Ozorków,Aluron CMC Wybicki Kielce,,,Ozorków,False,Ozorków,17:01,,False,https://sedziowie.pzps.pl/system/mecz/2060/,2026-11-07T13:11:52.577144+00:00
+second,2562028,06.02.2027,MKS Bzura Ozorków,KS Norwid Politechnika Częstochowa,,,Ozorków,False,Ozorków,17:01,,False,https://sedziowie.pzps.pl/system/mecz/2061/,2026-11-07T13:11:53.572407+00:00
+second,2562027,06.02.2027,Aluron CMC Wybicki Kielce,SMS PZPS Spała II,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2062/,2026-11-07T13:11:54.579472+00:00
+second,2562026,06.02.2027,Boat.Systems Resursa Łódź,AZS Częstochowa,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2063/,2026-11-07T13:11:55.568924+00:00
+second,2562025,06.02.2027,WKS Wieluń,ProNutiva SKK Belsk Duży,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2064/,2026-11-07T13:11:56.582118+00:00
+second,2562024,06.02.2027,Volley Team Żychlin,Bugaj Volley Radomsko,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2065/,2026-11-07T13:11:57.573603+00:00
+second,2562023,13.02.2027,KS Norwid Politechnika Częstochowa,Volley Team Żychlin,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2066/,2026-11-07T13:11:58.593241+00:00
+second,2562022,13.02.2027,Bugaj Volley Radomsko,WKS Wieluń,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2067/,2026-11-07T13:11:59.586234+00:00
+second,2562021,13.02.2027,ProNutiva SKK Belsk Duży,Boat.Systems Resursa Łódź,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2068/,2026-11-07T13:12:00.576727+00:00
+second,2562020,13.02.2027,AZS Częstochowa,Aluron CMC Wybicki Kielce,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2069/,2026-11-07T13:12:01.621734+00:00
+second,2562019,13.02.2027,SMS PZPS Spała II,MKS Bzura Ozorków,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2070/,2026-11-07T13:12:02.581318+00:00
+second,2562018,27.02.2027,SMS PZPS Spała II,KS Norwid Politechnika Częstochowa,COS OPO Spała,"ul. Mościckiego 6, Spała",,False,"ul. Mościckiego 6, Spała
+COS OPO Spała",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2071/,2026-11-07T13:12:03.574381+00:00
+second,2562017,27.02.2027,MKS Bzura Ozorków,AZS Częstochowa,,,Ozorków,False,Ozorków,17:01,,False,https://sedziowie.pzps.pl/system/mecz/2072/,2026-11-07T13:12:04.575885+00:00
+second,2562016,27.02.2027,Aluron CMC Wybicki Kielce,ProNutiva SKK Belsk Duży,wjazd od ul. Kołłątaja,"ul. Jagiellońska 90, 25-734 Kielce",,False,"ul. Jagiellońska 90, 25-734 Kielce
+wjazd od ul. Kołłątaja",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2073/,2026-11-07T13:12:05.576041+00:00
+second,2562015,27.02.2027,Boat.Systems Resursa Łódź,Bugaj Volley Radomsko,Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II,"ul. Baczyńskiego 156, Łódź",,False,"ul. Baczyńskiego 156, Łódź
+Ośrodek Sportowy Zespołu Szkół Katolickich im. Jana Pawła II",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2074/,2026-11-07T13:12:06.590815+00:00
+second,2562014,27.02.2027,WKS Wieluń,Volley Team Żychlin,HALA WOSiR,"ul. Częstochowska 35, Wieluń",,False,"ul. Częstochowska 35, Wieluń
+HALA WOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2075/,2026-11-07T13:12:07.588929+00:00
+second,2562013,06.03.2027,KS Norwid Politechnika Częstochowa,WKS Wieluń,,"al. Armii Krajowej 23/25, 42-300 Częstochowa",,False,"al. Armii Krajowej 23/25, 42-300 Częstochowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2076/,2026-11-07T13:12:08.580587+00:00
+second,2562012,06.03.2027,Volley Team Żychlin,Boat.Systems Resursa Łódź,,"ul. Żeromskiego 8, 99-320 Żychlin",,False,"ul. Żeromskiego 8, 99-320 Żychlin",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2077/,2026-11-07T13:12:09.580248+00:00
+second,2562011,06.03.2027,Bugaj Volley Radomsko,Aluron CMC Wybicki Kielce,Miejska Hala Sportowa w Radomsku,"Radomsko, ul. Królowej Jadwigi 20",,False,"Radomsko, ul. Królowej Jadwigi 20
+Miejska Hala Sportowa w Radomsku",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2078/,2026-11-07T13:12:10.579939+00:00
+second,2562010,06.03.2027,ProNutiva SKK Belsk Duży,MKS Bzura Ozorków,GOSiR,"ul. Szkolna 3, Belsk Duży",,False,"ul. Szkolna 3, Belsk Duży
+GOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2079/,2026-11-07T13:12:11.578822+00:00
+second,2562009,06.03.2027,AZS Częstochowa,SMS PZPS Spała II,IV LO im. H. Sienkiewicza,"ul. Racławicka 31, 42-200 Częstochowa",,False,"ul. Racławicka 31, 42-200 Częstochowa
+IV LO im. H. Sienkiewicza",17:01,,False,https://sedziowie.pzps.pl/system/mecz/2080/,2026-11-07T13:12:12.589498+00:00
+second,2560500,26.09.2026,KS Hutnik Kraków,AKS V LO Rzeszów,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/1041/,2026-11-07T13:12:13.589763+00:00
+second,2560501,26.09.2026,MKS Andrychów,UMKS Kęczanin Kęty,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1042/,2026-11-07T13:12:14.581886+00:00
+second,2560502,26.09.2026,TS Volley Rybnik,AZS AGH Kraków,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1043/,2026-11-07T13:12:15.577396+00:00
+second,2560503,26.09.2026,TKS Tychy,Karpaty - PANS Krosno,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1044/,2026-11-07T13:12:16.587323+00:00
+second,2560504,27.09.2026,Volley Dąbrowa Górnicza,KS Jastrzębie-Borynia,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1045/,2026-11-07T13:12:17.581789+00:00
+second,2560505,03.10.2026,Karpaty - PANS Krosno,Volley Dąbrowa Górnicza,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1047/,2026-11-07T13:12:18.584814+00:00
+second,2560506,03.10.2026,AZS AGH Kraków,TKS Tychy,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",19:30,19:30,False,https://sedziowie.pzps.pl/system/mecz/1048/,2026-11-07T13:12:19.575963+00:00
+second,2560507,03.10.2026,UMKS Kęczanin Kęty,TS Volley Rybnik,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1049/,2026-11-07T13:12:20.600452+00:00
+second,2560508,03.10.2026,AKS V LO Rzeszów,MKS Andrychów,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1050/,2026-11-07T13:12:21.587059+00:00
+second,2560509,03.10.2026,Feniks Heron Przeworsk,KS Hutnik Kraków,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1051/,2026-11-07T13:12:22.588416+00:00
+second,2560510,10.10.2026,MKS Andrychów,Feniks Heron Przeworsk,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1053/,2026-11-07T13:12:23.589457+00:00
+second,2560511,10.10.2026,TS Volley Rybnik,AKS V LO Rzeszów,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1054/,2026-11-07T13:12:24.591082+00:00
+second,2560512,10.10.2026,TKS Tychy,UMKS Kęczanin Kęty,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1055/,2026-11-07T13:12:25.594966+00:00
+second,2560513,10.10.2026,Volley Dąbrowa Górnicza,AZS AGH Kraków,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/1056/,2026-11-07T13:12:26.604711+00:00
+second,2560514,11.11.2026,KS Jastrzębie-Borynia,Karpaty - PANS Krosno,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/1057/,2026-11-07T13:12:27.580053+00:00
+second,2560515,04.11.2026,AZS AGH Kraków,KS Jastrzębie-Borynia,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1059/,2026-11-07T13:12:28.591357+00:00
+second,2560516,14.10.2026,UMKS Kęczanin Kęty,Volley Dąbrowa Górnicza,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",20:00,20:00,False,https://sedziowie.pzps.pl/system/mecz/1060/,2026-11-07T13:12:29.596636+00:00
+second,2560517,14.10.2026,TKS Tychy,AKS V LO Rzeszów,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1061/,2026-11-07T13:12:30.598994+00:00
+second,2560518,14.10.2026,Feniks Heron Przeworsk,TS Volley Rybnik,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1062/,2026-11-07T13:12:31.585038+00:00
+second,2560519,14.10.2026,KS Hutnik Kraków,MKS Andrychów,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1063/,2026-11-07T13:12:32.597113+00:00
+second,2560520,17.10.2026,TS Volley Rybnik,KS Hutnik Kraków,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",14:00,14:00,False,https://sedziowie.pzps.pl/system/mecz/1065/,2026-11-07T13:12:33.582663+00:00
+second,2560521,17.10.2026,TKS Tychy,Feniks Heron Przeworsk,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1066/,2026-11-07T13:12:34.591273+00:00
+second,2560522,17.10.2026,Volley Dąbrowa Górnicza,AKS V LO Rzeszów,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1067/,2026-11-07T13:12:35.607620+00:00
+second,2560523,17.10.2026,KS Jastrzębie-Borynia,UMKS Kęczanin Kęty,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1068/,2026-11-07T13:12:36.591467+00:00
+second,2560524,17.10.2026,Karpaty - PANS Krosno,AZS AGH Kraków,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1069/,2026-11-07T13:12:37.581582+00:00
+second,2560525,24.10.2026,UMKS Kęczanin Kęty,Karpaty - PANS Krosno,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1071/,2026-11-07T13:12:38.592555+00:00
+second,2560526,02.10.2026,AKS V LO Rzeszów,KS Jastrzębie-Borynia,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",18:00,18:00,False,https://sedziowie.pzps.pl/system/mecz/1072/,2026-11-07T13:12:39.575393+00:00
+second,2560527,24.10.2026,Feniks Heron Przeworsk,Volley Dąbrowa Górnicza,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1073/,2026-11-07T13:12:40.574371+00:00
+second,2560528,24.10.2026,KS Hutnik Kraków,TKS Tychy,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/1074/,2026-11-07T13:12:41.592471+00:00
+second,2560529,29.10.2026,MKS Andrychów,TS Volley Rybnik,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1075/,2026-11-07T13:12:42.651526+00:00
+second,2560530,28.10.2026,TKS Tychy,MKS Andrychów,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1077/,2026-11-07T13:12:43.595180+00:00
+second,2560531,28.10.2026,Volley Dąbrowa Górnicza,KS Hutnik Kraków,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1078/,2026-11-07T13:12:44.592229+00:00
+second,2560532,08.11.2026,Feniks Heron Przeworsk,KS Jastrzębie-Borynia,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1079/,2026-11-07T13:12:45.578514+00:00
+second,2560533,28.10.2026,Karpaty - PANS Krosno,AKS V LO Rzeszów,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",19:00,19:00,False,https://sedziowie.pzps.pl/system/mecz/1080/,2026-11-07T13:12:46.591433+00:00
+second,2560534,28.10.2026,AZS AGH Kraków,UMKS Kęczanin Kęty,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",18:30,18:30,False,https://sedziowie.pzps.pl/system/mecz/1081/,2026-11-07T13:12:47.589617+00:00
+second,2560535,24.10.2026,AKS V LO Rzeszów,AZS AGH Kraków,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1083/,2026-11-07T13:12:48.594121+00:00
+second,2560536,07.11.2026,Feniks Heron Przeworsk,Karpaty - PANS Krosno,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1084/,2026-11-07T13:12:49.587099+00:00
+second,2560537,07.11.2026,KS Hutnik Kraków,KS Jastrzębie-Borynia,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",15:00,15:00,False,https://sedziowie.pzps.pl/system/mecz/1085/,2026-11-07T13:12:50.578919+00:00
+second,2560538,07.11.2026,MKS Andrychów,Volley Dąbrowa Górnicza,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",16:00,16:00,False,https://sedziowie.pzps.pl/system/mecz/1086/,2026-11-07T13:12:51.587533+00:00
+second,2560539,07.11.2026,TS Volley Rybnik,TKS Tychy,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1087/,2026-11-07T13:12:52.597920+00:00
+second,2560540,14.11.2026,Volley Dąbrowa Górnicza,TS Volley Rybnik,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1089/,2026-11-07T13:12:53.591939+00:00
+second,2560541,14.11.2026,KS Jastrzębie-Borynia,MKS Andrychów,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1090/,2026-11-07T13:12:54.593355+00:00
+second,2560542,14.11.2026,Karpaty - PANS Krosno,KS Hutnik Kraków,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1091/,2026-11-07T13:12:55.585750+00:00
+second,2560543,14.11.2026,AZS AGH Kraków,Feniks Heron Przeworsk,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1092/,2026-11-07T13:12:56.591590+00:00
+second,2560544,14.11.2026,UMKS Kęczanin Kęty,AKS V LO Rzeszów,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1093/,2026-11-07T13:12:57.601964+00:00
+second,2560545,21.11.2026,Feniks Heron Przeworsk,UMKS Kęczanin Kęty,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1095/,2026-11-07T13:12:58.602627+00:00
+second,2560546,21.11.2026,AZS AGH Kraków,KS Hutnik Kraków,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1096/,2026-11-07T13:12:59.600398+00:00
+second,2560547,21.11.2026,MKS Andrychów,Karpaty - PANS Krosno,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1097/,2026-11-07T13:13:00.602548+00:00
+second,2560548,21.11.2026,TS Volley Rybnik,KS Jastrzębie-Borynia,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1098/,2026-11-07T13:13:01.604369+00:00
+second,2560549,21.11.2026,TKS Tychy,Volley Dąbrowa Górnicza,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1099/,2026-11-07T13:13:02.590363+00:00
+second,2560550,25.11.2026,KS Jastrzębie-Borynia,TKS Tychy,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1101/,2026-11-07T13:13:03.592040+00:00
+second,2560551,25.11.2026,Karpaty - PANS Krosno,TS Volley Rybnik,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1102/,2026-11-07T13:13:04.612890+00:00
+second,2560552,25.11.2026,AZS AGH Kraków,MKS Andrychów,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1103/,2026-11-07T13:13:05.597522+00:00
+second,2560553,25.11.2026,UMKS Kęczanin Kęty,KS Hutnik Kraków,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1104/,2026-11-07T13:13:06.595218+00:00
+second,2560554,25.11.2026,AKS V LO Rzeszów,Feniks Heron Przeworsk,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1105/,2026-11-07T13:13:07.598286+00:00
+second,2560555,28.11.2026,AKS V LO Rzeszów,KS Hutnik Kraków,,,,,,17:01,,False,https://sedziowie.pzps.pl/system/mecz/1107/,2026-11-07T13:13:08.595685+00:00
+second,2560556,28.11.2026,UMKS Kęczanin Kęty,MKS Andrychów,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1108/,2026-11-07T13:13:09.592988+00:00
+second,2560557,28.11.2026,AZS AGH Kraków,TS Volley Rybnik,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1109/,2026-11-07T13:13:10.611885+00:00
+second,2560558,28.11.2026,Karpaty - PANS Krosno,TKS Tychy,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1110/,2026-11-07T13:13:11.589998+00:00
+second,2560559,28.11.2026,KS Jastrzębie-Borynia,Volley Dąbrowa Górnicza,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1111/,2026-11-07T13:13:12.597220+00:00
+second,2560560,05.12.2026,Volley Dąbrowa Górnicza,Karpaty - PANS Krosno,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1113/,2026-11-07T13:13:13.593157+00:00
+second,2560561,05.12.2026,TKS Tychy,AZS AGH Kraków,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1114/,2026-11-07T13:13:14.608744+00:00
+second,2560562,05.12.2026,TS Volley Rybnik,UMKS Kęczanin Kęty,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1115/,2026-11-07T13:13:15.587633+00:00
+second,2560563,05.12.2026,MKS Andrychów,AKS V LO Rzeszów,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1116/,2026-11-07T13:13:16.604013+00:00
+second,2560564,05.12.2026,KS Hutnik Kraków,Feniks Heron Przeworsk,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1117/,2026-11-07T13:13:17.584856+00:00
+second,2560565,12.12.2026,Feniks Heron Przeworsk,MKS Andrychów,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1119/,2026-11-07T13:13:18.610256+00:00
+second,2560566,12.12.2026,AKS V LO Rzeszów,TS Volley Rybnik,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1120/,2026-11-07T13:13:19.602154+00:00
+second,2560567,12.12.2026,UMKS Kęczanin Kęty,TKS Tychy,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1121/,2026-11-07T13:13:20.599429+00:00
+second,2560568,12.12.2026,AZS AGH Kraków,Volley Dąbrowa Górnicza,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1122/,2026-11-07T13:13:21.624711+00:00
+second,2560569,12.12.2026,Karpaty - PANS Krosno,KS Jastrzębie-Borynia,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1123/,2026-11-07T13:13:22.594153+00:00
+second,2560570,19.12.2026,KS Jastrzębie-Borynia,AZS AGH Kraków,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1125/,2026-11-07T13:13:23.612275+00:00
+second,2560571,19.12.2026,Volley Dąbrowa Górnicza,UMKS Kęczanin Kęty,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1126/,2026-11-07T13:13:24.622460+00:00
+second,2560572,19.12.2026,AKS V LO Rzeszów,TKS Tychy,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1127/,2026-11-07T13:13:25.598761+00:00
+second,2560573,19.12.2026,TS Volley Rybnik,Feniks Heron Przeworsk,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1128/,2026-11-07T13:13:26.596790+00:00
+second,2560574,19.12.2026,MKS Andrychów,KS Hutnik Kraków,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1129/,2026-11-07T13:13:27.596673+00:00
+second,2560575,09.01.2027,KS Hutnik Kraków,TS Volley Rybnik,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1131/,2026-11-07T13:13:28.599857+00:00
+second,2560576,09.01.2027,Feniks Heron Przeworsk,TKS Tychy,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1132/,2026-11-07T13:13:29.605362+00:00
+second,2560577,09.01.2027,AKS V LO Rzeszów,Volley Dąbrowa Górnicza,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1133/,2026-11-07T13:13:30.595694+00:00
+second,2560578,09.01.2027,UMKS Kęczanin Kęty,KS Jastrzębie-Borynia,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1134/,2026-11-07T13:13:31.599067+00:00
+second,2560579,09.01.2027,AZS AGH Kraków,Karpaty - PANS Krosno,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1135/,2026-11-07T13:13:32.605473+00:00
+second,2560580,16.01.2027,Karpaty - PANS Krosno,UMKS Kęczanin Kęty,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1137/,2026-11-07T13:13:33.599119+00:00
+second,2560581,16.01.2027,KS Jastrzębie-Borynia,AKS V LO Rzeszów,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1138/,2026-11-07T13:13:34.605306+00:00
+second,2560582,16.01.2027,Volley Dąbrowa Górnicza,Feniks Heron Przeworsk,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1139/,2026-11-07T13:13:35.649026+00:00
+second,2560583,16.01.2027,TKS Tychy,KS Hutnik Kraków,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1140/,2026-11-07T13:13:36.592430+00:00
+second,2560584,16.01.2027,TS Volley Rybnik,MKS Andrychów,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1141/,2026-11-07T13:13:37.601969+00:00
+second,2560585,30.01.2027,MKS Andrychów,TKS Tychy,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1143/,2026-11-07T13:13:38.593726+00:00
+second,2560586,30.01.2027,KS Hutnik Kraków,Volley Dąbrowa Górnicza,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1144/,2026-11-07T13:13:39.615619+00:00
+second,2560587,30.01.2027,KS Jastrzębie-Borynia,Feniks Heron Przeworsk,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1145/,2026-11-07T13:13:40.606048+00:00
+second,2560588,30.01.2027,AKS V LO Rzeszów,Karpaty - PANS Krosno,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1146/,2026-11-07T13:13:41.596825+00:00
+second,2560589,30.01.2027,UMKS Kęczanin Kęty,AZS AGH Kraków,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1147/,2026-11-07T13:13:42.597291+00:00
+second,2560590,06.02.2027,AZS AGH Kraków,AKS V LO Rzeszów,Hala Sportowa,"ul. Armii Krajowej 5A, 30-150 Kraków",,False,"ul. Armii Krajowej 5A, 30-150 Kraków
+Hala Sportowa",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1149/,2026-11-07T13:13:43.614754+00:00
+second,2560591,06.02.2027,Karpaty - PANS Krosno,Feniks Heron Przeworsk,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1150/,2026-11-07T13:13:44.593235+00:00
+second,2560592,06.02.2027,KS Jastrzębie-Borynia,KS Hutnik Kraków,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1151/,2026-11-07T13:13:45.607175+00:00
+second,2560593,06.02.2027,Volley Dąbrowa Górnicza,MKS Andrychów,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1152/,2026-11-07T13:13:46.606956+00:00
+second,2560594,06.02.2027,TKS Tychy,TS Volley Rybnik,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1153/,2026-11-07T13:13:47.602753+00:00
+second,2560595,13.02.2027,TS Volley Rybnik,Volley Dąbrowa Górnicza,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1155/,2026-11-07T13:13:48.605575+00:00
+second,2560596,13.02.2027,MKS Andrychów,KS Jastrzębie-Borynia,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1156/,2026-11-07T13:13:49.608247+00:00
+second,2560597,13.02.2027,KS Hutnik Kraków,Karpaty - PANS Krosno,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1157/,2026-11-07T13:13:50.615046+00:00
+second,2560598,13.02.2027,Feniks Heron Przeworsk,AZS AGH Kraków,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1158/,2026-11-07T13:13:51.597576+00:00
+second,2560599,13.02.2027,AKS V LO Rzeszów,UMKS Kęczanin Kęty,Zespół Szkół Sportowych,"ul. Hetmańska 38, Rzeszów",,False,"ul. Hetmańska 38, Rzeszów
+Zespół Szkół Sportowych",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1159/,2026-11-07T13:13:52.602009+00:00
+second,2560600,27.02.2027,UMKS Kęczanin Kęty,Feniks Heron Przeworsk,hala OSiR,"Osiedle nad Sołą 30, Kęty",,False,"Osiedle nad Sołą 30, Kęty
+hala OSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1161/,2026-11-07T13:13:53.604397+00:00
+second,2560601,27.02.2027,KS Hutnik Kraków,AZS AGH Kraków,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1162/,2026-11-07T13:13:54.606733+00:00
+second,2560602,27.02.2027,Karpaty - PANS Krosno,MKS Andrychów,Hala Mosir,"ul. Bursaki 29, 38-400 Krosno",,False,"ul. Bursaki 29, 38-400 Krosno
+Hala Mosir",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1163/,2026-11-07T13:13:55.592194+00:00
+second,2560603,27.02.2027,KS Jastrzębie-Borynia,TS Volley Rybnik,,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",,False,"ul. Mikołaja Reja 10, 44-268 Jastrzębie-Zdrój",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1164/,2026-11-07T13:13:56.603689+00:00
+second,2560604,27.02.2027,Volley Dąbrowa Górnicza,TKS Tychy,"Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego","Aleja Róż 3, Dąbrowa Górnicza",,False,"Aleja Róż 3, Dąbrowa Górnicza
+Hala Widowiskowo Sportowa ""Centrum"" im. Zygmunta Cybulskiego",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1165/,2026-11-07T13:13:57.602898+00:00
+second,2560605,06.03.2027,TKS Tychy,KS Jastrzębie-Borynia,hala MOSiR,"Tychy, al. Piłsudskiego 20",,False,"Tychy, al. Piłsudskiego 20
+hala MOSiR",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1167/,2026-11-07T13:13:58.611287+00:00
+second,2560606,06.03.2027,TS Volley Rybnik,Karpaty - PANS Krosno,"hala SP 10, Rybnik ul. Grunwaldzka 18","ul. Grunwaldzka 18, Rybnik",,False,"ul. Grunwaldzka 18, Rybnik
+hala SP 10, Rybnik ul. Grunwaldzka 18",17:00,17:00,False,https://sedziowie.pzps.pl/system/mecz/1168/,2026-11-07T13:13:59.604342+00:00
+second,2560607,06.03.2027,MKS Andrychów,AZS AGH Kraków,,"ul. Pachla 16, Andrychów",,False,"ul. Pachla 16, Andrychów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1169/,2026-11-07T13:14:00.601927+00:00
+second,2560608,06.03.2027,KS Hutnik Kraków,UMKS Kęczanin Kęty,Hala Piastów,"os. Piastów 34a, 31-624 Kraków",,False,"os. Piastów 34a, 31-624 Kraków
+Hala Piastów",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1170/,2026-11-07T13:14:01.618570+00:00
+second,2560609,06.03.2027,Feniks Heron Przeworsk,AKS V LO Rzeszów,,"ul. Misiągiewicza 10, 37-200 Przeworsk",,False,"ul. Misiągiewicza 10, 37-200 Przeworsk",17:01,,False,https://sedziowie.pzps.pl/system/mecz/1171/,2026-11-07T13:14:02.611052+00:00
+third,2579669,07.11.2026,GKS Stoczniowiec Gdańsk,KATS Alpat Gdynia,ZSE,Reja 25,Gdańsk,False,"Gdańsk, Reja 25 ZSE",18:00,12:00,True,https://pwzps.arbitergo.pl/delegation/List.jsf,2026-11-07T13:06:25.874329+00:00
+third,2579668,07.11.2026,UKS Olimpijczyk Pruszcz Gd.,PTPS TELMAX Człuchów,ZSO nr 1,Niemcewicza 1,Pruszcz Gdański,False,"Pruszcz Gdański, Niemcewicza 1 ZSO nr 1",18:00,14:00,True,https://pwzps.arbitergo.pl/delegation/List.jsf,2026-11-07T13:06:25.874329+00:00
+third,2579667,08.11.2026,Trefl Gdańsk,LSZ Gniewkowo,GOS,Kołobrzeska 61,Gdańsk,False,"Gdańsk, Kołobrzeska 61 GOS",18:00,15:00,True,https://pwzps.arbitergo.pl/delegation/List.jsf,2026-11-07T13:06:25.874329+00:00

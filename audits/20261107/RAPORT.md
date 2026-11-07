@@ -23,6 +23,15 @@ Linki są potwierdzone na stronie ligi; nie testowano odtwarzania na YouTube.
 | 07.11.2026, 17:00 | Volley Team Żychlin – ProNutiva SKK Belsk Duży | [YouTube](https://www.youtube.com/watch?v=nDOImTNf7_o) |
 | 07.11.2026, 18:00 | Instytut Mechaniki Rekord Volley Jelcz-Laskowice – KS Bielawianka-Bester | [YouTube](https://www.youtube.com/watch?v=38BPqJpf0HU) |
 
+## Dodatkowy test hal i porównanie godzin
+
+[Pełny test lokalizacji z PZPS i PWZPS](venues/RAPORT.md) objął wszystkie 532
+strony II ligi: 531 lokalizacji, w tym 355 nazw hal z adresem; część wpisów jest
+niepełna lub wymienia alternatywną halę. Dla Pomorskiej III ligi potwierdzono
+trzy bieżące lokalizacje z publicznych obsad. Dane są w osobnym katalogu testowym.
+Test ujawnił też cztery różnice godzin względem drugiego oficjalnego źródła,
+więc zgodność z VolleyStation nie oznacza zgodności godzin między wszystkimi źródłami.
+
 ## Dodatkowa kontrola transmisji bez znacznika TV
 
 Po pytaniu o kompletność sprawdzono **wszystkie 24 strony meczów II ligi
