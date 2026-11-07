@@ -8,6 +8,7 @@ from urllib.parse import urlparse
 
 from scripts import update_pomorska3liga as source
 
+from .schema import card_metadata, name_key, normalize, team_metadata
 from .storage import now
 
 
@@ -16,12 +17,13 @@ class InvalidFeed(ValueError):
 
 
 def fixture_key(match):
-    return match["round"], match["match_number"]
+    return str(match["round"]), str(match["match_number"])
 
 
 def detail_identity(match):
-    return tuple(
-        match.get(k) for k in ("id", "date", "home", "away", "home_sets", "away_sets")
+    return (
+        *fixture_key(match),
+        *(match.get(k) for k in ("date", "home", "away", "home_sets", "away_sets")),
     )
 
 
@@ -53,6 +55,30 @@ def completed_sets(match):
             raise InvalidFeed("Set rozegrany po zakończeniu meczu")
     if wins != [home, away]:
         raise InvalidFeed("Punkty setów nie zgadzają się z wynikiem meczu")
+    return pairs
+
+
+def live_sets(match):
+    home, away = match.get("home_sets"), match.get("away_sets")
+    if (
+        type(home) is not int
+        or type(away) is not int
+        or not 0 <= home < 3
+        or not 0 <= away < 3
+    ):
+        raise InvalidFeed("Nieprawidłowy wynik trwającego meczu")
+    pairs = []
+    wins = [0, 0]
+    for index, value in enumerate(match.get("set_scores", [])):
+        a, b = map(int, value.split(":"))
+        hi, lo = max(a, b), min(a, b)
+        target = 15 if index == 4 else 25
+        if not (hi >= target and hi - lo >= 2 and (hi == target or hi - lo == 2)):
+            raise InvalidFeed("Niepełny set nie może być zapisany jako zakończony")
+        pairs.append((a, b))
+        wins[int(b > a)] += 1
+    if wins != [home, away]:
+        raise InvalidFeed("Sety nie odpowiadają wynikowi LIVE")
     return pairs
 
 
@@ -101,23 +127,32 @@ def standings_discrepancies(matches, table):
     }
 
 
-def validate_feed(data, previous=None):
-    if (
-        data.get("league") != "pomorska3liga"
-        or data.get("source") != source.SCHEDULE_URL
-    ):
+def validate_feed(
+    data,
+    previous=None,
+    *,
+    expected_teams=9,
+    min_matches=60,
+    expected_source=source.SCHEDULE_URL,
+    expected_league="pomorska3liga",
+):
+    if data.get("league") != expected_league or data.get("source") != expected_source:
         raise InvalidFeed("Inna liga lub faza rozgrywek")
     matches, teams, table = (
         data.get("matches", []),
         data.get("teams", []),
         data.get("table", []),
     )
-    if len(matches) < 60 or len(teams) != 9 or len(table) != 9:
+    if (
+        len(matches) < min_matches
+        or len(teams) != expected_teams
+        or len(table) != expected_teams
+    ):
         raise InvalidFeed("Niekompletna liczba meczów, drużyn lub wierszy tabeli")
     names = {t["name"] for t in teams}
-    if len(names) != 9 or {row["team"] for row in table} != names:
+    if len(names) != expected_teams or {row["team"] for row in table} != names:
         raise InvalidFeed("Tabela nie odpowiada drużynom")
-    if sorted(row["rank"] for row in table) != list(range(1, 10)):
+    if sorted(row["rank"] for row in table) != list(range(1, expected_teams + 1)):
         raise InvalidFeed("Nieprawidłowe miejsca w tabeli")
     if any(urlparse(t.get("logo", "")).scheme not in ("http", "https") for t in teams):
         raise InvalidFeed("Brak logotypu drużyny")
@@ -139,10 +174,12 @@ def validate_feed(data, previous=None):
             raise InvalidFeed("Nieprawidłowe drużyny meczu")
         if match["status"] == "finished":
             completed_sets(match)
+        elif match["status"] == "live":
+            live_sets(match)
         elif match["status"] != "scheduled":
             raise InvalidFeed("Nieobsługiwany status meczu")
     if previous:
-        if previous.get("source") != source.SCHEDULE_URL:
+        if previous.get("source") != expected_source:
             raise InvalidFeed("Cache pochodzi z innej fazy rozgrywek")
         old_keys = {fixture_key(m) for m in previous.get("matches", [])}
         if not old_keys.issubset(keys):
@@ -167,16 +204,67 @@ def validate_feed(data, previous=None):
 
 
 def build_feed(
-    fetch, previous=None, refresh_details=False, detail_cache=None, on_detail=None
+    fetch,
+    previous=None,
+    refresh_details=False,
+    detail_cache=None,
+    on_detail=None,
+    config=None,
+    supplemental=None,
+    known_teams=None,
 ):
+    cfg = {
+        "base": source.BASE,
+        "competition": "Pomorska III Liga Męska",
+        "league": "pomorska3liga",
+        "expected_teams": 9,
+        "min_matches": 60,
+        "phase": "Pomorska III Liga Męska",
+        **(config or {}),
+    }
+    schedule_url = cfg["base"] + "/schedule/"
+    results_url = cfg["base"] + "/results/"
+    standings_url = cfg["base"] + "/standings/"
     previous = previous or {}
-    if previous and previous.get("source") != source.SCHEDULE_URL:
+    if previous and previous.get("source") != schedule_url:
         raise InvalidFeed("Cache pochodzi z innej fazy rozgrywek")
-    schedule = source.parse_matches(fetch(source.SCHEDULE_URL), source.SCHEDULE_URL)
-    results = source.parse_matches(fetch(source.RESULTS_URL), source.RESULTS_URL)
-    standings_soup = fetch(source.STANDINGS_URL)
-    table = source.parse_table(standings_soup)
-    if len(table) != 9:
+    schedule_soup = fetch(schedule_url)
+    results_soup = fetch(results_url)
+    schedule = source.parse_matches(schedule_soup, schedule_url)
+    results = source.parse_matches(results_soup, results_url)
+    observed_teams = {
+        **(known_teams or {}),
+        **team_metadata(schedule_soup, schedule_url),
+        **team_metadata(results_soup, results_url),
+    }
+    if known_teams is None:
+        previous_teams = {
+            name_key(t["name"]): t
+            for t in previous.get("teams", [])
+            if t.get("id") and t.get("id_source")
+        }
+        if len(previous_teams) == cfg["expected_teams"]:
+            official_teams = previous_teams
+        else:
+            official_teams = team_metadata(
+                fetch(cfg["base"] + "/teams/"), cfg["base"] + "/teams/"
+            )
+    else:
+        official_teams = known_teams
+    for key, known in official_teams.items():
+        observed_teams.setdefault(key, dict(known))
+        observed_teams[key].update(
+            id=known.get("id"),
+            id_source=known.get("id_source"),
+            badge_id=known.get("badge_id"),
+        )
+    observed_cards = {
+        **card_metadata(schedule_soup, schedule_url),
+        **card_metadata(results_soup, results_url),
+    }
+    standings_soup = fetch(standings_url)
+    table = source.parse_table(standings_soup, expected_teams=cfg["expected_teams"])
+    if len(table) != cfg["expected_teams"]:
         raise InvalidFeed("Niekompletna tabela źródłowa")
     by_key = {fixture_key(m): m for m in schedule}
     if len(by_key) != len(schedule) or len({fixture_key(m) for m in results}) != len(
@@ -192,6 +280,24 @@ def build_feed(
             result["time"] = fixture["time"]
         by_key[fixture_key(result)] = result
     matches = list(by_key.values())
+    for match in matches:
+        extra = (supplemental or {}).get(
+            (match["date"], name_key(match["home"]), name_key(match["away"])), {}
+        )
+        if not match.get("time") and extra.get("time"):
+            match["time"] = extra["time"]
+            match["time_source"] = extra.get("time_source")
+        if match["status"] == "finished" and (
+            extra.get("home_sets"),
+            extra.get("away_sets"),
+        ) == (match["home_sets"], match["away_sets"]):
+            try:
+                completed_sets(extra)
+                match["set_scores"] = list(extra["set_scores"])
+                match["set_scores_source"] = extra.get("set_scores_source")
+                match["details_checked_at"] = extra.get("details_checked_at")
+            except (InvalidFeed, ValueError, TypeError):
+                pass
     cached = {
         detail_identity(m): m
         for m in previous.get("matches", [])
@@ -212,20 +318,50 @@ def build_feed(
         detail_requests += 1
         values = source.parse_match_detail(fetch(match["match_url"]))
         match["set_scores"] = values["set_scores"]
+        match["current_points"] = values.get("current_points")
+        if (
+            match["status"] in ("live", "scheduled")
+            and "home_sets" in values
+            and "away_sets" in values
+        ):
+            match["home_sets"] = values["home_sets"]
+            match["away_sets"] = values["away_sets"]
+            if max(values["home_sets"], values["away_sets"]) == 3:
+                match["status"] = "finished"
+            elif values["home_sets"] + values["away_sets"] or values.get(
+                "current_points"
+            ) not in (None, "0:0"):
+                match["status"] = "live"
         if not match.get("time"):
             match["time"] = values["time"]
-        completed_sets(match)
-        if on_detail:
+            match["time_source"] = match["match_url"]
+        if match["status"] == "live":
+            live_sets(match)
+        elif match["status"] == "finished":
+            completed_sets(match)
+        match["details_checked_at"] = now()
+        match["set_scores_source"] = match["match_url"]
+        if on_detail and match["status"] == "finished":
             on_detail(copy.deepcopy(match))
 
     for match in matches:
+        if match["status"] == "live" or (
+            match["status"] == "scheduled" and not match.get("time")
+        ):
+            detail(match)
+            continue
         if match["status"] != "finished":
+            continue
+        if match.get("set_scores") and match.get("time") and not refresh_details:
+            completed_sets(match)
+            reused.append(match)
             continue
         old = cached.get(detail_identity(match))
         if old and not refresh_details:
             try:
                 completed_sets(old)
                 match["set_scores"] = copy.deepcopy(old["set_scores"])
+                match["details_checked_at"] = old.get("details_checked_at")
                 if not match.get("time"):
                     match["time"] = old.get("time")
                 if re.fullmatch(r"(?:[01]\d|2[0-3]):[0-5]\d", match.get("time") or ""):
@@ -247,11 +383,10 @@ def build_feed(
         for t in previous.get("teams", [])
         if t.get("name") and t.get("logo")
     }
+    known.update({t["name"]: t["logo"] for t in observed_teams.values()})
     logos = source.parse_team_logos(
-        standings_soup, source.STANDINGS_URL, known_logos=known, fetch_page=fetch
+        standings_soup, standings_url, known_logos=known, fetch_page=fetch
     )
-    for match in matches:
-        match.pop("match_url", None)
     matches.sort(
         key=lambda m: (
             datetime.strptime(m["date"], "%d.%m.%Y"),
@@ -262,20 +397,37 @@ def build_feed(
     )
     names = sorted({m[k] for m in matches for k in ("home", "away")}, key=str.casefold)
     data = {
-        "league": "pomorska3liga",
-        "competition": "Pomorska III Liga Męska",
-        "source": source.SCHEDULE_URL,
-        "results_source": source.RESULTS_URL,
-        "standings_source": source.STANDINGS_URL,
+        "league": cfg["league"],
+        "competition": cfg["competition"],
+        "phase": cfg["phase"],
+        "source": schedule_url,
+        "results_source": results_url,
+        "standings_source": standings_url,
         "updated_at": now(),
         "teams": [{"name": name, "logo": logos.get(name, "")} for name in names],
         "matches": matches,
         "table": table,
     }
-    metrics = validate_feed(data, previous)
+    normalize(data, observed_teams, observed_cards)
+    metrics = validate_feed(
+        data,
+        previous,
+        expected_teams=cfg["expected_teams"],
+        min_matches=cfg["min_matches"],
+        expected_source=schedule_url,
+        expected_league=cfg["league"],
+    )
     metrics.update(
         reused_details=len(reused),
         refetched_cached_details=repaired,
         detail_requests=detail_requests,
     )
     return data, metrics
+
+
+def validate_output(data, previous=None):
+    if data.get("league") == "second":
+        from .second import validate_second
+
+        return validate_second(data, previous)
+    return validate_feed(data, previous)

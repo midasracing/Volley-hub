@@ -1,6 +1,6 @@
 # Lokalny scraper VolleyStation — bez płatnych usług
 
-Pomorska III Liga Męska, faza `6796`, sezon 2026/2027. Pierwszy silnik to
+Pomorska III Liga Męska oraz wszystkie pięć grup II ligi, sezon 2026/2027. Pierwszy silnik to
 SeleniumBase UC + CDP; po niepowodzeniu całej aktualizacji uruchamia się Camoufox.
 Oba działają na własnym komputerze. Nie potrzeba kont API ani płatnych proxy.
 
@@ -35,6 +35,21 @@ Jedna aktualizacja repozytoryjnego pliku `data/pomorska3liga.json`:
 ```bash
 python -m local_scraper
 ```
+
+Wszystkie grupy II ligi, z terminarzami i wynikami VolleyStation oraz dokładnie
+dopasowanym uzupełnieniem z PZPS:
+
+```bash
+python -m local_scraper --league second
+python -m local_scraper --league second --watch --public-output public/data/2liga.json
+```
+
+II liga zapisuje `data/2liga.json`; domyślna Pomorska — `data/pomorska3liga.json`.
+Obie ligi zwracają format pól odpowiadający TAURON Lidze i TAURON 1. Lidze:
+daty ISO, ID meczów i profili drużyn, logotypy w meczach, punkty setów jako obiekty,
+sumy punktów i statusy `scheduled`/`live`/`finished`. Hala i numer terminu są `null`,
+jeśli źródło ich nie potwierdza. Kanały transmisji nie są zgadywane na podstawie
+ukrytego znacznika TV. [Raport audytu zgodności](../audits/20261107/RAPORT.md).
 
 Praca ciągła, z 15 minutami przerwy po zakończeniu każdej aktualizacji, oraz
 automatyczna kopia dla lokalnej aplikacji Vite:
@@ -86,7 +101,8 @@ Może to potrwać kilka minut i nadal może zostać zablokowane.
    tego samego feedu. Procesy przeglądarki są zamykane także po timeout i `Ctrl+C`.
 
 Każdy kandydat jest sprawdzany w procesie silnika i ponownie przed zapisem:
-minimum 60 meczów, dokładnie 9 drużyn i wierszy tabeli, logotypy, godziny,
+Pomorska wymaga minimum 60 meczów oraz 9 drużyn i wierszy tabeli; II liga
+kompletnych pięciu grup i 532 spotkań sezonu zasadniczego. Sprawdzane są logotypy, godziny,
 unikalność meczów, pełne legalne sety, zgodność wyników i punktów z tabelą.
 Poprzednio znane mecze i zakończone wyniki nie mogą po cichu zniknąć.
 Oficjalne wycofanie meczu lub zmiana fazy wymaga świadomej aktualizacji konfiguracji/cache.
@@ -153,4 +169,6 @@ i zamknięcie procesu potomnego. [Wynik prób rzeczywistych](WERYFIKACJA.md).
 To rozwiązanie zwiększa odporność, ale nie zapewnia nieprzerwanie świeżych danych
 przy blokadzie całego IP. Cache podtrzymuje dostępność ostatnich poprawnych danych;
 ich rzeczywisty wiek pozostaje widoczny w stanie i przez `updated_at` w aplikacji.
-Źródło nie jest tu parsowane punkt po punkcie podczas LIVE.
+Wynik trwającego meczu jest odczytywany ze szczegółów podczas cyklu aktualizacji;
+nie jest przechowywany w cache wyników zakończonych. Nie oznacza to stałego strumienia
+punkt po punkcie — kolejne odczyty zależą od wybranego harmonogramu.

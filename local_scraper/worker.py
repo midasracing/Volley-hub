@@ -11,6 +11,9 @@ from .storage import atomic_json, now, read_json, safe_error
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--engine", choices=("seleniumbase", "camoufox"), required=True)
+    p.add_argument(
+        "--league", choices=("pomorska3liga", "second"), default="pomorska3liga"
+    )
     p.add_argument("--previous", type=Path, required=True)
     p.add_argument("--candidate", type=Path, required=True)
     p.add_argument("--report", type=Path, required=True)
@@ -37,6 +40,14 @@ def main():
     session = Session(browser, record, budget=args.document_budget)
     try:
         previous = read_json(args.previous, {})
+        if args.league == "second":
+            from .second import VOLLEYSTATION_TEAMS_URL, build_second
+
+            builder = build_second
+            cache_source = VOLLEYSTATION_TEAMS_URL
+        else:
+            builder = build_feed
+            cache_source = source.SCHEDULE_URL
         cache_path = args.events.parent / "details-cache.json"
         try:
             cache = read_json(cache_path, {})
@@ -45,7 +56,7 @@ def main():
             cache = {}
         cached_matches = (
             cache.get("matches", [])
-            if isinstance(cache, dict) and cache.get("source") == source.SCHEDULE_URL
+            if isinstance(cache, dict) and cache.get("source") == cache_source
             else []
         )
         saved = {detail_identity(m): m for m in cached_matches}
@@ -55,11 +66,11 @@ def main():
             saved[detail_identity(match)] = match
             atomic_json(
                 cache_path,
-                {"source": source.SCHEDULE_URL, "matches": list(saved.values())[-200:]},
+                {"source": cache_source, "matches": list(saved.values())[-600:]},
             )
 
         browser.start()
-        data, metrics = build_feed(
+        data, metrics = builder(
             session.fetch,
             previous,
             args.refresh_details,

@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-11-07T12:13:36.242946+00:00",
+  "second": {
+    "updated_at": "2026-11-07T11:58:08.898335+00:00",
+    "groups": [
+      {
+        "group": "Grupa 1",
+        "matches": 90,
+        "teams": 10,
+        "logos": 10,
+        "finished": 21,
+        "scheduled": 69,
+        "live": 0,
+        "finished_with_full_set_scores": 21,
+        "missing_kickoff": 0,
+        "matches_missing_tauron_schema_fields": 0,
+        "table_rows": 10,
+        "table_discrepancies": 0,
+        "table_examples": [],
+        "finished_without_full_set_scores": [],
+        "issues": [],
+        "warnings": []
+      },
+      {
+        "group": "Grupa 2",
+        "matches": 110,
+        "teams": 11,
+        "logos": 11,
+        "finished": 34,
+        "scheduled": 76,
+        "live": 0,
+        "finished_with_full_set_scores": 34,
+        "missing_kickoff": 0,
+        "matches_missing_tauron_schema_fields": 0,
+        "table_rows": 11,
+        "table_discrepancies": 0,
+        "table_examples": [],
+        "finished_without_full_set_scores": [],
+        "issues": [],
+        "warnings": []
+      },
+      {
+        "group": "Grupa 3",
+        "matches": 132,
+        "teams": 12,
+        "logos": 12,
+        "finished": 42,
+        "scheduled": 90,
+        "live": 0,
+        "finished_with_full_set_scores": 42,
+        "missing_kickoff": 0,
+        "matches_missing_tauron_schema_fields": 0,
+        "table_rows": 12,
+        "table_discrepancies": 0,
+        "table_examples": [],
+        "finished_without_full_set_scores": [],
+        "issues": [],
+        "warnings": []
+      },
+      {
+        "group": "Grupa 4",
+        "matches": 90,
+        "teams": 10,
+        "logos": 10,
+        "finished": 21,
+        "scheduled": 69,
+        "live": 0,
+        "finished_with_full_set_scores": 21,
+        "missing_kickoff": 0,
+        "matches_missing_tauron_schema_fields": 0,
+        "table_rows": 10,
+        "table_discrepancies": 0,
+        "table_examples": [],
+        "finished_without_full_set_scores": [],
+        "issues": [],
+        "warnings": []
+      },
+      {
+        "group": "Grupa 5",
+        "matches": 110,
+        "teams": 11,
+        "logos": 11,
+        "finished": 34,
+        "scheduled": 76,
+        "live": 0,
+        "finished_with_full_set_scores": 34,
+        "missing_kickoff": 0,
+        "matches_missing_tauron_schema_fields": 0,
+        "table_rows": 11,
+        "table_discrepancies": 0,
+        "table_examples": [],
+        "finished_without_full_set_scores": [],
+        "issues": [],
+        "warnings": []
+      }
+    ]
+  },
+  "third": {
+    "updated_at": "2026-11-07T12:01:25.165245+00:00",
+    "groups": [
+      {
+        "group": "Pomorska III Liga",
+        "matches": 72,
+        "teams": 9,
+        "logos": 9,
+        "finished": 17,
+        "scheduled": 54,
+        "live": 1,
+        "finished_with_full_set_scores": 17,
+        "missing_kickoff": 0,
+        "matches_missing_tauron_schema_fields": 0,
+        "table_rows": 9,
+        "table_discrepancies": 0,
+        "table_examples": [],
+        "finished_without_full_set_scores": [],
+        "issues": [],
+        "warnings": []
+      }
+    ]
+  },
+  "notes": [
+    "Snapshot data only; live points unavailable.",
+    "Table differences are not auto-corrected because fixture/result snapshots can lag.",
+    "All league snapshots are preserved until an authorized upstream update succeeds."
+  ]
+}

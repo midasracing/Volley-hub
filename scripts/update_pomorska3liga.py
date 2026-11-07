@@ -141,7 +141,8 @@ def parse_matches(soup, source_url):
             home = rest[:score_match.start()].strip(" ·-")
             away = rest[score_match.end():].strip(" ·-")
             home_sets, away_sets = int(score_match.group(1)), int(score_match.group(2))
-            status, time = "finished", None
+            status = 'finished' if max(home_sets,away_sets)==3 else 'live' if home_sets+away_sets else 'scheduled'
+            time = None
         else:
             time_match = re.search(r"\b(\d{2}:\d{2})\b", rest)
             if not time_match:
@@ -210,6 +211,7 @@ def parse_match_detail(soup):
     # containers. Each .set-points element is one set's points, not a "25:18"
     # string, so pair the home and away rows by set index.
     set_scores = []
+    raw_pairs = []
     team_rows = soup.select(".team-points-row")
     home_row = next((row for row in team_rows if "home" in row.get("class", [])), None)
     away_row = next((row for row in team_rows if "away" in row.get("class", [])), None)
@@ -226,13 +228,23 @@ def parse_match_detail(soup):
         for home_value, away_value in zip(home_points, away_points):
             if home_value.isdigit() and away_value.isdigit():
                 a, b = int(home_value), int(away_value)
+                raw_pairs.append((a,b))
                 if a != b:
                     set_scores.append(f"{a}:{b}")
 
 
-    return {"time": kickoff, "set_scores": set_scores}
+    result={"time": kickoff, "set_scores": set_scores}
+    if home_row and away_row:
+        for side,row in [('home',home_row),('away',away_row)]:
+            value=row.select_one('.match-points')
+            if value and value.get_text(strip=True).isdigit():result[side+'_sets']=int(value.get_text(strip=True))
+        if 'home_sets' in result and 'away_sets' in result and max(result['home_sets'],result['away_sets'])<3:
+            count=result['home_sets']+result['away_sets']
+            result['set_scores']=[f'{a}:{b}' for a,b in raw_pairs[:count]]
+            result['current_points']=f'{raw_pairs[count][0]}:{raw_pairs[count][1]}' if len(raw_pairs)>count else None
+    return result
 
-def parse_table(soup):
+def parse_table(soup, expected_teams=9):
     rows = []
     for row in soup.select("table tr"):
         cells = [
@@ -265,8 +277,8 @@ def parse_table(soup):
             })
         except (ValueError, IndexError) as exc:
             print(f"Skipping invalid standings row {cells[:4]!r}: {exc}", file=sys.stderr)
-    if rows and len(rows) != 9:
-        print(f"Warning: expected 9 standings rows, parsed {len(rows)}", file=sys.stderr)
+    if rows and expected_teams is not None and len(rows) != expected_teams:
+        print(f"Warning: expected {expected_teams} standings rows, parsed {len(rows)}", file=sys.stderr)
     return rows
 
 def parse_team_logos(soup, page_url, known_logos=None, fetch_page=None):

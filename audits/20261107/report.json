@@ -1,0 +1,1074 @@
+{
+  "checked_at": "2026-11-07T12:17:26.021022+00:00",
+  "engines": {
+    "seleniumbase": {
+      "groups": [
+        {
+          "name": "Grupa 1",
+          "matches": 90,
+          "source_matches": 90,
+          "finished": 21,
+          "with_time": 90,
+          "teams": 10,
+          "table_rows": 10,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 2",
+          "matches": 110,
+          "source_matches": 110,
+          "finished": 34,
+          "with_time": 110,
+          "teams": 11,
+          "table_rows": 11,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 3",
+          "matches": 132,
+          "source_matches": 132,
+          "finished": 42,
+          "with_time": 132,
+          "teams": 12,
+          "table_rows": 12,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 3,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 4",
+          "matches": 90,
+          "source_matches": 90,
+          "finished": 21,
+          "with_time": 90,
+          "teams": 10,
+          "table_rows": 10,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 3,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 5",
+          "matches": 110,
+          "source_matches": 110,
+          "finished": 34,
+          "with_time": 110,
+          "teams": 11,
+          "table_rows": 11,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Pomorska III liga",
+          "matches": 72,
+          "source_matches": 72,
+          "finished": 17,
+          "with_time": 72,
+          "teams": 9,
+          "table_rows": 9,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": [
+            {
+              "id": "2579669",
+              "list_score": [
+                1,
+                1
+              ],
+              "detail_score": [
+                2,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "captures": [
+        {
+          "name": "detail-1",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/matches/2560079/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b2a2e35f494f810ced75690af6d22d4cc5e65c969fd4371ef240f396ad0de493",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:56:55.255528+00:00"
+        },
+        {
+          "name": "detail-2",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561990/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "799156fb0ae4bae5129e27cb809dfdd5d024148c362f3c370f3f4a565129f0d8",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:09.291154+00:00"
+        },
+        {
+          "name": "detail-3",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562075/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "319fb073af61eb9b466c926f7fa9880d62e7093787d1d4fbea0421fe9947a017",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:23.783430+00:00"
+        },
+        {
+          "name": "detail-4",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561993/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "4ede1aef6fb8dca19562f0a235574d4aae799d623ecfef5c90ac8071f001a26f",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:38.780667+00:00"
+        },
+        {
+          "name": "detail-5",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562008/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "2d01e49fa527e0ceadb10bb25bc0296e5336c3c0afb5a267a5bbe1dd46f61137",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:54.232198+00:00"
+        },
+        {
+          "name": "detail-6",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562003/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b224622a5114ca8001322c62f15231170cad4fc5f39e526a2f7bbe0409fe5681",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:58:08.898335+00:00"
+        },
+        {
+          "name": "detail-1",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579670/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "8e8173f14547c2809d3740591c449fe43c593433665367cd42e8bee6441b8393",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:56:58.483727+00:00"
+        },
+        {
+          "name": "detail-2",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579659/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "4bda4682aa635278d3d4b45fd4f1984f199f16b36ffa760f5470dffeaed85885",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:10.213673+00:00"
+        },
+        {
+          "name": "detail-3",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579664/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "df8b63d18a1d4606123299afc53a03cc38ec3e18a387b6eff0591653149709fc",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:25.151492+00:00"
+        },
+        {
+          "name": "detail-4",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579666/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "5125adcb5fecf01b9ab5eef9ebe01a712c98e6086c9ea23a22539a7eb9daf377",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:40.410267+00:00"
+        },
+        {
+          "name": "detail-5",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579663/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "d575f31d7dd81606aaff1f38bb9a457065c29ea40047c6043042582e330dc76f",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:55.240570+00:00"
+        },
+        {
+          "name": "detail-6",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579665/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "e96cabd8ba0015147e83955b1c53d85d6873d380306480c649a3b741142209e3",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:10.140360+00:00"
+        },
+        {
+          "name": "detail-7",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579660/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "f8c9ac464bf890b2e9e5297ab0578f2b3c685b53c182aa077d64b52c684e0bd9",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:25.156172+00:00"
+        },
+        {
+          "name": "detail-8",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579661/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "129f61f900eb93758eb1565c224c5044c0fb5c16db20a1853c0d819584053161",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:40.299266+00:00"
+        },
+        {
+          "name": "detail-9",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579662/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "de713bdaeb554bd9b0b6367a51bd95b31a5cb30bdc0fd7b0d66a6586532be096",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:55.307256+00:00"
+        },
+        {
+          "name": "detail-10",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579657/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b406dbf139574aebc120a068b66b4a2b44b716b2ff79b0a105ca92ed7dbc525d",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:10.192280+00:00"
+        },
+        {
+          "name": "detail-11",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579655/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "9ba8b556da96866566c72bbd966cad2ee67277bb5706c840a7ffdf09dfdd7407",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:25.113369+00:00"
+        },
+        {
+          "name": "detail-12",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579658/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "14853ba38e1ccbd210a9575e46725635e9fd98ae1c6a11ce5d99b6aecc938b35",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:40.156381+00:00"
+        },
+        {
+          "name": "detail-13",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579656/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "c46ef201265cca041701046cc3e02b0015c27bffaa8877241d491b6226018652",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:55.145275+00:00"
+        },
+        {
+          "name": "detail-14",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579652/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "27fbd0ea0fe6d6d6d0884f97ea92504a2a9059b4beb202a56e78f6538a20a066",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:10.266680+00:00"
+        },
+        {
+          "name": "detail-15",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579653/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "0883a0c28d670f42645150f27ea8b3334a0b4ad00343407639dddcecc93f52e2",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:25.227641+00:00"
+        },
+        {
+          "name": "detail-16",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579651/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "15f688a67d711c6d04b48bf98d852158e3bfe4e6edce3a9b206c0fda0d89df47",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:40.154970+00:00"
+        },
+        {
+          "name": "detail-17",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579654/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b2854ea79e1b1be98e6961d783f06a6e6c20714f247cac92db2fec81573d2b1e",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:55.177120+00:00"
+        },
+        {
+          "name": "detail-18",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579668/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "58e769a25607b958728e35e85e476a7ef247b4c479f2696deb578ee7c80a7b55",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:01:10.188279+00:00"
+        },
+        {
+          "name": "detail-19",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579669/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "952515fcc0800bce9c2ca93c931b80f0436f4352e5be8ccc216526a6caa16e8b",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:01:25.165245+00:00"
+        },
+        {
+          "name": "second-teams",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/teams/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "4b045b64c99f7389c48f0b519655d76b287a77b884b8ca3b8deca5a7a4fc4031",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:49:50.697906+00:00"
+        },
+        {
+          "name": "second-1-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "564d4260ab981dfb87ef9f8d71388ac50de4f19fa4cdb218dfa24f4abe7af4b8",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:50:04.324260+00:00"
+        },
+        {
+          "name": "second-1-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b96981ec130bca71d9b8a12e48f048d851c2bc3129fcd50704daa9f56a5780f7",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:50:19.116392+00:00"
+        },
+        {
+          "name": "second-1-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "ec9f8639cb54a6fc1e3c666a2e8f3b4a247894a4e9a4763ced65e48ee3a94eb7",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:50:34.031482+00:00"
+        },
+        {
+          "name": "second-2-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "c3d6233bdd0b364840f594934c9e2b6fa46ec8f8ccc5845b86136b8942aca220",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:50:49.460795+00:00"
+        },
+        {
+          "name": "second-2-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "352e6171a285c685bb1133fa723d4402a5add46d10909ff7412232b98d258742",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:51:04.225370+00:00"
+        },
+        {
+          "name": "second-2-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b119b5fa89ad143f22c612584ac4426cdae939494b2799193ccd09309780917b",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:51:18.956043+00:00"
+        },
+        {
+          "name": "second-3-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "f7c4ee3601b196cbd00b020bfe807ffd0e0b9789855eb64e4f2e2fab1df62303",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:51:34.602420+00:00"
+        },
+        {
+          "name": "second-3-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "6656649905d64beea0db7d18f7219563040f698289db1d0935d6a588790b8523",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:51:49.021184+00:00"
+        },
+        {
+          "name": "second-3-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "03dc55dce44307956d034d32009725fa1dec3e318f1ab6099cb67ada0aa346fa",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:52:03.978450+00:00"
+        },
+        {
+          "name": "second-4-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "37f1909dc77f61dfff77b278000a210d696f83027cacb8d1d57fef5e0507e476",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:52:19.346775+00:00"
+        },
+        {
+          "name": "second-4-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "8923fb6e74ea9eb53a5d631f8786c7f13a3b099387d4349636675f31b5fdb994",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:52:33.954202+00:00"
+        },
+        {
+          "name": "second-4-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "e3423e00d7700e793f9bb1a41c6c1b733537dcc7b4851c0718827c31665ed473",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:52:49.069792+00:00"
+        },
+        {
+          "name": "second-5-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "c60b7a1942762edbce5d2603f6c99ea3c1d8b50d59ef3b473844daef06405033",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:53:04.269453+00:00"
+        },
+        {
+          "name": "second-5-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "7853fc34443983a6ffb1f189c519ee8b9884cd9e01e45491a9ab8284666ae754",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:53:19.136107+00:00"
+        },
+        {
+          "name": "second-5-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "434c6c784e25fb75da0c6d389a99457b0207d60a17951c8a4e0584e584798020",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:53:34.026406+00:00"
+        },
+        {
+          "name": "third-schedule",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "4d3e927276f238b7117b127226de523ea4766f9b8a290f6326e455c8e429895d",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:53:50.118112+00:00"
+        },
+        {
+          "name": "third-results",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "d6627db02ed9503c8adbd532be076a50e42b404b990cdabf01002a413da5b775",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:54:04.459523+00:00"
+        },
+        {
+          "name": "third-standings",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "457b39db8d59eeab9adf550357b528c9a83a4653329f2f6ddd34a8a1c5e33f3d",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:54:19.070043+00:00"
+        },
+        {
+          "name": "third-teams",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/teams/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "98660f1f6d7ee97f260d3544512eb8df739d04f94ecbc2d913476d95b140b229",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:54:34.052368+00:00"
+        },
+        {
+          "name": "pzps-schedule",
+          "url": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "fda8190bcf261e9b4fc03c203a3b1f5f100065d76f931226bdc783874d533530",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:54:55.602152+00:00"
+        },
+        {
+          "name": "pzps-results",
+          "url": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
+          "status": 200,
+          "challenge": false,
+          "sha256": "2583653d990980dafd955af68c90bbc321ac85067f4c02afaa940086b556c9a1",
+          "engine": "seleniumbase",
+          "captured_at": "2026-11-07T11:55:04.457127+00:00"
+        }
+      ],
+      "differences": 0
+    },
+    "camoufox": {
+      "groups": [
+        {
+          "name": "Grupa 1",
+          "matches": 90,
+          "source_matches": 90,
+          "finished": 21,
+          "with_time": 90,
+          "teams": 10,
+          "table_rows": 10,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 2",
+          "matches": 110,
+          "source_matches": 110,
+          "finished": 34,
+          "with_time": 110,
+          "teams": 11,
+          "table_rows": 11,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 3",
+          "matches": 132,
+          "source_matches": 132,
+          "finished": 42,
+          "with_time": 132,
+          "teams": 12,
+          "table_rows": 12,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 3,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 4",
+          "matches": 90,
+          "source_matches": 90,
+          "finished": 21,
+          "with_time": 90,
+          "teams": 10,
+          "table_rows": 10,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 3,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Grupa 5",
+          "matches": 110,
+          "source_matches": 110,
+          "finished": 34,
+          "with_time": 110,
+          "teams": 11,
+          "table_rows": 11,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": []
+        },
+        {
+          "name": "Pomorska III liga",
+          "matches": 72,
+          "source_matches": 72,
+          "finished": 17,
+          "with_time": 72,
+          "teams": 9,
+          "table_rows": 9,
+          "missing_fields": 0,
+          "venues": 0,
+          "term_numbers": 0,
+          "broadcast_markers": 0,
+          "differences": [],
+          "live_changes_between_captures": [
+            {
+              "id": "2579669",
+              "list_score": [
+                1,
+                1
+              ],
+              "detail_score": [
+                2,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "captures": [
+        {
+          "name": "detail-1",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/matches/2560079/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b2a2e35f494f810ced75690af6d22d4cc5e65c969fd4371ef240f396ad0de493",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:56:55.255528+00:00"
+        },
+        {
+          "name": "detail-2",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561990/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "799156fb0ae4bae5129e27cb809dfdd5d024148c362f3c370f3f4a565129f0d8",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:09.291154+00:00"
+        },
+        {
+          "name": "detail-3",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562075/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "319fb073af61eb9b466c926f7fa9880d62e7093787d1d4fbea0421fe9947a017",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:23.783430+00:00"
+        },
+        {
+          "name": "detail-4",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561993/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "4ede1aef6fb8dca19562f0a235574d4aae799d623ecfef5c90ac8071f001a26f",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:38.780667+00:00"
+        },
+        {
+          "name": "detail-5",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562008/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "2d01e49fa527e0ceadb10bb25bc0296e5336c3c0afb5a267a5bbe1dd46f61137",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:57:54.232198+00:00"
+        },
+        {
+          "name": "detail-6",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562003/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b224622a5114ca8001322c62f15231170cad4fc5f39e526a2f7bbe0409fe5681",
+          "engine": "details-second",
+          "captured_at": "2026-11-07T11:58:08.898335+00:00"
+        },
+        {
+          "name": "detail-1",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579670/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "8e8173f14547c2809d3740591c449fe43c593433665367cd42e8bee6441b8393",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:56:58.483727+00:00"
+        },
+        {
+          "name": "detail-2",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579659/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "4bda4682aa635278d3d4b45fd4f1984f199f16b36ffa760f5470dffeaed85885",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:10.213673+00:00"
+        },
+        {
+          "name": "detail-3",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579664/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "df8b63d18a1d4606123299afc53a03cc38ec3e18a387b6eff0591653149709fc",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:25.151492+00:00"
+        },
+        {
+          "name": "detail-4",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579666/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "5125adcb5fecf01b9ab5eef9ebe01a712c98e6086c9ea23a22539a7eb9daf377",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:40.410267+00:00"
+        },
+        {
+          "name": "detail-5",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579663/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "d575f31d7dd81606aaff1f38bb9a457065c29ea40047c6043042582e330dc76f",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:57:55.240570+00:00"
+        },
+        {
+          "name": "detail-6",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579665/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "e96cabd8ba0015147e83955b1c53d85d6873d380306480c649a3b741142209e3",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:10.140360+00:00"
+        },
+        {
+          "name": "detail-7",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579660/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "f8c9ac464bf890b2e9e5297ab0578f2b3c685b53c182aa077d64b52c684e0bd9",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:25.156172+00:00"
+        },
+        {
+          "name": "detail-8",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579661/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "129f61f900eb93758eb1565c224c5044c0fb5c16db20a1853c0d819584053161",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:40.299266+00:00"
+        },
+        {
+          "name": "detail-9",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579662/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "de713bdaeb554bd9b0b6367a51bd95b31a5cb30bdc0fd7b0d66a6586532be096",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:58:55.307256+00:00"
+        },
+        {
+          "name": "detail-10",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579657/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b406dbf139574aebc120a068b66b4a2b44b716b2ff79b0a105ca92ed7dbc525d",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:10.192280+00:00"
+        },
+        {
+          "name": "detail-11",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579655/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "9ba8b556da96866566c72bbd966cad2ee67277bb5706c840a7ffdf09dfdd7407",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:25.113369+00:00"
+        },
+        {
+          "name": "detail-12",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579658/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "14853ba38e1ccbd210a9575e46725635e9fd98ae1c6a11ce5d99b6aecc938b35",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:40.156381+00:00"
+        },
+        {
+          "name": "detail-13",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579656/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "c46ef201265cca041701046cc3e02b0015c27bffaa8877241d491b6226018652",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T11:59:55.145275+00:00"
+        },
+        {
+          "name": "detail-14",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579652/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "27fbd0ea0fe6d6d6d0884f97ea92504a2a9059b4beb202a56e78f6538a20a066",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:10.266680+00:00"
+        },
+        {
+          "name": "detail-15",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579653/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "0883a0c28d670f42645150f27ea8b3334a0b4ad00343407639dddcecc93f52e2",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:25.227641+00:00"
+        },
+        {
+          "name": "detail-16",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579651/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "15f688a67d711c6d04b48bf98d852158e3bfe4e6edce3a9b206c0fda0d89df47",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:40.154970+00:00"
+        },
+        {
+          "name": "detail-17",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579654/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b2854ea79e1b1be98e6961d783f06a6e6c20714f247cac92db2fec81573d2b1e",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:00:55.177120+00:00"
+        },
+        {
+          "name": "detail-18",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579668/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "58e769a25607b958728e35e85e476a7ef247b4c479f2696deb578ee7c80a7b55",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:01:10.188279+00:00"
+        },
+        {
+          "name": "detail-19",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/matches/2579669/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "952515fcc0800bce9c2ca93c931b80f0436f4352e5be8ccc216526a6caa16e8b",
+          "engine": "details-third",
+          "captured_at": "2026-11-07T12:01:25.165245+00:00"
+        },
+        {
+          "name": "second-teams",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/teams/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "3123f3c80519a096655404c804a693b5fdf7a6ded5c33c7505b56e5beb072d9c",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:49:52.078376+00:00"
+        },
+        {
+          "name": "second-1-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "35f245e814d41febe4d7fce6e7b050cc214a22240b996f85645ff36c55f6536d",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:50:04.207501+00:00"
+        },
+        {
+          "name": "second-1-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "461154273d2c36fc4dd17f277dd67fcbbdb42a436a3bb8caaf86095179d67b27",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:50:18.893701+00:00"
+        },
+        {
+          "name": "second-1-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "34abfc7ffb51c23fb1ad1dad151ea52731da460dc80d997b365fc3e7023aca4d",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:50:33.871670+00:00"
+        },
+        {
+          "name": "second-2-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "dc3c4fd6e43ad475d6361a2c8b4195778ecad963bcb133948694feeb1e747101",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:50:49.100481+00:00"
+        },
+        {
+          "name": "second-2-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "ad9cd22ee75a68230ca34130782ffbf40fea6d3dfffecd5143001fc5164db81c",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:51:03.930397+00:00"
+        },
+        {
+          "name": "second-2-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "02656d1b383e101d9413a2dd8d6400e6b44284c9a135b7349b5b9800dd18a5a8",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:51:18.864587+00:00"
+        },
+        {
+          "name": "second-3-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "c955a14ac96d6f58436a72d7219a652c0dfcb1f84b535029bfcfc8d20fc86eaf",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:51:34.102891+00:00"
+        },
+        {
+          "name": "second-3-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "963f5a231cb51f96316e333644c901482e0acc728daf4a0a4a7b0e795bb1ec96",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:51:48.808360+00:00"
+        },
+        {
+          "name": "second-3-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "cea6edacbab38763541bdeed63ef85372fbb56da90da316c3b99230e22e4de5e",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:52:03.961816+00:00"
+        },
+        {
+          "name": "second-4-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "6df3b567ca96a0e70650c28fe2aa1893dccf282d5ca0e7f22bb431da4b32bf97",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:52:18.971945+00:00"
+        },
+        {
+          "name": "second-4-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "202a50d38f22baec7d7faa04b463f04b628d794bc78d0c315564327ac7a8be9b",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:52:33.794381+00:00"
+        },
+        {
+          "name": "second-4-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "13830e26620c75f13240a6551bfc31610a7e676b51b8116a70e3f198dc339dfa",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:52:48.787122+00:00"
+        },
+        {
+          "name": "second-5-schedule",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "99de08b032696aa7cb27b797cddd0d9cc1d98f7a52c979ed41180f2d1a6e60c6",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:53:04.055618+00:00"
+        },
+        {
+          "name": "second-5-results",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "42c3d2d211d376b685ada1c53ffd3ca3c92642ccd40d1cd72e3460817236068e",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:53:18.790488+00:00"
+        },
+        {
+          "name": "second-5-standings",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "65f336dcaf2ecb07bbf183072886414e2c7f8326aa2f6816c081b576cc5a05b1",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:53:33.785930+00:00"
+        },
+        {
+          "name": "third-schedule",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "8d3c40e3f9a0eea8446fb9d9799a73e22a9a9af81cb8a8171743d46307fcebbe",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:53:49.901133+00:00"
+        },
+        {
+          "name": "third-results",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "0d478a16b1c1b384b3cd95aed2ad61558f7bba0bb9f3fde2ee5ba9989ceb1d23",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:54:04.728226+00:00"
+        },
+        {
+          "name": "third-standings",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "43932484256f4c8b9888639f8f58862b1e53567349864ca2690eb5616ed69e2d",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:54:19.097319+00:00"
+        },
+        {
+          "name": "third-teams",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/teams/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "de2804226f468b7da7ae2e7c7b8a296a36513e5277486debaf5b825d90176cfc",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:54:34.071945+00:00"
+        },
+        {
+          "name": "pzps-schedule",
+          "url": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
+          "status": 200,
+          "challenge": false,
+          "sha256": "b36c032716a79700da3a6028793110841a38c5652f1ae2d21d9e886cb4d2883f",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:54:54.992317+00:00"
+        },
+        {
+          "name": "pzps-results",
+          "url": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
+          "status": 200,
+          "challenge": false,
+          "sha256": "0821ac6cd6b4f5bb86673b2ad2758c5895ec370c5ea00eb8e1a412295ab2873f",
+          "engine": "camoufox",
+          "captured_at": "2026-11-07T11:55:06.341464+00:00"
+        }
+      ],
+      "differences": 0
+    }
+  },
+  "engines_agree": {
+    "2liga": true,
+    "pomorska3liga": true
+  },
+  "passed": true
+}

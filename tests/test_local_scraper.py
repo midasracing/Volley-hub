@@ -113,6 +113,11 @@ def pages(data):
                 for side, index in [("home", 0), ("away", 1)]
             )
         )
+    docs[source.BASE + "/teams/"] = "".join(
+        f'<a class="team-box" href="/pl/teams/{index}/"><div class="text-title">{html.escape(t["name"])}</div>'
+        f'<img alt="{html.escape(t["name"])} Logo" src="{t["logo"]}"></a>'
+        for index, t in enumerate(data["teams"], 1)
+    )
     return docs
 
 
@@ -127,19 +132,22 @@ class FeedTests(unittest.TestCase):
 
         return feed.build_feed(fetch, previous)
 
-    def test_unchanged_export_requires_only_three_fresh_documents(self):
+    def test_identity_migration_then_warm_export_requires_three_documents(self):
         previous = seed()
         data, metrics = self.build(previous, previous)
-        self.assertEqual(len(self.calls), 3)
+        self.assertEqual(len(self.calls), 4)
         self.assertEqual(metrics["reused_details"], 17)
         self.assertEqual(metrics["finished"], 17)
         self.assertEqual(data["table"], previous["table"])
+        _, metrics = self.build(previous, data)
+        self.assertEqual(len(self.calls), 3)
+        self.assertEqual(metrics["reused_details"], 17)
 
     def test_cold_import_recovers_every_finished_detail(self):
         current = seed()
         data, metrics = self.build(current, {})
         self.assertEqual(metrics["detail_requests"], 17)
-        self.assertEqual(len(self.calls), 20)
+        self.assertEqual(len(self.calls), 21)
         self.assertEqual(feed.validate_feed(data)["matches"], 72)
 
     def test_incomplete_saved_details_are_fetched(self):
@@ -159,7 +167,7 @@ class FeedTests(unittest.TestCase):
 
         def interrupted(url):
             calls.append(url)
-            if len(calls) > 5:
+            if len(calls) > 6:
                 raise RuntimeError("test interruption")
             return BeautifulSoup(docs[url], "html.parser")
 

@@ -268,7 +268,11 @@ class Session:
         if url in self.cache:
             return BeautifulSoup(self.cache[url], "html.parser")
         parsed = urlparse(url)
-        if parsed.scheme != "https" or parsed.hostname != "pomorskie.volleystation.com":
+        if parsed.scheme != "https" or parsed.hostname not in {
+            "pomorskie.volleystation.com",
+            "2ligamezczyzn.volleystation.com",
+            "sedziowie.pzps.pl",
+        }:
             raise AccessError("Nieoczekiwany adres źródłowy")
         if self.requests >= self.budget:
             raise AccessError("Przekroczono limit dokumentów na aktualizację")

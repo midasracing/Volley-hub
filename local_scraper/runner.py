@@ -12,7 +12,7 @@ import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from .feed import validate_feed
+from .feed import validate_output as validate_feed
 from .storage import atomic_json, now, read_json, safe_error
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,6 +58,8 @@ def run_worker(engine, previous, candidate, report, events, args):
         "local_scraper.worker",
         "--engine",
         engine,
+        "--league",
+        args.league,
         "--previous",
         str(previous),
         "--candidate",
@@ -291,7 +293,13 @@ def arguments(argv=None):
     p = argparse.ArgumentParser(
         description="Lokalny darmowy scraper Pomorskiej III ligi: UC + CDP → Camoufox."
     )
-    p.add_argument("--output", type=Path, default=ROOT / "data" / "pomorska3liga.json")
+    p.add_argument(
+        "--league",
+        choices=("pomorska3liga", "second"),
+        default="pomorska3liga",
+        help="Pomorska III liga lub wszystkie grupy II ligi.",
+    )
+    p.add_argument("--output", type=Path)
     p.add_argument(
         "--seed",
         type=Path,
@@ -369,7 +377,12 @@ def arguments(argv=None):
         or not 3 <= args.document_budget <= 120
     ):
         p.error("Nieprawidłowe odstępy, limit czasu lub próg świeżości.")
-    args.output = args.output.resolve()
+    args.output = (
+        args.output
+        or ROOT
+        / "data"
+        / ("2liga.json" if args.league == "second" else "pomorska3liga.json")
+    ).resolve()
     if args.public_output:
         args.public_output = args.public_output.resolve()
     if args.seed:
