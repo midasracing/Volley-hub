@@ -52,10 +52,10 @@ SeleniumBase UC + CDP, a po niepowodzeniu Camoufox. Godziny, wyniki, punkty set�
 tabele i linki transmisji pochodzą wyłącznie z VolleyStation. Nie uzupełniamy ich
 z PZPS ani PWZPS. Brakujące hale pozostają puste. Tabele są kopiowane
 bezpośrednio ze stron lig, z zachowaniem ich klasyfikacji i wartości; nie przeliczamy ich z wyników.
-[Weryfikacja domyślnego importera](local_scraper/DOMYSLNY.md).
+[Instalacja i obsługa importera](local_scraper/README.md).
 
 Pozostałe ligi mają własne zadania GitHub Actions. Dawne zadania zapisujące II
-i Pomorską III ligę zostały wyłączone; lokalny importer aktualizuje `data/*.json`
+i Pomorską III ligę zostały usunięte; lokalny importer aktualizuje `data/*.json`
 i opcjonalnie `public/data/*.json`. Komputer i proces `--watch` muszą działać,
 żeby te dwie ligi otrzymywały kolejne aktualizacje. Publikacja nowych plików
 na GitHub Pages następuje po zatwierdzeniu i wypchnięciu zmian w `data/` do repozytorium.
@@ -152,12 +152,12 @@ obsługują trzy kraje, ale ostatni rzeczywisty test zwrócił mecze **tylko z P
 nie należy traktować tego klienta jako źródła LIVE ani kursów włoskiej i japońskiej ligi. Instalacja i ograniczenia źródła są opisane w
 [`docs/betclic.md`](docs/betclic.md). Klient jest niezależny od frontendu i wymaga Pythona 3.10+.
 
-## Diagnostyka scraperów
+## Scraper II i Pomorskiej III ligi
 
-[`diagnostics/`](diagnostics/) zawiera osobne kopie scraperów II i Pomorskiej III ligi,
-test odczytu przez zwykły HTTP i [wyniki porównania źródeł](diagnostics/RESULTS.md).
-Sprawdzone zapytania do publicznego endpointu PZPS opisano w
-[`diagnostics/PZPS_API.md`](diagnostics/PZPS_API.md).
+Jedyna implementacja znajduje się w [`local_scraper/`](local_scraper/).
+Dotychczasowe komendy w `scripts/` uruchamiają ten importer. Kopie diagnostyczne,
+stare transporty oraz materiały z eksperymentów zostały usunięte.
+[Instrukcja instalacji i pracy ciągłej](local_scraper/README.md).
 
 ## Technologia i struktura
 
