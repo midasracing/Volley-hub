@@ -6,8 +6,7 @@ from collections import Counter, defaultdict
 from datetime import datetime
 from urllib.parse import urlparse
 
-from scripts import update_pomorska3liga as source
-
+from . import parsing as source
 from .schema import broadcast_urls, card_metadata, name_key, normalize, team_metadata
 from .storage import now
 

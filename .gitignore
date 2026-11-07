@@ -11,3 +11,7 @@ downloaded_files/
 /node_modules
 dist/
 public/data/
+
+# Ad hoc scraper captures and experiments
+/experiments/
+/diagnostics/artifacts/
