@@ -82,7 +82,7 @@
       "id": "90"
     }
   ],
-  "updated_at": "2026-11-07T13:18:49.348105+00:00",
+  "updated_at": "2026-11-07T17:37:08.787963+00:00",
   "matches": [
     {
       "id": "1105124",
@@ -3627,15 +3627,22 @@
       "round": 9,
       "round_source_label": "Kolejka",
       "phase": "Faza Zasadnicza",
-      "status": "scheduled",
+      "status": "live",
       "home": "PZL LEONARDO Avia Świdnik",
       "away": "Stal Nysa",
       "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
-      "set_points": [],
-      "home_points": 0,
-      "away_points": 0,
+      "away_sets": 1,
+      "set_scores": [
+        "23:25"
+      ],
+      "set_points": [
+        {
+          "home": 23,
+          "away": 25
+        }
+      ],
+      "home_points": 23,
+      "away_points": 25,
       "current_points": null,
       "source_url": "https://www.tauron1liga.pl/games/action/show/id/1105187/nocookies/1.html",
       "home_team_id": "5",
@@ -3661,15 +3668,22 @@
       "round": 9,
       "round_source_label": "Kolejka",
       "phase": "Faza Zasadnicza",
-      "status": "scheduled",
+      "status": "live",
       "home": "Lechia Tomaszów Mazowiecki",
       "away": "BBTS Bielsko-Biała",
-      "home_sets": 0,
+      "home_sets": 1,
       "away_sets": 0,
-      "set_scores": [],
-      "set_points": [],
-      "home_points": 0,
-      "away_points": 0,
+      "set_scores": [
+        "25:23"
+      ],
+      "set_points": [
+        {
+          "home": 25,
+          "away": 23
+        }
+      ],
+      "home_points": 25,
+      "away_points": 23,
       "current_points": null,
       "source_url": "https://www.tauron1liga.pl/games/action/show/id/1105191/nocookies/1.html",
       "home_team_id": "41",

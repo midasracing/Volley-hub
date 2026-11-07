@@ -72,7 +72,7 @@
       "id": "56"
     }
   ],
-  "updated_at": "2026-11-07T13:18:43.639248+00:00",
+  "updated_at": "2026-11-07T17:36:59.115380+00:00",
   "matches": [
     {
       "id": "1104808",
@@ -1714,15 +1714,42 @@
       "round": 5,
       "round_source_label": "Kolejka",
       "phase": "Faza Zasadnicza",
-      "status": "scheduled",
+      "status": "finished",
       "home": "Stilon Gorzów",
       "away": "ZAKSA Kędzierzyn-Koźle",
-      "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
-      "set_points": [],
-      "home_points": 0,
-      "away_points": 0,
+      "home_sets": 2,
+      "away_sets": 3,
+      "set_scores": [
+        "25:18",
+        "25:27",
+        "25:20",
+        "26:28",
+        "16:18"
+      ],
+      "set_points": [
+        {
+          "home": 25,
+          "away": 18
+        },
+        {
+          "home": 25,
+          "away": 27
+        },
+        {
+          "home": 25,
+          "away": 20
+        },
+        {
+          "home": 26,
+          "away": 28
+        },
+        {
+          "home": 16,
+          "away": 18
+        }
+      ],
+      "home_points": 117,
+      "away_points": 111,
       "current_points": null,
       "source_url": "https://www.tauronliga.pl/games/action/show/id/1104839/nocookies/1.html",
       "home_team_id": "28",
@@ -1751,15 +1778,22 @@
       "round": 5,
       "round_source_label": "Kolejka",
       "phase": "Faza Zasadnicza",
-      "status": "scheduled",
+      "status": "live",
       "home": "Podziemia Kredowe ChKS Chełm",
       "away": "NEONET Norwid Częstochowa",
       "home_sets": 0,
-      "away_sets": 0,
-      "set_scores": [],
-      "set_points": [],
-      "home_points": 0,
-      "away_points": 0,
+      "away_sets": 1,
+      "set_scores": [
+        "16:25"
+      ],
+      "set_points": [
+        {
+          "home": 16,
+          "away": 25
+        }
+      ],
+      "home_points": 16,
+      "away_points": 25,
       "current_points": null,
       "source_url": "https://www.tauronliga.pl/games/action/show/id/1104842/nocookies/1.html",
       "home_team_id": "93",
@@ -7082,6 +7116,18 @@
     },
     {
       "rank": 8,
+      "team": "ZAKSA Kędzierzyn-Koźle",
+      "points": 5,
+      "played": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_for": 7,
+      "sets_against": 8,
+      "points_for": 346,
+      "points_against": 356
+    },
+    {
+      "rank": 9,
       "team": "GKS Katowice",
       "points": 5,
       "played": 4,
@@ -7093,28 +7139,16 @@
       "points_against": 326
     },
     {
-      "rank": 9,
-      "team": "Stilon Gorzów",
-      "points": 4,
-      "played": 4,
-      "wins": 2,
-      "losses": 2,
-      "sets_for": 6,
-      "sets_against": 10,
-      "points_for": 338,
-      "points_against": 355
-    },
-    {
       "rank": 10,
-      "team": "ZAKSA Kędzierzyn-Koźle",
-      "points": 3,
-      "played": 3,
-      "wins": 1,
-      "losses": 2,
-      "sets_for": 4,
-      "sets_against": 6,
-      "points_for": 235,
-      "points_against": 239
+      "team": "Stilon Gorzów",
+      "points": 5,
+      "played": 5,
+      "wins": 2,
+      "losses": 3,
+      "sets_for": 8,
+      "sets_against": 13,
+      "points_for": 455,
+      "points_against": 466
     },
     {
       "rank": 11,
