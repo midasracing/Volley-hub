@@ -3,7 +3,7 @@
   "source": "https://sedziowie.pzps.pl/system/mecze-II-liga-mezczyzn/",
   "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9",
   "logos_source": "https://2ligamezczyzn.volleystation.com/pl/teams/",
-  "updated_at": "2026-11-07T10:34:22.920086+00:00",
+  "updated_at": "2026-11-07T16:54:59.487219+00:00",
   "groups": [
     {
       "name": "Grupa 1",
@@ -1975,9 +1975,13 @@
           "home": "AZS UWM Olsztyn",
           "away": "Elektromet Huragan Błonie",
           "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "away_sets": 3,
+          "set_scores": [
+            "19:25",
+            "18:25",
+            "17:25"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 2",
           "group": "Grupa 2"
         },
@@ -2945,6 +2949,18 @@
         },
         {
           "rank": 6,
+          "team": "Elektromet Huragan Błonie",
+          "played": 7,
+          "wins": 4,
+          "losses": 3,
+          "points": 12,
+          "sets_for": 12,
+          "sets_against": 12,
+          "points_for": 542,
+          "points_against": 536
+        },
+        {
+          "rank": 7,
           "team": "GKS Orlęta Raszyn",
           "played": 7,
           "wins": 3,
@@ -2954,18 +2970,6 @@
           "sets_against": 13,
           "points_for": 555,
           "points_against": 538
-        },
-        {
-          "rank": 7,
-          "team": "Elektromet Huragan Błonie",
-          "played": 6,
-          "wins": 3,
-          "losses": 3,
-          "points": 9,
-          "sets_for": 9,
-          "sets_against": 12,
-          "points_for": 467,
-          "points_against": 482
         },
         {
           "rank": 8,
@@ -3006,14 +3010,14 @@
         {
           "rank": 11,
           "team": "AZS UWM Olsztyn",
-          "played": 6,
+          "played": 7,
           "wins": 0,
-          "losses": 6,
+          "losses": 7,
           "points": 1,
           "sets_for": 4,
-          "sets_against": 18,
-          "points_for": 410,
-          "points_against": 533
+          "sets_against": 21,
+          "points_for": 464,
+          "points_against": 608
         }
       ],
       "results_source": "https://sedziowie.pzps.pl/system//index.php?mode=12&type=9"
@@ -6950,10 +6954,15 @@
           "time": "15:00",
           "home": "KS Hutnik Kraków",
           "away": "KS Jastrzębie-Borynia",
-          "home_sets": 0,
-          "away_sets": 0,
-          "set_scores": [],
-          "status": "scheduled",
+          "home_sets": 3,
+          "away_sets": 1,
+          "set_scores": [
+            "26:28",
+            "25:16",
+            "25:19",
+            "25:18"
+          ],
+          "status": "finished",
           "competition": "II Liga Mężczyzn · Grupa 5",
           "group": "Grupa 5"
         },
@@ -7861,6 +7870,18 @@
       "table": [
         {
           "rank": 1,
+          "team": "KS Hutnik Kraków",
+          "played": 7,
+          "wins": 6,
+          "losses": 1,
+          "points": 17,
+          "sets_for": 19,
+          "sets_against": 8,
+          "points_for": 641,
+          "points_against": 555
+        },
+        {
+          "rank": 2,
           "team": "Karpaty - PANS Krosno",
           "played": 5,
           "wins": 5,
@@ -7872,7 +7893,7 @@
           "points_against": 343
         },
         {
-          "rank": 2,
+          "rank": 3,
           "team": "Feniks Heron Przeworsk",
           "played": 5,
           "wins": 5,
@@ -7882,18 +7903,6 @@
           "sets_against": 5,
           "points_for": 497,
           "points_against": 457
-        },
-        {
-          "rank": 3,
-          "team": "KS Hutnik Kraków",
-          "played": 6,
-          "wins": 5,
-          "losses": 1,
-          "points": 14,
-          "sets_for": 16,
-          "sets_against": 7,
-          "points_for": 540,
-          "points_against": 474
         },
         {
           "rank": 4,
@@ -7922,14 +7931,14 @@
         {
           "rank": 6,
           "team": "KS Jastrzębie-Borynia",
-          "played": 4,
+          "played": 5,
           "wins": 3,
-          "losses": 1,
+          "losses": 2,
           "points": 9,
-          "sets_for": 9,
-          "sets_against": 5,
-          "points_for": 329,
-          "points_against": 291
+          "sets_for": 10,
+          "sets_against": 8,
+          "points_for": 410,
+          "points_against": 392
         },
         {
           "rank": 7,
