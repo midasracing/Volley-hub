@@ -1,0 +1,598 @@
+{
+  "verified_at": "2026-11-07T18:06:45.838213+00:00",
+  "source_policy": "volleystation_only",
+  "engine_selection": "auto",
+  "document_budget": 40,
+  "timeout_seconds": 900,
+  "seeded": true,
+  "published_feed_engine_tls_verified": true,
+  "continuous_service_started": false,
+  "tests": {
+    "python_passed": 51,
+    "javascript_passed": 23,
+    "mobile_chromium_passed": 38,
+    "mobile_chromium_total": 39,
+    "existing_failure_reproduced_on_main": "e2e/app.spec.js:109",
+    "additional_table_and_stream_ui_smoke_passed": true
+  },
+  "leagues": {
+    "second": {
+      "quality": {
+        "matches": 532,
+        "finished": 165,
+        "teams": 54
+      },
+      "updated_at": "2026-11-07T18:05:47.634464+00:00",
+      "sha256": "013439ced4652e7c948fdd69f216d397a69034ec610304a189584d5a1bb6ff4b",
+      "old_main_fixtures_retained": 532,
+      "old_main_results_retained": 148,
+      "unknown_venues": 532,
+      "matches_with_stream_urls": 6,
+      "source_table_discrepancies": {
+        "Grupa 1": {},
+        "Grupa 2": {
+          "REA CIRRO BAS Białystok": [
+            "played",
+            "wins",
+            "sets_for",
+            "sets_against",
+            "points_for",
+            "points_against",
+            "points"
+          ],
+          "MOS Wola Tramwaje Warszawskie": [
+            "played",
+            "losses",
+            "sets_for",
+            "sets_against",
+            "points_for",
+            "points_against"
+          ]
+        },
+        "Grupa 3": {
+          "KPS Chełmiec ANS AS Wałbrzych": [
+            "played",
+            "wins",
+            "sets_for",
+            "points_for",
+            "points_against",
+            "points"
+          ],
+          "KS AS Słubice": [
+            "played",
+            "losses",
+            "sets_for",
+            "sets_against",
+            "points_for",
+            "points_against"
+          ],
+          "BTS Willowa Bolesławiec": [
+            "played",
+            "wins",
+            "sets_for",
+            "sets_against",
+            "points_for",
+            "points_against",
+            "points"
+          ],
+          "PGE Akademia Siatkówki Stilon": [
+            "played",
+            "losses",
+            "sets_against",
+            "points_for",
+            "points_against"
+          ]
+        },
+        "Grupa 4": {},
+        "Grupa 5": {}
+      },
+      "attempts": [
+        {
+          "engine": "seleniumbase",
+          "started_at": "2026-11-07T17:57:23.221032+00:00",
+          "ok": false,
+          "error": "InvalidFeed: Nie znaleziono pięciu faz grupowych II ligi",
+          "retry_after": 0,
+          "finished_at": "2026-11-07T17:57:35.589456+00:00",
+          "documents": 1
+        },
+        {
+          "engine": "camoufox",
+          "started_at": "2026-11-07T17:58:10.174923+00:00",
+          "ok": true,
+          "metrics": {
+            "matches": 532,
+            "finished": 165,
+            "teams": 54,
+            "detail_requests": 11,
+            "reused_details": 162,
+            "refetched_cached_details": 0
+          },
+          "finished_at": "2026-11-07T18:05:47.866090+00:00",
+          "documents": 31
+        }
+      ],
+      "documents": [
+        {
+          "at": "2026-11-07T17:57:35.290772+00:00",
+          "engine": "seleniumbase",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/teams/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 9.015
+        },
+        {
+          "at": "2026-11-07T17:58:21.486854+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/teams/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 4.413
+        },
+        {
+          "at": "2026-11-07T17:58:32.934148+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/schedule/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.861
+        },
+        {
+          "at": "2026-11-07T17:58:47.369251+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/results/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.295
+        },
+        {
+          "at": "2026-11-07T17:59:02.328020+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/standings/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.253
+        },
+        {
+          "at": "2026-11-07T17:59:18.864316+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/matches/2560084/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.789
+        },
+        {
+          "at": "2026-11-07T17:59:33.282862+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6068-2-liga-mezczyzn-grupa-1/matches/2560083/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.207
+        },
+        {
+          "at": "2026-11-07T17:59:49.613164+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/schedule/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 2.537
+        },
+        {
+          "at": "2026-11-07T18:00:02.831980+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/results/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.754
+        },
+        {
+          "at": "2026-11-07T18:00:17.400311+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/standings/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.323
+        },
+        {
+          "at": "2026-11-07T18:00:32.785302+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/matches/2560198/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.708
+        },
+        {
+          "at": "2026-11-07T18:00:47.593436+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6069-2-liga-mezczyzn-grupa-2/matches/2560199/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.516
+        },
+        {
+          "at": "2026-11-07T18:01:03.197652+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/schedule/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.119
+        },
+        {
+          "at": "2026-11-07T18:01:19.298741+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/results/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 2.219
+        },
+        {
+          "at": "2026-11-07T18:01:32.440239+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/standings/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.361
+        },
+        {
+          "at": "2026-11-07T18:01:48.034938+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560300/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.955
+        },
+        {
+          "at": "2026-11-07T18:02:02.847059+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560305/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.766
+        },
+        {
+          "at": "2026-11-07T18:02:17.730938+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560302/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.65
+        },
+        {
+          "at": "2026-11-07T18:02:33.058351+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560304/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.976
+        },
+        {
+          "at": "2026-11-07T18:02:48.269960+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560291/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.189
+        },
+        {
+          "at": "2026-11-07T18:03:03.649998+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6070-2-liga-mezczyzn-grupa-3/matches/2560280/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.567
+        },
+        {
+          "at": "2026-11-07T18:03:19.636460+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/schedule/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 2.552
+        },
+        {
+          "at": "2026-11-07T18:03:33.469442+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/results/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.385
+        },
+        {
+          "at": "2026-11-07T18:03:48.972345+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/standings/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.888
+        },
+        {
+          "at": "2026-11-07T18:04:03.280380+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562005/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.196
+        },
+        {
+          "at": "2026-11-07T18:04:18.493476+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561987/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.403
+        },
+        {
+          "at": "2026-11-07T18:04:33.338489+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562076/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.248
+        },
+        {
+          "at": "2026-11-07T18:04:48.235002+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2561989/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.145
+        },
+        {
+          "at": "2026-11-07T18:05:03.950248+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6071-2-liga-mezczyzn-grupa-4/matches/2562007/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.86
+        },
+        {
+          "at": "2026-11-07T18:05:18.122794+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/schedule/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.031
+        },
+        {
+          "at": "2026-11-07T18:05:34.996246+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/results/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 2.903
+        },
+        {
+          "at": "2026-11-07T18:05:47.607468+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://2ligamezczyzn.volleystation.com/pl/phase-6072-2-liga-mezczyzn-grupa-5/standings/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 0.514
+        }
+      ]
+    },
+    "pomorska3liga": {
+      "quality": {
+        "matches": 72,
+        "finished": 19,
+        "teams": 9
+      },
+      "updated_at": "2026-11-07T17:59:55.374627+00:00",
+      "sha256": "271541eae1277aa8269740b869f7756095575b65ef17fa9eea7172f2c92ee11b",
+      "old_main_fixtures_retained": 72,
+      "old_main_results_retained": 17,
+      "unknown_venues": 72,
+      "matches_with_stream_urls": 0,
+      "source_table_discrepancies": {
+        "pomorska3liga": {}
+      },
+      "attempts": [
+        {
+          "engine": "seleniumbase",
+          "started_at": "2026-11-07T17:57:23.182606+00:00",
+          "ok": false,
+          "error": "ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 9222)",
+          "retry_after": 0,
+          "finished_at": "2026-11-07T17:58:42.038364+00:00",
+          "documents": 1
+        },
+        {
+          "engine": "camoufox",
+          "started_at": "2026-11-07T17:59:16.286507+00:00",
+          "ok": true,
+          "metrics": {
+            "matches": 72,
+            "finished": 19,
+            "teams": 9,
+            "reused_details": 19,
+            "refetched_cached_details": 0,
+            "detail_requests": 0,
+            "broadcast_requests": 0
+          },
+          "finished_at": "2026-11-07T17:59:55.689667+00:00",
+          "documents": 3
+        }
+      ],
+      "documents": [
+        {
+          "at": "2026-11-07T17:59:28.374412+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/schedule/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 4.226
+        },
+        {
+          "at": "2026-11-07T17:59:40.287666+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/results/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.141
+        },
+        {
+          "at": "2026-11-07T17:59:55.348873+00:00",
+          "engine": "camoufox",
+          "event": "document",
+          "url": "https://pomorskie.volleystation.com/pl/phase-6796-pomorska-iii-liga-meska/standings/",
+          "status": 200,
+          "challenge": false,
+          "initial_challenge": false,
+          "helper_attempted": false,
+          "elapsed_seconds": 1.202
+        }
+      ]
+    }
+  },
+  "runtime_browser_checks": [
+    {
+      "insecure_flags": [],
+      "ports": [
+        "--remote-debugging-port=55963",
+        "--remote-debugging-port=55963",
+        "--remote-debugging-port=55963",
+        "--remote-debugging-port=55963"
+      ],
+      "untrusted_tls_rejected": true
+    },
+    {
+      "insecure_flags": [],
+      "ports": [
+        "--remote-debugging-port=54579",
+        "--remote-debugging-port=54579",
+        "--remote-debugging-port=54579",
+        "--remote-debugging-port=54579"
+      ],
+      "untrusted_tls_rejected": true
+    }
+  ],
+  "additional_seleniumbase_import": {
+    "quality": {
+      "matches": 72,
+      "finished": 19,
+      "teams": 9
+    },
+    "updated_at": "2026-11-07T18:02:48.953790+00:00",
+    "attempts": [
+      {
+        "engine": "seleniumbase",
+        "started_at": "2026-11-07T18:02:09.356020+00:00",
+        "ok": true,
+        "metrics": {
+          "matches": 72,
+          "finished": 19,
+          "teams": 9,
+          "reused_details": 19,
+          "refetched_cached_details": 0,
+          "detail_requests": 0,
+          "broadcast_requests": 0
+        },
+        "finished_at": "2026-11-07T18:02:49.116461+00:00",
+        "documents": 3
+      }
+    ],
+    "tls_verified_launch": true
+  }
+}

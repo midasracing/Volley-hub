@@ -6,8 +6,6 @@ on:
     workflows:
       - "Refresh TAURON data"
       - "Update Italian and Japanese volleyball"
-      - "Update II Liga Mężczyzn"
-      - "Update Pomorska III Liga Męska"
     types: [completed]
   workflow_dispatch:
 permissions:

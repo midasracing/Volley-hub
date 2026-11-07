@@ -3,7 +3,6 @@
 import json
 import re
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -126,7 +125,7 @@ def parse_matches(soup, source_url):
     matches = []
     for anchor in soup.find_all("a", href=True):
         text = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True))
-        prefix = re.match(r"^(?:TV\s+)?Runda:\s*(\d+)\s+Nr\s+(\d+)\s+(.+)$", text, re.I)
+        prefix = re.match(r"^(?:(?:TV|Na żywo)\s+)?Runda:\s*(\d+)\s+Nr\s+(\d+)\s+(.+)$", text, re.I)
         if not prefix:
             continue
         round_no, match_no, rest = prefix.groups()
@@ -141,7 +140,8 @@ def parse_matches(soup, source_url):
             home = rest[:score_match.start()].strip(" ·-")
             away = rest[score_match.end():].strip(" ·-")
             home_sets, away_sets = int(score_match.group(1)), int(score_match.group(2))
-            status, time = "finished", None
+            status = 'finished' if max(home_sets,away_sets)==3 else 'live' if home_sets+away_sets or text.casefold().startswith('na żywo ') else 'scheduled'
+            time = None
         else:
             time_match = re.search(r"\b(\d{2}:\d{2})\b", rest)
             if not time_match:
@@ -210,6 +210,7 @@ def parse_match_detail(soup):
     # containers. Each .set-points element is one set's points, not a "25:18"
     # string, so pair the home and away rows by set index.
     set_scores = []
+    raw_pairs = []
     team_rows = soup.select(".team-points-row")
     home_row = next((row for row in team_rows if "home" in row.get("class", [])), None)
     away_row = next((row for row in team_rows if "away" in row.get("class", [])), None)
@@ -226,13 +227,23 @@ def parse_match_detail(soup):
         for home_value, away_value in zip(home_points, away_points):
             if home_value.isdigit() and away_value.isdigit():
                 a, b = int(home_value), int(away_value)
-                if 0 <= a <= 40 and 0 <= b <= 40 and a != b:
+                raw_pairs.append((a,b))
+                if a != b:
                     set_scores.append(f"{a}:{b}")
 
 
-    return {"time": kickoff, "set_scores": set_scores}
+    result={"time": kickoff, "set_scores": set_scores}
+    if home_row and away_row:
+        for side,row in [('home',home_row),('away',away_row)]:
+            value=row.select_one('.match-points')
+            if value and value.get_text(strip=True).isdigit():result[side+'_sets']=int(value.get_text(strip=True))
+        if 'home_sets' in result and 'away_sets' in result and max(result['home_sets'],result['away_sets'])<3:
+            count=result['home_sets']+result['away_sets']
+            result['set_scores']=[f'{a}:{b}' for a,b in raw_pairs[:count]]
+            result['current_points']=f'{raw_pairs[count][0]}:{raw_pairs[count][1]}' if len(raw_pairs)>count else None
+    return result
 
-def parse_table(soup):
+def parse_table(soup, expected_teams=9):
     rows = []
     for row in soup.select("table tr"):
         cells = [
@@ -253,10 +264,6 @@ def parse_table(soup):
             result_counts = [int(value) for value in cells[12:18]]
             wins = sum(result_counts[:3])
             losses = sum(result_counts[3:])
-            if wins + losses != played:
-                raise ValueError(
-                    f"result counts ({wins + losses}) do not match played ({played})"
-                )
             rows.append({
                 "rank": rank, "team": cells[1], "played": played,
                 "points": points, "wins": wins, "losses": losses,
@@ -265,13 +272,14 @@ def parse_table(soup):
             })
         except (ValueError, IndexError) as exc:
             print(f"Skipping invalid standings row {cells[:4]!r}: {exc}", file=sys.stderr)
-    if rows and len(rows) != 9:
-        print(f"Warning: expected 9 standings rows, parsed {len(rows)}", file=sys.stderr)
+    if rows and expected_teams is not None and len(rows) != expected_teams:
+        print(f"Warning: expected {expected_teams} standings rows, parsed {len(rows)}", file=sys.stderr)
     return rows
 
-def parse_team_logos(soup, page_url):
+def parse_team_logos(soup, page_url, known_logos=None, fetch_page=None):
     """Extract team logos from standings and team profile links."""
-    logos = {}
+    logos = dict(known_logos or {})
+    fetch_page = fetch_page or fetch
 
     def extract_url(node):
         for attr in ("src", "data-src", "data-lazy-src", "data-original", "data-image", "href"):
@@ -309,6 +317,8 @@ def parse_team_logos(soup, page_url):
     # exposed there even when the standings table itself contains no image node.
     for anchor in soup.select('a[href*="/teams/"]'):
         href = urljoin(page_url, anchor.get("href", ""))
+        if href.rstrip("/").endswith("/teams"):
+            continue
         name = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
         # Some layouts wrap the badge in a link and keep the team name elsewhere
         # in the same standings row; use that row's team cell as a fallback.
@@ -320,7 +330,7 @@ def parse_team_logos(soup, page_url):
         if not name or not href or name in logos:
             continue
         try:
-            team_soup = fetch(href)
+            team_soup = fetch_page(href)
         except Exception as exc:
             print(f"Warning: couldn't inspect team profile for logo {name!r}: {exc}", file=sys.stderr)
             continue
@@ -370,157 +380,13 @@ def load_previous(path):
         return {}
 
 
-def main():
-    previous = load_previous(OUT)
-    # IMPORTANT: VolleyStation separates upcoming fixtures (/schedule/) from
-    # played results (/results/). Both pages must be read to build a full calendar.
-    schedule = parse_matches(fetch(SCHEDULE_URL), SCHEDULE_URL)
-    results = parse_matches(fetch(RESULTS_URL), RESULTS_URL)
-    # Start with fixtures, then let official results replace scores/status for the same match.
-    # Result pages often omit kickoff time, so never discard a time already found in schedule.
-    by_id = {match["id"]: match for match in schedule}
-    for result in results:
-        fixture = by_id.get(result["id"], {})
-        merged = {**fixture, **result}
-        if not result.get("time") and fixture.get("time"):
-            merged["time"] = fixture["time"]
-        by_id[result["id"]] = merged
-    matches = list(by_id.values())
+def main(argv=None):
+    """Run the default local importer; parsing helpers above remain reusable."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from local_scraper.runner import main as run
 
-    # Finished matches expose kickoff time and point-by-point set scores on the
-    # official individual match page, so inspect each completed match directly.
-    # Remove bogus scores saved by older parser versions (e.g. "18:0" from 18:00).
-    def valid_saved_set_score(value):
-        parsed = re.fullmatch(r"(\d{1,2}):(\d{1,2})", str(value).strip())
-        if not parsed:
-            return False
-        a, b = map(int, parsed.groups())
-        if a > 40 or b > 40 or a == b:
-            return False
-        winner, loser = max(a, b), min(a, b)
-        return (winner >= 25 and winner - loser >= 2) or (
-            winner == 15 and loser <= 13
-        ) or (15 < winner <= 20 and winner - loser == 2)
+    return run(argv)
 
-    for match in matches:
-        match["set_scores"] = [
-            score for score in (match.get("set_scores") or [])
-            if valid_saved_set_score(score)
-        ]
-
-    detail_candidates = [
-        match for match in matches
-        if match.get("status") == "finished" and match.get("match_url")
-        and not match.get("set_scores")
-    ]
-    detail_times_found = 0
-    detail_scores_found = 0
-    for detail_index, match in enumerate(detail_candidates):
-        try:
-            detail_soup = fetch(match["match_url"])
-            detail_data = parse_match_detail(detail_soup)
-            if not match.get("time") and detail_data["time"]:
-                match["time"] = detail_data["time"]
-                detail_times_found += 1
-            if detail_data["set_scores"]:
-                match["set_scores"] = detail_data["set_scores"]
-                detail_scores_found += 1
-        except Exception as exc:
-            print(f"Warning: could not read details from match page {match['match_url']}: {exc}", file=sys.stderr)
-    print(
-        f"Match detail lookup: checked={len(detail_candidates)}, "
-        f"kickoff times recovered={detail_times_found}, set-score lists recovered={detail_scores_found}",
-        flush=True,
-    )
-
-    # Internal helper URL is not needed in the public JSON feed.
-    for match in matches:
-        match.pop("match_url", None)
-
-    with_time = sum(bool(match.get("time")) for match in matches)
-    missing_time = sum(not match.get("time") for match in matches)
-    missing_time_finished = sum(not match.get("time") and match.get("status") == "finished" for match in matches)
-    print(
-        f"Parsed official pages: schedule={len(schedule)}, results={len(results)}, "
-        f"unique matches={len(matches)}, with kickoff time={with_time}, "
-        f"without time={missing_time} (finished without time={missing_time_finished})",
-        flush=True,
-    )
-    if not matches:
-        raise RuntimeError(
-            "No recognizable matches found on official VolleyStation schedule or results pages; "
-            "refusing to overwrite existing data."
-        )
-
-    # Avoid silently publishing a suspiciously incomplete feed if the source layout changes.
-    previous_matches = previous.get("matches", [])
-    if len(previous_matches) >= 8 and len(matches) < max(4, int(len(previous_matches) * 0.5)):
-        raise RuntimeError(
-            f"Only {len(matches)} matches parsed, versus {len(previous_matches)} in the last saved feed; "
-            "refusing to replace potentially valid data with an incomplete scrape."
-        )
-
-    team_logos = {}
-    try:
-        standings_soup = fetch(STANDINGS_URL)
-        standings = parse_table(standings_soup)
-        team_logos = parse_team_logos(standings_soup, STANDINGS_URL)
-        if len(standings) < 8:
-            raise RuntimeError(f"only {len(standings)} standings rows parsed")
-        print(f"Official team logos found in standings: {len(team_logos)}", flush=True)
-    except Exception as exc:
-        print(f"Warning: standings unavailable, keeping previous table: {exc}", file=sys.stderr)
-        standings = previous.get("table", [])
-        team_logos = {
-            team.get("name", ""): team.get("logo", "")
-            for team in previous.get("teams", [])
-            if team.get("name") and team.get("logo")
-        }
-
-    matches.sort(key=lambda m: (
-        datetime.strptime(m["date"], "%d.%m.%Y"),
-        m["time"] or "99:99",
-        m["round"],
-        m["match_number"],
-    ))
-    teams = sorted(
-        {name.strip() for match in matches for name in (match["home"], match["away"]) if name and name.strip()},
-        key=str.casefold,
-    )
-    if len(teams) < 8:
-        raise RuntimeError(
-            f"Only {len(teams)} distinct teams found in parsed matches; refusing to publish incomplete data."
-        )
-    data = {
-        "league": "pomorska3liga",
-        "competition": "Pomorska III Liga Męska",
-        "source": SCHEDULE_URL,
-        "results_source": RESULTS_URL,
-        "standings_source": STANDINGS_URL,
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-        "teams": [
-            {
-                "name": name,
-                "logo": team_logos.get(name)
-                    or next(
-                        (logo for known_name, logo in team_logos.items()
-                         if known_name.casefold() == name.casefold()),
-                        ""
-                    )
-                    or next(
-                        (team.get("logo", "") for team in previous.get("teams", [])
-                         if team.get("name", "").casefold() == name.casefold()),
-                        ""
-                    ),
-            }
-            for name in teams
-        ],
-        "matches": matches,
-        "table": standings,
-    }
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Saved {len(matches)} matches ({len(results)} from results, {len(schedule)} from schedule), {len(teams)} teams; standings rows: {len(standings)}")
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
