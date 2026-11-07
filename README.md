@@ -165,13 +165,17 @@ Sprawdzone zapytania do publicznego endpointu PZPS opisano w
 
 | Ścieżka | Zawartość |
 | --- | --- |
-| [`src/main.jsx`](src/main.jsx) | Główne widoki aplikacji |
-| [`src/data.js`](src/data.js) | Pobieranie i normalizacja danych |
-| [`src/app.css`](src/app.css) | Układ i style interfejsu |
-| [`src/components/`](src/components/) | Nawigacja i elementy UI |
-| [`scripts/`](scripts/) | Aktualizowanie danych ligowych |
+| [`src/main.jsx`](src/main.jsx) | Stan aplikacji, nawigacja i montowanie widoków |
+| [`src/pages/`](src/pages/) | Osobne widoki: Główna, Kalendarz, Rozgrywki, Ulubione |
+| [`src/components/`](src/components/) | Karty meczów, tabela, kalendarz, nawigacja i wspólne UI |
+| [`src/data.js`](src/data.js) i [`src/useFeeds.js`](src/useFeeds.js) | Model danych oraz aktualizacje JSON |
+| [`src/motionRuntime.js`](src/motionRuntime.js) i [`motion/`](motion/) | Efekty Rive i ich pliki źródłowe |
+| [`src/app.css`](src/app.css) i [`src/theme.css`](src/theme.css) | Style układu i motyw wizualny |
+| [`local_scraper/`](local_scraper/) | Lokalny importer II ligi i Pomorskiej III ligi |
+| [`scripts/`](scripts/) | Importery ligowe i narzędzia aktualizacji |
+| [`diagnostics/`](diagnostics/) i [`audits/`](audits/) | Diagnostyka i raporty źródeł — nie są częścią bundla |
 | [`tests/`](tests/) i [`e2e/`](e2e/) | Testy jednostkowe i przeglądarkowe |
-| [`.github/workflows/`](.github/workflows/) | Testy, synchronizacja i publikacja |
+| [`.github/workflows/`](.github/workflows/) | Aktualizacje danych, testy i publikacja |
 
 W interfejsie wykorzystano element **GlassSurface** z biblioteki React Bits. Informacje o jego pochodzeniu i licencji znajdują się w [pliku atrybucji](src/components/react-bits/LICENSE.md).
 
